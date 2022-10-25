@@ -48,11 +48,6 @@ This project uses several tools to ensure code consistency & quality:
 
 ### VSCode Setup
 
-_Set the following settings (user or workspace level)_
-
-- Settings → Editor → Default Formatter: `prettier`
-- Settings → Editor → Format On Save: `true` (optional, if not set you're responsible for making sure files are formatted)
-
 Install the following extensions to setup formatting & linting in real time (when applicable, these extensions will autoload local config):
 
 - [EditorConfig for VSCode](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
@@ -60,6 +55,12 @@ Install the following extensions to setup formatting & linting in real time (whe
 - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [Vue](https://marketplace.visualstudio.com/items?itemName=jcbuisson.vue)
+
+_Set the following settings (user or workspace level)_
+
+- Settings → Editor → Default Formatter: `prettier`
+- Settings → Editor → Format On Save: `true` (optional, if not set you're responsible for making sure files are formatted)
+- Settings → Theme Check → Only Single File Checks: `true` (improves performance of the theme check server)
 
 ## License
 
