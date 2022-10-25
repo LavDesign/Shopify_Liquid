@@ -21,7 +21,7 @@ Ensure the following are installed on your machine (follow the links for install
 
 - [NVM](https://github.com/nvm-sh/nvm) (recommended)
   - [Node](https://nodejs.org/en/download/package-manager/) (see [.nvmrc](./.nvmrc) for version)
-- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) (Latest)
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) (1.x)
 - [NPX](https://www.npmjs.com/package/npx) (Latest, used to run `lerna`)
 
 ## Usage
@@ -29,9 +29,6 @@ Ensure the following are installed on your machine (follow the links for install
 ### Local Development Setup
 
 ```bash
-# This project requires Yarn workspaces, run this if you haven't already
-yarn config set workspaces-experimental true
-
 # Install deps
 yarn
 ```
