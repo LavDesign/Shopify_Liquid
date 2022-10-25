@@ -1,5 +1,5 @@
 {
-  "name": "theme-dawn",
+  "name": "@bva/dawn-theme",
   "version": "7.0.1",
   "description": "Shopify Dawn theme",
   "main": "index.js",

@@ -1,9 +1,10 @@
 {
-  "name": "cli",
+  "name": "@bva/fab-cli",
   "version": "0.0.0",
   "description": "Command-line for Bedrock on Liquid",
   "main": "index.js",
   "author": "The Stable",
+  "repository": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono.git",
   "license": "UNLICENSED",
   "bin": {
     "hello": "./cli.js"
