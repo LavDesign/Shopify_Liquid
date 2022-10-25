@@ -4,5 +4,8 @@
   "description": "Command-line for Bedrock on Liquid",
   "main": "index.js",
   "author": "The Stable",
-  "license": "NONE"
+  "license": "UNLICENSED",
+  "bin": {
+    "hello": "./cli.js"
+  }
 }
