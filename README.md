@@ -35,9 +35,6 @@ yarn config set workspaces-experimental true
 # Install deps
 yarn
 ```
-
-## Contributing
-
 ## Contributing
 
 This project uses several tools to ensure code consistency & quality:
