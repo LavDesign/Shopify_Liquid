@@ -1,6 +1,7 @@
 // See: https://eslint.org/docs/user-guide/configuring/configuration-files
 
 module.exports = {
+  root: true,
   extends: ["eslint:recommended", "prettier", "plugin:vue/vue3-essential"],
   plugins: ["prettier", "vue"],
   parserOptions: {

@@ -1,3 +1,5 @@
+root: .
+
 MatchingTranslations:
   enabled: false
 TemplateLength:
