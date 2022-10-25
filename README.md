@@ -1,10 +1,10 @@
-# Shopify Bedrock Liquid Mono Repo
+# Shopify Liquid Mono Repo
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-This "mono" repo holds all packages related to the Bedrock on Liquid reference architecture.
+This "mono" repo holds all packages related to The Stable Shopify liquid reference architecture.
 
-This repo uses [Yarn Workspaces](https://yarnpkg.com/features/workspaces#gatsby-focus-wrapper) and [Lerna](https://lerna.js.org/docs/getting-started) to manage multiple packages related to the Bedrock on Liquid implementation. Check out the links for more information.
+This repo uses [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) and [Lerna](https://lerna.js.org/docs/getting-started). Click the links for more information.
 
 ## Table of Contents
 

@@ -1,6 +1,6 @@
 # Fab Theme
 
-This package contains the Shopify liquid theme used as part of FAB (Foundational Accelerator Boilerplate) and the Bedrock on Liquid reference architecture.
+This package contains the Shopify liquid theme used as part of FAB (Foundational Accelerator Boilerplate).
 
 ## Table of Contents
 

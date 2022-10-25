@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Mono-repo for Shopify liquid builds",
   "main": "index.js",
-  "repository": "https://bitbucket.org/bvaccel-delivery/shopify-bedrock-liquid-mono/",
+  "repository": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono/",
   "author": "The Stable",
   "license": "UNLICENSED",
   "private": true,

@@ -1,6 +1,6 @@
 # Fab CLI
 
-This package contains scripts used to enable the Bedrock on Liquid reference architecture.
+This package contains the Fab command-line.
 
 ## Table of Contents
 
