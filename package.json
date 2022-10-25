@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Mono-repo for Shopify liquid builds",
   "main": "index.js",
-  "repository": "https://ataylorstable@bitbucket.org/bvaccel-delivery/shopify-liquid-mono.git",
+  "repository": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono.git",
   "author": "The Stable",
   "license": "UNLICENSED",
   "private": true,
