@@ -24,5 +24,9 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "lint:js": "eslint \"**/*.{js,vue}\"",
+    "lint:css": "stylelint \"**/*.{css,scss}\""
+  }
 }

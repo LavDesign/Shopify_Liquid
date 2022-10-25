@@ -1,7 +1,5 @@
 // See: https://stylelint.io/user-guide/configure
 
-const isDevelopment = process.env.NODE_ENV === "development";
-
 module.exports = {
   extends: ["stylelint-config-recommended", "stylelint-config-prettier"],
   /**
@@ -15,15 +13,15 @@ module.exports = {
    * ignore certain files
    * docs: https://stylelint.io/user-guide/configure#ignorefiles
    */
-  ignoreFiles: [
-    "shopify/assets/bundle.css",
-    "shopify/assets/checkout.css"
-  ],
+  ignoreFiles: ["packages/theme-dawn/**/*.{css,scss}"],
   /**
    * add custom rules
    * docs: https://stylelint.io/user-guide/rules/list
    */
   rules: {},
+  /**
+   * add overrides
+   * https://stylelint.io/user-guide/rules/#overrides
+   */
   overrides: [],
-  customSyntax: "postcss-html",
 };
