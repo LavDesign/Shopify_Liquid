@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
-// Grab command-line args
-const [, , ...args] = process.argv;
+const { Command } = require("commander");
+const program = new Command();
 
-// Print hello + message
-console.log(`Hello ${args}`);
+program.name("fab").version("0.0.0").command("hello", "Say Hello!", {
+  executableFile: "commands/hello.js",
+});
+
+program.parse(process.argv);
