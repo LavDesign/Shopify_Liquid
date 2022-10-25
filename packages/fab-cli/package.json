@@ -8,5 +8,8 @@
   "license": "UNLICENSED",
   "bin": {
     "hello": "./cli.js"
+  },
+  "dependencies": {
+    "commander": "^9.4.1"
   }
 }
