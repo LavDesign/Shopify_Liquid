@@ -24,14 +24,24 @@ Ensure the following are installed on your machine (follow the links for install
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) (1.x)
 - [NPX](https://www.npmjs.com/package/npx) (Latest, used to run `lerna`)
 
-## Usage
+### Setup
 
-### Local Development Setup
-
+**Setup local NPM config, `.npmrc**
 ```bash
-# Install deps
+cp .npmrc.example .npmrc
+```
+* Replace the `<TOKEN>` value in the line `//registry.npmjs.org/:_authToken=<TOKEN>` with your a read-only or publish token issued from the `bvaadmin` NPM account. If you need a token, request it from the tech lead.
+
+
+**Install Node Packages**
+```bash
 yarn
 ```
+
+## Usage
+
+> TODO: Write
+
 ## Contributing
 
 This project uses several tools to ensure code consistency & quality:
