@@ -1,3 +1,4 @@
 always-auth=true
+scope=@bva
 
 //registry.npmjs.org/:_authToken=<TOKEN>
