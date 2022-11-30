@@ -1,13 +1,13 @@
 {
-  "name": "@bva/fab-cli",
+  "name": "@bva/shopify-liquid-cli",
   "version": "0.0.0",
-  "description": "Command-line for Fab",
+  "description": "Command-line & utitlies for Shopify Liquid builds",
   "main": "index.js",
   "author": "The Stable",
   "repository": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono.git",
   "license": "UNLICENSED",
   "bin": {
-    "fab": "./cli.js"
+    "shopify-liquid": "./cli.js"
   },
   "dependencies": {
     "commander": "^9.4.1"

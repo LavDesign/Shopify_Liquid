@@ -2,7 +2,7 @@ const { Command } = require("commander");
 const program = new Command();
 
 program
-  .name("fab hello")
+  .name("shopify-liquid hello")
   .argument("<message>", "Your message")
   .option("-j, --json", "Return output as json.", false);
 
