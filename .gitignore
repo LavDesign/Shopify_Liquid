@@ -3,6 +3,9 @@
 # Local npm config
 .npmrc
 
+# Local test package
+packages/test-package
+
 # END USER-DEFINED IGNORES
 
 # GENERATED .GITIGNORE
