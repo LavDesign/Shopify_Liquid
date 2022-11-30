@@ -1,11 +1,14 @@
 # USER-DEFINED IGNORES
 
+# Local npm config
+.npmrc
+
 # END USER-DEFINED IGNORES
 
 # GENERATED .GITIGNORE
 
-# Created by https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,windows,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudiocode,yarn
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,windows,visualstudiocode,yarn
 
 ### macOS ###
 # General
@@ -35,6 +38,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
 
 ### Node ###
 # Logs
@@ -197,8 +204,6 @@ dist
 .history
 .ionide
 
-# Support for Project snippet scope
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -225,4 +230,21 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# END GENERATED GITIGNORE
+### yarn ###
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# if you are NOT using Zero-installs, then:
+# comment the following lines
+!.yarn/cache
+
+# and uncomment the following lines
+# .pnp.*
+
+# End of https://www.toptal.com/developers/gitignore/api/node,macos,windows,visualstudiocode,yarn
