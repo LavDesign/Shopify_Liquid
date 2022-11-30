@@ -1,9 +1,0 @@
-{
-  "name": "@bva/dawn-theme",
-  "version": "7.0.1",
-  "description": "Shopify Dawn theme",
-  "main": "index.js",
-  "repository": "https://github.com/Shopify/dawn",
-  "author": "Shopify",
-  "license": "MIT"
-}
