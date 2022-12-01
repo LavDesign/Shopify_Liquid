@@ -10,7 +10,7 @@
     "url": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono.git"
   },
   "bin": {
-    "shopify-liquid": "./cli.js"
+    "shopify-liquid-cli": "./cli.js"
   },
   "dependencies": {
     "commander": "^9.4.1"

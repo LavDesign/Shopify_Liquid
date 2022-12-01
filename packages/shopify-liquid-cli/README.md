@@ -35,7 +35,7 @@ yarn workspace @bva/foo-bar-baz add @bva/shopify-liquid-cli@^0.0.0
 ## Usage
 
 ```bash
-shopify-liquid --help
+shopify-liquid-cli --help
 ```
 
 ## Contributing
