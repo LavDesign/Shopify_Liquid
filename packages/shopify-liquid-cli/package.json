@@ -1,6 +1,6 @@
 {
   "name": "@bva/shopify-liquid-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Command-line & utitlies for Shopify Liquid builds",
   "main": "index.js",
   "author": "The Stable",
