@@ -4,12 +4,18 @@
   "description": "Command-line & utitlies for Shopify Liquid builds",
   "main": "index.js",
   "author": "The Stable",
-  "repository": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono.git",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono.git"
+  },
   "bin": {
     "shopify-liquid": "./cli.js"
   },
   "dependencies": {
     "commander": "^9.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Not implemented\"; exit 0;"
   }
 }
