@@ -1,0 +1,4 @@
+[submodule "packages/shopify-liquid-theme"]
+	path = packages/shopify-liquid-theme
+	url = https://ataylorstable@bitbucket.org/bvaccel-delivery/fab.git
+	branch = feature/mono-repo-updates
