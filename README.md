@@ -27,20 +27,29 @@ Ensure the following are installed on your machine (follow the links for install
 ### Setup
 
 **Setup local NPM config, `.npmrc**
+
 ```bash
 cp .npmrc.example .npmrc
 ```
-* Replace the `<TOKEN>` value in the line `//registry.npmjs.org/:_authToken=<TOKEN>` with your a read-only or publish token issued from the `bvaadmin` NPM account. If you need a token, request it from the tech lead.
 
+- Replace the `<TOKEN>` value in the line `//registry.npmjs.org/:_authToken=<TOKEN>` with your a read-only or publish token issued from the `bvaadmin` NPM account. If you need a token, request it from the tech lead.
 
 **Install Node Packages**
+
 ```bash
 yarn
 ```
 
 ## Usage
 
-> TODO: Write
+> Make sure you've completed the [Setup](#setup) above.
+
+```
+nvm use
+cd packages/shopify-liquid-theme
+npm run start
+```
+* See [shopify-liquid-theme/README.md](./packages/shopify-liquid-theme/README.md) for more details.
 
 ## Contributing
 

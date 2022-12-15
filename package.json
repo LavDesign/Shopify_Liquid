@@ -1,12 +1,16 @@
 {
   "name": "root",
   "version": "0.0.0",
-  "description": "Mono-repo for Shopify liquid builds",
-  "main": "index.js",
-  "repository": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono/",
-  "author": "The Stable",
-  "license": "UNLICENSED",
   "private": true,
+  "description": "Mono-repo for Shopify liquid builds",
+  "repository": "https://bitbucket.org/bvaccel-delivery/shopify-liquid-mono/",
+  "license": "UNLICENSED",
+  "author": "The Stable",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {},
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/eslint-parser": "^7.19.1",
@@ -21,14 +25,5 @@
     "stylelint": "^14.14.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended": "^9.0.0"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "scripts": {
-    "lint:js": "eslint \"**/*.{js,vue}\"",
-    "lint:css": "stylelint \"**/*.{css,scss}\"",
-    "test": "lerna run test",
-    "publish": "lerna publish --verify-access"
   }
 }
