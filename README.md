@@ -42,7 +42,14 @@ yarn
 
 ## Usage
 
-> TODO: Write
+> Make sure you've completed the [Setup](#setup) above.
+
+```
+nvm use
+cd packages/shopify-liquid-theme
+npm run start
+```
+* See [shopify-liquid-theme/README.md](./packages/shopify-liquid-theme/README.md) for more details.
 
 ## Contributing
 
