@@ -10,12 +10,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "lint:css": "stylelint \"**/*.{css,scss}\"",
-    "lint:js": "eslint \"**/*.{js,vue}\"",
-    "publish": "lerna publish --verify-access",
-    "test": "lerna run test"
-  },
+  "scripts": {},
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/eslint-parser": "^7.19.1",
