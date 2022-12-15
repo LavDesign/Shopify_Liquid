@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "ui-kit": {
+      "type": "page-ui-kit"
+    }
+  },
+  "order": [
+    "ui-kit"
+  ]
+}

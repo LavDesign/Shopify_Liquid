@@ -1,0 +1,41 @@
+{% comment %}
+
+  Props:
+    title:       string item title - (required)
+    content:     string item content - (required)
+    show_icon:   boolean - (optional)
+    is_open:     boolean - (optional)
+
+  Example accordion item:
+    {%- render 'accordion-item', title: 'title', content: 'some content as raw or <strong>HTML</strong>.' -%}
+
+  Example accordion item + icon:
+    {%- render 'accordion-item', title: 'title', content: 'some content as raw or <strong>HTML</strong>.', show_icon: true -%}
+
+{% endcomment %}
+
+{%- liquid
+  assign item_attr = 'class="ra-accordion-item"'
+
+  if is_open == true
+    assign item_attr = 'class="ra-accordion-item is-open" open'
+  endif
+-%}
+
+{% assign contents = content | strip %}
+{% assign title = title | strip %}
+
+{% if title.size != 0 and contents.size != 0 %}
+  <details {{ item_attr }}>
+    <summary class="ra-accordion-item__header">
+      {{- title -}}
+      {% if show_icon %}
+       {%- render 'icon' icon: 'plus', class: 'ra-accordion-item__plus-icon', width: '14px', height: '14px' -%}
+       {%- render 'icon' icon: 'minus', class: 'ra-accordion-item__minus-icon' width: '14px', height: '14px' -%}
+      {% endif %}
+    </summary>
+    <div class="ra-accordion-item__content">
+      {{- content -}}
+    </div>
+  </details>
+{% endif %}

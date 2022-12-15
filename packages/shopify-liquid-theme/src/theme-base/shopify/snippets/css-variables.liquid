@@ -1,0 +1,134 @@
+<style>
+  :root {
+    /* 
+      Color Pallete - Primary
+    */
+    --color-primary-900: {{ settings.color_primary_900 }};
+    --color-primary-800: {{ settings.color_primary_800 }};
+    --color-primary-700: {{ settings.color_primary_700 }};
+    --color-primary-600: {{ settings.color_primary_600 }};
+    --color-primary-500: {{ settings.color_primary_500 }};
+    --color-primary-400: {{ settings.color_primary_400 }};
+    --color-primary-300: {{ settings.color_primary_300 }};
+    --color-primary-200: {{ settings.color_primary_200 }};
+    --color-primary-100: {{ settings.color_primary_100 }};
+
+    /* 
+      Color Pallete - Secondary
+    */
+    --color-secondary-900: {{ settings.color_secondary_900 }};
+    --color-secondary-800: {{ settings.color_secondary_800 }};
+    --color-secondary-700: {{ settings.color_secondary_700 }};
+    --color-secondary-600: {{ settings.color_secondary_600 }};
+    --color-secondary-500: {{ settings.color_secondary_500 }};
+    --color-secondary-400: {{ settings.color_secondary_400 }};
+    --color-secondary-300: {{ settings.color_secondary_300 }};
+    --color-secondary-200: {{ settings.color_secondary_200 }};
+    --color-secondary-100: {{ settings.color_secondary_100 }};
+
+    /* 
+      Color Pallete - Tertiary
+    */
+    --color-tertiary-900: {{ settings.color_tertiary_900 }};
+    --color-tertiary-800: {{ settings.color_tertiary_800 }};
+    --color-tertiary-700: {{ settings.color_tertiary_700 }};
+    --color-tertiary-600: {{ settings.color_tertiary_600 }};
+    --color-tertiary-500: {{ settings.color_tertiary_500 }};
+    --color-tertiary-400: {{ settings.color_tertiary_400 }};
+    --color-tertiary-300: {{ settings.color_tertiary_300 }};
+    --color-tertiary-200: {{ settings.color_tertiary_200 }};
+    --color-tertiary-100: {{ settings.color_tertiary_100 }};
+
+    /* 
+      Color Pallete - Grey Scales
+    */
+    --color-grey-900: {{ settings.color_grey_900 }};
+    --color-grey-800: {{ settings.color_grey_800 }};
+    --color-grey-700: {{ settings.color_grey_700 }};
+    --color-grey-600: {{ settings.color_grey_600 }};
+    --color-grey-500: {{ settings.color_grey_500 }};
+    --color-grey-400: {{ settings.color_grey_400 }};
+    --color-grey-300: {{ settings.color_grey_300 }};
+    --color-grey-200: {{ settings.color_grey_200 }};
+    --color-grey-100: {{ settings.color_grey_100 }};
+
+    /* 
+      Color Pallete - Util
+    */
+    --color-util-red: {{ settings.color_util_red }};
+    --color-util-green: {{ settings.color_util_green }};
+    --color-util-yellow: {{ settings.color_util_yellow }};
+    --color-util-white: {{ settings.color_util_white }};
+
+    /* 
+      Button Colors - Primary
+    */
+    --btn-primary-bg-default: var({{ settings.btn_primary_bg_default }});
+    --btn-primary-bg-hover: var({{ settings.btn_primary_bg_hover }});
+    --btn-primary-text-default: var({{ settings.btn_primary_text_default }});
+    --btn-primary-text-hover: var({{ settings.btn_primary_text_hover }});
+    --btn-primary-border-default: var({{ settings.btn_primary_border_default }});
+    --btn-primary-border-hover: var({{ settings.btn_primary_border_hover }});
+    --btn-primary-outline-color: var({{ settings.btn_primary_outline_color }});
+
+    /* 
+      Button Colors - Secondary
+    */
+    --btn-secondary-bg-default: var({{ settings.btn_secondary_bg_default }});
+    --btn-secondary-bg-hover: var({{ settings.btn_secondary_bg_hover }});
+    --btn-secondary-text-default: var({{ settings.btn_secondary_text_default }});
+    --btn-secondary-text-hover: var({{ settings.btn_secondary_text_hover }});
+    --btn-secondary-border-default: var({{ settings.btn_secondary_border_default }});
+    --btn-secondary-border-hover: var({{ settings.btn_secondary_border_hover }});
+    --btn-secondary-outline-color: var({{ settings.btn_secondary_outline_color }});
+
+    /* 
+      Button Colors - Tertiary
+    */
+    --btn-tertiary-bg-default: var({{ settings.btn_tertiary_bg_default }});
+    --btn-tertiary-bg-hover: var({{ settings.btn_tertiary_bg_hover }});
+    --btn-tertiary-text-default: var({{ settings.btn_tertiary_text_default }});
+    --btn-tertiary-text-hover: var({{ settings.btn_tertiary_text_hover }});
+    --btn-tertiary-border-default: var({{ settings.btn_tertiary_border_default }});
+    --btn-tertiary-border-hover: var({{ settings.btn_tertiary_border_hover }});
+    --btn-tertiary-outline-color: var({{ settings.btn_tertiary_outline_color }});
+
+    /* 
+      Typography - Font families
+    */
+    --font-family-primary: {{ settings.primary_font }};
+    --font-family-secondary: {{ settings.secondary_font }};
+
+    /* 
+      Typography - Font sizes (reset Bedrock font sizes)
+    */
+    --h1-desktop-size: {{ settings.h1_desktop_size | append: 'px' }};
+    --h1-mobile-size: {{ settings.h1_mobile_size | append: 'px' }};
+    --h2-desktop-size: {{ settings.h2_desktop_size | append: 'px' }};
+    --h2-mobile-size: {{ settings.h2_mobile_size | append: 'px' }};
+    --h3-desktop-size: {{ settings.h3_desktop_size | append: 'px' }};
+    --h3-mobile-size: {{ settings.h3_mobile_size | append: 'px' }};
+    --h4-desktop-size: {{ settings.h4_desktop_size | append: 'px' }};
+    --h4-mobile-size: {{ settings.h4_mobile_size | append: 'px' }};
+    --h5-desktop-size: {{ settings.h5_desktop_size | append: 'px' }};
+    --h5-mobile-size: {{ settings.h5_mobile_size | append: 'px' }};
+    --h6-desktop-size: {{ settings.h6_desktop_size | append: 'px' }};
+    --h6-mobile-size: {{ settings.h6_mobile_size | append: 'px' }};
+    --font-size-lg: {{ settings.font_size_lage | append: 'px' }};
+    --font-size: {{ settings.font_size_base | append: 'px' }};
+    --font-size-sm: {{ settings.font_size_small | append: 'px' }};
+    --font-size-xs: {{ settings.font_size_x_small | append: 'px' }};
+
+    /* 
+      Form - Inputs
+    */
+    --input-border-color-default: var({{ settings.input_border_color_default }});
+    --input-border-color-hover: var({{ settings.input_border_color_hover }});
+    --input-text-color: var({{ settings.input_text_color }});
+    --input-placeholder-color: var({{ settings.input_placeholder_color }});
+    --input-outline-color: var({{ settings.input_outline_color }});
+    --input-error-color: var({{ settings.input_error_color }});
+    --input-disabled-border-color: var({{ settings.input_disabled_border }});
+    --input-disabled-background-color: var({{ settings.input_disabled_background }});
+  }
+</style>
