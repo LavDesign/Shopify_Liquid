@@ -7,11 +7,13 @@ import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
 import components from "../vue/components/index.js";
 import RaAccordion from "../js/custom-elements/accordion.js";
+import RaScrollable from "../js/custom-elements/scrollable.js";
 
 //
 // mounts web components (custom elements)
 //
 customElements.define("ra-accordion", RaAccordion);
+customElements.define("ra-scrollable", RaScrollable);
 
 import "@bva/ui-shared/styles/reset.css";
 import "@bva/ui-shared/styles/required.css";
