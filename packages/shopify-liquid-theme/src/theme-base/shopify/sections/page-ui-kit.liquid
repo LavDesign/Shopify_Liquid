@@ -986,6 +986,36 @@
     {% endcapture %}
 
     {% render 'scrollable', expandLabel: 'EXPAND', content: scrollable_content, maxHeight: '4rem' %}
+
+
+    {%- comment -%}
+      Badge
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Badges</h4>
+
+    <div class="mb-5">
+      {% render 'badge',
+        label: 'Primary',
+        size: 'md'
+        style: 'primary'
+      %}
+    </div><br />
+    <div class="mb-5">
+      {% render 'badge',
+        label: 'Secondary sm',
+        size: 'sm'
+        style: 'secondary'
+      %}
+    </div><br />
+    <div class="mb-5">
+      {% render 'badge',
+        label: 'Tertiary Notification Lg',
+        size: 'lg'
+        style: 'tertiary'
+        notification: true
+      %}
+    </div>
+
   </div>
 </section>
 
