@@ -4,6 +4,7 @@ Props:
 product:      object - used instead of manually passing all prices -  (required)
 class:        string add custom CSS class - (optional)
 stacked:      boolean - toggle if layout of two prices should stack or not [default - false] - (optional)
+show_range:   boolean - show price range if variants vary in price - (optional)
 
 Example price-snippet:
 {% render 'bl-price' product: product, stacked: true %}
@@ -22,7 +23,11 @@ Example price-snippet:
 <div class="{{ classes }}">
   {% assign selected = product.selected_or_first_available_variant %}
 
-  {% if selected.compare_at_price and selected.compare_at_price > selected.price %}
+  {% if product.price_varies and show_range %}
+    <span class="ra-price__regular">{{ product.price_min | money }}</span>
+    <span style="padding: 0 4px;">&nbsp;&#8212;&nbsp;</span>
+    <span class="ra-price__regular">{{ product.price_max | money }}</span>
+  {% elsif selected.compare_at_price and selected.compare_at_price > selected.price %}
     <ins class="ra-price__special">
       {{ selected.price | money }}
     </ins>
