@@ -1,20 +1,9 @@
-export default class RaScrollable extends HTMLElement {
-  constructor() {
-    super();
-    this.elements = this.querySelectorAll(".ra-scrollable");
-    this.toggleScrollable = this.toggleScrollable.bind(this);
-  }
 
-  connectedCallback() {
-    this.elements.forEach((el) => {
-      let button = el.querySelector(".ra-scrollable__expand");
-      if (button) {
-        button.addEventListener("click", () => this.toggleScrollable(el));
-      }
-    });
-  }
+var elements = document.querySelectorAll(".ra-scrollable button");
 
-  toggleScrollable(el) {
-    el.classList.toggle("ra-scrollable--expanded");
-  }
-}
+elements.forEach((el) => {
+  el.addEventListener("click", (event) => {
+    let parent = event.currentTarget.parentNode;
+    parent.classList.toggle("ra-scrollable--expanded");
+  });
+});
