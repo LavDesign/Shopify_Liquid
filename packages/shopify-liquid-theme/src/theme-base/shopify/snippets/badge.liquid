@@ -31,8 +31,8 @@ Props:
   {% endif %}
 {% endcapture %}
 
-<div class="{{ classes }}" {% if label != blank %}label="{{ label }}"{% endif %}>
-  {% if label != blank %}
+{% if label != blank %}
+  <div class="{{ classes }}" label="{{ label }}">
     {{ label }}
-  {% endif %}
-</div>
+  </div>
+{% endif %}
