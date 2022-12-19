@@ -7,6 +7,7 @@ import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
 import components from "../vue/components/index.js";
 import RaAccordion from "../js/custom-elements/accordion.js";
+import "../js/custom-elements/scrollable.js";
 
 //
 // mounts web components (custom elements)
