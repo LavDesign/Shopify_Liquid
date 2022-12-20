@@ -9,7 +9,7 @@ charset = utf-8
 indent_style = space
 trim_trailing_whitespace = true
 
-[*.{js,jsx,yml}]
+[*.{js,jsx,yml,vue}]
 indent_size = 2
 
 [*.{rb,scss,json,erb,py,liquid}]
