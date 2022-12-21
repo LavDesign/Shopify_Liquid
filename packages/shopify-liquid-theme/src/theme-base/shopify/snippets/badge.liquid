@@ -3,7 +3,7 @@
 Props:
   label:           String add text to badge - (required)
   size:            String [xs, sm, md, lg] sizes - (optional)
-  notification:    Boolean, changes style of badge to rounded - (optional)
+  rounded:         Boolean, changes style of badge to rounded - (optional)
   style:           String, [primary, secondary, tertiary, success, warning, danger] - (optional) [default is 'primary']
 
 
@@ -13,7 +13,7 @@ Props:
 
 {% capture classes %}
   ra-badge
-  {% if notification %}
+  {% if rounded %}
     ra-badge--notification
   {% else %}
     ra-badge--standard
