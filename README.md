@@ -47,9 +47,10 @@ yarn
 ```
 nvm use
 cd packages/shopify-liquid-theme
-npm run start
+yarn start
 ```
-* See [shopify-liquid-theme/README.md](./packages/shopify-liquid-theme/README.md) for more details.
+
+- See [shopify-liquid-theme/README.md](./packages/shopify-liquid-theme/README.md) for more details.
 
 ## Contributing
 
@@ -77,6 +78,24 @@ _Set the following settings (user or workspace level)_
 - Settings → Editor → Default Formatter: `prettier`
 - Settings → Editor → Format On Save: `true` (optional, if not set you're responsible for making sure files are formatted)
 - Settings → Theme Check → Only Single File Checks: `true` (improves performance of the theme check server)
+
+### Appendix: Shopify CLI 2.x
+
+As of October 2022, Shopify released a new version of the CLI, 3.x, that has breaking changes. As noted in System Dependencies, this repo requires Shopify CLI 2.x.
+
+If you've installed or upgraded the Shopify CLI after October 2022, you will be on Shopify CLI 3.x. Unfortunately, it is not compatible with this repository (for now).
+
+For now the workaround is to uninstall 3.x and re-install 2.x, see below:
+
+- jUninstall 3.x – If you used brew run brew uninstall shopify-cli.
+- To install 2.x, follow these install instructions
+- Then run which shopify2 (note the "2" at the end)
+- Take note of the path this command returns
+- Then create a symlink to shopify: ln -s $(which shopify2) /path/from/before/shopify
+  For example, ln -s %(which shopify2) /opt/homebrew/bin/shopify
+  You can test everything went OK by running: shopify help (you should see the help string)
+
+> NOTE: If uninstalling 3.x is not an option, alternatively you could install 2.x and update the package.json in this repo to use `shopify2` as opposed to `shopify`. You'll need to make sure all developers on the project then install 2.x using the link above so it's available to them.
 
 ## License
 
