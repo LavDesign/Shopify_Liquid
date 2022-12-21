@@ -1016,6 +1016,17 @@
       %}
     </div>
 
+    {%- comment -%}
+    Notification
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Notification</h4>
+    {%- render 'notification',
+      icon: 'account',
+      title: 'Account Notification',
+      message: 'My account notification.',
+      class: 'ra-notification__icon'
+    -%}
+
   </div>
 </section>
 
