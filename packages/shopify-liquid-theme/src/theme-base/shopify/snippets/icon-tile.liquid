@@ -1,0 +1,45 @@
+{% comment %}
+
+Props:
+imgSrc:
+imgAlt:
+imgWidth:
+subtitle:
+title:
+description:
+titleAs:             Number, add number which will style title as [h1, h2, h3] etc, (optional) - default is h2 (pass in just a number)
+titleLevel:
+
+Example Breadcrumb:
+{% render 'icon-tile' %}
+{% endcomment %}
+
+{% capture classes %}
+  ra-icon-tile
+{% endcapture %}
+
+{% capture titleStyle %}
+  {% if titleAs != blank %}
+    --title-font-size:var(--font-size-h{{- titleAS -}});
+  {% endif %}
+{% endcapture %}
+
+<article class="{{ classes }}">
+  {% if imgSrc and imgAlt != blank %}
+    <div class="ra-icon-tile__media"></div>
+  {% endif %}
+  <div class="ra-icon-tile__details">
+    <div class="ra-icon-tile__copy">
+      {% if title != blank %}
+        <h2 class="ra-title ra-icon-title__title" {% if titleAs != blank %}style="{{ titleAs }}"{% endif %}>
+          <div>{{ title }}</div>
+        </h2>
+      {% endif %}
+      {% if description != blank %}
+        <div class="ra-icon-tile__description">
+          {{ description }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</article>
