@@ -3,7 +3,7 @@
 Props:
 imgSrc:              String, url for tile image - (required)
 imgAlt:              String, alt text for tile image
-imgWidth:            String, number used to define px value of image width - (optional)
+imgWidth:            String, number used to define px value of image width - (optional) (default maintains aspect-ratio)
 subtitle:            String, text for subtitle - (optional)
 title:               String, text for main title - (required)
 description:         String, text for description area - (required)
@@ -12,15 +12,15 @@ linkText:            String, text for link - (optional)
 
 titleAs:             Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
 titleLevel:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
-stacked:             Boolean, stack content vertically or horizontal - [default - false (horizontal)] - (optional)
+stacked:             Boolean, stack content vertically (default is false) - (optional)
 
 // Layout & Alignment
 detailsLocation:     String, [before, overlay, after] - (optional)
 detailsLocationMD:   String, [before, overlay, after] (larger screen size) - optional
 horizontalAlign:     String, [left, center, right] - (optional)
-horizontalAlignMD:   String set horizontal align on larger screens - (optional)
-verticalAlign:
-verticalAlignMD:
+horizontalAlignMD:   String, [left, center, right] - (larger screen size)
+verticalAlign:       String, [top, middle, bottom] set vertical alignment - (default = top) - (optional)
+verticalAlignMD:     String, [top, middle, bottom] - (larger screen size)
 
 Example Breadcrumb:
 {% render 'icon-tile' %}
@@ -65,7 +65,7 @@ Example Breadcrumb:
         <img
           loading="lazy"
           src="{{ imgSrc }}"
-          width="{{ imgWidth | default: '64' }}"
+          width="{{ imgWidth | default: 64 }}"
           alt="{{ imgAlt }}"
           src="ra-image__media"
           class="ra-image__media" />
