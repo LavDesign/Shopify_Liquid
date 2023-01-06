@@ -923,11 +923,9 @@
     </div>
   </div>
 
-  <hr class="border my-20">
-
-  {%- comment -%}
-  Accordions
-  {%- endcomment -%}<h4 class="text-h4 mt-10 mb-5">Accordions</h4>
+  <hr class="border my-20">{%- comment -%}
+    Accordions
+    {%- endcomment -%}<h4 class="text-h4 mt-10 mb-5">Accordions</h4>
   <p class="mt-8 mb-4 text-h5">no icon</p>
   {% render 'accordion'
    , item1_title: 'Heading 1',
@@ -969,50 +967,81 @@
 
   {%- comment -%}
   Scrollable
+  {%- endcomment -%}<h4 class="text-h4 mt-10 mb-5">Scrollable</h4>
+
+  {% capture scrollable_content %}
+    <div>
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+        <li>Four</li>
+        <li>Five</li>
+        <li>Six</li>
+      </ul>
+    </div>
+  {% endcapture %}
+
+  {% render 'scrollable', expandLabel: 'EXPAND', content: scrollable_content, maxHeight: '4rem' %}
+
+
+  {%- comment -%}
+  Badge
+  {%- endcomment -%}<h4 class="text-h4 mt-10 mb-5">Badges</h4>
+
+  <div class="mb-5">
+    {% render 'badge'
+     , label: 'Primary',
+     size: 'md'
+     style: 'primary' %}
+  </div><br/>
+  <div class="mb-5">
+    {% render 'badge'
+     , label: 'Secondary sm',
+     size: 'sm'
+     style: 'secondary' %}
+  </div><br/>
+  <div class="mb-5">
+    {% render 'badge'
+     , label: 'Tertiary Notification Lg',
+     size: 'lg'
+     style: 'tertiary'
+     rounded: true %}
+  </div>
+
+  {%- comment -%}
+  Icon Tile
   {%- endcomment -%}
-  <h4 class="text-h4 mt-10 mb-5">Scrollable</h4>
+  <h4 class="text-h4 mt-10 mb-5">Icon Tile</h4>
+    {% assign img_src = section.settings.featured_product.featured_image.src | img_url: '300x' %}
+    {% assign img_alt = section.settings.featured_product.featured_image.alt %}
+    {% assign link_url = section.settings.featured_product.url %}
 
-    {% capture scrollable_content %}
-      <div>
-        <ul>
-          <li>One</li>
-          <li>Two</li>
-          <li>Three</li>
-          <li>Four</li>
-          <li>Five</li>
-          <li>Six</li>
-        </ul>
-      </div>
-    {% endcapture %}
-
-    {% render 'scrollable', expandLabel: 'EXPAND', content: scrollable_content, maxHeight: '4rem' %}
-
-
-    {%- comment -%}
-      Badge
-    {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Badges</h4>
-
-    <div class="mb-5">
-      {% render 'badge',
-        label: 'Primary',
-        size: 'md'
-        style: 'primary'
+    <div class="br-grid grid--col-2 mb-5">
+      {% render 'icon-tile',
+        imgSrc: img_src,
+        imgAlt: img_alt,
+        title: "This is a Title",
+        description: "I'm not thinking about anything when I'm climbing."
+        detailsLocation: 'after',
+        stacked: true,
+        linkUrl: link_url,
+        linkText: "Default"
+        horizontalAlign: 'right'
       %}
-    </div><br />
-    <div class="mb-5">
-      {% render 'badge',
-        label: 'Secondary sm',
-        size: 'sm'
-        style: 'secondary'
-      %}
-    </div><br />
-    <div class="mb-5">
-      {% render 'badge',
-        label: 'Tertiary Notification Lg',
-        size: 'lg'
-        style: 'tertiary'
-        rounded: true
+
+      {% render 'icon-tile',
+        imgSrc: img_src,
+        imgAlt: img_alt,
+        imgWidth: 200,
+        title: "This is a Title",
+        description: "I'm not thinking about anything when I'm climbing.",
+        stacked: false,
+        linkUrl: link_url,
+        linkText: "Default",
+        horizontalAlign: "left",
+        horizontalAlignMD: "center"
+        verticalAlign: 'bottom'
       %}
     </div>
 
