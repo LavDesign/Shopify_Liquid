@@ -2002,12 +2002,12 @@
             "label": "Yotpo"
           },
           {
-            "value": "bazaarvoice",
-            "label": "Bazaarvoice"
-          },
-          {
             "value": "stamped",
             "label": "Stamped"
+          },
+          {
+            "value": "bazaarvoice",
+            "label": "Bazaarvoice"
           }
         ]
       },
