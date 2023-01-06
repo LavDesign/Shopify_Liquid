@@ -2,15 +2,19 @@
 
 Props:
 product: Shopify Product Object
-platform: String, [yotpo, stamped, bazaarvoice]
+platform: String, [yotpo, stamped, bazaarvoice] - (Optional) - Fallback will pull from theme settings
 
 Example default review star ratings using Yotpo:
 {%- render 'review-stars',
-product: product,
-platform: 'yotpo'
+  product: product,
+  platform: 'yotpo'
 -%}
 
 {% endcomment %}
+
+{% if platform == blank %}
+  {% assign platform = settings.review_platform %}
+{% endif %}
 
 {% case platform %}
 {% when 'yotpo' %}
