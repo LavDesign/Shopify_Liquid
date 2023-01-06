@@ -1992,10 +1992,6 @@
     "name": "Product Reviews",
     "settings": [
       {
-        "type": "header",
-        "content": "Yotpo"
-      },
-      {
         "type": "select",
         "id": "review_platform",
         "label": "Review Platform",
@@ -2016,10 +2012,14 @@
         ]
       },
       {
+        "type": "header",
+        "content": "Yotpo"
+      },
+      {
         "type": "text",
         "id": "yotpo_app_key",
         "label": "Yotpo App Key",
-        "info": "Taken from the Yotpo settings page"
+        "info": "Taken from the Yotpo settings page."
       },
       {
         "type": "header",
@@ -2029,7 +2029,26 @@
         "type": "text",
         "id": "stamped_api_key",
         "label": "Stamped Public API Key",
-        "info": "Taken from the Stamped settings page"
+        "info": "Taken from the Stamped settings page."
+      },
+      {
+        "type": "header",
+        "content": "Bazaarvoice"
+      },
+      {
+        "type": "text",
+        "id": "bazaarvoice_client",
+        "label": "Bazaarvoice Script - Client Name"
+      },
+      {
+        "type": "text",
+        "id": "bazaarvoice_id",
+        "label": "Bazaarvoice Script - Site ID"
+      },
+      {
+        "type": "text",
+        "id": "bazaarvoice_env",
+        "label": "Bazaarvoice Script - Environment"
       }
     ]
   },

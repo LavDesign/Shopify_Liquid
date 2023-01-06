@@ -15,3 +15,18 @@
 {% if settings.stamped_api_key != blank %}
   <script async type="text/javascript" data-api-key="{{ settings.stamped_api_key }}" id="stamped-script-widget" src="https://cdn1.stamped.io/files/widget.min.js"></script>
 {% endif %}
+
+{% comment %}
+  Bazaarvoice Script
+{% endcomment %}
+
+{% if settings.bazaarvoice_client != blank and
+  settings.bazaarvoice_id != blank and
+  settings.bazaarvoice_env != blank
+ %}
+  <script src="https://apps.bazaarvoice.com/deployments/{{ settings.bazaarvoice_client }}/{{ bazaarvoice_id }}/{{ settings.bazaarvoice_env }}/en_US/bv.js" async defer></script>
+{% endif %}
+
+{% if settings.stamped_api_key != blank %}
+  <script async type="text/javascript" data-api-key="{{ settings.stamped_api_key }}" id="stamped-script-widget" src="https://cdn1.stamped.io/files/widget.min.js"></script>A
+{% endif %}
