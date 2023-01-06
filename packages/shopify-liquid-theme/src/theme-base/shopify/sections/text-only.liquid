@@ -76,14 +76,16 @@
            , type: 'a',
            style: ctaOneStyle,
            url: ctaOneUrl,
-           label: ctaOneText %}
+           label: ctaOneText,
+           class: 'ra-link-list' %}
         {% endif %}
         {% if ctaTwoText != blank and ctaTwoUrl != blank %}
           {% render 'button'
            , type: 'a',
            style: ctaTwoStyle,
            url: ctaTwoUrl,
-           label: ctaTwoText %}
+           label: ctaTwoText,
+           class: 'ra-link-list' %}
         {% endif %}
       </div>
     </div>
@@ -255,7 +257,8 @@
             "value": "right",
             "label": "Right"
           }
-        ]
+        ],
+        "default": "center"
       }, {
         "type": "select",
         "id": "vertical_align",
