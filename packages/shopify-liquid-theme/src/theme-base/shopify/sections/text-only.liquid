@@ -1,0 +1,455 @@
+{% assign spacingTop = section.settings.spacing_top %}
+{% assign spacingBottom = section.settings.spacing_bottom %}
+{% assign spacingEdge = section.settings.spacing_edge %}
+{% assign maxWidth = section.settings.max_width %}
+
+{% assign detailsLocation = section.settings.details_location %}
+{% assign detailsLocationMD = section.settings.details_location_md %}
+
+{% assign horizontalAlign = section.settings.horizontal_align %}
+{% assign horizontalAlignMD = section.settings.horizontal_align_md %}
+{% assign verticalAlign = section.settings.vertical_align %}
+{% assign verticalAlignMD = section.settings.vertical_align_md %}
+
+{% assign titleAs = section.settings.title_as %}
+{% assign titleLevel = section.settings.title_level %}
+
+{% assign bgColor = section.settings.bg_color %}
+{% assign bgColorMD = section.settings.bg_color_md %}
+
+{% assign fgColor = section.settings.fg_color %}
+{% assign fgColorMD = section.settings.fg_color_md %}
+
+{% assign ctaOneText = section.settings.cta_one_text %}
+{% assign ctaOneUrl = section.settings.cta_one_url %}
+{% assign ctaOneStyle = section.settings.cta_one_style %}
+
+{% assign ctaTwoText = section.settings.cta_two_text %}
+{% assign ctaTwoUrl = section.settings.cta_two_url %}
+{% assign ctaTwoStyle = section.settings.cta_two_style %}
+
+{% capture verticalClasses %}
+  set--v-align-{{ verticalAlign }}{% if verticalAlignMD != blank %}-sm set--v-align-{{ verticalAlignMD }}-md{% endif %}
+{% endcapture %}
+
+{% capture horizontalClasses %}
+  set--h-align-{{ horizontalAlign }}{% if horizontalAlignMD != blank %}-sm set--h-align-{{ horizontalAlignMD }}{% endif %}
+{% endcapture %}
+
+{%- capture classes -%}
+  ra-text-only-banner set--spacing-top-{{ spacingTop }} set--spacing-bottom-{{ spacingBottom }} gutter--{{ spacingEdge }}
+{%- endcapture -%}
+
+{% capture bgStyles %}
+  {% if bgColor != 'rgba(0,0,0,0)' %}
+    --component-bg-color: {{ bgColor }}{% if bgColorMD != 'rgba(0,0,0,0)' %}; --component-bg-color-md: {{ bgColorMD }}{% endif %}
+  {% endif %}
+{% endcapture %}
+
+{% capture colorStyles %}
+  {% if fgColor != 'rgba(0,0,0,0)' %}
+    --component-fg-color: {{ fgColor }}{% if fgColorMD != 'rgba(0,0,0,0)' %}; --component-fg-color-md: {{ fgColorMD }}{% endif %}
+  {% endif %}
+{% endcapture %}
+
+<article class="{{ classes }}" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
+  <div class="ra-text-only-banner__details max-width--{{ maxWidth }}">
+    <div class="ra-text-only-banner__copy {{ verticalClasses }} {{ horizontalClasses }}">
+      {% if section.settings.subtitle != blank %}
+        <div class="ra-text-only-banner__subtitle">
+          {{- section.settings.subtitle -}}
+        </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <{{ titleLevel }} class="ra-title ra-text-only-banner__title" style="--title-font-size:var(--font-size-{{ titleAs }})">
+          <div>{{ section.settings.title }}</div>
+        </{{ titleLevel }}>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="ra-text-only-banner__description">
+          {{- section.settings.description -}}
+        </div>
+      {% endif %}
+      <div class="ra-link-list ra-text-only-banner__link-list">
+        {% if ctaOneText != blank and ctaOneUrl != blank %}
+          {% render 'button'
+           , type: 'a',
+           style: ctaOneStyle,
+           url: ctaOneUrl,
+           label: ctaOneText,
+           class: 'ra-link-list' %}
+        {% endif %}
+        {% if ctaTwoText != blank and ctaTwoUrl != blank %}
+          {% render 'button'
+           , type: 'a',
+           style: ctaTwoStyle,
+           url: ctaTwoUrl,
+           label: ctaTwoText,
+           class: 'ra-link-list' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>
+
+{%- schema -%}
+  {
+    "name": "Text-Only Component",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Content Spacing"
+      },
+      {
+        "type": "select",
+        "id": "spacing_top",
+        "label": "Spacing Top",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "regular",
+            "label": "Regular"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          }, {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "large"
+      },
+      {
+        "type": "select",
+        "id": "spacing_bottom",
+        "label": "Spacing Bottom",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "regular",
+            "label": "Regular"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          }, {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "large"
+      },
+      {
+        "type": "select",
+        "id": "spacing_edge",
+        "label": "Spacing Edge",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "regular",
+            "label": "Regular"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          }, {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "regular"
+      }, {
+        "type": "select",
+        "id": "max_width",
+        "label": "Max Width",
+        "options": [
+          {
+            "value": "min",
+            "label": "Min"
+          },
+          {
+            "value": "tiny",
+            "label": "Tiny"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "xsmall",
+            "label": "X-Small"
+          }, {
+            "value": "medium",
+            "label": "Medium"
+          }, {
+            "value": "xmedium",
+            "label": "X-Medium"
+          }, {
+            "value": "large",
+            "label": "Large"
+          }, {
+            "value": "xlarge",
+            "label": "X-Large"
+          }, {
+            "value": "max",
+            "label": "Max"
+          }, {
+            "value": "full",
+            "label": "Full"
+          }
+        ],
+        "default": "medium"
+      }, {
+        "type": "header",
+        "content": "Content Layout"
+      }, {
+        "type": "select",
+        "id": "horizontal_align",
+        "label": "Horizontal Align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "select",
+        "id": "horizontal_align_md",
+        "label": "Horizontal Align MD",
+        "info": "Determine horizontal alignment for larger screen sizes",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "select",
+        "id": "vertical_align",
+        "label": "Vertical Align",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          }, {
+            "value": "middle",
+            "label": "Middle"
+          }, {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "middle"
+      }, {
+        "type": "select",
+        "id": "vertical_align_md",
+        "label": "Vertical Align MD",
+        "info": "Determine vertical alignment for larger screen sizes",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          }, {
+            "value": "middle",
+            "label": "Middle"
+          }, {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "Section Content"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Section Subtitle"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title"
+      }, {
+        "type": "select",
+        "id": "title_as",
+        "label": "Title As",
+        "info": "Choose which heading to (style) the title",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          }, {
+            "value": "h5",
+            "label": "H5"
+          }, {
+            "value": "h6",
+            "label": "H6"
+          }
+        ],
+        "default": "h2"
+      }, {
+        "type": "select",
+        "id": "title_level",
+        "label": "Title Level",
+        "info": "Choose the semantic H-Tag for this title",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          }, {
+            "value": "h5",
+            "label": "H5"
+          }, {
+            "value": "h6",
+            "label": "H6"
+          }
+        ],
+        "default": "h2"
+      }, {
+        "type": "richtext",
+        "id": "description",
+        "label": "Section Description"
+      }, {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      }, {
+        "type": "color",
+        "id": "bg_color_md",
+        "label": "Background Color MD",
+        "info": "Set background color for larger screen sizes (if different from mobile)"
+      }, {
+        "type": "color",
+        "id": "fg_color",
+        "label": "Foreground Color"
+      }, {
+        "type": "color",
+        "id": "fg_color_md",
+        "label": "Fackground Color MD",
+        "info": "Set foreground color for larger screen sizes (if different from mobile)"
+      }, {
+        "type": "header",
+        "content": "CTA's"
+      }, {
+        "type": "text",
+        "id": "cta_one_text",
+        "label": "CTA 1 Text",
+        "default": "Default"
+      }, {
+        "type": "url",
+        "id": "cta_one_url",
+        "label": "CTA 1 Url"
+      }, {
+        "type": "select",
+        "id": "cta_one_style",
+        "label": "CTA One Style",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          }, {
+            "value": "secondary",
+            "label": "Secondary"
+          }, {
+            "value": "tertiary",
+            "label": "Tertiary"
+          }
+        ],
+        "default": "primary"
+      }, {
+        "type": "header",
+        "content": "CTA Two"
+      }, {
+        "type": "text",
+        "id": "cta_two_text",
+        "label": "CTA 2 Text",
+        "default": "Secondary"
+      }, {
+        "type": "url",
+        "id": "cta_two_url",
+        "label": "CTA 2 Url"
+      }, {
+        "type": "select",
+        "id": "cta_two_style",
+        "label": "CTA Two Style",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          }, {
+            "value": "secondary",
+            "label": "Secondary"
+          }, {
+            "value": "tertiary",
+            "label": "Tertiary"
+          }
+        ],
+        "default": "secondary"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text Only - Component"
+      }
+    ]
+  }
+{%- endschema -%}
