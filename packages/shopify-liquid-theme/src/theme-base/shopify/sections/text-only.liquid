@@ -66,7 +66,7 @@
         </{{ titleLevel }}>
       {% endif %}
       {% if section.settings.description != blank %}
-        <div class="ra-text-only-banner__description">
+        <div class="ra-text-only-banner__description {{ section.settings.description_copy_size }}">
           {{- section.settings.description -}}
         </div>
       {% endif %}
@@ -368,7 +368,32 @@
         "type": "richtext",
         "id": "description",
         "label": "Section Description"
-      }, {
+      },
+      {
+        "type": "select",
+        "id": "description_copy_size",
+        "label": "Description body copy size",
+        "options": [
+          {
+            "value": "text-xs",
+            "label": "Tiny"
+          },
+          {
+            "value": "text-sm",
+            "label": "Small"
+          },
+          {
+            "value": "text-base",
+            "label": "Base"
+          },
+          {
+            "value": "text-lg",
+            "label": "Large"
+          }
+        ],
+        "default": "text-large"
+      },
+      {
         "type": "color",
         "id": "bg_color",
         "label": "Background Color"
