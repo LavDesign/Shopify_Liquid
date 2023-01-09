@@ -2046,9 +2046,19 @@
         "label": "Bazaarvoice Script - Site ID"
       },
       {
-        "type": "text",
+        "type": "select",
         "id": "bazaarvoice_env",
-        "label": "Bazaarvoice Script - Environment"
+        "label": "Bazaarvoice Script - Environment",
+        "options": [
+          {
+            "value": "staging",
+            "label": "Staging"
+          },
+          {
+            "value": "production",
+            "label": "Production"
+          }
+        ]
       }
     ]
   },
