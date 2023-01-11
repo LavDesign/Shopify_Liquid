@@ -313,39 +313,7 @@
             {%- when 'buy_buttons' -%}
             {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, show_pickup_availability: true -%}
             {%- when 'rating' -%}
-            {%- if product.metafields.reviews.rating.value != blank -%}
-              {% liquid
-                  assign rating_decimal = 0
-                  assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                  if decimal >= 0.3 and decimal <= 0.7
-                    assign rating_decimal = 0.5
-                  elsif decimal > 0.7
-                    assign rating_decimal = 1
-                  endif
-                %}
-              <div
-                class="rating"
-                role="img"
-                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
-                <span
-                  aria-hidden="true"
-                  class="rating-star color-icon-{{ settings.accent_icons }}"
-                  style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
-              </div>
-              <p class="rating-text caption">
-                <span aria-hidden="true">
-                  {{- product.metafields.reviews.rating.value }} /
-                  {{ product.metafields.reviews.rating.value.scale_max -}}
-                </span>
-              </p>
-              <p class="rating-count caption">
-                <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                <span class="visually-hidden">
-                  {{- product.metafields.reviews.rating_count }}
-                  {{ 'accessibility.total_reviews' | t -}}
-                </span>
-              </p>
-            {%- endif -%}
+              {% render 'review-stars', platform: settings.review_platform, product: product %}
             {%- when 'complementary' -%}
             <product-recommendations class="complementary-products quick-add-hidden no-js-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary">
               {%- if recommendations.performed and recommendations.products_count > 0 -%}
@@ -395,14 +363,14 @@
                                 {%- for product in recommendations.products limit: block.settings.products_per_page offset: continue -%}
                                   <li>
                                     {% render 'card-product'
-                                     , card_product: product,
-                                     media_aspect_ratio: block.settings.image_ratio,
-                                     show_secondary_image: false,
-                                     lazy_load: false,
-                                     show_quick_add: block.settings.enable_quick_add,
-                                     section_id: section.id,
-                                     horizontal_class: true,
-                                     horizontal_quick_add: true %}
+                                    , card_product: product,
+                                      media_aspect_ratio: block.settings.image_ratio,
+                                      show_secondary_image: false,
+                                      lazy_load: false,
+                                      show_quick_add: block.settings.enable_quick_add,
+                                      section_id: section.id,
+                                      horizontal_class: true,
+                                      horizontal_quick_add: true %}
                                   </li>
                                 {%- endfor -%}
                               </ul>
@@ -537,9 +505,9 @@
         return msie > 0 || trident > 0;
       }
 
-      if (! isIE()) 
+      if (! isIE())
         return;
-      
+
 
       const hiddenInput = document.querySelector('#  {{ product_form_id }} input[name="id"]');
       const noScriptInputWrapper = document.createElement('div');
@@ -625,7 +593,8 @@
             "id": "text",
             "default": "Text block",
             "label": "t:sections.main-product.blocks.text.settings.text.label"
-          }, {
+          },
+          {
             "type": "select",
             "id": "text_style",
             "options": [
@@ -634,6 +603,7 @@
                 "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
               }, {
                 "value": "subtitle",
+
                 "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
               }, {
                 "value": "uppercase",
@@ -971,8 +941,12 @@
         "limit": 1,
         "settings": [
           {
+            "type": "header",
+            "content": "Review Star Ratings"
+          },
+          {
             "type": "paragraph",
-            "content": "t:sections.main-product.blocks.rating.settings.paragraph.content"
+            "content": "Settings for this block can be configured in Theme Settings > Product Reviews"
           }
         ]
       }, {
