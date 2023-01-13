@@ -15,7 +15,6 @@
       assign collections = collections | reverse
     endif
 
-    {% # Hardode paginate by for development %}
     assign moduloResult = 28 | modulo: section.settings.columns_desktop
     assign paginate_by = 3
     if moduloResult == 0
