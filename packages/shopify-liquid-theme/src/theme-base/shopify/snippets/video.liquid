@@ -1,0 +1,88 @@
+{% comment %}
+
+Props:
+  media:      Shopify Media Object - (Optional) Used when referencing product media or file_reference metafield
+  video:      Shopify video Object
+  video_url:  Shopify video_url - Video asset url from Shopiyfy video_url schema setting from either youtube or vimeo
+  alt:        String - (Optional) Custom alt attribute value, defaults to value set on image object
+  autoplay:   Boolean - (Default: true) starts playback as soon as the video is loaded
+  muted:      Boolean - (Default: true) Disable any audio tracks on the video. Note: This must be set to true for autoplay to work on certain browsers.
+  loop:       Boolean - (Default: true) Automatically restarts the video after it is finished
+  classes:    String - (Optional) custom classes on the img element
+  width:      Int - (Optional) video width
+
+Usage:
+
+  Render video with a Shopify video object
+  {%- render 'video' with section.settings.video -%}
+
+
+{% endcomment %}
+
+{% comment %}
+
+DELETE BEFORE MERGING
+
+References
+
+https://shopify.dev/api/liquid/filters/external_video_url
+
+YouTube embed params: https://developers.google.com/youtube/player_parameters#color
+
+{% endcomment %}
+
+{% liquid
+
+  # YouTube embed params: https://developers.google.com/youtube/player_parameters#color
+
+  # Video Looping
+  assign loop_video = '1'
+  if loop == false
+    assign loop_video = '0'
+  endif
+
+%}
+
+
+<h2>Media:</h2>
+{% if media %}
+  {% if media.media_type == 'external_video' %}
+    {{ media | external_video_url: loop: loop | external_video_tag }}
+  {% endif %}
+{% endif %}
+
+<h2>Video URL:</h2>
+{% if video_url.type == 'youtube' %}
+    <iframe src="https://www.youtube.com/embed/{{ video_url.id }}?enablejsapi=1" class="{{ classes }}" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+{% elsif video_url.type == 'vimeo' %}
+    <iframe src="https://player.vimeo.com/video/{{ video_url.id }}" class="{{ classes }}" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+{% endif %}
+
+{% liquid
+  # Lazyloading
+  assign lazy = 'eager'
+  if lazyload
+    assign lazy = 'lazy'
+  endif
+
+  # Alt Attribute
+  if alt == blank
+    assign alt = image.alt
+  endif
+
+  # Build image src
+  if src == blank
+    assign src = image | image_url: width: width, height: height, crop: crop
+  endif
+%}
+
+{% if video %}
+{% endif %}
+
+{% comment %}
+  {%- if section.settings.video_url.type == 'youtube' -%}
+    <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1" class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+  {%- else -%}
+    <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}" class="js-vimeo" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+  {%- endif -%}
+{% endcomment %}
