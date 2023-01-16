@@ -1989,6 +1989,80 @@
     ]
   },
   {
+    "name": "Product Reviews",
+    "settings": [
+      {
+        "type": "select",
+        "id": "review_platform",
+        "label": "Review Platform",
+        "info": "Select the review platform to be used across the site",
+        "options": [
+          {
+            "value": "yotpo",
+            "label": "Yotpo"
+          },
+          {
+            "value": "stamped",
+            "label": "Stamped"
+          },
+          {
+            "value": "bazaarvoice",
+            "label": "Bazaarvoice"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Yotpo"
+      },
+      {
+        "type": "text",
+        "id": "yotpo_app_key",
+        "label": "Yotpo App Key",
+        "info": "Taken from the Yotpo settings page."
+      },
+      {
+        "type": "header",
+        "content": "Stamped"
+      },
+      {
+        "type": "text",
+        "id": "stamped_api_key",
+        "label": "Stamped Public API Key",
+        "info": "Taken from the Stamped settings page."
+      },
+      {
+        "type": "header",
+        "content": "Bazaarvoice"
+      },
+      {
+        "type": "text",
+        "id": "bazaarvoice_client",
+        "label": "Bazaarvoice Script - Client Name"
+      },
+      {
+        "type": "text",
+        "id": "bazaarvoice_id",
+        "label": "Bazaarvoice Script - Site ID"
+      },
+      {
+        "type": "select",
+        "id": "bazaarvoice_env",
+        "label": "Bazaarvoice Script - Environment",
+        "options": [
+          {
+            "value": "staging",
+            "label": "Staging"
+          },
+          {
+            "value": "production",
+            "label": "Production"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.cart.name",
     "settings": [
       {
