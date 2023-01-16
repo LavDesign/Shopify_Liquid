@@ -1,0 +1,516 @@
+{% liquid
+  assign titleAs = section.settings.title_as
+  assign titleLevel = section.settings.title_level
+
+  assign ctaOneText = section.settings.cta_one_text
+  assign ctaOneUrl = section.settings.cta_one_url
+  assign ctaOneStyle = section.settings.cta_one_style
+
+  assign ctaTwoText = section.settings.cta_two_text
+  assign ctaTwoUrl = section.settings.cta_two_url
+  assign ctaTwoStyle = section.settings.cta_two_style
+
+  assign detailsLocation = section.settings.details_location
+  assign detailsLocationMD = section.settings.details_location_md
+
+  assign verticalAlign = section.settings.vertical_align
+  assign verticalAlignMD = section.settings.vertical_align_md
+
+  assign horizontalAlign = section.settings.horizontal_align
+  assign horizontalAlignMD = section.settings.horizontal_align_md
+
+  assign aspectRatio = section.settings.aspect_ratio
+  assign imageHeight = section.settings.image_height
+  assign imageWidth = section.settings.image_width
+
+  assign bgColor = section.settings.bg_color
+  assign bgColorMD = section.settings.bg_color_md
+
+  assign fgColor = section.settings.fg_color
+  assign fgColorMD = section.settings.fg_color_md
+%}
+
+{% capture verticalClasses %}
+  set--v-align-{{ verticalAlign }}{% if verticalAlignMD != blank %}-sm set--v-align-{{ verticalAlignMD }}-md{% endif %}
+{% endcapture %}
+
+{% capture horizontalClasses %}
+  set--h-align-{{ horizontalAlign }}{% if horizontalAlignMD != blank %}-sm set--h-align-{{ horizontalAlignMD }}-md{% endif %}
+{% endcapture %}
+
+{% capture classes %}
+  ra-split-section set--details-{{ detailsLocation }}-{% if detailsLocationMD != blank %}sm{% endif %}
+  {% if detailsLocationMD != blank %}
+    set--details-{{ detailsLocationMD }}-md
+  {% endif %}
+  {% if section_img != blank %}
+    set--aspect-ratio-{{ aspectRatio }}
+  {% endif %}
+{% endcapture %}
+
+{% capture aspectRatioStyle %}
+  {% if aspectRatio == 'square' %}
+    --media-width:1; --media-height:0.85;
+  {% elsif aspectRatio == 'tall' %}
+    --media-width:1; --media-height:1;
+  {% elsif aspectRatio == 'wide' %}
+    --media-width:1; --media-height:0.625;
+  {% endif %}
+{% endcapture %}
+
+{% capture bgStyles %}
+  {% if bgColor != 'rgba(0,0,0,0)' %}
+    --component-bg-color: {{ bgColor }}{% if bgColorMD != 'rgba(0,0,0,0)' %}; --component-bg-color-md: {{ bgColorMD }}{% endif %}
+  {% endif %}
+{% endcapture %}
+
+{% capture colorStyles %}
+  {% if fgColor != 'rgba(0,0,0,0)' %}
+    --component-fg-color: {{ fgColor }}{% if fgColorMD != 'rgba(0,0,0,0)' %}; --component-fg-color-md: {{ fgColorMD }}{% endif %}
+  {% endif %}
+{% endcapture %}
+
+<div class="max-width--large">
+  <article class="{{ classes }}" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
+    <div class="ra-split-section__layout-container component-layout ra-row ra-no-gap">
+      <div data-col-size="-size" data-col-auto="-md" class="component-media ra-col" style="--col-size:100%;">
+        {% if section.settings.image != blank %}
+          <div class="ra-split-section__media">
+            <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio" style="{{ aspectRatioStyle }}">
+              <img
+                loading="lazy"
+                src="{{ section.settings.image | img_url: '700x' }}"
+                alt="{{ section.settings.image.alt | default: 'split-image'  }}"
+                width="{{ section.settings.image_width | default: 1 }}"
+                height="{{ section.settings.image_height | default: 1 }}"
+                class="ra-image__media"
+              />
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div data-col-size="-size,-md" class="component-details ra-col" style="--col-size:100%; --col-size-md:50%">
+        <div class="ra-split-section__details">
+          <div class="ra-split-section__copy {{ verticalClasses }} {{ horizontalClasses }}">
+            {% if section.settings.subtitle != blank %}
+              <div class="ra-split-section__subtitle">
+                {{- section.settings.subtitle -}}
+              </div>
+            {% endif %}
+            {% if section.settings.title != blank %}
+              <{{ titleLevel }} class="ra-title ra-split-section__title" style="--title-font-size:var(--font-size-{{ titleAs }});">
+                <div>{{- section.settings.title -}}</div>
+              </{{ titleLevel }}>
+            {% endif %}
+            {% if section.settings.description != blank %}
+              <div class="ra-split-section__description {{ section.settings.description_copy_size }}">
+                {{- section.settings.description -}}
+              </div>
+            {% endif %}
+            <div class="ra-link-list ra-split-section__link-list">
+              {% if ctaOneText != blank and ctaOneUrl != blank %}
+                {% render 'button'
+                , type: 'a',
+                style: ctaOneStyle,
+                url: ctaOneUrl,
+                label: ctaOneText,
+                class: 'ra-link-list' %}
+              {% endif %}
+              {% if ctaTwoText != blank and ctaTwoUrl != blank %}
+                {% render 'button'
+                , type: 'a',
+                style: ctaTwoStyle,
+                url: ctaTwoUrl,
+                label: ctaTwoText,
+                class: 'ra-link-list' %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+{%- schema -%}
+  {
+    "name": "Split Section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Section Sub-Title"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Section Description"
+      },
+      {
+        "type": "select",
+        "id": "description_copy_size",
+        "label": "Description body copy size",
+        "options": [
+          {
+            "value": "text-xs",
+            "label": "Tiny"
+          },
+          {
+            "value": "text-sm",
+            "label": "Small"
+          },
+          {
+            "value": "text-base",
+            "label": "Base"
+          },
+          {
+            "value": "text-lg",
+            "label": "Large"
+          }
+        ],
+        "default": "text-lg"
+      },
+      {
+        "type": "select",
+        "id": "title_as",
+        "label": "Title As",
+        "info": "Choose which heading to (style) the title",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          }, {
+            "value": "h5",
+            "label": "H5"
+          }, {
+            "value": "h6",
+            "label": "H6"
+          }
+        ],
+        "default": "h4"
+      },
+      {
+        "type": "select",
+        "id": "title_level",
+        "label": "Title Level",
+        "info": "Choose the semantic H-Tag for this title",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          },
+          {
+            "value": "h4",
+            "label": "H4"
+          }, {
+            "value": "h5",
+            "label": "H5"
+          }, {
+            "value": "h6",
+            "label": "H6"
+          }
+        ],
+        "default": "h1"
+      },
+      {
+        "type": "header",
+        "content": "Section Media"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "info": "Choose aspect ratio for section media image",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "tall",
+            "label": "Tall"
+          },
+          {
+            "value": "wide",
+            "label": "Wide"
+          },
+          {
+            "value": "respect-media",
+            "label": "Respect Media"
+          },
+          {
+            "value": "fill-space",
+            "label": "Fill Space"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "image_height",
+        "label": "Image Height",
+        "info": "Enter pixel value"
+      },
+      {
+        "type": "text",
+        "id": "image_width",
+        "label": "Image Width",
+        "info": "Enter pixel value"
+      },
+      {
+        "type": "header",
+        "content": "Layout and Alignment"
+      },
+      {
+        "type": "select",
+        "id": "details_location",
+        "label": "Details Location",
+        "info": "Select details location",
+        "options": [
+          {
+            "value": "before",
+            "label": "Before"
+          },
+          {
+            "value": "overlay",
+            "label": "Overlay"
+          },
+          {
+            "value": "after",
+            "label": "After"
+          }
+        ],
+        "default": "after"
+      },
+      {
+        "type": "select",
+        "id": "details_location_md",
+        "label": "Details Location MD",
+        "info": "Select details location, for larger screen sizes",
+        "options": [
+          {
+            "value": "before",
+            "label": "Before"
+          },
+          {
+            "value": "overlay",
+            "label": "Overlay"
+          },
+          {
+            "value": "after",
+            "label": "After"
+          }
+        ],
+        "default": "after"
+      },
+      {
+        "type": "select",
+        "id": "horizontal_align",
+        "label": "Horizontal Align",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "horizontal_align_md",
+        "label": "Horizontal Align MD",
+        "info": "Set horizontal alignment for larger screen sizes",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "vertical_align",
+        "label": "Vertical Align",
+        "info": "Set vertical alignment",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "middle",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "vertical_align_md",
+        "label": "Vertical Align MD",
+        "info": "Set vertical alignment, for larger screen sizes",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "middle",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "CTA's"
+      },
+      {
+        "type": "text",
+        "id": "cta_one_text",
+        "label": "CTA 1 Text",
+        "default": "Default"
+      }, {
+        "type": "url",
+        "id": "cta_one_url",
+        "label": "CTA 1 Url"
+      },
+      {
+        "type": "select",
+        "id": "cta_one_style",
+        "label": "CTA One Style",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          }, {
+            "value": "secondary",
+            "label": "Secondary"
+          }, {
+            "value": "tertiary",
+            "label": "Tertiary"
+          }
+        ],
+        "default": "primary"
+      },
+      {
+        "type": "header",
+        "content": "CTA Two"
+      },
+      {
+        "type": "text",
+        "id": "cta_two_text",
+        "label": "CTA 2 Text",
+        "default": "Secondary"
+      },
+      {
+        "type": "url",
+        "id": "cta_two_url",
+        "label": "CTA 2 Url"
+      },
+      {
+        "type": "select",
+        "id": "cta_two_style",
+        "label": "CTA Two Style",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          }, {
+            "value": "secondary",
+            "label": "Secondary"
+          }, {
+            "value": "tertiary",
+            "label": "Tertiary"
+          }
+        ],
+        "default": "secondary"
+      },
+      {
+        "type": "header",
+        "content": "Section Styles"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "bg_color_md",
+        "label": "Background Color MD",
+        "info": "Set background color for larger screen sizes (if different from mobile)"
+      },
+      {
+        "type": "color",
+        "id": "fg_color",
+        "label": "Foreground Color"
+      },
+      {
+        "type": "color",
+        "id": "fg_color_md",
+        "label": "Fackground Color MD",
+        "info": "Set foreground color for larger screen sizes (if different from mobile)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Split Section"
+      }
+    ]
+  }
+{%- endschema -%}
