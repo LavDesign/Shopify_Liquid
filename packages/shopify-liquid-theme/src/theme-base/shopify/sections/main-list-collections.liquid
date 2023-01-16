@@ -16,9 +16,9 @@
     endif
 
     assign moduloResult = 28 | modulo: section.settings.columns_desktop
-    assign paginate_by = 30
+    assign paginate_by = section.settings.paginate_amount | default: 3
     if moduloResult == 0
-      assign paginate_by = 28
+      assign paginate_by = section.settings.paginate_amount | default: 3
     endif
   -%}
   {%- paginate collections by paginate_by -%}
@@ -29,7 +29,7 @@
         </li>
       {%- endfor -%}
     </ul>
-    {% render 'pagination', paginate: paginate %}
+    {% render 'pagination', paginate: paginate, hasArrows: true %}
   {%- endpaginate -%}
 </div>
 {% schema %}
@@ -124,6 +124,12 @@
       ],
       "default": "2",
       "label": "t:sections.main-list-collections.settings.columns_mobile.label"
+    },
+    {
+      "type": "text",
+      "id": "paginate_amount",
+      "label": "Paginate By",
+      "info": "Set the amount to paginate products by"
     }
   ]
 }
