@@ -33,7 +33,7 @@
 {% endcapture %}
 
 {% capture horizontalClasses %}
-  set--h-align-{{ horizontalAlign }}{% if horizontalAlignMD != blank %}-sm set--h-align-{{ horizontalAlignMD }}{% endif %}
+  set--h-align-{{ horizontalAlign }}{% if horizontalAlignMD != blank %}-sm set--h-align-{{ horizontalAlignMD }}-md{% endif %}
 {% endcapture %}
 
 {%- capture classes -%}
