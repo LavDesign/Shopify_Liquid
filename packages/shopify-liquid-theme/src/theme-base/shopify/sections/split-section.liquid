@@ -22,6 +22,12 @@
   assign aspectRatio = section.settings.aspect_ratio
   assign imageHeight = section.settings.image_height
   assign imageWidth = section.settings.image_width
+
+  assign bgColor = section.settings.bg_color
+  assign bgColorMD = section.settings.bg_color_md
+
+  assign fgColor = section.settings.fg_color
+  assign fgColorMD = section.settings.fg_color_md
 %}
 
 {% capture verticalClasses %}
@@ -44,16 +50,28 @@
 
 {% capture aspectRatioStyle %}
   {% if aspectRatio == 'square' %}
-    --media-width:1; --media-height:1;
-  {% elsif aspectRatio == 'tall' %}
     --media-width:1; --media-height:0.85;
+  {% elsif aspectRatio == 'tall' %}
+    --media-width:1; --media-height:1;
   {% elsif aspectRatio == 'wide' %}
     --media-width:1; --media-height:0.625;
   {% endif %}
 {% endcapture %}
 
+{% capture bgStyles %}
+  {% if bgColor != 'rgba(0,0,0,0)' %}
+    --component-bg-color: {{ bgColor }}{% if bgColorMD != 'rgba(0,0,0,0)' %}; --component-bg-color-md: {{ bgColorMD }}{% endif %}
+  {% endif %}
+{% endcapture %}
+
+{% capture colorStyles %}
+  {% if fgColor != 'rgba(0,0,0,0)' %}
+    --component-fg-color: {{ fgColor }}{% if fgColorMD != 'rgba(0,0,0,0)' %}; --component-fg-color-md: {{ fgColorMD }}{% endif %}
+  {% endif %}
+{% endcapture %}
+
 <div class="max-width--large">
-  <article class="{{ classes }}">
+  <article class="{{ classes }}" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
     <div class="ra-split-section__layout-container component-layout ra-row ra-no-gap">
       <div data-col-size="-size" data-col-auto="-md" class="component-media ra-col" style="--col-size:100%;">
         {% if section.settings.image != blank %}
@@ -461,6 +479,32 @@
           }
         ],
         "default": "secondary"
+      },
+      {
+        "type": "header",
+        "content": "Section Styles"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "bg_color_md",
+        "label": "Background Color MD",
+        "info": "Set background color for larger screen sizes (if different from mobile)"
+      },
+      {
+        "type": "color",
+        "id": "fg_color",
+        "label": "Foreground Color"
+      },
+      {
+        "type": "color",
+        "id": "fg_color_md",
+        "label": "Fackground Color MD",
+        "info": "Set foreground color for larger screen sizes (if different from mobile)"
       }
     ],
     "presets": [
