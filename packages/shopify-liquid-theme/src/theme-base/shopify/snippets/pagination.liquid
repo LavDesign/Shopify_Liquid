@@ -3,19 +3,19 @@
 
   Accepts:
   - paginate:   {Object}
-  - hasArrows:  {String} (optional) show arrows or not (default: true)
+  - hasArrows:  {Boolean} (optional) show arrows or not (default: true)
   - anchor:     {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
 
   Usage:
   {% paginate results by 2 %}
-    {% render 'pagination', paginate: paginate, anchor: '#yourID' %}
+    {% render 'pagination', paginate: paginate, anchor: '#yourID', hasArrows: true %}
   {% endpaginate %}
 {% endcomment %}
 
 
 {%- if paginate.parts.size > 0 -%}
   <nav class="ra-pagination" role="navigation">
-    {% unless hasArrows == false %}
+    {% if hasArrows %}
       <a
         href="{{ paginate.previous.url }}{{ anchor }}"
         class="ra-pagination__item ra-pagination__item--prev ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--sm ra-icon-button--rounded"
@@ -25,7 +25,7 @@
           <use xlink:href="#chevron-left"></use>
         </svg>
       </a>
-    {% endunless %}
+    {% endif %}
 
     {%- for part in paginate.parts -%}
       {%- if part.is_link -%}
@@ -53,7 +53,7 @@
       {%- endif -%}
     {%- endfor -%}
 
-    {% unless hasArrows == false %}
+    {% if hasArrows %}
       <a
         href="{{ paginate.next.url }}{{ anchor }}"
         aria-label="Go to next page"
@@ -63,6 +63,6 @@
           <use xlink:href="#chevron-right"></use>
         </svg>
       </a>
-    {% endunless %}
+      {% endif %}
   </nav>
 {%- endif -%}
