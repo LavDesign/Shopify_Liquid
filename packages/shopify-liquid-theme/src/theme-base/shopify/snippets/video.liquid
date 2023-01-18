@@ -1,88 +1,146 @@
 {% comment %}
 
 Props:
-  media:      Shopify Media Object - (Optional) Used when referencing product media or file_reference metafield
-  video:      Shopify video Object
-  video_url:  Shopify video_url - Video asset url from Shopiyfy video_url schema setting from either youtube or vimeo
-  alt:        String - (Optional) Custom alt attribute value, defaults to value set on image object
-  autoplay:   Boolean - (Default: true) starts playback as soon as the video is loaded
+  video:      Shopify video object - Video Object from theme and section schema
+  video_url:  Shopify video_url - Video asset url from Shopify video_url schema setting from either youtube or vimeo
+  media:      Shopify media object - (Optional) Used only when referencing product media or file_reference metafield
+  controls:   Boolean - (Default: false) Enable video controls
+  autoplay:   Boolean - (Default: true) Enable playback as soon as the video is loaded
   muted:      Boolean - (Default: true) Disable any audio tracks on the video. Note: This must be set to true for autoplay to work on certain browsers.
-  loop:       Boolean - (Default: true) Automatically restarts the video after it is finished
-  classes:    String - (Optional) custom classes on the img element
+  loop:       Boolean - (Default: true) Allow automatically restarting a video after it ends
   width:      Int - (Optional) video width
+  lazyload:   Boolean - (Default: false) Determines whether videos loaded within iframes are loaded lazily
 
 Usage:
 
-  Render video with a Shopify video object
+  Render video with a Shopify video object from section schema
   {%- render 'video' with section.settings.video -%}
 
+  Render video from a Shopify video_url theme or section schema (Accepts Youtube and Vimeo URLs)
+  {%- render 'video',
+    video_url: section.settings.video
+  -%}
 
-{% endcomment %}
+  Render media object from a product's media library or file_reference metafield
+  {%- render 'video',
+    media: product.metafields.media.featured_video
+  -%}
 
-{% comment %}
+  Render video object with that autoplays and loops with no sound
+  {% render 'video' with section.settings.video,
+    muted: true,
+    controls: false,
+    autoplay: true
+  %}
 
-DELETE BEFORE MERGING
-
-References
-
-https://shopify.dev/api/liquid/filters/external_video_url
-
-YouTube embed params: https://developers.google.com/youtube/player_parameters#color
+  Render video object with that autoplays and loops with no sound
+  {% render 'video' with section.settings.video,
+    muted: true,
+    controls: false,
+    autoplay: true
+  %}
 
 {% endcomment %}
 
 {% liquid
+  # Autoplay - default true
+  assign autoplay = autoplay | default: true, allow_false: true
 
-  # YouTube embed params: https://developers.google.com/youtube/player_parameters#color
+  # Controls - default false
+  assign controls = controls | default: false
 
-  # Video Looping
-  assign loop_video = '1'
-  if loop == false
-    assign loop_video = '0'
-  endif
+  # Mute Video - default true
+  assign muted = muted | default: true, allow_false: true
 
-%}
+  # Video Looping - default true
+  assign loop = loop | default: true, allow_false: true
 
+  # Width
+  assign width = width | default: '400x'
 
-<h2>Media:</h2>
-{% if media %}
-  {% if media.media_type == 'external_video' %}
-    {{ media | external_video_url: loop: loop | external_video_tag }}
-  {% endif %}
-{% endif %}
+  # Ensure that width value has matches proper format: '400x'
+  unless width contains 'x'
+    assign width = width | append: 'x'
+  endunless
 
-<h2>Video URL:</h2>
-{% if video_url.type == 'youtube' %}
-    <iframe src="https://www.youtube.com/embed/{{ video_url.id }}?enablejsapi=1" class="{{ classes }}" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
-{% elsif video_url.type == 'vimeo' %}
-    <iframe src="https://player.vimeo.com/video/{{ video_url.id }}" class="{{ classes }}" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
-{% endif %}
-
-{% liquid
-  # Lazyloading
-  assign lazy = 'eager'
-  if lazyload
-    assign lazy = 'lazy'
-  endif
-
-  # Alt Attribute
-  if alt == blank
-    assign alt = image.alt
-  endif
-
-  # Build image src
-  if src == blank
-    assign src = image | image_url: width: width, height: height, crop: crop
+  # Lazyloading -  default false
+  if lazyload == true
+    assign lazyload = 'lazy'
+  else
+    assign lazyload = 'eager'
   endif
 %}
 
-{% if video %}
-{% endif %}
+{%- if video -%}
+  {% comment %}
+  video (Video Object):
+  Used when a video object is passed in from theme or section schema settings
+  {% endcomment %}
 
-{% comment %}
-  {%- if section.settings.video_url.type == 'youtube' -%}
-    <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?enablejsapi=1" class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
-  {%- else -%}
-    <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}" class="js-vimeo" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+  {{- video | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls -}}
+
+{%- elsif video_url -%}
+  {% comment %}
+  video_url (string):
+  Used when a video_url string is passed in representing a video from Vimeo or Youtube
+  {% endcomment %}
+
+  {%- if video_url.type == 'youtube' -%}
+    {%- capture video_params -%}
+      &autoplay={%- if autoplay -%}1{%- else -%}0{%- endif -%}
+      &controls={%- if controls -%}1{%- else -%}0{%- endif -%}
+      &loop={%- if loop -%}1{%- else -%}0{%- endif -%}
+    {%- endcapture -%}
+
+    <iframe src="https://www.youtube.com/embed/{{ video_url.id }}?enablejsapi=1{{- video_params -}}" allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+  {%- elsif video_url.type == 'vimeo' -%}
+    {%- capture video_params -%}
+      &autoplay={{- autoplay -}}
+      &controls={{- controls -}}
+      &loop={{- loop -}}
+      &muted={{- muted -}}
+    {%- endcapture -%}
+
+    <iframe src="https://player.vimeo.com/video/{{ video_url.id }}{{- video_params -}}" allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
   {%- endif -%}
-{% endcomment %}
+
+{%- elsif media -%}
+  {% comment %}
+  media (Media Object):
+  Used when a video object is passed in from a product media gallery or metafield
+  {% endcomment %}
+
+  {%- if media.media_type == 'external_video' -%}
+    {% comment %}
+    The external_video_url filter uses a different format for applying video parameters
+    {% endcomment %}
+
+    {%- if autoplay == false -%}
+      {%- assign autoplay = '0' -%}
+    {%- else -%}
+      {%- assign autoplay = '1' -%}
+    {%- endif -%}
+
+    {%- if controls == false -%}
+      {%- assign controls = '0' -%}
+    {%- else -%}
+      {%- assign controls = '1' -%}
+    {%- endif -%}
+
+    {%- if loop == false -%}
+      {%- assign loop = '0' -%}
+    {%- else -%}
+      {%- assign loop = '1' -%}
+    {%- endif -%}
+
+    {%- if muted == false -%}
+      {%- assign muted = '0' -%}
+    {%- else -%}
+      {%- assign muted = '1' -%}
+    {%- endif -%}
+
+    {{- media | external_video_url: autoplay: autoplay, loop: loop, mute: muted, controls: controls, playlist: media.external_id | external_video_tag -}}
+  {%- elsif media.media_type == 'video' -%}
+    {{- media | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls -}}
+  {%- endif -%}
+{%- endif -%}
