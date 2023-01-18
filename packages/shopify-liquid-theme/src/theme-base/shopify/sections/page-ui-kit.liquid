@@ -1,29 +1,4 @@
 <section>
-
-  <h1>Media Test</h1>
-
-  {% assign product = all_products['example-t-shirt'] %}
-
-  {% for media in product.media %}
-    {% if media.media_type == 'external_video' %}
-      <h2>raw:</h2>
-      {{ media }}
-
-      <h2>url:</h2>
-      {{ media | external_video_url }}
-
-      <h2>tag:</h2>
-      {{ media | external_video_tag }}
-
-      <h1>Video Snippet</h1>
-      {% render 'video',
-        media: media
-      %}
-
-    {% endif %}
-  {% endfor %}
-
-
   <style>
     .container {
       max-width: 950px;
