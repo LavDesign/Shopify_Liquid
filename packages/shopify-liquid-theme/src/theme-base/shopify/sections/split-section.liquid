@@ -58,6 +58,16 @@
   {% endif %}
 {% endcapture %}
 
+{% capture widthHeightValues %}
+  {% if aspectRatio == 'square' %}
+    width="1" height="0.85"
+  {% elsif aspectRatio == 'tall' %}
+    width="1" height="1"
+  {% elsif aspectRatio == 'wide' %}
+    width="1" height="0.625"
+  {% endif %}
+{% endcapture %}
+
 {% capture bgStyles %}
   {% if bgColor != 'rgba(0,0,0,0)' %}
     --component-bg-color: {{ bgColor }}{% if bgColorMD != 'rgba(0,0,0,0)' %}; --component-bg-color-md: {{ bgColorMD }}{% endif %}
@@ -80,9 +90,8 @@
               <img
                 loading="lazy"
                 src="{{ section.settings.image | img_url: '700x' }}"
-                alt="{{ section.settings.image.alt | default: 'split-image'  }}"
-                width="{{ section.settings.image_width | default: 1 }}"
-                height="{{ section.settings.image_height | default: 1 }}"
+                alt="{{ section.settings.image.alt | default: 'split-image' }}"
+                {% if widthHeightValues %}{{ widthHeightValues }}{% endif %}
                 class="ra-image__media"
               />
             </div>
@@ -279,26 +288,14 @@
         ]
       },
       {
-        "type": "text",
-        "id": "image_height",
-        "label": "Image Height",
-        "info": "Enter pixel value"
-      },
-      {
-        "type": "text",
-        "id": "image_width",
-        "label": "Image Width",
-        "info": "Enter pixel value"
-      },
-      {
         "type": "header",
         "content": "Layout and Alignment"
       },
       {
         "type": "select",
         "id": "details_location",
-        "label": "Details Location",
-        "info": "Select details location",
+        "label": "Mobile Layout",
+        "info": "Choose layout for mobile devices",
         "options": [
           {
             "value": "before",
@@ -318,8 +315,8 @@
       {
         "type": "select",
         "id": "details_location_md",
-        "label": "Details Location MD",
-        "info": "Select details location, for larger screen sizes",
+        "label": "Desktop Layout",
+        "info": "Choose layout for desktop",
         "options": [
           {
             "value": "before",
@@ -339,7 +336,8 @@
       {
         "type": "select",
         "id": "horizontal_align",
-        "label": "Horizontal Align",
+        "label": "Mobile Horizontal Alignment",
+        "info": "Set horizontal alignment for content on mobile devices",
         "options": [
           {
             "value": "left",
@@ -358,8 +356,8 @@
       {
         "type": "select",
         "id": "horizontal_align_md",
-        "label": "Horizontal Align MD",
-        "info": "Set horizontal alignment for larger screen sizes",
+        "label": "Desktop Horizontal Alignment",
+        "info": "Set horizontal alignment for content on desktop",
         "options": [
           {
             "value": "left",
@@ -378,8 +376,8 @@
       {
         "type": "select",
         "id": "vertical_align",
-        "label": "Vertical Align",
-        "info": "Set vertical alignment",
+        "label": "Mobile Vertical Alignment",
+        "info": "Set vertical alignment for content on mobile devices IF overlay layout is selected",
         "options": [
           {
             "value": "top",
@@ -398,8 +396,8 @@
       {
         "type": "select",
         "id": "vertical_align_md",
-        "label": "Vertical Align MD",
-        "info": "Set vertical alignment, for larger screen sizes",
+        "label": "Desktop Vertical Alignment",
+        "info": "Set vertical alignment for content on desktop",
         "options": [
           {
             "value": "top",
