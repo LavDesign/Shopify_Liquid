@@ -4,6 +4,7 @@ Props:
   video:      Shopify video object - Video Object from theme and section schema
   video_url:  Shopify video_url - Video asset url from Shopify video_url schema setting from either youtube or vimeo
   media:      Shopify media object - (Optional) Used only when referencing product media or file_reference metafield
+  poster_url: String - (Optional) image to display before playback occurs on native video elements
   controls:   Boolean - (Default: false) Enable video controls
   autoplay:   Boolean - (Default: true) Enable playback as soon as the video is loaded
   muted:      Boolean - (Default: true) Disable any audio tracks on the video. Note: This must be set to true for autoplay to work on certain browsers.
@@ -77,7 +78,7 @@ Usage:
   Used when a video object is passed in from theme or section schema settings
   {% endcomment %}
 
-  {{- video | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls -}}
+  {{- video | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url -}}
 
 {%- elsif video_url -%}
   {% comment %}
@@ -141,6 +142,6 @@ Usage:
 
     {{- media | external_video_url: autoplay: autoplay, loop: loop, mute: muted, controls: controls, playlist: media.external_id | external_video_tag -}}
   {%- elsif media.media_type == 'video' -%}
-    {{- media | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls -}}
+    {{- media | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url -}}
   {%- endif -%}
 {%- endif -%}
