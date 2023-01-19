@@ -27,6 +27,6 @@ Example default review star ratings using Yotpo:
       {{ product.metafields.stamped.badge }}
     </span>
   {% when 'bazaarvoice' %}
-    <div data-bv-show="inline_rating" data-bv-product-id="{{ product.id }}" data-bv-seo="false"></div>
+    <div data-bv-show="inline_rating" data-bv-product-id="{{ product.metafields.bazaarvoice.handle }}" data-bv-seo="false"></div>
   {% endcase %}
 </div>

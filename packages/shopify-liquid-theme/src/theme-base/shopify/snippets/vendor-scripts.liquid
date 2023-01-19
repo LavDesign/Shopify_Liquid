@@ -24,7 +24,7 @@
   settings.bazaarvoice_id != blank and
   settings.bazaarvoice_env != blank
  %}
-  <script src="https://apps.bazaarvoice.com/deployments/{{ settings.bazaarvoice_client }}/{{ bazaarvoice_id }}/{{ settings.bazaarvoice_env }}/en_US/bv.js" async defer></script>
+  <script src="https://apps.bazaarvoice.com/deployments/{{ settings.bazaarvoice_client }}/{{ settings.bazaarvoice_id }}/{{ settings.bazaarvoice_env }}/en_US/bv.js" async defer></script>
 {% endif %}
 
 {% if settings.stamped_api_key != blank %}
