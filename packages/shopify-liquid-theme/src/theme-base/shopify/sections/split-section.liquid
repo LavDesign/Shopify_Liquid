@@ -28,6 +28,8 @@
 
   assign fgColor = section.settings.fg_color
   assign fgColorMD = section.settings.fg_color_md
+
+  assign sectionSplit = section.settings.section_split
 %}
 
 {% capture verticalClasses %}
@@ -68,6 +70,26 @@
   {% endif %}
 {% endcapture %}
 
+{% capture leftSplit %}
+  {% if sectionSplit == '1' %}
+    --col-size-md:50%
+  {% elsif sectionSplit == '2' %}
+    --col-size-md:60%
+  {% else %}
+    --col-size-md:40%
+  {% endif %}
+{% endcapture %}
+
+{% capture rightSplit %}
+  {% if sectionSplit == '1' %}
+    --col-size-md:50%
+  {% elsif sectionSplit == '2' %}
+    --col-size-md:40%
+  {% else %}
+    --col-size-md:60%
+  {% endif %}
+{% endcapture %}
+
 {% capture bgStyles %}
   {% if bgColor != 'rgba(0,0,0,0)' %}
     --component-bg-color: {{ bgColor }}{% if bgColorMD != 'rgba(0,0,0,0)' %}; --component-bg-color-md: {{ bgColorMD }}{% endif %}
@@ -83,7 +105,7 @@
 <div class="max-width--large">
   <article class="{{ classes }}" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
     <div class="ra-split-section__layout-container component-layout ra-row ra-no-gap">
-      <div data-col-size="-size" data-col-auto="-md" class="component-media ra-col" style="--col-size:100%;">
+      <div data-col-size="-size" data-col-auto="-md" class="component-media ra-col" style="--col-size:100%; {{ leftSplit }}">
         {% if section.settings.image != blank %}
           <div class="ra-split-section__media">
             <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio" style="{{ aspectRatioStyle }}">
@@ -98,7 +120,7 @@
           </div>
         {% endif %}
       </div>
-      <div data-col-size="-size,-md" class="component-details ra-col" style="--col-size:100%; --col-size-md:50%">
+      <div data-col-size="-size,-md" class="component-details ra-col" style="--col-size:100%; {{ rightSplit }}">
         <div class="ra-split-section__details">
           <div class="ra-split-section__copy {{ verticalClasses }} {{ horizontalClasses }}">
             {% if section.settings.subtitle != blank %}
@@ -293,21 +315,42 @@
       },
       {
         "type": "select",
+        "id": "section_split",
+        "label": "Section Split",
+        "info": "Choose between 50/50 60/40 & 40/60 split (desktop only)",
+        "options": [
+          {
+            "value": "1",
+            "label": "50/50"
+          },
+          {
+            "value": "2",
+            "label": "60/40"
+          },
+          {
+            "value": "3",
+            "label": "40/60"
+          }
+        ],
+        "default": "1"
+      },
+      {
+        "type": "select",
         "id": "details_location",
         "label": "Mobile Layout",
         "info": "Choose layout for mobile devices",
         "options": [
           {
             "value": "before",
-            "label": "Before"
+            "label": "Imagery right, Text left"
+          },
+          {
+            "value": "after",
+            "label": "Imagery left, Text-right"
           },
           {
             "value": "overlay",
             "label": "Overlay"
-          },
-          {
-            "value": "after",
-            "label": "After"
           }
         ],
         "default": "after"
@@ -320,15 +363,15 @@
         "options": [
           {
             "value": "before",
-            "label": "Before"
+            "label": "Imagery right, Text left"
+          },
+          {
+            "value": "after",
+            "label": "Imagery left, Text-right"
           },
           {
             "value": "overlay",
             "label": "Overlay"
-          },
-          {
-            "value": "after",
-            "label": "After"
           }
         ],
         "default": "after"

@@ -1,0 +1,50 @@
+{% liquid
+
+%}
+
+<div class="ra-grid">
+  {% for block in section.blocks %}
+    <div class="ra-grid-item">
+      <article class="ra-content-tile set--details-overlay set--aspect-ratio-fill-space">
+        <div class="ra-content-tile__media component-media"></div>
+        <div class="ra-content-tile__details component-details"></div>
+      </article>
+    </div>
+  {% endfor %}
+</div>
+
+{%- schema -%}
+  {
+    "name": "Split Section",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "grid-item",
+        "name": "Grid Item",
+        "limit": 6,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Grid Item Sub-title"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Grid Item Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Grid Item Description"
+          }
+        ]
+      }
+    ]
+  }
+{%- endschema -%}
