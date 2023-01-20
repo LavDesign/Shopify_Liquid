@@ -66,6 +66,12 @@ module.exports = {
       yellow: "var(--color-util-yellow)",
       white: "var(--color-util-white)",
     },
+    screens: {
+      sm: { max: "749px" },
+      md: { min: "750px", max: "989px" },
+      lg: { min: "990px", max: "1279px" },
+      xl: { min: "1280px" },
+    },
   },
   plugins: [],
   content: [path.resolve(__dirname, "**/*.{js,vue,liquid,scss}")],
