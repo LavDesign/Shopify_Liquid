@@ -6,3 +6,10 @@ $sm: theme('screens.sm');
 $md: theme('screens.md');
 $lg: theme('screens.lg');
 $xl: theme('screens.xl');
+
+:root {
+  --screen-sm: #{$sm};
+  --screen-md: #{$md};
+  --screen-lg: #{$lg};
+  --screen-xl: #{$xl};
+}
