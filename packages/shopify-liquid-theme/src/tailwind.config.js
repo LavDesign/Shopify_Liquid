@@ -67,10 +67,9 @@ module.exports = {
       white: "var(--color-util-white)",
     },
     screens: {
-      sm: { max: "749px" },
-      md: { min: "750px", max: "989px" },
-      lg: { min: "990px", max: "1279px" },
-      xl: { min: "1280px" },
+      sm: "750px",
+      md: "990px",
+      lg: "1280px",
     },
   },
   plugins: [],
