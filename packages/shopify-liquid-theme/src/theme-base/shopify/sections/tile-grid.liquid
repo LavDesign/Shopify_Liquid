@@ -52,36 +52,38 @@
               </div>
             </article>
           </div>
-          <div class="ra-grid-item">
-            <article class="ra-content-tile set--details-overlay set--aspect-ratio-fill-space">
-              {% if block.settings.image_2 %}
-                <div class="ra-content-tile__media component-media">
-                  <div data-testid="image-wrapper" class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
-                    <img loading="lazy" src="{{ block.settings.image_2 | img_url: '500x' }}" alt="{{ block.settings.image.alt }}" class="ra-image__media">
+          {% if block.settings.image_2 != blank %}
+            <div class="ra-grid-item">
+              <article class="ra-content-tile set--details-overlay set--aspect-ratio-fill-space">
+                {% if block.settings.image_2 %}
+                  <div class="ra-content-tile__media component-media">
+                    <div data-testid="image-wrapper" class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
+                      <img loading="lazy" src="{{ block.settings.image_2 | img_url: '500x' }}" alt="{{ block.settings.image.alt }}" class="ra-image__media">
+                    </div>
+                  </div>
+                {% endif %}
+                <div class="ra-content-tile__details component-details">
+                  <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
+                    {% if block.settings.subtitle_2 != blank %}
+                      <div class="ra-content-tile__subtitle">
+                        {{- block.settings.subtitle_2 -}}
+                      </div>
+                    {% endif %}
+                    {% if block.settings.title_2 != blank %}
+                      <h2 class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-h6);">
+                        <div>{{- block.settings.title_2 -}}</div>
+                      </h2>
+                    {% endif %}
+                    {% if block.settings.description_2 != blank %}
+                      <div class="ra-content-tile__description">
+                        {{- block.settings.description_2 -}}
+                      </div>
+                    {% endif %}
                   </div>
                 </div>
-              {% endif %}
-              <div class="ra-content-tile__details component-details">
-                <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
-                  {% if block.settings.subtitle_2 != blank %}
-                    <div class="ra-content-tile__subtitle">
-                      {{- block.settings.subtitle_2 -}}
-                    </div>
-                  {% endif %}
-                  {% if block.settings.title_2 != blank %}
-                    <h2 class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-h6);">
-                      <div>{{- block.settings.title_2 -}}</div>
-                    </h2>
-                  {% endif %}
-                  {% if block.settings.description_2 != blank %}
-                    <div class="ra-content-tile__description">
-                      {{- block.settings.description_2 -}}
-                    </div>
-                  {% endif %}
-                </div>
-              </div>
-            </article>
-          </div>
+              </article>
+            </div>
+          {% endif %}
         </div>
       </div>
     {% else %}
