@@ -1,3 +1,9 @@
+@mixin xs-only {
+  @media (max-width: $xs - 1) {
+    @content;
+  }
+}
+
 @mixin sm-down {
   @media (max-width: $sm - 1) {
     @content;
@@ -60,6 +66,18 @@
 
 @mixin xl-up {
   @media (min-width: $xl) {
+    @content;
+  }
+}
+
+@mixin xxl-down {
+  @media (max-width: $xxl - 1) {
+    @content;
+  }
+}
+
+@mixin xxl-up {
+  @media (min-width: $xxl) {
     @content;
   }
 }
