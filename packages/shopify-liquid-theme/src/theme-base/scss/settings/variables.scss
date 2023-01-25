@@ -2,18 +2,11 @@
   #SASS and CSS variables
 \*------------------------------------*/
 
-$xs: theme("screens.xs");
-$sm: theme("screens.sm");
-$md: theme("screens.md");
-$lg: theme("screens.lg");
-$xl: theme("screens.xl");
-$xxl: theme("screens.2xl");
-
 :root {
-  --screen-xs: #{$xs};
-  --screen-sm: #{$sm};
-  --screen-md: #{$md};
-  --screen-lg: #{$lg};
-  --screen-xl: #{$xl};
-  --screen-xxl: #{$xxl};
+  --screen-xs: theme("screens.xs");
+  --screen-sm: theme("screens.sm");
+  --screen-md: theme("screens.md");
+  --screen-lg: theme("screens.lg");
+  --screen-xl: theme("screens.xl");
+  --screen-xxl: theme("screens.2xl");
 }
