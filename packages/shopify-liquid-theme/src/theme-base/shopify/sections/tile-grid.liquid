@@ -1,17 +1,17 @@
 {% liquid
   assign grid_gap = section.settings.grid_gap
   assign bg_color = section.settings.bg_color
-
-  capture gridStyle
-    --grid-columns:1; --grid-columns-md:2; --grid-columns-lg:3; --grid-gap:{{ grid_gap }}rem;
-  endcapture
-
-  capture bgStyle
-    if bg_color != 'rgba(0,0,0,0)'
-      background: {{ bg_color }}
-    endif
-  endcapture
 %}
+
+{% capture gridStyle %}
+  --grid-columns:1; --grid-columns-md:2; --grid-columns-lg:3; --grid-gap:{{ grid_gap }}rem;
+{% endcapture %}
+
+{% capture bgStyle %}
+  {% if bg_color != 'rgba(0,0,0,0)' %}
+    background: {{ bg_color }}
+  {% endif %}
+{% endcapture %}
 
 <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid" style="{{ gridStyle }} {{ bgStyle }}">
   {% for block in section.blocks %}
