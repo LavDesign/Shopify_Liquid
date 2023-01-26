@@ -4,6 +4,7 @@
     type:       string [a, button] - (required)
     style:      string [primary, secondary, tertiary] - (required)
     label:      string button label text - (required)
+    value:      string value attr text - (optional)
     url:        string url used when button 'type' is set to 'a' - (required)
     size:       string [xs, sm, md, lg] sizes - (optional)
     id:         string add id attribute used for JS - (optional)
@@ -37,6 +38,7 @@
   {% if type == 'a' and url != blank and label != blank %} href="{{ url }}" title="{{ label }}"{% endif %}
   {% if type == 'button' %} aria-label="{{ label }}"{% endif %}
   {% if disabled == true %} disabled{% endif %}
+  {% if value != blank %}value="{{ value }}"{% endif %}
 {% endcapture %}
 
 {% if type != blank and label != blank %}
