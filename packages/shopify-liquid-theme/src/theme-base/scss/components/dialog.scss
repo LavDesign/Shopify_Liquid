@@ -1,0 +1,26 @@
+dialog {
+  border: unset;
+  outline: unset;
+  box-shadow: unset;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  overflow: auto;
+}
+dialog::backdrop {}
+dialog[open] {
+  transform: translate(-50%, -50%);
+  animation-name: bottom-to-center;
+  animation-duration: 1s;
+}
+@keyframes bottom-to-center {
+  from {
+    transform: translate(-50%, 0%);
+    opacity: 0;
+  } 
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}

@@ -1,4 +1,4 @@
-class RaAccordion extends HTMLElement {
+export default class RaAccordion extends HTMLElement {
   constructor() {
     super();
     this.items = this.querySelectorAll(".ra-accordion-item");
@@ -18,5 +18,3 @@ class RaAccordion extends HTMLElement {
     }
   }
 }
-
-window.customElements.define("ra-accordion", RaAccordion);
