@@ -1,0 +1,24 @@
+.collapsable-content {
+  border: 5px solid red;
+  display: flex;
+}
+
+.collapsable-content .collapsable-item {
+  border: 5px solid blue;
+}
+
+.collapsable-content .collapsable-toggle {
+  border: 5px solid cyan;
+
+  &["data-toggled=true"] {
+    border: 5px solid black;
+  }
+}
+
+.collapsable-content .collapsable-content {
+  border: 5px solid green;
+
+  &[data-expanded] {
+    border: 5px solid black;
+  }
+}
