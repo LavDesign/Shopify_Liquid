@@ -1,24 +1,38 @@
 .collapsable-content {
-  border: 5px solid red;
   display: flex;
+  flex-direction: column;
 }
 
-.collapsable-content .collapsable-item {
-  border: 5px solid blue;
-}
+.collapsable-content .collapsable-item {}
 
 .collapsable-content .collapsable-toggle {
-  border: 5px solid cyan;
-
-  &["data-toggled=true"] {
-    border: 5px solid black;
-  }
+  display: inline-flex;
+  width: auto;
 }
 
 .collapsable-content .collapsable-content {
-  border: 5px solid green;
+  height: 0;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
 
-  &[data-expanded] {
-    border: 5px solid black;
+  &[data-expanded="true"] {
+    opacity: 1;
   }
+
+  .collapsable-content__inner {
+    padding: 40px 0;
+  }
+}
+
+// stacked
+.collapsable-content[data-stacked="true"] .collapsable-toggle {
+  width: 100%;
+  text-align: left;
+}
+
+// center buttons when not stacked
+.collapsable-content[data-center="true"] .collapsable-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
