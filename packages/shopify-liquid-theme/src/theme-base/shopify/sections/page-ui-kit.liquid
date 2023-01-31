@@ -1055,6 +1055,37 @@
       message: 'My account notification.',
       class: 'ra-notification__icon'
     -%}
+
+    {%- comment -%}
+      Content Tile
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Content TIle</h4>
+    <div class="br-grid grid--col-2 mt-8 mb-5">
+      {% render 'content-tile'
+        src: img_src,
+        alt: img_alt,
+        title: 'This is a title',
+        description: "I'm not thinking about anything when I'm climbing."
+        link_url_1: link_url
+        link_text_1: "Default"
+        link_url_2: link_url
+        link_text_2: "Secondary"
+        width: 400
+        height: 300
+      %}
+
+      {% render 'content-tile'
+        src: img_src,
+        alt: img_alt,
+        title: 'This is a title',
+        description: "I'm not thinking about anything when I'm climbing."
+        link_url_1: link_url
+        link_text_1: "Default"
+        link_url_2: link_url
+        link_text_2: "Secondary"
+        horizontal_align: "center"
+      %}
+    </div>
   </div>
 
   {%- comment -%}
