@@ -5,6 +5,14 @@
  * default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
 const path = require("path");
+const bedrockConfig = require("../bedrock.config.js");
+
+// Configure tailwind screens from bedrock.config.js
+const screens = bedrockConfig.theme.breakpoints;
+
+Object.entries(screens).forEach(([key, value]) => {
+  screens[key] = `${value}px`;
+});
 
 module.exports = {
   theme: {
@@ -66,6 +74,7 @@ module.exports = {
       yellow: "var(--color-util-yellow)",
       white: "var(--color-util-white)",
     },
+    screens,
   },
   plugins: [],
   content: [path.resolve(__dirname, "**/*.{js,vue,liquid,scss}")],

@@ -20,13 +20,47 @@ This repo uses [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/worksp
 Ensure the following are installed on your machine (follow the links for install instructions).
 
 - [NVM](https://github.com/nvm-sh/nvm) (recommended)
-  - [Node](https://nodejs.org/en/download/package-manager/) (see [.nvmrc](./.nvmrc) for version)
+- [Node](https://nodejs.org/en/download/package-manager/) (see [.nvmrc](./.nvmrc) for version)
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) (1.x)
 - [NPX](https://www.npmjs.com/package/npx) (Latest, used to run `lerna`)
+- [Shopify CLI](https://shopify.dev/themes/tools/cli/install) (3.x)
 
 ### Setup
 
-**Setup local NPM config, `.npmrc**
+#### Verifying Shopify CLI Version
+This repository was built for use with Shopify CLI v3.x.x and is not compatible with earlier versions. To avoid version specific issues with commands in other codebases, this repo uses the `shopify3` command for all Shopify CLI commands.
+
+Configuring the `shopify3` command is different depending on the currently install CLI version on your machine. Check which version your machine is running with `shopify version`
+
+**Shopify CLI versions 2.x**
+
+> Note that CLI 2.x will be sunset on May 31, 2023.
+
+If your machine is running Shopify CLI v2.x, you can safely install and run Shopify CLI v3.x via Homebrew by specifying the version
+
+```
+# Install Shopify CLI v3
+brew tap shopify/shopify
+brew install shopify-cli@3
+
+# Verify install
+shopify3 version
+
+```
+
+**Shopify CLI versions 3.x**
+
+If your machine is already running Shopify CLI v3.x, you still have the option to install using the instructions above. If you'd prefer to use a single installation of the Shopify CLI, you can create a symlink to the existing install using the instructions below.
+
+
+```
+# Make a symlink for 'shopify3' assuming shopify-cli was installed using Homebrew
+
+ln -s $(which shopify) /opt/homebrew/bin/shopify3
+```
+
+
+#### Setup local NPM config, `.npmrc`
 
 ```bash
 cp .npmrc.example .npmrc
@@ -34,7 +68,7 @@ cp .npmrc.example .npmrc
 
 - Replace the `<TOKEN>` value in the line `//registry.npmjs.org/:_authToken=<TOKEN>` with your a read-only or publish token issued from the `bvaadmin` NPM account. If you need a token, request it from the tech lead.
 
-**Install Node Packages**
+#### Install Node Packages
 
 ```bash
 yarn
@@ -78,24 +112,6 @@ _Set the following settings (user or workspace level)_
 - Settings → Editor → Default Formatter: `prettier`
 - Settings → Editor → Format On Save: `true` (optional, if not set you're responsible for making sure files are formatted)
 - Settings → Theme Check → Only Single File Checks: `true` (improves performance of the theme check server)
-
-### Appendix: Shopify CLI 2.x
-
-As of October 2022, Shopify released a new version of the CLI, 3.x, that has breaking changes. As noted in System Dependencies, this repo requires Shopify CLI 2.x.
-
-If you've installed or upgraded the Shopify CLI after October 2022, you will be on Shopify CLI 3.x. Unfortunately, it is not compatible with this repository (for now).
-
-For now the workaround is to uninstall 3.x and re-install 2.x, see below:
-
-- jUninstall 3.x – If you used brew run brew uninstall shopify-cli.
-- To install 2.x, follow these install instructions
-- Then run which shopify2 (note the "2" at the end)
-- Take note of the path this command returns
-- Then create a symlink to shopify: ln -s $(which shopify2) /path/from/before/shopify
-  For example, ln -s %(which shopify2) /opt/homebrew/bin/shopify
-  You can test everything went OK by running: shopify help (you should see the help string)
-
-> NOTE: If uninstalling 3.x is not an option, alternatively you could install 2.x and update the package.json in this repo to use `shopify2` as opposed to `shopify`. You'll need to make sure all developers on the project then install 2.x using the link above so it's available to them.
 
 ## License
 
