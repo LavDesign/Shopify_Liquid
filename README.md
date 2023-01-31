@@ -34,6 +34,8 @@ Configuring the `shopify3` command is different depending on the currently insta
 
 **Shopify CLI versions 2.x**
 
+> Note that CLI 2.x will be sunset on May 31, 2023.
+
 If your machine is running Shopify CLI v2.x, you can safely install and run Shopify CLI v3.x via Homebrew by specifying the version
 
 ```
