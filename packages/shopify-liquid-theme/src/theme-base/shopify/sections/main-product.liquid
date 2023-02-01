@@ -1,3 +1,7 @@
+{%- capture product_data -%}
+  {%- render 'json--product', product: product -%}
+{%- endcapture -%}
+
 <section
   id="MainProduct-{{ section.id }}"
   class="page-width section-{{ section.id }}-padding"
@@ -29,7 +33,6 @@
     }
   {%- endstyle -%}
 
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {% if section.settings.image_zoom == 'hover' %}
     <script
       id="EnableZoomOnHover-main"
@@ -307,7 +310,8 @@
             {% render 'share-button'
              , block: block,
              share_link: share_url %}
-
+            {%- when 'product_form' -%}
+              {% render 'ra-product-form', block: block, product: product_data %}
             {%- when 'variant_picker' -%}
             {% render 'product-variant-picker', block: block, product: product %}
             {%- when 'buy_buttons' -%}
@@ -690,6 +694,12 @@
         "type": "quantity_selector",
         "name": "t:sections.main-product.blocks.quantity_selector.name",
         "limit": 1
+      }, {
+        "type": "product_form",
+        "name": "Product Form",
+        "limit": 1,
+        "settings": [
+        ]
       }, {
         "type": "variant_picker",
         "name": "t:sections.main-product.blocks.variant_picker.name",
