@@ -18,6 +18,7 @@ module.exports = {
     browser: true,
     node: true,
     commonjs: true,
+    "vue/setup-compiler-macros": true,
   },
   /**
    * Define globals to solve '[GLOBAL]' is not define – no undef
