@@ -1061,38 +1061,38 @@
   Tabs
   {%- endcomment -%}
   {% capture tabs %}
-    <div class="ra-tab">
-      {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
-      <div class="ra-tab__content">
-        <div class="ra-tab__content-inner">
-          <strong>Description</strong>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Description</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </div>
     </div>
-    <div class="ra-tab">
-      {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
-      <div class="ra-tab__content">
-        <div class="ra-tab__content-inner">
-          <strong>Read reviews</strong>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
+  </div>
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Read reviews</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </div>
     </div>
-    <div class="ra-tab">
-      {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
-      <div class="ra-tab__content">
-        <div class="ra-tab__content-inner">
-          <strong>Additional Information</strong>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        </div>
+  </div>
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Additional Information</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </div>
     </div>
+  </div>
   {% endcapture %}
 
   {% render 'tabs' 
     tabs: tabs,
-    layout: 'stack'
+    layout: 'default',
     center: false,
     stack_mobile: true
   %}
