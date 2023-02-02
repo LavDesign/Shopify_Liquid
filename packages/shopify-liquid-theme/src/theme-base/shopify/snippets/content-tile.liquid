@@ -16,8 +16,8 @@ Props:
   link_url_2:       String, text for second link url - (optional)
   link_text_2:      String, text for second link - (optional)
 
-  title_as:             Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
-  title_level:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
+  header_as:             Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
+  header_level:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
 
   // Layout & Alignment
 
@@ -31,12 +31,12 @@ Props:
 {% endcomment %}
 
 {% liquid
-  if title_as == blank
-    assign title_as = 'h6'
+  if header_as == blank
+    assign header_as = 'h6'
   endif
 
-  if title_level == blank
-    assign title_level = 'h3'
+  if header_level == blank
+    assign header_level = 'h3'
   endif
 %}
 
@@ -88,9 +88,9 @@ set--v-align-{{ vertical_align | default: 'bottom' }}{% if vertical_align_md != 
   <div class="ra-content-tile__details component-details">
     <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }}">
       {% if title != blank %}
-        <{{ title_level }} class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-{{ title_as }});">
+        <{{ header_level }} class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-{{ header_as }});">
           <div>{{ title }}</div>
-        </{{ title_level }}>
+        </{{ header_level }}>
       {% endif %}
       {% if description != blank %}
         <div class="ra-content-tile__description">
