@@ -5,7 +5,7 @@
  * default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
 const path = require("path");
-const bedrockConfig = require("../bedrock.config");
+const bedrockConfig = require("../bedrock.config.js");
 
 // Configure tailwind screens from bedrock.config.js
 const screens = bedrockConfig.theme.breakpoints;
