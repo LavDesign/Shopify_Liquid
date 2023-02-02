@@ -19,7 +19,6 @@ export default class RaTabs extends HTMLElement {
     this.toggleTab();
   }
 
-  // get ele next sibling
   getNextSibling(elem, selector) {
     var sibling = elem.nextElementSibling;
     while (sibling) {
@@ -45,7 +44,7 @@ export default class RaTabs extends HTMLElement {
     const contentHeight = tabContent.querySelector(
       ".ra-tab__content-inner"
     ).offsetHeight;
-    if (tabContent == null || tabContent == undefined) return;
+    if (!tabContent) return;
 
     this.tabContents.forEach((content) => {
       content.classList.remove("ra-tab__content--open");
