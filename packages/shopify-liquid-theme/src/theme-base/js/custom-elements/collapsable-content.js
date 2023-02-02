@@ -1,4 +1,4 @@
-class CollapsableContent extends HTMLElement {
+export default class CollapsableContent extends HTMLElement {
   constructor() {
     super();
     this.tabItems = this.querySelectorAll(".collapsable-item");
@@ -74,5 +74,3 @@ class CollapsableContent extends HTMLElement {
     console.log("toggleTab");
   }
 }
-
-window.customElements.define("collapsable-content", CollapsableContent);
