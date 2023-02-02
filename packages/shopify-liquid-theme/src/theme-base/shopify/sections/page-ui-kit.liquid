@@ -1056,6 +1056,57 @@
       class: 'ra-notification__icon'
     -%}
   </div>
+
+  {%- comment -%}
+  Notification
+  {%- endcomment -%}
+  <h4 class="text-h4 mt-10 mb-5">Notification</h4>
+  {%- render 'notification',
+    icon: 'account',
+    title: 'Account Notification',
+    message: 'My account notification.',
+    class: 'ra-notification__icon'
+  -%}
+
+  {%- comment -%}
+  Tabs
+  {%- endcomment -%}
+  {% capture tabs %}
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Description</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </div>
+    </div>
+  </div>
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Read reviews</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </div>
+    </div>
+  </div>
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Additional Information</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </div>
+    </div>
+  </div>
+  {% endcapture %}
+
+  {% render 'tabs'
+    tabs: tabs,
+    layout: 'default',
+    center: false,
+    stack_mobile: true
+  %}
 </section>
 
 {%- schema -%}
