@@ -1,42 +1,74 @@
-<collapsable-content class="collapsable-content" data-stacked="false" data-center="false">
-  <div class="collapsable-item">
-    <button class="collapsable-toggle" data-toggled="true" data-toggle-id="description">
-      Description
-    </button>
-    <div class="collapsable-content" id="description">
-      <div class="collapsable-content__inner">
-        <h6>Description</h6>
-        The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses. The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses. The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses. The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses. The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses.
+{%- comment -%}
+Tabs
+{%- endcomment -%}
+{% capture tabs %}
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Description</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </div>
     </div>
   </div>
-  <div class="collapsable-item">
-    <button class="collapsable-toggle __toggle ra-button--raw" data-toggle-id="read-reviews">
-      Read Reviews
-    </button>
-    <div class="collapsable-content" id="read-reviews">
-      <div class="collapsable-content__inner">
-        <h6>Read Reviews</h6>
-        The Karissa V-Neck Tee features a semi-fittm' Tee features a  hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses.
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Read reviews</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </div>
     </div>
   </div>
-  <div class="collapsable-item">
-    <button class="collapsable-toggle __toggle ra-button--raw" data-toggle-id="additional-information">
-      Additional Information
-    </button>
-    <div class="collapsable-content" id="additional-information">
-      <div class="collapsable-content__inner">
-        <h6>Additional Information</h6>
-        The Karissa V-Neck Tee features a semi-fitted shapeKaris at's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses. The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses. The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit the gym with confidence while it hugs curves and hides common 'problem' areas. Find stunning women's cocktail dresses and party dresses. The Karissa V-Neck Tee features a semi-fitted shape that's flattering for every figure. You can hit s. Find stunning women's cocktail dresses and party dresses.
+  <div class="ra-tab">
+    {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
+    <div class="ra-tab__content">
+      <div class="ra-tab__content-inner">
+        <strong>Additional Information</strong>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </div>
     </div>
   </div>
-</collapsable-content>
+{% endcapture %}
 
-{% comment %} ra-tab__toggle ra-button--raw ra-tab__toggle--open {% endcomment %}
+<div class="p-20">
+  {% render 'tabs' 
+    tabs: tabs,
+    layout: 'default',
+    center: false,
+    stack_mobile: true
+  %}
+<div>
 
-
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
 
 {{ 'collage.css' | asset_url | stylesheet_tag }}

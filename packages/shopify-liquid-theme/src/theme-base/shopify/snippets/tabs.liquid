@@ -1,0 +1,34 @@
+{% comment %}
+
+  Props:
+    tabs:         string/html/markup modal content - (required)
+    layout:       string [default, stack] desktop - (required)
+    center:       boolean - (optional)
+    stack_mobile: boolean stack/accordion tabs on mobile - (optional)
+
+  Example standard button:
+    {% render 'button' type: 'a', style: 'primary', url: '#', size: 'sm', label: 'learn more' %}
+    
+{% endcomment %}
+
+{% capture classes %}
+  {% if center %}
+    ra-tabs--center
+  {% endif %}
+  {% if layout == 'default' %}
+    ra-tabs--default
+  {% endif %}
+  {% elsif layout == 'stack' %}
+    ra-tabs--stack
+  {% endif %}
+{% endcapture %}
+
+{% capture attributes %}
+  {% if stack_mobile %} data-stack-mobile="true" {% endif %}
+{% endcapture %}
+
+{% if tabs != blank %}
+  <ra-tabs class="ra-tabs ra-tabs--left {{ classes }}" {{ attributes }}>
+    {{ tabs }}
+  </ra-tabs>
+{% endif %}

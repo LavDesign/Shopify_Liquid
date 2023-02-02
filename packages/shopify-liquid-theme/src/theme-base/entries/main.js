@@ -6,9 +6,8 @@ import { ucfirst, upcase, unhandleize } from "../vue/filters/string.js";
 import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
 import components from "../vue/components/index.js";
-import "../js/custom-elements/accordion.js";
+import "../js/custom-elements/custom-elements.js";
 import "../js/custom-elements/scrollable.js";
-import "../js/custom-elements/collapsable-content.js";
 
 import "@bva/ui-shared/styles/reset.css";
 import "@bva/ui-shared/styles/required.css";
