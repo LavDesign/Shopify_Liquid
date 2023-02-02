@@ -156,10 +156,9 @@ Theme override ignores `config/settings_data.json` and `templates/**/*.json` by 
 Ensure the following is installed on your machine (click the links to find install instructions).
 
 - [NVM](https://github.com/nvm-sh/nvm) (recommended)
-  - [Node](https://nodejs.org/en/download/package-manager/)
-  - [NPM](https://docs.npmjs.com/about-npm)
-- [Shopify CLI (2.x)](https://shopify.dev/themes/tools/cli/cli-2/upgrade-uninstall)
-  - If you have Shopify CLI 3 installed, see
+- [Node](https://nodejs.org/en/download/package-manager/)
+- [NPM](https://docs.npmjs.com/about-npm)
+- [Shopify CLI (3.x)](https://shopify.dev/themes/tools/cli/install) (3.x)
 
 ### Access
 
@@ -278,24 +277,40 @@ Install the following extensions to setup formatting & linting in real time (whe
 - [Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [Vue](https://marketplace.visualstudio.com/items?itemName=jcbuisson.vue)
 
-## Appendix: Shopify CLI 2.x
+## Appendix: Shopify CLI 3.x
 
-As of October 2022, Shopify released a new version of the CLI, 3.x, that has breaking changes. As noted in [System Dependencies](#system-dependencies), this repo requires Shopify CLI 2.x.
+> Shopify has noted that Shopify CLI 2.x will be sunset on May 31, 2023.
 
-If you've installed or upgraded the Shopify CLI after October 2022, you will be on Shopify CLI 3.x. Unfortunately, it is not compatible with this repository (for now).
+This repository was built for use with Shopify CLI v3.x.x and is not compatible with earlier versions. To avoid version specific issues with commands in other codebases, this repo uses the `shopify3` command for all Shopify CLI commands.
 
-For now the workaround is to uninstall 3.x and re-install 2.x, see below:
+Configuring the `shopify3` command is different depending on the currently install CLI version on your machine. Check which version your machine is running with `shopify version`
 
-- Uninstall 3.x – If you used `brew` run `brew uninstall shopify-cli`.
-- To install 2.x, follow [these install instructions](https://shopify.dev/themes/tools/cli/cli-2/upgrade-uninstall)
-- Then run `which shopify2` (note the "2" at the end)
-- Take note of the path this command returns
-- Then create a symlink to `shopify`: `ln -s $(which shopify2) /path/from/before/shopify`
-- For example, `ln -s %(which shopify2) /opt/homebrew/bin/shopify`
+**Shopify CLI versions 2.x**
 
-You can test everything went OK by running: `shopify help` (you should see the help string)
+> Shopify has noted that Shopify CLI 2.x will be sunset on May 31, 2023.
 
-> NOTE: If uninstalling 3.x is not an option, alternatively you could install 2.x and update the package.json in this repo to use `shopify2` as opposed to `shopify`. You'll need to make sure all developers on the project then install 2.x using the link above so it's available to them.
+If your machine is running Shopify CLI v2.x, you can safely install and run Shopify CLI v3.x via Homebrew by specifying the version
+
+```
+# Install Shopify CLI v3
+brew tap shopify/shopify
+brew install shopify-cli@3
+
+# Verify install
+shopify3 version
+
+```
+
+**Shopify CLI versions 3.x**
+
+If your machine is already running Shopify CLI v3.x, you still have the option to install using the instructions above. If you'd prefer to use a single installation of the Shopify CLI, you can create a symlink to the existing install using the instructions below.
+
+
+```
+# Make a symlink for 'shopify3' assuming shopify-cli was installed using Homebrew
+
+ln -s $(which shopify) /opt/homebrew/bin/shopify3
+```
 
 ## Appendix: Misc
 

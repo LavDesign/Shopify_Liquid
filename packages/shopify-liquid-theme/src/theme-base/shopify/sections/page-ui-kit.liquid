@@ -1057,6 +1057,7 @@
     -%}
 
     {%- comment -%}
+<<<<<<< HEAD
       Modal
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
@@ -1071,6 +1072,37 @@
     {% endcapture %}
     {% render 'modal' id: 'modal-1', title: 'Modal Title', content: content %}
     {% render 'button' type: 'button', style: 'primary', label: 'open modal', id: 'modal-1' %}
+=======
+      Content Tile
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Content TIle</h4>
+    <div class="br-grid grid--col-2 mt-8 mb-5">
+      {% render 'content-tile'
+        src: img_src,
+        alt: img_alt,
+        title: 'This is a title',
+        description: "I'm not thinking about anything when I'm climbing."
+        link_url_1: link_url
+        link_text_1: "Default"
+        link_url_2: link_url
+        link_text_2: "Secondary"
+        width: 400
+        height: 300
+      %}
+
+      {% render 'content-tile'
+        src: img_src,
+        alt: img_alt,
+        title: 'This is a title',
+        description: "I'm not thinking about anything when I'm climbing."
+        link_url_1: link_url
+        link_text_1: "Default"
+        link_url_2: link_url
+        link_text_2: "Secondary"
+        horizontal_align: "center"
+      %}
+    </div>
+>>>>>>> 60e46c99735de4fe8dca021c95cd9d35cc416356
   </div>
 </section>
 
