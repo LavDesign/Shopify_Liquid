@@ -1,0 +1,43 @@
+{% liquid
+  assign pre_title = section.settings.pre_title
+  assign title     = section.settings.title
+%}
+
+<section class="ra-carousel-outer">
+  <div class="ra-heading ra-carousel__details" style="--heading-margin:var(--spacing-lg); --heading-text-align:left;">
+    <h2 class="ra-title ra-heading__title" style="--title-font-size:var(--font-size-h4);">
+      <div>A Tiles Carousel</div>
+    </h2>
+    <div class="ra-heading__description">
+      Optional description for the carousel
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Content Carousel",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Content"
+      },
+      {
+        "type": "text",
+        "id": "pre_title",
+        "label": "Pre Title"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Content Carousel"
+      }
+    ]
+  }
+{% endschema %}
