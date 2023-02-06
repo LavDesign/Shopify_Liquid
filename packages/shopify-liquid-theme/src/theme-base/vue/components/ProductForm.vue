@@ -1,15 +1,18 @@
 <template>
   <!-- Loop through options -->
   <RaOptionPicker
-    :key="label"
-    v-for="(options, label) in formattedOptions"
-    :label="label"
-    :options="formattedOptions[label]"
-    :selected="selectedOptions[label]"
+    class="product-form__option-picker mb-[16px]"
+    :key="optionKey"
+    v-for="(options, optionKey) in formattedOptions"
+    :label="optionKey"
+    :options="options"
+    :selected="selectedOptions[optionKey]"
+    :variant="getOptionVariant(optionKey)"
     @change:option="
-      (selected, option) => handleOptionSelect(label, selected, option)
+      (selected, option) => handleOptionSelect(optionKey, selected, option)
     "
   />
+
   <!-- Manually output all options for more granular control -->
 
   <!-- <RaOptionPicker
@@ -67,7 +70,16 @@ const props = defineProps({
   product: Object,
 });
 
-// ToDo:
+// ToDo: Add these values as a prop to pull from customizer
+const dropdownOptions = [];
+const swatchOptions = ['Color'];
+
+function getOptionVariant(optionName) {
+  if (dropdownOptions.includes(optionName)) {
+    return "dropdown";
+  }
+  return "grid";
+}
 
 // const quantity = ref(1);
 // const availableQuantity = ref(0);
