@@ -1,30 +1,33 @@
 <template>
-  <!-- Loop through options -->
-  <RaOptionPicker
-    class="product-form__option-picker mb-[16px]"
-    :key="optionKey"
-    v-for="(options, optionKey) in formattedOptions"
-    :label="optionKey"
-    :options="options"
-    :selected="selectedOptions[optionKey]"
-    :variant="getOptionVariant(optionKey)"
-    @change:option="
-      (selected, option) => handleOptionSelect(optionKey, selected, option)
-    "
-  />
+  <template :key="optionKey" v-for="(options, optionKey) in formattedOptions">
+    <RaSwatchPicker
+      v-if="swatchOptions.includes(optionKey)"
+      class="product-form__option-picker mb-[16px]"
+      :label="optionKey"
+      size="sm"
+      shape="rounded"
+      :fillSpace="false"
+      :variant="getOptionVariant(optionKey)"
+      :options="options"
+      :selected="selectedOptions[optionKey]"
+      @change:option="
+        (selected, option) => handleOptionSelect(optionKey, selected, option)
+      "
+    />
+    <RaOptionPicker
+      v-else
+      class="product-form__option-picker mb-[16px]"
+      :label="optionKey"
+      :variant="getOptionVariant(optionKey)"
+      :options="options"
+      :selected="selectedOptions[optionKey]"
+      @change:option="
+        (selected, option) => handleOptionSelect(optionKey, selected, option)
+      "
+    />
+  </template>
 
-  <!-- Manually output all options for more granular control -->
-
-  <!-- <RaOptionPicker
-    :label="Object.keys(optionsWithValues)[0]"
-    :options="formattedOptions[0]"
-    :selected="selectedOptions[Object.keys(optionsWithValues)[0]]"
-    @change:option="
-      (selected, option) =>
-        handleOptionSelect(Object.keys(optionsWithValues)[0], selected, option)
-    "
-  /> -->
-
+  <!-- Dropdown Variant -->
   <!-- <RaOptionPicker
     v-if="Object.keys(optionsWithValues).length > 1"
     :label="Object.keys(optionsWithValues)[1]"
@@ -34,45 +37,29 @@
     @change:option="handleDropdown"
   /> -->
 
-  <!-- <RaOptionPicker
-    v-if="Object.keys(optionsWithValues).length > 1"
-    :label="Object.keys(optionsWithValues)[1]"
-    :options="getFormattedValuesByIndex(1)"
-    :selected="selectedOptions[Object.keys(optionsWithValues)[1]]"
-    @change:option="
-      (selected, option) =>
-        handleOptionSelect(Object.keys(optionsWithValues)[1], selected, option)
-    "
-  /> -->
+  <!--
+    Current Issue:
+    How to handle with v-model?
+  -->
 
-  <!-- <RaOptionPicker
-    v-if="Object.keys(optionsWithValues).length > 2"
-    :label="Object.keys(optionsWithValues)[2]"
-    size="lg"
-    variant="dropdown"
-    :options="getFormattedValuesByIndex(2)"
-    @change:option="
-      (selected, selectedOption) =>
-        handleDropdown(
-          Object.keys(optionsWithValues)[0],
-          selected,
-          selectedOption
-        )
-    "
-  /> -->
+  <RaAddToCart
+    v-bind="{ buttonLabel, qty }"
+    @input="(value) => (qty = value)"
+  />
 </template>
 
 <script setup>
 import { ref, reactive, computed } from "vue";
-import { RaOptionPicker } from "@bva/ui-vue";
+import { RaAddToCart, RaOptionPicker, RaSwatchPicker } from "@bva/ui-vue";
 
 const props = defineProps({
   product: Object,
 });
 
 // ToDo: Add these values as a prop to pull from customizer
+// const dropdownOptions = ["Material"];
 const dropdownOptions = [];
-const swatchOptions = ['Color'];
+const swatchOptions = ["Color"];
 
 function getOptionVariant(optionName) {
   if (dropdownOptions.includes(optionName)) {
@@ -81,12 +68,7 @@ function getOptionVariant(optionName) {
   return "grid";
 }
 
-// const quantity = ref(1);
-// const availableQuantity = ref(0);
-// const activeVariant = ref(null);
-// const enableBuyInStore = ref(true);
-// const enableBuyOnline = ref(true);
-// const selectedVariant = ref();
+const qty = ref(1);
 
 const isAddingToCart = ref(false);
 const optionsWithValues = reactive(props.product.options_with_values);
@@ -118,14 +100,6 @@ const formattedOptions = computed(() => {
   return formattedOptions;
 });
 
-const buttonText = computed(() => {
-  return isAddingToCart.value ? "Adding..." : "Add to Cart";
-});
-
-const hasComplexVariants = computed(() => {
-  return props.product ? props.product.options.length > 1 : false;
-});
-
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
   selectedOptions[optionKey] = selectedOption.value;
 };
@@ -137,13 +111,17 @@ const handleOptionSelect = (optionKey, selected, selectedOption) => {
 //   // selectedOptions[optionKey] = selectedOption.value;
 // };
 
-function getFormattedValuesByIndex(index) {
+const getFormattedValuesByIndex = (index) => {
   const key = Object.keys(optionsWithValues)[index];
   return optionsWithValues[key].map((value) => ({
     label: value,
     value: value,
   }));
-}
+};
+
+const hasComplexVariants = computed(() => {
+  return props.product ? props.product.options.length > 1 : false;
+});
 
 const currentVariant = computed(() => {
   let currentVariant = props.product.variants[0];
@@ -169,4 +147,13 @@ const currentVariant = computed(() => {
   }
   return currentVariant || props.product.first_available_variant;
 });
+
+const buttonLabel = computed(() => {
+  return isAddingToCart.value ? "Adding..." : "Add to Cart";
+});
+
+const addToCart = (value) => {
+  console.log(value);
+  console.log("Adding to Cart.");
+};
 </script>
