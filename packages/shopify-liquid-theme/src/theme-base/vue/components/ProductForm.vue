@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="ra-product-form">
     <template :key="optionKey" v-for="(options, optionKey) in formattedOptions">
       <SwatchPicker
@@ -10,6 +11,23 @@
           (selected, option) => handleOptionSelect(optionKey, selected, option)
         "
       />
+=======
+  <!-- Loop through options -->
+  <RaOptionPicker
+    class="product-form__option-picker mb-[16px]"
+    :key="optionKey"
+    v-for="(options, optionKey) in formattedOptions"
+    :label="optionKey"
+    :options="options"
+    :selected="selectedOptions[optionKey]"
+    :variant="getOptionVariant(optionKey)"
+    @change:option="
+      (selected, option) => handleOptionSelect(optionKey, selected, option)
+    "
+  />
+
+  <!-- Manually output all options for more granular control -->
+>>>>>>> 0117f38 (BL-42 Add spacing and typography styles)
 
       <OptionPicker
         v-else
@@ -47,7 +65,20 @@ const props = defineProps({
   product: Object,
 });
 
+<<<<<<< HEAD
 const cartStore = useCartStore();
+=======
+// ToDo: Add these values as a prop to pull from customizer
+const dropdownOptions = [];
+const swatchOptions = ['Color'];
+
+function getOptionVariant(optionName) {
+  if (dropdownOptions.includes(optionName)) {
+    return "dropdown";
+  }
+  return "grid";
+}
+>>>>>>> 0117f38 (BL-42 Add spacing and typography styles)
 
 // ToDo: Add these values as a prop to pull from customizer
 const dropdownOptions = [];
