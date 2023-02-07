@@ -131,12 +131,14 @@ const buttonLabel = computed(() => {
   return isAddingToCart.value ? "Adding..." : "Add to Cart";
 });
 
-const addToCart = () => {
+const addToCart = async () => {
   console.log("Adding to Cart.");
-  store.addItem({
+  isAddingToCart.value = true;
+  await store.addItem({
     id: currentVariant.value.id,
     quantity: qty.value,
     // properties: null
   });
+  isAddingToCart.value = false;
 };
 </script>
