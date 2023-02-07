@@ -7,6 +7,7 @@ import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
 import components from "../vue/components/index.js";
 import "../js/custom-elements/custom-elements.js";
+import "../js/custom-elements/ra-dialog.js";
 import "../js/custom-elements/scrollable.js";
 
 import "@bva/ui-shared/styles/reset.css";
