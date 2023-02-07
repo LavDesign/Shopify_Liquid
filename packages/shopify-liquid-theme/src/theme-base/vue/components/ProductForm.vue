@@ -54,7 +54,6 @@ function getOptionVariant(optionName) {
   return "grid";
 }
 
-
 const optionsWithValues = reactive(props.product.options_with_values);
 
 // Set initial options from first_available_variant
@@ -72,7 +71,6 @@ const formattedOptions = computed(() => {
 
   props.product.options.forEach((option) => {
     formattedOptions[option] = [];
-    // console.log(optionsWithValues);
     optionsWithValues[option].forEach((value) => {
       formattedOptions[option].push({
         label: value,
@@ -91,13 +89,6 @@ const handleOptionSelect = (optionKey, selected, selectedOption) => {
 const hasComplexVariants = computed(() => {
   return props.product ? props.product.options.length > 1 : false;
 });
-
-// Notes:
-// Use template for state logic only
-// Move a lot of functions to composables or getters
-// Create composable for ATC
-// Helper file with methods for adding and updating
-// Improting those into State
 
 const currentVariant = computed(() => {
   let currentVariant = props.product.variants[0];
@@ -124,15 +115,14 @@ const currentVariant = computed(() => {
   return currentVariant || props.product.first_available_variant;
 });
 
-const qty = ref(1);
-
-const isAddingToCart = ref(false);
 const buttonLabel = computed(() => {
   return isAddingToCart.value ? "Adding..." : "Add to Cart";
 });
 
+const qty = ref(1);
+const isAddingToCart = ref(false);
+
 const addToCart = async () => {
-  console.log("Adding to Cart.");
   isAddingToCart.value = true;
   await store.addItem({
     id: currentVariant.value.id,
