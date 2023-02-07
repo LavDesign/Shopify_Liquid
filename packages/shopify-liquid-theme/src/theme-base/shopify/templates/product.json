@@ -141,19 +141,12 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
-    },
-    "16740644824d26b15e": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "main",
     "image-with-text",
     "multicolumn",
-    "product-recommendations",
-    "16740644824d26b15e"
+    "product-recommendations"
   ]
 }

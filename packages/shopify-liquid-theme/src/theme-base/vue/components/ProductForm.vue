@@ -1,46 +1,26 @@
 <template>
   <template :key="optionKey" v-for="(options, optionKey) in formattedOptions">
-    <RaSwatchPicker
+    <SwatchPicker
       v-if="swatchOptions.includes(optionKey)"
-      class="product-form__option-picker mb-[16px]"
       :label="optionKey"
-      size="sm"
-      shape="rounded"
-      :fillSpace="false"
-      :variant="getOptionVariant(optionKey)"
       :options="options"
       :selected="selectedOptions[optionKey]"
       @change:option="
         (selected, option) => handleOptionSelect(optionKey, selected, option)
       "
     />
-    <RaOptionPicker
+
+    <OptionPicker
       v-else
-      class="product-form__option-picker mb-[16px]"
       :label="optionKey"
-      :variant="getOptionVariant(optionKey)"
       :options="options"
       :selected="selectedOptions[optionKey]"
+      :variant="getOptionVariant(optionKey)"
       @change:option="
         (selected, option) => handleOptionSelect(optionKey, selected, option)
       "
     />
   </template>
-
-  <!-- Dropdown Variant -->
-  <!-- <RaOptionPicker
-    v-if="Object.keys(optionsWithValues).length > 1"
-    :label="Object.keys(optionsWithValues)[1]"
-    variant="dropdown"
-    :options="getFormattedValuesByIndex(1)"
-    :selected="selectedOptions[Object.keys(optionsWithValues)[1]]"
-    @change:option="handleDropdown"
-  /> -->
-
-  <!--
-    Current Issue:
-    How to handle with v-model?
-  -->
 
   <RaAddToCart
     v-bind="{ buttonLabel, qty }"
@@ -50,15 +30,17 @@
 
 <script setup>
 import { ref, reactive, computed } from "vue";
-import { RaAddToCart, RaOptionPicker, RaSwatchPicker } from "@bva/ui-vue";
+import { RaAddToCart } from "@bva/ui-vue";
+import SwatchPicker from "./SwatchPicker.vue";
+import OptionPicker from "./OptionPicker.vue";
 
 const props = defineProps({
   product: Object,
 });
 
 // ToDo: Add these values as a prop to pull from customizer
-// const dropdownOptions = ["Material"];
-const dropdownOptions = [];
+const dropdownOptions = ["Material"];
+// const dropdownOptions = [];
 const swatchOptions = ["Color"];
 
 function getOptionVariant(optionName) {
@@ -101,27 +83,21 @@ const formattedOptions = computed(() => {
 });
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
+  console.log("handling");
+  console.log(optionKey);
   selectedOptions[optionKey] = selectedOption.value;
-};
-
-// // Currently Dropdown variation of the optionPicker component is firing events multiple times with different values
-// const handleDropdown = (selected, selectedOption) => {
-//   console.log(selected);
-//   console.log(selectedOption);
-//   // selectedOptions[optionKey] = selectedOption.value;
-// };
-
-const getFormattedValuesByIndex = (index) => {
-  const key = Object.keys(optionsWithValues)[index];
-  return optionsWithValues[key].map((value) => ({
-    label: value,
-    value: value,
-  }));
 };
 
 const hasComplexVariants = computed(() => {
   return props.product ? props.product.options.length > 1 : false;
 });
+
+// Notes:
+// Use template for state logic only
+// Move a lot of functions to composables or getters
+// Create composable for ATC
+// Helper file with methods for adding and updating
+// Improting those into State
 
 const currentVariant = computed(() => {
   let currentVariant = props.product.variants[0];
