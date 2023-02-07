@@ -4,9 +4,6 @@ import axios from "axios";
 export const useCartStore = defineStore("cart", () => {
   // TODO: Build out cart store properties and methods [get, updateItem, removeItem]
   const addItem = ({ id, quantity, properties } = {}) => {
-    console.log("id " + id);
-    console.log("quantity " + quantity);
-    console.log("properties " + properties);
     return new Promise((resolve, reject) => {
       axios
         .post("/cart/add.js", {
