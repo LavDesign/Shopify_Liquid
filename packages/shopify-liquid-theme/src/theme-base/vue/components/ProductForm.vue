@@ -22,14 +22,17 @@
     />
   </template>
 
+  <!-- Bug: @click event triggered on all @input events -->
   <RaAddToCart
     v-bind="{ buttonLabel, qty }"
     @input="(value) => (qty = value)"
+    @click="addToCart"
   />
 </template>
 
 <script setup>
 import { ref, reactive, computed } from "vue";
+import { useCartStore } from "../stores/cart";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
@@ -38,9 +41,10 @@ const props = defineProps({
   product: Object,
 });
 
+const store = useCartStore();
+
 // ToDo: Add these values as a prop to pull from customizer
-const dropdownOptions = ["Material"];
-// const dropdownOptions = [];
+const dropdownOptions = [];
 const swatchOptions = ["Color"];
 
 function getOptionVariant(optionName) {
@@ -50,9 +54,7 @@ function getOptionVariant(optionName) {
   return "grid";
 }
 
-const qty = ref(1);
 
-const isAddingToCart = ref(false);
 const optionsWithValues = reactive(props.product.options_with_values);
 
 // Set initial options from first_available_variant
@@ -83,8 +85,6 @@ const formattedOptions = computed(() => {
 });
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
-  console.log("handling");
-  console.log(optionKey);
   selectedOptions[optionKey] = selectedOption.value;
 };
 
@@ -124,12 +124,19 @@ const currentVariant = computed(() => {
   return currentVariant || props.product.first_available_variant;
 });
 
+const qty = ref(1);
+
+const isAddingToCart = ref(false);
 const buttonLabel = computed(() => {
   return isAddingToCart.value ? "Adding..." : "Add to Cart";
 });
 
-const addToCart = (value) => {
-  console.log(value);
+const addToCart = () => {
   console.log("Adding to Cart.");
+  store.addItem({
+    id: currentVariant.value.id,
+    quantity: qty.value,
+    // properties: null
+  });
 };
 </script>
