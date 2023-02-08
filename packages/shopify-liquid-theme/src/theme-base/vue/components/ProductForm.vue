@@ -35,8 +35,9 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from "vue";
+import { computed, ref, reactive, onMounted, watch } from "vue";
 import { useCartStore } from "../stores/cart";
+import { useProductPageStore } from "../stores/productPage";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
@@ -45,7 +46,7 @@ const props = defineProps({
   product: Object,
 });
 
-const store = useCartStore();
+const cartStore = useCartStore();
 
 // ToDo: Add these values as a prop to pull from customizer
 const dropdownOptions = [];
@@ -129,11 +130,23 @@ const isAddingToCart = ref(false);
 
 const addToCart = async () => {
   isAddingToCart.value = true;
-  await store.addItem({
+  await cartStore.addItem({
     id: currentVariant.value.id,
     quantity: qty.value,
     // properties: null
   });
   isAddingToCart.value = false;
 };
+
+const productStore = useProductPageStore();
+
+watch(currentVariant, (variant) => {
+  productStore.setCurrentVariant(variant);
+});
+
+onMounted(() => {
+  productStore.setCurrentVariant(
+    currentVariant.value || props.product.first_available_variant
+  );
+});
 </script>
