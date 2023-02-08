@@ -78,6 +78,7 @@
   "variants": [
     {%- for variant in product.variants -%}
       {
+        "available": {{ variant.available | json }},
         "id": {{ variant.id }},
         "title": {{ variant.title | json }},
         "sku": {{ variant.sku | json }},

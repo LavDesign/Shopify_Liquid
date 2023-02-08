@@ -27,6 +27,8 @@
     v-bind="{ buttonLabel, qty }"
     @input="(value) => (qty = value)"
     @click="addToCart"
+    :disabled="!currentVariant.available"
+    :buttonProps="{ disabled: true }"
   />
 </template>
 
@@ -74,6 +76,7 @@ const formattedOptions = computed(() => {
     optionsWithValues[option].forEach((value) => {
       formattedOptions[option].push({
         label: value,
+        dsiabled: true,
         value,
       });
     });
