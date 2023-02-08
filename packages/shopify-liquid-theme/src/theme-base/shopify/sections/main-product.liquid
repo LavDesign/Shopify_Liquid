@@ -310,7 +310,7 @@
             {% render 'share-button'
              , block: block,
              share_link: share_url %}
-            {%- when 'product_form' -%}
+            {%- when 'product_main' -%}
               {% render 'ra-product-main', block: block, product: product_data %}
             {%- when 'variant_picker' -%}
               {% render 'product-variant-picker', block: block, product: product %}
@@ -694,8 +694,8 @@
         "name": "t:sections.main-product.blocks.quantity_selector.name",
         "limit": 1
       }, {
-        "type": "product_form",
-        "name": "Product Form",
+        "type": "product_main",
+        "name": "Product Main",
         "limit": 1,
         "settings": [
         ]

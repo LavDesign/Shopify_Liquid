@@ -10,27 +10,15 @@
             "text_style": "uppercase"
           }
         },
-        "title": {
-          "type": "title",
-          "settings": {
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-          }
-        },
-        "product_form": {
-          "type": "product_form",
+        "product_main": {
+          "type": "product_main",
           "settings": {
           }
         }
       },
       "block_order": [
         "vendor",
-        "title",
-        "price",
-        "product_form"
+        "product_main"
       ],
       "settings": {
         "enable_sticky_info": true,
