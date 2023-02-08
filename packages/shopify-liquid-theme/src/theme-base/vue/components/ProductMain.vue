@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row justify-between">
+  <div class="flex flex-row justify-between mb-3">
     <h1 class="h4">{{ product.title }}</h1>
     <div class="h4" v-if="currentVariant">
       {{ $filters.money(currentVariant.price) }}
