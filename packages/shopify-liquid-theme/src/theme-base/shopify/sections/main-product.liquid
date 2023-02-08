@@ -311,7 +311,7 @@
              , block: block,
              share_link: share_url %}
             {%- when 'product_form' -%}
-              {% render 'ra-product-form', block: block, product: product_data %}
+              {% render 'ra-product-main', block: block, product: product_data %}
             {%- when 'variant_picker' -%}
               {% render 'product-variant-picker', block: block, product: product %}
             {%- when 'buy_buttons' -%}

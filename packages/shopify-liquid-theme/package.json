@@ -13,8 +13,8 @@
   },
   "scripts": {
     "test": "echo $npm_package_config_storeurl",
-    "start": "run-p -sr webpack:watch serve",
-    "serve": "cd ./dist && shopify3 theme dev --store $npm_package_config_storeurl",
+    "start": "run-p -s webpack:watch serve",
+    "serve": "shopify3 theme dev --store $npm_package_config_storeurl --path ./dist",
     "deploy": "run-s webpack:build && cd ./dist && shopify3 theme push --store $npm_package_config_storeurl --nodelete",
     "deploy:prod": "run-s webpack:build && cd ./dist && shopify3 theme push --store $npm_package_config_storeurl --nodelete",
     "deploy:new": "run-s webpack:build && cd ./dist && shopify3 theme push --store $npm_package_config_storeurl --nodelete  --unpublished",

@@ -1,35 +1,37 @@
 <template>
-  <template :key="optionKey" v-for="(options, optionKey) in formattedOptions">
-    <SwatchPicker
-      v-if="swatchOptions.includes(optionKey)"
-      :label="optionKey"
-      :options="options"
-      :selected="selectedOptions[optionKey]"
-      @change:option="
-        (selected, option) => handleOptionSelect(optionKey, selected, option)
-      "
-    />
+  <div class="ra-product-form">
+    <template :key="optionKey" v-for="(options, optionKey) in formattedOptions">
+      <SwatchPicker
+        v-if="swatchOptions.includes(optionKey)"
+        :label="optionKey"
+        :options="options"
+        :selected="selectedOptions[optionKey]"
+        @change:option="
+          (selected, option) => handleOptionSelect(optionKey, selected, option)
+        "
+      />
 
-    <OptionPicker
-      v-else
-      :label="optionKey"
-      :options="options"
-      :selected="selectedOptions[optionKey]"
-      :variant="getOptionVariant(optionKey)"
-      @change:option="
-        (selected, option) => handleOptionSelect(optionKey, selected, option)
-      "
-    />
-  </template>
+      <OptionPicker
+        v-else
+        :label="optionKey"
+        :options="options"
+        :selected="selectedOptions[optionKey]"
+        :variant="getOptionVariant(optionKey)"
+        @change:option="
+          (selected, option) => handleOptionSelect(optionKey, selected, option)
+        "
+      />
+    </template>
 
-  <!-- Bug: @click event triggered on all @input events -->
-  <RaAddToCart
-    v-bind="{ buttonLabel, qty }"
-    @input="(value) => (qty = value)"
-    @click="addToCart"
-    :disabled="!currentVariant.available"
-    :buttonProps="{ disabled: true }"
-  />
+    <!-- Bug: @click event triggered on all @input events -->
+    <RaAddToCart
+      v-bind="{ buttonLabel, qty }"
+      @input="(value) => (qty = value)"
+      @click="addToCart"
+      :disabled="!currentVariant.available"
+      :buttonProps="{ disabled: true }"
+    />
+  </div>
 </template>
 
 <script setup>

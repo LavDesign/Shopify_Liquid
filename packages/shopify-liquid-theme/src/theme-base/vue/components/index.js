@@ -1,7 +1,7 @@
 import ButtonCounter from "./ButtonCounter.vue";
-import ProductForm from "./ProductForm.vue";
+import ProductMain from "./ProductMain.vue";
 
 export default {
   ButtonCounter,
-  ProductForm,
+  ProductMain,
 };
