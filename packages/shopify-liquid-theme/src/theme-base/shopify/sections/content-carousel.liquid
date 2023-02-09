@@ -54,7 +54,7 @@
   ]
 {% endcapture %}
 
-<section class="ra-carousel-outer">
+<section class="ra-carousel-outer" id="content-carousel__{{ section.id }}">
   <div class="ra-heading ra-carousel__details" style="--heading-margin:var(--spacing-lg); --heading-text-align:left;">
     <{{ title_level }} class="ra-title ra-heading__title" style="--title-font-size:var(--font-size-{{ title_as }});">
       {% if title != blank %}
@@ -76,10 +76,12 @@
         {% render 'icon-button' type: 'button', class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next', style: 'tertiary', size: 'sm', label: 'Go to next slide', icon: 'arrow-right' %}
       </div>
     {% endif %}
-    <content-carousel data-vue-root="ContentCarousel"
+    <div data-vue-root="ContentCarousel">
+      <content-carousel
       :options="{{ carousel_settings | escape | strip_newlines }}">
-      {{ slides }}
-    </content-carousel>
+        {{ slides }}
+      </content-carousel>
+    </div>
   </div>
 </section>
 
