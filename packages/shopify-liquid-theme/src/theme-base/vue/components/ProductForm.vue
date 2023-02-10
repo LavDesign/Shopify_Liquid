@@ -17,7 +17,7 @@
         :options="options"
         :selected="selectedOptions[optionKey]"
         :variant="getOptionVariant(optionKey)"
-        :itemsPerRow="3"
+        :itemsPerRow="itemsPerRow"
         @change:option="
           (selected, option) => handleOptionSelect(optionKey, selected, option)
         "
@@ -52,6 +52,8 @@ const cartStore = useCartStore();
 // ToDo: Add these values as a prop to pull from customizer
 const dropdownOptions = [];
 const swatchOptions = ["Color"];
+
+const itemsPerRow = "3";
 
 function getOptionVariant(optionName) {
   if (dropdownOptions.includes(optionName)) {
