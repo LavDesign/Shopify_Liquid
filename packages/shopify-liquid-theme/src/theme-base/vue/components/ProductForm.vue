@@ -70,17 +70,51 @@ props.product.options.forEach((option, i) => {
   selectedOptions[option] = props.product.first_available_variant.options[i];
 });
 
+const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
+  /*
+    Check current variant
+    Check selectedOptions
+    For each option key (size),
+    check variants that match other 2 option keys
+    filter option2 and option3 === current option2 and currentoption3
+    check check availability and update disabled state
+  */
+
+  // Get indices of variant option keys not currently selected
+  // Given: 1, we want 0,2
+  const variants = props.product.variants;
+  const optionKeyIndices = [0, 1, 2];
+  const currentOptionIndex = optionKeyIndices.splice(optionKeyIndex, 1)[0];
+
+  // All available variants of the selected color and material
+  const filteredAvailableVariants = variants
+    .filter((variant) => {
+      return (
+        variant.options[optionKeyIndices[0]] ===
+          currentVariant.value.options[optionKeyIndices[0]] &&
+        variant.options[optionKeyIndices[1]] ===
+          currentVariant.value.options[optionKeyIndices[1]] &&
+        variant.available
+      );
+    })
+    .some((variant) => variant.options[currentOptionIndex] === optionValue);
+
+  return filteredAvailableVariants;
+};
+
 // Set keyed object for all option values
 const formattedOptions = computed(() => {
   const formattedOptions = {};
 
-  props.product.options.forEach((option) => {
+  props.product.options.forEach((option, optionIndex) => {
     formattedOptions[option] = [];
+
     optionsWithValues[option].forEach((value) => {
+      const optionIsAvailable = optionHasInStockVariant(value, optionIndex);
       formattedOptions[option].push({
         label: value,
-        dsiabled: true,
         value,
+        disabled: !optionIsAvailable,
       });
     });
   });

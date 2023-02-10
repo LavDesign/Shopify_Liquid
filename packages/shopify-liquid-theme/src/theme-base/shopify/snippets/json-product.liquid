@@ -32,16 +32,6 @@
       {{ option | json }} {%- unless forloop.last -%},{%- endunless -%}
     {%- endfor -%}
   ],
-  "options_color": [
-    {% for color_option in product.options_by_name['Color'].values %}
-      {{ color_option | json }}{%- unless forloop.last -%},{%- endunless -%}
-    {% endfor %}
-  ],
-  "options_size": [
-    {% for size_option in product.options_by_name['Size'].values %}
-      {{ size_option | json }}{%- unless forloop.last -%},{%- endunless -%}
-    {% endfor %}
-  ],
   "options_with_values": {
     {%- for option in product.options_with_values -%}
       {{ option.name | json }}: [
@@ -112,6 +102,7 @@
             }
           {%- endif -%}
         },
+        "options": [{{ variant.option1 | json }}, {{ variant.option2 | json }}, {{ variant.option3 | json }}],
         "option1": {{ variant.option1 | json }},
         "option2": {{ variant.option2 | json }},
         "option3": {{ variant.option3 | json }},
