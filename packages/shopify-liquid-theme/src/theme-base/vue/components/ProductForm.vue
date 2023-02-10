@@ -70,23 +70,18 @@ props.product.options.forEach((option, i) => {
   selectedOptions[option] = props.product.first_available_variant.options[i];
 });
 
-const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
-  /*
-    Check current variant
-    Check selectedOptions
-    For each option key (size),
-    check variants that match other 2 option keys
-    filter option2 and option3 === current option2 and currentoption3
-    check check availability and update disabled state
-  */
+const handleOptionSelect = (optionKey, selected, selectedOption) => {
+  selectedOptions[optionKey] = selectedOption.value;
+};
 
+const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
   // Get indices of variant option keys not currently selected
-  // Given: 1, we want 0,2
   const variants = props.product.variants;
   const optionKeyIndices = [0, 1, 2];
   const currentOptionIndex = optionKeyIndices.splice(optionKeyIndex, 1)[0];
 
-  // All available variants of the selected color and material
+  // Find the variant that matches the optionValue passed in along with the currentvariant's remaining selected options,
+  // check availability and return a Boolean
   const filteredAvailableVariants = variants
     .filter((variant) => {
       return (
@@ -102,7 +97,7 @@ const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
   return filteredAvailableVariants;
 };
 
-// Set keyed object for all option values
+// Set keyed object for all option values and disabled state
 const formattedOptions = computed(() => {
   const formattedOptions = {};
 
@@ -121,10 +116,6 @@ const formattedOptions = computed(() => {
 
   return formattedOptions;
 });
-
-const handleOptionSelect = (optionKey, selected, selectedOption) => {
-  selectedOptions[optionKey] = selectedOption.value;
-};
 
 const hasComplexVariants = computed(() => {
   return props.product ? props.product.options.length > 1 : false;
