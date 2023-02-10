@@ -17,6 +17,7 @@
         :options="options"
         :selected="selectedOptions[optionKey]"
         :variant="getOptionVariant(optionKey)"
+        :itemsPerRow="3"
         @change:option="
           (selected, option) => handleOptionSelect(optionKey, selected, option)
         "
