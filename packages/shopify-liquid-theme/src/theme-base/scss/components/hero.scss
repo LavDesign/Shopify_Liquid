@@ -1,0 +1,18 @@
+.ra-hero {
+  overflow: hidden;
+
+  .ra-image__media--desktop {
+    display: none;
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  .ra-image__media--mobile {
+    display: block;
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+}
+

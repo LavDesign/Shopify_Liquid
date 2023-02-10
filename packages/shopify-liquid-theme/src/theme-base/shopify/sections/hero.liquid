@@ -1,0 +1,346 @@
+{% capture arrow_color %}
+  var({{section.settings.arrow_color}})
+{% endcapture %}
+
+{% capture pagination_color %}
+  var({{section.settings.pagination_color}})
+{% endcapture %}
+
+<div class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} swiper swiper-{{ section.id }}">
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="swiper-slide">
+        <div class="ra-hero__media component-media" style="background-color: var({{ block.settings.bg_color }});">
+
+          {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
+            <img class="ra-image__media ra-image__media--desktop ra-image__media--loaded" loading="lazy" src="{{ block.settings.desktop_bg_image | img_url: '2000x' }}"> 
+            <img class="ra-image__media ra-image__media--mobile ra-image__media--loaded" loading="lazy" src="{{ block.settings.mobile_bg_image | img_url: '800x' }}"> 
+          {% endif %}
+
+          <div class="ra-hero__details component-details--set-order" style="color: var({{ block.settings.text_color }})">
+            <div class="ra-hero__copy {{ block.settings.text_alignment }}">
+
+              {% if block.settings.sub-heading != blank %}
+                <div class="ra-hero__subtitle">{{ block.settings.sub-heading }}</div> 
+              {% endif %}
+
+              {% if block.settings.title != blank %}
+                <{{ block.settings.title_style }} class="ra-title ra-hero__title" style="--title-font-size:var(--font-size-{{ block.settings.title_style }});">
+                  {{ block.settings.title }}
+                </{{ block.settings.title_style }}>
+              {% endif %}
+
+              {% if block.settings.body != blank %}
+                <div class="ra-hero__description">
+                  {{ block.settings.body }}
+                </div>
+              {% endif %}
+            
+              {% if block.settings.button_1_url != blank and block.settings.button_2_url != blank %}
+                <div class="ra-link-list ra-hero__link-list">
+                  {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
+                    {% render 'button' 
+                      type: 'a',
+                      style: block.settings.button_1_style,
+                      label: block.settings.button_1_label,
+                      url: block.settings.button_1_url,
+                    %}
+                  {% endif %}
+
+                  {% if block.settings.button_2_label != blank and block.settings.button_2_url != blank %}
+                    {% render 'button' 
+                      type: 'a',
+                      style: block.settings.button_2_style,
+                      label: block.settings.button_2_label,
+                      url: block.settings.button_2_url,
+                    %}
+                  {% endif %}
+                </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% if section.settings.show_pagination %}
+    <div class="swiper-pagination" style="--pagination-color: {{ pagination_color }};"></div>
+  {% endif %}
+
+  {% if section.settings.show_arrows %}
+    <div class="swiper-button-prev">
+      {% render 'icon', icon: "chevron-left", color: arrow_color %}
+    </div>
+    <div class="swiper-button-next">
+      {% render 'icon', icon: "chevron-right", color: arrow_color %}
+    </div>
+  {% endif %}
+</div>
+
+{% if section.blocks.size > 1 %}
+  <script>
+    const swiper = new Swiper('.swiper-{{ section.id }}', {
+      effect: {{ section.settings.effect | json }},
+      loop: true,
+
+      {% if section.settings.autoplay %}
+        autoplay: {
+          delay: {{ section.settings.delay | times: 1000 }},
+        },
+      {% endif %}
+
+      slidesPerView: 1,
+      spaceBetween: 0,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    })
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "sub-heading",
+          "label": "Sub-heading text",
+          "default": "SUB-HEADING"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title text",
+          "default": "This is a title"
+        },
+        {
+          "type": "select",
+          "id": "title_style",
+          "label": "Title style",
+          "options": <%- uikit.headingStyles -%>,
+          "default": "h2"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": <%- uikit.textAligments -%>,
+          "default": "set--v-align-middle set--h-align-center"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body text"
+        },
+        {
+          "type": "header",
+          "content": "Media"
+        },
+        {
+          "type": "video_url",
+          "id": "background_video",
+          "label": "Background video",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_bg_image",
+          "label": "Background image (desktop)",
+          "info": "Recommended Size: 1800x1800"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_bg_image",
+          "label": "Background image (mobile)",
+          "info": "Recommended Size: 800x800"
+        },
+        {
+          "type": "header",
+          "content": "Color Settings"
+        },
+        {
+          "type": "select",
+          "id": "text_color",
+          "label": "Text color",
+          "options": <%- uikit.colorsAll -%>,
+          "default": "--color-primary-900"
+        },
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Background color",
+          "options": <%- uikit.colorsAll -%>,
+          "default": "--color-primary-900"
+        },
+        {
+          "type": "header",
+          "content": "Button 1"
+        },
+        {
+          "type": "text",
+          "id": "button_1_label",
+          "label": "Button 1 label",
+          "default": "learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_1_url",
+          "label": "Button 1 url"
+        },
+        {
+          "type": "select",
+          "id": "button_1_style",
+          "label": "Button 1 style",
+          "options": <%- uikit.buttonStyles -%>,
+          "default": "primary"
+        },
+        {
+          "type": "header",
+          "content": "Button 2"
+        },
+        {
+          "type": "text",
+          "id": "button_2_label",
+          "label": "Button 2 label",
+          "default": "learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_2_url",
+          "label": "Button 2 url"
+        },
+        {
+          "type": "select",
+          "id": "button_2_style",
+          "label": "Button 2 style",
+          "options": <%- uikit.buttonStyles -%>,
+          "default": "secondary"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "default": "main",
+      "info": "Select hero height",
+      "options": [
+        {
+          "value": "short",
+          "label": "Short"
+        },
+        {
+          "value": "main",
+          "label": "Main"
+        },
+        {
+          "value": "tall",
+          "label": "Tall"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Delay",
+      "default": 5,
+      "info": "Delay between transitions (in seconds). Applys delay only if 'Autoplay' is checked."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "pagination_color",
+      "label": "Pagination color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "effect",
+      "label": "Slider effect",
+      "default": "slide",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "cube",
+          "label": "Cube"
+        },
+        {
+          "value": "coverflow",
+          "label": "Coverflow"
+        },
+        {
+          "value": "flip",
+          "label": "Flip"
+        },
+        {
+          "value": "creative",
+          "label": "Creative"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

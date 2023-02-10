@@ -1,0 +1,27 @@
+.swiper {
+  .swiper-button-prev,
+  .swiper-button-next {
+    &:after,
+    &:before {
+      display: none;
+    }
+  } 
+
+  .swiper-button-prev {
+    left: 2rem;
+  }
+
+  .swiper-button-next {
+    right: 2rem;
+  }
+
+  .swiper-pagination {
+    padding-bottom: 1rem;
+
+    .swiper-pagination-bullet {
+    }
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      background-color: var(--pagination-color);
+    }
+  }
+}
