@@ -165,6 +165,14 @@ Ensure the following is installed on your machine (click the links to find insta
 - Access to the storefront via the [BVA Shopify Partner Portal](https://partners.shopify.com/154501/stores) or the [Zehner Shopify Partner Portal](https://partners.shopify.com/489730/stores)
 - In some cases staff-level access to the project storefront may be necessary, check with a technical lead.
 
+#### Setup local NPM config, `.npmrc`
+
+```bash
+# Ensure you're in the project root directory and run the following:
+
+cp .npmrc.example .npmrc
+```
+
 ### Setup
 
 ```bash
@@ -175,25 +183,14 @@ Ensure the following is installed on your machine (click the links to find insta
 #   - See .nvmrc
 nvm use
 
-# Install deps from the package.lock.json (and don't regenerate it).
-# If package-lock.json is not present run `npm i` instead
-#   and commit package-lock.json to version control.
-npm ci
+# Install deps from the yarn.lock
 
-# Log into the storefront.
-# npm run login:[dev|prod]
-# ex.
-npm run login:prod
-
-# Clean
-# - Optional
-# - Only needed if you previously had this project cloned
-#   before this README was updated.
-npm run clean-merch
+yarn
 
 # Pull down latest merchandising into the repo:
 #   - See: Appendix: Pulling Theme Merchandising Files
-npm run pull-merch
+yarn pull-merch
+
 ```
 
 ## Usage
@@ -202,7 +199,7 @@ npm run pull-merch
 
 ```bash
 # Start the Webpack watch and create a Shopify development theme.
-npm run start
+yarn start
 ```
 
 > See: [package.json](./package.json) for all available commands.
@@ -215,10 +212,10 @@ This project can build icon SVG files into a single icon store that allows easy 
 
 ```bash
 # Run the icon build task
-npm run gulp:icons
+yarn gulp:icons
 
 # Run the icon watch task
-npm run gulp:icons-watch
+yarn gulp:icons-watch
 ```
 
 - To add an icon, add the SVG file to `src/icons/`
@@ -240,13 +237,13 @@ npm run gulp:icons-watch
 # Name the theme something clear & useful, ex.
 #   - [PROJ-123] Fix Header on Mobile (Bob)
 #   - [DEV] Testing (Bob)
-npm run deploy:new
+yarn deploy:new
 ```
 
 ```bash
 # Deploy to an existing preview (or live) theme.
 #   - Select the theme from the list displayed after running this command.
-npm run deploy
+yarn deploy
 ```
 
 > See: [package.json](./package.json) for all available commands.
@@ -336,44 +333,44 @@ You can pull the files above into your local project using one or more of the fo
 
 ```bash
 # Pull all merch (templates/*.json, config/settings_data.json, & locales/*.json)
-npm run pull-merch
+yarn pull-merch
 
 # Pull all merch from your dev theme (templates/*.json, config/settings_data.json, & locales/*.json)
-npm run pull-dev-merch
+yarn pull-dev-merch
 
 # Clean all merch (templates/*.json, config/settings_data.json, & locales/*.json)
-npm run clean-merch
+yarn clean-merch
 ```
 
 **Granular Commands**
 
 ```bash
 # Pull templates from the selected theme
-npm run pull:templates
+yarn pull:templates
 
 # Pull templates from your development theme.
 #   - This is useful if you've setup some merchandising on your dev theme
-npm run pull-dev:templates
+yarn pull-dev:templates
 
 # Pull config/settings_data.json
 # from the selected theme
-npm run pull:config
+yarn pull:config
 
 # Pull config/settings_data.json
 # from the your development theme.
 #   - This is useful if you've setup some merchandising on your dev theme
-npm run pull-dev:config
+yarn pull-dev:config
 
 # Pull locales/*.json from the selected theme.
-npm run pull:locales
+yarn pull:locales
 
 # Pull locales/*.json from your development theme.
 #   - This is useful if you've setup some merchandising on your dev theme
-npm run pull-dev:locales
+yarn pull-dev:locales
 
 # Remove these files with the following
-npm run clean:templates
-npm run clean:config
+yarn clean:templates
+yarn clean:config
 ```
 
 ### Pulling Other Theme Files
@@ -389,7 +386,7 @@ Pulling down other theme files is useful when trying to pull in changes made in 
 git status
 
 # Pull down all theme files from Shopify.
-npm run pull-theme
+yarn pull-theme
 
 # Check for changes, additions, and deletions.
 git status
@@ -424,14 +421,14 @@ There isn't an obvious way to get the CLI to pull down the `*.json` file.
 
 ```bash
 # Linting
-npm run lint:js
-npm run lint:css
-npm run lint:shopify
+yarn lint:js
+yarn lint:css
+yarn lint:shopify
 
 # Auto-fix
-npm run fix:js
-npm run fix:css
-npm run fix:shopify
+yarn fix:js
+yarn fix:css
+yarn fix:shopify
 ```
 
 ### How to Remove a File From Version Control
