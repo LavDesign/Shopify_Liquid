@@ -1,7 +1,7 @@
 {% liquid
-  assign title       = section.settings.title
-  assign pre_title   = section.settings.pre_title
-  assign description = section.settings.description
+  assign section_title       = section.settings.title
+  assign section_pre_title   = section.settings.pre_title
+  assign section_description = section.settings.description
 
   assign title_as    = section.settings.title_as
   assign title_level = section.settings.title_level
@@ -19,6 +19,9 @@
 
       assign width  = block.settings.slide_image_width
       assign height = block.settings.slide_image_height
+      assign aspect_ratio = section.settings.aspect_ratio
+
+      assign link_url = block.settings.slide_url
     %}
     <div class="ra-carousel-item swiper-slide">
       {% render 'content-tile'
@@ -28,10 +31,12 @@
         description: description,
         width: width,
         height: height,
+        overlay_link: link_url,
         link_url_1: link_url,
         link_text_1: "Default",
         link_url_2: link_url,
         link_text_2: "Secondary"
+        aspect_ratio: aspect_ratio
       %}
     </div>
   {%- endfor -%}
@@ -54,16 +59,16 @@
   ]
 {% endcapture %}
 
-<section class="ra-carousel-outer" id="content-carousel__{{ section.id }}">
+<section class="ra-carousel-outer" id="content-carousel__{{ section.id }}" style="padding: 16px">
   <div class="ra-heading ra-carousel__details" style="--heading-margin:var(--spacing-lg); --heading-text-align:left;">
     <{{ title_level }} class="ra-title ra-heading__title" style="--title-font-size:var(--font-size-{{ title_as }});">
-      {% if title != blank %}
-        <div>{{- title -}}</div>
+      {% if section_title != blank %}
+        <div>{{- section_title -}}</div>
       {% endif %}
     </{{ title_level }}>
-    {% if description != blank %}
+    {% if section_description != blank %}
       <div class="ra-heading__description">
-        {{- description -}}
+        {{- section_description -}}
       </div>
     {% endif %}
   </div>
@@ -71,9 +76,9 @@
   <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav {{ carouselNavStyles }}{% endif %}">
     {% if section.settings.show_navigation %}
       <div class="ra-carousel__nav ra-carousel__nav--top-right">
-        {% render 'icon-button' type: 'button', class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev', style: 'tertiary', size: 'sm', label: 'Go to previous slide', icon: 'arrow-left' %}
+        {% render 'icon-button' type: 'button', class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev', rounded: true, style: 'tertiary', size: 'sm', label: 'Go to previous slide', icon: 'left-arrow' %}
 
-        {% render 'icon-button' type: 'button', class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next', style: 'tertiary', size: 'sm', label: 'Go to next slide', icon: 'arrow-right' %}
+        {% render 'icon-button' type: 'button', class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next', rounded: true, style: 'tertiary', size: 'sm', label: 'Go to next slide', icon: 'right-arrow' %}
       </div>
     {% endif %}
     <div data-vue-root="ContentCarousel">
@@ -84,6 +89,8 @@
     </div>
   </div>
 </section>
+
+<script></script>
 
 {% schema %}
   {
@@ -196,6 +203,35 @@
           }
         ],
         "default": "auto"
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "info": "Choose Aspect Ratio for Slide Images",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "tall",
+            "label": "Tall"
+          },
+          {
+            "value": "wide",
+            "label": "Wide"
+          },
+          {
+            "value": "respect-media",
+            "label": "Respect Media"
+          },
+          {
+            "value": "fill-space",
+            "label": "Fill Space"
+          }
+        ],
+        "default": "square"
       }
     ],
     "blocks": [
@@ -226,12 +262,24 @@
           {
             "type": "text",
             "id": "slide_image_width",
-            "label": "Content Slide Image Width (optional)"
+            "label": "Content Slide Image Width (optional)",
+            "default": "400"
           },
           {
             "type": "text",
             "id": "slide_image_height",
-            "label": "Content Slide Image Height (optional)"
+            "label": "Content Slide Image Height (optional)",
+            "default": "300"
+          },
+          {
+            "type": "url",
+            "id": "slide_url",
+            "label": "Optional Slide Url link",
+            "default": "/"
+          },
+          {
+            "type": "header",
+            "content": "Section CTA's"
           }
         ]
       }

@@ -8,13 +8,14 @@ Props:
   height:        Int - (Optional) Image height
   aspect_ratio:  String - (Optional) determines the sizing of the image [square, tall, wide, respect-media, fill-space]
 
-  subtitle:      String, text for subtitle - (optional)
-  title:         String, text for main title - (required)
-  description:   String, text for description area - (required)
-  link_url_1:       String, text for link url - (optional)
-  link_text_1:      String, text for link - (optional)
-  link_url_2:       String, text for second link url - (optional)
-  link_text_2:      String, text for second link - (optional)
+  subtitle:       String, text for subtitle - (optional)
+  title:          String, text for main title - (required)
+  description:    String, text for description area - (required)
+  overlay_link:   String, link url for global tile (optional)
+  link_url_1:     String, text for link url - (optional)
+  link_text_1:    String, text for link - (optional)
+  link_url_2:     String, text for second link url - (optional)
+  link_text_2:    String, text for second link - (optional)
 
   header_as:             Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
   header_level:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
@@ -69,7 +70,15 @@ set--v-align-{{ vertical_align | default: 'bottom' }}{% if vertical_align_md != 
 {% endcapture %}
 
 {% capture imageStyle %}
-  --media-width:{{ width | default: '400'  }}; --media-height: {{ height | default: '480' }}
+  {% if aspect_ratio == 'square' %}
+    --media-width:1; --media-height:1;
+  {% elsif aspect_ratio == 'tall' %}
+    --media-width:1; --media-height:1.25;
+  {% elsif aspect_ratio == 'wide' %}
+    --media-width:1; --media-height:0.66;
+  {% else %}
+  --media-width:400; --media-height:480;
+  {% endif %}
 {% endcapture %}
 
 <article class="{{ classes }}">
@@ -80,7 +89,7 @@ set--v-align-{{ vertical_align | default: 'bottom' }}{% if vertical_align_md != 
       </div>
     {% endif %}
   </div>
-  <a href="{{ link_url }}" class="ra-component-anchor-overlay">
+  <a href="{{ overlay_link }}" class="ra-component-anchor-overlay">
     {% if description != blank %}
       <div class="sr-only">{{- description -}}</div>
     {% endif %}
