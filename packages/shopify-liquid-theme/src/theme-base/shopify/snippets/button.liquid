@@ -6,6 +6,7 @@
     label:      string button label text - (required)
     value:      string value attr text - (optional)
     url:        string url used when button 'type' is set to 'a' - (required)
+    icon:       string icon-name - (optional)
     size:       string [xs, sm, md, lg] sizes - (optional)
     id:         string add id attribute used for JS - (optional)
     class:      string add custom CSS class - (optional)
@@ -44,5 +45,8 @@
 {% if type != blank and label != blank %}
   <{{type}} class="{{ classes }}" {{ attributes }}>
     {{ label }}
+    {% if icon != blank %}
+      {% render 'icon' width: '14px', height: '14px', icon: icon %}
+    {% endif %}
   </{{type}}>
 {% endif %}
