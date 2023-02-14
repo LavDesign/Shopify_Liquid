@@ -5,8 +5,6 @@
 
   assign title_as    = section.settings.title_as
   assign title_level = section.settings.title_level
-
-  assign carousel_nav_location = section.settings.carousel_nav_location
 %}
 
 {% capture slides %}
@@ -21,7 +19,13 @@
       assign height = block.settings.slide_image_height
       assign aspect_ratio = section.settings.aspect_ratio
 
-      assign link_url = block.settings.slide_url
+      assign overlay_url = block.settings.slide_url
+
+      assign cta_one_text = block.settings.slide_cta_1_title
+      assign cta_two_text = block.settings.slide_cta_2_title
+
+      assign cta_one_url = block.settings.slide_cta_1_url
+      assign cta_two_url = block.settings.slide_cta_2_url
     %}
     <div class="ra-carousel-item swiper-slide">
       {% render 'content-tile'
@@ -31,32 +35,22 @@
         description: description,
         width: width,
         height: height,
-        overlay_link: link_url,
-        link_url_1: link_url,
-        link_text_1: "Default",
-        link_url_2: link_url,
-        link_text_2: "Secondary"
+        overlay_link: overlay_url,
+        link_text_1: cta_one_text,
+        link_text_2: cta_two_text,
+        link_url_1: cta_one_url,
+        link_url_2: cta_two_url,
         aspect_ratio: aspect_ratio
       %}
     </div>
   {%- endfor -%}
 {% endcapture %}
 
-{% capture carouselLocation %}
-  {% if carousel_nav_location == 'top' %}
-    ra-carousel__nav--top-right
-  {% else %}
-    ra-carousel__nav--auto
-  {% endif %}
-{% endcapture %}
-
 {% capture carousel_settings %}
-  [
-    {
-      "type": "Test",
-      "nav_position": {{ carousel_nav_location }}
-    }
-  ]
+  {
+    "nav_placement": {{ section.settings.carousel_nav_location }},
+    "show_navigation": {{ section.settings.show_navigation | json }}
+  }
 {% endcapture %}
 
 <section class="ra-carousel-outer" id="content-carousel__{{ section.id }}" style="padding: 16px">
@@ -73,14 +67,7 @@
     {% endif %}
   </div>
   <!-- Carousel -->
-  <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav {{ carouselNavStyles }}{% endif %}">
-    {% if section.settings.show_navigation %}
-      <div class="ra-carousel__nav ra-carousel__nav--top-right">
-        {% render 'icon-button' type: 'button', class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev', rounded: true, style: 'tertiary', size: 'sm', label: 'Go to previous slide', icon: 'left-arrow' %}
-
-        {% render 'icon-button' type: 'button', class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next', rounded: true, style: 'tertiary', size: 'sm', label: 'Go to next slide', icon: 'right-arrow' %}
-      </div>
-    {% endif %}
+  <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
     <div data-vue-root="ContentCarousel">
       <content-carousel
       :options="{{ carousel_settings | escape | strip_newlines }}">
@@ -280,6 +267,26 @@
           {
             "type": "header",
             "content": "Section CTA's"
+          },
+          {
+            "type": "text",
+            "id": "slide_cta_1_title",
+            "label": "CTA One Title"
+          },
+          {
+            "type": "url",
+            "id": "slide_cta_1_url",
+            "label": "CTA One Link Url"
+          },
+          {
+            "type": "text",
+            "id": "slide_cta_2_title",
+            "label": "CTA Two Title"
+          },
+          {
+            "type": "url",
+            "id": "slide_cta_2_url",
+            "label": "CTA Two Link Url"
           }
         ]
       }

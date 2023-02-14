@@ -1,36 +1,48 @@
 <template>
   <div ref="carousel">
-    <swiper
+    <div class="ra-carousel__nav" :class="navClasses">
+      <button
+        class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm ra-icon-button--rounded ra-carousel__nav-cta ra-carousel__nav-cta--prev"
+        aria-label="Go to previous slide"
+      >
+        <svg class="ra-icon ra-icon--sm">
+          <use xlink:href="#left-arrow"></use>
+        </svg>
+      </button>
+      <button
+        class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm ra-icon-button--rounded ra-carousel__nav-cta ra-carousel__nav-cta--next"
+        aria-label=" Go to next slide"
+      >
+        <svg class="ra-icon ra-icon--sm">
+          <use xlink:href="#right-arrow"></use>
+        </svg>
+      </button>
+    </div>
+    <Swiper
       :slides-per-view="2"
-      :space-between="20"
-      :navigation="navigation"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
+      :space-between="16"
       :breakpoints="breakpoints"
+      :navigation="navigation"
     >
       <slot></slot>
-    </swiper>
+    </Swiper>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import { Swiper, Navigation } from 'swiper/vue';
+import SwiperCore, { Navigation } from "swiper";
+import { Swiper } from "swiper/vue";
 
 import "swiper/css";
+
+SwiperCore.use([Navigation]);
 
 const props = defineProps({
   options: Object,
 });
 
-const carousel = ref(null)
-
-const onSwiper = (swiper) => {
-  console.log(swiper);
-};
-const onSlideChange = () => {
-  console.log('slide change');
-};
+const carousel = ref(null);
 
 const breakpoints = {
   640: {
@@ -39,22 +51,29 @@ const breakpoints = {
   },
   768: {
     slidesPerView: 3,
-    spaceBetween: 24,
+    spaceBetween: 16,
   },
-  1024: {
+  1280: {
     slidesPerView: 4,
-    spaceBetween: 40,
+    spaceBetween: 24,
   },
 };
 
 const navigation = {
-  nextEl: '.ra-carousel__nav-cta--next',
-  prevEl: '.ra-carousel__nav-cta--prev',
-}
+  nextEl: ".ra-carousel__nav-cta--next",
+  prevEl: ".ra-carousel__nav-cta--prev",
+};
+
+const navClasses = computed(() => {
+  if (props.options.nav_position == "auto") {
+    return "ra-carousel__nav--auto";
+  }
+  return "ra-carousel__nav--top-right";
+});
 
 onMounted(() => {
-  const swiperWrapper = carousel.value.querySelector('.swiper-wrapper');
-  const slides = carousel.value.querySelectorAll('.swiper-slide');
+  const swiperWrapper = carousel.value.querySelector(".swiper-wrapper");
+  const slides = carousel.value.querySelectorAll(".swiper-slide");
 
   slides.forEach((slide) => {
     swiperWrapper.appendChild(slide);
