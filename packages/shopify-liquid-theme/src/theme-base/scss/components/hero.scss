@@ -14,5 +14,31 @@
       display: none;
     }
   }
+
+  .ra-hero__details {
+    color: var(--text-color-mobile);
+
+    @media (min-width: 768px) {
+      color: var(--text-color-desktop);
+    }
+  }
 }
 
+// Stack on mobile
+.ra-hero.ra-hero--stack-mobile {
+  @media (max-width: 768px) {
+    .ra-hero__media {
+      position: static;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // .ra-hero__media,
+    .ra-hero__details {
+      background-color: var(--background-color);
+      aspect-ratio: 0 !important;
+      position: static;
+      height: auto;
+    }
+  }
+}

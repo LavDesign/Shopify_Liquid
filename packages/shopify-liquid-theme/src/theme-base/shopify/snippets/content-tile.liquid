@@ -1,0 +1,114 @@
+{% comment %}
+Props:
+  classes:       String - (Optional) custom classes on the img element
+  src:           String - (Required) img src that will be used
+  srcset:        String - (Optional) srcset attribute for loading assets at different viewport sizes
+  alt:
+  width:         Int - (Optional) Image width
+  height:        Int - (Optional) Image height
+  aspect_ratio:  String - (Optional) determines the sizing of the image [square, tall, wide, respect-media, fill-space]
+
+  subtitle:      String, text for subtitle - (optional)
+  title:         String, text for main title - (required)
+  description:   String, text for description area - (required)
+  link_url_1:       String, text for link url - (optional)
+  link_text_1:      String, text for link - (optional)
+  link_url_2:       String, text for second link url - (optional)
+  link_text_2:      String, text for second link - (optional)
+
+  header_as:             Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
+  header_level:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
+
+  // Layout & Alignment
+
+  details_location:     String, [before, overlay, after] - (optional) set content layout
+  details_location_md:   String, [before, overlay, after] (larger screen size) - optional
+  horizontal_align:     String, [left, center, right] - (optional)
+  horizontal_align_md:   String, [left, center, right] - (larger screen size)
+  vertical_align:       String, [top, middle, bottom] set vertical alignment - (default = top) - (optional)
+  vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
+
+{% endcomment %}
+
+{% liquid
+  if header_as == blank
+    assign header_as = 'h6'
+  endif
+
+  if header_level == blank
+    assign header_level = 'h3'
+  endif
+%}
+
+{% capture classes %}
+  ra-content-tile
+  set--details-{{ details_location | default: 'after' }}{% if details_location_md != blank %}-sm{% endif %}
+  {% if details_location_md != blank %}
+    set--details-{{ details_location_md }}-md
+  {% endif %}
+  {% if aspect_ratio != blank %}
+    set--aspect-ratio-{{ aspect_ratio }}
+  {% endif %}
+  {% if link_url != blank and link_text != blank %}
+    ra-content-tile--has-main-link
+  {% endif %}
+{% endcapture %}
+
+{% capture horizontalClasses %}
+set--h-align-{{ horizontal_align | default: 'left' }}{% if horizontal_align_md != blank %}-sm{% endif %}
+  {% if horizontal_align_md != blank %}
+    set--h-align-{{ horizontal_align_md }}-md
+  {% endif %}
+{% endcapture %}
+
+{% capture verticalClasses %}
+set--v-align-{{ vertical_align | default: 'bottom' }}{% if vertical_align_md != blank %}-sm{% endif %}
+  {% if vertical_align_md != blank %}
+    set--v-align-{{ vertical_align_md }}-md
+  {% endif %}
+{% endcapture %}
+
+{% capture imageStyle %}
+  --media-width:{{ width | default: '400'  }}; --media-height: {{ height | default: '480' }}
+{% endcapture %}
+
+<article class="{{ classes }}">
+  <div class="ra-content-tile__media component-media">
+    {% if src != blank %}
+      <div data-testid="image-wrapper" class="ra-image ra-content-tile__image ra-image--use-aspect-ratio" style="{{ imageStyle }}">
+        <img loading="lazy" src="{{ src }}" {% if srcset != blank %}srcset={{ srcset }}{% endif %} width="{{ width | default: '400px' }}" height="{{ height | default: '480px'  }}" alt="{{ alt | default: 'A content tile image' }}" class="ra-image__media">
+      </div>
+    {% endif %}
+  </div>
+  <a href="{{ link_url }}" class="ra-component-anchor-overlay">
+    {% if description != blank %}
+      <div class="sr-only">{{- description -}}</div>
+    {% endif %}
+  </a>
+  <div class="ra-content-tile__details component-details">
+    <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }}">
+      {% if title != blank %}
+        <{{ header_level }} class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-{{ header_as }});">
+          <div>{{ title }}</div>
+        </{{ header_level }}>
+      {% endif %}
+      {% if description != blank %}
+        <div class="ra-content-tile__description">
+          {{ description }}
+        </div>
+      {% endif %}
+      <div class="ra-link-list ra-content-tile__link-list">
+        {% if link_url_1 != blank and link_text_1 != blank %}
+          <a href="{{ link_url_1 }}" class="ra-link-list__cta ra-button" tabindex="-1" label="{{ link_text_1 }}" title="Click Me" aria-label="Click Me, navigate out">
+            {{ link_text_1 }}
+          </a>
+        {% endif %}
+        {% if link_url_2 != blank and link_text_2 != blank %}
+          <a href="{{ link_url_2 }}" class="ra-link-list__cta ra-button ra-button--tertiary" label="{{ link_text_2 }}" title="Click Me" aria-label="Click Me, navigate out">
+            {{ link_text_2 }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

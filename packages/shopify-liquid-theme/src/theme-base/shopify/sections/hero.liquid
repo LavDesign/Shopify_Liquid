@@ -1,3 +1,16 @@
+<style>
+  #shopify-section-{{ section.id }} {
+  }
+
+  {%- for block in section.blocks -%}
+    #block-{{ section.id }}-{{ block.id }} {
+      --background-color: var({{ block.settings.bg_color }});
+      --text-color-mobile: var({{ block.settings.text_color_mobile }});
+      --text-color-desktop: var({{ block.settings.text_color_desktop }});
+    }
+  {%- endfor -%}
+</style>
+
 {% capture arrow_color %}
   var({{section.settings.arrow_color}})
 {% endcapture %}
@@ -6,70 +19,73 @@
   var({{section.settings.pagination_color}})
 {% endcapture %}
 
-<div class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} swiper swiper-{{ section.id }}">
+<div class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} swiper swiper-{{ section.id }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{% endif %}">
   <div class="swiper-wrapper">
     {% for block in section.blocks %}
-      <div class="swiper-slide">
-        <div class="ra-hero__media component-media" style="background-color: var({{ block.settings.bg_color }});">
 
+      {% capture slide_content %}
+        <div class="ra-hero__details component-details--set-order">
+          <div class="ra-hero__copy {{ block.settings.text_alignment }}">
+
+            {% if block.settings.sub-heading != blank %}
+              <div class="ra-hero__subtitle">{{ block.settings.sub-heading }}</div> 
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+              <{{ block.settings.title_style }} class="ra-title ra-hero__title" style="--title-font-size:var(--font-size-{{ block.settings.title_style }});">
+                {{ block.settings.title }}
+              </{{ block.settings.title_style }}>
+            {% endif %}
+
+            {% if block.settings.body != blank %}
+              <div class="ra-hero__description">
+                {{ block.settings.body }}
+              </div>
+            {% endif %}
+          
+            {% if block.settings.button_1_url != blank and block.settings.button_2_url != blank %}
+              <div class="ra-link-list ra-hero__link-list">
+                {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
+                  {% render 'button' 
+                    type: 'a',
+                    style: block.settings.button_1_style,
+                    label: block.settings.button_1_label,
+                    url: block.settings.button_1_url,
+                  %}
+                {% endif %}
+
+                {% if block.settings.button_2_label != blank and block.settings.button_2_url != blank %}
+                  {% render 'button' 
+                    type: 'a',
+                    style: block.settings.button_2_style,
+                    label: block.settings.button_2_label,
+                    url: block.settings.button_2_url,
+                  %}
+                {% endif %}
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      {% endcapture %}
+
+      <div class="swiper-slide" id="block-{{ section.id }}-{{ block.id }}">
+        <div class="ra-hero__media component-media">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
             <img class="ra-image__media ra-image__media--desktop ra-image__media--loaded" loading="lazy" src="{{ block.settings.desktop_bg_image | img_url: '2000x' }}"> 
             <img class="ra-image__media ra-image__media--mobile ra-image__media--loaded" loading="lazy" src="{{ block.settings.mobile_bg_image | img_url: '800x' }}"> 
           {% endif %}
-
-          <div class="ra-hero__details component-details--set-order" style="color: var({{ block.settings.text_color }})">
-            <div class="ra-hero__copy {{ block.settings.text_alignment }}">
-
-              {% if block.settings.sub-heading != blank %}
-                <div class="ra-hero__subtitle">{{ block.settings.sub-heading }}</div> 
-              {% endif %}
-
-              {% if block.settings.title != blank %}
-                <{{ block.settings.title_style }} class="ra-title ra-hero__title" style="--title-font-size:var(--font-size-{{ block.settings.title_style }});">
-                  {{ block.settings.title }}
-                </{{ block.settings.title_style }}>
-              {% endif %}
-
-              {% if block.settings.body != blank %}
-                <div class="ra-hero__description">
-                  {{ block.settings.body }}
-                </div>
-              {% endif %}
-            
-              {% if block.settings.button_1_url != blank and block.settings.button_2_url != blank %}
-                <div class="ra-link-list ra-hero__link-list">
-                  {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
-                    {% render 'button' 
-                      type: 'a',
-                      style: block.settings.button_1_style,
-                      label: block.settings.button_1_label,
-                      url: block.settings.button_1_url,
-                    %}
-                  {% endif %}
-
-                  {% if block.settings.button_2_label != blank and block.settings.button_2_url != blank %}
-                    {% render 'button' 
-                      type: 'a',
-                      style: block.settings.button_2_style,
-                      label: block.settings.button_2_label,
-                      url: block.settings.button_2_url,
-                    %}
-                  {% endif %}
-                </div>
-              {% endif %}
-
-            </div>
-          </div>
+          {{ slide_content }}
         </div>
       </div>
     {% endfor %}
   </div>
   
-  {% if section.settings.show_pagination %}
+  {% if section.settings.show_pagination and section.blocks.size > 1 %}
     <div class="swiper-pagination" style="--pagination-color: {{ pagination_color }};"></div>
   {% endif %}
 
-  {% if section.settings.show_arrows %}
+  {% if section.settings.show_arrows and section.blocks.size > 1 %}
     <div class="swiper-button-prev">
       {% render 'icon', icon: "chevron-left", color: arrow_color %}
     </div>
@@ -107,7 +123,7 @@
 
 {% schema %}
 {
-  "name": "Hero",
+  "name": "Hero - Image",
   "tag": "section",
   "blocks": [
     {
@@ -176,8 +192,15 @@
         },
         {
           "type": "select",
-          "id": "text_color",
-          "label": "Text color",
+          "id": "text_color_desktop",
+          "label": "Text color (desktop)",
+          "options": <%- uikit.colorsAll -%>,
+          "default": "--color-primary-900"
+        },
+        {
+          "type": "select",
+          "id": "text_color_mobile",
+          "label": "Text color (mobile)",
           "options": <%- uikit.colorsAll -%>,
           "default": "--color-primary-900"
         },
@@ -263,6 +286,12 @@
     },
     {
       "type": "checkbox",
+      "id": "stack_mobile",
+      "label": "Stack on mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
       "id": "autoplay",
       "label": "Autoplay",
       "default": true
@@ -339,7 +368,7 @@
   ],
   "presets": [
     {
-      "name": "Hero"
+      "name": "Hero - Image"
     }
   ]
 }

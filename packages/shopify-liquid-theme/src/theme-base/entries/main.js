@@ -6,13 +6,9 @@ import { ucfirst, upcase, unhandleize } from "../vue/filters/string.js";
 import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
 import components from "../vue/components/index.js";
-import RaAccordion from "../js/custom-elements/accordion.js";
+import "../js/custom-elements/custom-elements.js";
+import "../js/custom-elements/ra-dialog.js";
 import "../js/custom-elements/scrollable.js";
-
-//
-// mounts web components (custom elements)
-//
-customElements.define("ra-accordion", RaAccordion);
 
 import "@bva/ui-shared/styles/reset.css";
 import "@bva/ui-shared/styles/required.css";
