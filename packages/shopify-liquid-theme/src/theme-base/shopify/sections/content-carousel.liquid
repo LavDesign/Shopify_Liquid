@@ -48,18 +48,18 @@
 
 {% capture carousel_settings %}
   {
-    "nav_placement": {{ section.settings.carousel_nav_location }},
+    "nav_placement": {{ section.settings.carousel_nav_location | json }},
     "show_navigation": {{ section.settings.show_navigation | json }}
   }
 {% endcapture %}
 
-<section class="ra-carousel-outer" id="content-carousel__{{ section.id }}" style="padding: 16px">
+<section class="ra-carousel-outer p-4">
   <div class="ra-heading ra-carousel__details" style="--heading-margin:var(--spacing-lg); --heading-text-align:left;">
-    <{{ title_level }} class="ra-title ra-heading__title" style="--title-font-size:var(--font-size-{{ title_as }});">
-      {% if section_title != blank %}
-        <div>{{- section_title -}}</div>
-      {% endif %}
-    </{{ title_level }}>
+    {% if section_title != blank %}
+      <{{ title_level }} class="ra-title ra-heading__title" style="--title-font-size:var(--font-size-{{ title_as }});">
+          <div>{{- section_title -}}</div>
+      </{{ title_level }}>
+    {% endif %}
     {% if section_description != blank %}
       <div class="ra-heading__description">
         {{- section_description -}}
@@ -185,7 +185,7 @@
             "label": "Center"
           },
           {
-            "value": "top",
+            "value": "top-right",
             "label": "Top"
           }
         ],

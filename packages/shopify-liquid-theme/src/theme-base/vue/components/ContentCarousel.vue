@@ -1,6 +1,6 @@
 <template>
   <div ref="carousel">
-    <div class="ra-carousel__nav" :class="navClasses">
+    <div class="ra-carousel__nav" :class="`ra-carousel__nav--${options.nav_placement}`">
       <button
         class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm ra-icon-button--rounded ra-carousel__nav-cta ra-carousel__nav-cta--prev"
         aria-label="Go to previous slide"
@@ -63,13 +63,6 @@ const navigation = {
   nextEl: ".ra-carousel__nav-cta--next",
   prevEl: ".ra-carousel__nav-cta--prev",
 };
-
-const navClasses = computed(() => {
-  if (props.options.nav_position == "auto") {
-    return "ra-carousel__nav--auto";
-  }
-  return "ra-carousel__nav--top-right";
-});
 
 onMounted(() => {
   const swiperWrapper = carousel.value.querySelector(".swiper-wrapper");
