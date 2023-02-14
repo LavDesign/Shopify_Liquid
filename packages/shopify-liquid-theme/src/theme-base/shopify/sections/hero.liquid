@@ -1,5 +1,6 @@
 <style>
   #shopify-section-{{ section.id }} {
+    --pagination-color: var({{section.settings.pagination_color}});
   }
 
   {%- for block in section.blocks -%}
@@ -13,10 +14,6 @@
 
 {% capture arrow_color %}
   var({{section.settings.arrow_color}})
-{% endcapture %}
-
-{% capture pagination_color %}
-  var({{section.settings.pagination_color}})
 {% endcapture %}
 
 <div class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} swiper swiper-{{ section.id }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{% endif %}">
@@ -82,7 +79,7 @@
   </div>
   
   {% if section.settings.show_pagination and section.blocks.size > 1 %}
-    <div class="swiper-pagination" style="--pagination-color: {{ pagination_color }};"></div>
+    <div class="swiper-pagination"></div>
   {% endif %}
 
   {% if section.settings.show_arrows and section.blocks.size > 1 %}
