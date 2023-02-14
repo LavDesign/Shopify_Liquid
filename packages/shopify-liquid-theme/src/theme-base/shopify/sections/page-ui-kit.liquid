@@ -1044,6 +1044,83 @@
         verticalAlign: 'bottom'
       %}
     </div>
+
+    {%- comment -%}
+    Notification
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Notification</h4>
+    {%- render 'notification',
+      icon: 'account',
+      title: 'Account Notification',
+      message: 'My account notification.',
+      class: 'ra-notification__icon'
+    -%}
+
+    {%- comment -%}
+      Modal
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
+    {% capture content %}
+      <form action="">
+        <div class="flex flex-col">
+          {%- render 'input' type: 'text', size: 'md', placeholder: 'first name', label: 'first name', class: 'mb-3' -%}
+          {%- render 'input' type: 'text', size: 'md', placeholder: 'last name', label: 'last name', class: 'mb-3' -%}
+          {%- render 'button' type: 'button', style: 'primary', size: 'sm', label: 'Send' -%}
+        </div>
+      </form>
+    {% endcapture %}
+    {% render 'modal' id: 'modal-1', title: 'Modal Title', content: content %}
+    {% render 'button' type: 'button', style: 'primary', label: 'open modal', id: 'modal-1' %}
+
+    {%- comment -%}
+      Content Tile
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Content TIle</h4>
+    <div class="br-grid grid--col-2 mt-8 mb-5">
+      {% render 'content-tile'
+        src: img_src,
+        alt: img_alt,
+        title: 'This is a title',
+        description: "I'm not thinking about anything when I'm climbing."
+        link_url_1: link_url
+        link_text_1: "Default"
+        link_url_2: link_url
+        link_text_2: "Secondary"
+        width: 400
+        height: 300
+      %}
+
+      {% render 'content-tile'
+        src: img_src,
+        alt: img_alt,
+        title: 'This is a title',
+        description: "I'm not thinking about anything when I'm climbing."
+        link_url_1: link_url
+        link_text_1: "Default"
+        link_url_2: link_url
+        link_text_2: "Secondary"
+        horizontal_align: "center"
+      %}
+    </div>
+    {%- comment -%}
+      Modal
+    {%- endcomment -%}
+    <h4 class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
+    {% capture content %}
+      <form action="">
+        <div class="flex flex-col">
+          {%- render 'input' type: 'text', size: 'md', placeholder: 'first name', label: 'first name', class: 'mb-3' -%}
+          {%- render 'input' type: 'text', size: 'md', placeholder: 'last name', label: 'last name', class: 'mb-3' -%}
+          {%- render 'button' type: 'button', style: 'primary', size: 'sm', label: 'Send' -%}
+        </div>
+      </form>
+    {% endcapture %}
+    {% render 'modal' id: 'modal-1', title: 'Modal Title', content: content %}
+    {% render 'button' type: 'button', style: 'primary', label: 'open modal', id: 'modal-1' %}
+  </div>
+
+  {%- comment -%}
+=======
   </div>
 
   {%- comment -%}
@@ -1113,6 +1190,7 @@
   </div>
 
   {%- comment -%}
+>>>>>>> 0abcead90032f7cf3e33bdf079f93295bcc7e7b9
   Notification
   {%- endcomment -%}
   <h4 class="text-h4 mt-10 mb-5">Notification</h4>
@@ -1156,7 +1234,7 @@
   </div>
   {% endcapture %}
 
-  {% render 'tabs' 
+  {% render 'tabs'
     tabs: tabs,
     layout: 'default',
     center: false,

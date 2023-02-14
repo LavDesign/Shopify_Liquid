@@ -16,8 +16,8 @@ Example default review star ratings using Yotpo:
   {% assign platform = settings.review_platform %}
 {% endif %}
 
-{% case platform %}
 <div class="product-star-rating">
+  {% case platform %}
   {% when 'yotpo' %}
     <div class="yotpo bottomLine" data-product-id="{{ product.id }}"></div>
   {% when 'stamped' %}

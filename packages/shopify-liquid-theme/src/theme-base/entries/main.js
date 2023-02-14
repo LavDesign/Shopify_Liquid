@@ -9,6 +9,7 @@ import components from "../vue/components/index.js";
 import "../js/custom-elements/custom-elements.js";
 import "../js/custom-elements/ra-dialog.js";
 import "../js/custom-elements/scrollable.js";
+import "../js/custom-elements/dialog.js";
 
 import "@bva/ui-shared/styles/reset.css";
 import "@bva/ui-shared/styles/required.css";
