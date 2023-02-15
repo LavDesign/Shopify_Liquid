@@ -1,5 +1,5 @@
-import RaAccordion from "./accordion.js";
-import RaNotification from "./notification.js";
+import RaAccordion from "./ra-accordion.js";
+import RaNotification from "./ra-notification.js";
 import RaTabs from "./ra-tabs.js";
 
 customElements.define("ra-tabs", RaTabs);
