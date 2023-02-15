@@ -1,4 +1,4 @@
-<div class="ra-product-main" data-vue-root="ProductMain">
+<div class="ra-product-main mt-4" data-vue-root="ProductMain">
   <product-main :product="{{ product_data | escape | strip }}">
     <template #review-stars>
       {% render 'review-stars', platform: settings.review_platform, product: product %}

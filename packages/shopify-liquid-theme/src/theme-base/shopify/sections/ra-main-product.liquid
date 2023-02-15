@@ -11,7 +11,6 @@
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-rte.css' | asset_url | stylesheet_tag }}
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
-  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
 
@@ -71,6 +70,8 @@
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
         {% render 'ra-product-main', product_data: product_data %}
+        <div class="product__blocks">
+
 
         {%- for block in section.blocks -%}
           {%- case block.type -%}
@@ -80,49 +81,6 @@
               <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
               {{- block.settings.text -}}
               </p>
-            {%- when 'title' -%}
-              <div class="product__title" {{ block.shopify_attributes }}>
-                <h1 class="h4">{{ product.title | escape }}</h1>
-                <a href="{{ product.url }}" class="product__title">
-                  <h2 class="h1">
-                    {{ product.title | escape }}
-                  </h2>
-                </a>
-              </div>
-            {%- when 'price' -%}
-              <div
-                class="no-js-hidden"
-                id="price-{{ section.id }}"
-                role="status"
-                {{ block.shopify_attributes }}>
-                {%- render 'price'
-                  , product: product,
-                  use_variant: true,
-                  show_badges: true,
-                  price_class: 'price--large' -%}
-
-                {% render 'bl-price', product: product %}
-              </div>
-              {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-                <div class="product__tax caption rte">
-                  {%- if shop.taxes_included -%}
-                    {{ 'products.product.include_taxes' | t }}
-                  {%- endif -%}
-                  {%- if shop.shipping_policy.body != blank -%}
-                    {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
-              <div {{ block.shopify_attributes }}>
-                {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                  <input
-                    type="hidden"
-                    name="id"
-                    value="{{ product.selected_or_first_available_variant.id }}">
-                  {{ form | payment_terms }}
-                {%- endform -%}
-              </div>
             {%- when 'inventory' -%}
               <p
                 class="product__inventory no-js-hidden{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -256,41 +214,6 @@
                   </div>
                 </details>
               </div>
-            {%- when 'quantity_selector' -%}
-              <div class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}" {{ block.shopify_attributes }}>
-                <label class="form__label" for="Quantity-{{ section.id }}">
-                  {{ 'products.product.quantity.label' | t }}
-                </label>
-
-                <quantity-input class="quantity">
-                  <button
-                    class="quantity__button no-js-hidden"
-                    name="minus"
-                    type="button">
-                    <span class="visually-hidden">
-                      {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                    </span>
-                    {% render 'icon-minus' %}
-                  </button>
-                  <input
-                    class="quantity__input"
-                    type="number"
-                    name="quantity"
-                    id="Quantity-{{ section.id }}"
-                    min="1"
-                    value="1"
-                    form="{{ product_form_id }}">
-                  <button
-                    class="quantity__button no-js-hidden"
-                    name="plus"
-                    type="button">
-                    <span class="visually-hidden">
-                      {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                    </span>
-                    {% render 'icon-plus' %}
-                  </button>
-                </quantity-input>
-              </div>
             {%- when 'popup' -%}
               <modal-opener
                 class="product-popup-modal__opener no-js-hidden quick-add-hidden"
@@ -312,14 +235,6 @@
             {% render 'share-button'
              , block: block,
              share_link: share_url %}
-            {%- when 'product_main' -%}
-              {% render 'ra-product-main', block: block, product: product_data %}
-            {%- when 'variant_picker' -%}
-              {% render 'product-variant-picker', block: block, product: product %}
-            {%- when 'buy_buttons' -%}
-              {%- render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, show_pickup_availability: true -%}
-            {%- when 'rating' -%}
-              {% render 'review-stars', platform: settings.review_platform, product: product %}
             {%- when 'complementary' -%}
               <product-recommendations class="complementary-products quick-add-hidden no-js-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary">
                 {%- if recommendations.performed and recommendations.products_count > 0 -%}
@@ -445,6 +360,7 @@
               {% render 'icon-with-text', block: block %}
           {%- endcase -%}
         {%- endfor -%}
+        </div>
         <a href="{{ product.url }}" class="link product__view-details animate-arrow">
           {{ 'products.product.view_full_details' | t }}
           {% render 'icon-arrow' %}
@@ -619,16 +535,6 @@
             "label": "t:sections.main-product.blocks.text.settings.text_style.label"
           }
         ]
-      },
-      {
-        "type": "title",
-        "name": "t:sections.main-product.blocks.title.name",
-        "limit": 1
-      },
-      {
-        "type": "price",
-        "name": "t:sections.main-product.blocks.price.name",
-        "limit": 1
       }, {
         "type": "sku",
         "name": "t:sections.main-product.blocks.sku.name",
@@ -689,50 +595,6 @@
             "id": "show_inventory_quantity",
             "label": "t:sections.main-product.blocks.inventory.settings.show_inventory_quantity.label",
             "default": true
-          }
-        ]
-      }, {
-        "type": "quantity_selector",
-        "name": "t:sections.main-product.blocks.quantity_selector.name",
-        "limit": 1
-      }, {
-        "type": "product_main",
-        "name": "Product Main",
-        "limit": 1,
-        "settings": [
-        ]
-      }, {
-        "type": "variant_picker",
-        "name": "t:sections.main-product.blocks.variant_picker.name",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "select",
-            "id": "picker_type",
-            "options": [
-              {
-                "value": "dropdown",
-                "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__1.label"
-              }, {
-                "value": "button",
-                "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.options__2.label"
-              }
-            ],
-            "default": "button",
-            "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
-          }
-        ]
-      }, {
-        "type": "buy_buttons",
-        "name": "t:sections.main-product.blocks.buy_buttons.name",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "checkbox",
-            "id": "show_dynamic_checkout",
-            "default": true,
-            "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
-            "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
           }
         ]
       }, {
@@ -944,20 +806,6 @@
             "id": "page",
             "type": "page",
             "label": "t:sections.main-product.blocks.popup.settings.page.label"
-          }
-        ]
-      }, {
-        "type": "rating",
-        "name": "t:sections.main-product.blocks.rating.name",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "header",
-            "content": "Review Star Ratings"
-          },
-          {
-            "type": "paragraph",
-            "content": "Settings for this block can be configured in Theme Settings > Product Reviews"
           }
         ]
       }, {

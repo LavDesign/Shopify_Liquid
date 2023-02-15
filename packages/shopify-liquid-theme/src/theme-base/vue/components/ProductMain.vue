@@ -13,7 +13,9 @@
       <template v-else>{{ $filters.money(currentVariant.price) }}</template>
     </div>
   </div>
-  <slot name="review-stars"></slot>
+  <div v-if="$slots['review-stars']" class="mb-3">
+    <slot name="review-stars"></slot>
+  </div>
   <ProductForm v-bind="{ product }" />
 </template>
 
