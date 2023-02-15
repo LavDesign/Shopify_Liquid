@@ -1,24 +1,10 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "ra-main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "product_main": {
-          "type": "product_main",
-          "settings": {
-          }
-        }
       },
       "block_order": [
-        "vendor",
-        "product_main"
       ],
       "settings": {
         "enable_sticky_info": true,
