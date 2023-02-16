@@ -394,10 +394,6 @@ a.product__text {
   .product__info-container .price--on-sale .price-item--regular {
     font-size: 1.6rem;
   }
-
-  .product__info-container > *:first-child {
-    margin-top: 0;
-  }
 }
 
 .product__description-title {
