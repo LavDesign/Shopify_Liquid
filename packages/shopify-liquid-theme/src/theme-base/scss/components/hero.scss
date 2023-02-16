@@ -3,21 +3,21 @@
 
   .ra-image__media--desktop {
     display: block;
-    @breakpoint sm {
+    @breakpoint sm-max {
       display: none;
     }
   }
 
   .ra-image__media--mobile {
     display: none;
-    @breakpoint sm {
+    @breakpoint sm-max {
       display: block;
     }
   }
 
   .ra-hero__details {
     color: var(--text-color-desktop);
-    @breakpoint sm {
+    @breakpoint sm-max {
       color: var(--text-color-mobile);
     }
   }
@@ -25,7 +25,7 @@
 
 // Stack on mobile
 .ra-hero.ra-hero--stack-mobile {
-  @breakpoint sm {
+  @breakpoint sm-max {
     .ra-hero__media {
       display: flex;
       flex-direction: column;
