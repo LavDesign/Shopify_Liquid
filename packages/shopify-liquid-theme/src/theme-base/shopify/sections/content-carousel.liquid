@@ -68,16 +68,63 @@
   </div>
   <!-- Carousel -->
   <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
-    <div data-vue-root="ContentCarousel">
-      <content-carousel
-      :options="{{ carousel_settings | escape | strip_newlines }}">
+    <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
+      {% render 'icon-button'
+        type: 'button',
+        style: 'tertiary',
+        url: '#',
+        size: 'sm',
+        rounded: true,
+        label: 'Go to previous slide',
+        icon: 'left-arrow',
+        class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev'
+      %}
+      {% render 'icon-button'
+        type: 'button',
+        style: 'tertiary',
+        url: '#',
+        size: 'sm',
+        rounded: true,
+        label: 'Go to next slide',
+        icon: 'right-arrow',
+        class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next'
+      %}
+    </div>
+    <!-- Swiper -->
+    <div class="swiper swiper--{{ section.id }}">
+      <div class="swiper-wrapper">
         {{ slides }}
-      </content-carousel>
+      </div>
     </div>
   </div>
 </section>
 
-<script></script>
+{% if section.blocks.size > 1 %}
+  <script>
+    const swiper = new Swiper('.swiper--{{ section.id }}', {
+      slidesPerView: 2,
+      spaceBetween: 16,
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 15,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 16,
+        },
+        1280: {
+          slidesPerView: 4,
+          spaceBetween: 24,
+        },
+      },
+      navigation: {
+        nextEl: '.ra-carousel__nav-cta--next',
+        prevEl: '.ra-carousel__nav-cta--prev',
+      },
+    })
+  </script>
+{% endif %}
 
 {% schema %}
   {
