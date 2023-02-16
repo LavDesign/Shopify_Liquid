@@ -139,12 +139,6 @@
       END - Palomino
     {%- endcomment -%}
 
-    {%- comment -%}
-      swiper
-    {%- endcomment -%}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
     {{ content_for_header }}
   </head>
 
@@ -170,6 +164,6 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {{ 'main.js'  | asset_url | script_tag }}
+    <script src="{{ 'main.js' | asset_url }}"></script>
   </body>
 </html>

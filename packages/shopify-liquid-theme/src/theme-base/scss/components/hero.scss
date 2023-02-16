@@ -2,38 +2,35 @@
   overflow: hidden;
 
   .ra-image__media--desktop {
-    display: none;
-    @media (min-width: 768px) {
-      display: block;
-    }
-  }
-
-  .ra-image__media--mobile {
     display: block;
-    @media (min-width: 768px) {
+    @breakpoint sm {
       display: none;
     }
   }
 
-  .ra-hero__details {
-    color: var(--text-color-mobile);
+  .ra-image__media--mobile {
+    display: none;
+    @breakpoint sm {
+      display: block;
+    }
+  }
 
-    @media (min-width: 768px) {
-      color: var(--text-color-desktop);
+  .ra-hero__details {
+    color: var(--text-color-desktop);
+    @breakpoint sm {
+      color: var(--text-color-mobile);
     }
   }
 }
 
 // Stack on mobile
 .ra-hero.ra-hero--stack-mobile {
-  @media (max-width: 768px) {
+  @breakpoint sm {
     .ra-hero__media {
-      position: static;
       display: flex;
       flex-direction: column;
+      position: static;
     }
-
-    // .ra-hero__media,
     .ra-hero__details {
       background-color: var(--background-color);
       aspect-ratio: 0 !important;
