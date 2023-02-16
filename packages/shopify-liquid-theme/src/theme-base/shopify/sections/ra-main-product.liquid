@@ -59,6 +59,11 @@
                 {% render block %}
               {%- when 'accordion_item' -%}
                 {% render 'accordion-item', title: block.settings.title, content: block.settings.content, show_icon: true %}
+              {%- when 'special_messaging' -%}
+                <div class="flex justify-center gap-1 items-center">
+                  <div>{% render 'icon' with block.settings.icon %}</div>
+                  <div>{{ block.settings.content }}</div>
+                </div>
             {%- endcase -%}
           {%- endfor -%}
         </div>
@@ -194,6 +199,24 @@
             "id": "content",
             "default": "<p>Accordion Content</p>",
             "label": "Accordion Content"
+          }
+        ]
+      },
+      {
+        "type": "special_messaging",
+        "name": "Special Messaging",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "content",
+            "default": "<p>Special messaging.</p>",
+            "label": "Content"
+          },
+          {
+            "type": "select",
+            "id": "icon",
+            "label": "Icon",
+            "options": <%- uikit.icons -%>
           }
         ]
       }
