@@ -68,28 +68,28 @@
   </div>
   <!-- Carousel -->
   <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
-    <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
-      {% render 'icon-button'
-        type: 'button',
-        style: 'tertiary',
-        url: '#',
-        size: 'sm',
-        rounded: true,
-        label: 'Go to previous slide',
-        icon: 'left-arrow',
-        class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev'
-      %}
-      {% render 'icon-button'
-        type: 'button',
-        style: 'tertiary',
-        url: '#',
-        size: 'sm',
-        rounded: true,
-        label: 'Go to next slide',
-        icon: 'right-arrow',
-        class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next'
-      %}
-    </div>
+    {% if section.settings.show_navigation %}
+      <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
+        {% render 'icon-button'
+          type: 'button',
+          style: 'tertiary',
+          size: 'sm',
+          rounded: true,
+          label: 'Go to previous slide',
+          icon: 'left-arrow',
+          class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev'
+        %}
+        {% render 'icon-button'
+          type: 'button',
+          style: 'tertiary',
+          size: 'sm',
+          rounded: true,
+          label: 'Go to next slide',
+          icon: 'right-arrow',
+          class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next'
+        %}
+      </div>
+    {% endif %}
     <!-- Swiper -->
     <div class="swiper swiper--{{ section.id }}">
       <div class="swiper-wrapper">
