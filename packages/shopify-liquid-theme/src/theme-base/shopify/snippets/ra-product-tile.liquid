@@ -73,24 +73,7 @@ Example product-tile snippet:
       {{ product.title }}
     </a>
     <!-- Product Price -->
-    <div class="ra-product-tile__price ra-price">
-      {% assign selected = product.selected_or_first_available_variant %}
-
-      {% if product.price_varies and show_range %}
-        <span class="ra-price__regular">{{ product.price_min | money }}</span>
-        <span class="px-1">&nbsp;&#8212;&nbsp;</span>
-        <span class="ra-price__regular">{{ product.price_max | money }}</span>
-      {% elsif selected.compare_at_price and selected.compare_at_price > selected.price %}
-        <ins class="ra-price__special ra-price__regular">
-          {{ selected.price | money }}
-        </ins>
-        <del class="ra-price__old">
-          {{ selected.compare_at_price | money }}
-        </del>
-      {% else %}
-        <span class="ra-price__regular">{{ selected.price | money }}</span>
-      {% endif %}
-    </div>
+    {% render 'ra-price' product: product, class: 'ra-product-tile__price' %}
     <!-- Rating -->
     <div raw link class="ra-product-tile__rating ra-rating">
       {% render 'review-stars' %}
