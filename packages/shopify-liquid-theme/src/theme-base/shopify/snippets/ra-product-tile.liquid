@@ -1,0 +1,99 @@
+{% comment %}
+
+Props:
+  product:     Object - Shopify product Obj -  (required)
+  class:       String add custom CSS class - (optional)
+  pre_title:   String, extra text before product title - (optional)
+  atc_button:  Boolean, toggle ATC button - (optional) [default=true]
+  atc_label:   String, add custom ATC button text - (optional)
+  atc_style:   String, [primary, secondary, tertiary] - optional
+  badge_text:  String, Add custom badge text
+  badge_style: String, [primary, secondary, warning, danger, info, success] - (required if badge text)
+  wishlist:    Boolean, toggle add wishlist button on hover - (optional) [default=false]
+
+  hover_img: String, define hover image that will be used
+  hover_img_alt: String, define alt text for hover image
+
+
+Example product-tile snippet:
+  {% render 'ra-product-tile' product: product %}
+{% endcomment %}
+
+<div class="ra-product-tile ra-product-tile--default">
+  <div class="ra-product-tile__media">
+    {% if product.featured_image %}
+      <a href="{{ product.url }}" class="ra-product-tile__media-link">
+        <!-- ra-iamge -->
+        <div class="ra-image ra-image--use-aspect-ratio ra-product-tile__image" style="--media-width:1; --media-height:1.2;">
+          <img loading="lazy" src="{{ product.featured_image.src | img_url: 'master' }}" srcset="" sizes="" width="1" height="1.2" alt="{{ product.featured_image.alt }}" class="ra-image__media">
+        </div>
+        <!-- ra hover-image -->
+        {% if hover_img != blank %}
+          <div class="ra-image ra-image--use-aspect-ratio ra-product-tile__image" style="--media-width:1; --media-height:1.2;">
+            <img loading="lazy" src="{{ hover_img | img_url: 'master' }}" srcset="" sizes="" width="1" height="1.2" alt="{{ hover_img_alt | default: product.title  }}" class="ra-image__media">
+        </div>
+        {% endif %}
+      </a>
+    {% endif %}
+    {% if badge_text and badge_style != blank %}
+      <div class="ra-product-tile__badge ra-badge ra-badge--standard ra-badge--has-text ra-badge--{{ badge_style }}">
+        {{ badge_text }}
+      </div>
+    {% endif %}
+    {% if wishlist %}
+      {% render 'icon-button'
+        type: 'button',
+        style: 'tertiary',
+        size: 'sm',
+        label: 'Add {{ product.title }} to wishlist',
+        rounded: true,
+        class: 'ra-product-tile__wishlist',
+        icon: 'heart'
+      %}
+    {% endif %}
+    {% unless atc_button == false %}
+      <div>
+        <button type="button" aria-label="Add to Cart {{ product.title }}" class="ra-product-tile__atc ra-button ra-button--{{ atc_style | default: 'tertiary'  }} ra-button--sm">
+          {% if atc_label != blank %}
+            {{ atc_label }}
+          {% else %}
+            Add To Cart
+          {% endif %}
+        </button>
+      </div>
+    {% endunless %}
+  </div>
+  <div class="ra-product-tile__details">
+    {% if pre_title != blank %}
+      <p class="ra-product-tile__attribute">
+        {{- pre_title -}}
+      </p>
+    {% endif %}
+    <a href="{{ product.url }}" class="ra-product-tile__name">
+      {{ product.title }}
+    </a>
+    <!-- Product Price -->
+    <div class="ra-product-tile__price ra-price">
+      {% assign selected = product.selected_or_first_available_variant %}
+
+      {% if product.price_varies and show_range %}
+        <span class="ra-price__regular">{{ product.price_min | money }}</span>
+        <span class="px-1">&nbsp;&#8212;&nbsp;</span>
+        <span class="ra-price__regular">{{ product.price_max | money }}</span>
+      {% elsif selected.compare_at_price and selected.compare_at_price > selected.price %}
+        <ins class="ra-price__special ra-price__regular">
+          {{ selected.price | money }}
+        </ins>
+        <del class="ra-price__old">
+          {{ selected.compare_at_price | money }}
+        </del>
+      {% else %}
+        <span class="ra-price__regular">{{ selected.price | money }}</span>
+      {% endif %}
+    </div>
+    <!-- Rating -->
+    <div raw link class="ra-product-tile__rating ra-rating">
+      {% render 'review-stars' %}
+    </div>
+  </div>
+</div>

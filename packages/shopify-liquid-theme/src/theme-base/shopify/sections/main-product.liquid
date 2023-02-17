@@ -102,7 +102,7 @@
                   show_badges: true,
                   price_class: 'price--large' -%}
 
-                {% render 'bl-price', product: product %}
+                {% render 'ra-price', product: product %}
               </div>
               {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
                 <div class="product__tax caption rte">
@@ -458,6 +458,27 @@
         {% render 'product-media-gallery', variant_images: variant_images, is_duplicate: true %}
       </div>
     {%- endif -%}
+
+    <!-- Product Tile Test -->
+    <div class="my-8 mr-8" style="max-width: 22.875rem;">
+      {% render 'ra-product-tile'
+        product: product,
+        wishlist: true,
+        pre_title: 'Some Attribute',
+        badge_text: '50% off',
+        badge_style: 'danger'
+      %}
+    </div>
+    <div class="my-8" style="max-width: 22.875rem;">
+      {% render 'ra-product-tile'
+        product: product,
+        hover_img: product.images[1].src,
+        hover_img_alt: product.images[1].alt,
+        pre_title: 'Hover',
+        badge_text: '50% off',
+        badge_style: 'danger'
+      %}
+    </div>
   </div>
 
   {% render 'product-media-modal' variant_images: variant_images %}
