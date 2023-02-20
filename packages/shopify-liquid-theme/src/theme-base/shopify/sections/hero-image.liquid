@@ -44,8 +44,8 @@
       <div class="swiper-slide" id="block-{{ section.id }}-{{ block.id }}">
         <div class="ra-hero__media component-media">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
-            <img class="ra-image__media ra-image__media--desktop ra-image__media--loaded" loading="lazy" src="{{ block.settings.desktop_bg_image | img_url: '2000x' }}"> 
-            <img class="ra-image__media ra-image__media--mobile ra-image__media--loaded" loading="lazy" src="{{ block.settings.mobile_bg_image | img_url: '800x' }}"> 
+            <img class="ra-image__media ra-image__media--desktop ra-image__media--loaded" loading="lazy" src="{{ block.settings.desktop_bg_image | img_url: '2000x' }}" alt="{{ block.settings.desktop_bg_image.alt }}"> 
+            <img class="ra-image__media ra-image__media--mobile ra-image__media--loaded" loading="lazy" src="{{ block.settings.mobile_bg_image | img_url: '800x' }}" alt="{{ block.settings.mobile_bg_image.alt }}"> 
           {% endif %}
 
           <div class="ra-hero__details component-details--set-order">
@@ -251,7 +251,7 @@
         },
         {
           "value": "main",
-          "label": "Main"
+          "label": "Standard"
         },
         {
           "value": "tall",
