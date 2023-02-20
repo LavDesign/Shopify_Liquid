@@ -67,7 +67,7 @@
                 </div>
               {% endif %}
             
-              {% if block.settings.button_1_url != blank and block.settings.button_2_url != blank %}
+              {% if block.settings.button_1_url != blank or block.settings.button_2_url != blank %}
                 <div class="ra-link-list ra-hero__link-list">
                   {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
                     {% render 'button' 
