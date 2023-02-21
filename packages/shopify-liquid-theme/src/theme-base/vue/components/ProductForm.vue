@@ -29,8 +29,7 @@
       v-bind="{ buttonLabel, qty }"
       @input="(value) => (qty = value)"
       @click="addToCart"
-      :disabled="!currentVariant.available"
-      :buttonProps="{ disabled: true }"
+      :buttonProps="{ disabled: !currentVariant.available }"
     />
   </div>
 </template>
@@ -69,7 +68,7 @@ const selectedOptions = reactive({});
 
 // Note: Insertion order should be preserved here as of ES2015 (assuming string keys),
 // but there could be edge cases where options might not be properly ordered if using an int as a key
-props.product.options.forEach((option, i) => {
+props.product?.options?.forEach((option, i) => {
   selectedOptions[option] = props.product.first_available_variant.options[i];
 });
 

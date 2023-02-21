@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@bva/ui-shared": "^1.4.4",
-    "@bva/ui-vue": "^1.4.5",
+    "@bva/ui-vue": "^1.4.6",
     "axios": "^1.3.2",
     "install": "^0.13.0",
     "pinia": "^2.0.23",
