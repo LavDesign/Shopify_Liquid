@@ -26,7 +26,7 @@ Example product-tile snippet:
   <div class="ra-product-tile__media">
     {% if product.featured_image %}
       <a href="{{ product.url }}" class="ra-product-tile__media-link">
-        <!-- ra-iamge -->
+        <!-- ra-image -->
         <div class="ra-image ra-image--use-aspect-ratio ra-product-tile__image" style="--media-width:1; --media-height:1.2;">
           <img loading="lazy" src="{{ product.featured_image.src | img_url: '450x' }}" srcset="" sizes="" width="1" height="1.2" alt="{{ product.featured_image.alt }}" class="ra-image__media">
         </div>
@@ -60,7 +60,7 @@ Example product-tile snippet:
           {% if atc_label != blank %}
             {{ atc_label }}
           {% else %}
-            Add To Cart
+            {{ 'products.product.add_to_cart' | t | capitalize }}
           {% endif %}
         </button>
       </div>

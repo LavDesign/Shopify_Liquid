@@ -458,32 +458,6 @@
         {% render 'product-media-gallery', variant_images: variant_images, is_duplicate: true %}
       </div>
     {%- endif -%}
-
-    <!-- Product Tile Test -->
-    <div class="my-8 mr-8" style="width: 20rem;">
-      {% render 'ra-product-tile'
-        product: product,
-        wishlist: true,
-        wishlist_style: 'danger',
-        pre_title: 'Some Attribute',
-        badge_text: '50% off',
-        badge_style: 'danger'
-      %}
-    </div>
-    <div class="my-8" style="width: 20rem;">
-      {% render 'ra-product-tile'
-        product: product,
-        hover_img: product.images[1].src,
-        hover_img_alt: product.images[1].alt,
-        pre_title: 'Hover',
-        badge_text: 'On Sale',
-        badge_style: 'success'
-        atc_label: 'Buy Now',
-        atc_style: 'secondary',
-        wishlist: true,
-        wishlist_style: 'tertiary'
-      %}
-    </div>
   </div>
 
   {% render 'product-media-modal' variant_images: variant_images %}
