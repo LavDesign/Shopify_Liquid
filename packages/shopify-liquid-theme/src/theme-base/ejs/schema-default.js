@@ -151,6 +151,43 @@ const icons = [
   { label: "Search", value: "search" },
 ];
 
+/*
+  Button - Styles
+*/
+
+const buttonStyles = [
+  { label: "Primary", value: "primary" },
+  { label: "Secondary", value: "secondary" },
+  { label: "Tertiary", value: "tertiary" },
+];
+
+/*
+  Heading - Styles
+*/
+const headingStyles = [
+  { label: "H1", value: "h1" },
+  { label: "H2", value: "h2" },
+  { label: "H3", value: "h3" },
+  { label: "H4", value: "h4" },
+  { label: "H5", value: "h5" },
+  { label: "H6", value: "h6" },
+];
+
+/*
+  Text - Alignments
+*/
+const textAligments = [
+  { label: "Top Right", value: "set--v-align-top set--h-align-right" },
+  { label: "Top Center", value: "set--v-align-top set--h-align-center" },
+  { label: "Top Left", value: "set--v-align-top set--h-align-left" },
+  { label: "Middle Right", value: "set--v-align-middle set--h-align-right" },
+  { label: "Middle Center", value: "set--v-align-middle set--h-align-center" },
+  { label: "Middle Left", value: "set--v-align-middle set--h-align-left" },
+  { label: "Bottom Right", value: "set--v-align-bottom set--h-align-right" },
+  { label: "Bottom Center", value: "set--v-align-bottom set--h-align-center" },
+  { label: "Bottom Left", value: "set--v-align-bottom set--h-align-left" },
+];
+
 module.exports = {
   uikit: {
     colorsPrimary,
@@ -161,5 +198,8 @@ module.exports = {
     colorsAll: JSON.stringify(colorsAll),
     fonts: JSON.stringify(fonts),
     icons: JSON.stringify(icons),
+    buttonStyles: JSON.stringify(buttonStyles),
+    headingStyles: JSON.stringify(headingStyles),
+    textAligments: JSON.stringify(textAligments),
   },
 };
