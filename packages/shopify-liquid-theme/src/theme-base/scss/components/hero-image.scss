@@ -1,0 +1,41 @@
+.ra-hero {
+  overflow: hidden;
+
+  .ra-image__media--desktop {
+    display: block;
+    @breakpoint md-max {
+      display: none;
+    }
+  }
+
+  .ra-image__media--mobile {
+    display: none;
+    @breakpoint md-max {
+      display: block;
+    }
+  }
+
+  .ra-hero__details {
+    color: var(--text-color-desktop);
+    @breakpoint md-max {
+      color: var(--text-color-mobile);
+    }
+  }
+}
+
+// Stack on mobile
+.ra-hero.ra-hero--stack-mobile {
+  @breakpoint md-max {
+    .ra-hero__media {
+      display: flex;
+      flex-direction: column;
+      position: static;
+    }
+    .ra-hero__details {
+      background-color: var(--background-color);
+      aspect-ratio: 0 !important;
+      position: static;
+      height: auto;
+    }
+  }
+}
