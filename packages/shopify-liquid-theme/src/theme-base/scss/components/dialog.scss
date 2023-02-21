@@ -7,12 +7,19 @@ dialog {
   left: 50%;
   top: 50%;
   overflow: auto;
+
+
 }
 dialog::backdrop {}
 dialog[open] {
   transform: translate(-50%, -50%);
   animation-name: bottom-to-center;
   animation-duration: 1s;
+
+  @breakpoint md-max {
+    width: 90%;
+    --modal-width: 100%;
+  }
 }
 @keyframes bottom-to-center {
   from {

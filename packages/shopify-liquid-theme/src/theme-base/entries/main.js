@@ -5,6 +5,9 @@ import { getSizedImageFromUrl } from "../vue/filters/image.js";
 import { ucfirst, upcase, unhandleize } from "../vue/filters/string.js";
 import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
+
 import components from "../vue/components/index.js";
 import "../js/custom-elements/custom-elements.js";
 import "../js/custom-elements/ra-dialog.js";
@@ -39,6 +42,20 @@ const renderVueApps = () => {
   });
 };
 
+const initSwipers = () => {
+  const swipers = document.querySelectorAll(".swiper");
+  if (!swipers) return;
+
+  swipers.forEach((swiperEle) => {
+    const swiperData = swiperEle.getAttribute("data-swiper-settings");
+    if (!swiperData) return;
+
+    const swiperDataJSON = JSON.parse(swiperData);
+    new Swiper(swiperEle, swiperDataJSON);
+  });
+};
+
 window.addEventListener("load", () => {
   renderVueApps();
+  initSwipers();
 });
