@@ -1,0 +1,194 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    --background-color: var({{ section.settings.bg_color }});
+  }
+</style>
+
+<header class="header max-width--large border">
+
+  <div class="ra-header__main">
+
+    <a href="/" class="ra-header__logo">
+      <div class="ra-image">
+        <img loading="lazy" src="/assets/logo.png" srcset="" sizes="" width="" height="" alt="BedrockUI" class="ra-image__media ra-image__media--loaded">
+      </div>
+    </a>
+
+    <nav class="ra-header__navigation">
+      <div class="ra-header-navigation-item display--md">
+        <button type="button" class="ra-button--raw ra-header-navigation-item__link level-1">
+          New Arrivals
+        </button> 
+      </div>
+      <div class="ra-header-navigation-item display--md">
+        <button type="button" class="ra-button--raw ra-header-navigation-item__link level-1">
+          women
+        </button> 
+      </div>
+      <div class="ra-header-navigation-item display--md">
+        <button type="button" class="ra-button--raw ra-header-navigation-item__link level-1">
+          man
+        </button>
+        
+      </div>
+      <div class="ra-header-navigation-item display--md">
+        <button type="button" class="ra-button--raw ra-header-navigation-item__link level-1">
+          kids
+        </button>
+      </div>
+      <div class="ra-header-navigation-item display--md">
+        <button type="button" class="ra-button--raw ra-header-navigation-item__link level-1">
+          Accessories
+        </button>
+      </div>
+    </nav> 
+
+    <div class="ra-header__actions">
+      <button type="button" class="ra-header__action ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--lg">
+        <span aria-hidden="true" class="ra-icon-button__icon ra-icon ra-icon--lg">
+          <svg viewBox="0 0 24 24" class="ra-icon-path"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14Z" fill=""></path></svg>
+        </span> 
+      </button> 
+      <button type="button" class="ra-header__action ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--lg">
+        <span aria-hidden="true" class="ra-icon-button__icon ra-icon ra-icon--lg">
+          <svg viewBox="0 0 24 24" class="ra-icon-path"><path d="M16.5 3C14.76 3 13.09 3.81 12 5.09C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5C2 12.28 5.4 15.36 10.55 20.04L12 21.35L13.45 20.03C18.6 15.36 22 12.28 22 8.5C22 5.42 19.58 3 16.5 3ZM12.1 18.55L12 18.65L11.9 18.55C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 5.99 11.07 7.36H12.94C13.46 5.99 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 18.55Z" fill=""></path></svg>
+        </span> 
+      </button>
+      <button type="button" class="ra-header__action ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--lg">
+        <span aria-hidden="true" class="ra-icon-button__icon ra-icon ra-icon--lg">
+          <svg viewBox="0 0 24 24" class="ra-icon-path"><path d="M12 5.9a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2Zm0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1ZM12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4Zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4Z" fill=""></path></svg>
+        </span> 
+      </button> 
+      <button type="button" class="ra-header__action ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--lg">
+        <span aria-hidden="true" class="ra-icon-button__icon ra-icon ra-icon--lg">
+          <svg viewBox="0 0 24 24" class="ra-icon-path"><path d="M20 6.00012H16C16 3.79012 14.21 2.00012 12 2.00012C9.79 2.00012 8 3.79012 8 6.00012H4V22.0001H20V6.00012ZM10 11.0001H8V8.00012H10V11.0001ZM12 4.00012C13.1 4.00012 14 4.90012 14 6.00012H10C10 4.90012 10.9 4.00012 12 4.00012ZM16 11.0001H14V8.00012H16V11.0001Z" fill=""></path></svg>
+        </span> 
+      </button>
+    </div>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+			"type": "select",
+			"id": "bg_color",
+			"label": "Background color",
+			"options": <%- uikit.colorsAll -%>,
+			"default": "--color-primary-900",
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 10,
+      "default": 100,
+      "unit": "t:sections.header.settings.logo_width.unit",
+      "label": "t:sections.header.settings.logo_width.label"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "select",
+      "id": "menu_type_desktop",
+      "options": [
+        {
+          "value": "dropdown",
+          "label": "t:sections.header.settings.menu_type_desktop.options__1.label"
+        },
+        {
+          "value": "mega",
+          "label": "t:sections.header.settings.menu_type_desktop.options__2.label"
+        }
+      ],
+      "default": "dropdown",
+      "label": "t:sections.header.settings.menu_type_desktop.label",
+      "info": "t:sections.header.settings.menu_type_desktop.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "default": true,
+      "label": "t:sections.header.settings.enable_sticky_header.label",
+      "info": "t:sections.header.settings.enable_sticky_header.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.header.settings.mobile_layout.content"
+    },
+    {
+      "type": "select",
+      "id": "mobile_logo_position",
+      "options": [
+        {
+          "value": "center",
+          "label": "t:sections.header.settings.mobile_logo_position.options__1.label"
+        },
+        {
+          "value": "left",
+          "label": "t:sections.header.settings.mobile_logo_position.options__2.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.header.settings.mobile_logo_position.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.header.settings.margin_bottom.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 36,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}
