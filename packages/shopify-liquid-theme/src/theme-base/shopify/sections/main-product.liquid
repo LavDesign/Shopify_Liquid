@@ -61,7 +61,7 @@
               {%- when 'accordion_item' -%}
                 {% render 'accordion-item', title: block.settings.title, content: block.settings.content, show_icon: true %}
               {%- when 'special_messaging' -%}
-                <div class="flex justify-center gap-1 items-center">
+                <div class="flex justify-center gap-1 items-center my-4">
                   <div>{% render 'icon' with block.settings.icon %}</div>
                   <div>{{ block.settings.content }}</div>
                 </div>
