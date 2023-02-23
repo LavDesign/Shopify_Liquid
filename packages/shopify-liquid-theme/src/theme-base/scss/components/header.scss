@@ -1,4 +1,5 @@
 .header {
+	--header-height: 70px;
 	--gutter-xs: 12px;
 	--gutter-sm: 24px;
 	--gutter: 36px;
@@ -15,19 +16,63 @@
 	background-color: var(--background-color);
 	transition: all .3s;
 	z-index: 500;
+	height: var(--header-height);
 
 	.header__wrapper {
 		display: flex;
+		height: 100%;
+
+		// mobile
+		@breakpoint md-max {
+			justify-content: space-between;
+			.header__logo,
+			.header__action {
+				margin: 0 !important;
+			}
+			.header__hamberger {
+				margin-right: calc(var(--gutter-sm) * 2);
+			}
+		}
 	}
 
+	// reset
+	a:link,
+	a:visited {
+		color: var(--link-color);
+		--icon-color: var(--link-color);
+
+		&:hover,
+		&:active,
+		&.active {
+			color: var(--link-hover-color);
+			--icon-color: var(--link-hover-color);
+		}
+	}
+	ul,
+	ul li {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	// hamberger
+	.header__hamberger {
+		display: flex;
+		align-items: center;
+
+		@breakpoint md {
+			display: none;
+		}
+	}
+
+	// logo
 	.header__logo {
-		margin-right: 25px;
+		margin-right: var(--gutter-sm);
 		display: flex;
 		align-items: center;
 		max-width: var(--logo-width-mobile);
 
 		@breakpoint md {
-			margin-right: var(--gutter-lg);
 			max-width: var(--logo-width-desktop);
 		}
 	}
@@ -36,23 +81,10 @@
 		display: block;
 	}
 
+	// menu
 	.header__navigation {
-		ul,
-		ul li {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		a:link,
-		a:visited {
-			color: var(--link-color);
-
-			&:hover,
-			&:active,
-			&.active {
-				color: var(--link-hover-color);
-			}
+		@breakpoint md-max {
+			display: none;
 		}
 
 		.header__navigation-list,
@@ -71,7 +103,7 @@
 
 		.header__navigation-link {
 			@breakpoint md {
-				padding: var(--gutter-sm);
+				padding: 0 var(--gutter-sm);
 			}
 		}
 
@@ -130,9 +162,13 @@
 
 			.header__navigation-dropdown-mega-menu {
 				display: grid;
-				grid-template-columns: repeat(5, 1fr);
 				gap: var(--gutter-sm);
 				width: 100%;
+				grid-template-columns: repeat(3, 1fr);
+
+				@breakpoint md {
+					grid-template-columns: repeat(5, 1fr);
+				}
 
 				> .header__navigation-dropdown-item { margin: 0; }
 				
@@ -197,8 +233,31 @@
 		}
 	}
 
+	// icons
 	.header__action {
-		border: 1px solid black;
 		margin-left: auto;
+
+		.header__action-list,
+		.header__action-item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+		}
+		.header__action-list {}
+
+		.header__action-item {
+			height: 100%;
+			&:not(:last-child) {
+				margin-right: var(--gutter-sm);
+			}
+		}
+
+		.header__action-item--account,
+		.header__action-item--wishlist {
+			@breakpoint md-max {
+				display: none;
+			}
+		}
 	}
 }

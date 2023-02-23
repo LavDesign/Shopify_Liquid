@@ -34,6 +34,10 @@ export default class RaHeader extends HTMLElement {
     }
     this.style.setProperty("--header-position-top", this.headerPositionTop);
     this.style.setProperty("--dropdown-position-top", this.headerDropdownTop);
+    document.documentElement.style.setProperty(
+      "--content-postion-top",
+      getPreHeader.clientHeight + this.clientHeight + "px"
+    );
   }
 
   handleWindowScroll() {

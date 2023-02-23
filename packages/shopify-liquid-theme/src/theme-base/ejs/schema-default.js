@@ -166,6 +166,28 @@ const textAligments = [
   { label: "Bottom Left", value: "set--v-align-bottom set--h-align-left" },
 ];
 
+/* 
+  SVG - Icons
+*/
+const icons = [
+  { label: "Chevron Down", value: "chevron-down" },
+  { label: "Chevron Left", value: "chevron-left" },
+  { label: "Chevron Right", value: "chevron-right" },
+  { label: "Chevron Up", value: "chevron-up" },
+  { label: "Left Arrow", value: "left-arrow" },
+  { label: "Right Arrow", value: "right-arrow" },
+  { label: "Account", value: "account" },
+  { label: "Cart", value: "cart" },
+  { label: "Checkmark", value: "check" },
+  { label: "Circle Check", value: "circle-check" },
+  { label: "Close", value: "close" },
+  { label: "Hamberger", value: "hamberger" },
+  { label: "Heart", value: "heart" },
+  { label: "Plus", value: "plus" },
+  { label: "Minus", value: "minus" },
+  { label: "Search", value: "search" },
+];
+
 module.exports = {
   uikit: {
     colorsPrimary,
@@ -178,5 +200,6 @@ module.exports = {
     buttonStyles: JSON.stringify(buttonStyles),
     headingStyles: JSON.stringify(headingStyles),
     textAligments: JSON.stringify(textAligments),
+    icons: JSON.stringify(icons),
   },
 };

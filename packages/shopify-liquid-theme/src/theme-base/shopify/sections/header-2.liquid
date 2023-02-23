@@ -12,6 +12,13 @@
   <div class="header__wrapper container">
 
     {%- comment -%}
+      Hamberger
+    {%- endcomment -%}
+    <a class="header__hamberger" href="#" title="toggle menu" aria-label="toggle menu">
+      {% render 'icon' icon: 'hamberger', width: '24px', height: '24px' %}
+    </a>
+
+    {%- comment -%}
       Logo
     {%- endcomment -%}
     {% if section.settings.logo != blank %}
@@ -38,10 +45,37 @@
     {% endif %}
 
     {%- comment -%}
-      Action (account, search, wishlist)
+      Action (cart, account, search, wishlist)
     {%- endcomment -%}
     <div class="header__action">
-      asdfadsf
+      <ul class="header__action-list">
+        {% if section.settings.show_search %}
+          <li class="header__action-item header__action-item--search">
+            <a class="header__action-link" href="#" title="search" aria-label="search">
+              {% render 'icon' icon: section.settings.search_icon, width: '20px', height: '20px' %}
+            </a>
+          </li>
+        {% endif %}
+        {% if section.settings.show_account %}
+          <li class="header__action-item header__action-item--account">
+            <a class="header__action-link" href="#" title="account" aria-label="account">
+              {% render 'icon' icon: section.settings.account_icon, width: '20px', height: '20px' %}
+            </a>
+          </li>
+        {% endif %}
+        {% if section.settings.show_wishlist %}
+          <li class="header__action-item header__action-item--wishlist">
+            <a class="header__action-link" href="#" title="wishlist" aria-label="wishlist">
+              {% render 'icon' icon: section.settings.wishlist_icon, width: '20px', height: '20px' %}
+            </a>
+          </li>
+        {% endif %}
+        <li class="header__action-item header__action-item--cart">
+          <a class="header__action-link" href="#" title="cart" aria-label="cart">
+            {% render 'icon' icon: 'cart', width: '24px', height: '24px' %}
+          </a>
+        </li>
+      </ul>
     </div>
 
   </div>
@@ -114,6 +148,10 @@
       "label": "Menu"
     },
     {
+      "type": "header",
+      "content": "featured content"
+    },
+    {
       "type": "select",
       "id": "aspect_ratio",
       "options": [
@@ -129,6 +167,57 @@
       "default": "portrait",
       "label": "Aspect ratio",
       "info": "Adjust aspect ratio for Featured Content images"
+    },
+    {
+      "type": "header",
+      "content": "search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "default": true,
+      "label": "Hide/show search"
+    },
+    {
+			"type": "select",
+			"id": "search_icon",
+			"label": "Search icon",
+			"options": <%- uikit.icons -%>,
+			"default": "search"
+    },
+    {
+      "type": "header",
+      "content": "account"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "default": true,
+      "label": "Hide/show account"
+    },
+    {
+			"type": "select",
+			"id": "account_icon",
+			"label": "Account icon",
+			"options": <%- uikit.icons -%>,
+			"default": "account"
+    },
+    {
+      "type": "header",
+      "content": "wishlist"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "default": true,
+      "label": "Hide/show wishlist"
+    },
+    {
+			"type": "select",
+			"id": "wishlist_icon",
+			"label": "Wishlist icon",
+			"options": <%- uikit.icons -%>,
+			"default": "heart"
     }
   ],
   "blocks": [
