@@ -1,0 +1,56 @@
+{% liquid
+	assign has_child = false
+	assign has_mega_menu = false
+	assign child_links = link.links
+
+	if child_links.size > 0
+		assign has_child = true
+	endif
+
+	for child in child_links
+		for sub_child in child.links
+			if sub_child != blank
+				assign has_mega_menu = true
+			endif
+		endfor
+	endfor
+%}
+
+<li class="header__navigation-item{% if has_child %} header__navigation-item--has-child{% endif %}{% if has_mega_menu %} header__navigation-item--has-mega-menu{% endif %}">
+	<a class="header__navigation-link" 
+		href="{{ link.url }}" 
+		title="{{ link.title }}" 
+		aria-label="{{ link.title }}">
+		{{ link.title }}
+	</a>
+
+	{% if has_child or has_mega_menu %}
+		<ul class="header__navigation-dropdown" role="list" tabindex="-1">
+			{% for child in child_links %}
+				<li class="header__navigation-dropdown-item">
+					<a class="header__navigation-dropdown-link" 
+						href="{{ child.url }}"
+						title="{{ child.title }}"
+						aria-label="{{ child.title }}">
+						{{ child.title }}
+					</a>
+
+					{% if has_mega_menu %}
+						<ul class="header__navigation-dropdown-mega-menu" role="list" tabindex="-1">
+							{% for sub_child in child.links %}
+								<li class="header__navigation-dropdown-item">
+									<a class="header__navigation-dropdown-link" 
+										href="{{ sub_child.url }}"
+										title="{{ sub_child.title }}"
+										aria-label="{{ sub_child.title }}">
+										{{ sub_child.title }}
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</li>
