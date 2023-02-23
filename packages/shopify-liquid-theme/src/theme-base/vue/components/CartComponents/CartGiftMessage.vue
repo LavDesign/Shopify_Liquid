@@ -16,12 +16,5 @@
 
 <script setup>
 import { ref } from "vue";
-
-const props = defineProps({
-  message: {
-    type: Object,
-    default: () => {},
-  },
-});
 const giftMessage = ref({ active: false, message: "" });
 </script>

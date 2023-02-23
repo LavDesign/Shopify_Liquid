@@ -5,7 +5,7 @@
       'border-y border-grey-200': tileType === 'cart',
       'border border-grey-500': tileType === 'upsell',
     }"
-      >
+  >
     <div class="aspect-square object-cover">
       <img
         :src="product.featured_image.url"
@@ -39,7 +39,16 @@
         class="border border-grey-900 w-[34px] h-[34px] flex items-center justify-center self-end cursor-pointer"
         @click="updateQuantity(0)"
       >
-        <CartRemoveIcon />
+        <svg
+          width="12"
+          height="16"
+          viewBox="0 0 12 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M11 16L1 16L1 4L11 4L11 16Z" fill="#534D4D" />
+          <path d="M9 1L12 1V3L0 3L0 1L3 1L4 0L8 0L9 1Z" fill="#534D4D" />
+        </svg>
       </span>
       <div class="flex-row text-lg">
         {{ $filters.money(product.final_line_price) }}
@@ -53,11 +62,8 @@
 
 <script setup>
 import { computed } from "vue";
-
 import { useCartStore } from "../../stores/cart";
-
 import QuantityAdjuster from "../QuantityAdjuster.vue";
-import CartRemoveIcon from "./";
 
 const cartStore = useCartStore();
 

@@ -1,5 +1,8 @@
 <template>
-  <div v-if="cart" class="w-full p-5 flex flex-row justify-around">
+  <div
+    v-if="cart"
+    class="w-full p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
+  >
     <div class="basis-5/12">
       <h3 class="mb-[24px]">Cart</h3>
       <CartProducts :cart="cart" />

@@ -4,13 +4,13 @@
       <!-- FREE SHIPPING BAR -->
       <CartFreeShipping :subtotal="subtotal" />
       <!-- GIFT MESSAGE BOX -->
-      <CartGiftMessage :message="giftMessage" />
+      <CartGiftMessage />
       <!-- SPECIAL MESSAGE -->
       <CartMessage :message="message1" />
       <!-- SUBTOTAL -->
       <CartSubtotal :subtotal="subtotal" />
       <!-- CHECKOUT CTA -->
-      <CartCheckoutButton />
+      <CartCheckoutButton :checkout-ready="readyForCheckout" />
     </div>
     <!-- SPECIAL MESSAGE AGAIN-->
     <CartMessage :message="message2" />
@@ -49,5 +49,9 @@ const cart = computed(() => {
 
 const subtotal = computed(() => {
   return cart.value.total_price;
+});
+
+const readyForCheckout = computed(() => {
+  return cart.value.item_count > 0 && cart.value.items_subtotal_price > 0;
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[44px] border border-black flex max-w-[124px]">
+  <div class="h-[44px] border border-black flex max-w-[124px] bg-white">
     <button class="w-[40px] border-r" @click="quantityDecrement">-</button>
     <input
       class="w-[44px] text-center text-lg"
