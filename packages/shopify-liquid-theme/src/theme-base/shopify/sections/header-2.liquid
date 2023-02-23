@@ -9,7 +9,7 @@
 </style>
 
 <ra-header class="header">
-  <div class="header__wrapper">
+  <div class="header__wrapper container">
 
     {%- comment -%}
       Logo
@@ -27,7 +27,11 @@
       <nav class="header__navigation">
         <ul class="header__navigation-list" role="list" tabindex="-1">
           {%- for link in section.settings.menu.links -%}
-            {% render 'navigation-menu-item' link: link %}
+            {% render 'navigation-menu-item' 
+              link: link, 
+              featured_contents: section.blocks,
+              aspect_ratio: section.settings.aspect_ratio
+            %}
           {%- endfor -%}
         </ul>
       </nav>
@@ -46,6 +50,7 @@
 {% schema %}
 {
   "name": "Header",
+  "max_blocks": 5,
   "settings": [
     {
       "type": "header",
@@ -108,98 +113,98 @@
       "default": "main-menu",
       "label": "Menu"
     },
-
-
-  
-
-    
     {
       "type": "select",
-      "id": "menu_type_desktop",
+      "id": "aspect_ratio",
       "options": [
         {
-          "value": "dropdown",
-          "label": "t:sections.header.settings.menu_type_desktop.options__1.label"
+          "value": "portrait",
+          "label": "Portrait"
         },
         {
-          "value": "mega",
-          "label": "t:sections.header.settings.menu_type_desktop.options__2.label"
+          "value": "square",
+          "label": "Square"
         }
       ],
-      "default": "dropdown",
-      "label": "t:sections.header.settings.menu_type_desktop.label",
-      "info": "t:sections.header.settings.menu_type_desktop.info"
-    },
+      "default": "portrait",
+      "label": "Aspect ratio",
+      "info": "Adjust aspect ratio for Featured Content images"
+    }
+  ],
+  "blocks": [
     {
-      "type": "checkbox",
-      "id": "show_line_separator",
-      "default": true,
-      "label": "t:sections.header.settings.show_line_separator.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_sticky_header",
-      "default": true,
-      "label": "t:sections.header.settings.enable_sticky_header.label",
-      "info": "t:sections.header.settings.enable_sticky_header.info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.header.settings.mobile_layout.content"
-    },
-    {
-      "type": "select",
-      "id": "mobile_logo_position",
-      "options": [
+      "type": "featured_content",
+      "name": "Featured Content",
+      "settings": [
         {
-          "value": "center",
-          "label": "t:sections.header.settings.mobile_logo_position.options__1.label"
+          "type": "text",
+          "id": "menu_item",
+          "label": "Menu item",
+          "info": "Enter menu item to apply a Featured Content",
+          "default": "catalog"
         },
         {
-          "value": "left",
-          "label": "t:sections.header.settings.mobile_logo_position.options__2.label"
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Recommended Size: 800x900"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Featured product"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "select",
+          "id": "link_style",
+          "label": "Link style",
+          "options": <%- uikit.buttonStyles -%>,
+          "default": "primary"
         }
-      ],
-      "default": "center",
-      "label": "t:sections.header.settings.mobile_logo_position.label"
-    },
+      ]
+    }
+  ],
+  "presets": [
     {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.header.settings.margin_bottom.label",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 36,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 36,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 20
+      "name": "Header",
+      "blocks": [
+        {
+          "type": "featured_content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "link_label": "Learn more",
+            "link_url": "shopify:\/\/collections"
+          }
+        },
+        {
+          "type": "featured_content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "link_label": "Learn more",
+            "link_url": "shopify:\/\/collections"
+          }
+        },
+        {
+          "type": "featured_content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "link_label": "Learn more",
+            "link_url": "shopify:\/\/collections"
+          }
+        }
+      ]
     }
   ]
 }

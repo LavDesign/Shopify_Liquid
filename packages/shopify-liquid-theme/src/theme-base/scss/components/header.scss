@@ -17,8 +17,6 @@
 	z-index: 500;
 
 	.header__wrapper {
-		width: var(--max-width-large);
-		max-width: var(--max-width-large);
 		display: flex;
 	}
 
@@ -31,7 +29,6 @@
 		@breakpoint md {
 			margin-right: var(--gutter-lg);
 			max-width: var(--logo-width-desktop);
-			border: 1px solid red;
 		}
 	}
 	.header__logo-image {
@@ -128,17 +125,74 @@
 				position: fixed;
 				width: 100%;
 				top: var(--dropdown-position-top);
+				padding: var(--gutter-sm) 0 var(--gutter-sm) 0;
 			}
 
 			.header__navigation-dropdown-mega-menu {
-				border: 1px solid red;
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				gap: var(--gutter-sm);
+				width: 100%;
+
+				> .header__navigation-dropdown-item { margin: 0; }
 				
-				.header__navigation-dropdown-item {
-					width: var(--max-width-large);
-					max-width: var(--max-width-large);
-					display: grid;
-					grid-template-columns: repeat(5, 1fr);
+				.header__navigation-dropdown-item,
+				.header__navigation-dropdown-link,
+				.header__navigation-mega-menu {
+					display: flex;
+					flex-direction: column;
 				}
+
+				.header__navigation-dropdown-link--label {
+					text-transform: uppercase;
+					font-weight: 500;
+					margin-bottom: var(--gutter-xs);
+				}
+			}
+		}
+
+		// Featured Content
+		.header__navigation-featured-content {
+			position: relative;
+			width: 100%;
+			height: 100%;
+
+			&.portrait {
+				aspect-ratio: 0.85 / 1;
+			}
+			&.square {
+				aspect-ratio: 1 / 1;
+			}
+
+			.header__navigation-featured-content-wrapper,
+			.header__navigation-featured-content-image {
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 2;
+				width: 100%;
+				height: 100%;
+			}
+
+			.header__navigation-featured-content-wrapper {
+				padding: var(--gutter-sm);
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+			}
+
+			.header__navigation-featured-content-image {
+				z-index: 1;
+				object-fit: cover;
+			}
+
+			.header__navigation-featured-content-title {
+				color: var(--color-util-white);
+				font-size: 24px;
+			}
+
+			.header__navigation-featured-content-button {
+				margin-top: var(--gutter-xs);
 			}
 		}
 	}
