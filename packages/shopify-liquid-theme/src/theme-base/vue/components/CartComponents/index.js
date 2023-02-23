@@ -7,6 +7,7 @@ import CartSidebar from "./CartSidebar";
 import CartSubtotal from "./CartSubtotal";
 import CartGiftMessage from "./CartGiftMessage";
 import CartMessage from "./CartMessage";
+import CartUpsell from "./CartUpsell";
 
 export {
   CartCheckoutButton,
@@ -18,4 +19,5 @@ export {
   CartSubtotal,
   CartGiftMessage,
   CartMessage,
+  CartUpsell,
 };

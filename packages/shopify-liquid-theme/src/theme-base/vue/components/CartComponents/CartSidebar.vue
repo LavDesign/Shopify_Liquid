@@ -1,6 +1,6 @@
 <template>
-  <div class="basis-4/12 flex flex-col bg-white">
-    <div class="py-[16px] px-[24px]">
+  <div class="basis-4/12 flex flex-col">
+    <div class="pt-[16px] px-[24px] bg-white mb-[15px]">
       <!-- FREE SHIPPING BAR -->
       <CartFreeShipping :subtotal="subtotal" />
       <!-- GIFT MESSAGE BOX -->
@@ -11,27 +11,30 @@
       <CartSubtotal :subtotal="subtotal" />
       <!-- CHECKOUT CTA -->
       <CartCheckoutButton />
-      <!-- SPECIAL MESSAGE AGAIN-->
-      <CartMessage :message="message2" />
     </div>
+    <!-- SPECIAL MESSAGE AGAIN-->
+    <CartMessage :message="message2" />
     <!-- YMAL -->
-    <div></div>
+    <CartUpsell />
   </div>
 </template>
 
 <script setup>
-import { onMounted, computed } from "vue";
+import { computed } from "vue";
 import {
   CartFreeShipping,
   CartSubtotal,
   CartCheckoutButton,
   CartGiftMessage,
   CartMessage,
+  CartUpsell,
 } from "./";
 
-const message1 = { value: 1 };
-const message2 = { value: 2 };
-const giftMessage = { value: 3 };
+const message1 = {
+  value:
+    "This is a special message, it is meant to give the user any additional info they may need to see.",
+};
+const message2 = { value: "THIS IS A SPECIAL Message" };
 
 const props = defineProps({
   cart: {

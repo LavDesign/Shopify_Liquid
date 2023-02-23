@@ -6,7 +6,7 @@
 
 <script setup>
 import { computed } from "vue";
-import CartProductTile from "./CartProductTile.vue";
+import { CartProductTile } from "./";
 
 const props = defineProps({
   cart: {

@@ -1,5 +1,5 @@
 <template>
-  <div>Cart Message: {{ message.value }}</div>
+  <div class="mb-[32px] text-center">{{ message.value }}</div>
 </template>
 
 <script setup>

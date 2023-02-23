@@ -1,7 +1,11 @@
 <template>
   <div
     class="w-full flex flex-row gap-[16px] font-primary py-[16px] border-y border-grey-200"
-  >
+    :class="{
+      'border-y border-grey-200': tileType === 'cart',
+      'border border-grey-500': tileType === 'upsell',
+    }"
+      >
     <div class="aspect-square object-cover">
       <img
         :src="product.featured_image.url"
@@ -53,7 +57,7 @@ import { computed } from "vue";
 import { useCartStore } from "../../stores/cart";
 
 import QuantityAdjuster from "../QuantityAdjuster.vue";
-import CartRemoveIcon from "./CartRemoveIcon.vue";
+import CartRemoveIcon from "./";
 
 const cartStore = useCartStore();
 
@@ -61,6 +65,10 @@ const props = defineProps({
   product: {
     type: Object,
     default: () => {},
+  },
+  tileType: {
+    type: String,
+    default: "cart",
   },
 });
 
