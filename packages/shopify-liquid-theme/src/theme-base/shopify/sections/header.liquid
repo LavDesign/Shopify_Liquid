@@ -23,9 +23,9 @@
       Logo
     {%- endcomment -%}
     {% if section.settings.logo != blank %}
-      <div class="header__logo">
-        <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }}">
-      </div>
+      <a class="header__logo" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
+        <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+      </a>
     {% endif %}
 
     {%- comment -%}
