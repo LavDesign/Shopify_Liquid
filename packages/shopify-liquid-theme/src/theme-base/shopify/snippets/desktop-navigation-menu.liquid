@@ -72,11 +72,9 @@
           {% assign featured_item_handleize = featured.settings.menu_item | handleize %}
           {% assign link_label_handleize = link.title | handleize %}
 
-          {% if featured_item_handleize == link_label_handleize %}
+          {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
             <li class="header__navigation-featured-content {{ aspect_ratio }}">
-              {% if featured.settings.image != blank %}
-                <img class="header__navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
-              {% endif %}
+              <img class="header__navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
               
               <div class="header__navigation-featured-content-wrapper">
                 {% if featured.settings.title != blank %}
