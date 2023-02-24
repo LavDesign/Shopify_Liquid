@@ -1,104 +1,104 @@
 {% liquid
-	assign has_child = false
-	assign has_mega_menu = false
-	assign child_links = link.links
+  assign has_child = false
+  assign has_mega_menu = false
+  assign child_links = link.links
 
-	if child_links.size > 0
-		assign has_child = true
-	endif
+  if child_links.size > 0
+    assign has_child = true
+  endif
 
-	for child in child_links
-		for sub_child in child.links
-			if sub_child != blank
-				assign has_mega_menu = true
-			endif
-		endfor
-	endfor
+  for child in child_links
+    for sub_child in child.links
+      if sub_child != blank
+        assign has_mega_menu = true
+      endif
+    endfor
+  endfor
 %}
 
 <li class="header__navigation-item{% if has_child %} header__navigation-item--has-child{% endif %}{% if has_mega_menu %} header__navigation-item--has-mega-menu{% endif %}">
-	<a class="header__navigation-link" 
-		href="{{ link.url }}" 
-		title="{{ link.title }}" 
-		aria-label="{{ link.title }}">
-		{{ link.title }}
+  <a class="header__navigation-link" 
+    href="{{ link.url }}" 
+    title="{{ link.title }}" 
+    aria-label="{{ link.title }}">
+    {{ link.title }}
 
-		{% if has_child or has_mega_menu %}
-			{% render 'icon' icon: 'chevron-down' %}
-		{% endif %}
-	</a>
+    {% if has_child or has_mega_menu %}
+      {% render 'icon' icon: 'chevron-down' %}
+    {% endif %}
+  </a>
 
-	{% if has_child or has_mega_menu %}
-		<ul class="header__navigation-dropdown" role="list" tabindex="-1">
+  {% if has_child or has_mega_menu %}
+    <ul class="header__navigation-dropdown" role="list" tabindex="-1">
 
-			{% if has_mega_menu %}
-				<div class="container header__navigation-dropdown-mega-menu">
-			{% endif %}
+      {% if has_mega_menu %}
+        <div class="container header__navigation-dropdown-mega-menu">
+      {% endif %}
 
-			{%- comment -%}
-				Link - columns
-			{%- endcomment -%}
-			{% for child in child_links %}
-				<li class="header__navigation-dropdown-item">
-					<a class="header__navigation-dropdown-link{% if has_mega_menu %} header__navigation-dropdown-link--label{% endif %}" 
-						href="{{ child.url }}"
-						title="{{ child.title }}"
-						aria-label="{{ child.title }}">
-						{{ child.title }}
-					</a>
+      {%- comment -%}
+        Link - columns
+      {%- endcomment -%}
+      {% for child in child_links %}
+        <li class="header__navigation-dropdown-item">
+          <a class="header__navigation-dropdown-link{% if has_mega_menu %} header__navigation-dropdown-link--label{% endif %}" 
+            href="{{ child.url }}"
+            title="{{ child.title }}"
+            aria-label="{{ child.title }}">
+            {{ child.title }}
+          </a>
 
-					{% if has_mega_menu %}
-						<ul class="header__navigation-mega-menu" role="list" tabindex="-1">
-							{% for sub_child in child.links %}
-								<li class="header__navigation-dropdown-item">
-									<a class="header__navigation-dropdown-link" 
-										href="{{ sub_child.url }}"
-										title="{{ sub_child.title }}"
-										aria-label="{{ sub_child.title }}">
-										{{ sub_child.title }}
-									</a>
-								</li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-				</li>
-			{% endfor %}
+          {% if has_mega_menu %}
+            <ul class="header__navigation-mega-menu" role="list" tabindex="-1">
+              {% for sub_child in child.links %}
+                <li class="header__navigation-dropdown-item">
+                  <a class="header__navigation-dropdown-link" 
+                    href="{{ sub_child.url }}"
+                    title="{{ sub_child.title }}"
+                    aria-label="{{ sub_child.title }}">
+                    {{ sub_child.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
 
-			{%- comment -%}
-				featured contents - columns
-			{%- endcomment -%}
-			{% if has_mega_menu %}
-				{% for featured in featured_contents %}
-					{% assign featured_item_handleize = featured.settings.menu_item | handleize %}
-					{% assign link_label_handleize = link.title | handleize %}
+      {%- comment -%}
+        featured contents - columns
+      {%- endcomment -%}
+      {% if has_mega_menu %}
+        {% for featured in featured_contents %}
+          {% assign featured_item_handleize = featured.settings.menu_item | handleize %}
+          {% assign link_label_handleize = link.title | handleize %}
 
-					{% if featured_item_handleize == link_label_handleize %}
-						<li class="header__navigation-featured-content {{ aspect_ratio }}">
-							{% if featured.settings.image != blank %}
-								<img class="header__navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
-							{% endif %}
-							
-							<div class="header__navigation-featured-content-wrapper">
-								{% if featured.settings.title != blank %}
-									<h4	class="header__navigation-featured-content-title">{{ featured.settings.title }}</h4>
-								{% endif %}
+          {% if featured_item_handleize == link_label_handleize %}
+            <li class="header__navigation-featured-content {{ aspect_ratio }}">
+              {% if featured.settings.image != blank %}
+                <img class="header__navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
+              {% endif %}
+              
+              <div class="header__navigation-featured-content-wrapper">
+                {% if featured.settings.title != blank %}
+                  <h4	class="header__navigation-featured-content-title">{{ featured.settings.title }}</h4>
+                {% endif %}
 
-								{% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
-									{% render 'button' 
-										type: 'a',
-										class: 'header__navigation-featured-content-button'
-										style: featured.settings.link_style,
-										label: featured.settings.link_label,
-										url: featured.settings.link_url,
-									%}
-								{% endif %}
-							</div>
-						</li>
-					{% endif %}
-				{% endfor %}
-				</div>
-			{% endif %}
+                {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
+                  {% render 'button' 
+                    type: 'a',
+                    class: 'header__navigation-featured-content-button'
+                    style: featured.settings.link_style,
+                    label: featured.settings.link_label,
+                    url: featured.settings.link_url,
+                  %}
+                {% endif %}
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+        </div>
+      {% endif %}
 
-		</ul>
-	{% endif %}
+    </ul>
+  {% endif %}
 </li>

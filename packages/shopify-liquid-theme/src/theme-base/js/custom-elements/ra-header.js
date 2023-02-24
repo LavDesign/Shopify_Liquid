@@ -22,22 +22,22 @@ export default class RaHeader extends HTMLElement {
   }
 
   init() {
-		this.preventEmptyLinks();
+    this.preventEmptyLinks();
     this.setHeaderPosition();
     this.toggleMegaMenu();
     this.handleMobileNav();
-		this.handleMobileDrawer();
-		this.handleMobileDropdowns();
+    this.handleMobileDrawer();
+    this.handleMobileDropdowns();
   }
 
-	preventEmptyLinks() {
-		const links = this.querySelectorAll("a");
-		links.forEach((link) => {
-			link.addEventListener("click", (e) => {
-				(link.getAttribute("href") == "#") ? e.preventDefault() : true
-			});
-		});
-	}
+  preventEmptyLinks() {
+    const links = this.querySelectorAll("a");
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        (link.getAttribute("href") == "#") ? e.preventDefault() : true
+      });
+    });
+  }
 
   setHeaderPosition(reset = false) {
     const getPreHeader = document.querySelector(".ra-preheader");
@@ -51,14 +51,14 @@ export default class RaHeader extends HTMLElement {
         this.clientHeight + getPreHeader.clientHeight - 2 + "px";
     }
 
-		// set global CSS vars
+    // set global CSS vars
     this.style.setProperty("--header-position-top", this.headerPositionTop);
     this.style.setProperty("--dropdown-position-top", this.headerDropdownTop);
     document.documentElement.style.setProperty(
       "--header-height",
       this.clientHeight + "px"
     );
-		document.documentElement.style.setProperty(
+    document.documentElement.style.setProperty(
       "--content-postion-top",
       Number(this.headerPositionTop.replace("px", "")) +
         Number(this.clientHeight) +
@@ -75,74 +75,74 @@ export default class RaHeader extends HTMLElement {
   }
 
   toggleMegaMenu() {
-		this.childLinks.forEach((link) => {
-			link.addEventListener("mouseover", () => {
-				link
-					.querySelector(".header__navigation-dropdown")
-					.classList.add("active");
-				link.classList.add("active");
-			});
+    this.childLinks.forEach((link) => {
+      link.addEventListener("mouseover", () => {
+        link
+          .querySelector(".header__navigation-dropdown")
+          .classList.add("active");
+        link.classList.add("active");
+      });
 
-			link.addEventListener("mouseout", () => {
-				link
-					.querySelector(".header__navigation-dropdown")
-					.classList.remove("active");
-				link.classList.remove("active");
-			});
-		});
+      link.addEventListener("mouseout", () => {
+        link
+          .querySelector(".header__navigation-dropdown")
+          .classList.remove("active");
+        link.classList.remove("active");
+      });
+    });
   }
 
   handleMobileNav() {
-		this.hamberger.addEventListener("click", (e) => {
-			e.preventDefault();
-			document.body.classList.toggle("overflow-hidden");
-			this.hamberger.classList.toggle("active");
-			this.mobileNav.classList.toggle("active");
-		});
+    this.hamberger.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.body.classList.toggle("overflow-hidden");
+      this.hamberger.classList.toggle("active");
+      this.mobileNav.classList.toggle("active");
+    });
   }
 
   handleMobileDrawer() {
     if (!this.drawerToggles) return;
 
-		// open drawers
-		this.drawerToggles.forEach((btn) => {
+    // open drawers
+    this.drawerToggles.forEach((btn) => {
       const btnToggleId = btn.getAttribute("data-toggle-drawer");
-			const btnText = btn.getAttribute("title");
-			btn.addEventListener("click", (e) => {
-				e.preventDefault();
-				this.drawers.forEach((drawer) => {
-					drawer.classList.remove("active")
-				});
-				const selectedDrawer = document.getElementById(btnToggleId);
+      const btnText = btn.getAttribute("title");
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.drawers.forEach((drawer) => {
+          drawer.classList.remove("active")
+        });
+        const selectedDrawer = document.getElementById(btnToggleId);
         selectedDrawer.querySelector(
           ".header__mobile-navigation-drawer-title"
         ).innerHTML = btnText;
-				selectedDrawer.classList.add("active");
-			});
-		});
-		
-		// close drawers
-		this.drawerCloseBtns.forEach((btn) => {
-			btn.addEventListener("click", (e) => {
-				e.preventDefault();
-				this.drawers.forEach((drawer) => {
-					drawer.classList.remove("active")
-				});
-			});
-		});
-	}
+        selectedDrawer.classList.add("active");
+      });
+    });
+    
+    // close drawers
+    this.drawerCloseBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.drawers.forEach((drawer) => {
+          drawer.classList.remove("active")
+        });
+      });
+    });
+  }
 
-	handleMobileDropdowns() {
-		this.dropdownToggles.forEach((btn) => {
-			btn.addEventListener("click", (e) => {
-				e.preventDefault();
-				const toggleId = btn.getAttribute("data-toggle-dropdown");
-				btn.classList.toggle("active");
-				const seletedDropdown = document.getElementById(toggleId);
-				const dropdownHeight = seletedDropdown.querySelector(".header__mobile-navigation-dropdown-inner").offsetHeight;
-				seletedDropdown.style.setProperty("--dropdown-height", dropdownHeight + "px");
-				document.getElementById(toggleId).classList.toggle("active");
-			});
-		});
-	}
+  handleMobileDropdowns() {
+    this.dropdownToggles.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const toggleId = btn.getAttribute("data-toggle-dropdown");
+        btn.classList.toggle("active");
+        const seletedDropdown = document.getElementById(toggleId);
+        const dropdownHeight = seletedDropdown.querySelector(".header__mobile-navigation-dropdown-inner").offsetHeight;
+        seletedDropdown.style.setProperty("--dropdown-height", dropdownHeight + "px");
+        document.getElementById(toggleId).classList.toggle("active");
+      });
+    });
+  }
 }
