@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row justify-between mb-3">
-    <h1 class="h4">{{ product.title }}</h1>
+    <h1 class="h4" v-text="title"></h1>
     <div class="h4" v-if="currentVariant">
       <template v-if="showComparePrice">
         <span class="ra-price__special">{{
@@ -16,6 +16,7 @@
   <div v-if="$slots['review-stars']" class="mb-3">
     <slot name="review-stars"></slot>
   </div>
+  <div v-html="description" class="mb-3"></div>
   <ProductForm v-bind="{ product }" />
 </template>
 
@@ -31,6 +32,8 @@ const { currentVariant } = toRefs(productStore);
 const props = defineProps({
   product: Object,
 });
+
+const { title, description } = toRefs(props.product);
 
 const showComparePrice = computed(() => {
   return currentVariant.value.compare_at_price > currentVariant.value.price;
