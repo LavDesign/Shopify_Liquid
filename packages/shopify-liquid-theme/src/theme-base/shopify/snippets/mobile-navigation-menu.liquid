@@ -1,6 +1,6 @@
 {% liquid
 	assign has_child = false
-	assign has_mega_menu = false
+	assign has_sub_child = false
 	assign child_links = link.links
 
 	if child_links.size > 0
@@ -10,13 +10,13 @@
 	for child in child_links
 		for sub_child in child.links
 			if sub_child != blank
-				assign has_mega_menu = true
+				assign has_sub_child = true
 			endif
 		endfor
 	endfor
 %}
 
-<li class="header__mobile-navigation-item{% if has_child %} header__mobile-navigation-item--has-child{% endif %}{% if has_mega_menu %} header__mobile-navigation-item--has-mega-menu{% endif %}">
+<li class="header__mobile-navigation-item">
 	<a class="header__mobile-navigation-link" 
 		href="{{ link.url }}" 
 		title="{{ link.title }}" 
@@ -25,14 +25,14 @@
 		{{ link.title }}
 	</a>
 
-	{% if has_child or has_mega_menu %}
+	{% if has_child or has_sub_child %}
 		<a class="header__mobile-navigation-link" 
 			href="#" 
 			title="{{ link.title }}" 
 			aria-label="{{ link.title }} drawer"
 			data-toggle-drawer="drawer-{{ link.title | handleize }}">
 
-			{% if has_child or has_mega_menu %}
+			{% if has_child or has_sub_child %}
 				{% render 'icon' icon: 'chevron-right' %}
 			{% endif %}
 		</a>
@@ -41,7 +41,7 @@
 	{%- comment -%}
 		drawer
 	{%- endcomment -%}
-	{% if has_child or has_mega_menu %}
+	{% if has_child or has_sub_child %}
 		<ul class="header__mobile-navigation-drawer" id="drawer-{{ link.title | handleize }}" role="list" tabindex="-1">
 			
 			{%- comment -%}
@@ -70,27 +70,46 @@
 			{%- comment -%}
 				Link - columns
 			{%- endcomment -%}
+			{% if has_sub_child %}
+				<div class="header__mobile-navigation-drawer-content">
+			{% endif %}
+
 			{% for child in child_links %}
-				<li class="header__mobile-navigation-dropdown-item">
-					<a class="header__mobile-navigation-dropdown-link{% if has_mega_menu %} header__mobile-navigation-dropdown-link--label{% endif %}" 
+				<li class="header__mobile-navigation-item">
+					<a class="header__mobile-navigation-link" 
 						href="{{ child.url }}"
 						title="{{ child.title }}"
 						aria-label="{{ child.title }}">
 						{{ child.title }}
 					</a>
 
-					{% if has_mega_menu %}
-						<ul class="header__mobile-navigation-mega-menu" role="list" tabindex="-1">
-							{% for sub_child in child.links %}
-								<li class="header__mobile-navigation-dropdown-item">
-									<a class="header__mobile-navigation-dropdown-link" 
-										href="{{ sub_child.url }}"
-										title="{{ sub_child.title }}"
-										aria-label="{{ sub_child.title }}">
-										{{ sub_child.title }}
-									</a>
-								</li>
-							{% endfor %}
+					{% if has_sub_child %}
+						<a class="header__mobile-navigation-link" 
+							href="#" 
+							title="{{ child.title }}" 
+							aria-label="{{ child.title }} dropdown"
+							data-toggle-dropdown="dropdown-{{ child.title | handleize }}">
+				
+							{% if has_child or has_sub_child %}
+								{% render 'icon' icon: 'chevron-down' %}
+							{% endif %}
+						</a>
+					{% endif %}
+
+					{% if has_sub_child %}
+						<ul class="header__mobile-navigation-dropdown" id="dropdown-{{ child.title | handleize }}" role="list" tabindex="-1">
+							<div class="header__mobile-navigation-dropdown-inner">
+								{% for sub_child in child.links %}
+									<li class="header__mobile-navigation-item">
+										<a class="header__mobile-navigation-link" 
+											href="{{ sub_child.url }}"
+											title="{{ sub_child.title }}"
+											aria-label="{{ sub_child.title }}">
+											{{ sub_child.title }}
+										</a>
+									</li>
+								{% endfor %}
+							</div>
 						</ul>
 					{% endif %}
 				</li>
@@ -99,7 +118,7 @@
 			{%- comment -%}
 				featured contents - columns
 			{%- endcomment -%}
-			{% if has_mega_menu %}
+			{% if has_sub_child %}
 				{% for featured in featured_contents %}
 					{% assign featured_item_handleize = featured.settings.menu_item | handleize %}
 					{% assign link_label_handleize = link.title | handleize %}
@@ -128,6 +147,7 @@
 						</li>
 					{% endif %}
 				{% endfor %}
+				</div>
 			{% endif %}
 
 		</ul>

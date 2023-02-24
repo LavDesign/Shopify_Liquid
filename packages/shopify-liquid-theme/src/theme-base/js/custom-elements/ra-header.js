@@ -11,9 +11,11 @@ export default class RaHeader extends HTMLElement {
     );
     this.hamberger = document.querySelector("#header__hamberger");
     this.mobileNav = document.querySelector(".header__mobile-navigation");
+    this.dropdownToggles = document.querySelectorAll("[data-toggle-dropdown]");
     this.drawerToggles = document.querySelectorAll("[data-toggle-drawer]");
     this.drawerCloseBtns = document.querySelectorAll(".header__mobile-navigation-drawer-close");
     this.drawers = document.querySelectorAll(".header__mobile-navigation-drawer");
+    this.dropdowns = document.querySelectorAll(".header__mobile-navigation-dropdown");
   }
 
   connectedCallback() {
@@ -27,6 +29,7 @@ export default class RaHeader extends HTMLElement {
     this.toggleMegaMenu();
     this.handleMobileNav();
 		this.handleMobileDrawer();
+		this.handleMobileDropdowns();
   }
 
   isMobile() {
@@ -135,4 +138,17 @@ export default class RaHeader extends HTMLElement {
 		});
 	}
 
+	handleMobileDropdowns() {
+		this.dropdownToggles.forEach((btn) => {
+			btn.addEventListener("click", (e) => {
+				const toggleId = btn.getAttribute("data-toggle-dropdown");
+				e.preventDefault();
+				btn.classList.toggle("active");
+				const seletedDropdown = document.getElementById(toggleId);
+				const dropdownHeight = seletedDropdown.querySelector(".header__mobile-navigation-dropdown-inner").offsetHeight;
+				seletedDropdown.style.setProperty("--dropdown-height", dropdownHeight + "px");
+				document.getElementById(toggleId).classList.toggle("active");
+			});
+		});
+	}
 }
