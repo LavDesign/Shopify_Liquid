@@ -1,7 +1,6 @@
 export default class RaHeader extends HTMLElement {
   constructor() {
     super();
-    this.mobileScreen = 768;
     this.stickyOffset = 50;
     this.headerPositionTop = "0px";
     this.headerDropdownTop = "0px";
