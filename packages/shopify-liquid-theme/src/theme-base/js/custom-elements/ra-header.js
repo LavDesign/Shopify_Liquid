@@ -5,7 +5,6 @@ export default class RaHeader extends HTMLElement {
     this.stickyOffset = 50;
     this.headerPositionTop = "0px";
     this.headerDropdownTop = "0px";
-    this.windowWidth = window.innerWidth;
     this.childLinks = this.querySelectorAll(
       ".header__navigation-item--has-child"
     );
@@ -30,10 +29,6 @@ export default class RaHeader extends HTMLElement {
     this.handleMobileNav();
 		this.handleMobileDrawer();
 		this.handleMobileDropdowns();
-  }
-
-  isMobile() {
-    return this.windowWidth <= this.mobileScreen;
   }
 
 	preventEmptyLinks() {
@@ -141,8 +136,8 @@ export default class RaHeader extends HTMLElement {
 	handleMobileDropdowns() {
 		this.dropdownToggles.forEach((btn) => {
 			btn.addEventListener("click", (e) => {
-				const toggleId = btn.getAttribute("data-toggle-dropdown");
 				e.preventDefault();
+				const toggleId = btn.getAttribute("data-toggle-dropdown");
 				btn.classList.toggle("active");
 				const seletedDropdown = document.getElementById(toggleId);
 				const dropdownHeight = seletedDropdown.querySelector(".header__mobile-navigation-dropdown-inner").offsetHeight;

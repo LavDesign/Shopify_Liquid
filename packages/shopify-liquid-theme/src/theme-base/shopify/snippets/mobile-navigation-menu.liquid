@@ -124,7 +124,7 @@
 					{% assign link_label_handleize = link.title | handleize %}
 
 					{% if featured_item_handleize == link_label_handleize %}
-						<li class="header__mobile-navigation-featured-content {{ aspect_ratio }}">
+						<li class="header__mobile-navigation-featured-content">
 							{% if featured.settings.image != blank %}
 								<img class="header__mobile-navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
 							{% endif %}
@@ -143,7 +143,7 @@
 										url: featured.settings.link_url,
 									%}
 								{% endif %}
-							<div>
+							</div>
 						</li>
 					{% endif %}
 				{% endfor %}
