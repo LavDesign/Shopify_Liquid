@@ -7,14 +7,14 @@
       <h3 class="mb-[24px]">Cart</h3>
       <CartProducts :cart="cart" />
     </div>
-    <CartSidebar :cart="cart" />
+    <CartSidebar :cart="cart" :settings="settings" />
   </div>
   <div v-else>loading...</div>
 </template>
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useCartStore } from "../stores/cart";
 import CartProducts from "./CartComponents/CartProducts.vue";
 import CartSidebar from "./CartComponents/CartSidebar.vue";
@@ -22,7 +22,17 @@ import CartSidebar from "./CartComponents/CartSidebar.vue";
 const cartStore = useCartStore();
 const { cart } = storeToRefs(cartStore);
 
+const props = defineProps({
+  settings: {
+    type: Object,
+    default: () => {},
+  },
+});
+
+const settings = ref(props.settings);
+
 onMounted(() => {
   cartStore.load();
+  console.log(props.settings);
 });
 </script>

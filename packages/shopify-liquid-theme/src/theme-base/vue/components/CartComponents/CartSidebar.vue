@@ -2,27 +2,41 @@
   <div class="basis-4/12 flex flex-col">
     <div class="pt-[16px] px-[24px] bg-white mb-[15px]">
       <!-- FREE SHIPPING BAR -->
-      <CartFreeShipping :subtotal="subtotal" />
+      <CartProgressBar
+        v-if="settings.free_gift_enabled"
+        :threshold="settings.free_gift_threshold"
+        :subtotal="subtotal"
+      />
       <!-- GIFT MESSAGE BOX -->
-      <CartGiftMessage />
+      <CartGiftMessage v-if="settings.gift_message_enabled" />
       <!-- SPECIAL MESSAGE -->
-      <CartMessage :message="message1" />
+      <CartMessage
+        v-if="settings.cart_message_1.length > 0"
+        :message="settings.cart_message_1"
+      />
       <!-- SUBTOTAL -->
       <CartSubtotal :subtotal="subtotal" />
       <!-- CHECKOUT CTA -->
       <CartCheckoutButton :checkout-ready="readyForCheckout" />
     </div>
     <!-- SPECIAL MESSAGE AGAIN-->
-    <CartMessage :message="message2" />
+    <CartMessage
+      v-if="settings.cart_message_2.length > 0"
+      :message="settings.cart_message_2"
+    />
     <!-- YMAL -->
-    <CartUpsell />
+    <CartUpsell
+      v-if="settings.upsell_enabled"
+      :upsell-product="settings.upsell_product"
+    />
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
+import { useCartStore } from "../../stores/cart";
 import {
-  CartFreeShipping,
+  CartProgressBar,
   CartSubtotal,
   CartCheckoutButton,
   CartGiftMessage,
@@ -30,14 +44,14 @@ import {
   CartUpsell,
 } from "./";
 
-const message1 = {
-  value:
-    "This is a special message, it is meant to give the user any additional info they may need to see.",
-};
-const message2 = { value: "THIS IS A SPECIAL Message" };
+const cartStore = useCartStore();
 
 const props = defineProps({
   cart: {
+    type: Object,
+    default: () => {},
+  },
+  settings: {
     type: Object,
     default: () => {},
   },
@@ -45,6 +59,10 @@ const props = defineProps({
 
 const cart = computed(() => {
   return props.cart;
+});
+
+const settings = computed(() => {
+  return props.settings;
 });
 
 const subtotal = computed(() => {

@@ -118,6 +118,8 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
+    "cart_header_text": "Cart Header Text",
+    "cart_message_1": "<p><strong>This<\/strong> <em>is<\/em> a special <a href=\"https:\/\/www.google.com\" target=\"_blank\" title=\"https:\/\/www.google.com\">message<\/a>.<\/p>",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -126,6 +128,7 @@
             "type": "announcement",
             "settings": {
               "text": "Welcome to our store",
+              "text_alignment": "center",
               "color_scheme": "background-1",
               "link": ""
             }
@@ -144,9 +147,13 @@
           "logo_width": 90,
           "logo_position": "middle-left",
           "menu": "main-menu",
+          "menu_type_desktop": "dropdown",
           "show_line_separator": true,
           "enable_sticky_header": true,
-          "margin_bottom": 0
+          "mobile_logo_position": "center",
+          "margin_bottom": 0,
+          "padding_top": 20,
+          "padding_bottom": 20
         }
       },
       "footer": {
@@ -181,7 +188,10 @@
           "color_scheme": "background-1"
         }
       }
-    }
+    },
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {

@@ -1,5 +1,5 @@
 import CartCheckoutButton from "./CartCheckoutButton";
-import CartFreeShipping from "./CartFreeShipping";
+import CartProgressBar from "./CartProgressBar";
 import CartProducts from "./CartProducts";
 import CartProductTile from "./CartProductTile";
 import CartSidebar from "./CartSidebar";
@@ -10,7 +10,7 @@ import CartUpsell from "./CartUpsell";
 
 export {
   CartCheckoutButton,
-  CartFreeShipping,
+  CartProgressBar,
   CartProducts,
   CartProductTile,
   CartSidebar,

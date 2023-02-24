@@ -9,7 +9,7 @@
     <div class="relative w-full h-[8px] bg-grey-200">
       <div
         class="absolute bg-[#000] top-0 bottom-0 !block transition-all ease-linear"
-        :style="{ width: `${freeShippingPercentage}%` }"
+        :style="{ width: `${thresholdPercentage}%` }"
       ></div>
     </div>
   </div>
@@ -23,20 +23,30 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  threshold: {
+    type: String,
+    default: "",
+  },
 });
 
-const FREE_SHIPPING_GOAL = 10000;
+console.log("Logging threshold");
+
+const giftThreshold = computed(() => {
+  return props.threshold;
+});
+
+console.log(giftThreshold.value);
 
 const subtotal = computed(() => {
   return props.subtotal;
 });
 
 const remainingSpend = computed(() => {
-  return FREE_SHIPPING_GOAL - subtotal.value;
+  return giftThreshold.value - subtotal.value;
 });
 
-const freeShippingPercentage = computed(() => {
-  const percentage = (subtotal.value * 100) / FREE_SHIPPING_GOAL;
+const thresholdPercentage = computed(() => {
+  const percentage = (subtotal.value * 100) / giftThreshold.value;
   return Math.min(percentage, 100);
 });
 </script>
