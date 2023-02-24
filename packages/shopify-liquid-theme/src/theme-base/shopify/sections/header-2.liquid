@@ -14,8 +14,9 @@
     {%- comment -%}
       Hamberger
     {%- endcomment -%}
-    <a class="header__hamberger" href="#" title="toggle menu" aria-label="toggle menu">
-      {% render 'icon' icon: 'hamberger', width: '24px', height: '24px' %}
+    <a id="header__hamberger" class="header__hamberger" href="#" title="toggle menu" aria-label="toggle menu">
+      {% render 'icon' icon: 'hamberger', width: '24px', height: '24px' class: 'hamberger-icon' %}
+      {% render 'icon' icon: 'close', width: '18px', height: '18px' class: 'close-icon' %}
     </a>
 
     {%- comment -%}
@@ -28,13 +29,28 @@
     {% endif %}
 
     {%- comment -%}
-      Navigation menu
+      Navigation menu - desktop
     {%- endcomment -%}
     {% if section.settings.menu != blank %}
       <nav class="header__navigation">
         <ul class="header__navigation-list" role="list" tabindex="-1">
           {%- for link in section.settings.menu.links -%}
-            {% render 'navigation-menu-item' 
+            {% render 'desktop-navigation-menu' 
+              link: link, 
+              featured_contents: section.blocks,
+              aspect_ratio: section.settings.aspect_ratio
+            %}
+          {%- endfor -%}
+        </ul>
+      </nav>
+
+      {%- comment -%}
+        Navigation menu - mobile
+      {%- endcomment -%}
+      <nav class="header__mobile-navigation">
+        <ul class="header__mobile-navigation-list" role="list" tabindex="-1">
+          {%- for link in section.settings.menu.links -%}
+            {% render 'mobile-navigation-menu' 
               link: link, 
               featured_contents: section.blocks,
               aspect_ratio: section.settings.aspect_ratio
@@ -77,7 +93,6 @@
         </li>
       </ul>
     </div>
-
   </div>
 </ra-header>
 

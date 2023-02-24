@@ -22,6 +22,10 @@
 		title="{{ link.title }}" 
 		aria-label="{{ link.title }}">
 		{{ link.title }}
+
+		{% if has_child or has_mega_menu %}
+			{% render 'icon' icon: 'chevron-down' %}
+		{% endif %}
 	</a>
 
 	{% if has_child or has_mega_menu %}

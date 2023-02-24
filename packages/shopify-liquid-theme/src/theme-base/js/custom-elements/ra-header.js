@@ -1,13 +1,19 @@
 export default class RaHeader extends HTMLElement {
   constructor() {
     super();
+    this.mobileScreen = 768;
     this.stickyOffset = 50;
     this.headerPositionTop = "0px";
     this.headerDropdownTop = "0px";
-    this.links = this.querySelectorAll("a");
+    this.windowWidth = window.innerWidth;
     this.childLinks = this.querySelectorAll(
       ".header__navigation-item--has-child"
     );
+    this.hamberger = document.querySelector("#header__hamberger");
+    this.mobileNav = document.querySelector(".header__mobile-navigation");
+    this.drawerToggles = document.querySelectorAll("[data-toggle-drawer]");
+    this.drawerCloseBtns = document.querySelectorAll(".header__mobile-navigation-drawer-close");
+    this.drawers = document.querySelectorAll(".header__mobile-navigation-drawer");
   }
 
   connectedCallback() {
@@ -16,10 +22,25 @@ export default class RaHeader extends HTMLElement {
   }
 
   init() {
+		this.preventEmptyLinks();
     this.setHeaderPosition();
-    this.preventEmptyLinks();
-    this.toggleDropdown();
+    this.toggleMegaMenu();
+    this.handleMobileNav();
+		this.handleMobileDrawer();
   }
+
+  isMobile() {
+    return this.windowWidth <= this.mobileScreen;
+  }
+
+	preventEmptyLinks() {
+		const links = this.querySelectorAll("a");
+		links.forEach((link) => {
+			link.addEventListener("click", (e) => {
+				(link.getAttribute("href") == "#") ? e.preventDefault() : true
+			});
+		});
+	}
 
   setHeaderPosition(reset = false) {
     const getPreHeader = document.querySelector(".ra-preheader");
@@ -32,11 +53,19 @@ export default class RaHeader extends HTMLElement {
       this.headerDropdownTop =
         this.clientHeight + getPreHeader.clientHeight - 2 + "px";
     }
+
+		// set global CSS vars
     this.style.setProperty("--header-position-top", this.headerPositionTop);
     this.style.setProperty("--dropdown-position-top", this.headerDropdownTop);
     document.documentElement.style.setProperty(
+      "--header-height",
+      this.clientHeight + "px"
+    );
+		document.documentElement.style.setProperty(
       "--content-postion-top",
-      getPreHeader.clientHeight + this.clientHeight + "px"
+      Number(this.headerPositionTop.replace("px", "")) +
+        Number(this.clientHeight) +
+        "px"
     );
   }
 
@@ -48,29 +77,62 @@ export default class RaHeader extends HTMLElement {
     }
   }
 
-  preventEmptyLinks() {
-    this.links.forEach((link) => {
-      if (link.getAttribute("href") == "#") {
-        link.addEventListener("mouseover", (e) => {
-          e.preventDefault();
-        });
-      }
-    });
+  toggleMegaMenu() {
+		this.childLinks.forEach((link) => {
+			link.addEventListener("mouseover", () => {
+				link
+					.querySelector(".header__navigation-dropdown")
+					.classList.add("active");
+				link.classList.add("active");
+			});
+
+			link.addEventListener("mouseout", () => {
+				link
+					.querySelector(".header__navigation-dropdown")
+					.classList.remove("active");
+				link.classList.remove("active");
+			});
+		});
   }
 
-  toggleDropdown() {
-    this.childLinks.forEach((link) => {
-      link.addEventListener("mouseover", () => {
-        link
-          .querySelector(".header__navigation-dropdown")
-          .classList.add("active");
-      });
-
-      link.addEventListener("mouseout", () => {
-        link
-          .querySelector(".header__navigation-dropdown")
-          .classList.remove("active");
-      });
-    });
+  handleMobileNav() {
+		this.hamberger.addEventListener("click", (e) => {
+			e.preventDefault();
+			document.body.classList.toggle("overflow-hidden");
+			this.hamberger.classList.toggle("active");
+			this.mobileNav.classList.toggle("active");
+		});
   }
+
+  handleMobileDrawer() {
+    if (!this.drawerToggles) return;
+
+		// open drawers
+		this.drawerToggles.forEach((btn) => {
+      const btnToggleId = btn.getAttribute("data-toggle-drawer");
+			const btnText = btn.getAttribute("title");
+			btn.addEventListener("click", (e) => {
+				e.preventDefault();
+				this.drawers.forEach((drawer) => {
+					drawer.classList.remove("active")
+				});
+				const selectedDrawer = document.getElementById(btnToggleId);
+        selectedDrawer.querySelector(
+          ".header__mobile-navigation-drawer-title"
+        ).innerHTML = btnText;
+				selectedDrawer.classList.add("active");
+			});
+		});
+		
+		// close drawers
+		this.drawerCloseBtns.forEach((btn) => {
+			btn.addEventListener("click", (e) => {
+				e.preventDefault();
+				this.drawers.forEach((drawer) => {
+					drawer.classList.remove("active")
+				});
+			});
+		});
+	}
+
 }
