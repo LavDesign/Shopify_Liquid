@@ -253,7 +253,8 @@
 			}
 
 			.header__navigation-featured-content-button {
-				margin-top: var(--gutter-xxs);
+				margin-top: var(--gutter-xs);
+				font-size: unset
 			}
 		}
 	}
