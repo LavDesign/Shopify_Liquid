@@ -94,9 +94,7 @@ const props = defineProps({
   },
 });
 
-const product = computed(() => {
-  return props.product;
-});
+const product = computed(() => props.product);
 
 const isUpsell = props.tileType === "upsell";
 

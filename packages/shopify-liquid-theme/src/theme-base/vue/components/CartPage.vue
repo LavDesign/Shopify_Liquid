@@ -4,7 +4,7 @@
     class="w-full p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
   >
     <div class="basis-5/12">
-      <h3 class="mb-[24px]">Cart</h3>
+      <h3 class="mb-[24px]">{{ settings.cart_header_text }}</h3>
       <CartProducts :cart="cart" />
     </div>
     <CartSidebar :cart="cart" :settings="settings" />

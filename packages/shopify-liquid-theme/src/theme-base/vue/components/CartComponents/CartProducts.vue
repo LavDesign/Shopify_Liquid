@@ -15,7 +15,5 @@ const props = defineProps({
   },
 });
 
-const products = computed(() => {
-  return props.cart.items;
-});
+const products = computed(() => props.cart.items);
 </script>

@@ -17,9 +17,7 @@ const props = defineProps({
   },
 });
 
-const checkoutReady = computed(() => {
-  return props.checkoutReady;
-});
+const checkoutReady = computed(() => props.checkoutReady);
 
 const navigateToCheckout = () => {
   if (checkoutReady.value) {

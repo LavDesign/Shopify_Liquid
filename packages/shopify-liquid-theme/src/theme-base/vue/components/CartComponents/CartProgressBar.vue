@@ -29,21 +29,11 @@ const props = defineProps({
   },
 });
 
-console.log("Logging threshold");
+const giftThreshold = computed(() => props.threshold);
 
-const giftThreshold = computed(() => {
-  return props.threshold;
-});
+const subtotal = computed(() => props.subtotal);
 
-console.log(giftThreshold.value);
-
-const subtotal = computed(() => {
-  return props.subtotal;
-});
-
-const remainingSpend = computed(() => {
-  return giftThreshold.value - subtotal.value;
-});
+const remainingSpend = computed(() => giftThreshold.value - subtotal.value);
 
 const thresholdPercentage = computed(() => {
   const percentage = (subtotal.value * 100) / giftThreshold.value;

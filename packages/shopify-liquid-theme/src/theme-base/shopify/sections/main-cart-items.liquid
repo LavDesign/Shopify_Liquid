@@ -8,7 +8,7 @@
 {%- capture cart_upsell_product_data -%}{%- render 'json-product', product: cart_upsell_product -%}{%- endcapture -%}
 
 {% capture cart_settings %}{
-  "cart_header": {{- settings.cart_header_text | json -}},
+  "cart_header_text": {{- settings.cart_header_text | json -}},
   "cart_message_1": {{- settings.cart_message_1 | json -}},
   "cart_message_2": {{- settings.cart_message_2 | json -}},
   "free_gift_enabled": {{- settings.free_gift_enabled | json -}},
