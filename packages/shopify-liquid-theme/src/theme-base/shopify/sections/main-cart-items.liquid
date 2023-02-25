@@ -5,9 +5,7 @@
   endif
 %}
 
-{%- capture cart_upsell_product_data -%}
-  {%- render 'json-product', product: cart_upsell_product -%}
-{%- endcapture -%}
+{%- capture cart_upsell_product_data -%}{%- render 'json-product', product: cart_upsell_product -%}{%- endcapture -%}
 
 {% capture cart_settings %}{
   "cart_header": {{- settings.cart_header_text | json -}},
@@ -17,7 +15,7 @@
   "free_gift_threshold": {{- settings.free_gift_threshold | json -}},
   "gift_message_enabled": {{- settings.gift_message_enabled | json -}},
   "upsell_enabled": {{- settings.upsell_enabled | json -}},
-  "upsell_product": {{- cart_upsell_product_data | json -}},
+  "upsell_product": {{- cart_upsell_product_data | escape | strip -}},
   }{% endcapture %}
 
 <div data-vue-root="CartPage">

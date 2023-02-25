@@ -16,7 +16,5 @@ const props = defineProps({
   },
 });
 
-const upsellProduct = computed(() => {
-  return props.upsellProduct;
-});
+const upsellProduct = computed(() => props.upsellProduct);
 </script>

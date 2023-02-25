@@ -107,8 +107,8 @@ const product_handle = computed(() => {
 const product_image = computed(() => {
   const image = {};
   image.src =
-    product.value.featured_image.url || product.value.featured_image || "";
-  image.alt = product.value.featured_image.alt || product.value.title || "";
+    product.value.featured_image?.url || product.value.featured_image || "";
+  image.alt = product.value.featured_image?.alt || product.value.title || "";
   return image;
 });
 
@@ -125,7 +125,7 @@ const product_compare_price = computed(() => {
 });
 
 const product_link = computed(() => {
-  return product.value.url || `/products/${product_handle.value}`;
+  return product.value?.url || `/products/${product_handle.value}`;
 });
 
 const updateQuantity = (qty) => {
@@ -136,8 +136,4 @@ const updateQuantity = (qty) => {
   };
   cartStore.updateItem(productObj);
 };
-
-console.log("Logging Product Tile");
-console.log(`is upsell: ${isUpsell}`);
-console.log(product.value);
 </script>

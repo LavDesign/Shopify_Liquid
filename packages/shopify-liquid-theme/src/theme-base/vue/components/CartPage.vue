@@ -33,6 +33,5 @@ const settings = ref(props.settings);
 
 onMounted(() => {
   cartStore.load();
-  console.log(props.settings);
 });
 </script>
