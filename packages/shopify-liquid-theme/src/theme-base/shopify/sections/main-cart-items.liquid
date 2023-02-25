@@ -3,19 +3,20 @@
   if settings.upsell_enabled and settings.upsell_product != blank
     assign cart_upsell_product = all_products[settings.upsell_product]
   endif
+
+  assign keys = "cart_header_text,cart_message_1,cart_message_2,free_gift_enabled,free_gift_threshold,gift_message_enabled,upsell_enabled,upsell_product"
+  assign keys = keys | split: ","
 %}
 
-{%- capture cart_upsell_product_data -%}{%- render 'json-product', product: cart_upsell_product -%}{%- endcapture -%}
+{%- capture cart_upsell_product_data -%}
+  {%- render 'json-product', product: cart_upsell_product -%}
+{%- endcapture -%}
 
 {% capture cart_settings %}{
-  "cart_header_text": {{- settings.cart_header_text | json -}},
-  "cart_message_1": {{- settings.cart_message_1 | json -}},
-  "cart_message_2": {{- settings.cart_message_2 | json -}},
-  "free_gift_enabled": {{- settings.free_gift_enabled | json -}},
-  "free_gift_threshold": {{- settings.free_gift_threshold | json -}},
-  "gift_message_enabled": {{- settings.gift_message_enabled | json -}},
-  "upsell_enabled": {{- settings.upsell_enabled | json -}},
-  "upsell_product": {{- cart_upsell_product_data | escape | strip -}},
+  {%- for key in keys -%}
+    "{{ key }}": {{- settings[key] | json -}},
+  {%- endfor -%}
+  "upsell_product": {{ cart_upsell_product_data | escape | strip }},
   }{% endcapture %}
 
 <div data-vue-root="CartPage">
