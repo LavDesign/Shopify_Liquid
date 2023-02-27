@@ -121,19 +121,19 @@
         {
           "type": "text",
           "id": "sub-heading",
-          "label": "Sub-heading text",
+          "label": "Section Sub Title",
           "default": "SUB-HEADING"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Title text",
+          "label": "Section Title",
           "default": "This is a title"
         },
         {
           "type": "select",
           "id": "title_style",
-          "label": "Title style",
+          "label": "Title As",
           "options": <%- uikit.headingStyles -%>,
           "default": "h2"
         },
@@ -147,7 +147,7 @@
         {
           "type": "richtext",
           "id": "body",
-          "label": "Body text"
+          "label": "Section Body Copy"
         },
         {
           "type": "header",
@@ -192,23 +192,23 @@
         },
         {
           "type": "header",
-          "content": "Button 1"
+          "content": "CTA 1"
         },
         {
           "type": "text",
           "id": "button_1_label",
-          "label": "Button 1 label",
+          "label": "CTA 1 label",
           "default": "learn more"
         },
         {
           "type": "url",
           "id": "button_1_url",
-          "label": "Button 1 url"
+          "label": "CTA 1 url"
         },
         {
           "type": "select",
           "id": "button_1_style",
-          "label": "Button 1 style",
+          "label": "CTA 1 style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "primary"
         },
@@ -219,18 +219,18 @@
         {
           "type": "text",
           "id": "button_2_label",
-          "label": "Button 2 label",
+          "label": "CTA 2 label",
           "default": "learn more"
         },
         {
           "type": "url",
           "id": "button_2_url",
-          "label": "Button 2 url"
+          "label": "CTA 2 url"
         },
         {
           "type": "select",
           "id": "button_2_style",
-          "label": "Button 2 style",
+          "label": "CTA 2 style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "secondary"
         }
@@ -247,15 +247,15 @@
       "options": [
         {
           "value": "short",
-          "label": "Short"
+          "label": "Small"
         },
         {
           "value": "main",
-          "label": "Standard"
+          "label": "Medium"
         },
         {
           "value": "tall",
-          "label": "Tall"
+          "label": "Large"
         }
       ]
     },
@@ -267,7 +267,7 @@
       "type": "checkbox",
       "id": "stack_mobile",
       "label": "Stack on mobile",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
@@ -325,10 +325,6 @@
         {
           "value": "fade",
           "label": "Fade"
-        },
-        {
-          "value": "cube",
-          "label": "Cube"
         },
         {
           "value": "coverflow",
