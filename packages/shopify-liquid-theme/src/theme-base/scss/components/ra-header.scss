@@ -266,8 +266,8 @@
     left: 0;
     position: fixed;
     width: 100%;
-    top: var(--content-postion-top);
-    height: calc(100vh - var(--content-postion-top));
+    top: var(--content-position-top);
+    height: calc(100vh - var(--content-position-top));
     border-top: 1px solid var(--link-color);
     background-color: var(--background-color);
     z-index: 510;
@@ -311,7 +311,7 @@
       left: 100%;
       width: 100%;
       display: flex;
-      top: -var(--content-postion-top);
+      top: -var(--content-position-top);
       height: 100%;
       background-color: var(--background-color);
       z-index: 515;

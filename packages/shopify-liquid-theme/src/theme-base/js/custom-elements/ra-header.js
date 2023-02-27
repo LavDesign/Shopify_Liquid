@@ -59,7 +59,7 @@ export default class RaHeader extends HTMLElement {
       this.clientHeight + "px"
     );
     document.documentElement.style.setProperty(
-      "--content-postion-top",
+      "--content-position-top",
       Number(this.headerPositionTop.replace("px", "")) +
         Number(this.clientHeight) +
         "px"
