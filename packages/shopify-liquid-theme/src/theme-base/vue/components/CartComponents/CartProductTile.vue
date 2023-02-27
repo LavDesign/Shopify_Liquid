@@ -1,9 +1,9 @@
 <template>
   <div
-    class="w-full flex flex-row gap-[16px] font-primary py-[16px] border-y border-grey-200"
+    class="w-full flex flex-row gap-4 font-primary py-4 border-y border-grey-200"
     :class="{
       'border-y border-grey-200': tileType === 'cart',
-      'border border-grey-500 px-[16px]': tileType === 'upsell',
+      'border border-grey-500 px-4': tileType === 'upsell',
     }"
   >
     <a :href="product_link" class="aspect-square max-w-[107px]">
@@ -13,7 +13,7 @@
         class="object-cover w-full h-full"
       />
     </a>
-    <div class="flex flex-col gap-[4px] justify-between flex-1">
+    <div class="flex flex-col gap-1 justify-between flex-1">
       <a
         :href="product_link"
         :class="{
@@ -49,10 +49,10 @@
         :quantity="product.quantity"
       />
     </div>
-    <div class="flex flex-col justify-between">
+    <div class="flex flex-col justify-between items-end">
       <span
         v-if="!isUpsell"
-        class="border border-grey-900 w-[34px] h-[34px] flex items-center justify-center self-end cursor-pointer"
+        class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md"
         @click="updateQuantity(0)"
       >
         <svg

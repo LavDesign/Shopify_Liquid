@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-[32px] text-center">
+  <div class="mb-8 text-center">
     <div v-html="message"></div>
   </div>
 </template>

@@ -1,11 +1,12 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import axios from "axios";
 
 export const useCartStore = defineStore("cart", () => {
   // TODO: Build out cart store properties and methods [get, updateItem, removeItem]
 
-  const cart = ref({});
+  const cart = ref({ note: "" });
+  const note = computed(() => cart.value.note);
   const loading = ref(false);
 
   const load = async () => {
@@ -79,5 +80,5 @@ export const useCartStore = defineStore("cart", () => {
     });
   };
 
-  return { load, cart, addItem, loading, updateItem, updateNote };
+  return { load, cart, addItem, loading, updateItem, updateNote, note };
 });

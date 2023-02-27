@@ -1,6 +1,6 @@
 <template>
   <div class="basis-4/12 flex flex-col">
-    <div class="pt-[16px] px-[24px] bg-white mb-[15px]">
+    <div class="pt-4 px-8 bg-white mb-4">
       <!-- FREE SHIPPING BAR -->
       <CartProgressBar
         v-if="settings.free_gift_enabled"
@@ -15,7 +15,7 @@
       />
       <!-- SPECIAL MESSAGE -->
       <CartMessage
-        v-if="settings.cart_message_1.length > 0"
+        v-if="settings.cart_message_1?.length > 0"
         :message="settings.cart_message_1"
       />
       <!-- SUBTOTAL -->
@@ -25,12 +25,12 @@
     </div>
     <!-- SPECIAL MESSAGE AGAIN-->
     <CartMessage
-      v-if="settings.cart_message_2.length > 0"
+      v-if="settings.cart_message_2?.length > 0"
       :message="settings.cart_message_2"
     />
     <!-- YMAL -->
     <CartUpsell
-      v-if="settings.upsell_enabled"
+      v-if="settings.upsell_enabled && settings.upsell_product"
       :upsell-product="settings.upsell_product"
     />
   </div>

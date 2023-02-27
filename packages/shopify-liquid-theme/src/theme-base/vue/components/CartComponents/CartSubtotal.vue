@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row justify-between text-[18px] border-t border-grey-400 mb-[24px] pt-[16px]"
+    class="flex flex-row justify-between text-[18px] border-t border-grey-400 mb-8 pt-4"
   >
     <span>SUBTOTAL:</span>
     <span>{{ $filters.money(subtotal) }}</span>

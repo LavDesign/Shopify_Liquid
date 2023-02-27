@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h5 class="text-center mb-[8px]">You may also like</h5>
+    <h5 class="text-center mb-2">You may also like</h5>
     <CartProductTile :product="upsellProduct" tile-type="upsell" />
   </div>
 </template>

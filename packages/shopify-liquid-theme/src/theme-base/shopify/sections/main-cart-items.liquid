@@ -1,5 +1,6 @@
 {% liquid
   assign cart_upsell_product = null
+  assign cart_upsell_product_data = null
   if settings.upsell_enabled and settings.upsell_product != blank
     assign cart_upsell_product = all_products[settings.upsell_product]
   endif
@@ -8,15 +9,19 @@
   assign keys = keys | split: ","
 %}
 
-{%- capture cart_upsell_product_data -%}
-  {%- render 'json-product', product: cart_upsell_product -%}
-{%- endcapture -%}
+{% if settings.upsell_product != blank %}
+  {%- capture cart_upsell_product_data -%}
+    {%- render 'json-product', product: cart_upsell_product -%}
+  {%- endcapture -%}
+{% endif %}
 
 {% capture cart_settings %}{
   {%- for key in keys -%}
-    "{{ key }}": {{- settings[key] | json -}},
+    "{{ key }}": {{- settings[key] | default: null | json -}},
   {%- endfor -%}
-  "upsell_product": {{ cart_upsell_product_data | escape | strip }},
+  {%- if cart_upsell_product_data -%}
+    "upsell_product": {{ cart_upsell_product_data | escape | strip }}
+  {%- endif -%}
   }{% endcapture %}
 
 <div data-vue-root="CartPage">
