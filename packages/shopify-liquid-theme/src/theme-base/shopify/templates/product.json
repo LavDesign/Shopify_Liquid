@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "ra-main-product",
+      "type": "main-product",
       "blocks": {
       },
       "block_order": [

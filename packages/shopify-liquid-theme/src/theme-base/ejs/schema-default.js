@@ -18,7 +18,7 @@
  * See: https://ejs.co/#docs
  */
 
-/* 
+/*
   Color Palletes
 */
 const colorsPrimary = [
@@ -76,7 +76,7 @@ const colorsUtil = [
   { label: "White", value: "#FFFFFF" },
 ];
 
-/* 
+/*
   All Colors
 */
 const colorsAll = [
@@ -122,7 +122,7 @@ const colorsAll = [
   { label: "Util-White", value: "--color-util-white" },
 ];
 
-/* 
+/*
   Fonts - Typography
 */
 const fonts = [
@@ -130,16 +130,38 @@ const fonts = [
   { label: "Mono", value: "'mono', monospace" },
 ];
 
-/* 
+/*
+  Icons
+*/
+
+const icons = [
+  { label: "Account", value: "account" },
+  { label: "Check", value: "check" },
+  { label: "Chevron Down", value: "chevron-down" },
+  { label: "Chevron Left", value: "chevron-left" },
+  { label: "Chevron Right", value: "chevron-right" },
+  { label: "Chevron Up", value: "chevron-up" },
+  { label: "Circle Check", value: "circle-check" },
+  { label: "Close", value: "close" },
+  { label: "Heart", value: "heart" },
+  { label: "Left Arrow", value: "left-arrow" },
+  { label: "Minus", value: "minus" },
+  { label: "Plus", value: "plus" },
+  { label: "Right Arrow", value: "right-arrow" },
+  { label: "Search", value: "search" },
+];
+
+/*
   Button - Styles
 */
+
 const buttonStyles = [
   { label: "Primary", value: "primary" },
   { label: "Secondary", value: "secondary" },
   { label: "Tertiary", value: "tertiary" },
 ];
 
-/* 
+/*
   Heading - Styles
 */
 const headingStyles = [
@@ -151,7 +173,7 @@ const headingStyles = [
   { label: "H6", value: "h6" },
 ];
 
-/* 
+/*
   Text - Alignments
 */
 const textAligments = [
@@ -175,6 +197,7 @@ module.exports = {
     colorsUtil,
     colorsAll: JSON.stringify(colorsAll),
     fonts: JSON.stringify(fonts),
+    icons: JSON.stringify(icons),
     buttonStyles: JSON.stringify(buttonStyles),
     headingStyles: JSON.stringify(headingStyles),
     textAligments: JSON.stringify(textAligments),

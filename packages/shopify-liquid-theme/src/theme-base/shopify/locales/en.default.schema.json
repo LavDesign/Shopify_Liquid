@@ -1634,7 +1634,7 @@
       }
     },
     "main-product": {
-      "name": "Product information",
+      "name": "Product Information",
       "blocks": {
         "text": {
           "name": "Text",
