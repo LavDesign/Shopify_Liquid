@@ -1,0 +1,20 @@
+.ra-header-util {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translate(0, -50%);
+  
+  *,
+  & {
+  list-style: none;
+  }
+  .ra-header-util__item {
+    padding-left: 10px;
+
+    &:not(:last-child) {
+      border-right: 1px solid var(--preheader-text-color);
+      padding-right: 10px;
+    }
+  }
+}

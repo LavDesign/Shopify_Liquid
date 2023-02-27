@@ -131,27 +131,6 @@ const fonts = [
 ];
 
 /*
-  Icons
-*/
-
-const icons = [
-  { label: "Account", value: "account" },
-  { label: "Check", value: "check" },
-  { label: "Chevron Down", value: "chevron-down" },
-  { label: "Chevron Left", value: "chevron-left" },
-  { label: "Chevron Right", value: "chevron-right" },
-  { label: "Chevron Up", value: "chevron-up" },
-  { label: "Circle Check", value: "circle-check" },
-  { label: "Close", value: "close" },
-  { label: "Heart", value: "heart" },
-  { label: "Left Arrow", value: "left-arrow" },
-  { label: "Minus", value: "minus" },
-  { label: "Plus", value: "plus" },
-  { label: "Right Arrow", value: "right-arrow" },
-  { label: "Search", value: "search" },
-];
-
-/*
   Button - Styles
 */
 

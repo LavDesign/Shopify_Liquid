@@ -55,6 +55,18 @@
               featured_contents: section.blocks
             %}
           {%- endfor -%}
+
+          <div class="header__mobile-navigation-util">
+            {% if section.settings.show_account %}
+              <li class="header__action-item">
+                <a class="header__action-link flex items-center" href="#" title="account" aria-label="account">
+                  {% render 'icon' icon: section.settings.account_icon, width: '14px', height: '14px' %}
+                  <span class="ml-2 text-sm">sign-in / sign-up</span>
+                </a>
+              </li>
+            {% endif %}
+            {% render 'ra-header-util' %}
+          </div>
         </ul>
       </nav>
     {% endif %}

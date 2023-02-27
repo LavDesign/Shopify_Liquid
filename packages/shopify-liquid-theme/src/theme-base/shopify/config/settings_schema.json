@@ -545,6 +545,48 @@
     ]
   },
   {
+    "name": "Header + Pre-header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Utility links"
+      },
+      {
+        "type": "text",
+        "id": "util_link_1_label",
+        "label": "Util link 1 label",
+        "default": "Util link"
+      },
+      {
+        "type": "url",
+        "id": "util_link_1_url",
+        "label": "Util link 1 url"
+      },
+      {
+        "type": "text",
+        "id": "util_link_2_label",
+        "label": "Util link 2 label",
+        "default": "Util link"
+      },
+      {
+        "type": "url",
+        "id": "util_link_2_url",
+        "label": "Util link 2 url"
+      },
+      {
+        "type": "text",
+        "id": "util_link_3_label",
+        "label": "Util link 3 label",
+        "default": "Util link"
+      },
+      {
+        "type": "url",
+        "id": "util_link_3_url",
+        "label": "Util link 3 url"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.colors.name",
     "settings": [
       {
