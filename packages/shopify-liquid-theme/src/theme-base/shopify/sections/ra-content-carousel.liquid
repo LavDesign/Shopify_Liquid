@@ -1,6 +1,5 @@
 {% liquid
   assign section_title       = section.settings.title
-  assign section_pre_title   = section.settings.pre_title
   assign section_description = section.settings.description
 
   assign title_as    = section.settings.title_as
@@ -133,11 +132,6 @@
       {
         "type": "header",
         "content": "Section Content"
-      },
-      {
-        "type": "text",
-        "id": "pre_title",
-        "label": "Section Pre Title"
       },
       {
         "type": "text",
