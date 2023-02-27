@@ -1024,7 +1024,7 @@
     {% assign img_alt = section.settings.featured_product.featured_image.alt %}
     {% assign link_url = section.settings.featured_product.url %}
     <div class="br-grid grid--col-2 mb-5">
-      {% render 'icon-tile',
+      {% render 'ra-icon-tile',
         imgSrc: img_src,
         imgAlt: img_alt,
         title: "This is a Title",
@@ -1035,7 +1035,7 @@
         linkText: "Default"
         horizontalAlign: 'right'
       %}
-      {% render 'icon-tile',
+      {% render 'ra-icon-tile',
         imgSrc: img_src,
         imgAlt: img_alt,
         imgWidth: 200,
@@ -1126,7 +1126,7 @@
     {% assign videoUrl = section.settings.video_url %}
     <h4 class="text-h4 mt-10 mb-5">Content Tiles</h4>
     <div style="max-width: 22rem;">
-      {% render 'content-tile'
+      {% render 'ra-content-tile'
         src: img_src,
         alt: img_alt,
         title: 'This is a title',
@@ -1142,7 +1142,7 @@
     <hr class="border my-20">
     <h4 class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
     <div style="max-width: 22rem;">
-      {% render 'content-tile'
+      {% render 'ra-content-tile'
         src: img_src,
         alt: img_alt,
         title: 'This is a title',

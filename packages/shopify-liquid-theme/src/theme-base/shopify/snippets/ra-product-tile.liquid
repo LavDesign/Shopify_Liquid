@@ -15,6 +15,8 @@ Props:
   hover_img: String, define hover image that will be used
   hover_img_alt: String, define alt text for hover image
 
+  font_color:  String, hex code for text color - (optional)
+
 
 Example product-tile snippet:
   {% render 'ra-product-tile' product: product %}
@@ -66,7 +68,7 @@ Example product-tile snippet:
       </div>
     {% endunless %}
   </div>
-  <div class="ra-product-tile__details">
+  <div class="ra-product-tile__details" {% if font_color != 'rgba(0,0,0,0)' %}style="color: {{ font_color }}"{% endif %}>
     {% if pre_title != blank %}
       <p class="ra-product-tile__attribute">
         {{- pre_title -}}
