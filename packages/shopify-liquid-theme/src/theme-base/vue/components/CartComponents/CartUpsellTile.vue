@@ -51,7 +51,7 @@
               label=""
               :options="options"
               :selected="selectedOptions[optionKey]"
-              :variant="getOptionVariant(optionKey)"
+              variant="dropdown"
               :itemsPerRow="itemsPerRow"
               @change:option="
                 (selected, option) =>
@@ -109,17 +109,9 @@ const product_link = computed(() => `/products/${product_handle.value}`);
 
 // STOLEN FROM THE PRODUCT FORM
 // ToDo: Add these values as a prop to pull from customizer
-const dropdownOptions = [];
 const swatchOptions = ["Color"];
 
 const itemsPerRow = "3";
-
-function getOptionVariant(optionName) {
-  if (dropdownOptions.includes(optionName)) {
-    return "dropdown";
-  }
-  return "grid";
-}
 
 const optionsWithValues = reactive(props.product.options_with_values);
 

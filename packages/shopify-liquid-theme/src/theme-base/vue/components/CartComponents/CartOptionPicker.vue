@@ -1,13 +1,11 @@
 <template>
-  <span>
-    <RaOptionPicker
-      v-bind="$attrs"
-      class="cart-tile__option-picker"
-      variant="dropdown"
-      size="lg"
-      :label="false"
-    />
-  </span>
+  <RaOptionPicker
+    v-bind="$attrs"
+    class="cart-tile__option-picker"
+    variant="dropdown"
+    size="lg"
+    :label="false"
+  />
 </template>
 
 <script setup>
