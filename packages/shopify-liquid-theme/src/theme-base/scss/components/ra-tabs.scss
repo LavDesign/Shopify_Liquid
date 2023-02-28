@@ -35,9 +35,6 @@
 }
 
 .ra-tabs--stack .ra-tab {
-  .ra-tab__content {
-  }
-
   &:not(:last-child) {
     .ra-tab__content {
       border-bottom: 0 !important;
