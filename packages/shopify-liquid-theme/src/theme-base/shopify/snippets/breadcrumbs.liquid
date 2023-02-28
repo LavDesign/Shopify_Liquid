@@ -3,15 +3,13 @@
 Props:
 type:          String [a, div] - (option) * default is <nav>
 breadcrumbs:   Array for list of link objects - (required)
-class:         String add custom CSS class - (optional)
+classes:         String add custom CSS class - (optional)
 disable_last:  Boolean to toggle if last item / current page should be disabled - (optional) [default = disabled]
 divider:       String [slash, minus] choose divider style - (optional) default is (slash)
 
 Example Breadcrumb:
 {% render 'breadcrumb' %}
 {% endcomment %}
-
-{% capture classes %}{% endcapture %}
 
 {% capture divider %}
   {% if divider == 'minus' %}
@@ -29,7 +27,7 @@ Example Breadcrumb:
   {% endif %}
 {% endcapture %}
 
-<nav class="ra-breadcrumbs ra-breadcrumbs--wrap" {% if type != blank %}as="{{- type -}}"{% endif %}>
+<nav class="ra-breadcrumbs ra-breadcrumbs--wrap {{ classes }}" {% if type != blank %}as="{{- type -}}"{% endif %}>
   <ol class="ra-breadcrumbs__list">
     <li class="ra-breadcrumbs__list-item">
       <a

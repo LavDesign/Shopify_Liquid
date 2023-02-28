@@ -3,6 +3,7 @@
     id:       string unique ID, should start with 'modal-' - (required)
     title:    string modal title - (optional)
     content:  string/html/markup modal content - (required)
+    classes:  string extra class names - (optional)
 
   Example:
     {% capture content %}
@@ -20,14 +21,14 @@
 {% endcomment %}
 
 {% if id != blank %}
-  <dialog data-dialog-id="{{ id }}">
+  <dialog data-dialog-id="{{ id }}" class="{{ classes }}">
     <div class="ra-modal__content">
       <div class="flex justify-between justify-items-center">
         {% if title != blank %}
           <h4 class="sr-only">{{ title }}</h4>
           <h4 class="h4">{{ title }}</h4>
         {% endif %}
-        <form method="dialog">
+        <form method="dialog" class="close-modal">
           {% render 'icon-button' type: 'button', value: 'close' style: 'tertiary', size: 'sm', label: 'close modal', icon: 'close', rounded: true %}
         </form>
       </div>
