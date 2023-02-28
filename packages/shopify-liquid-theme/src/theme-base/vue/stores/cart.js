@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import axios from "axios";
 
 export const useCartStore = defineStore("cart", () => {
@@ -78,6 +78,10 @@ export const useCartStore = defineStore("cart", () => {
         });
     });
   };
+
+  onMounted(() => {
+    load();
+  });
 
   return { load, cart, addItem, loading, updateItem, updateNote };
 });

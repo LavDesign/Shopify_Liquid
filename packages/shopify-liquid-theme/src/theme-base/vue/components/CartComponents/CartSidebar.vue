@@ -8,11 +8,7 @@
         :subtotal="subtotal"
       />
       <!-- GIFT MESSAGE BOX -->
-      <CartGiftMessage
-        v-if="settings.gift_message_enabled"
-        :note="note"
-        :attributes="attributes"
-      />
+      <CartGiftMessage v-if="settings.gift_message_enabled" />
       <!-- SPECIAL MESSAGE -->
       <CartMessage
         v-if="settings.cart_message_1?.length > 0"
