@@ -32,7 +32,7 @@
     </div>
     <textarea
       v-if="giftMessageActive"
-      v-model="note"
+      v-model="tempNote"
       class="ra-textarea__control mt-4 border border-grey-300"
       rows="4"
       placeholder="Gift Message Text"
@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { useCartStore } from "../../stores/cart";
 
 const props = defineProps({
@@ -55,7 +55,8 @@ const props = defineProps({
   },
 });
 const cartStore = useCartStore();
-const note = ref(props.note);
+const note = computed(() => props.note);
+let tempNote = ref("");
 let giftMessageActive = ref(false);
 
 const debounce = (fn, wait) => {
@@ -67,7 +68,7 @@ const debounce = (fn, wait) => {
 };
 
 watch(
-  note,
+  tempNote,
   debounce((updatedNote) => {
     cartStore.updateNote(updatedNote);
   }, 500)

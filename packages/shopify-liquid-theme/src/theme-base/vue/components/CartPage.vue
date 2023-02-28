@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="cart"
+    v-if="cart?.items?.length > 0"
     class="w-full p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
   >
     <div class="basis-5/12">
@@ -9,7 +9,7 @@
     </div>
     <CartSidebar :cart="cart" :settings="settings" />
   </div>
-  <div v-else>loading...</div>
+  <div v-else class="text-center mt-4">loading...</div>
 </template>
 
 <script setup>

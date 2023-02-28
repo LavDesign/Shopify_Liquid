@@ -61,12 +61,12 @@
         class="ra-choice ra-choice--radio ra-choice--classic ra-choice--radio-classic"
       >
         <input
-          :id="product_handle+'-'+product.id"
+          :id="product_handle + '-' + product.id"
           type="radio"
           class="ra-choice__input"
         />
         <label
-          :for="product_handle+'-'+product.id"
+          :for="product_handle + '-' + product.id"
           class="ra-choice__label-container ra-choice__container set--sibling-deep-focus"
         >
           <div class="ra-choice__checkmark set--inherit-focus">
