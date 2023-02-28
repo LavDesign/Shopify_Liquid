@@ -81,7 +81,7 @@ Example product-tile snippet:
     {% render 'ra-price' product: product, class: 'ra-product-tile__price' %}
     <!-- Rating -->
     <div raw link class="ra-product-tile__rating ra-rating">
-      {% render 'review-stars' %}
+      {% render 'review-stars', platform: settings.review_platform, product: product %}
     </div>
   </div>
 </div>
