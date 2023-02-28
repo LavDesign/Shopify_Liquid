@@ -58,7 +58,6 @@ const initSwipers = () => {
 };
 
 window.addEventListener("load", () => {
-  console.log("load");
   renderVueApps();
   initSwipers();
   register();
