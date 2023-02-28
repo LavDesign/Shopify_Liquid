@@ -1,5 +1,5 @@
 <template>
-  <div v-if="viewUpsell">
+  <div v-if="!viewUpsell">
     <h5 class="text-center mb-2">You may also like</h5>
     <CartUpsellTile v-bind="{ product }" />
   </div>
@@ -25,6 +25,6 @@ const props = defineProps({
 const product = computed(() => props.product);
 const items = computed(() => cartStore.cart.items);
 const viewUpsell = computed(() =>
-  items.value.some((item) => item.handle !== product.value.handle)
+  items.value.some((item) => item.handle == product.value.handle)
 );
 </script>
