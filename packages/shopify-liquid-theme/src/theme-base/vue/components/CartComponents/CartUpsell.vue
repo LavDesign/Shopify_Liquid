@@ -1,13 +1,13 @@
 <template>
   <div>
     <h5 class="text-center mb-2">You may also like</h5>
-    <CartProductTile :product="upsellProduct" tile-type="upsell" />
+    <CartUpsellTile :product="upsellProduct" tile-type="upsell" />
   </div>
 </template>
 
 <script setup>
 import { computed } from "vue";
-import { CartProductTile } from "./";
+import { CartUpsellTile } from "./";
 
 const props = defineProps({
   upsellProduct: {

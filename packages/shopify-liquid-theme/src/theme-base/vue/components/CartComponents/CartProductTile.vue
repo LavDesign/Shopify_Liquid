@@ -1,10 +1,6 @@
 <template>
   <div
     class="w-full flex flex-row gap-4 font-primary py-4 border-y border-grey-200"
-    :class="{
-      'border-y border-grey-200': tileType === 'cart',
-      'border border-grey-500 px-4': tileType === 'upsell',
-    }"
   >
     <a :href="product_link" class="aspect-square max-w-[107px]">
       <img
@@ -14,44 +10,31 @@
       />
     </a>
     <div class="flex flex-col gap-1 justify-between flex-1">
-      <a
-        :href="product_link"
-        :class="{
-          'text-base': !isUpsell,
-          'text-lg': isUpsell,
-        }"
-      >
+      <a :href="product_link" class="text-base">
         {{ product_title }}
       </a>
-      <div v-if="!isUpsell">
+      <div>
         <div
           v-for="(option, i) in product.options_with_values"
           :key="product.handle + '-' + i"
           class="flex-col text-sm font-light"
+          :class="{
+            'mt-1': i != 0,
+          }"
         >
           {{ option.name }} <br /><span class="text-grey-500">{{
             option.value
           }}</span>
         </div>
       </div>
-      <div v-else>
-        <template
-          v-for="(variant, i) in product.variants"
-          :key="variant.option1 + '_' + i"
-        >
-          {{ variant.option1 }} - {{ i }} <br />
-        </template>
-      </div>
       <QuantityAdjuster
-        v-if="!isUpsell"
-        class="mt-[4px]"
+        class="mt-1"
         @quantity-updated="updateQuantity"
         :quantity="product.quantity"
       />
     </div>
     <div class="flex flex-col justify-between items-end">
       <span
-        v-if="!isUpsell"
         class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md"
         @click="updateQuantity(0)"
       >
@@ -88,15 +71,9 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
-  tileType: {
-    type: String,
-    default: "cart",
-  },
 });
 
 const product = computed(() => props.product);
-
-const isUpsell = props.tileType === "upsell";
 
 const product_handle = computed(() => {
   return product.value.handle;

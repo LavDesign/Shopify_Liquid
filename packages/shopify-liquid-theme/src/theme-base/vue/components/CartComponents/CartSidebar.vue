@@ -10,7 +10,7 @@
       <!-- GIFT MESSAGE BOX -->
       <CartGiftMessage
         v-if="settings.gift_message_enabled"
-        :note="note"
+        :note="cartRef.note"
         :attributes="attributes"
       />
       <!-- SPECIAL MESSAGE -->
@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import {
   CartProgressBar,
   CartSubtotal,
@@ -58,6 +58,8 @@ const props = defineProps({
   },
 });
 
+const cartRef = ref(props.cart);
+
 const cart = computed(() => props.cart);
 
 const settings = computed(() => props.settings);
@@ -67,6 +69,13 @@ const subtotal = computed(() => cart.value.total_price);
 const attributes = computed(() => cart.value.attributes);
 
 const note = computed(() => cart.value.note);
+
+const showUpsell = computed(() => {
+  const contains = cart.value.items.some(
+    (item) => item.handle !== settings.value.upsell_product.handle
+  );
+  return contains;
+});
 
 const readyForCheckout = computed(() => {
   return cart.value.item_count > 0 && cart.value.items_subtotal_price > 0;
