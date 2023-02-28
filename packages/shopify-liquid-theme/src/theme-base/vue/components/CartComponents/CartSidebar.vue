@@ -31,7 +31,7 @@
     <!-- YMAL -->
     <CartUpsell
       v-if="settings.upsell_enabled && settings.upsell_product"
-      :upsell-product="settings.upsell_product"
+      :product="settings.upsell_product"
     />
   </div>
 </template>

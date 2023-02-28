@@ -1,7 +1,7 @@
 <template>
   <div>
     <h5 class="text-center mb-2">You may also like</h5>
-    <CartUpsellTile :product="upsellProduct" tile-type="upsell" />
+    <CartUpsellTile v-bind="{ product }" />
   </div>
 </template>
 
@@ -10,11 +10,11 @@ import { computed } from "vue";
 import { CartUpsellTile } from "./";
 
 const props = defineProps({
-  upsellProduct: {
+  product: {
     type: Object,
     default: () => {},
   },
 });
 
-const upsellProduct = computed(() => props.upsellProduct);
+const product = computed(() => props.product);
 </script>

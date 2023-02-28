@@ -37,6 +37,7 @@
           >
             <CartSwatchPicker
               v-if="swatchOptions.includes(optionKey)"
+              label=""
               :options="options"
               :selected="selectedOptions[optionKey]"
               @change:option="
@@ -47,6 +48,7 @@
 
             <CartOptionPicker
               v-else
+              label=""
               :options="options"
               :selected="selectedOptions[optionKey]"
               :variant="getOptionVariant(optionKey)"
@@ -83,11 +85,6 @@ const cartStore = useCartStore();
 const props = defineProps({
   product: {
     type: Object,
-    default: () => {},
-  },
-  tileType: {
-    type: String,
-    default: "cart",
   },
 });
 
@@ -95,31 +92,20 @@ const product = computed(() => props.product);
 
 const addToCartActive = true;
 
-const product_handle = computed(() => {
-  return product.value.handle;
-});
-
 const product_image = computed(() => {
   const image = {};
-  image.src =
-    product.value.featured_image?.url || product.value.featured_image || "";
-  image.alt = product.value.featured_image?.alt || product.value.title || "";
+  image.src = product.value.featured_image;
+  image.alt = product.value.title;
   return image;
 });
 
-const product_title = computed(() => {
-  return product.value.product_title || product.value.title || "";
-});
-
-const product_price = computed(() => {
-  return product.value.final_line_price || product.value.price;
-});
-
-const product_compare_price = computed(() => product.value.compare_at_price);
-
-const product_link = computed(() => {
-  return product.value?.url || `/products/${product_handle.value}`;
-});
+const product_title = computed(() => product.value.title);
+const product_handle = computed(() => product.value.handle);
+const product_price = computed(() => currentVariant.value.price);
+const product_compare_price = computed(
+  () => currentVariant.value.compare_at_price
+);
+const product_link = computed(() => `/products/${product_handle.value}`);
 
 // STOLEN FROM THE PRODUCT FORM
 // ToDo: Add these values as a prop to pull from customizer
