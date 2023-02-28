@@ -26,7 +26,7 @@ module.exports = {
       sm: "var(--font-size-sm)",
       xs: "var(--font-size-xs)",
     },
-    padding: {
+    spacing: {
       0.5: "0.125rem", // 2px - 2 units increment
       1: "0.25em",
       1.5: "0.375em",
