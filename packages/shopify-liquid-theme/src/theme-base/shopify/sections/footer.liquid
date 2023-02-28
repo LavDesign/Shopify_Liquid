@@ -1,235 +1,208 @@
 {%- style -%}
   #shopify-section-{{ section.id }} {
-    --background-color: {{ section.settings.bg_color }};
-    --link-color: {{ section.settings.link_color }};
-    --link-hover-color: {{ section.settings.link_hover_color }};
+    --background-color: var({{ section.settings.bg_color }});
+    --link-color: var({{ section.settings.link_color }});
+    --link-hover-color: var({{ section.settings.link_hover_color }});
   }
 {%- endstyle -%}
 
 <footer class="footer">
   <div class="container">
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, sint. Esse fugit dolore accusantium dolorum illum rerum, reiciendis veniam et nisi soluta voluptatibus maxime magnam nesciunt consequatur! Nam, mollitia commodi.
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-10">
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+        {%- comment -%}
+          Menu
+        {%- endcomment -%}
+        {% when 'menu' %}
+          <ul class="footer__menu flex justify-around items-start pt-0 pb-8 md:py-20" role="list" tabindex="-1">
+
+            {%- comment -%}
+              desktop menu
+            {%- endcomment -%}
+            {%- for link in block.settings.menu.links -%}
+              <li class="hidden list-none md:flex flex-col px-20">
+                <a class="text-sm uppercase mb-3" href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">{{ link.title | escape }}</a>
+                {% if link.links.size > 0 %}
+                  <ul role="list" tabindex="-1">
+                    {% for child in link.links %}
+                      <li class="list-none flex">
+                        <a class="text-sm py-2" href="{{ child.url }}" title="{{ child.title }}" aria-label="{{ child.title }}">{{ child.title | escape }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {% endif %}
+              </li>
+            {%- endfor -%}
+
+            {%- comment -%}
+              mobile menu - accordion
+            {%- endcomment -%}
+            <div class="md:hidden w-full">
+              {% capture tabs %}
+                {%- for link in block.settings.menu.links -%}
+                  <div class="ra-tab">
+                    {% render 'button' type: 'button', as_gost: true, class: 'ra-tab__toggle', label: link.title, icon: 'chevron-down' %}
+                    <div class="ra-tab__content">
+                      <div class="ra-tab__content-inner">
+                        {% if link.links.size > 0 %}
+                          <ul role="list" tabindex="-1">
+                            {% for child in link.links %}
+                              <li class="list-none flex">
+                                <a class="text-sm py-2" href="{{ child.url }}" title="{{ child.title }}" aria-label="{{ child.title }}">{{ child.title | escape }}</a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              {% endcapture %}
+
+              {% render 'tabs' 
+                tabs: tabs,
+                layout: 'default',
+                center: false,
+                stack_mobile: true
+              %}
+            </div>
+          </ul>
+
+        {%- comment -%}
+          Form, social icons
+        {%- endcomment -%}
+        {% when 'form' %}
+          <div class="py-8 md:py-20 md:px-20">
+            {% if block.settings.form_title != blank %}
+              <div class="footer__form-title h4 mb-4.5 text-center md:text-left">{{ block.settings.form_title }}</div>
+            {% endif %}
+
+            {% if block.settings.klaviyo_form_id != blank %}
+              <div class="klaviyo-form-{{ block.settings.klaviyo_form_id }}"></div>
+            {% endif %}
+
+            {% if section.settings.show_social_icon %}
+              <div class="mt-8 md:mt-12">
+                {% render 'social-icons' %}
+              </div>
+            {% endif %}
+          </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
   </div>
+
+  {%- comment -%}
+    Util nav
+  {%- endcomment -%}
+  {% if section.settings.util_menu != blank %}
+    <div class="footer_util w-full py-4 md:py-8">
+      <div class="container">
+        <div class="flex flex-col md:flex-row justify-between">
+          {% if section.settings.copyright_text != blank %}
+            <p class="footer__copyright-text text-sm text-center md:text-left mb-4 md:mb-0">{{ section.settings.copyright_text }}</p>
+          {% endif %}
+          <ul class="flex justify-center md:justify-end" role="list" tabindex="-1">
+            {%- for link in section.settings.util_menu.links -%}
+              <li class="list-none">
+                <a class="text-sm" href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">{{ link.title | escape }}</a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 </footer>
 
 {% schema %}
 {
-  "name": "t:sections.footer.name",
-  "blocks": [
+  "name": "Footer",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "header",
+      "content": "colors"
+    },
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Background Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "link_color",
+      "label": "Link Color (default)",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-white"
+    },
+    {
+      "type": "select",
+      "id": "link_hover_color",
+      "label": "Link Color (hover)",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-yellow"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icon",
+      "label": "Show Social Icons",
+      "default": true
+    },
     {
       "type": "link_list",
-      "name": "t:sections.footer.blocks.link_list.name",
+      "id": "util_menu",
+      "label": "Util Menu"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "default": "Copyright 2020. All rights reserved.",
+      "label": "Copyright Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
       "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "default": "Quick links",
-          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
-        },
         {
           "type": "link_list",
           "id": "menu",
           "default": "footer",
-          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
-          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+          "label": "Select footer menu"
         }
       ]
     },
     {
-      "type": "text",
-      "name": "t:sections.footer.blocks.text.name",
+      "type": "form",
+      "name": "Form",
       "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "default": "Heading",
-          "label": "t:sections.footer.blocks.text.settings.heading.label"
-        },
         {
           "type": "richtext",
-          "id": "subtext",
-          "default": "<p>Share contact information, store details, and brand content with your customers.</p>",
-          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+          "id": "form_title",
+          "default": "<p>Please sign up for our newsletter to<p> <p>receive updates & discounts</p>",
+          "label": "Form Title"
+        },
+        {
+          "type": "text",
+          "id": "klaviyo_form_id",
+          "label": "Klaviyo Form ID"
         }
       ]
-    },
-    {
-      "type": "image",
-      "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "range",
-          "id": "image_width",
-          "min": 50,
-          "max": 200,
-          "step": 5,
-          "unit": "px",
-          "label": "Image width",
-          "default": 100
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Image alignment on large screen",
-          "options": [
-            {
-              "value": "",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.all.colors.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "newsletter_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.newsletter_enable.label"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_heading",
-      "default": "Subscribe to our emails",
-      "label": "t:sections.footer.settings.newsletter_heading.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__2.content",
-      "info": "t:sections.footer.settings.header__2.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social",
-      "default": false,
-      "label": "t:sections.footer.settings.show_social.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__3.content",
-      "info": "t:sections.footer.settings.header__4.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_country_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_country_selector.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__5.content",
-      "info": "t:sections.footer.settings.header__6.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_language_selector",
-      "default": true,
-      "label": "t:sections.footer.settings.enable_language_selector.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__7.content"
-    },
-    {
-      "type": "checkbox",
-      "id": "payment_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.payment_enable.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.footer.settings.margin_top.label",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
     }
   ],
   "default": {
     "blocks": [
       {
-        "type": "link_list"
+        "type": "form"
       },
       {
-        "type": "text"
+        "type": "menu"
       }
     ]
   }

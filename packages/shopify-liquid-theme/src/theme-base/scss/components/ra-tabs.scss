@@ -1,5 +1,10 @@
 .ra-tabs--default,
 .ra-tabs--stack {
+  --tabs-content-border-width: 1px;
+  --tabs-content-border-color: var(--link-color);
+  --tabs-title-border-color: var(--link-color);
+  --tabs-title-color: var(--link-color);
+
   .ra-tab__content {
     height: 0;
     transition: all 0.3s ease-in-out;
@@ -17,7 +22,6 @@
 
   .ra-tab__toggle {
     padding: 0 20px;
-    margin: 0;
   }
 
   .ra-tab__toggle svg,
@@ -27,6 +31,17 @@
 
   .ra-tab__toggle.ra-tab__toggle--open svg {
     transform: rotate(-180deg);
+  }
+}
+
+.ra-tabs--stack .ra-tab {
+  .ra-tab__content {
+  }
+
+  &:not(:last-child) {
+    .ra-tab__content {
+      border-bottom: 0 !important;
+    }
   }
 }
 
