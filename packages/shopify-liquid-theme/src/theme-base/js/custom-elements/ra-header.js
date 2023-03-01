@@ -7,7 +7,7 @@ export default class RaHeader extends HTMLElement {
     this.childLinks = this.querySelectorAll(
       ".header__navigation-item--has-child"
     );
-    this.hamberger = document.querySelector("#header__hamberger");
+    this.hamburger = document.querySelector("#header__hamburger");
     this.mobileNav = document.querySelector(".header__mobile-navigation");
     this.dropdownToggles = document.querySelectorAll("[data-toggle-dropdown]");
     this.drawerToggles = document.querySelectorAll("[data-toggle-drawer]");
@@ -34,7 +34,7 @@ export default class RaHeader extends HTMLElement {
     const links = this.querySelectorAll("a");
     links.forEach((link) => {
       link.addEventListener("click", (e) => {
-        (link.getAttribute("href") == "#") ? e.preventDefault() : true
+        link.getAttribute("href") == "#" ? e.preventDefault() : true;
       });
     });
   }
@@ -93,10 +93,10 @@ export default class RaHeader extends HTMLElement {
   }
 
   handleMobileNav() {
-    this.hamberger.addEventListener("click", (e) => {
+    this.hamburger.addEventListener("click", (e) => {
       e.preventDefault();
       document.body.classList.toggle("overflow-hidden");
-      this.hamberger.classList.toggle("active");
+      this.hamburger.classList.toggle("active");
       this.mobileNav.classList.toggle("active");
     });
   }

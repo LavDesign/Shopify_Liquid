@@ -33,7 +33,7 @@
       .header__action {
         margin: 0 !important;
       }
-      .header__hamberger {
+      .header__hamburger {
         margin-right: calc(var(--gutter-sm) * 2);
       }
     }
@@ -61,7 +61,7 @@
   }
 
   // hamberger
-  .header__hamberger {
+  .header__hamburger {
     display: flex;
     align-items: center;
     width: var(--gutter-sm);
@@ -70,11 +70,11 @@
       display: none;
     }
 
-    .hamberger-icon { display: flex; }
+    .hamburger-icon { display: flex; }
     .close-icon { display: none; }
 
     &.active {
-      .hamberger-icon { display: none; }
+      .hamburger-icon { display: none; }
       .close-icon { display: flex; }
     }
   }
