@@ -79,8 +79,8 @@
               <div class="footer__form-title h4 mb-4.5 text-center md:text-left">{{ block.settings.form_title }}</div>
             {% endif %}
 
-            {% if block.settings.klaviyo_form_id != blank %}
-              <div class="klaviyo-form-{{ block.settings.klaviyo_form_id }}"></div>
+            {% if block.settings.klaviyo_list_id != blank %}
+              <div class="klaviyo-form-{{ block.settings.klaviyo_list_id }}"></div>
             {% endif %}
 
             {% if section.settings.show_social_icon %}
@@ -102,7 +102,7 @@
       <div class="container">
         <div class="flex flex-col md:flex-row justify-between">
           {% if section.settings.copyright_text != blank %}
-            <p class="footer__copyright-text text-sm text-center md:text-left mb-4 md:mb-0">{{ section.settings.copyright_text }}</p>
+            <p class="footer__copyright-text text-sm text-center md:text-left mb-4 md:mb-0">Copyright <script>document.write(new Date().getFullYear())</script>. {{ section.settings.copyright_text }}</p>
           {% endif %}
           <ul class="flex justify-center md:justify-end" role="list" tabindex="-1">
             {%- for link in section.settings.util_menu.links -%}
@@ -161,7 +161,7 @@
     {
       "type": "text",
       "id": "copyright_text",
-      "default": "Copyright 2020. All rights reserved.",
+      "default": "All rights reserved.",
       "label": "Copyright Text"
     }
   ],
@@ -190,8 +190,9 @@
         },
         {
           "type": "text",
-          "id": "klaviyo_form_id",
-          "label": "Klaviyo Form ID"
+          "id": "klaviyo_list_id",
+          "label": "Klaviyo List ID",
+          "info": "To obtain List ID visit Klaviyo dashboard, select the list from 'Lists & Segments', click 'Settings'."
         }
       ]
     }

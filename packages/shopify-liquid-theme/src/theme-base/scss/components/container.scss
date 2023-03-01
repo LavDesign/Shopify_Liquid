@@ -1,6 +1,7 @@
 .container,
 .max-width--large {
-	width: 100%;
+	@apply w-full;
+	
 	max-width: var(--max-width-large);
 	padding-left: 25px;
 	padding-right: 25px;
