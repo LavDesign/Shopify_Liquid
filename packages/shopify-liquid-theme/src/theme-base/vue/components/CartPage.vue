@@ -9,7 +9,13 @@
     </div>
     <CartSidebar :cart="cart" :settings="settings" />
   </div>
-  <div v-else class="text-center mt-4">loading...</div>
+
+  <div
+    v-else
+    class="text-center mt-4 flex flex-col items-center pt-[88px] pb-32"
+  >
+    <EmptyCart :settings="emptyCartSettings" />
+  </div>
 </template>
 
 <script setup>
@@ -18,6 +24,7 @@ import { ref } from "vue";
 import { useCartStore } from "../stores/cart";
 import CartProducts from "./CartComponents/CartProducts.vue";
 import CartSidebar from "./CartComponents/CartSidebar.vue";
+import EmptyCart from "./CartComponents/EmptyCart.vue";
 
 const cartStore = useCartStore();
 const { cart } = storeToRefs(cartStore);
@@ -27,7 +34,12 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  emptyCartSettings: {
+    type: Object,
+    default: () => {},
+  },
 });
 
 const settings = ref(props.settings);
+const emptyCartSettings = ref(props.emptyCartSettings);
 </script>

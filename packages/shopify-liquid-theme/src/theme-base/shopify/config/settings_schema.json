@@ -2124,6 +2124,72 @@
         "type": "product",
         "label": "Upsell Product",
         "id": "upsell_product"
+      },
+      {
+        "type": "header",
+        "content": "Empty Cart Options"
+      },
+      {
+        "type": "text",
+        "label": "Empty Cart Header",
+        "id": "empty_cart_header"
+      },
+      {
+        "type": "header",
+        "content": "Empty Cart CTA 1"
+      },
+      {
+        "type": "checkbox",
+        "label": "Enable Empty Cart CTA 1",
+        "id": "enable_empty_cart_cta_1"
+      },
+      {
+        "type": "text",
+        "label": "Empty Cart CTA Text 1",
+        "id": "empty_cart_cta_text_1"
+      },
+      {
+        "type": "url",
+        "label": "Empty Cart CTA Link 1",
+        "id": "empty_cart_cta_link_1"
+      },
+      {
+        "type": "header",
+        "content": "Empty Cart CTA 2"
+      },
+      {
+        "type": "checkbox",
+        "label": "Enable Empty Cart CTA 2",
+        "id": "enable_empty_cart_cta_2"
+      },
+      {
+        "type": "text",
+        "label": "Empty Cart CTA Text 2",
+        "id": "empty_cart_cta_text_2"
+      },
+      {
+        "type": "url",
+        "label": "Empty Cart CTA Link 2",
+        "id": "empty_cart_cta_link_2"
+      },
+      {
+        "type": "header",
+        "content": "Empty Cart CTA 3"
+      },
+      {
+        "type": "checkbox",
+        "label": "Enable Empty Cart CTA 3",
+        "id": "enable_empty_cart_cta_3"
+      },
+      {
+        "type": "text",
+        "label": "Empty Cart CTA Text 3",
+        "id": "empty_cart_cta_text_3"
+      },
+      {
+        "type": "url",
+        "label": "Empty Cart CTA Link 3",
+        "id": "empty_cart_cta_link_3"
       }
     ]
   }

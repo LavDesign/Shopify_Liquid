@@ -85,7 +85,7 @@ import { useCartStore } from "../../stores/cart";
 import QuantityAdjuster from "../QuantityAdjuster.vue";
 
 const cartStore = useCartStore();
-const isSubscriptionProduct = true;
+const isSubscriptionProduct = false;
 
 const props = defineProps({
   product: {
