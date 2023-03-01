@@ -1024,7 +1024,7 @@
     {% assign img_alt = section.settings.featured_product.featured_image.alt %}
     {% assign link_url = section.settings.featured_product.url %}
     <div class="br-grid grid--col-2 mb-5">
-      {% render 'icon-tile',
+      {% render 'ra-icon-tile',
         imgSrc: img_src,
         imgAlt: img_alt,
         title: "This is a Title",
@@ -1035,7 +1035,7 @@
         linkText: "Default"
         horizontalAlign: 'right'
       %}
-      {% render 'icon-tile',
+      {% render 'ra-icon-tile',
         imgSrc: img_src,
         imgAlt: img_alt,
         imgWidth: 200,
@@ -1086,16 +1086,16 @@
     <h4 class="text-h4 mt-10 mb-5">Tabs</h4>
     {% capture tabs %}
       <div class="ra-tab">
-        {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
+        {% render 'button' type: 'button', ghost: true, class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
         <div class="ra-tab__content">
           <div class="ra-tab__content-inner">
             <strong>Description</strong>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit aperiam doloribus repudiandae necessitatibus odio nostrum, laudantium tempore consectetur eius unde amet assumenda! Impedit ipsa aut veniam debitis eveniet officiis at.
           </div>
         </div>
       </div>
       <div class="ra-tab">
-        {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
+        {% render 'button' type: 'button', ghost: true, class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
         <div class="ra-tab__content">
           <div class="ra-tab__content-inner">
             <strong>Read reviews</strong>
@@ -1104,11 +1104,11 @@
         </div>
       </div>
       <div class="ra-tab">
-        {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
+        {% render 'button' type: 'button', ghost: true, class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
         <div class="ra-tab__content">
           <div class="ra-tab__content-inner">
             <strong>Additional Information</strong>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius consequuntur ipsa fugit veniam beatae esse temporibus tenetur perferendis consectetur. In ullam recusandae inventore dolorum voluptates. Incidunt magnam similique totam quod! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex neque atque rem illo? Tenetur explicabo iste neque magnam ipsa libero similique, quae ipsam quisquam, iure veritatis magni pariatur temporibus deleniti!
           </div>
         </div>
       </div>
@@ -1126,7 +1126,7 @@
     {% assign videoUrl = section.settings.video_url %}
     <h4 class="text-h4 mt-10 mb-5">Content Tiles</h4>
     <div style="max-width: 22rem;">
-      {% render 'content-tile'
+      {% render 'ra-content-tile'
         src: img_src,
         alt: img_alt,
         title: 'This is a title',
@@ -1142,7 +1142,7 @@
     <hr class="border my-20">
     <h4 class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
     <div style="max-width: 22rem;">
-      {% render 'content-tile'
+      {% render 'ra-content-tile'
         src: img_src,
         alt: img_alt,
         title: 'This is a title',
