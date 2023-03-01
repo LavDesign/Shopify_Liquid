@@ -5,6 +5,7 @@ export default class RaCollectionSort extends HTMLElement {
   }
 
   /*
+  * TODO: Remove these notes after filters are complete
   * Implementation Notes:
   - get section id
   - build Shopify params object with:
@@ -53,7 +54,6 @@ export default class RaCollectionSort extends HTMLElement {
 
       const searchParams = new URLSearchParams(Shopify.queryParams).toString();
       RaCollectionSort.renderSectionFromFetch(searchParams);
-      // location.search = searchParams;
     });
   }
 }
