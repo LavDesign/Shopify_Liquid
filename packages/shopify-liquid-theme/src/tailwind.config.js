@@ -28,7 +28,7 @@ module.exports = {
     },
     spacing: {
       0.5: "0.125rem", // 2px - 2 units increment
-      1: "0.25em",
+      1: "0.25rem",
       1.5: "0.375rem",
       2: "0.5rem",
       2.5: "0.625rem",
