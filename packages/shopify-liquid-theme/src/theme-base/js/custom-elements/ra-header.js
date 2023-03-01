@@ -137,11 +137,11 @@ export default class RaHeader extends HTMLElement {
         e.preventDefault();
         const toggleId = btn.getAttribute("data-toggle-dropdown");
         btn.classList.toggle("active");
-        const seletedDropdown = document.getElementById(toggleId);
-        const dropdownHeight = seletedDropdown.querySelector(
+        const selectedDropdown = document.getElementById(toggleId);
+        const dropdownHeight = selectedDropdown.querySelector(
           ".header__mobile-navigation-dropdown-inner"
         ).offsetHeight;
-        seletedDropdown.style.setProperty(
+        selectedDropdown.style.setProperty(
           "--dropdown-height",
           dropdownHeight + "px"
         );
