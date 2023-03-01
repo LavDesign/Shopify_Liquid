@@ -1,6 +1,36 @@
+import axios from "axios";
 export default class RaCollectionSort extends HTMLElement {
   constructor() {
     super();
+  }
+
+  /*
+  * Implementation Notes:
+  - get section id
+  - build Shopify params object with:
+  - section_id, current filter params, current sort params, any new params
+  - make fetch request to page url with Shopify params object
+  - retrieve response as html
+  - update the main section content with response html
+  - profit
+  */
+
+  //* TODO: Add a method to render from cache
+  //* Reference Dawn's implementation for example
+
+  static renderSectionFromFetch(searchParams) {
+    const sectionId = document.getElementById("ra-collection-section").dataset
+      .sectionId;
+    const url = `${window.location.pathname}?section_id=${sectionId}&${searchParams}`;
+
+    axios.get(url).then((res) => {
+      const html = res.data;
+
+      // Grab grid html from fetch with params and update DOM element
+      document.getElementById("product-grid").innerHTML = new DOMParser()
+        .parseFromString(html, "text/html")
+        .getElementById("product-grid").innerHTML;
+    });
   }
 
   connectedCallback() {
@@ -20,7 +50,10 @@ export default class RaCollectionSort extends HTMLElement {
     sortForm.addEventListener("change", (e) => {
       const val = e.target.value;
       Shopify.queryParams.sort_by = val;
-      location.search = new URLSearchParams(Shopify.queryParams).toString();
+
+      const searchParams = new URLSearchParams(Shopify.queryParams).toString();
+      RaCollectionSort.renderSectionFromFetch(searchParams);
+      // location.search = searchParams;
     });
   }
 }

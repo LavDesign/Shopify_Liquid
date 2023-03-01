@@ -2,20 +2,15 @@
   assign paginate_count = 12
 %}
 
-<div class="ra-collection">
-  <div class="wrapper">
+<div id="ra-collection-section" class="ra-collection" data-section-id="{{ section.id }}">
+  <div class="wrapper mt-1">
     <div class="flex w-full md:max-width--large mt-20 px-4 md:px-10" id="collectionMain">
       <div class="collection__sidebar hidden md:block md:w-1/4">
-      {% comment %}
-        <!-- NOTE: These are the original Dawn filters, keep these as a reference for our liquid filters.-->
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-        {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
-          <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
-            {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
-          </aside>
-        {%- endif -%}
-      {% endcomment %}
+        <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
+          {% render 'facets', results: collection, enable_filtering: true, enable_sorting: false, filter_type: "vertical" %}
+        </aside>
       </div>
       <div class="collection__main w-full md:w-3/4">
         <div class="collection__header mb-10 flex justify-between">
@@ -34,7 +29,8 @@
             </form>
           </ra-collection-sort>
         </div>
-        <div class="collection__product-grid">
+        <div id="test-grid"></div>
+        <div id="product-grid" class="collection__product-grid">
           {%- paginate collection.products by paginate_count -%}
             <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
               {%- for product in collection.products -%}
@@ -53,7 +49,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.main-collection-product-grid.name",
+  "name": "ra-product-grid",
   "class": "section",
   "settings": [
   ]
