@@ -15,6 +15,7 @@ Object.entries(screens).forEach(([key, value]) => {
 });
 
 module.exports = {
+  important: true,
   theme: {
     fontFamily: {
       primary: ["var(--font-family-primary)", "sans-serif"],

@@ -59,11 +59,11 @@ export default class RaHeader extends HTMLElement {
       this.clientHeight + "px"
     );
     document.documentElement.style.setProperty(
-      "--content-postion-top",
-      Number(this.headerPositionTop.replace("px", "")) +
-        Number(this.clientHeight) +
-        "px"
+      "--content-position-top",
+      parseInt(this.headerPositionTop) + this.clientHeight + "px"
     );
+
+    console.log();
   }
 
   handleWindowScroll() {
@@ -111,22 +111,21 @@ export default class RaHeader extends HTMLElement {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         this.drawers.forEach((drawer) => {
-          drawer.classList.remove("active")
+          drawer.classList.remove("active");
         });
-        const selectedDrawer = document.getElementById(btnToggleId);
-        selectedDrawer.querySelector(
+        const selectedDropdown = document.getElementById(btnToggleId);
+        selectedDropdown.querySelector(
           ".header__mobile-navigation-drawer-title"
         ).innerHTML = btnText;
-        selectedDrawer.classList.add("active");
+        selectedDropdown.classList.add("active");
       });
     });
-    
     // close drawers
     this.drawerCloseBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         this.drawers.forEach((drawer) => {
-          drawer.classList.remove("active")
+          drawer.classList.remove("active");
         });
       });
     });
@@ -138,9 +137,14 @@ export default class RaHeader extends HTMLElement {
         e.preventDefault();
         const toggleId = btn.getAttribute("data-toggle-dropdown");
         btn.classList.toggle("active");
-        const seletedDropdown = document.getElementById(toggleId);
-        const dropdownHeight = seletedDropdown.querySelector(".header__mobile-navigation-dropdown-inner").offsetHeight;
-        seletedDropdown.style.setProperty("--dropdown-height", dropdownHeight + "px");
+        const selectedDropdown = document.getElementById(toggleId);
+        const dropdownHeight = selectedDropdown.querySelector(
+          ".header__mobile-navigation-dropdown-inner"
+        ).offsetHeight;
+        selectedDropdown.style.setProperty(
+          "--dropdown-height",
+          dropdownHeight + "px"
+        );
         document.getElementById(toggleId).classList.toggle("active");
       });
     });
