@@ -60,10 +60,10 @@ export default class RaHeader extends HTMLElement {
     );
     document.documentElement.style.setProperty(
       "--content-position-top",
-      Number(this.headerPositionTop.replace("px", "")) +
-        Number(this.clientHeight) +
-        "px"
+      parseInt(this.headerPositionTop) + this.clientHeight + "px"
     );
+
+    console.log();
   }
 
   handleWindowScroll() {
@@ -113,11 +113,11 @@ export default class RaHeader extends HTMLElement {
         this.drawers.forEach((drawer) => {
           drawer.classList.remove("active");
         });
-        const selectedDrawer = document.getElementById(btnToggleId);
-        selectedDrawer.querySelector(
+        const selectedDropdown = document.getElementById(btnToggleId);
+        selectedDropdown.querySelector(
           ".header__mobile-navigation-drawer-title"
         ).innerHTML = btnText;
-        selectedDrawer.classList.add("active");
+        selectedDropdown.classList.add("active");
       });
     });
     // close drawers
