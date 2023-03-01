@@ -49,6 +49,41 @@
   {% endfor %}
 {% endcapture %}
 
+{% capture swiper_settings %}
+  {
+    "slidesPerView": {{ section.settings.mobile_slides_view }},
+    "spaceBetween": 15,
+    "breakpoints": {
+      "768": {
+        "slidesPerView": {{ section.settings.tablet_slides_view }},
+        "spaceBetween": 16
+      },
+      "1024": {
+        "slidesPerView": {{ section.settings.desktop_slides_view }},
+        "spaceBetween": 24
+      }
+    },
+    {% if section.settings.show_pagination %}
+      "pagination": {
+        "el": ".swiper-pagination",
+        "type": "bullets",
+        "clickable": true
+      },
+    {% endif %}
+    "navigation": {
+      "nextEl": ".ra-carousel__nav-cta--next",
+      "prevEl": ".ra-carousel__nav-cta--prev"
+    },
+    "speed": 300,
+    "draggable": true,
+    "snapOnRelease": true,
+    "mousewheel": {
+      "releaseOnEdges": true,
+      "forceToAxis": true
+    }
+  }
+{% endcapture %}
+
 <section class="ra-carousel-outer product-carousel product-carousel--{{ section.id }} p-4" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
   <div class="ra-carousel-wrapper">
     <div class="ra-heading ra-carousel__details" style="--heading-margin:var(--spacing-lg); --heading-text-align:left;">
@@ -88,7 +123,7 @@
         </div>
       {% endif %}
       <!-- Swiper -->
-      <div class="swiper swiper--{{ section.id }}">
+      <div data-swiper-settings="{{ swiper_settings | escape | strip }}"  class="swiper">
         <div class="swiper-wrapper">
           {{ slides }}
         </div>
@@ -99,43 +134,6 @@
     </div>
   </div>
 </section>
-
-{% if section.blocks.size > 1 %}
-  <script>
-    const swiper = new Swiper('.swiper--{{ section.id }}', {
-      slidesPerView: {{ section.settings.mobile_slides_view }},
-      spaceBetween: 15,
-      breakpoints: {
-        768: {
-          slidesPerView: {{ section.settings.tablet_slides_view }},
-          spaceBetween: 16,
-        },
-        1024: {
-          slidesPerView: {{ section.settings.desktop_slides_view }},
-          spaceBetween: 24,
-        }
-      },
-      {% if section.settings.show_pagination %}
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true
-        },
-      {% endif %}
-      navigation: {
-        nextEl: '.ra-carousel__nav-cta--next',
-        prevEl: '.ra-carousel__nav-cta--prev',
-      },
-      speed: 300,
-      freeMode: true,
-      draggable: true,
-      snapOnRelease: true,
-      mousewheel: {
-        releaseOnEdges: true
-      }
-    });
-  </script>
-{% endif %}
 
 <style>
   .product-carousel--{{ section.id }} {
