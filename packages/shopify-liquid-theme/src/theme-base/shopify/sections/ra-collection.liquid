@@ -38,17 +38,18 @@
       <div class="collection__main md:w-3/4">
         <div class="collection__header mb-10 flex justify-between">
           <h1 class="h2">{{ collection.title }}</h1>
-          <div>
-            <div class="select">
-              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-              <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
-                {%- for option in collection.sort_options -%}
-                  <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
-                {%- endfor -%}
-              </select>
-            </div>
-
-          </div>
+          <ra-collection-sort>
+            <form name="sortBy">
+              <div class="select">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                  {%- for option in collection.sort_options -%}
+                    <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            </form>
+          </ra-collection-sort>
         </div>
         <div class="collection__product-grid">
           {%- paginate collection.products by paginate_count -%}
