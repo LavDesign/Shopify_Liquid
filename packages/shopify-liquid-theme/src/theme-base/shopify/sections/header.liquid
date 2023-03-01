@@ -27,11 +27,11 @@
         <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
       </a>
     {% endif %}
-
-    {%- comment -%}
-      Navigation menu - desktop
-    {%- endcomment -%}
+   
     {% if section.settings.menu != blank %}
+      {%- comment -%}
+        Navigation menu - desktop
+      {%- endcomment -%}
       <nav class="header__navigation">
         <ul class="header__navigation-list" role="list" tabindex="-1">
           {%- for link in section.settings.menu.links -%}
@@ -75,34 +75,7 @@
       Action (cart, account, search, wishlist)
     {%- endcomment -%}
     <div class="header__action">
-      <ul class="header__action-list">
-        {% if section.settings.show_search %}
-          <li class="header__action-item header__action-item--search">
-            <a class="header__action-link" href="#" title="search" aria-label="search">
-              {% render 'icon' icon: section.settings.search_icon, width: '20px', height: '20px' %}
-            </a>
-          </li>
-        {% endif %}
-        {% if section.settings.show_account %}
-          <li class="header__action-item header__action-item--account">
-            <a class="header__action-link" href="#" title="account" aria-label="account">
-              {% render 'icon' icon: section.settings.account_icon, width: '20px', height: '20px' %}
-            </a>
-          </li>
-        {% endif %}
-        {% if section.settings.show_wishlist %}
-          <li class="header__action-item header__action-item--wishlist">
-            <a class="header__action-link" href="#" title="wishlist" aria-label="wishlist">
-              {% render 'icon' icon: section.settings.wishlist_icon, width: '20px', height: '20px' %}
-            </a>
-          </li>
-        {% endif %}
-        <li class="header__action-item header__action-item--cart">
-          <a class="header__action-link" href="#" title="cart" aria-label="cart">
-            {% render 'icon' icon: 'cart', width: '24px', height: '24px' %}
-          </a>
-        </li>
-      </ul>
+      {% render 'ra-header-actions' %}
     </div>
   </div>
 </ra-header>
