@@ -1,0 +1,56 @@
+{% liquid
+  assign paginate_count = 12
+%}
+
+<div id="ra-collection-section" class="ra-collection" data-section-id="{{ section.id }}">
+  <div class="wrapper mt-1">
+    <div class="flex w-full md:max-width--large mt-20 px-4 md:px-10" id="collectionMain">
+      <div class="collection__sidebar hidden md:block md:w-1/4">
+        {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+        <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+        <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
+          {% render 'facets', results: collection, enable_filtering: true, enable_sorting: false, filter_type: "vertical" %}
+        </aside>
+      </div>
+      <div class="collection__main w-full md:w-3/4">
+        <div class="collection__header mb-10 flex justify-between">
+          <h1 class="h2">{{ collection.title }}</h1>
+          <ra-collection-sort>
+            <form name="sortBy">
+              <div class="select relative z-0">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <select name="sort_by" class="appearance-none border-2 border-black py-4 px-3 pr-6 z-1 bg-transparent" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                  {%- for option in collection.sort_options -%}
+                    <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                  {%- endfor -%}
+                </select>
+                {% render "icon" with "chevron-down", width: "12px", class: "absolute right-3 -mt-3 top-1/2 -z-1" %}
+              </div>
+            </form>
+          </ra-collection-sort>
+        </div>
+        <div id="product-grid" class="collection__product-grid">
+          {%- paginate collection.products by paginate_count -%}
+            <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
+              {%- for product in collection.products -%}
+                {% render "ra-product-tile", product: product %}
+              {%- endfor -%}
+            </div>
+            <div class="flex justify-center">
+              {% render "pagination", paginate: paginate, anchor: '#collectionMain', hasArrows: true %}
+            </div>
+          {%- endpaginate -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ra-product-grid",
+  "class": "section",
+  "settings": [
+  ]
+}
+{% endschema %}
