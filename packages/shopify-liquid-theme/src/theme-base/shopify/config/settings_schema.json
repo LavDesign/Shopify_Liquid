@@ -2135,6 +2135,11 @@
         "id": "empty_cart_header"
       },
       {
+        "type": "link_list",
+        "label": "Empty Cart Links",
+        "id": "empty_cart_link_list"
+      },
+      {
         "type": "header",
         "content": "Empty Cart CTA 1"
       },

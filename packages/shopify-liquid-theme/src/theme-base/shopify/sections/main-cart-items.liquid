@@ -8,14 +8,7 @@
   assign settings_keys = "cart_header_text,cart_message_1,cart_message_2,free_gift_enabled,free_gift_threshold,gift_message_enabled,upsell_enabled"
   assign settings_keys = settings_keys | split: ","
 
-  assign empty_cart_settings_keys = "empty_cart_header"
-  assign cta_settings = "enable_empty_cart_cta_,empty_cart_cta_text_,empty_cart_cta_link_"
-  assign cta_settings = cta_settings | split: ","
-  for i in (1..3)
-    for cta in cta_settings
-      assign empty_cart_settings_keys = empty_cart_settings_keys | append: "," | append: cta | append: i
-    endfor
-  endfor
+  assign empty_cart_settings_keys = "empty_cart_header,"
   assign empty_cart_settings_keys = empty_cart_settings_keys | split: ","
 %}
 
@@ -38,8 +31,18 @@
     {%- for key in empty_cart_settings_keys -%}
       "{{ key }}":{{- settings[key] | default: null | json -}},
     {%- endfor -%}
-  }{% endcapture %}
+    {%- if settings.empty_cart_link_list != blank -%}
+    links: [
+    {%- for link in settings.empty_cart_link_list.links -%}
+      {
+        "title": {{ link.title |json }},
+        "url": {{ link.url | json}}
+      },
+    {%- endfor -%}
+    ]
+    {%- endif -%}
 
+  }{% endcapture %}
 <div data-vue-root="CartPage" class="min-h-[500px] !block transition-all">
   <cart-page :settings='{{- cart_settings -}}' :empty-cart-settings='{{- empty_cart_settings -}}' />
 </div>
