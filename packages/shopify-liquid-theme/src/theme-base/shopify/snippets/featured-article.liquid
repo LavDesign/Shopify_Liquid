@@ -1,0 +1,46 @@
+<div class="grid grid-cols-1 md:grid-cols-2">
+  <a class="flex mb-5 aspect-{{ aspect_ratio }}" href="{{ article.url }}" title="{{ article.title }}" aria-label="{{ article.title }}">
+    {% capture srcset %}
+      {{ article.image.src | image_url: width: 500 }} 400w,
+      {{ article.image.src | image_url: width: 600 }} 800w,
+      {{ article.image.src | image_url: width: 700 }} 1200w
+    {% endcapture %}
+    {% render 'image',
+      alt: article.image.src.alt,
+      src: article.image.src | image_url: width: 600,
+      srcset: srcset,
+      sizes: "100vw"
+      classes: "w-full h-full object-cover object-center"
+    %}
+  </a>
+
+  <div class="py-5 flex flex-col justify-center pl-0 md:pl-20">
+    {% if article.tags.size > 0 and show_tags %}
+      <div class="capitalize mb-2">
+        {% for tag in article.tags %}
+          {% render 'badge' style: 'primary', label: tag.title %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <a class="flex" href="{{ article.url }}" title="{{ article.title }}" aria-label="{{ article.title }}">
+      <h4 class="h4 mb-2">{{ article.title }}</h4>
+    </a>
+
+    {% if section.settings.show_excerpt and article.excerpt.size > 0 or article.content.size > 0 %}
+      {%- if article.excerpt.size > 0 -%}
+        <p>{{ article.excerpt | strip_html | truncatewords: 20 }}</p>
+      {%- else -%}
+        <p>{{ article.content | strip_html | truncatewords: 20 }}</p>
+      {%- endif -%}
+    {% endif %}
+
+    {%- if section.settings.show_date -%}
+      <p class="text-sm mt-5">{{ article.published_at | time_tag: format: 'date' }}</p>
+    {%- endif -%}
+
+    <div class="mt-5">
+      {% render 'button' type: 'a', as_text: true, url: article.url, label: 'Read More' %}
+    </div>
+  </div>
+</div>
