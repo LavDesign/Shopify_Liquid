@@ -5,7 +5,7 @@
 {% assign platform = settings.review_platform %}
 
 <div class="product-reviews">
-  {% case %}
+  {% case platform %}
     {% when 'yotpo' %}
       <div class="yotpo yotpo-main-widget"
         data-product-id="{{ product.id }}"
@@ -41,9 +41,11 @@
   {
     "name": "Product Reviews",
     "settings": [],
+    "templates": ["product"],
     "presets": [
       {
-        "name": "Product Reviews"
+        "name": "Product Reviews",
+        "category": "Reviews"
       }
     ]
   }
