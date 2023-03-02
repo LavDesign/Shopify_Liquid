@@ -26,7 +26,6 @@ export const useCartStore = defineStore("cart", () => {
   };
 
   const updateItem = ({ id, quantity, properties } = {}) => {
-    console.log("'Updating Item'");
     return new Promise((resolve, reject) => {
       axios
         .post("/cart/change.js", { id, quantity, properties })

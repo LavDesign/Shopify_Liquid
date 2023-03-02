@@ -1,11 +1,11 @@
 <template>
   <div class="w-full flex flex-col border-y border-grey-200 font-primary py-4">
     <div class="w-full flex flex-row gap-4">
-      <a :href="product_link" class="aspect-square max-w-[107px]">
+      <a :href="product_link" class="!block w-full max-w-[112px]">
         <img
           :src="product_image.url"
           :alt="product_image.alt"
-          class="object-cover w-full h-full"
+          class="w-full aspect-square object-cover"
         />
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
@@ -34,7 +34,7 @@
       </div>
       <div class="flex flex-col justify-between items-end">
         <span
-          class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md"
+          class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md group"
           @click="updateQuantity(0)"
         >
           <svg
@@ -43,9 +43,10 @@
             viewBox="0 0 12 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            class="group-hover:fill-white fill-tertiary-900 transition-all"
           >
-            <path d="M11 16L1 16L1 4L11 4L11 16Z" fill="#534D4D" />
-            <path d="M9 1L12 1V3L0 3L0 1L3 1L4 0L8 0L9 1Z" fill="#534D4D" />
+            <path d="M11 16L1 16L1 4L11 4L11 16Z" />
+            <path d="M9 1L12 1V3L0 3L0 1L3 1L4 0L8 0L9 1Z" />
           </svg>
         </span>
         <div class="flex-row text-lg">
@@ -82,10 +83,8 @@
 <script setup>
 import { computed } from "vue";
 import { useCartStore } from "../../stores/cart";
+import { getSizedImageFromUrl } from "../../filters/image.js";
 import QuantityAdjuster from "../QuantityAdjuster.vue";
-
-const cartStore = useCartStore();
-const isSubscriptionProduct = false;
 
 const props = defineProps({
   product: {
@@ -94,11 +93,18 @@ const props = defineProps({
   },
 });
 
+const cartStore = useCartStore();
+
 const product = computed(() => props.product);
 
 const product_handle = computed(() => product.value.handle);
 
-const product_image = computed(() => product.value.featured_image);
+const product_image = computed(() => {
+  const img = {};
+  img.url = small_image.value;
+  img.alt = product.value.featured_image.alt;
+  return img;
+});
 
 const product_title = computed(() => product.value?.product_title);
 
@@ -107,6 +113,12 @@ const product_price = computed(() => product.value.final_line_price);
 const product_compare_price = computed(() => product.value.original_line_price);
 
 const product_link = computed(() => product.value?.url);
+
+const small_image = computed(() =>
+  getSizedImageFromUrl(product.value.featured_image.url, "small")
+);
+
+const isSubscriptionProduct = false;
 
 const updateQuantity = (qty) => {
   const productObj = {

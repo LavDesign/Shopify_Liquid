@@ -5,17 +5,13 @@
     >
       <input
         class="ra-choice__input"
-        id="
-    gift_message
-  "
+        id="gift_message"
         type="checkbox"
         v-model="giftMessageActive"
       />
       <label
         class="ra-choice__container set--sibling-deep-focus"
-        for="
-    gift_message
-  "
+        for="gift_message"
       >
         <div class="ra-choice__checkmark set--inherit-focus">
           <span

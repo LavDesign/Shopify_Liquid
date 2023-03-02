@@ -1,20 +1,20 @@
 <template>
   <div class="flex w-full flex-col p-4 border border-grey-500">
     <div class="w-full flex flex-row gap-4 font-primary">
-      <a :href="product_link" class="aspect-square max-w-[107px]">
+      <a :href="product_link" class="!block w-full max-w-[112px]">
         <img
           :src="product_image.src"
           :alt="product_image.alt"
-          class="object-cover w-full h-full"
+          class="w-full aspect-square object-cover"
         />
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
-        <div class="flex flex-row justify-between">
+        <div class="flex flex-row justify-between gap-2">
           <a :href="product_link" class="text-lg">
             {{ product_title }}
           </a>
           <div
-            class="flex-row text-lg"
+            class="flex-row text-lg text-right"
             :class="{
               'text-red':
                 product_compare_price && product_compare_price != product_price,
@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-    <div v-if="addToCartActive">
+    <div v-if="variantSelected">
       <button
         class="ra-button ra-button--full-width ra-button--sm mt-2"
         @click="addToCart"
@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-import { computed, reactive, watch, onMounted, ref } from "vue";
+import { computed, reactive, watch, ref } from "vue";
 import { useCartStore } from "../../stores/cart";
 import { useProductPageStore } from "../../stores/productPage";
 
@@ -90,22 +90,38 @@ const props = defineProps({
 
 const product = computed(() => props.product);
 
-const addToCartActive = true;
-
 const product_image = computed(() => {
   const image = {};
-  image.src = product.value.featured_image;
-  image.alt = product.value.title;
+  if (
+    variantSelected.value &&
+    currentVariant.value.images?.default?.sizes?.sm
+  ) {
+    image.src = currentVariant.value.images.default?.sizes.sm;
+    image.alt = currentVariant.value.images.default?.alt;
+  } else {
+    image.src = product.value.featured_image;
+    image.alt = product.value.title;
+  }
   return image;
 });
 
 const product_title = computed(() => product.value.title);
 const product_handle = computed(() => product.value.handle);
-const product_price = computed(() => currentVariant.value.price);
-const product_compare_price = computed(
-  () => currentVariant.value.compare_at_price
-);
-const product_link = computed(() => `/products/${product_handle.value}`);
+const product_price = computed(() => {
+  return variantSelected.value
+    ? currentVariant.value.price
+    : product.value.price;
+});
+const product_compare_price = computed(() => {
+  return variantSelected.value ? currentVariant.value.compare_at_price : null;
+});
+const product_link = computed(() => {
+  return variantSelected.value
+    ? currentVariant.value.url
+    : `/products/${product_handle.value}`;
+});
+
+const variantSelected = ref(false);
 
 // STOLEN FROM THE PRODUCT FORM
 // ToDo: Add these values as a prop to pull from customizer
@@ -210,18 +226,12 @@ const addToCart = async () => {
   await cartStore.addItem({
     id: currentVariant.value.id,
     quantity: 1,
-    // properties: null
   });
   isAddingToCart.value = false;
 };
 
 watch(currentVariant, (variant) => {
+  variantSelected.value = true;
   productStore.setCurrentVariant(variant);
-});
-
-onMounted(() => {
-  productStore.setCurrentVariant(
-    currentVariant.value || props.product.first_available_variant
-  );
 });
 </script>

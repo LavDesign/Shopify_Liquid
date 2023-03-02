@@ -40,6 +40,6 @@
     {%- endfor -%}
   }{% endcapture %}
 
-<div data-vue-root="CartPage">
+<div data-vue-root="CartPage" class="min-h-[500px] !block transition-all">
   <cart-page :settings='{{- cart_settings -}}' :empty-cart-settings='{{- empty_cart_settings -}}' />
 </div>
