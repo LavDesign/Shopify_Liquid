@@ -4,7 +4,7 @@
 
 {% assign platform = settings.review_platform %}
 
-<div class="product-reviews">
+<div class="product-reviews max-w-screen-2xl my-0 mx-auto">
   {% case platform %}
     {% when 'yotpo' %}
       <div class="yotpo yotpo-main-widget"
@@ -29,7 +29,8 @@
         {{ product.metafields.stamped.reviews }}
       </div>
     {% when 'bazaarvoice' %}
-      <div data-bv-show="reviews" data-bv-product-Id="{{ product.id }}">
+      {% assign id = product.metafields.bazaarvoice.handle | default: product.handle %}
+      <div data-bv-show="reviews" data-bv-product-Id="{{ id }}">
         {% if product.metafields.bazaarvoice.reviews %}
           {{ product.metafields.bazaarvoice.reviews }}
         {% endif %}
