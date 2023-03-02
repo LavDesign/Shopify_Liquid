@@ -114,6 +114,8 @@ Usage:
   {%- if media.media_type == 'external_video' -%}
     {% comment %}
     The external_video_url filter uses a different format for applying video parameters
+
+    TODO: Add web component for poster and play button
     {% endcomment %}
 
     {%- if autoplay == false -%}
@@ -140,7 +142,11 @@ Usage:
       {%- assign muted = '1' -%}
     {%- endif -%}
 
-    {{- media | external_video_url: autoplay: autoplay, loop: loop, mute: muted, controls: controls, playlist: media.external_id | external_video_tag -}}
+    {% if width != null %}
+      {% assign height = width | divided_by: media.aspect_ratio %}
+    {% endif %}
+
+    {{- media | external_video_url: autoplay: autoplay, loop: loop, mute: muted, controls: controls, playlist: media.external_id | external_video_tag: width: width, height: height -}}
   {%- elsif media.media_type == 'video' -%}
     {{- media | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url -}}
   {%- endif -%}
