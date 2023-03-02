@@ -1,0 +1,9 @@
+.container,
+.max-width--large {
+	@apply w-full;
+	
+	max-width: var(--max-width-large);
+	padding-left: 25px;
+	padding-right: 25px;
+	margin: 0 auto;
+}

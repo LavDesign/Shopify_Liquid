@@ -105,16 +105,23 @@
     {
       "type": "header",
       "content": "Video",
-      "info": "Use 'embed' video or 'file' option for background video"
+      "info": "Choose between embed or file upload to import video"
     },
     {
       "type": "video_url",
       "id": "background_video_embed",
-      "label": "Video (embed)",
+      "label": "Video upload (embed option)",
+      "info": "Paste link for Youtube or Vimeo",
       "accept": [
         "youtube",
         "vimeo"
       ]
+    },
+    {
+      "type": "video",
+      "id": "background_video_file",
+      "label": "Video upload (file upload)",
+      "info": "Upload as MP4"
     },
     {
       "type": "select",
@@ -141,27 +148,21 @@
       "default": "embed--16x9"
     },
     {
-      "type": "video",
-      "id": "background_video_file",
-      "label": "Video (file)",
-      "info": "Shopify hosted (MP4) video"
-    },
-    {
       "type": "text",
       "id": "sub-heading",
-      "label": "Sub-heading text",
+      "label": "Section Sub-Title",
       "default": "SUB-HEADING"
     },
     {
       "type": "text",
       "id": "title",
-      "label": "Title text",
+      "label": "Section Title",
       "default": "This is a title"
     },
     {
       "type": "select",
       "id": "title_style",
-      "label": "Title style",
+      "label": "Title As",
       "options": <%- uikit.headingStyles -%>,
       "default": "h2"
     },
@@ -175,7 +176,7 @@
     {
       "type": "richtext",
       "id": "body",
-      "label": "Body text",
+      "label": "Section Body Copy",
       "default": "<p>I'm not thinking about anything when I'm climbing, which is part of the appeal. I'm focused on executing what's in front of me.</p>"
     },
     {
@@ -205,45 +206,45 @@
     },
     {
       "type": "header",
-      "content": "Button 1"
+      "content": "CTA 1"
     },
     {
       "type": "text",
       "id": "button_1_label",
-      "label": "Button 1 label",
+      "label": "CTA 1 Text",
       "default": "learn more"
     },
     {
       "type": "url",
       "id": "button_1_url",
-      "label": "Button 1 url"
+      "label": "CTA 1 URL"
     },
     {
       "type": "select",
       "id": "button_1_style",
-      "label": "Button 1 style",
+      "label": "CTA 1 Style",
       "options": <%- uikit.buttonStyles -%>,
       "default": "primary"
     },
     {
       "type": "header",
-      "content": "Button 2"
+      "content": "CTA 2"
     },
     {
       "type": "text",
       "id": "button_2_label",
-      "label": "Button 2 label",
+      "label": "CTA Text",
       "default": "learn more"
     },
     {
       "type": "url",
       "id": "button_2_url",
-      "label": "Button 2 url"
+      "label": "CTA URL"
     },
     {
       "type": "select",
       "id": "button_2_style",
-      "label": "Button 2 style",
+      "label": "CTA Style",
       "options": <%- uikit.buttonStyles -%>,
       "default": "secondary"
     }

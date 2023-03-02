@@ -40,6 +40,7 @@ export default class RaTabs extends HTMLElement {
 
   // set active collapsable tab
   setActiveTab(button) {
+    const isActive = button.classList.contains("ra-tab__toggle--open");
     const tabContent = this.getNextSibling(button, ".ra-tab__content");
     const contentHeight = tabContent.querySelector(
       ".ra-tab__content-inner"
@@ -56,12 +57,14 @@ export default class RaTabs extends HTMLElement {
       button.classList.remove("ra-tab__toggle--open");
     });
 
-    button.setAttribute("aria-pressed", true);
-    button.classList.add("ra-tab__toggle--open");
+    if (!isActive) {
+      button.setAttribute("aria-pressed", true);
+      button.classList.add("ra-tab__toggle--open");
 
-    tabContent.classList.add("ra-tab__content--open");
-    tabContent.style.height = "0px";
-    tabContent.style.height = `${contentHeight}px`;
+      tabContent.classList.add("ra-tab__content--open");
+      tabContent.style.height = "0px";
+      tabContent.style.height = `${contentHeight}px`;
+    }
   }
 
   // attach event listener to toggle buttons

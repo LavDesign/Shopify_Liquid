@@ -25,13 +25,8 @@
   }
 }
 
-.product-carousel {
+.product-carousel, .content-carousel {
   position: relative;
-
-  .ra-carousel-wrapper {
-    max-width: 1440px;
-    margin: 0 auto;
-  }
 
   .ra-product-tile__details {
     padding-bottom: 0;
@@ -45,4 +40,8 @@
       background-color: var(--swiper-pagination-color, var(--swiper-theme-color));
     }
   }
+}
+
+.content-carousel .ra-content-tile {
+  --active-component-background: unset
 }

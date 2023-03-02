@@ -121,33 +121,33 @@
         {
           "type": "text",
           "id": "sub-heading",
-          "label": "Sub-heading text",
+          "label": "Section Sub Title",
           "default": "SUB-HEADING"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Title text",
+          "label": "Section Title",
           "default": "This is a title"
         },
         {
           "type": "select",
           "id": "title_style",
-          "label": "Title style",
+          "label": "Title As",
           "options": <%- uikit.headingStyles -%>,
           "default": "h2"
         },
         {
           "type": "select",
           "id": "text_alignment",
-          "label": "Text alignment",
+          "label": "Text Alignment",
           "options": <%- uikit.textAligments -%>,
           "default": "set--v-align-middle set--h-align-center"
         },
         {
           "type": "richtext",
           "id": "body",
-          "label": "Body text"
+          "label": "Section Body Copy"
         },
         {
           "type": "header",
@@ -156,13 +156,13 @@
         {
           "type": "image_picker",
           "id": "desktop_bg_image",
-          "label": "Background image (desktop)",
+          "label": "Background Image (desktop)",
           "info": "Recommended Size: 1800x1800"
         },
         {
           "type": "image_picker",
           "id": "mobile_bg_image",
-          "label": "Background image (mobile)",
+          "label": "Background Image (mobile)",
           "info": "Recommended Size: 800x800"
         },
         {
@@ -172,43 +172,43 @@
         {
           "type": "select",
           "id": "text_color_desktop",
-          "label": "Text color (desktop)",
+          "label": "Text Color (desktop)",
           "options": <%- uikit.colorsAll -%>,
           "default": "--color-primary-900"
         },
         {
           "type": "select",
           "id": "text_color_mobile",
-          "label": "Text color (mobile)",
+          "label": "Text Color (mobile)",
           "options": <%- uikit.colorsAll -%>,
           "default": "--color-primary-900"
         },
         {
           "type": "select",
           "id": "bg_color",
-          "label": "Background color",
+          "label": "Background Color",
           "options": <%- uikit.colorsAll -%>,
           "default": "--color-primary-900"
         },
         {
           "type": "header",
-          "content": "Button 1"
+          "content": "CTA 1"
         },
         {
           "type": "text",
           "id": "button_1_label",
-          "label": "Button 1 label",
+          "label": "CTA 1 Label",
           "default": "learn more"
         },
         {
           "type": "url",
           "id": "button_1_url",
-          "label": "Button 1 url"
+          "label": "CTA 1 URL"
         },
         {
           "type": "select",
           "id": "button_1_style",
-          "label": "Button 1 style",
+          "label": "CTA 1 Style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "primary"
         },
@@ -219,18 +219,18 @@
         {
           "type": "text",
           "id": "button_2_label",
-          "label": "Button 2 label",
+          "label": "CTA 2 Label",
           "default": "learn more"
         },
         {
           "type": "url",
           "id": "button_2_url",
-          "label": "Button 2 url"
+          "label": "CTA 2 URL"
         },
         {
           "type": "select",
           "id": "button_2_style",
-          "label": "Button 2 style",
+          "label": "CTA 2 Style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "secondary"
         }
@@ -247,15 +247,15 @@
       "options": [
         {
           "value": "short",
-          "label": "Short"
+          "label": "Small"
         },
         {
           "value": "main",
-          "label": "Standard"
+          "label": "Medium"
         },
         {
           "value": "tall",
-          "label": "Tall"
+          "label": "Large"
         }
       ]
     },
@@ -266,8 +266,8 @@
     {
       "type": "checkbox",
       "id": "stack_mobile",
-      "label": "Stack on mobile",
-      "default": true
+      "label": "Stack on Mobile",
+      "default": false
     },
     {
       "type": "checkbox",
@@ -289,33 +289,33 @@
     {
       "type": "checkbox",
       "id": "show_arrows",
-      "label": "Show arrows",
+      "label": "Show Arrows",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "show_pagination",
-      "label": "Show pagination",
+      "label": "Show Pagination",
       "default": true
     },
     {
       "type": "select",
       "id": "arrow_color",
-      "label": "Arrow color",
+      "label": "Arrow Color",
       "options": <%- uikit.colorsAll -%>,
       "default": "--color-primary-900"
     },
     {
       "type": "select",
       "id": "pagination_color",
-      "label": "Pagination color",
+      "label": "Pagination Color",
       "options": <%- uikit.colorsAll -%>,
       "default": "--color-primary-900"
     },
     {
       "type": "select",
       "id": "effect",
-      "label": "Slider effect",
+      "label": "Slider Effect",
       "default": "slide",
       "options": [
         {
@@ -325,10 +325,6 @@
         {
           "value": "fade",
           "label": "Fade"
-        },
-        {
-          "value": "cube",
-          "label": "Cube"
         },
         {
           "value": "coverflow",

@@ -45,7 +45,7 @@ Props:
 
 {% capture classes %}
   ra-content-tile
-  set--details-{{ details_location | default: 'after' }}{% if details_location_md != blank %}-sm{% endif %}
+  set--details-{{ details_location | default: 'overlay' }}{% if details_location_md != blank %}-sm{% endif %}
   {% if details_location_md != blank %}
     set--details-{{ details_location_md }}-md
   {% endif %}
