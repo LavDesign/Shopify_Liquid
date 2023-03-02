@@ -1,8 +1,31 @@
+{%- comment -%}
+  Featured Article
+{%- endcomment -%}
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'featured' %}
+
+    {% if block.settings.featured_article != blank %}
+      <div class="py-6 md:py-20 bg-grey-100">
+        <div class="container">
+          {% render 'featured-article', 
+            article: block.settings.featured_article,
+            aspect_ratio: block.settings.aspect_ratio,
+            show_tags: block.settings.show_tags,
+            show_date: block.settings.show_date,
+            show_excerpt: block.settings.show_excerpt
+           %}
+        </div>
+      </div>
+    {% endif %}
+  {% endcase %}
+{% endfor %}
+
 {%- paginate blog.articles by section.settings.per_page -%}
-  <div class="container py-10 md:py-20 border">
+  <div class="container py-10 md:py-20">
 
     {%- comment -%}
-      Tags
+      Tags - sort by tags
     {%- endcomment -%}
     {% if blog.all_tags.size > 0 %}
       <ul class="flex w-full overflow-x-auto items-center justify-start md:justify-center mb-10 md:mb-20" role="list" tabindex="-1">
@@ -48,7 +71,7 @@
 {
   "name": "Blogs",
   "tag": "section",
-  "class": "ra-blogs",
+  "max_blocks": 1,
   "settings": [
     {
       "type": "range",
@@ -94,6 +117,61 @@
       "id": "show_date",
       "label": "Show Date",
       "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured",
+      "name": "Featured Article",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "article",
+          "id": "featured_article",
+          "label": "Featured Article"
+        },
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Background color",
+          "options": <%- uikit.colorsAll -%>,
+          "default": "--color-primary-900"
+        },
+        {
+          "type": "select",
+          "id": "aspect_ratio",
+          "label": "Image Aspect Ratio",
+          "options": [
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "video",
+              "label": "Horizontal"
+            }
+          ],
+          "default": "video"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_excerpt",
+          "label": "Show Excerpt",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_tags",
+          "label": "Show Tags",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_date",
+          "label": "Show Date",
+          "default": true
+        }
+      ]
     }
   ]
 }
