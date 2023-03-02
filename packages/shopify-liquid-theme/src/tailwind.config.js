@@ -78,4 +78,12 @@ module.exports = {
   },
   plugins: [],
   content: [path.resolve(__dirname, "**/*.{js,vue,liquid,scss}")],
+  safelist: [
+    "aspect-square",
+    "aspect-video",
+    "h-full",
+    "w-full",
+    "object-cover",
+    "object-center",
+  ],
 };
