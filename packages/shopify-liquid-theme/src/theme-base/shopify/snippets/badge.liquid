@@ -4,8 +4,8 @@ Props:
   label:           String add text to badge - (required)
   size:            String [xs, sm, md, lg] sizes - (optional)
   rounded:         Boolean, changes style of badge to rounded - (optional)
+  class:           String add custom CSS class - (optional)
   style:           String, [primary, secondary, tertiary, success, warning, danger] - (optional) [default is 'primary']
-
 
   Example Badge:
   {% render 'badge', label: 'Out of Stock', size: 'md', style: 'danger' %}
@@ -29,6 +29,7 @@ Props:
   {% if size %}
     ra-badge--{{ size }}
   {% endif %}
+  {{class}}
 {% endcapture %}
 
 {% if label != blank %}

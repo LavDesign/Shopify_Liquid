@@ -1,16 +1,41 @@
 {%- paginate blog.articles by section.settings.per_page -%}
   <div class="container py-10 md:py-20 border">
+
+    {%- comment -%}
+      Tags
+    {%- endcomment -%}
+    {% if blog.all_tags.size > 0 %}
+      <ul class="flex w-full overflow-x-auto items-center justify-start md:justify-center mb-10 md:mb-20" role="list" tabindex="-1">
+        {% for tag in blog.all_tags %}
+          <li class="flex flex-auto md:flex-none list-none mx-1">
+            <a 
+              class="capitalize whitespace-nowrap py-3 px-5 border border-grey-200 hover:border-grey-500" 
+              href="{{ tag | link_to_tag: tag | split: 'href="' | last | split: '"' | first }}">
+              {{ tag.title }}
+            </a> 
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {%- comment -%}
+      Article tiles
+    {%- endcomment -%}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
       {%- for article in blog.articles -%}
         {% render 'article-tile' 
           article: article,
           aspect_ratio: section.settings.aspect_ratio,
+          show_tags: section.settings.show_tags,
           show_date: section.settings.show_date,
           show_excerpt: section.settings.show_excerpt
         %}
       {%- endfor -%}
     </div>
 
+    {%- comment -%}
+      Pagination
+    {%- endcomment -%}
     {%- if paginate.pages > 1 -%}
       <div class="flex items-center justify-center mt-10 md:mt-15">
         {%- render 'pagination', paginate: paginate -%}
@@ -56,6 +81,12 @@
       "type": "checkbox",
       "id": "show_excerpt",
       "label": "Show Excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show Tags",
       "default": true
     },
     {
