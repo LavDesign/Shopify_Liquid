@@ -13,15 +13,4 @@
   dialog::backdrop {
     background: transparentize($color: #000000, $amount: 0.35);
   }
-
-  .ra-modal__content {
-    background-color: transparent;
-  }
-
-  .close-modal {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 20;
-  }
 }
