@@ -1,0 +1,53 @@
+{% comment %}
+  Get platform from settings.review_platform
+{% endcomment %}
+
+{% assign platform = settings.review_platform %}
+
+<div class="product-reviews max-w-screen-2xl my-0 mx-auto">
+  {% case platform %}
+    {% when 'yotpo' %}
+      <div class="yotpo yotpo-main-widget"
+        data-product-id="{{ product.id }}"
+        data-name="{{ product.title | escape }}"
+        data-url="{{ shop.url }}{{ product.url }}"
+        data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+        data-price="{{ variant.price | money_without_currency }}"
+        data-currency="{{ shop.currency }}"
+        data-description="{{ product.description | escape }}">
+      </div>
+    {% when 'stamped' %}
+      <div
+        id="stamped-main-widget"
+        data-product-id="{{ product.id }}"
+        data-name="{{ product.title | escape }}"
+        data-url="{{ shop.url }}{{ product.url }}"
+        data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
+        data-description="{{ product.description | escape }}"
+        data-product-sku="{{ product.handle }}"
+        data-product-type="{{ product.type }}">
+        {{ product.metafields.stamped.reviews }}
+      </div>
+    {% when 'bazaarvoice' %}
+      {% assign id = product.metafields.bazaarvoice.handle | default: product.handle %}
+      <div data-bv-show="reviews" data-bv-product-Id="{{ id }}">
+        {% if product.metafields.bazaarvoice.reviews %}
+          {{ product.metafields.bazaarvoice.reviews }}
+        {% endif %}
+      </div>
+  {% endcase %}
+</div>
+
+{% schema %}
+  {
+    "name": "Product Reviews",
+    "settings": [],
+    "templates": ["product"],
+    "presets": [
+      {
+        "name": "Product Reviews",
+        "category": "Reviews"
+      }
+    ]
+  }
+{% endschema %}

@@ -115,12 +115,16 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "product-reviews": {
+      "type": "product-reviews"
     }
   },
   "order": [
     "main",
     "image-with-text",
     "multicolumn",
-    "product-recommendations"
+    "product-recommendations",
+    "product-reviews"
   ]
 }
