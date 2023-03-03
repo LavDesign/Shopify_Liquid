@@ -86,5 +86,6 @@ module.exports = {
     "w-full",
     "object-cover",
     "object-center",
+    "absolute",
   ],
 };
