@@ -2085,46 +2085,59 @@
     "name": "t:settings_schema.cart.name",
     "settings": [
       {
-        "type": "select",
-        "id": "cart_type",
-        "options": [
-          {
-            "value": "drawer",
-            "label": "t:settings_schema.cart.settings.cart_type.drawer.label"
-          },
-          {
-            "value": "page",
-            "label": "t:settings_schema.cart.settings.cart_type.page.label"
-          },
-          {
-            "value": "notification",
-            "label": "t:settings_schema.cart.settings.cart_type.notification.label"
-          }
-        ],
-        "default": "notification",
-        "label": "t:settings_schema.cart.settings.cart_type.label"
+        "type": "text",
+        "label": "Cart Header Text",
+        "id": "cart_header_text"
+      },
+      {
+        "type": "richtext",
+        "label": "Cart Message (Pre-CTA)",
+        "id": "cart_message_1"
+      },
+      {
+        "type": "richtext",
+        "label": "Cart Message (Post-CTA)",
+        "id": "cart_message_2"
       },
       {
         "type": "checkbox",
-        "id": "show_vendor",
-        "label": "t:settings_schema.cart.settings.show_vendor.label",
-        "default": false
+        "label": "Enable Free Gift Threshold?",
+        "id": "free_gift_enabled"
+      },
+      {
+        "type": "text",
+        "label": "Free Gift Threshold",
+        "id": "free_gift_threshold",
+        "info": "Enter the monetary value without any characters. I.E. use 10000 when the threshold is $100.00"
       },
       {
         "type": "checkbox",
-        "id": "show_cart_note",
-        "label": "t:settings_schema.cart.settings.show_cart_note.label",
-        "default": false
+        "label": "Enable Gift Message",
+        "id": "gift_message_enabled"
+      },
+      {
+        "type": "checkbox",
+        "label": "Enable Upsell",
+        "id": "upsell_enabled"
+      },
+      {
+        "type": "product",
+        "label": "Upsell Product",
+        "id": "upsell_product"
       },
       {
         "type": "header",
-        "content": "t:settings_schema.cart.settings.cart_drawer.header"
+        "content": "Empty Cart Options"
       },
       {
-        "type": "collection",
-        "id": "cart_drawer_collection",
-        "label": "t:settings_schema.cart.settings.cart_drawer.collection.label",
-        "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
+        "type": "text",
+        "label": "Empty Cart Header",
+        "id": "empty_cart_header"
+      },
+      {
+        "type": "link_list",
+        "label": "Empty Cart Links",
+        "id": "empty_cart_link_list"
       }
     ]
   }
