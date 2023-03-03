@@ -51,15 +51,15 @@
 
 {% capture swiper_settings %}
   {
-    "slidesPerView": {{ section.settings.mobile_slides_view }},
+    "slidesPerView": {{ section.settings.mobile_slides_view | at_most: 3 }},
     "spaceBetween": 15,
     "breakpoints": {
       "768": {
-        "slidesPerView": {{ section.settings.tablet_slides_view }},
+        "slidesPerView": {{ section.settings.tablet_slides_view | at_most: 5 }},
         "spaceBetween": 16
       },
       "1024": {
-        "slidesPerView": {{ section.settings.desktop_slides_view }},
+        "slidesPerView": {{ section.settings.desktop_slides_view | at_most: 5 }},
         "spaceBetween": 24
       }
     },
@@ -76,11 +76,15 @@
     },
     "speed": 300,
     "draggable": true,
-    "snapOnRelease": true,
     "mousewheel": {
       "releaseOnEdges": true,
       "forceToAxis": true
-    }
+    },
+    "freeMode": {
+      "enabled": true,
+      "sticky": {% if section.settings.scroll_interaction == 'snap' %}true{% else %}false{% endif %}
+    },
+    "snapOnRelease": true
   }
 {% endcapture %}
 
@@ -276,14 +280,14 @@
         "type": "text",
         "id": "mobile_slides_view",
         "label": "Mobile slides per view",
-        "info": "Enter amount of slides to show on mobile viewport (supports fractions)",
+        "info": "Enter amount of slides to show on mobile viewport (supports fractions) maximum of 3",
         "default": "1.5"
       },
       {
         "type": "text",
         "id": "tablet_slides_view",
         "label": "Tablet slides per view",
-        "info": "Enter amount of slides to show on tablet viewport (supports fractions)",
+        "info": "Enter amount of slides to show on tablet viewport (supports fractions) maximum of 5",
         "default": "3"
       },
       {
@@ -292,6 +296,22 @@
         "label": "Desktop slides per view",
         "info": "Enter amount of slides to show on desktop viewport (supports fractions) maximum of 5",
         "default": "4"
+      },
+      {
+        "type": "select",
+        "id": "scroll_interaction",
+        "label": "Scroll Interaction",
+        "options": [
+          {
+            "value": "free",
+            "label": "Free Scroll"
+          },
+          {
+            "value": "snap",
+            "label": "Snap to slides"
+          }
+        ],
+        "default": "snap"
       },
       {
         "type": "header",
