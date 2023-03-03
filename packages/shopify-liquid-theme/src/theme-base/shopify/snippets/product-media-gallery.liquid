@@ -7,24 +7,43 @@
 
 {% endcomment %}
 
+{% liquid
+  assign slides_length = product.media.size
+
+  assign thumbnails_per_view = 7
+  assign thumbnails_gap = 8
+  assign show_thumbnail_navigation = false
+
+  if slides_length > thumbnails_per_view
+    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: slides_length | plus: 48
+    assign show_thumbnail_navigation = true
+  else
+    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: slides_length
+  endif
+%}
+
 <ra-media-gallery class="ra-gallery product-media-gallery">
   <div class="ra-gallery-carousel ra-gallery-carousel--has-thumbnails">
     <div class="ra-carousel-outer ra-gallery-carousel__thumbnails display--small-up flex justify-center">
       <swiper-container
-        class="product-media-gallery__thumbnails w-20 h-full -top-6 hidden md:block"
+        class="product-media-gallery__thumbnails w-20 hidden md:block{% if show_thumbnail_navigation %} -top-6{% endif %}"
         navigation-prev-el=".swiper-thumbs-prev"
         navigation-next-el=".swiper-thumbs-next"
+        navigation="{{ show_thumbnail_navigation }}"
         slides-per-view="auto"
         direction="vertical"
         space-between="8"
         navigation="true"
+        style="height: {{ thumbnail_carousel_height | append: "px" }}"
       >
-      <div slot="container-start" class="flex justify-center">
-        {% render 'icon' with 'chevron-up', class: 'swiper-thumbs-prev' %}
-      </div>
-      <div slot="container-end" class="flex justify-center">
-        {% render 'icon' with 'chevron-down', class: 'swiper-thumbs-next' %}
-      </div>
+      {% if show_thumbnail_navigation %}
+        <div slot="container-start" class="flex justify-center">
+          {% render 'icon' with 'chevron-up', class: 'swiper-thumbs-prev' %}
+        </div>
+        <div slot="container-end" class="flex justify-center">
+          {% render 'icon' with 'chevron-down', class: 'swiper-thumbs-next' %}
+        </div>
+      {% endif %}
         {%- if product.selected_or_first_available_variant.featured_media != null -%}
           <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
             {{ product.selected_or_first_available_variant.featured_media.preview_image
