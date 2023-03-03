@@ -1,0 +1,153 @@
+{% liquid
+  assign has_child = false
+  assign has_sub_child = false
+  assign child_links = link.links
+
+  if child_links.size > 0
+    assign has_child = true
+  endif
+
+  for child in child_links
+    for sub_child in child.links
+      if sub_child != blank
+        assign has_sub_child = true
+      endif
+    endfor
+  endfor
+%}
+
+<li class="header__mobile-navigation-item">
+  <a class="header__mobile-navigation-link" 
+    href="{{ link.url }}" 
+    title="{{ link.title }}" 
+    data-navigation-drawer="drawer-{{ link.title | handleize }}"
+    aria-label="{{ link.title }}">
+    {{ link.title }}
+  </a>
+
+  {% if has_child or has_sub_child %}
+    <a class="header__mobile-navigation-link" 
+      href="#" 
+      title="{{ link.title }}" 
+      aria-label="{{ link.title }} drawer"
+      data-toggle-drawer="drawer-{{ link.title | handleize }}">
+
+      {% if has_child or has_sub_child %}
+        {% render 'icon' icon: 'chevron-right' %}
+      {% endif %}
+    </a>
+  {% endif %}
+
+  {%- comment -%}
+    drawer
+  {%- endcomment -%}
+  {% if has_child or has_sub_child %}
+    <ul class="header__mobile-navigation-drawer" id="drawer-{{ link.title | handleize }}" role="list" tabindex="-1">
+      
+      {%- comment -%}
+        drawer header
+      {%- endcomment -%}
+      <div class="header__mobile-navigation-drawer-header">
+        <a class="header__mobile-navigation-drawer-close" 
+          href="#" 
+          title="close {{ link.title }} drawer" 
+          aria-label="close {{ link.title }} drawer"
+          data-close-drawer="drawer-{{ link.title | handleize }}">
+          {% render 'icon' icon: 'chevron-left' %}
+        </a>
+
+        <p class="header__mobile-navigation-drawer-title"></p>
+
+        <a class="header__mobile-navigation-drawer-close" 
+          href="#" 
+          title="close {{ link.title }} drawer" 
+          aria-label="close {{ link.title }} drawer"
+          data-close-drawer="drawer-{{ link.title | handleize }}">
+          {% render 'icon' icon: 'close' %}
+        </a>
+      </div>
+
+      {%- comment -%}
+        Link - columns
+      {%- endcomment -%}
+      {% if has_sub_child %}
+        <div class="header__mobile-navigation-drawer-content">
+      {% endif %}
+
+      {% for child in child_links %}
+        <li class="header__mobile-navigation-item">
+          <a class="header__mobile-navigation-link" 
+            href="{{ child.url }}"
+            title="{{ child.title }}"
+            aria-label="{{ child.title }}">
+            {{ child.title }}
+          </a>
+
+          {% if has_sub_child %}
+            <a class="header__mobile-navigation-link" 
+              href="#" 
+              title="{{ child.title }}" 
+              aria-label="{{ child.title }} dropdown"
+              data-toggle-dropdown="dropdown-{{ child.title | handleize }}">
+        
+              {% if has_child or has_sub_child %}
+                {% render 'icon' icon: 'chevron-down' %}
+              {% endif %}
+            </a>
+          {% endif %}
+
+          {% if has_sub_child %}
+            <ul class="header__mobile-navigation-dropdown" id="dropdown-{{ child.title | handleize }}" role="list" tabindex="-1">
+              <div class="header__mobile-navigation-dropdown-inner">
+                {% for sub_child in child.links %}
+                  <li class="header__mobile-navigation-item">
+                    <a class="header__mobile-navigation-link" 
+                      href="{{ sub_child.url }}"
+                      title="{{ sub_child.title }}"
+                      aria-label="{{ sub_child.title }}">
+                      {{ sub_child.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </div>
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+
+      {%- comment -%}
+        featured contents - columns
+      {%- endcomment -%}
+      {% if has_sub_child %}
+        {% for featured in featured_contents %}
+          {% assign featured_item_handleize = featured.settings.menu_item | handleize %}
+          {% assign link_label_handleize = link.title | handleize %}
+
+          {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
+            <li class="header__mobile-navigation-featured-content">
+              <img class="header__mobile-navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
+              
+              <div class="header__mobile-navigation-featured-content-wrapper">
+                {% if featured.settings.title != blank %}
+                  <h4	class="header__mobile-navigation-featured-content-title">{{ featured.settings.title }}</h4>
+                {% endif %}
+
+                {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
+                  {% render 'button' 
+                    type: 'a',
+                    class: 'header__mobile-navigation-featured-content-button'
+                    style: featured.settings.link_style,
+                    label: featured.settings.link_label,
+                    url: featured.settings.link_url,
+                  %}
+                {% endif %}
+              </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+        </div>
+      {% endif %}
+
+    </ul>
+  {% endif %}
+</li>

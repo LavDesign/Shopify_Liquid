@@ -1,4 +1,4 @@
-<style>
+{% style %}
   #shopify-section-{{ section.id }} {
     --pagination-color: var({{section.settings.pagination_color}});
   }
@@ -10,7 +10,7 @@
       --text-color-desktop: var({{ block.settings.text_color_desktop }});
     }
   {%- endfor -%}
-</style>
+{% endstyle %}
 
 {% capture arrow_color %}
   var({{section.settings.arrow_color}})
