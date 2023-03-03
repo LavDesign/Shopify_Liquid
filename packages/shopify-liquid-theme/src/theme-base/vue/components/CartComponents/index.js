@@ -9,6 +9,8 @@ import CartMessage from "./CartMessage";
 import CartUpsell from "./CartUpsell";
 import CartUpsellTile from "./CartUpsellTile";
 import EmptyCart from "./EmptyCart";
+import CartOptionPicker from "./CartOptionPicker";
+import CartSwatchPicker from "./CartSwatchPicker";
 
 export {
   CartCheckoutButton,
@@ -22,4 +24,6 @@ export {
   CartUpsell,
   CartUpsellTile,
   EmptyCart,
+  CartOptionPicker,
+  CartSwatchPicker,
 };

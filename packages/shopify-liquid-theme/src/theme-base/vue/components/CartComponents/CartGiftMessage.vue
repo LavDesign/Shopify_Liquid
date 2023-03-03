@@ -52,8 +52,13 @@ const props = defineProps({
 });
 
 const cartStore = useCartStore();
+
 const { cart } = cartStore;
+
 let note = ref(cart.note);
+
+let tempNote = ref(cart.note);
+
 let giftMessageActive = ref(false);
 
 const debounce = (fn, wait) => {
@@ -67,7 +72,13 @@ const debounce = (fn, wait) => {
 watch(
   note,
   debounce((updatedNote) => {
+    tempNote.value = updatedNote;
     cartStore.updateNote(updatedNote);
   }, 500)
 );
+
+watch(giftMessageActive, () => {
+  if (!giftMessageActive.value) cartStore.updateNote("");
+  else cartStore.updateNote(tempNote.value);
+});
 </script>

@@ -9,7 +9,7 @@
           <h3 class="mb-6">{{ settings.cart_header_text }}</h3>
           <CartProducts :cart="cart" />
         </div>
-        <CartSidebar :cart="cart" :settings="settings" />
+        <CartSidebar v-bind="{ cart, settings }" />
       </div>
 
       <div
@@ -29,13 +29,17 @@ import { useCartStore } from "../stores/cart";
 import { CartProducts, CartSidebar, EmptyCart } from "./CartComponents";
 
 const cartStore = useCartStore();
+
 const { cart } = storeToRefs(cartStore);
+
 const hasCartItems = computed(() => {
   return cart.value.items && cart.value.items.length > 0;
 });
+
 const cartIsEmpty = computed(() => {
   return cart.value.items?.length == 0 && cart.value.item_count == 0;
 });
+
 const cartReady = computed(() => Object.keys(cart).length > 0);
 
 const props = defineProps({
@@ -50,6 +54,7 @@ const props = defineProps({
 });
 
 const settings = ref(props.settings);
+
 const emptyCartSettings = ref(props.emptyCartSettings);
 </script>
 

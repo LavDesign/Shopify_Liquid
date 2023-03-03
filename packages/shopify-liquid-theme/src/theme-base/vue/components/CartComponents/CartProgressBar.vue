@@ -24,19 +24,15 @@ const props = defineProps({
     default: 0,
   },
   threshold: {
-    type: String,
-    default: "",
+    type: Number,
+    default: 0,
   },
 });
 
-const giftThreshold = computed(() => props.threshold);
-
-const subtotal = computed(() => props.subtotal);
-
-const remainingSpend = computed(() => giftThreshold.value - subtotal.value);
+const remainingSpend = computed(() => props.threshold - props.subtotal);
 
 const thresholdPercentage = computed(() => {
-  const percentage = (subtotal.value * 100) / giftThreshold.value;
+  const percentage = (props.subtotal * 100) / props.threshold;
   return Math.min(percentage, 100);
 });
 </script>

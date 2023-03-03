@@ -2,16 +2,12 @@
   <div class="flex w-full flex-col p-4 border border-grey-500">
     <div class="w-full flex flex-row gap-4 font-primary">
       <a :href="product_link" class="!block w-full max-w-[112px]">
-        <img
-          :src="product_image.src"
-          :alt="product_image.alt"
-          class="w-full aspect-square object-cover"
-        />
+        <img v-bind="product_image" class="w-full aspect-square object-cover" />
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
         <div class="flex flex-row justify-between gap-2">
           <a :href="product_link" class="text-lg">
-            {{ product_title }}
+            {{ props.product.title }}
           </a>
           <div
             class="flex-row text-lg text-right"
@@ -78,9 +74,8 @@ import { computed, reactive, watch, ref } from "vue";
 import { useCartStore } from "../../stores/cart";
 import { useProductPageStore } from "../../stores/productPage";
 import { getSizedImageFromUrl } from "../../filters/image.js";
+import { CartSwatchPicker, CartOptionPicker } from "./";
 
-import CartSwatchPicker from "./CartSwatchPicker.vue";
-import CartOptionPicker from "./CartOptionPicker.vue";
 const cartStore = useCartStore();
 
 const props = defineProps({
@@ -88,8 +83,6 @@ const props = defineProps({
     type: Object,
   },
 });
-
-const product = computed(() => props.product);
 
 const product_image = computed(() => {
   const image = {};
@@ -101,33 +94,32 @@ const product_image = computed(() => {
     image.alt = currentVariant.value.images.default?.alt;
   } else {
     image.src = small_product_image.value;
-    image.alt = product.value.title;
+    image.alt = props.product.title;
   }
   return image;
 });
 
-
 const small_product_image = computed(() =>
-  getSizedImageFromUrl(product.value.featured_image, "small")
+  getSizedImageFromUrl(props.product.featured_image, "small")
 );
 
-const product_title = computed(() => product.value.title);
-const product_handle = computed(() => product.value.handle);
 const product_price = computed(() => {
   return variantSelected.value
     ? currentVariant.value.price
-    : product.value.price;
+    : props.product.price;
 });
+
 const product_compare_price = computed(() => {
   return variantSelected.value ? currentVariant.value.compare_at_price : null;
 });
+
 const product_link = computed(() => {
   return variantSelected.value
     ? currentVariant.value.url
-    : `/products/${product_handle.value}`;
+    : `/products/${props.product.handle}`;
 });
 
-const hasVariants = computed(() => product.value?.variants?.length > 0);
+const hasVariants = computed(() => props.product?.variants?.length > 0);
 
 const displayCta = computed(() =>
   hasVariants.value && !variantSelected.value ? false : true
@@ -135,6 +127,8 @@ const displayCta = computed(() =>
 const variantSelected = ref(false);
 
 // STOLEN FROM THE PRODUCT FORM
+// ToDo: Take this and the product form and make a composable from it
+// to keep parity
 // ToDo: Add these values as a prop to pull from customizer
 const swatchOptions = ["Color"];
 

@@ -1,7 +1,7 @@
 <template>
   <div v-if="!upsellItemInCart">
     <h5 class="text-center mb-2">You may also like</h5>
-    <CartUpsellTile v-bind="{ product }" />
+    <CartUpsellTile :product="props.product" />
   </div>
 </template>
 
@@ -9,8 +9,6 @@
 import { useCartStore } from "../../stores/cart";
 import { computed } from "vue";
 import { CartUpsellTile } from "./";
-
-const cartStore = useCartStore();
 
 const props = defineProps({
   product: {
@@ -22,9 +20,11 @@ const props = defineProps({
   },
 });
 
-const product = computed(() => props.product);
+const cartStore = useCartStore();
+
 const items = computed(() => cartStore.cart.items);
+
 const upsellItemInCart = computed(() =>
-  items.value.some((item) => item.handle == product.value.handle)
+  items.value.some((item) => item.handle == props.product.handle)
 );
 </script>

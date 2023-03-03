@@ -3,31 +3,31 @@
     <div class="pt-4 px-8 bg-white mb-4">
       <!-- FREE SHIPPING BAR -->
       <CartProgressBar
-        v-if="settings.free_gift_enabled"
-        :threshold="settings.free_gift_threshold"
-        :subtotal="subtotal"
+        v-if="props.settings.free_gift_enabled"
+        :threshold="props.settings.free_gift_threshold"
+        :subtotal="props.cart.total_price"
       />
       <!-- GIFT MESSAGE BOX -->
-      <CartGiftMessage v-if="settings.gift_message_enabled" />
+      <CartGiftMessage v-if="props.settings.gift_message_enabled" />
       <!-- SPECIAL MESSAGE -->
       <CartMessage
-        v-if="settings.cart_message_1?.length > 0"
-        :message="settings.cart_message_1"
+        v-if="props.settings.cart_message_1?.length > 0"
+        :message="props.settings.cart_message_1"
       />
       <!-- SUBTOTAL -->
-      <CartSubtotal :subtotal="subtotal" />
+      <CartSubtotal :subtotal="props.cart.total_price" />
       <!-- CHECKOUT CTA -->
       <CartCheckoutButton :checkout-ready="readyForCheckout" />
     </div>
     <!-- SPECIAL MESSAGE AGAIN-->
     <CartMessage
-      v-if="settings.cart_message_2?.length > 0"
-      :message="settings.cart_message_2"
+      v-if="props.settings.cart_message_2?.length > 0"
+      :message="props.settings.cart_message_2"
     />
     <!-- YMAL -->
     <CartUpsell
-      v-if="settings.upsell_enabled && settings.upsell_product"
-      :product="settings.upsell_product"
+      v-if="props.settings.upsell_enabled && props.settings.upsell_product"
+      :product="props.settings.upsell_product"
     />
   </div>
 </template>
@@ -54,17 +54,7 @@ const props = defineProps({
   },
 });
 
-const cart = computed(() => props.cart);
-
-const settings = computed(() => props.settings);
-
-const subtotal = computed(() => cart.value.total_price);
-
-const attributes = computed(() => cart.value.attributes);
-
-const note = computed(() => cart.value.note);
-
 const readyForCheckout = computed(() => {
-  return cart.value.item_count > 0 && cart.value.items_subtotal_price > 0;
+  return props.cart.item_count > 0 && props.cart.items_subtotal_price > 0;
 });
 </script>

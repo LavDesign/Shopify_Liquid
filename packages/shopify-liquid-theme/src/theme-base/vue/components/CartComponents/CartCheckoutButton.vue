@@ -8,8 +8,6 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-
 const props = defineProps({
   checkoutReady: {
     type: Boolean,
@@ -17,10 +15,8 @@ const props = defineProps({
   },
 });
 
-const checkoutReady = computed(() => props.checkoutReady);
-
 const navigateToCheckout = () => {
-  if (checkoutReady.value) {
+  if (props.checkoutReady) {
     window.location.href = "/checkout";
   }
 };

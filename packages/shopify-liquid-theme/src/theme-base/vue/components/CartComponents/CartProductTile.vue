@@ -1,17 +1,11 @@
 <template>
   <div class="w-full flex flex-col border-y border-grey-200 font-primary py-4">
     <div class="w-full flex flex-row gap-4">
-      <a :href="product_link" class="!block w-full max-w-[112px]">
-        <img
-          :src="product_image.url"
-          :alt="product_image.alt"
-          class="w-full aspect-square object-cover"
-        />
+      <a :href="product.url" class="!block w-full max-w-[112px]">
+        <img v-bind="product_image" class="w-full aspect-square object-cover" />
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
-        <a :href="product_link" class="text-base">
-          {{ product_title }}
-        </a>
+        <a :href="product.url" class="text-base" v-text="product.title" />
         <div>
           <div
             v-for="(option, i) in product.options_with_values"
@@ -50,9 +44,9 @@
           </svg>
         </span>
         <div class="flex-row text-lg">
-          {{ $filters.money(product_price) }}
-          <s v-if="product_compare_price != product_price">{{
-            $filters.money(product_compare_price)
+          {{ $filters.money(product.final_line_price) }}
+          <s v-if="product.original_line_price != product.final_line_price">{{
+            $filters.money(product.original_line_price)
           }}</s>
         </div>
       </div>
@@ -62,12 +56,12 @@
         class="ra-choice ra-choice--radio ra-choice--classic ra-choice--radio-classic"
       >
         <input
-          :id="product_handle + '-' + product.id"
+          :id="product.handle + '-' + product.id"
           type="radio"
           class="ra-choice__input"
         />
         <label
-          :for="product_handle + '-' + product.id"
+          :for="product.handle + '-' + product.id"
           class="ra-choice__label-container ra-choice__container set--sibling-deep-focus"
         >
           <div class="ra-choice__checkmark set--inherit-focus">
@@ -95,37 +89,25 @@ const props = defineProps({
 
 const cartStore = useCartStore();
 
-const product = computed(() => props.product);
-
-const product_handle = computed(() => product.value.handle);
-
 const product_image = computed(() => {
   const img = {};
-  img.url = small_image.value;
-  img.alt = product.value.featured_image.alt;
+  img.src = small_image.value;
+  img.alt = props.product.featured_image.alt;
   return img;
 });
 
-const product_title = computed(() => product.value?.product_title);
-
-const product_price = computed(() => product.value.final_line_price);
-
-const product_compare_price = computed(() => product.value.original_line_price);
-
-const product_link = computed(() => product.value?.url);
-
 const small_image = computed(() =>
-  getSizedImageFromUrl(product.value.featured_image.url, "small")
+  getSizedImageFromUrl(props.product.featured_image.url, "small")
 );
-
-const isSubscriptionProduct = false;
 
 const updateQuantity = (qty) => {
   const productObj = {
-    id: product.value.id.toString(),
+    id: props.product.id.toString(),
     quantity: qty.toString(),
-    properties: product.value.properties,
+    properties: props.product.properties,
   };
   cartStore.updateItem(productObj);
 };
+
+const isSubscriptionProduct = false;
 </script>
