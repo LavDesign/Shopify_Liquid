@@ -1,17 +1,30 @@
 {%- comment -%}
   Header
 {%- endcomment -%}
-<div class="grid grid-cols-1 md:grid-cols-2">
-  <div>
-  lajdklfjald
+<div class="py-6 md:py-20 bg-grey-100">
+  <div class="container">
+    {% render 'featured-article', 
+      article: article,
+      aspect_ratio: section.settings.aspect_ratio,
+      show_tags: true,
+      show_date: true,
+      show_excerpt: true
+    %}
   </div>
-
-  <div>
-    ljadklfjaldkjl
-  </div>
-
 </div>
 
+{%- comment -%}
+  Content
+{%- endcomment -%}
+<div class="container">
+  <div class="flex py-6 md:py-20">
+    <div class="w-full md:w-[650px] m-auto">
+      <div class="ra-wysiwyg">
+        {{ article.content }}
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="application/ld+json">
   {
@@ -48,86 +61,22 @@
 {
   "name": "Article",
   "tag": "section",
-  "blocks": [
+  "settings": [
     {
-      "type": "@app"
-    },
-    {
-      "type": "featured_image",
-      "name": "t:sections.main-article.blocks.featured_image.name",
-      "limit": 1,
-      "settings": [
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
         {
-          "type": "select",
-          "id": "image_height",
-          "options": [
-            {
-              "value": "adapt",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__1.label"
-            },
-            {
-              "value": "small",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__2.label"
-            },
-            {
-              "value": "medium",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__3.label"
-            },
-            {
-              "value": "large",
-              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__4.label"
-            }
-          ],
-          "default": "adapt",
-          "label": "t:sections.main-article.blocks.featured_image.settings.image_height.label",
-          "info": "t:sections.main-article.blocks.featured_image.settings.image_height.info"
-        }
-      ]
-    },
-    {
-      "type": "title",
-      "name": "t:sections.main-article.blocks.title.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "blog_show_date",
-          "default": true,
-          "label": "t:sections.main-article.blocks.title.settings.blog_show_date.label"
+          "value": "square",
+          "label": "Square"
         },
         {
-          "type": "checkbox",
-          "id": "blog_show_author",
-          "default": false,
-          "label": "t:sections.main-article.blocks.title.settings.blog_show_author.label"
+          "value": "video",
+          "label": "Horizontal"
         }
-      ]
-    },
-    {
-      "type": "content",
-      "name": "t:sections.main-article.blocks.content.name",
-      "limit": 1
-    },
-    {
-      "type": "share",
-      "name": "t:sections.main-article.blocks.share.name",
-      "limit": 2,
-      "settings": [
-        {
-          "type": "text",
-          "id": "share_label",
-          "label": "t:sections.main-article.blocks.share.settings.text.label",
-          "default": "Share"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.main-article.blocks.share.settings.featured_image_info.content"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.main-article.blocks.share.settings.title_info.content"
-        }
-      ]
+      ],
+      "default": "video"
     }
   ]
 }
