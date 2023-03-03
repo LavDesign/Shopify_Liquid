@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-    <div v-if="variantSelected">
+    <div v-if="displayCta">
       <button
         class="ra-button ra-button--full-width ra-button--sm mt-2"
         @click="addToCart"
@@ -77,6 +77,7 @@
 import { computed, reactive, watch, ref } from "vue";
 import { useCartStore } from "../../stores/cart";
 import { useProductPageStore } from "../../stores/productPage";
+import { getSizedImageFromUrl } from "../../filters/image.js";
 
 import CartSwatchPicker from "./CartSwatchPicker.vue";
 import CartOptionPicker from "./CartOptionPicker.vue";
@@ -99,11 +100,16 @@ const product_image = computed(() => {
     image.src = currentVariant.value.images.default?.sizes.sm;
     image.alt = currentVariant.value.images.default?.alt;
   } else {
-    image.src = product.value.featured_image;
+    image.src = small_product_image.value;
     image.alt = product.value.title;
   }
   return image;
 });
+
+
+const small_product_image = computed(() =>
+  getSizedImageFromUrl(product.value.featured_image, "small")
+);
 
 const product_title = computed(() => product.value.title);
 const product_handle = computed(() => product.value.handle);
@@ -121,6 +127,11 @@ const product_link = computed(() => {
     : `/products/${product_handle.value}`;
 });
 
+const hasVariants = computed(() => product.value?.variants?.length > 0);
+
+const displayCta = computed(() =>
+  hasVariants.value && !variantSelected.value ? false : true
+);
 const variantSelected = ref(false);
 
 // STOLEN FROM THE PRODUCT FORM
@@ -133,12 +144,6 @@ const optionsWithValues = reactive(props.product.options_with_values);
 
 // Set initial options from first_available_variant
 const selectedOptions = reactive({});
-
-// Note: Insertion order should be preserved here as of ES2015 (assuming string keys),
-// but there could be edge cases where options might not be properly ordered if using an int as a key
-props.product?.options?.forEach((option, i) => {
-  selectedOptions[option] = props.product.first_available_variant.options[i];
-});
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
   selectedOptions[optionKey] = selectedOption.value;
