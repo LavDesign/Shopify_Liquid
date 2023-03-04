@@ -10,15 +10,11 @@
 %}
 
 {% capture bgStyles %}
-  {% if bg_color != 'rgba(0,0,0,0)' %}
-    --component-bg-color: {{ bg_color }}
-  {% endif %}
+  --component-bg-color: var({{ bg_color }})
 {% endcapture %}
 
 {% capture colorStyles %}
-  {% if fg_color != 'rgba(0,0,0,0)' %}
-    --component-fg-color: {{ fg_color }}
-  {% endif %}
+  --component-fg-color: var({{ fg_color }})
 {% endcapture %}
 
 {% capture slides %}
@@ -245,14 +241,18 @@
         "default": "h2"
       },
       {
-        "type": "color",
+        "type": "select",
         "id": "bg_color",
-        "label": "Background Color"
+        "label": "Background Color",
+        "options": <%- uikit.colorsAll -%>,
+        "default": "--color-util-white"
       },
       {
-        "type": "color",
+        "type": "select",
         "id": "fg_color",
-        "label": "Text Color"
+        "label": "Text Color",
+        "options": <%- uikit.colorsAll -%>,
+        "default": "--color-primary-900"
       },
       {
         "type": "header",
