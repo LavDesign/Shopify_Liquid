@@ -42,9 +42,8 @@
     {% for tag in article.tags %}
       {% assign skip_articles = article.handle | split: '.....' %}
     
-        {% for related_article in blog.articles %}
+      {% for related_article in blog.articles %}
         {% if related_article.tags contains tag and counter < 3 %}
-          
           {% unless skip_articles contains related_article.handle %}
             {% assign counter = counter | plus: 1 %}
             {% assign temp = related_article.handle | split: '.....' %}
@@ -58,6 +57,8 @@
               show_excerpt: section.settings.show_excerpt
             %}
           {% endunless %}
+        {% else %}
+          {% break %}
         {% endif %}
       {% endfor %}
     {% endfor %}
