@@ -68,7 +68,7 @@ Example product-tile snippet:
       </div>
     {% endif %}
   </div>
-  <div class="ra-product-tile__details" {% if font_color != 'rgba(0,0,0,0)' %}style="color: {{ font_color }}"{% endif %}>
+  <div class="ra-product-tile__details" {% if font_color %}style="color: var({{ font_color }})"{% endif %}>
     {% if pre_title != blank %}
       <p class="ra-product-tile__attribute">
         {{- pre_title -}}
