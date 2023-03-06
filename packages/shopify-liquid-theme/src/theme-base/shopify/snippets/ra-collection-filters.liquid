@@ -1,11 +1,22 @@
-<h2>ra-collection-filters</h2>
+{% comment %}
+Make a list of filters to display as buttons based on filter.label
+{% endcomment %}
+
+{% liquid
+  assign button_filters_string = "size"
+  assign button_filters = button_filters_string | split: ","
+%}
 
 <ra-collection-filters>
   <form id="CollectionFilters">
     <ra-accordion class="ra-accordion" data-multi-open="true">
       {%- for filter in collection.filters -%}
+        {% assign as_buttons = false %}
+        {% if button_filters contains filter.label %}
+          {% assign as_buttons = true %}
+        {% endif %}
         {% capture filter_content %}
-          {% render "ra-filter-group", filter: filter %}
+          {% render "ra-filter-group", filter: filter, as_buttons: as_buttons %}
         {% endcapture %}
         {% render "accordion-item", title: filter.label, content: filter_content, show_icon: true, is_open: true %}
       {%- endfor -%}
