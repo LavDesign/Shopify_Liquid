@@ -1,0 +1,83 @@
+{%- comment -%}
+  Header
+{%- endcomment -%}
+<div class="py-6 md:py-20 bg-grey-100">
+  <div class="container">
+    {% render 'featured-article', 
+      article: article,
+      aspect_ratio: section.settings.aspect_ratio,
+      show_tags: true,
+      show_date: true,
+      show_excerpt: true
+    %}
+  </div>
+</div>
+
+{%- comment -%}
+  Content
+{%- endcomment -%}
+<div class="container">
+  <div class="flex py-6 md:py-20">
+    <div class="w-full md:w-[650px] m-auto">
+      <div class="ra-wysiwyg">
+        {{ article.content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "articleBody": {{ article.content | strip_html | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ request.origin | append: page.url | json }}
+    },
+    "headline": {{ article.title | json }},
+    {% if article.excerpt != blank %}
+      "description": {{ article.excerpt | strip_html | json }},
+    {% endif %}
+    {% if article.image %}
+      "image": [
+        {{ article | image_url: width: 1920 | prepend: "https:" | json }}
+      ],
+    {% endif %}
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "author": {
+      "@type": "Person",
+      "name": {{ article.author | json }}
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }}
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "video",
+          "label": "Horizontal"
+        }
+      ],
+      "default": "video"
+    }
+  ]
+}
+{% endschema %}
