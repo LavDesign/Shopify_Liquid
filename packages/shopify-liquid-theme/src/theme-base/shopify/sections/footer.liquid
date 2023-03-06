@@ -22,7 +22,7 @@
               desktop menu
             {%- endcomment -%}
             {%- for link in block.settings.menu.links -%}
-              <li class="hidden list-none md:flex flex-col px-20">
+              <li class="hidden list-none md:flex flex-col">
                 <a class="text-sm uppercase mb-3" href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">{{ link.title | escape }}</a>
                 {% if link.links.size > 0 %}
                   <ul role="list" tabindex="-1">
