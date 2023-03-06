@@ -574,6 +574,17 @@
     ]
   },
   {
+    "name": "Analytics",
+    "settings": [
+      {
+        "type": "text",
+        "id": "datalayer_gtm_id",
+        "label": "GTM Container ID",
+        "default": "GTM-T8MSQMK"
+      }
+    ]
+  },
+  {
     "name": "Favicon",
     "settings": [
       {
