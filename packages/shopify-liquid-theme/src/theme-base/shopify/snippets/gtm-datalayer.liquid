@@ -291,7 +291,7 @@
           return { step, stepName };
         }
         
-        if (Shopify.Checkout.page !== 'thank_you') {
+        if (!Shopify.Checkout.page.includes('thank_you')) {
           dataLayer.push({ ecommerce: null });
           dataLayer.push({
             'event': 'acn_checkout_step',
@@ -357,7 +357,7 @@
           });
         } 
 
-        if (Shopify.Checkout.page === 'thank_you') {
+        if (Shopify.Checkout.page.includes('thank_you')) {
           // create discounts array
           var discountCodes = [];
           {% for discount_application in order.discount_applications %}
