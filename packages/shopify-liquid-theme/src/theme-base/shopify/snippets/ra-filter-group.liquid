@@ -1,0 +1,28 @@
+{% comment %}
+
+  Props:
+    title:       string item title - (required)
+    filter:      Shopify filter object - (required)
+    as_buttons:  boolean - (option) Display filters as buttons instead of checkboxes
+    show_icon:   boolean - (optional)
+    is_open:     boolean - (optional)
+
+{% endcomment %}
+{% if as_buttons %}
+  Display as buttons.
+{% else %}
+  <ul class="list-none">
+  {%- for value in filter.values -%}
+    <li class="mb-3">
+      {%- render 'checkbox'
+        name: value.param_name,
+        class: "ra-filter-input"
+        id: value.param_name,
+        value: value.value,
+        label: value.label,
+        style: 'classic'
+      -%}
+    </li>
+  {%- endfor -%}
+  </ul>
+{% endif %}

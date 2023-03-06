@@ -2,6 +2,8 @@
 
   Props:
     id:       string unique ID - (required)
+    name:     string input name (required)
+    value:    string input value (required)
     style:    string [classic, toggle] - (required)
     label:    string checkbox label - (required)
     class:    string add custom CSS class - (optional)
@@ -48,7 +50,7 @@
   {% endcapture %}
 
   <div class="ra-choice {{ classes }}">
-    <input class="ra-choice__input" id="{{ input_id }}" type="checkbox"{{ attributes }}>
+    <input class="ra-choice__input" name="{{ name }}" value="{{ value }}" id="{{ input_id }}" type="checkbox"{{ attributes }}>
     <label class="ra-choice__container set--sibling-deep-focus" for="{{ input_id }}">
       <div class="ra-choice__checkmark set--inherit-focus">
         <span aria-hidden="true" class="ra-choice__checkmark-icon ra-icon ra-icon--sm">
