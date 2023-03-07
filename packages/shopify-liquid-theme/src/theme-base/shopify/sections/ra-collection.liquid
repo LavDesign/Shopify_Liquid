@@ -6,9 +6,7 @@
   <div class="wrapper mt-1">
     <div class="flex w-full md:max-width--large pt-20 px-4 md:px-10" id="collectionMain">
       <div class="collection__sidebar hidden md:block md:w-1/4">
-        {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-        <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
-        <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
+        <aside class="facets-wrapper px-20" id="main-collection-filters">
           {% render 'ra-collection-filters' collection: collection %}
         </aside>
       </div>

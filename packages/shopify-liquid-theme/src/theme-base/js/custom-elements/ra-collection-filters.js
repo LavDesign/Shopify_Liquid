@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { getSearchParamsFromForm, updateURL } from "../utils/search-params";
 
 export default class RaCollectionFilters extends HTMLElement {
@@ -54,10 +55,5 @@ export default class RaCollectionFilters extends HTMLElement {
 
     /* Ensure that navigating through the browser "Back" button properly applies filters */
     window.addEventListener("popstate", RaCollectionFilters.onBrowserPrev);
-
-    /*
-    Sample URL String
-    https://fab-development.myshopify.com/collections/all?filter.v.availability=1&filter.v.price.gte=&filter.v.price.lte=&filter.v.option.color=Black&filter.v.option.color=Blue&sort_by=title-ascending
-    */
   }
 }
