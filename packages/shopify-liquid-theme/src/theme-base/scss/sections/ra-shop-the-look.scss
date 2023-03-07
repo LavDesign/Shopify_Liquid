@@ -1,7 +1,6 @@
 .ra-shop-the-look {
   display: flex;
   flex-direction: column;
-  border: 10px solid red;
   background-color: var(--background-color);
 
   .ra-shop-the-look__title,
@@ -10,20 +9,16 @@
     color: var(--text-color);
   }
 
-  // item
-  .ra-shop-the-look__item {
+  // dot
+  .ra-shop-the-look__dot {
     top: var(--vertical-position-mobile);
     left: var(--horizontal-position-mobile);
+    box-shadow: 0 0 0 8px var(--look-dot-color) inset, 0 1px 5px rgba(0, 0, 0, 0.15);
 
     @breakpoint md {
       top: var(--vertical-position);
       left: var(--horizontal-position);
     }
-  }
-
-  // dot
-  .ra-shop-the-look__dot {
-    box-shadow: 0 0 0 8px var(--look-dot-color) inset, 0 1px 5px rgba(0, 0, 0, 0.15);
   }
   .ra-shop-the-look__dot::after {
     border: 2px solid var(--look-dot-color);
@@ -35,16 +30,46 @@
     background-color: var(--look-bg-color);
     opacity: 0;
     visibility: hidden;
+
     &,
     * {
       color: var(--look-text-color);
     }
+   
+    // mobile position + animation
+    @breakpoint md-max {
+      width: 100%;
+      bottom: -50%;
+      left: 0;
+      top: auto;
+      transition: all .3s;
 
-    &[open] {
-      opacity: 1;
-      visibility: visible;
+      &[open] {
+        visibility: visible;
+        opacity: 1;
+        bottom: 0;
+      }
     }
 
+    // desktop position + animation
+    @breakpoint md {
+      width: max-content;
+      top: calc(var(--vertical-position) - 16px);
+      left: calc(var(--horizontal-position) + 40px);
+      transform: scale(0.8);
+      transition: visibility 0.4s cubic-bezier(0.75, 0, 0.175, 1), opacity 0.4s cubic-bezier(0.75, 0, 0.175, 1), transform 0.4s cubic-bezier(0.75, 0, 0.175, 1);
+      will-change: transform;
+      // transform-origin: top var(--transform-origin-start);
+      transform-origin: top left;
+
+      &[open] {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    // caret icon
     &:after {
       border-style: solid;
       border-color: transparent var(--look-bg-color) transparent transparent;
