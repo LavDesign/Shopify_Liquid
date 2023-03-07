@@ -1,0 +1,65 @@
+.ra-shop-the-look {
+  display: flex;
+  flex-direction: column;
+  border: 10px solid red;
+  background-color: var(--background-color);
+
+  .ra-shop-the-look__title,
+  .ra-shop-the-look__body,
+  .ra-shop-the-look__body * {
+    color: var(--text-color);
+  }
+
+  // item
+  .ra-shop-the-look__item {
+    top: var(--vertical-position-mobile);
+    left: var(--horizontal-position-mobile);
+
+    @breakpoint md {
+      top: var(--vertical-position);
+      left: var(--horizontal-position);
+    }
+  }
+
+  // dot
+  .ra-shop-the-look__dot {
+    box-shadow: 0 0 0 8px var(--look-dot-color) inset, 0 1px 5px rgba(0, 0, 0, 0.15);
+  }
+  .ra-shop-the-look__dot::after {
+    border: 2px solid var(--look-dot-color);
+    animation: pulseAnimation 1.5s ease-in-out infinite;
+  }
+
+  // product tile
+  .ra-shop-the-look__product {
+    background-color: var(--look-bg-color);
+    opacity: 0;
+    visibility: hidden;
+    &,
+    * {
+      color: var(--look-text-color);
+    }
+
+    &[open] {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:after {
+      border-style: solid;
+      border-color: transparent var(--look-bg-color) transparent transparent;
+      border-width: 8px;
+    }
+  }
+}
+
+@keyframes pulseAnimation {
+  0% {
+    opacity: 1;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}

@@ -1,0 +1,283 @@
+{% liquid 
+  assign title = section.settings.title
+  assign title_as = section.settings.title_style
+  assign body = section.settings.body
+  assign button_url = section.settings.button_url
+  assign button_label = section.settings.button_label
+  assign button_style = section.settings.button_style
+  assign desktop_image = section.settings.desktop_bg_image
+  assign mobile_image = section.settings.mobile_bg_image
+  assign bg_color = section.settings.bg_color
+  assign text_color = section.settings.text_color
+  assign look_dot_color = section.settings.look_dot_color
+  assign look_bg_color = section.settings.look_bg_color
+  assign look_text_color = section.settings.look_text_color
+%}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --background-color: var({{ bg_color }});
+    --text-color: var({{ text_color }});
+    --look-dot-color: var({{ look_dot_color }});
+    --look-bg-color: var({{ look_bg_color }});
+    --look-text-color: var({{ look_text_color }});
+  }
+  {% for block in section.blocks %}
+    #shopify-section-{{ section.id }} #block-{{ block.id }} {
+      --vertical-position: {{ block.settings.vertical_position | append: '%' }};
+      --horizontal-position: {{ block.settings.horizontal_position | append: '%' }};
+      --vertical-position-mobile: {{ block.settings.vertical_position_mobile | append: '%' }};
+      --horizontal-position-mobile: {{ block.settings.horizontal_position_mobile | append: '%' }};
+    }
+  {% endfor %}
+{% endstyle %}
+
+
+<ra-shop-the-look class="ra-shop-the-look border-5 border">
+  {%- comment -%}
+    Section header
+  {%- endcomment -%}
+  {% if title != blank or body != blank or button_url != blank %}
+    <div class="flex items-center justify-center py-10 md:py-20">
+      <div class="w-full md:w-1/3 text-center">
+        {% if title != blank %}
+          <{{ title_as }} class="{{ title_as }} ra-shop-the-look__title">{{ title }}</{{ title_as }}>
+        {% endif %}
+
+        {% if body != blank %}
+          <div class="mt-3 md:mt-6 ra-shop-the-look__body">{{ body }}</div>
+        {% endif %}
+
+        {% if button_url != blank and button_label %}
+          <div class="mt-3 md:mt-6">
+            {% render 'button' type: 'a', style: 'primary', url: button_url, label: button_label %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+ 
+  {% if section.blocks.size > 0 %}
+    <div class="border-5 border-primary-900 relative">
+
+      {%- comment -%}
+        Background - images
+      {%- endcomment -%}
+      {% capture srcset %}
+        {{ desktop_image | image_url: width: 600 }} 400w,
+        {{ desktop_image | image_url: width: 800 }} 800w,
+        {{ desktop_image | image_url: width: 1200 }} 1200w
+      {% endcapture %}
+      {% capture mobile_srcset %}
+        {{ mobile_image | image_url: width: 600 }} 400w,
+        {{ mobile_image | image_url: width: 800 }} 800w
+      {% endcapture %}
+      <div class="hidden md:block">
+        {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+      </div>
+      <div class="block md:hidden">
+        {% render 'image', alt: mobile_image.alt, src: mobile_image | image_url: width: 800, srcset: mobile_srcset, sizes: "100vw", classes: 'w-full' %}
+      </div>
+
+      {%- comment -%}
+        Look
+      {%- endcomment -%}
+      {% for block in section.blocks %}
+        {% if block.settings.product != blank %}
+          {%- assign product = block.settings.product -%}
+          <div class="ra-shop-the-look__item absolute" id="block-{{ block.id }}">
+
+            {%- comment -%}
+              Dot
+            {%- endcomment -%}
+            <button 
+              class="ra-shop-the-look__dot block relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full" 
+              type="button" is="toggle-button" 
+              aria-controls="product-{{ block.id }}">
+              <span class="visually-hidden">Show product {{ product.title }}</span>
+            </button>
+
+            {%- comment -%}
+              Product
+            {%- endcomment -%}
+            <div class="ra-shop-the-look__product absolute z-20 left-10 -top-4 w-max flex p-3 pr-5 after:content-[''] after:absolute after:w-0 after:h-0 after:right-full after:top-5" id="product-{{ block.id }}">
+              {%- if product.featured_media -%}
+                <img class="mr-3 w-28" src="{{ product.featured_media | image_url: width: 200 }}" loading="lazy">
+              {%- endif -%}
+
+              <div class="flex flex-col justify-center">
+                {% if product.vendor %}
+                  <p class="text-xs mb-1">{{ product.vendor }}</p>
+                {% endif %}
+                <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
+                <span class="flex">
+                  <span class="visually-hidden">Sale price</span>
+                  {{ product.price | money }}
+                </span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</ra-shop-the-look>
+
+{% schema %}
+{
+  "name": "Shop the Look",
+  "tag": "section",
+  "class": "ra-shop-the-look",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_bg_image",
+      "label": "Background Image (desktop)",
+      "info": "Recommended Size: 1800x"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg_image",
+      "label": "Background Image (mobile)",
+      "info": "Recommended Size: 800x"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop the Look"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title As",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h3"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Section Body Copy"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "CTA Label",
+      "default": "learn more"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "CTA Style",
+      "options": <%- uikit.buttonStyles -%>,
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Text Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Background Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-white"
+    },
+    {
+      "type": "select",
+      "id": "look_dot_color",
+      "label": "Look Dot Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-white"
+    },
+    {
+      "type": "select",
+      "id": "look_bg_color",
+      "label": "Look Background Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-white"
+    },
+    {
+      "type": "select",
+      "id": "look_text_color",
+      "label": "Look Text Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "look",
+      "name": "Look",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "range",
+          "id": "horizontal_position",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position (desktop)",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "vertical_position",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position (desktop)",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "horizontal_position_mobile",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Horizontal position (mobile)",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "vertical_position_mobile",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Vertical position (mobile)",
+          "default": 30
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop the Look"
+    }
+  ]
+}
+{% endschema %}

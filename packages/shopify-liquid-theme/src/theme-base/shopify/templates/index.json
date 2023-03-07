@@ -1,211 +1,486 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "10b4dfc9-d6e9-4ef3-a0e9-c9b53611857f": {
+      "type": "shop-the-look",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "eee559ae-0b1d-4df6-901f-1fa10e5f9141": {
+          "type": "look",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "product": "cream-sweater",
+            "horizontal_position": 30,
+            "vertical_position": 30,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30
           }
         },
-        "text": {
-          "type": "text",
+        "cf2822bd-5b9b-43ac-8748-386ab4cd0e6a": {
+          "type": "look",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "product": "example-hat",
+            "horizontal_position": 30,
+            "vertical_position": 30,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30
           }
         },
-        "button": {
-          "type": "buttons",
+        "2bce6e38-e5e3-4c70-9317-66bad68d6708": {
+          "type": "look",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "product": "fancy-pants",
+            "horizontal_position": 30,
+            "vertical_position": 30,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "eee559ae-0b1d-4df6-901f-1fa10e5f9141",
+        "cf2822bd-5b9b-43ac-8748-386ab4cd0e6a",
+        "2bce6e38-e5e3-4c70-9317-66bad68d6708"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "adapt_height_first_image": false,
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "title": "Shop the Look",
+        "title_style": "h3",
+        "body": "",
+        "button_label": "learn more",
+        "button_url": "",
+        "button_style": "primary",
+        "text_color": "--color-primary-900",
+        "bg_color": "--color-util-white"
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "70470917-0d14-4248-a6ea-ab488472117a": {
+      "type": "hero-image",
+      "disabled": true,
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "b8e8ef5e-ad07-43b9-86ed-182d3032dd8a": {
+          "type": "slide",
           "settings": {
-            "heading": "<p>Talk about your brand<\/p>",
-            "heading_size": "h1"
+            "sub-heading": "Test New Slide",
+            "title": "New Slide",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-left",
+            "body": "<p>Testing a Brand New Slide Coming Soon!!!!<br\/><strong>BOLD TEXT<br\/><\/strong><em>ITALIC TEXT!!<br\/><\/em><\/p>",
+            "desktop_bg_image": "shopify:\/\/shop_images\/hero2.jpg",
+            "mobile_bg_image": "shopify:\/\/shop_images\/sliced-pumpkin-pie.jpg",
+            "text_color_desktop": "--color-util-white",
+            "text_color_mobile": "--color-util-white",
+            "bg_color": "--color-util-red",
+            "button_1_label": "Brand New Button",
+            "button_1_url": "",
+            "button_1_style": "tertiary",
+            "button_2_label": "Mary Poppins",
+            "button_2_url": "shopify:\/\/collections\/example-collection-1",
+            "button_2_style": "tertiary"
           }
         },
-        "text": {
-          "type": "text",
+        "040d158e-5d0e-4721-b054-7b3c65800e6c": {
+          "type": "slide",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "sub-heading": "",
+            "title": "This is a title",
+            "title_style": "h2",
+            "text_alignment": "set--v-align-middle set--h-align-left",
+            "body": "<p>Testing a Brand New Slide Coming Soon!!!!<\/p>",
+            "desktop_bg_image": "shopify:\/\/shop_images\/hero3.jpg",
+            "mobile_bg_image": "shopify:\/\/shop_images\/hero3.jpg",
+            "text_color_desktop": "--color-grey-900",
+            "text_color_mobile": "--color-grey-900",
+            "bg_color": "--color-util-yellow",
+            "button_1_label": "learn more",
+            "button_1_url": "#",
+            "button_1_style": "tertiary",
+            "button_2_label": "learn more",
+            "button_2_url": "shopify:\/\/pages\/ui-kit",
+            "button_2_style": "tertiary"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "b8e8ef5e-ad07-43b9-86ed-182d3032dd8a",
+        "040d158e-5d0e-4721-b054-7b3c65800e6c"
       ],
       "settings": {
-        "color_scheme": "background-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "height": "main",
+        "stack_mobile": true,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": false,
+        "show_pagination": true,
+        "arrow_color": "--color-util-white",
+        "pagination_color": "--color-util-white",
+        "effect": "slide"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "e23381d3-9562-474b-9165-c0a2062a363a": {
+      "type": "hero-video",
+      "disabled": true,
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "show_view_all": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 28,
-        "padding_bottom": 36
+        "stack_mobile": true,
+        "background_video_embed": "",
+        "background_video_file": "shopify:\/\/files\/videos\/pexels-arvin-latifi-6466763.mp4",
+        "video_aspect_ratio": "embed--16x9",
+        "sub-heading": "Subtitle",
+        "title": "Hero Section Title",
+        "title_style": "h2",
+        "text_alignment": "set--v-align-middle set--h-align-center",
+        "body": "<p>I'm not thinking about anything when I'm climbing, which is part of the appeal. I'm focused on executing what's in front of me.<\/p>",
+        "text_color_desktop": "--color-util-white",
+        "text_color_mobile": "--color-grey-700",
+        "bg_color": "--color-util-white",
+        "button_1_label": "optional CTA 1",
+        "button_1_url": "shopify:\/\/products\/example-t-shirt",
+        "button_1_style": "primary",
+        "button_2_label": "cta",
+        "button_2_url": "shopify:\/\/pages\/contact",
+        "button_2_style": "secondary"
       }
     },
-    "collage": {
-      "type": "collage",
+    "6b7fa654-23ea-4f23-a2c7-4d44c71afe48": {
+      "type": "split-section",
+      "disabled": true,
+      "settings": {
+        "subtitle": "Subtitle",
+        "title": "50\/50 Split Section",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
+        "description_copy_size": "text-base",
+        "title_as": "h3",
+        "title_level": "h3",
+        "image": "shopify:\/\/shop_images\/Image.png",
+        "aspect_ratio": "square",
+        "section_split": "1",
+        "details_location": "overlay",
+        "details_location_md": "after",
+        "horizontal_align": "center",
+        "horizontal_align_md": "left",
+        "vertical_align": "middle",
+        "vertical_align_md": "top",
+        "cta_one_text": "optional CTA 1",
+        "cta_one_url": "shopify:\/\/products\/example-t-shirt",
+        "cta_one_style": "primary",
+        "cta_two_text": "optional CTA 2",
+        "cta_two_url": "shopify:\/\/pages\/contact",
+        "cta_two_style": "tertiary",
+        "bg_color": "#fffcfa",
+        "bg_color_md": "#fffcfa",
+        "fg_color": "#534d4d",
+        "fg_color_md": "#534d4d"
+      }
+    },
+    "f46988fe-f086-4ea3-a0e7-bc4638db2b8b": {
+      "type": "split-section",
+      "disabled": true,
+      "settings": {
+        "subtitle": "Subtitle",
+        "title": "60\/40 Split Section",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
+        "description_copy_size": "text-base",
+        "title_as": "h3",
+        "title_level": "h1",
+        "image": "shopify:\/\/shop_images\/Image.png",
+        "aspect_ratio": "square",
+        "section_split": "2",
+        "details_location": "after",
+        "details_location_md": "after",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left",
+        "vertical_align": "top",
+        "vertical_align_md": "top",
+        "cta_one_text": "optional CTA 1",
+        "cta_one_url": "shopify:\/\/products\/example-hat",
+        "cta_one_style": "primary",
+        "cta_two_text": "optional CTA 2",
+        "cta_two_url": "shopify:\/\/products\/example-hat",
+        "cta_two_style": "secondary",
+        "bg_color": "#fffcfa",
+        "bg_color_md": "#fffcfa",
+        "fg_color": "#534d4d",
+        "fg_color_md": "#534d4d"
+      }
+    },
+    "e0ce693c-6e03-49c1-a3ab-0c5a744374c5": {
+      "type": "split-section",
+      "disabled": true,
+      "settings": {
+        "subtitle": "Subtitle",
+        "title": "40\/60 Split",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
+        "description_copy_size": "text-base",
+        "title_as": "h3",
+        "title_level": "h3",
+        "image": "shopify:\/\/shop_images\/Image.png",
+        "aspect_ratio": "square",
+        "section_split": "3",
+        "details_location": "after",
+        "details_location_md": "after",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left",
+        "vertical_align": "top",
+        "vertical_align_md": "top",
+        "cta_one_text": "optional CTA 1",
+        "cta_one_url": "shopify:\/\/products\/example-hat",
+        "cta_one_style": "primary",
+        "cta_two_text": "optional CTA 2",
+        "cta_two_url": "shopify:\/\/products\/example-hat",
+        "cta_two_style": "secondary",
+        "bg_color": "#fffcfa",
+        "bg_color_md": "#fffcfa",
+        "fg_color": "#534d4d",
+        "fg_color_md": "#534d4d"
+      }
+    },
+    "650a81ef-e9bf-473c-9ec2-107491e86ca3": {
+      "type": "ra-content-carousel",
+      "disabled": true,
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "efdad21c-7663-44e8-97e6-050789d74356": {
+          "type": "content-slide",
           "settings": {
-            "collection": ""
+            "slide_img": "shopify:\/\/shop_images\/featured-content-1.jpg",
+            "slide_title": "A small car",
+            "slide_description": "<p>Who drives a small car??<\/p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
           }
         },
-        "product": {
-          "type": "product",
+        "d414a43c-257e-451b-a916-6d21fa37f5c2": {
+          "type": "content-slide",
           "settings": {
-            "product": "",
-            "second_image": false
+            "slide_img": "shopify:\/\/shop_images\/featured-content-2.jpg",
+            "slide_title": "1999",
+            "slide_description": "<p>OOOO a gameboy color<\/p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "before",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
           }
         },
-        "collection-1": {
-          "type": "collection",
+        "2e76cdb1-b63e-4f2a-8913-018a8c050fae": {
+          "type": "content-slide",
           "settings": {
-            "collection": ""
+            "slide_img": "shopify:\/\/shop_images\/hero2.jpg",
+            "slide_title": "This is a test",
+            "slide_description": "<p>Only a Test.  If this was a real issue...<\/p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "1441a758-ae05-4008-ae93-af4186854bc7": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify:\/\/shop_images\/hero3.jpg",
+            "slide_title": "",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "049ec959-d193-4a49-ae7a-cf9214e9d9fc": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify:\/\/shop_images\/sliced-pumpkin-pie.jpg",
+            "slide_title": "",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "a954f69d-5c5c-4ed0-8cf5-225b706a07ef": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify:\/\/shop_images\/sliced-pumpkin-pie.jpg",
+            "slide_title": "",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "e8fe9fe7-30e4-4f2e-8a7c-9be88e1f0868": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify:\/\/shop_images\/Banner2.jpg",
+            "slide_title": "",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
           }
         }
       },
       "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
+        "efdad21c-7663-44e8-97e6-050789d74356",
+        "d414a43c-257e-451b-a916-6d21fa37f5c2",
+        "2e76cdb1-b63e-4f2a-8913-018a8c050fae",
+        "1441a758-ae05-4008-ae93-af4186854bc7",
+        "049ec959-d193-4a49-ae7a-cf9214e9d9fc",
+        "a954f69d-5c5c-4ed0-8cf5-225b706a07ef",
+        "e8fe9fe7-30e4-4f2e-8a7c-9be88e1f0868"
       ],
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "title": "Content Carousel",
+        "description": "<p>A CAROUSEL!!!<\/p>",
+        "title_as": "h4",
+        "title_level": "h2",
+        "bg_color": "rgba(0,0,0,0)",
+        "fg_color": "#d53434",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "square",
+        "mobile_slides_view": "4",
+        "tablet_slides_view": "2.5",
+        "desktop_slides_view": "5.5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1.5,
+        "mobile_padding_horizontal": 2.5,
+        "desktop_padding": 2,
+        "mobile_margin": 10,
+        "desktop_margin": 2
       }
     },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "background-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
+    "367c09ed-72b9-40bd-9098-182341a241cb": {
+      "type": "ra-product-carousel",
+      "disabled": true,
       "blocks": {
-        "column1": {
-          "type": "column",
+        "99b25146-73f5-43e0-8818-e51f2d928615": {
+          "type": "product-slide",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "product": "example-hat",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary",
+            "show_wishlist": true,
+            "wishlist_style": "secondary"
           }
         },
-        "column2": {
-          "type": "column",
+        "a5ebaf48-af82-420f-b1bc-dc6887bf14ae": {
+          "type": "product-slide",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "product": "example-t-shirt",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary",
+            "show_wishlist": false,
+            "wishlist_style": "tertiary"
           }
         },
-        "column3": {
-          "type": "column",
+        "807f8350-a421-480f-9c09-9727e236ec26": {
+          "type": "product-slide",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "product": "matte-lip-kit",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary",
+            "show_wishlist": false,
+            "wishlist_style": "tertiary"
+          }
+        },
+        "be9130c9-0b70-4fa2-a2bc-b1bf0dfe275e": {
+          "type": "product-slide",
+          "settings": {
+            "product": "matte-liquid-lipstick",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary",
+            "show_wishlist": false,
+            "wishlist_style": "tertiary"
+          }
+        },
+        "0a7d201e-7033-429c-b8cd-96fd86af4e99": {
+          "type": "product-slide",
+          "settings": {
+            "product": "example-hat",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary",
+            "show_wishlist": false,
+            "wishlist_style": "tertiary"
+          }
+        },
+        "bce10c40-63a2-4896-9a00-10d29d7de55d": {
+          "type": "product-slide",
+          "settings": {
+            "product": "example-t-shirt",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary",
+            "show_wishlist": true,
+            "wishlist_style": "tertiary"
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "99b25146-73f5-43e0-8818-e51f2d928615",
+        "a5ebaf48-af82-420f-b1bc-dc6887bf14ae",
+        "807f8350-a421-480f-9c09-9727e236ec26",
+        "be9130c9-0b70-4fa2-a2bc-b1bf0dfe275e",
+        "0a7d201e-7033-429c-b8cd-96fd86af4e99",
+        "bce10c40-63a2-4896-9a00-10d29d7de55d"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "title": "Product Carousel",
+        "description": "<p>This is a CAROUSEL!!!!!<\/p>",
+        "title_as": "h4",
+        "title_level": "h2",
+        "bg_color": "#cf3838",
+        "fg_color": "#c4952b",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "auto",
+        "mobile_slides_view": "3.3",
+        "tablet_slides_view": "4",
+        "desktop_slides_view": "5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 3,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 2.5,
+        "mobile_margin": 3.5,
+        "desktop_margin": 3.5
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "10b4dfc9-d6e9-4ef3-a0e9-c9b53611857f",
+    "70470917-0d14-4248-a6ea-ab488472117a",
+    "e23381d3-9562-474b-9165-c0a2062a363a",
+    "6b7fa654-23ea-4f23-a2c7-4d44c71afe48",
+    "f46988fe-f086-4ea3-a0e7-bc4638db2b8b",
+    "e0ce693c-6e03-49c1-a3ab-0c5a744374c5",
+    "650a81ef-e9bf-473c-9ec2-107491e86ca3",
+    "367c09ed-72b9-40bd-9098-182341a241cb"
   ]
 }
