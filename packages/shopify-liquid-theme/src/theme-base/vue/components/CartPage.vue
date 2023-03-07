@@ -2,7 +2,7 @@
   <Transition name="cart" mode="out-in">
     <template v-if="cartReady">
       <div
-        v-if="hasCartItems"
+        v-if="cartHasItems"
         class="w-full p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
       >
         <div class="basis-5/12">
@@ -32,7 +32,7 @@ const cartStore = useCartStore();
 
 const { cart } = storeToRefs(cartStore);
 
-const hasCartItems = computed(() => {
+const cartHasItems = computed(() => {
   return cart.value.items && cart.value.items.length > 0;
 });
 

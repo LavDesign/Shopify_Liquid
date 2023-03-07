@@ -1,6 +1,8 @@
 <template>
-  <div v-if="!upsellItemInCart">
-    <h5 class="text-center mb-2">You may also like</h5>
+  <div v-if="!upsellItemInCart" :class="containerClasslist">
+    <h5 class="text-center text-transform--uppercase mb-2">
+      You may also like
+    </h5>
     <CartUpsellTile :product="props.product" />
   </div>
 </template>
@@ -17,6 +19,10 @@ const props = defineProps({
   },
   products: {
     type: Array,
+  },
+  containerClasslist: {
+    type: String,
+    default: "",
   },
 });
 
