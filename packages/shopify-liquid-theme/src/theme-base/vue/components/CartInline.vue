@@ -12,6 +12,7 @@
       <div
         v-if="cartOpen"
         class="w-full sm:max-w-[470px] fixed h-screen top-0 right-0 z-[999] bg-tertiary-500 flex flex-col"
+        ref="cartInline"
       >
         <div class="w-full">
           <div class="px-4 py-3 bg-tertiary-900 flex flex-row justify-between">
@@ -73,7 +74,7 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, onMounted, watch, nextTick } from "vue";
 import { useCartStore } from "../stores/cart";
 import {
   CartProducts,
@@ -132,18 +133,54 @@ const toggleCart = () => {
   } else body[0].classList.remove("modal-open");
 };
 
-const escapeWatcher = (event) => {
+const headerToggle = document.querySelector("[data-cart-toggle]");
+
+const keyboardHandler = (event) => {
   if (event.key == "Escape" || event.code == "Escape") toggleCart();
+  else if (event.key == "Tab" || event.code == "Tab") focusTrap(event);
+  event.handled = true;
 };
 
 onMounted(() => {
   window.addEventListener("toggleCart", toggleCart);
 });
 
+const cartInline = ref();
+const focusableElements = ref();
+
 watch(cartOpen, () => {
-  if (cartOpen.value) window.addEventListener("keydown", escapeWatcher);
-  else window.removeEventListener("keydown", escapeWatcher);
+  if (cartOpen.value) {
+    nextTick(() => {
+      window.addEventListener("keydown", keyboardHandler);
+      focusableElements.value = getFocusableElements(cartInline.value);
+      focusableElements.value[0].focus();
+    });
+  } else {
+    window.removeEventListener("keydown", keyboardHandler);
+    headerToggle.focus();
+  }
 });
+
+const focusTrap = (event) => {
+  const firstEl = focusableElements.value[0];
+  const currentEl = document.activeElement;
+  const lastEl = focusableElements.value[focusableElements.value.length - 1];
+  if (currentEl === lastEl) {
+    event.preventDefault();
+    firstEl.focus();
+  } else if (currentEl === firstEl && event.shiftKey) {
+    event.preventDefault();
+    lastEl.focus();
+  }
+};
+
+const getFocusableElements = (container) => {
+  return Array.from(
+    container.querySelectorAll(
+      "summary, a[href], button:enabled, [tabindex]:not([tabindex^='-']), [draggable], area, input:not([type=hidden]):enabled, select:enabled, textarea:enabled, object, iframe"
+    )
+  );
+};
 </script>
 
 <style scoped>

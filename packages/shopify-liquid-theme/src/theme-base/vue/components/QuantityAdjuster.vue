@@ -19,6 +19,7 @@
           type="number"
           class="ra-input__control ra-input__control--text"
           :value="quantity"
+          @input="quantitySet($event)"
         />
       </div>
     </div>
@@ -49,9 +50,21 @@ const emit = defineEmits(["quantityUpdated"]);
 
 const quantity = ref(props.quantity);
 
-watch(quantity, (newQuantity) => {
-  emit("quantityUpdated", newQuantity);
-});
+const debounce = (fn, wait) => {
+  let t;
+  return (...args) => {
+    clearTimeout(t);
+    t = setTimeout(() => fn.apply(this, args), wait);
+  };
+};
+
+watch(
+  quantity,
+  debounce((newQuantity) => {
+    emit("quantityUpdated", newQuantity);
+  }),
+  500
+);
 
 const quantityDecrement = () => {
   quantity.value -= 1;
@@ -59,5 +72,9 @@ const quantityDecrement = () => {
 
 const quantityIncrement = () => {
   quantity.value += 1;
+};
+
+const quantitySet = (e) => {
+  quantity.value = e.target.value;
 };
 </script>
