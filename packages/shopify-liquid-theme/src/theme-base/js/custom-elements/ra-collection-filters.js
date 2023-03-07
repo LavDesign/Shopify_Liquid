@@ -18,9 +18,10 @@ export default class RaCollectionFilters extends HTMLElement {
       const html = res.data;
 
       // Grab grid html from fetch with params and update DOM element
-      document.getElementById("product-grid").innerHTML = new DOMParser()
-        .parseFromString(html, "text/html")
-        .getElementById("product-grid").innerHTML;
+      const responseDOM = new DOMParser().parseFromString(html, "text/html");
+      document.getElementById("product-grid").innerHTML = responseDOM.getElementById("product-grid").innerHTML;
+      document.getElementById("CollectionActiveFilters").innerHTML =
+        responseDOM.getElementById("CollectionActiveFilters").innerHTML;
     });
   }
 

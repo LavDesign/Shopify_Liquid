@@ -12,7 +12,7 @@ Make a list of filters to display as buttons based on filter.label
     <div class="h5 text-grey-700">Filters</div>
     <button class="ra-link ra-link--sm" data-clear-filters>Clear All</button>
   </div>
-  <div class="ra-filters__active-filters flex gap-2 py-3 border-t border-grey-400" data-active-filters>
+  <div id="CollectionActiveFilters" class="ra-filters__active-filters flex gap-2 py-3 border-t border-grey-400" data-active-filters>
     {% for filter in collection.filters %}
       {% for value in filter.active_values %}
         <div class="inline-flex gap-[6px] items-center py-2 px-2 bg-grey-100 font-light">
