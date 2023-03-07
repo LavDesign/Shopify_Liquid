@@ -13,11 +13,16 @@
 {% else %}
   <ul class="list-none">
   {%- for value in filter.values -%}
+    {% assign checked = false %}
+    {% if filter.active_values contains value %}
+      {% assign checked = true %}
+    {% endif %}
     <li class="mb-3">
       {%- render 'checkbox'
         name: value.param_name,
         class: "ra-filter-input"
         id: value.param_name,
+        checked: checked,
         value: value.value,
         label: value.label,
         style: 'classic'
