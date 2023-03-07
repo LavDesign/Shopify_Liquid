@@ -23,7 +23,9 @@
             </svg>
           </span>
         </div>
-        <span class="ra-choice__label">Add a gift message to your order?</span>
+        <span class="ra-choice__label leading-tight">
+          Add a gift message to your order?
+        </span>
       </label>
     </div>
     <textarea
