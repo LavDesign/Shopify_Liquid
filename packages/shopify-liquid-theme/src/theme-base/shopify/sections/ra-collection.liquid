@@ -10,12 +10,11 @@
         <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
         <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
           {% render 'ra-collection-filters' collection: collection %}
-          {% comment %} {% render 'facets', results: collection, enable_filtering: true, enable_sorting: false, filter_type: "vertical" %} {% endcomment %}
         </aside>
       </div>
       <div class="collection__main w-full md:w-3/4">
         <div class="collection__header mb-10 flex justify-between">
-          <h1 class="h2">{{ collection.title }}</h1>
+          <h1 class="h2 text-grey-700">{{ collection.title }}</h1>
           <ra-collection-sort>
             <form name="sortBy">
               <div class="select relative z-0">
