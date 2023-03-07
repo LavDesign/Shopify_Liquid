@@ -8,6 +8,10 @@ Make a list of filters to display as buttons based on filter.label
 %}
 
 <ra-collection-filters>
+  <div class="flex justify-between">
+    <div class="h5">Filters</div>
+    <div class="ra-link"></div>
+  </div>
   <form id="CollectionFilters">
     <ra-accordion class="ra-accordion" data-multi-open="true">
       {%- for filter in collection.filters -%}
