@@ -4,6 +4,11 @@
     {%- render 'head-meta' -%}
 
     {%- comment -%}
+      GTM-Datalayer
+    {%- endcomment -%}
+    {% render 'gtm-datalayer', action_step: 'init' %}
+
+    {%- comment -%}
       Dawn theme - to be deleted or updated later
     {%- endcomment -%}
     {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -142,6 +147,19 @@
   </head>
 
   <body>
+    {%- comment -%}
+      GTM-Datalayer
+    {%- endcomment -%}
+    {% render 'gtm-datalayer', action_step: 'body-init' %}
+    {% if template.name == 'cart' %}
+      {% render 'gtm-datalayer', action_step: 'view-cart' %}
+    {% elsif template.name == 'product' %}
+      {% render 'gtm-datalayer', action_step: 'view-item' %}
+    {% endif %}
+    {%- comment -%} 
+      END GTM 
+    {%- endcomment -%}
+
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
