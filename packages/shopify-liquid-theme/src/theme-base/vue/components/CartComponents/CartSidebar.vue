@@ -8,29 +8,23 @@
         :subtotal="props.cart.total_price"
         container-classlist="pb-10"
       />
-      <!-- GIFT MESSAGE BOX -->
       <CartGiftMessage v-if="props.settings.gift_message_enabled" />
-      <!-- SPECIAL MESSAGE -->
       <CartMessage
         v-if="props.settings.cart_message_1?.length > 0"
         :message="props.settings.cart_message_1"
         container-classlist="mb-8"
       />
-      <!-- SUBTOTAL -->
       <CartSubtotal :subtotal="props.cart.total_price" />
-      <!-- CHECKOUT CTA -->
       <CartCheckoutButton
         :checkout-ready="readyForCheckout"
         container-classlist="-mb-[5px]"
       />
     </div>
-    <!-- SPECIAL MESSAGE AGAIN-->
     <CartMessage
       v-if="props.settings.cart_message_2?.length > 0"
       :message="props.settings.cart_message_2"
       container-classlist="mt-2"
     />
-    <!-- YMAL -->
     <CartUpsell
       v-if="props.settings.upsell_enabled && props.settings.upsell_product"
       :product="props.settings.upsell_product"

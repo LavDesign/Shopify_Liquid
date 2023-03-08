@@ -7,9 +7,7 @@ function getFocusableElements(container) {
 }
 
 function cartClick(e) {
-  if (!window.location.pathname.includes('cart')) {
-    window.dispatchEvent(new Event("toggleCart"))
-  }
+  if (window.location.pathname !== '/cart') window.dispatchEvent(new Event("toggleCart"))
   e.preventDefault();
 }
 
