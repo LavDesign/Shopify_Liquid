@@ -26,7 +26,7 @@
             >
           </div>
         </div>
-        <div class="gap-2 flex flex-col">
+        <div class="gap-2 flex flex-col" v-if="hasComplexVariants">
           <template
             :key="optionKey"
             v-for="(options, optionKey) in formattedOptions"
@@ -70,7 +70,7 @@
 </template>
 
 <script setup>
-import { computed, reactive, watch, ref } from "vue";
+import { computed, reactive, watch, ref, onMounted } from "vue";
 import { useCartStore } from "../../stores/cart";
 import { useProductPageStore } from "../../stores/productPage";
 import { getSizedImageFromUrl } from "../../filters/image.js";
@@ -232,5 +232,23 @@ const addToCart = async () => {
 watch(currentVariant, (variant) => {
   variantSelected.value = true;
   productStore.setCurrentVariant(variant);
+});
+
+onMounted(() => {
+  variantSelected.value = !hasComplexVariants.value;
+  console.log("Variant Selected");
+  console.log(variantSelected.value);
+  console.log("================");
+  if (!hasComplexVariants.value) {
+    console.log("Does Not Have complex variants");
+
+    // Note: Insertion order should be preserved here as of ES2015 (assuming string keys),
+    // but there could be edge cases where options might not be properly ordered if using an int as a key
+    props.product?.options?.forEach((option, i) => {
+      selectedOptions[option] =
+        props.product.first_available_variant.options[i];
+    });
+    console.log(selectedOptions);
+  }
 });
 </script>
