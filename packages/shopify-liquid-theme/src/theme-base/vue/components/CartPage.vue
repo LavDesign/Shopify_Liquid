@@ -2,14 +2,19 @@
   <Transition name="cart" mode="out-in">
     <template v-if="cartReady">
       <div
-        v-if="hasCartItems"
-        class="w-full p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
+        v-if="cartHasItems"
+        class="w-full md:p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
       >
-        <div class="basis-5/12">
-          <h3 class="mb-6">{{ settings.cart_header_text }}</h3>
+        <div class="basis-5/12 p-4 md:p-0">
+          <h3 class="mb-6 text-center md:text-left">
+            {{ settings.cart_header_text }}
+          </h3>
           <CartProducts :cart="cart" />
         </div>
-        <CartSidebar v-bind="{ cart, settings }" />
+        <CartSidebar
+          class="p-4 md:p-0 bg-white md:bg-transparent"
+          v-bind="{ cart, settings }"
+        />
       </div>
 
       <div
@@ -32,7 +37,7 @@ const cartStore = useCartStore();
 
 const { cart } = storeToRefs(cartStore);
 
-const hasCartItems = computed(() => {
+const cartHasItems = computed(() => {
   return cart.value.items && cart.value.items.length > 0;
 });
 

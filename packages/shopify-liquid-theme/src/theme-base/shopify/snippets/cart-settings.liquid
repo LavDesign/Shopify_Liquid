@@ -1,0 +1,29 @@
+{% liquid
+  assign cart_upsell_product = null
+  assign cart_upsell_product_data = null
+  if settings.upsell_enabled and settings.upsell_product != blank
+    assign cart_upsell_product = all_products[settings.upsell_product]
+  endif
+
+  assign settings_keys = "cart_header_text,cart_message_1,cart_message_2,free_gift_enabled,free_gift_threshold,gift_message_enabled,upsell_enabled"
+  assign settings_keys = settings_keys | split: ","
+%}
+
+{% if settings.upsell_product != blank %}
+  {%- capture cart_upsell_product_data -%}
+    {%- render 'json-product', product: cart_upsell_product -%}
+  {%- endcapture -%}
+{% endif %}
+
+{% capture cart_settings %}
+  {
+    {%- for key in settings_keys -%}
+      "{{ key }}":{{- settings[key] | default: null | json -}},
+    {%- endfor -%}
+    {%- if cart_upsell_product_data -%}
+      "upsell_product":{{ cart_upsell_product_data | escape | strip }}
+    {%- endif -%}
+  }
+{% endcapture %}
+
+  {{cart_settings}}

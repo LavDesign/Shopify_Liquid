@@ -2098,7 +2098,8 @@
       {
         "type": "text",
         "label": "Cart Header Text",
-        "id": "cart_header_text"
+        "id": "cart_header_text",
+        "default": "Cart"
       },
       {
         "type": "richtext",
@@ -2119,7 +2120,7 @@
         "type": "text",
         "label": "Free Gift Threshold",
         "id": "free_gift_threshold",
-        "info": "Enter the monetary value without any characters. I.E. use 10000 when the threshold is $100.00"
+        "info": "Enter the monetary value in cents. I.E. use 10000 when the threshold is $100.00"
       },
       {
         "type": "checkbox",
@@ -2143,7 +2144,8 @@
       {
         "type": "text",
         "label": "Empty Cart Header",
-        "id": "empty_cart_header"
+        "id": "empty_cart_header",
+        "default": "Your cart is empty"
       },
       {
         "type": "link_list",
