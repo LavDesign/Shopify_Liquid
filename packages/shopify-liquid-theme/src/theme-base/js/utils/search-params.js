@@ -1,6 +1,11 @@
 const getSearchParamsFromForm = (form) => {
   const formData = new FormData(form);
-  return new URLSearchParams(formData).toString();
+  const params = new URLSearchParams(formData);
+  const filtered = Array.from(params.entries()).filter(([key, value]) => {
+    return !!value;
+  });
+
+  return new URLSearchParams(filtered).toString();
 };
 
 const updateURL = (searchParams) => {
@@ -10,6 +15,8 @@ const updateURL = (searchParams) => {
       "",
       `${window.location.pathname}${searchParams && "?".concat(searchParams)}`
     );
+  } else {
+    history.pushState({ searchParams }, "", `${window.location.pathname}`);
   }
 };
 
