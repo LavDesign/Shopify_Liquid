@@ -5,12 +5,8 @@ import { getSizedImageFromUrl } from "../vue/filters/image.js";
 import { ucfirst, upcase, unhandleize } from "../vue/filters/string.js";
 import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
-// import Swiper from "swiper/bundle";
 import Swiper from "swiper/bundle";
-// import Swiper from "swiper/swiper-bundle.esm.browser";
-// import $ from "expose-loader?exposes=$,jQuery!jquery";
-// import { register } from "swiper/element/bundle";
-
+import { register } from "swiper/element/bundle";
 import "swiper/css/bundle";
 
 import components from "../vue/components/index.js";
@@ -71,5 +67,5 @@ const initSwipers = () => {
 window.addEventListener("load", () => {
   renderVueApps();
   initSwipers();
-  // register();
+  register();
 });
