@@ -12,19 +12,29 @@
         <div class="md:w-1/2 md:pl-20">
           <div class="sticky top-12">
             {% render 'ra-product-main', product_data: product_data %}
+            <div class="product-main__special-messaging">
+              {% assign special_messaging_blocks = section.blocks | where: "type", "special_messaging" -%}
+              {%- for block in special_messaging_blocks -%}
+                <div class="flex justify-center gap-1 items-center my-4">
+                  <div>{% render 'icon' with block.settings.icon %}</div>
+                  <div>{{ block.settings.content }}</div>
+                </div>
+              {%- endfor -%}
+            </div>
+            <div class="product__accordion">
+              {% assign accordion_blocks = section.blocks | where: "type", "accordion_item" -%}
+              <ra-accordion class="ra-accordion" data-multi-open="false">
+                {%- for block in accordion_blocks -%}
+                  {% render 'accordion-item', title: block.settings.title, content: block.settings.content, show_icon: true %}
+                {%- endfor -%}
+              </ra-accordion>
+            </div>
             <div class="product__blocks">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
                   {%- when '@app' -%}
                     {% render block %}
-                  {%- when 'accordion_item' -%}
-                    {% render 'accordion-item', title: block.settings.title, content: block.settings.content, show_icon: true %}
-                  {%- when 'special_messaging' -%}
-                    <div class="flex justify-center gap-1 items-center my-4">
-                      <div>{% render 'icon' with block.settings.icon %}</div>
-                      <div>{{ block.settings.content }}</div>
-                    </div>
-                {%- endcase -%}
+                  {%- endcase 0%}
               {%- endfor -%}
             </div>
           </div>
