@@ -20,7 +20,8 @@ export default class RaCollectionFilters extends HTMLElement {
 
       // Grab grid html from fetch with params and update DOM element
       const responseDOM = new DOMParser().parseFromString(html, "text/html");
-      document.getElementById("product-grid").innerHTML = responseDOM.getElementById("product-grid").innerHTML;
+      document.getElementById("ProductGrid").innerHTML = responseDOM.getElementById("ProductGrid").innerHTML;
+      document.getElementById("CollectionFilters").innerHTML = responseDOM.getElementById("CollectionFilters").innerHTML;
       document.getElementById("CollectionActiveFilters").innerHTML =
         responseDOM.getElementById("CollectionActiveFilters").innerHTML;
     });
@@ -31,9 +32,19 @@ export default class RaCollectionFilters extends HTMLElement {
     RaCollectionFilters.renderSectionFromFetch(params);
   }
 
+  clearFilters() {
+    RaCollectionFilters.renderSectionFromFetch("");
+    updateURL("");
+  }
+
   connectedCallback() {
     const filterForm = document.getElementById("CollectionFilters");
     const sortForm = document.querySelector("[name='sortBy']");
+    const clearAllBtn = document.querySelector("[data-clear-filters]");
+
+    clearAllBtn.addEventListener("click", () => {
+      this.clearFilters();
+    });
 
     filterForm.addEventListener("change", () => {
       const filterFormData = getSearchParamsFromForm(filterForm);

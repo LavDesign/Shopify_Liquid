@@ -29,9 +29,9 @@ export default class RaCollectionSort extends HTMLElement {
       const html = res.data;
 
       // Grab grid html from fetch with params and update DOM element
-      document.getElementById("product-grid").innerHTML = new DOMParser()
+      document.getElementById("ProductGrid").innerHTML = new DOMParser()
         .parseFromString(html, "text/html")
-        .getElementById("product-grid").innerHTML;
+        .getElementById("ProductGrid").innerHTML;
 
       updateURL(searchParamString);
     });

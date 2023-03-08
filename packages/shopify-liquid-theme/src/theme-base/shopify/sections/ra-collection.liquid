@@ -27,7 +27,7 @@
             </form>
           </ra-collection-sort>
         </div>
-        <div id="product-grid" class="collection__product-grid">
+        <div id="ProductGrid" class="collection__product-grid">
           {%- paginate collection.products by paginate_count -%}
             <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
               {%- for product in collection.products -%}
