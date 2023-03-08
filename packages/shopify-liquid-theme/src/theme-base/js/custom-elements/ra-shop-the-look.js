@@ -4,7 +4,7 @@ export default class RaShopTheLook extends HTMLElement {
     this.lookItems = Array.from(
       this.querySelectorAll(".ra-shop-the-look__item")
     );
-    this.toggle = null;
+    this.swiper = this.querySelector(".swiper") || null;
   }
 
   connectedCallback() {
@@ -12,28 +12,49 @@ export default class RaShopTheLook extends HTMLElement {
   }
 
   init() {
-    this.initPopover();
+    this.initDots();
   }
 
-  get index() {
-    // return [...this.toggle.parentNode.children].indexOf(this.toggle);
-  }
-
-  initPopover() {
+  initDots() {
     this.lookItems.forEach((item) => {
       item.querySelectorAll("button").forEach((button) => {
         button.addEventListener("click", () => {
-          this.togglePopover(button);
+          if (button.hasAttribute("data-popover")) {
+            this.togglePopover(button);
+          } else if (button.hasAttribute("data-slider")) {
+            this.toggleSlider(button);
+          }
         });
       });
     });
   }
 
+  toggleSlider(toggleBtn) {
+    const index = toggleBtn.getAttribute("data-index");
+    if (!index) return;
+    document.dispatchEvent(
+      new CustomEvent("swiper:slideTo", {
+        bubbles: true,
+        detail: {
+          swiper: this.querySelector(".swiper"),
+          slideTo: index,
+        },
+      })
+    );
+  }
+
   togglePopover(toggleBtn) {
+    console.log("has popover");
+
     this.lookItems.forEach((item) => {
       const product = item.querySelector(".ra-shop-the-look__product");
+      product.style.setProperty(
+        "--product-width",
+        parseInt(product.offsetWidth) + "px"
+      );
+
       if (
-        product.getAttribute("id") === toggleBtn.getAttribute("aria-controls")
+        product.getAttribute("id") === toggleBtn.getAttribute("data-popover")
       ) {
         product.toggleAttribute("open");
       } else {

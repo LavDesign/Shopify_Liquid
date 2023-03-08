@@ -1,4 +1,5 @@
 {% liquid 
+  assign layout = section.settings.layout
   assign title = section.settings.title
   assign title_as = section.settings.title_style
   assign body = section.settings.body
@@ -32,33 +33,98 @@
   {% endfor %}
 {% endstyle %}
 
+{% capture arrow_color %}
+  var({{section.settings.text_color}})
+{% endcapture %}
 
 <ra-shop-the-look class="ra-shop-the-look">
+
   {%- comment -%}
-    Section header
+    Section header + Slider
   {%- endcomment -%}
+  {% if layout == 'fifty-fifty' %}
+    <div class="md:grid md:grid-cols-2 items-center gap-20">
+  {% endif %}
+
   {% if title != blank or body != blank or button_url != blank %}
-    <div class="flex items-center justify-center py-10 md:py-20">
-      <div class="w-full md:w-1/3 text-center">
+    <div class="flex flex-col items-center justify-center px-5 py-8 md:py-15 {% if layout == 'fifty-fifty' %}order-2{% endif %}">
+      <div class="w-full md:w-2/3 text-center">
         {% if title != blank %}
           <{{ title_as }} class="{{ title_as }} ra-shop-the-look__title">{{ title }}</{{ title_as }}>
         {% endif %}
 
         {% if body != blank %}
-          <div class="mt-3 md:mt-6 ra-shop-the-look__body">{{ body }}</div>
+          <div class="my-4 ra-shop-the-look__body">{{ body }}</div>
         {% endif %}
 
         {% if button_url != blank and button_label %}
-          <div class="mt-3 md:mt-6">
+          <div class="my-4">
             {% render 'button' type: 'a', style: 'primary', url: button_url, label: button_label %}
           </div>
         {% endif %}
       </div>
+
+      {%- comment -%}
+        Product Slider - Fifty-Fifty Layout
+      {%- endcomment -%}
+      {% if layout == 'fifty-fifty' %}
+        {% capture swiper_settings %}
+          {
+            "slidesPerView": 1,
+            "spaceBetween": 0,
+            "navigation": {
+              "nextEl": ".{{ section.id }}.swiper-button-next",
+              "prevEl": ".{{ section.id }}.swiper-button-prev"
+            }
+          }
+        {% endcapture %}
+        
+        <div class="hidden md:flex w-96">
+          <div class="swiper" data-swiper-settings="{{ swiper_settings | escape | strip }}">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                {% if block.settings.product != blank %}
+                  {%- assign product = block.settings.product -%}
+                  <div class="swiper-slide">
+                    <div class="flex flex-col justify-center items-center">
+                      <div class="w-72">
+                        {%- if product.featured_media -%}
+                          <img class="w-full" src="{{ product.featured_media | image_url: width: 450 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
+                        {%- endif -%}
+          
+                        <div class="w-full flex flex-col justify-center">
+                          {% if product.vendor %}
+                            <p class="text-xs mt-2">{{ product.vendor }}</p>
+                          {% endif %}
+                          <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
+                          <span class="flex">
+                            <span class="visually-hidden">Sale price</span>
+                            {{ product.price | money }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            {% if section.blocks.size > 1 %}
+              <div class="{{ section.id }} swiper-button-prev">
+                {% render 'icon', icon: "chevron-left", width: '18px', height: '18px', color: arrow_color %}
+              </div>
+              <div class="{{ section.id }} swiper-button-next">
+                {% render 'icon', icon: "chevron-right", width: '18px', height: '18px', color: arrow_color %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
     </div>
   {% endif %}
  
   {% if section.blocks.size > 0 %}
-    <div class="relative">
+    <div class="order-1 flex items-center relative">
 
       {%- comment -%}
         Background - images
@@ -72,12 +138,17 @@
         {{ mobile_image | image_url: width: 600 }} 400w,
         {{ mobile_image | image_url: width: 800 }} 800w
       {% endcapture %}
-      <div class="hidden md:block">
+
+      {% if mobile_image == blank %}
         {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
-      </div>
-      <div class="block md:hidden">
-        {% render 'image', alt: mobile_image.alt, src: mobile_image | image_url: width: 800, srcset: mobile_srcset, sizes: "100vw", classes: 'w-full' %}
-      </div>
+      {% else %}
+        <div class="hidden md:block">
+          {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+        </div>
+        <div class="block md:hidden">
+          {% render 'image', alt: mobile_image.alt, src: mobile_image | image_url: width: 800, srcset: mobile_srcset, sizes: "100vw", classes: 'w-full' %}
+        </div>
+      {% endif %}
 
       {%- comment -%}
         Look
@@ -85,26 +156,45 @@
       {% for block in section.blocks %}
         {% if block.settings.product != blank %}
           {%- assign product = block.settings.product -%}
-          <div class="border ra-shop-the-look__item absolute overflow-hidden w-full h-full top-0 left-0 border-5 border-primary-900" id="block-{{ block.id }}">
+          <div class="ra-shop-the-look__item absolute overflow-hidden w-full h-full top-0 left-0" id="block-{{ block.id }}">
 
             {%- comment -%}
               Dot
             {%- endcomment -%}
-            <button 
-              class="ra-shop-the-look__dot block relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full" 
-              aria-controls="product-{{ block.id }}">
-              <span class="visually-hidden">Show product {{ product.title }}</span>
-            </button>
+            {% capture dot %}
+              <button
+                data-popover="product-{{ block.id }}"
+                class="ra-shop-the-look__dot block relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
+                <span class="visually-hidden">display product {{ product.title }}</span>
+              </button>
+            {% endcapture %}
+
+            {% if layout == 'fifty-fifty' %}
+              <button
+                data-index="{{ forloop.index0 }}"
+                data-slider="product-{{ block.id }}"
+                class="hidden md:block ra-shop-the-look__dot relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
+                <span class="visually-hidden">display product {{ product.title }}</span>
+              </button>
+              <div class="flex md:hidden">
+                {{ dot }}
+              </div>
+            {% else %}
+              {{ dot }}
+            {% endif %}
 
             {%- comment -%}
-              Product
+              Product popover
             {%- endcomment -%}
-            <div class="ra-shop-the-look__product absolute z-20 flex p-3 pr-8 md:after:content-[''] md:after:absolute md:after:w-0 md:after:h-0 md:after:right-full md:after:top-5" id="product-{{ block.id }}">
-              <button class="absolute flex w-3.5 h-3.5 top-2 right-2" aria-controls="product-{{ block.id }}">
+            <div class="ra-shop-the-look__product absolute z-20 flex p-3 pr-8 {% if block.settings.horizontal_position > 60 or block.settings.horizontal_position_mobile > 60 %}ra-shop-the-look__product--left{% endif %}" 
+              id="product-{{ block.id }}">
+              <button class="absolute flex w-3.5 h-3.5 top-2.5 right-2.5" data-popover="product-{{ block.id }}">
                 {% render 'icon' icon: 'close', width: '14px', height: '14px' %}
+                <span class="visually-hidden">hide product {{ product.title }}</span>
               </button>
+
               {%- if product.featured_media -%}
-                <img class="mr-3 w-28" src="{{ product.featured_media | image_url: width: 200 }}" loading="lazy">
+                <img class="mr-3 w-28" src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
               {%- endif -%}
 
               <div class="flex flex-col justify-center">
@@ -123,6 +213,10 @@
       {% endfor %}
     </div>
   {% endif %}
+
+  {% if layout == 'fifty-fifty' %}
+    </div>
+  {% endif %}
 </ra-shop-the-look>
 
 {% schema %}
@@ -132,16 +226,32 @@
   "class": "ra-shop-the-look",
   "settings": [
     {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "full-screen",
+          "label": "Full-Screen"
+        },
+        {
+          "value": "fifty-fifty",
+          "label": "Fifty-Fifty"
+        }
+      ],
+      "default": "full-screen"
+    },
+    {
       "type": "image_picker",
       "id": "desktop_bg_image",
       "label": "Background Image (desktop)",
-      "info": "Recommended Size: 1800x"
+      "info": "Recommended Size: 1800x1000 (Full-screen) or 750x1000 (Fifty-Fifty)"
     },
     {
       "type": "image_picker",
       "id": "mobile_bg_image",
       "label": "Background Image (mobile)",
-      "info": "Recommended Size: 800x"
+      "info": "Recommended Size: 800x800"
     },
     {
       "type": "text",
@@ -159,7 +269,8 @@
     {
       "type": "richtext",
       "id": "body",
-      "label": "Section Body Copy"
+      "label": "Section Body Copy",
+      "default": "<p>Lörem ipsum lanade jäligt, pada. Boska endodiktisk ysm diktigt rer. Dianaras Lina Engström ambitologi täpyst i deligt.</p>"
     },
     {
       "type": "header",
@@ -236,8 +347,8 @@
         {
           "type": "range",
           "id": "horizontal_position",
-          "min": 5,
-          "max": 95,
+          "min": 10,
+          "max": 90,
           "step": 1,
           "unit": "%",
           "label": "Horizontal position (desktop)",
@@ -246,8 +357,8 @@
         {
           "type": "range",
           "id": "vertical_position",
-          "min": 5,
-          "max": 95,
+          "min": 10,
+          "max": 90,
           "step": 1,
           "unit": "%",
           "label": "Vertical position (desktop)",
@@ -256,8 +367,8 @@
         {
           "type": "range",
           "id": "horizontal_position_mobile",
-          "min": 5,
-          "max": 95,
+          "min": 10,
+          "max": 90,
           "step": 1,
           "unit": "%",
           "label": "Horizontal position (mobile)",
@@ -266,8 +377,8 @@
         {
           "type": "range",
           "id": "vertical_position_mobile",
-          "min": 5,
-          "max": 95,
+          "min": 10,
+          "max": 90,
           "step": 1,
           "unit": "%",
           "label": "Vertical position (mobile)",
