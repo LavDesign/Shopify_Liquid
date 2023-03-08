@@ -23,9 +23,7 @@
             </svg>
           </span>
         </div>
-        <span class="ra-choice__label leading-tight">
-          Add a gift message to your order?
-        </span>
+        <span class="ra-choice__label leading-tight" v-text="message" />
       </label>
     </div>
     <textarea
@@ -43,13 +41,9 @@ import { ref, watch, onMounted } from "vue";
 import { useCartStore } from "../../stores/cart";
 
 const props = defineProps({
-  note: {
+  message: {
     type: String,
     default: "",
-  },
-  attributes: {
-    type: Object,
-    default: () => {},
   },
 });
 

@@ -2128,6 +2128,12 @@
         "id": "gift_message_enabled"
       },
       {
+        "type": "text",
+        "label": "Gift Message Text",
+        "id": "gift_message_text",
+        "default": "Add a gift message to your order?"
+      },
+      {
         "type": "checkbox",
         "label": "Enable Upsell",
         "id": "upsell_enabled"

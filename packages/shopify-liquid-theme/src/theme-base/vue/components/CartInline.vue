@@ -39,7 +39,10 @@
             <div class="mb-2">
               <CartProducts :cart="cart" />
             </div>
-            <CartGiftMessage v-if="props.settings.gift_message_enabled" />
+            <CartGiftMessage
+              v-if="props.settings.gift_message_enabled"
+              :message="props.settings.gift_message_text"
+            />
             <CartMessage
               v-if="props.settings.cart_message_1?.length > 0"
               :message="props.settings.cart_message_1"
