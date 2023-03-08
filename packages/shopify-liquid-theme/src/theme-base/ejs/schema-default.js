@@ -167,7 +167,7 @@ const textAligments = [
   { label: "Bottom Left", value: "set--v-align-bottom set--h-align-left" },
 ];
 
-/* 
+/*
   SVG - Icons
 */
 const icons = [
@@ -202,6 +202,5 @@ module.exports = {
     buttonStyles: JSON.stringify(buttonStyles),
     headingStyles: JSON.stringify(headingStyles),
     textAligments: JSON.stringify(textAligments),
-    icons: JSON.stringify(icons),
   },
 };

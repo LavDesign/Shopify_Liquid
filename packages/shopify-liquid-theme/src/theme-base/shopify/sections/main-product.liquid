@@ -16,7 +16,9 @@
               {% assign special_messaging_blocks = section.blocks | where: "type", "special_messaging" -%}
               {%- for block in special_messaging_blocks -%}
                 <div class="flex justify-center gap-1 items-center my-4">
-                  <div>{% render 'icon' with block.settings.icon %}</div>
+                  {% if block.settings.enable_icon %}
+                    <div>{% render 'icon' with block.settings.icon %}</div>
+                  {% endif %}
                   <div>{{ block.settings.content }}</div>
                 </div>
               {%- endfor -%}
@@ -79,6 +81,12 @@
             "id": "content",
             "default": "<p>Special messaging.</p>",
             "label": "Content"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_icon",
+            "default": false,
+            "label": "Enable Icon"
           },
           {
             "type": "select",
