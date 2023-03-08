@@ -3,13 +3,18 @@
     <template v-if="cartReady">
       <div
         v-if="cartHasItems"
-        class="w-full p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
+        class="w-full md:p-5 flex flex-col md:flex-row justify-around bg-tertiary-500"
       >
-        <div class="basis-5/12">
-          <h3 class="mb-6">{{ settings.cart_header_text }}</h3>
+        <div class="basis-5/12 p-4 md:p-0">
+          <h3 class="mb-6 text-center md:text-left">
+            {{ settings.cart_header_text }}
+          </h3>
           <CartProducts :cart="cart" />
         </div>
-        <CartSidebar v-bind="{ cart, settings }" />
+        <CartSidebar
+          class="p-4 md:p-0 bg-white md:bg-transparent"
+          v-bind="{ cart, settings }"
+        />
       </div>
 
       <div
