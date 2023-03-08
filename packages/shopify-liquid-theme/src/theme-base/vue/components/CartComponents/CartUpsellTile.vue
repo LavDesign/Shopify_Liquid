@@ -236,19 +236,13 @@ watch(currentVariant, (variant) => {
 
 onMounted(() => {
   variantSelected.value = !hasComplexVariants.value;
-  console.log("Variant Selected");
-  console.log(variantSelected.value);
-  console.log("================");
   if (!hasComplexVariants.value) {
-    console.log("Does Not Have complex variants");
-
     // Note: Insertion order should be preserved here as of ES2015 (assuming string keys),
     // but there could be edge cases where options might not be properly ordered if using an int as a key
     props.product?.options?.forEach((option, i) => {
       selectedOptions[option] =
         props.product.first_available_variant.options[i];
     });
-    console.log(selectedOptions);
   }
 });
 </script>
