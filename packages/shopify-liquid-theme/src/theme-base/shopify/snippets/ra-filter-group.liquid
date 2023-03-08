@@ -9,7 +9,7 @@
 
 {% endcomment %}
 {% if filter.type == 'price_range' %}
-  <div class="ra-range-slider mx-auto">
+  <div class="ra-range-slider mx-auto pb-7">
     {% assign min_start = filter.min_value.value | default: 0 | money_without_currency %}
     {% assign max_start = filter.max_value.value | default: filter.range_max | money_without_currency %}
     <ra-range-slider

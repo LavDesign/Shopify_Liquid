@@ -18,15 +18,18 @@ export default class RaRangeSlider extends HTMLElement {
 
     noUiSlider.create(slider, {
       start: [minStart, maxStart],
+      tooltips: [true, true],
       connect: true,
-      range: {min, max}
+      range: { min, max },
     });
 
     slider.noUiSlider.on("change", (values) => {
       minInput.value = parseInt(values[0]);
       maxInput.value = parseInt(values[1]);
 
-      document.getElementById("CollectionFilters").dispatchEvent(new Event("change"));
+      document
+        .getElementById("CollectionFilters")
+        .dispatchEvent(new Event("change"));
     });
   }
 }
