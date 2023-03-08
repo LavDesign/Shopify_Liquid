@@ -1,6 +1,5 @@
 import noUiSlider from "nouislider";
-import 'nouislider/dist/nouislider.css';
-
+import "nouislider/dist/nouislider.css";
 export default class RaRangeSlider extends HTMLElement {
   constructor() {
     super();

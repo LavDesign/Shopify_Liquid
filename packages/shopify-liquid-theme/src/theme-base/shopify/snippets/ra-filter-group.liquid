@@ -1,13 +1,14 @@
 {% comment %}
 
   Props:
-    title:       string item title - (required)
+    title:       string - (required) - Item Title
     filter:      Shopify filter object - (required)
-    as_buttons:  boolean - (option) Display filters as buttons instead of checkboxes
+    as_buttons:  boolean - (optional) Display filters as buttons instead of checkboxes
     show_icon:   boolean - (optional)
     is_open:     boolean - (optional)
 
 {% endcomment %}
+
 {% if filter.type == 'price_range' %}
   <div class="ra-range-slider mx-auto pb-7">
     {% assign min_start = filter.min_value.value | default: 0 | money_without_currency %}

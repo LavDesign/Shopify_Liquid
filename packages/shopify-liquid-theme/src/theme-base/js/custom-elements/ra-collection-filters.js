@@ -71,7 +71,6 @@ export default class RaCollectionFilters extends HTMLElement {
   }
 
   static addActiveFilterEventListeners() {
-
     const removeFilterBtns = document.querySelectorAll(
       "[data-action-remove-filter]"
     );

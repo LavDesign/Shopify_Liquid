@@ -5,17 +5,6 @@ export default class RaCollectionSort extends HTMLElement {
     super();
   }
 
-  /*
-  * TODO: Remove these notes after filters are complete
-  * Implementation Notes:
-  - get section id
-  - section_id, current filter params, current sort params, any new params
-  - make fetch request to page url with Shopify params object
-  - retrieve response as html
-  - update the main section content with response html
-  - profit
-  */
-
   //* TODO: Add a method to render from cache
   //* Reference Dawn's implementation for example
 
