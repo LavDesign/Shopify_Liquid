@@ -623,17 +623,6 @@
         "type": "url",
         "id": "util_link_2_url",
         "label": "Util link 2 url"
-      },
-      {
-        "type": "text",
-        "id": "util_link_3_label",
-        "label": "Util link 3 label",
-        "default": "Util link"
-      },
-      {
-        "type": "url",
-        "id": "util_link_3_url",
-        "label": "Util link 3 url"
       }
     ]
   },
