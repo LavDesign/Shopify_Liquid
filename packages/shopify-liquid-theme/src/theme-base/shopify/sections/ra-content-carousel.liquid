@@ -73,8 +73,8 @@
       }
     },
     "navigation": {
-      "nextEl": ".ra-carousel__nav-cta--next",
-      "prevEl": ".ra-carousel__nav-cta--prev"
+      "nextEl": ".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next",
+      "prevEl": ".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
     },
     {% if section.settings.show_pagination %}
       "pagination": {
