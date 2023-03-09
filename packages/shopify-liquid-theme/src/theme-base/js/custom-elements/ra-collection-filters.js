@@ -70,25 +70,39 @@ export default class RaCollectionFilters extends HTMLElement {
     return searchParamString;
   }
 
+  static onRemoveBtnClick(e) {
+    e.preventDefault();
+
+    const btn = e.currentTarget;
+    const param = btn.getAttribute("data-param");
+    const value = btn.getAttribute("data-value");
+
+    const paramToRemove = `${param}=${value}`;
+    const searchParamString =
+      RaCollectionFilters.removeParamFromSearch(paramToRemove);
+
+    RaCollectionFilters.renderSectionFromFetch(searchParamString);
+    updateURL(searchParamString);
+  }
+
   static addActiveFilterEventListeners() {
     const removeFilterBtns = document.querySelectorAll(
       "[data-action-remove-filter]"
     );
 
     removeFilterBtns.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
+      btn.addEventListener("click", (e) => this.onRemoveBtnClick(e));
+      // e.preventDefault();
 
-        const param = btn.getAttribute("data-param");
-        const value = btn.getAttribute("data-value");
+      // const param = btn.getAttribute("data-param");
+      // const value = btn.getAttribute("data-value");
 
-        const paramToRemove = param + "=" + value;
-        const searchParamString =
-          RaCollectionFilters.removeParamFromSearch(paramToRemove);
+      // const paramToRemove = param + "=" + value;
+      // const searchParamString =
+      //   RaCollectionFilters.removeParamFromSearch(paramToRemove);
 
-        RaCollectionFilters.renderSectionFromFetch(searchParamString);
-        updateURL(searchParamString);
-      });
+      // RaCollectionFilters.renderSectionFromFetch(searchParamString);
+      // updateURL(searchParamString);
     });
   }
 
