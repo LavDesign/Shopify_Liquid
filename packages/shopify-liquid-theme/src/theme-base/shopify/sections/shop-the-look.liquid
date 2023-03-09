@@ -43,7 +43,7 @@
     Section header + Slider
   {%- endcomment -%}
   {% if layout == 'fifty-fifty' %}
-    <div class="md:grid md:grid-cols-2 items-center gap-20">
+    <div class="md:grid md:grid-cols-2 items-center">
   {% endif %}
 
   {% if title != blank or body != blank or button_url != blank %}
@@ -98,7 +98,7 @@
                           {% endif %}
                           <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
                           <span class="flex">
-                            <span class="visually-hidden">Sale price</span>
+                            <span class="visually-hidden">{{ 'sections.shop-the-look.product-price' | t }}</span>
                             {{ product.price | money }}
                           </span>
                         </div>
@@ -140,7 +140,12 @@
       {% endcapture %}
 
       {% if mobile_image == blank %}
-        {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+        <div class="hidden md:block">
+          {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+        </div>
+        <div class="block md:hidden">
+          {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+        </div>
       {% else %}
         <div class="hidden md:block">
           {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
@@ -165,7 +170,7 @@
               <button
                 data-popover="product-{{ block.id }}"
                 class="ra-shop-the-look__dot block relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
-                <span class="visually-hidden">display product {{ product.title }}</span>
+                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
               </button>
             {% endcapture %}
 
@@ -174,7 +179,7 @@
                 data-index="{{ forloop.index0 }}"
                 data-slider="product-{{ block.id }}"
                 class="hidden md:block ra-shop-the-look__dot relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
-                <span class="visually-hidden">display product {{ product.title }}</span>
+                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
               </button>
               <div class="flex md:hidden">
                 {{ dot }}
@@ -190,7 +195,7 @@
               id="product-{{ block.id }}">
               <button class="absolute flex w-3.5 h-3.5 top-2.5 right-2.5" data-popover="product-{{ block.id }}">
                 {% render 'icon' icon: 'close', width: '14px', height: '14px' %}
-                <span class="visually-hidden">hide product {{ product.title }}</span>
+                <span class="visually-hidden">{{ 'sections.shop-the-look.product-hide' | t }} {{ product.title }}</span>
               </button>
 
               {%- if product.featured_media -%}
@@ -203,7 +208,7 @@
                 {% endif %}
                 <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
                 <span class="flex">
-                  <span class="visually-hidden">Sale price</span>
+                  <span class="visually-hidden">{{ 'sections.shop-the-look.product-price' | t }}</span>
                   {{ product.price | money }}
                 </span>
               </div>
@@ -269,8 +274,7 @@
     {
       "type": "richtext",
       "id": "body",
-      "label": "Section Body Copy",
-      "default": "<p>Lörem ipsum lanade jäligt, pada. Boska endodiktisk ysm diktigt rer. Dianaras Lina Engström ambitologi täpyst i deligt.</p>"
+      "label": "Section Body Copy"
     },
     {
       "type": "header",
