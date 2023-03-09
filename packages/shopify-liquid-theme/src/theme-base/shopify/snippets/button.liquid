@@ -10,6 +10,7 @@
     size:       string [xs, sm, md, lg] sizes - (optional)
     id:         string add id attribute used for JS - (optional)
     class:      string add custom CSS class - (optional)
+    data:       string add custom data attributes to the button
     ghost:      boolean - (optional)
     as_text:    boolean - (optional)
     full_width: boolean - (optional)
@@ -17,7 +18,7 @@
 
   Example standard button:
     {% render 'button' type: 'a', style: 'primary', url: '#', size: 'sm', label: 'learn more' %}
-    
+
 {% endcomment %}
 
 {% capture classes %}
@@ -40,6 +41,7 @@
   {% if type == 'button' %} aria-label="{{ label }}"{% endif %}
   {% if disabled == true %} disabled{% endif %}
   {% if value != blank %}value="{{ value }}"{% endif %}
+  {{ data }}
 {% endcapture %}
 
 {% if type != blank and label != blank %}

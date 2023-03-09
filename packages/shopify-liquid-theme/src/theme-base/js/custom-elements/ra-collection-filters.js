@@ -96,9 +96,41 @@ export default class RaCollectionFilters extends HTMLElement {
     });
   }
 
+  static closeMobileFilters() {
+    const sidebar = document.querySelector("[data-collection-sidebar]");
+    document.body.classList.remove("overflow-hidden");
+    sidebar.classList.add("hidden");
+  }
+
+  static toggleMobileFilters() {
+    const sidebar = document.querySelector("[data-collection-sidebar]");
+    document.body.classList.toggle("overflow-hidden");
+    sidebar.classList.toggle("hidden");
+  }
+
   connectedCallback() {
     const filterForm = document.getElementById("CollectionFilters");
     const clearAllBtn = document.querySelector("[data-clear-filters]");
+    const mobileFilterToggles = document.querySelectorAll(
+      "[data-action-toggle-mobile-filters]"
+    );
+
+    const mobileFilterCloseTriggers = document.querySelectorAll(
+      "[data-action-close-filters]"
+    );
+
+    mobileFilterCloseTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        RaCollectionFilters.closeMobileFilters();
+      });
+    });
+
+    mobileFilterToggles.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        RaCollectionFilters.toggleMobileFilters();
+      });
+    });
+
 
     clearAllBtn.addEventListener("click", () => {
       RaCollectionFilters.clearFilters();
