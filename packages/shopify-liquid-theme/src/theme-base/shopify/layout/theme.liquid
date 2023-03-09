@@ -156,8 +156,8 @@
     {% elsif template.name == 'product' %}
       {% render 'gtm-datalayer', action_step: 'view-item' %}
     {% endif %}
-    {%- comment -%} 
-      END GTM 
+    {%- comment -%}
+      END GTM
     {%- endcomment -%}
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -176,6 +176,8 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    {% render 'modal', id: 'modal-login', title: 'Log In' %}
 
     {{ 'main.js'  | asset_url | script_tag }}
   </body>

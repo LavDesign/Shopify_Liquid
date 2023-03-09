@@ -14,6 +14,8 @@
   }
 {%- endstyle -%}
 
+
+
 <div class="customer login section-{{ section.id }}-padding">
   <h1 id="recover" tabindex="-1">
     {{ 'customer.recover_password.title' | t }}
@@ -66,7 +68,7 @@
     {%- endform -%}
   </div>
 
-  <h1 id="login" tabindex="-1">
+  <h1 id="login" tabindex="-1" class="ra-title auth-form__title text-align--center">
     {{ 'customer.login_page.title' | t }}
   </h1>
   <div>
@@ -95,7 +97,7 @@
         {{ form.errors | default_errors }}
       {%- endif -%}
 
-      <div class="field">        
+      <div class="field">
         <input
           type="email"
           name="customer[email]"
@@ -114,7 +116,7 @@
       </div>
 
       {%- if form.password_needed -%}
-        <div class="field">          
+        <div class="field">
           <input
             type="password"
             value=""
@@ -143,10 +145,10 @@
       <a href="{{ routes.account_register_url }}">
         {{ 'customer.login_page.create_account' | t }}
       </a>
-      
+
     {%- endform -%}
   </div>
-  
+
   {%- if shop.checkout.guest_login -%}
     <div>
       <hr>

@@ -27,7 +27,7 @@
         <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
       </a>
     {% endif %}
-   
+
     {% if section.settings.menu != blank %}
       {%- comment -%}
         Navigation menu - desktop
@@ -35,8 +35,8 @@
       <nav class="header__navigation">
         <ul class="header__navigation-list" role="list" tabindex="-1">
           {%- for link in section.settings.menu.links -%}
-            {% render 'desktop-navigation-menu' 
-              link: link, 
+            {% render 'desktop-navigation-menu'
+              link: link,
               featured_contents: section.blocks,
               aspect_ratio: section.settings.aspect_ratio
             %}
@@ -50,8 +50,8 @@
       <nav class="header__mobile-navigation">
         <ul class="header__mobile-navigation-list" role="list" tabindex="-1">
           {%- for link in section.settings.menu.links -%}
-            {% render 'mobile-navigation-menu' 
-              link: link, 
+            {% render 'mobile-navigation-menu'
+              link: link,
               featured_contents: section.blocks
             %}
           {%- endfor -%}
@@ -60,7 +60,7 @@
             {% if section.settings.show_account %}
               <li class="header__action-item">
                 <a class="header__action-link flex items-center" href="#" title="account" aria-label="account">
-                  {% render 'icon' icon: section.settings.account_icon, width: '14px', height: '14px' %}
+                  {% render 'button' icon: section.settings.account_icon, width: '14px', height: '14px' %}
                   <span class="ml-2 text-sm">sign-in / sign-up</span>
                 </a>
               </li>
