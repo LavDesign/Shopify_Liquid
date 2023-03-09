@@ -44,8 +44,6 @@ export default class RaShopTheLook extends HTMLElement {
   }
 
   togglePopover(toggleBtn) {
-    console.log("has popover");
-
     this.lookItems.forEach((item) => {
       const product = item.querySelector(".ra-shop-the-look__product");
       product.style.setProperty(
