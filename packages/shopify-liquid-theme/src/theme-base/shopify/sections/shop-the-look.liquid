@@ -38,7 +38,6 @@
 {% endcapture %}
 
 <ra-shop-the-look class="ra-shop-the-look">
-
   {%- comment -%}
     Section header + Slider
   {%- endcomment -%}
@@ -82,6 +81,7 @@
                 <swiper-slide>
                   <div class="ra-shop-the-look__slider-product flex flex-col justify-center items-center">
                     <div class="w-72">
+
                       {%- if product.featured_media -%}
                         <a class="flex" href="{{ product.url }}" title="{{ product.title }}">
                           <img class="w-full" src="{{ product.featured_media | image_url: width: 450 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
@@ -98,6 +98,7 @@
                           {{ product.price | money }}
                         </span>
                       </div>
+
                     </div>
                   </div>
                 </swiper-slide>
