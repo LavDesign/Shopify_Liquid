@@ -159,14 +159,6 @@
             {%- comment -%}
               Dot
             {%- endcomment -%}
-            {% capture dot %}
-              <button
-                data-popover="product-{{ block.id }}"
-                class="ra-shop-the-look__dot block relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
-                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
-              </button>
-            {% endcapture %}
-
             {% if layout == 'fifty-fifty' %}
               <button
                 data-index="{{ forloop.index0 }}"
@@ -176,7 +168,7 @@
               </button>
               <button
                 data-popover="product-{{ block.id }}"
-                class="ra-shop-the-look__dot block md:hidden relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
+                class="block md:hidden ra-shop-the-look__dot relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
                 <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
               </button>
             {% else %}
