@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-10">
+  <div :class="containerClasslist">
     <span class="text-center mb-2 block">
       <template v-if="remainingSpend > 0">
         You are {{ $filters.money(remainingSpend) }} away from free shipping
@@ -8,7 +8,7 @@
     </span>
     <div class="relative w-full h-2 bg-grey-200">
       <div
-        class="absolute bg-[#000] top-0 bottom-0 !block transition-all ease-linear"
+        class="absolute bg-primary-900 top-0 bottom-0 !block transition-all ease-linear"
         :style="{ width: `${thresholdPercentage}%` }"
       ></div>
     </div>
@@ -26,6 +26,10 @@ const props = defineProps({
   threshold: {
     type: Number,
     default: 0,
+  },
+  containerClasslist: {
+    type: String,
+    default: "",
   },
 });
 

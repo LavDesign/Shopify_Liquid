@@ -1,6 +1,7 @@
 <template>
   <button
-    class="ra-button ra-button--full-width ra-button--sm -mb-[5px]"
+    class="ra-button ra-button--full-width ra-button--sm"
+    :class="containerClasslist"
     @click="navigateToCheckout"
   >
     Proceed to Checkout
@@ -12,6 +13,10 @@ const props = defineProps({
   checkoutReady: {
     type: Boolean,
     default: false,
+  },
+  containerClasslist: {
+    type: String,
+    default: "",
   },
 });
 
