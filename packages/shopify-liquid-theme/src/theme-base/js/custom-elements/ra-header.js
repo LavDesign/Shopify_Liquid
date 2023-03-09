@@ -62,7 +62,6 @@ export default class RaHeader extends HTMLElement {
       "--content-position-top",
       parseInt(this.headerPositionTop) + this.clientHeight + "px"
     );
-
   }
 
   handleWindowScroll() {

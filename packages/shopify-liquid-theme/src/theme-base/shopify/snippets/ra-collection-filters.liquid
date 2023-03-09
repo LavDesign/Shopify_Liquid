@@ -24,7 +24,7 @@ Make a list of filters to display as buttons based on filter.label
       {% endfor %}
     {% endfor %}
   </div>
-  <form id="CollectionFilters">
+  <form id="CollectionFilters" data-collection-filters>
     <ra-accordion class="ra-accordion" data-multi-open="true">
       {%- for filter in collection.filters -%}
         {% assign display_as_buttons = false %}

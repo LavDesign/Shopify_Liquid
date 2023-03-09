@@ -20,12 +20,13 @@ export default class RaCollectionFilters extends HTMLElement {
 
         // Grab grid html from fetch with params and update DOM element
         const responseDOM = new DOMParser().parseFromString(html, "text/html");
-        document.getElementById("ProductGrid").innerHTML =
-          responseDOM.getElementById("ProductGrid").innerHTML;
-        document.getElementById("CollectionFilters").innerHTML =
-          responseDOM.getElementById("CollectionFilters").innerHTML;
-        document.getElementById("CollectionActiveFilters").innerHTML =
-          responseDOM.getElementById("CollectionActiveFilters").innerHTML;
+
+        document.querySelector("[data-product-grid]").innerHTML =
+          responseDOM.querySelector("[data-product-grid]").innerHTML;
+        document.querySelector("[data-collection-filters]").innerHTML =
+          responseDOM.querySelector("[data-collection-filters]").innerHTML;
+        document.querySelector("[data-active-filters]").innerHTML =
+          responseDOM.querySelector("[data-active-filters]").innerHTML;
       })
       .then(() => {
         RaCollectionFilters.addActiveFilterEventListeners();
@@ -92,17 +93,6 @@ export default class RaCollectionFilters extends HTMLElement {
 
     removeFilterBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => this.onRemoveBtnClick(e));
-      // e.preventDefault();
-
-      // const param = btn.getAttribute("data-param");
-      // const value = btn.getAttribute("data-value");
-
-      // const paramToRemove = param + "=" + value;
-      // const searchParamString =
-      //   RaCollectionFilters.removeParamFromSearch(paramToRemove);
-
-      // RaCollectionFilters.renderSectionFromFetch(searchParamString);
-      // updateURL(searchParamString);
     });
   }
 
