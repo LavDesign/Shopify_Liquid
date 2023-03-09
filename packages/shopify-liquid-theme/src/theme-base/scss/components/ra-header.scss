@@ -453,7 +453,7 @@
 
     // util links
     .header__mobile-navigation-util {
-      padding: var(--gutter-sm);
+      padding: var(--gutter-sm) var(--gutter-sm) var(--gutter-lg) var(--gutter-sm);
 
       .ra-header-util {
         position: static;

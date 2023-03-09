@@ -50,7 +50,7 @@
           </div>
         {% endif %}
       
-        {% if section.settings.button_1_url != blank and section.settings.button_2_url != blank %}
+        {% if section.settings.button_1_url != blank or section.settings.button_2_url != blank %}
           <div class="ra-link-list ra-hero__link-list">
             {% if section.settings.button_1_label != blank and section.settings.button_1_url != blank %}
               {% render 'button' 
