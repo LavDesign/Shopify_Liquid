@@ -15,10 +15,10 @@
         </aside>
       </div>
       <div class="collection__main w-full md:w-3/4">
-        <div class="collection__header mb-10 flex justify-between flex-col">
+        <div class="collection__header mb-10 flex justify-between flex-col md:flex-row">
           <h1 class="h2 text-grey-700 text-center md:text-left">{{ collection.title }}</h1>
           <div class="flex justify-between mt-6 md:mt-0">
-            <div class="collection__toggle-filters">
+            <div class="collection__toggle-filters md:hidden">
               {% render "button", label: "Filter", style: "tertiary", type: "button", icon: "hamburger", class: "h-11 min-h-0" data: "data-action-toggle-mobile-filters" %}
             </div>
             <ra-collection-sort>
