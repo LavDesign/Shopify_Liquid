@@ -50,15 +50,17 @@
     <div class="flex flex-col items-center justify-center px-5 py-8 md:py-15 {% if layout == 'fifty-fifty' %}order-2{% endif %}">
       <div class="w-full md:w-2/3 text-center">
         {% if title != blank %}
-          <{{ title_as }} class="{{ title_as }} ra-shop-the-look__title">{{ title }}</{{ title_as }}>
+          <div class="mb-4">
+            <{{ title_as }} class="{{ title_as }} ra-shop-the-look__title">{{ title }}</{{ title_as }}>
+          </div>
         {% endif %}
 
         {% if body != blank %}
-          <div class="my-4 ra-shop-the-look__body">{{ body }}</div>
+          <div class="mb-4 ra-shop-the-look__body">{{ body }}</div>
         {% endif %}
 
         {% if button_url != blank and button_label %}
-          <div class="my-4">
+          <div class="mb-4">
             {% render 'button' type: 'a', style: 'primary', url: button_url, label: button_label %}
           </div>
         {% endif %}
@@ -68,55 +70,45 @@
         Product Slider - Fifty-Fifty Layout
       {%- endcomment -%}
       {% if layout == 'fifty-fifty' %}
-        {% capture swiper_settings %}
-          {
-            "slidesPerView": 1,
-            "spaceBetween": 0,
-            "navigation": {
-              "nextEl": ".{{ section.id }}.swiper-button-next",
-              "prevEl": ".{{ section.id }}.swiper-button-prev"
-            }
-          }
-        {% endcapture %}
-        
-        <div class="hidden md:flex w-96">
-          <div class="swiper" data-swiper-settings="{{ swiper_settings | escape | strip }}">
-            <div class="swiper-wrapper">
-              {% for block in section.blocks %}
-                {% if block.settings.product != blank %}
-                  {%- assign product = block.settings.product -%}
-                  <div class="swiper-slide">
-                    <div class="flex flex-col justify-center items-center">
-                      <div class="w-72">
-                        {%- if product.featured_media -%}
+        <div class="hidden md:flex w-96 relative">
+          <swiper-container 
+            slides-per-view="1"
+            navigation-prev-el=".{{ section.id }}.swiper-button-prev" 
+            navigation-next-el=".{{ section.id }}.swiper-button-next">
+
+            {% for block in section.blocks %}
+              {% if block.settings.product != blank %}
+                {%- assign product = block.settings.product -%}
+                <swiper-slide>
+                  <div class="ra-shop-the-look__slider-product flex flex-col justify-center items-center">
+                    <div class="w-72">
+                      {%- if product.featured_media -%}
+                        <a class="flex" href="{{ product.url }}" title="{{ product.title }}">
                           <img class="w-full" src="{{ product.featured_media | image_url: width: 450 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
-                        {%- endif -%}
-          
-                        <div class="w-full flex flex-col justify-center">
-                          {% if product.vendor %}
-                            <p class="text-xs mt-2">{{ product.vendor }}</p>
-                          {% endif %}
-                          <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
-                          <span class="flex">
-                            <span class="visually-hidden">{{ 'sections.shop-the-look.product-price' | t }}</span>
-                            {{ product.price | money }}
-                          </span>
-                        </div>
+                        </a>
+                      {%- endif -%}
+        
+                      <div class="w-full text-center flex flex-col justify-center">
+                        {% if product.vendor %}
+                          <p class="text-xs mt-2 mb-1">{{ product.vendor }}</p>
+                        {% endif %}
+                        <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
+                        <span class="flex justify-center items-center">
+                          <span class="visually-hidden">{{ 'sections.shop-the-look.product-price' | t }}</span>
+                          {{ product.price | money }}
+                        </span>
                       </div>
                     </div>
                   </div>
-                {% endif %}
-              {% endfor %}
-            </div>
-
-            {% if section.blocks.size > 1 %}
-              <div class="{{ section.id }} swiper-button-prev">
-                {% render 'icon', icon: "chevron-left", width: '18px', height: '18px', color: arrow_color %}
-              </div>
-              <div class="{{ section.id }} swiper-button-next">
-                {% render 'icon', icon: "chevron-right", width: '18px', height: '18px', color: arrow_color %}
-              </div>
-            {% endif %}
+                </swiper-slide>
+              {% endif %}
+            {% endfor %}
+          </swiper-container>
+          <div class="{{ section.id }} swiper-button-prev">
+            {% render 'icon' with "chevron-left", width: '18px', height: '18px', color: arrow_color %}
+          </div>
+          <div class="{{ section.id }} swiper-button-next">
+            {% render 'icon' with "chevron-right", width: '18px', height: '18px', color: arrow_color %}
           </div>
         </div>
       {% endif %}
@@ -181,11 +173,17 @@
                 class="hidden md:block ra-shop-the-look__dot relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
                 <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
               </button>
-              <div class="flex md:hidden">
-                {{ dot }}
-              </div>
+              <button
+                data-popover="product-{{ block.id }}"
+                class="ra-shop-the-look__dot block md:hidden relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
+                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
+              </button>
             {% else %}
-              {{ dot }}
+              <button
+                data-popover="product-{{ block.id }}"
+                class="ra-shop-the-look__dot block relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
+                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
+              </button>
             {% endif %}
 
             {%- comment -%}
@@ -199,7 +197,9 @@
               </button>
 
               {%- if product.featured_media -%}
-                <img class="mr-3 w-28" src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
+                <a class="flex mr-3" href="{{ product.url }}" title="{{ product.title }}">
+                  <img class="w-28" src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
+                </a>
               {%- endif -%}
 
               <div class="flex flex-col justify-center">

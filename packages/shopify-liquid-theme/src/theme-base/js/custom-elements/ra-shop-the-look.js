@@ -36,7 +36,7 @@ export default class RaShopTheLook extends HTMLElement {
       new CustomEvent("swiper:slideTo", {
         bubbles: true,
         detail: {
-          swiper: this.querySelector(".swiper"),
+          swiper: this.querySelector("swiper-container"),
           slideTo: index,
         },
       })

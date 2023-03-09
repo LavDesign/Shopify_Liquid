@@ -26,11 +26,16 @@
   }
 
   // product tile
+  .ra-shop-the-look__slider-product {
+    &,
+    * {
+      color: var(--look-text-color);
+    }
+  }
   .ra-shop-the-look__product {
     background-color: var(--look-bg-color);
     opacity: 0;
     visibility: hidden;
-
     &,
     * {
       color: var(--look-text-color);
