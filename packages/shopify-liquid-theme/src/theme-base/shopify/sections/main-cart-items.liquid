@@ -1,48 +1,5 @@
-{% liquid
-  assign cart_upsell_product = null
-  assign cart_upsell_product_data = null
-  if settings.upsell_enabled and settings.upsell_product != blank
-    assign cart_upsell_product = all_products[settings.upsell_product]
-  endif
-
-  assign settings_keys = "cart_header_text,cart_message_1,cart_message_2,free_gift_enabled,free_gift_threshold,gift_message_enabled,upsell_enabled"
-  assign settings_keys = settings_keys | split: ","
-
-  assign empty_cart_settings_keys = "empty_cart_header,"
-  assign empty_cart_settings_keys = empty_cart_settings_keys | split: ","
-%}
-
-{% if settings.upsell_product != blank %}
-  {%- capture cart_upsell_product_data -%}
-    {%- render 'json-product', product: cart_upsell_product -%}
-  {%- endcapture -%}
-{% endif %}
-
-{% capture cart_settings %}{
-  {%- for key in settings_keys -%}
-    "{{ key }}":{{- settings[key] | default: null | json -}},
-  {%- endfor -%}
-  {%- if cart_upsell_product_data -%}
-    "upsell_product":{{ cart_upsell_product_data | escape | strip }}
-  {%- endif -%}
-  }{% endcapture %}
-
-  {% capture empty_cart_settings %}{
-    {%- for key in empty_cart_settings_keys -%}
-      "{{ key }}":{{- settings[key] | default: null | json -}},
-    {%- endfor -%}
-    {%- if settings.empty_cart_link_list != blank -%}
-    links: [
-    {%- for link in settings.empty_cart_link_list.links -%}
-      {
-        "title": {{ link.title |json }},
-        "url": {{ link.url | json}}
-      },
-    {%- endfor -%}
-    ]
-    {%- endif -%}
-
-  }{% endcapture %}
+{% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
+{% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
 <div data-vue-root="CartPage" class="min-h-[500px] !block transition-all">
   <cart-page :settings='{{- cart_settings -}}' :empty-cart-settings='{{- empty_cart_settings -}}' />
 </div>

@@ -1,0 +1,467 @@
+{% liquid 
+  assign checkout_step = null
+  if checkout
+    if content_for_layout contains 'data-step="contact_information"'
+      assign checkout_step = 'contact_information'
+    elsif content_for_layout contains 'data-step="shipping_method"'
+      assign checkout_step = 'shipping_method'
+    elsif content_for_layout contains 'data-step="payment_method"'
+      assign checkout_step = 'payment_method'
+    elsif content_for_layout contains 'data-step="review"'
+      assign checkout_step = 'review'
+    endif
+  endif
+%}
+
+{%- case action_step -%}
+  {%- when 'init' -%}
+    <script>
+      window.dataLayer = window.dataLayer || []; 
+      dataLayer.push({
+        'event': 'acn_gtm_init',
+        'event_id': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
+        'template': {
+          'active': {{ template | json }},
+          'name': {{ template.name | json }},
+          'directory': {{ template.directory | json }},
+        },
+        'localization': {
+            'country': {{ localization.country.iso_code | json }},
+            'currency': {{ localization.country.currency.iso_code | json }},
+            'language': {{ localization.language.iso_code | json }},
+            'checkoutCurrency': {{ checkout.currency | json }},
+            'location': {{ location | json }},
+          },
+        {% if product %}
+        'product_available': {{ product.available }},
+        {% endif %}
+        {% if customer %}
+          customer: {
+            'id': {{ customer.id | downcase | json }},
+            'acceptsMarketing': {{ customer.accepts_marketing }},
+            'ordersCount': {{ customer.orders_count | json }},
+            'totalSpent': {{ customer.total_spent | divided_by: 100.00 }},
+            'tags': {{ customer.tags | json }},
+            'email': {{ customer.email | json }},
+            'emailHashed': {% if customer.email %}{{ customer.email | sha256 | json }}{% endif %},
+            'phoneHashed': {% if customer.phone %}{{ customer.phone | sha256 | json }}{% endif %},
+            'firstNameHashed': {% if customer.first_name %}{{ customer.first_name | sha256 | json }}{% endif %},
+            'lastNameHashed': {% if customer.last_name %}{{ customer.last_name | sha256 | json }}{% endif %},
+            'defaultAddressHashed': {
+              'zip': {% if customer.default_address.zip %}{{ customer.default_address.zip | sha256 | json }}{% endif %},
+              'city': {% if customer.default_address.city %}{{ customer.default_address.city | sha256 | json }}{% endif %},
+              'street': {% if customer.default_address.street %}{{ customer.default_address.street | sha256 | json }}{% endif %},
+              'province': {% if customer.default_address.province %}{{ customer.default_address.province | sha256 | json }}{% endif %},
+              'country': {% if customer.default_address.country %}{{ customer.default_address.country | sha256 | json }}{% endif %},
+              'phone': {% if customer.default_address.phone %}{{ customer.default_address.phone | sha256 | json }}{% endif %},
+            },
+          },
+        {% endif %}
+        {% if checkout %}
+          'checkoutId': {{ checkout.id | json }},
+          'customer': {
+            'id': {{ checkout.customer.id | downcase | json }},
+            'acceptsMarketing': {{ checkout.customer.accepts_marketing | json }},
+            'hasAccount': {{ checkout.customer.has_account | json }},
+            'ordersCount': {{ checkout.customer.orders_count | json }},
+            'totalSpent': {{ checkout.customer.total_spent | json }},
+            'tags': {{ checkout.customer.tags | json }},
+          },
+          'customerCheckout': {
+            'email': {{ checkout.email | json }},
+            'emailHashed': {% if checkout.email %}'{{ checkout.email | sha256 }}'{% else %}''{% endif %},
+            'acceptsMarketing': {{ checkout.buyer_accepts_marketing | json }},
+            {% assign billing = checkout.billing_address %}
+            {% assign shipping = checkout.shipping_address %}
+            'billingAddressHash': {
+              'firstName': {% if billing.first_name %}'{{ billing.first_name | sha256 }}'{% else %}''{% endif %},
+              'lastName': {% if billing.last_name %}'{{ billing.last_name | sha256 }}'{% else %}''{% endif %},
+              'street': {% if billing.street %}'{{ billing.street | sha256 }}'{% else %}''{% endif %}, 
+              'phone': {% if billing.phone %}'{{ billing.phone | sha256 }}'{% else %}''{% endif %},
+              'zip': {% if billing.zip %}'{{ billing.zip | sha256 }}'{% else %}''{% endif %},
+              'city': {% if billing.city %}'{{ billing.city | sha256 }}'{% else %}''{% endif %},
+              'province': {% if billing.province %}'{{ billing.province | sha256 }}'{% else %}''{% endif %},
+              'country': {% if billing.country %}'{{ billing.country | sha256 }}'{% else %}''{% endif %} 
+            },
+            'shippingAddressHash': {
+              'firstName': {% if shipping.first_name %}'{{ shipping.first_name | sha256 }}'{% else %}''{% endif %},
+              'lastName': {% if shipping.last_name %}'{{ shipping.last_name | sha256 }}'{% else %}''{% endif %},
+              'street': {% if shipping.street %}'{{ shipping.street | sha256 }}'{% else %}''{% endif %},
+              'phone': {% if shipping.phone %}'{{ shipping.phone | sha256 }}'{% else %}''{% endif %},
+              'zip': {% if shipping.zip %}'{{ shipping.zip | sha256 }}'{% else %}''{% endif %},
+              'city': {% if shipping.city %}'{{ shipping.city | sha256 }}'{% else %}''{% endif %},
+              'province': {% if shipping.province %}'{{ shipping.province | sha256 }}'{% else %}''{% endif %},
+              'country': {% if shipping.country %}'{{ shipping.country | sha256 }}'{% else %}''{% endif %}
+            }
+          },
+        {% endif %}
+      });
+    </script>
+    <!-- GTM ID added via Theme Settings -->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','{{- settings.datalayer_gtm_id -}}');
+    </script>
+    <!-- End Google Tag Manager -->
+
+  {%- when 'body-init' -%}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{- settings.datalayer_gtm_id -}}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+  
+  {%- when 'view-item' -%}
+    {%- capture options_json -%}
+      {
+        {%- for product_option in product.options_with_values -%}
+          {%- for value in product_option.values -%}
+            {%- if product_option.selected_value == value -%}
+              '{{ product_option.name | downcase }}':'{{ value }}',
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      }
+    {%- endcapture -%}
+
+    {%- assign has_variant = true -%}
+    {%- if product.has_only_default_variant -%}
+      {%- assign has_variant = false -%}
+    {%- endif -%}
+    <script>
+      window.dataLayerVariants = {
+        {% for variant in product.variants %}
+          '{{ variant.id }}': {
+            'event': 'acn_view_item',
+            'event_id': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
+            'ecommerce': {
+              'currencyCode': '{{ localization.country.currency.iso_code }}',
+              'detail': {
+                'products': [
+                  {
+                    'id': '{{ variant.id | json }}',
+                    'sku': '{{ variant.sku | replace: "'", "" }}',
+                    'handle': '{{ product.handle }}',
+                    'productId': '{{ product.id | json }}',
+                    'variantId': '{{ variant.id | json }}',
+                    'name': {% if has_variant %}'{{ variant.title | replace: "'", "" }}'{% else %}'{{ product.title | replace: "'", "" }}'{% endif %},
+                    'price': {{ variant.price | divided_by: 100.00 | json }},
+                    'brand': '{{ product.vendor | replace: "'", "" }}',
+                    'variant': {% if has_variant %}'{{ variant.title | replace: "'", "" }}'{% else %}'{{ product.title }}'{% endif %},
+                    'category': '{{ product.type | replace: "'", "" }}',
+                  }
+                ]
+              },
+              items: [{ ...{
+                item_id: {{ variant.id | json }},
+                shopify_product_id: {{ product.id | json }},
+                shopify_variant_id: {{ variant.id | json }},
+                shopify_sku: {{ variant.sku | replace: "'", "" | json }},
+                shopify_handle: {{ product.handle | json }},
+                shopify_compare_price: {% if has_variant %}{{ variant.compare_at_price | divided_by: 100.00 | json }}{% else %}{{ product.compare_at_price | divided_by: 100.00 | json }}{% endif %},
+                item_name: {% if has_variant %}{{ variant.title | replace: "'", "" | json }}{% else %}{{ product.title | replace: "'", "" | json }}{% endif %},
+                affiliation: {{ shop.name | json }},
+                currency: {{ localization.country.currency.iso_code | json }},
+                item_brand: {{ product.vendor | replace: "'", "" | json }},
+                item_category: {{ product.type | replace: "'", "" | json }},
+                item_variant: "{% if has_variant %}{{ variant.title | replace: "'", "" }}{% else %}{{ product.title | replace: "'", "" }}{% endif %}",
+                price: {{ variant.price | divided_by: 100.00 | json }},
+              }, ...{{ options_json }} }]
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      }
+
+      dataLayer.push({ ecommerce: null });
+      dataLayer.push({
+        'event': 'acn_view_item',
+        'event_id': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
+        'ecommerce': {
+          'currencyCode': '{{ localization.country.currency.iso_code }}',
+          'detail': {
+            'products': [
+              {
+                'id': '{{ product.selected_or_first_available_variant.id | json }}',
+                'sku': '{{ product.selected_or_first_available_variant.sku | replace: "'", "" }}',
+                'handle': '{{ product.handle }}',
+                'productId': '{{ product.id | json }}',
+                'variantId': '{{ product.selected_or_first_available_variant.id | json }}',
+                'name': '{{ product.title | replace: "'", "" }}',   
+                'price': {{ product.selected_or_first_available_variant.price | divided_by: 100.00 | json }},
+                'brand': '{{ product.vendor | replace: "'", "" }}',
+                'variant': '{{ product.selected_or_first_available_variant.title | replace: "'", "" }}',
+                'category': '{{ product.type | replace: "'", "" }}',
+              }
+            ]
+          },
+          items: [
+            {
+              item_id: "{{ product.selected_or_first_available_variant.id | json }}",
+              shopify_product_id: "{{ product.id }}",
+              shopify_variant_id: "{{ product.selected_or_first_available_variant.id | json }}",
+              shopify_sku: "{{ product.selected_or_first_available_variant.sku | replace: "'", "" }}",
+              shopify_handle: "{{ product.handle }}",
+              shopify_compare_price: {{ product.compare_at_price | divided_by: 100.00 | json }},
+              item_name: "{{ product.title | replace: "'", "" }}",
+              affiliation: "{{ shop.name }}",
+              currency: "{{ localization.country.currency.iso_code }}",
+              item_brand: "{{ product.vendor | replace: "'", "" }}",
+              item_category: "{{ product.type | replace: "'", "" }}",
+              item_variant: "{% if product.has_only_default_variant %}{{ product.title | replace: "'", "" }}{% else %}{{ product.selected_or_first_available_variant.title | replace: "'", "" }}{% endif %}",
+              {% for product_option in product.options_with_values %}
+                {% for value in product_option.values %}
+                  {% if product_option.selected_value == value %}'{{ product_option.name | downcase }}':'{{ value }}',{% endif %}
+                {% endfor %}
+              {% endfor %}
+              price: {{ product.selected_or_first_available_variant.price | divided_by: 100.00 | json }},
+            }
+          ]
+        }
+      });
+    </script>
+  {%- when 'view-cart' -%}
+    <script>
+      dataLayer.push({ ecommerce: null });
+      dataLayer.push({
+        'event': 'acn_view_cart',
+        'ecommerce': {
+          currency: "{{ cart.currency.iso_code }}",
+          value: {{ cart.total_price | divided_by: 100.00 }},
+          items: [
+            {% for line_item in cart.items %}
+              {
+                item_id: "{{ line_item.variant.id | replace: "'", "" }}",
+                shopify_product_id: "{{ line_item.product_id }}",
+                shopify_variant_id: "{{ line_item.variant.id | json }}",
+                shopify_sku: "{{ line_item.variant.sku | replace: "'", "" }}",
+                shopify_handle: "{{ line_item.product.handle }}",
+                shopify_compare_price: {{ line_item.variants.compare_at_price | divided_by: 100.00 | json }},
+                item_name: "{{ line_item.product.title | replace: "'", "" }}",
+                affiliation: "{{ shop.name }}",
+                currency: {{ localization.country.currency.iso_code | json }},
+                item_brand: "{{ line_item.product.vendor | replace: "'", "" }}",
+                item_category: "{{ line_item.product.type | replace: "'", "" }}",
+                item_variant: "{{ line_item.variant.title | replace: "'", "" }}",
+                {% unless line_item.product.has_only_default_variant %}
+                  {% for option in line_item.options_with_values %}
+                    {{ option.name | downcase | json }}: {{ option.value | json }},
+                  {% endfor %}
+                {% endunless %}
+                price: {{ line_item.price | divided_by: 100.00 }},
+                quantity: {{ line_item.quantity }},
+                {% for discount_allocation in line_item.discount_allocations %}
+                  {% if discount_allocation.discount_application.type == 'discount_code' %}
+                    coupon: {{ discount_allocation.discount_application.title | json }},
+                  {% endif %}
+                {% endfor %}
+              }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        }
+      });
+    </script>
+    
+  {%- when 'checkout-steps' -%}
+    <script>
+      if ( !!Shopify.Checkout.step && !!!Shopify.Checkout.isOrderStatusPage ) {
+        function evalStep() {
+          if ( Shopify.Checkout.isOrderStatusPage ) return
+          let step, stepName;
+          if (Shopify.Checkout.page == "stock_problems") {
+            step = 1;
+            stepName = Shopify.Checkout.page;
+          } else if (Shopify.Checkout.step == "contact_information") {
+            step = 2;
+            stepName = Shopify.Checkout.step;
+          } else if (Shopify.Checkout.step == "shipping_method") {
+            step = 3;
+            stepName = Shopify.Checkout.step;
+          } else if (Shopify.Checkout.step == "payment_method") {
+            step = 4;
+            stepName = Shopify.Checkout.step;
+          } else if (Shopify.Checkout.step == "review") {
+            step = 5;
+            stepName = Shopify.Checkout.step;
+          } else if (Shopify.Checkout.step == "processing") {
+            step = 6;
+            stepName = Shopify.Checkout.step;
+          } 
+          return { step, stepName };
+        }
+        
+        if (!Shopify.Checkout.page.includes('thank_you')) {
+          dataLayer.push({ ecommerce: null });
+          dataLayer.push({
+            'event': 'acn_checkout_step',
+            'stepName': evalStep().stepName,
+            'ecommerce': {
+              'currencyCode': '{{ checkout.currency }}',
+              'checkout': {
+                'actionField': {'step': evalStep().step },
+                'products': [
+                  {% for line_item in checkout.line_items %}
+                    {
+                      'name': '{{ line_item.product.title | replace: "'", "" }}',
+                      'id': '{{ line_item.variant.id | replace: "'", "" }}',
+                      'handle': '{{ line_item.product.handle }}', 
+                      'productId': '{{ line_item.product_id | json }}',
+                      'variantId': '{{ line_item.variant_id | json }}',
+                      'price': {{ line_item.price | divided_by: 100.00 }},
+                      'brand': '{{ line_item.vendor | replace: "'", "" }}',
+                      'variant': '{{ line_item.variant.title | replace: "'", "" }}',
+                      'quantity': {{ line_item.quantity }},
+                      'category': '{{ line_item.product.type | escape }}',
+                      {% for discount_allocation in line_item.discount_allocations %}
+                        {% if discount_allocation.discount_application.type == 'discount_code' %}
+                          'coupon': {{ discount_allocation.discount_application.title | json }},
+                        {% endif %}
+                      {% endfor %}
+                    }{% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                ]
+              },
+              items: [
+                {% for line_item in checkout.line_items %}
+                  {
+                    item_id: "{{ line_item.variant.id | replace: "'", "" }}",
+                    shopify_product_id: "{{ line_item.product_id }}",
+                    shopify_variant_id: "{{ line_item.variant.id | json }}",
+                    shopify_sku: "{{ line_item.variant.sku | replace: "'", "" }}",
+                    shopify_handle: "{{ line_item.product.handle }}",
+                    shopify_compare_price: {{ line_item.product.compare_at_price | divided_by: 100.00 | json }},
+                    item_name: "{{ line_item.product.title | replace: "'", "" }}",
+                    affiliation: "{{ shop.name }}",
+                    currency: "{{ localization.country.currency.iso_code | json }}",
+                    item_brand: "{{ line_item.product.vendor | replace: "'", "" }}",
+                    item_category: "{{ line_item.product.type | replace: "'", "" }}",
+                    item_variant: "{{ line_item.variant.title | replace: "'", "" }}",
+                    {% unless line_item.product.has_only_default_variant %}
+                      {% for option in line_item.options_with_values %}
+                        {{ option.name | downcase | json }}: {{ option.value | json }},
+                      {% endfor %}
+                    {% endunless %}
+                    price: {{ line_item.price | divided_by: 100.00 }},
+                    quantity: {{ line_item.quantity }},
+                    {% for discount_allocation in line_item.discount_allocations %}
+                      {% if discount_allocation.discount_application.type == 'discount_code' %}
+                        coupon: {{ discount_allocation.discount_application.title | json }},
+                      {% endif %}
+                    {% endfor %}
+                    discount: {{ line_item.line_level_total_discount | divided_by: 100 }}
+                  }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              ]
+            }
+          });
+        } 
+
+        if (Shopify.Checkout.page.includes('thank_you')) {
+          // create discounts array
+          var discountCodes = [];
+          {% for discount_application in order.discount_applications %}
+            discountCodes.push('{{ discount_application.title | json }}');
+          {% endfor %}
+          dataLayer.push({ ecommerce: null });
+          dataLayer.push({
+            'event': 'acn_purchase',
+            'event_id': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
+            'ecommerce': {
+              'currencyCode': '{{ checkout.currency }}',
+              'transaction_id': "{{ checkout.order_name }}",
+              'affiliation': "{{ shop.name | remove: "'" }}",
+              'value': {{ checkout.total_price | divided_by: 100.00 }},
+              'tax': {{ checkout.tax_price | divided_by: 100.00 }},
+              'shipping': {{ checkout.shipping_price | divided_by: 100.00 }},
+              'currency': "{{ checkout.currency }}",
+              'coupon': discountCodes.join(' | '),
+              'discount': {{ checkout.discounts_amount | divided_by: 100.00 }},
+              'items': [
+                {% for line_item in checkout.line_items %}
+                  {
+                    item_id: "{{ line_item.variant.id | replace: "'", "" }}",
+                    shopify_product_id: "{{ line_item.product_id }}",
+                    shopify_variant_id: "{{ line_item.variant.id | json }}",
+                    shopify_sku: "{{ line_item.variant.sku | replace: "'", "" }}",
+                    shopify_handle: "{{ line_item.product.handle }}",
+                    shopify_compare_price: {{ line_item.product.compare_at_price | divided_by: 100.00 | json }},
+                    item_name: "{{ line_item.product.title | replace: "'", "" }}",
+                    affiliation: "{{ shop.name }}",
+                    currency: "{{ localization.country.currency.iso_code | json }}",
+                    item_brand: "{{ line_item.product.vendor | replace: "'", "" }}",
+                    item_category: "{{ line_item.product.type | replace: "'", "" }}",
+                    item_variant: "{{ line_item.variant.title | replace: "'", "" }}",
+                    {% unless line_item.product.has_only_default_variant %}
+                      {% for option in line_item.options_with_values %}
+                        '{{ option.name | downcase }}': '{{ option.value }}',
+                      {% endfor %}
+                    {% endunless %}
+                    price: {{ line_item.product.price | divided_by: 100.00 }},
+                    quantity: {{ line_item.quantity }},
+                    {% for discount_allocation in line_item.discount_allocations %}
+                      {% if discount_allocation.discount_application.type == 'discount_code' %}
+                        coupon: {{ discount_allocation.discount_application.title | json }},
+                      {% endif %}
+                    {% endfor %}
+                    discount: {{ line_item.line_level_total_discount | divided_by: 100 }},
+                  }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+              ],
+              'purchase': {
+                'actionField': {
+                  'id': '{{ checkout.order_name }}',
+                  'affiliation': {{ shop.name | remove: "'" | json }},
+                  'revenue': {{ checkout.total_price | divided_by: 100.00 }},
+                  'tax': {{ checkout.tax_price | divided_by: 100.00 }},
+                  'shipping': {{ checkout.shipping_price | divided_by: 100.00 }},
+                  'coupon':  discountCodes.join(' | '),
+                  'discount': {{ checkout.discounts_amount | divided_by: 100.00 }}
+                },
+                'products': [
+                  {% for line_item in checkout.line_items %}
+                    {
+                      'name': {{ line_item.product.title | replace: "'", "" | json }},
+                      'id': {{ line_item.product_id | replace: "'", "" | json }},
+                      'handle': {{ line_item.product.handle | json }},
+                      'productId': {{ line_item.product_id | json }},
+                      'variantId': {{ line_item.variant_id | json }},
+                      'price': {{ line_item.price | divided_by: 100.00 | json }},
+                      'brand': {{ line_item.vendor | replace: "'", "" | json }},
+                      'variant': {{ line_item.variant.title | replace: "'", "" | json }},
+                      'quantity': {{ line_item.quantity }},
+                      'category': {{ line_item.product.type | escape | json }},
+                      {% for discount_allocation in line_item.discount_allocations %}
+                        {% if discount_allocation.discount_application.type == 'discount_code' %}
+                          'coupon': {{ discount_allocation.discount_application.title | json }},
+                        {% endif %}
+                      {% endfor %}
+                    }{% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                ]
+              },
+              'shopify_order': {
+                'email': '{{ order.email }}',
+                'phone': '{{ order.phone }}',
+                'number': '{{ order.number }}',
+                'name': '{{ order.name }}',
+                'shipping': '{{ order.shipping_methods.title }}',
+                'transaction': '{{ transaction.gateway }}'
+              },
+              'shopify_transaction': {
+                'gateway': '{{ transaction.gateway }}',
+                'paymentDetails': '{{ transaction.payment_details }}' 
+              }, 
+              'shopify_checkout': {
+                'id': '{{checkout.id}}',
+                'orderId': '{{ checkout.order_id }}',
+                'orderName': '{{ checkout.order_name }}',
+                'orderNumber': '{{ checkout.order_number }}',
+                'shipping': '{{ checkout.shipping_method.title }}'
+              }
+            }
+          });
+        }
+      }
+    </script>
+{%- endcase -%}

@@ -574,6 +574,17 @@
     ]
   },
   {
+    "name": "Analytics",
+    "settings": [
+      {
+        "type": "text",
+        "id": "datalayer_gtm_id",
+        "label": "GTM Container ID",
+        "default": "GTM-T8MSQMK"
+      }
+    ]
+  },
+  {
     "name": "Favicon",
     "settings": [
       {
@@ -612,17 +623,6 @@
         "type": "url",
         "id": "util_link_2_url",
         "label": "Util link 2 url"
-      },
-      {
-        "type": "text",
-        "id": "util_link_3_label",
-        "label": "Util link 3 label",
-        "default": "Util link"
-      },
-      {
-        "type": "url",
-        "id": "util_link_3_url",
-        "label": "Util link 3 url"
       }
     ]
   },
@@ -2087,7 +2087,8 @@
       {
         "type": "text",
         "label": "Cart Header Text",
-        "id": "cart_header_text"
+        "id": "cart_header_text",
+        "default": "Cart"
       },
       {
         "type": "richtext",
@@ -2108,12 +2109,18 @@
         "type": "text",
         "label": "Free Gift Threshold",
         "id": "free_gift_threshold",
-        "info": "Enter the monetary value without any characters. I.E. use 10000 when the threshold is $100.00"
+        "info": "Enter the monetary value in cents. I.E. use 10000 when the threshold is $100.00"
       },
       {
         "type": "checkbox",
         "label": "Enable Gift Message",
         "id": "gift_message_enabled"
+      },
+      {
+        "type": "text",
+        "label": "Gift Message Text",
+        "id": "gift_message_text",
+        "default": "Add a gift message to your order?"
       },
       {
         "type": "checkbox",
@@ -2132,7 +2139,8 @@
       {
         "type": "text",
         "label": "Empty Cart Header",
-        "id": "empty_cart_header"
+        "id": "empty_cart_header",
+        "default": "Your cart is empty"
       },
       {
         "type": "link_list",

@@ -4,6 +4,11 @@
     {%- render 'head-meta' -%}
 
     {%- comment -%}
+      GTM-Datalayer
+    {%- endcomment -%}
+    {% render 'gtm-datalayer', action_step: 'init' %}
+
+    {%- comment -%}
       Dawn theme - to be deleted or updated later
     {%- endcomment -%}
     {{ 'base.css' | asset_url | stylesheet_tag }}
@@ -142,6 +147,19 @@
   </head>
 
   <body>
+    {%- comment -%}
+      GTM-Datalayer
+    {%- endcomment -%}
+    {% render 'gtm-datalayer', action_step: 'body-init' %}
+    {% if template.name == 'cart' %}
+      {% render 'gtm-datalayer', action_step: 'view-cart' %}
+    {% elsif template.name == 'product' %}
+      {% render 'gtm-datalayer', action_step: 'view-item' %}
+    {% endif %}
+    {%- comment -%} 
+      END GTM 
+    {%- endcomment -%}
+
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
@@ -160,5 +178,13 @@
     {%- endif -%}
 
     {{ 'main.js'  | asset_url | script_tag }}
+
+    {% unless template.name == "cart" %}
+      {% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
+      {% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
+      <div data-vue-root="CartInline">
+        <cart-inline :settings='{{- cart_settings -}}' :empty-cart-settings='{{- empty_cart_settings -}}' />
+      </div>
+    {% endunless %}
   </body>
 </html>

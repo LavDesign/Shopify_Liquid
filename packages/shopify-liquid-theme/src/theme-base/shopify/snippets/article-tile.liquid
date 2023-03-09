@@ -36,7 +36,7 @@
     {% if article.tags.size > 0 and show_tags %}
       <div class="capitalize mb-2">
         {% for tag in article.tags %}
-          {% render 'badge' style: 'primary', label: tag.title %}
+          {% render 'badge' style: 'primary', label: tag.title, class: 'mb-1' %}
         {% endfor %}
       </div>
     {% endif %}

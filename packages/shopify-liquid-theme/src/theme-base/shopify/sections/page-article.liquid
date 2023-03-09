@@ -29,41 +29,54 @@
 {%- comment -%}
   Related Articles
 {%- endcomment -%}
-<div class="container py-10 md:py-20">
+{% liquid
+ assign related_articles_found = 0
+ for tag in article.tags
+   assign skip_articles = article.handle | split: '.....'
+   for related_article in blog.articles
+     if related_article.tags contains tag
+       unless skip_articles contains related_article.handle
+         assign related_articles_found = related_articles_found | plus: 1
+       endunless
+     endif
+   endfor
+ endfor
+%}
 
-  {% if section.settings.related_articles_title != blank %}
-    <h3 class="h3 flex items-center justify-center pb-5 md:pb-10">
-      {{ section.settings.related_articles_title }}
-    </h3>
-  {% endif %}
+{% if related_articles_found > 0 %}
+  <div class="container py-10 md:py-20">
+    {% if section.settings.related_articles_title != blank %}
+      <h3 class="h3 flex items-center justify-center pb-5 md:pb-10">
+        {{ section.settings.related_articles_title }}
+      </h3>
+    {% endif %}
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
-    {% assign counter = 0 %}
-    {% for tag in article.tags %}
-      {% assign skip_articles = article.handle | split: '.....' %}
-    
-      {% for related_article in blog.articles %}
-        {% if related_article.tags contains tag and counter < 3 %}
-          {% unless skip_articles contains related_article.handle %}
-            {% assign counter = counter | plus: 1 %}
-            {% assign temp = related_article.handle | split: '.....' %}
-            {% assign skip_articles = skip_articles | concat: temp %}
-    
-            {% render 'article-tile' 
-              article: related_article,
-              aspect_ratio: section.settings.aspect_ratio,
-              show_tags: section.settings.show_tags,
-              show_date: section.settings.show_date,
-              show_excerpt: section.settings.show_excerpt
-            %}
-          {% endunless %}
-        {% else %}
-          {% break %}
-        {% endif %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
+      {% assign counter = 0 %}
+      {% for tag in article.tags %}
+        {% assign skip_articles = article.handle | split: '.....' %}
+      
+        {% for related_article in blog.articles %}
+          {% if related_article.tags contains tag and counter < 3 %}
+            {% unless skip_articles contains related_article.handle %}
+              {% assign counter = counter | plus: 1 %}
+              {% assign temp = related_article.handle | split: '.....' %}
+              {% assign skip_articles = skip_articles | concat: temp %}
+      
+              {% render 'article-tile' 
+                article: related_article,
+                aspect_ratio: section.settings.aspect_ratio,
+                show_tags: section.settings.show_tags,
+                show_date: section.settings.show_date,
+                show_excerpt: section.settings.show_excerpt
+              %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
       {% endfor %}
-    {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}
 
 {% render 'structured-data-article', article: article %}
 

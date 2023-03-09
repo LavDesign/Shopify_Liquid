@@ -16,7 +16,7 @@
           Menu
         {%- endcomment -%}
         {% when 'menu' %}
-          <ul class="footer__menu flex justify-around items-start pt-0 pb-8 md:py-20" role="list" tabindex="-1">
+          <ul class="footer__col footer__menu flex justify-around items-start pt-0 pb-8 md:py-20" role="list" tabindex="-1">
 
             {%- comment -%}
               desktop menu
@@ -74,7 +74,7 @@
           Form, social icons
         {%- endcomment -%}
         {% when 'form' %}
-          <div class="py-8 md:py-20 md:px-20">
+          <div class="footer__col py-8 md:py-20 md:px-20">
             {% if block.settings.form_title != blank %}
               <h4 class="footer__form-title h4 mb-4.5 text-center md:text-left">{{ block.settings.form_title }}</h4>
             {% endif %}
@@ -107,7 +107,7 @@
           <ul class="flex justify-center md:justify-end" role="list" tabindex="-1">
             {%- for link in section.settings.util_menu.links -%}
               <li class="list-none">
-                <a class="text-sm" href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">{{ link.title | escape }}</a>
+                <a class="text-sm underline hover:no-underline" href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">{{ link.title | escape }}</a>
               </li>
             {%- endfor -%}
           </ul>

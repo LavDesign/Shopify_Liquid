@@ -32,8 +32,8 @@
       "clickable": true
     },
     "navigation": {
-      "nextEl": ".swiper-button-next",
-      "prevEl": ".swiper-button-prev"
+      "nextEl": ".{{ section.id }}.swiper-button-next",
+      "prevEl": ".{{ section.id }}.swiper-button-prev"
     }
   }
 {% endcapture %}
@@ -100,10 +100,10 @@
   {% endif %}
 
   {% if section.settings.show_arrows and section.blocks.size > 1 %}
-    <div class="swiper-button-prev">
+    <div class="{{ section.id }} swiper-button-prev">
       {% render 'icon', icon: "chevron-left", color: arrow_color %}
     </div>
-    <div class="swiper-button-next">
+    <div class="{{ section.id }} swiper-button-next">
       {% render 'icon', icon: "chevron-right", color: arrow_color %}
     </div>
   {% endif %}
