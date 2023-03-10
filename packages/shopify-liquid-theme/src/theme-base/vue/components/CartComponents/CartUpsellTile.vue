@@ -128,10 +128,6 @@ const displayCta = computed(() => {
 });
 const variantSelected = ref(false);
 
-// STOLEN FROM THE PRODUCT FORM
-// ToDo: Take this and the product form and make a composable from it
-// to keep parity
-// ToDo: Add these values as a prop to pull from customizer
 const swatchOptions = ["Color"];
 
 const itemsPerRow = "3";
