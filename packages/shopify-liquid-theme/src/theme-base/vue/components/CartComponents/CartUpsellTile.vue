@@ -6,9 +6,7 @@
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
         <div class="flex flex-row justify-between gap-2">
-          <a :href="product_link" class="text-lg">
-            {{ props.product.title }}
-          </a>
+          <a :href="product_link" class="text-lg" v-text="product.title" />
           <div
             class="flex-row text-lg text-right"
             :class="{
@@ -62,9 +60,8 @@
       <button
         class="ra-button ra-button--full-width ra-button--sm mt-2"
         @click="addToCart"
-      >
-        {{ buttonLabel }}
-      </button>
+        v-text="buttonLabel"
+      />
     </div>
   </div>
 </template>
