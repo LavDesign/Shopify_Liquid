@@ -7,7 +7,6 @@ import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
 import Swiper from "swiper/bundle";
 import { register } from "swiper/element/bundle";
-
 import "swiper/css/bundle";
 
 import components from "../vue/components/index.js";
@@ -51,9 +50,17 @@ const initSwipers = () => {
   swipers.forEach((swiperEle) => {
     const swiperData = swiperEle.getAttribute("data-swiper-settings");
     if (!swiperData) return;
+    new Swiper(swiperEle, JSON.parse(swiperData));
+  });
 
-    const swiperDataJSON = JSON.parse(swiperData);
-    new Swiper(swiperEle, swiperDataJSON);
+  // Shop the look - slideTo product slides
+  document.addEventListener("swiper:slideTo", function (event) {
+    if (!event.detail.swiper || !event.detail.slideTo) return;
+    const swiperEle = event.detail.swiper;
+    const slideIndex = parseInt(event.detail.slideTo);
+    const swiper = new Swiper(swiperEle);
+    swiper.translateTo(0, 500, false, false);
+    swiper.slideTo(slideIndex, 500, false);
   });
 };
 
