@@ -11,7 +11,7 @@
     <Transition name="sidecart">
       <div
         v-if="cartOpen"
-        class="w-full sm:max-w-[470px] fixed h-screen top-0 right-0 z-[999] bg-tertiary-500 flex flex-col"
+        class="w-full sm:max-w-[470px] fixed max-h-screen h-full top-0 right-0 z-[999] bg-tertiary-500 flex flex-col"
         ref="cartInline"
       >
         <div class="w-full">

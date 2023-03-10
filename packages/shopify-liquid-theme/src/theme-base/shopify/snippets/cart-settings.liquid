@@ -9,7 +9,7 @@
   assign settings_keys = settings_keys | split: ","
 %}
 
-{% if settings.upsell_product != blank %}
+{% if settings.upsell_product != blank and settings.upsell_enabled %}
   {%- capture cart_upsell_product_data -%}
     {%- render 'json-product', product: cart_upsell_product -%}
   {%- endcapture -%}

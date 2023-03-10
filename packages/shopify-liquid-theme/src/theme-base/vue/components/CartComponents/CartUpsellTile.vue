@@ -121,15 +121,13 @@ const product_link = computed(() => {
 
 const hasVariants = computed(() => props.product?.variants?.length > 0);
 
-const displayCta = computed(() =>
-  hasVariants.value && !variantSelected.value ? false : true
-);
+const displayCta = computed(() => {
+  return hasVariants.value && !variantSelected.value
+    ? optionsSelected.value.length === variantOptions.value
+    : true;
+});
 const variantSelected = ref(false);
 
-// STOLEN FROM THE PRODUCT FORM
-// ToDo: Take this and the product form and make a composable from it
-// to keep parity
-// ToDo: Add these values as a prop to pull from customizer
 const swatchOptions = ["Color"];
 
 const itemsPerRow = "3";
@@ -140,6 +138,8 @@ const optionsWithValues = reactive(props.product.options_with_values);
 const selectedOptions = reactive({});
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
+  if (!optionsSelected.value.includes(optionKey))
+    optionsSelected.value.push(optionKey);
   selectedOptions[optionKey] = selectedOption.value;
 };
 
@@ -228,6 +228,9 @@ const addToCart = async () => {
   });
   isAddingToCart.value = false;
 };
+
+const variantOptions = computed(() => props.product.options.length);
+const optionsSelected = ref([]);
 
 watch(currentVariant, (variant) => {
   variantSelected.value = true;
