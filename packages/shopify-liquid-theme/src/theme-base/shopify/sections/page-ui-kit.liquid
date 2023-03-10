@@ -1,25 +1,5 @@
 <section>
   <style>
-    .container {
-      max-width: 950px;
-      margin: 0 auto;
-    }
-    .br-grid {
-      display: grid;
-      grid-gap: 25px;
-    }
-    .grid--col-2 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .grid--col-3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .grid--col-4 {
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .grid--col-5 {
-      grid-template-columns: repeat(5, 1fr);
-    }
     .box {
       width: 80px;
       height: 40px;
@@ -102,7 +82,7 @@
     Typogrpahy
     {%- endcomment -%}
     <h4 class="text-h4 my-10">Typography</h4>
-    <div class="br-grid">
+    <div class="grid gap-6">
       <h1 class="h1">This is h1 text</h1>
       <h2 class="h2">This is h2 text</h2>
       <h3 class="h3">This is h3 text</h3>
@@ -122,7 +102,7 @@
     primary standard button
     {%- endcomment -%}
     <h5 class="text-h5 my-4">Primary</h4>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">primary - large</p>
         {%- render 'button'
@@ -169,7 +149,7 @@
     secondary standard button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">secondary - large</p>
         {%- render 'button'
@@ -216,7 +196,7 @@
     tertiary standard button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">tertiary - large</p>
         {%- render 'button'
@@ -260,7 +240,7 @@
     </div>
 
     <h5 class="text-h5 mt-10 mb-8">Misc</h5>
-    <div class="br-grid grid--col-1">
+    <div class="grid gap-6 grid--col-1">
       <div>
         {%- render 'button'
           type: 'a'
@@ -303,7 +283,7 @@
     primary split button
     {%- endcomment -%}
     <h5 class="text-h5 mt-4">Primary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">primary - large</p>
         {%- render 'split-button'
@@ -346,7 +326,7 @@
     secondary split button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">secondary - large</p>
         {%- render 'split-button'
@@ -389,7 +369,7 @@
     tertiary split button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">tertiary - large</p>
         {%- render 'split-button'
@@ -434,7 +414,7 @@
     primary icon button
     {%- endcomment -%}
     <h5 class="text-h5 mt-4">Primary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">primary - x-large</p>
         {%- render 'icon-button'
@@ -529,7 +509,7 @@
     secondary icon button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">secondary - x-large</p>
         {%- render 'icon-button'
@@ -616,7 +596,7 @@
     tertiary icon button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">tertiary - x-large</p>
         {%- render 'icon-button'
@@ -713,7 +693,7 @@
     {%- comment -%}
     form - input
     {%- endcomment -%}
-    <div class="br-grid grid--col-3">
+    <div class="grid gap-6 grid-cols-3">
       <div>
         {%- render 'input'
           type: 'text'
@@ -775,7 +755,7 @@
     {%- comment -%}
     form - quantity selectors
     {%- endcomment -%}
-    <div class="br-grid grid--col-3">
+    <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">QTY - Selector</p>
         <p class="mb-2">Primary - <code>style:'primary'</code></p>
@@ -834,7 +814,7 @@
     {%- comment -%}
     form - checkbox & toggle
     {%- endcomment -%}
-    <div class="br-grid grid--col-3">
+    <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">Checkbox</p>
         {%- render 'checkbox' id: 'checkobx_1', style: 'classic', label: 'default' -%}
@@ -879,7 +859,7 @@
       which is rendered in
       <code>src/THEME_FOLDER/shopify/layout/theme.liquid</code>.
     </p>
-    <div class="br-grid grid--col-4">
+    <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mt-10 mb-8">small <br><span class="text-xs">size: 'sm'</span>
         </p>
@@ -923,7 +903,7 @@
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Accordions</h4>
     <p class="mt-8 text-h5">no icon</p>
-    <div class="br-grid">
+    <div class="grid gap-6">
       {% render 'accordion'
         item1_title: 'Heading 1',
         item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
@@ -1023,7 +1003,7 @@
     {% assign img_src = section.settings.featured_product.featured_image.src | img_url: '300x' %}
     {% assign img_alt = section.settings.featured_product.featured_image.alt %}
     {% assign link_url = section.settings.featured_product.url %}
-    <div class="br-grid grid--col-2 mb-5">
+    <div class="grid gap-6 grid-cols-2 mb-5">
       {% render 'ra-icon-tile',
         imgSrc: img_src,
         imgAlt: img_alt,

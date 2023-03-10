@@ -10,7 +10,7 @@
         v-model="giftMessageActive"
       />
       <label
-        class="ra-choice__container set--sibling-deep-focus"
+        class="ra-choice__container set--sibling-deep-focus flex flex-row gap-[6px] flex-nowrap"
         for="gift_message"
       >
         <div class="ra-choice__checkmark set--inherit-focus">
@@ -23,7 +23,7 @@
             </svg>
           </span>
         </div>
-        <span class="ra-choice__label">Add a gift message to your order?</span>
+        <span class="ra-choice__label leading-tight" v-text="message" />
       </label>
     </div>
     <textarea
@@ -37,17 +37,13 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { useCartStore } from "../../stores/cart";
 
 const props = defineProps({
-  note: {
+  message: {
     type: String,
     default: "",
-  },
-  attributes: {
-    type: Object,
-    default: () => {},
   },
 });
 
@@ -80,5 +76,9 @@ watch(
 watch(giftMessageActive, () => {
   if (!giftMessageActive.value) cartStore.updateNote("");
   else cartStore.updateNote(tempNote.value);
+});
+
+onMounted(() => {
+  giftMessageActive.value = note.value.length > 0;
 });
 </script>

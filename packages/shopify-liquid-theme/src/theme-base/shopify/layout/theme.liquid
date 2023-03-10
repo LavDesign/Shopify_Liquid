@@ -180,5 +180,13 @@
     {% render 'modal', id: 'modal-login', title: 'Log In' %}
 
     {{ 'main.js'  | asset_url | script_tag }}
+
+    {% unless template.name == "cart" %}
+      {% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
+      {% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
+      <div data-vue-root="CartInline">
+        <cart-inline :settings='{{- cart_settings -}}' :empty-cart-settings='{{- empty_cart_settings -}}' />
+      </div>
+    {% endunless %}
   </body>
 </html>

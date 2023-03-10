@@ -1,12 +1,14 @@
 <template>
-  <div class="mb-8 text-center">
-    <div v-html="message"></div>
-  </div>
+  <div class="text-center" :class="containerClasslist" v-html="message" />
 </template>
 
 <script setup>
 const props = defineProps({
   message: {
+    type: String,
+    default: "",
+  },
+  containerClasslist: {
     type: String,
     default: "",
   },

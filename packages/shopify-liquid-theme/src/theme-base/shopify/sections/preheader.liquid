@@ -20,8 +20,8 @@
     "slidesPerView": 1,
     "spaceBetween": 0,
     "navigation": {
-      "nextEl": ".swiper-button-next",
-      "prevEl": ".swiper-button-prev"
+      "nextEl": ".{{ section.id }}.swiper-button-next",
+      "prevEl": ".{{ section.id }}.swiper-button-prev"
     }
   }
 {% endcapture %}
@@ -42,10 +42,10 @@
         </div>
 
         {% if section.blocks.size > 1 %}
-          <div class="swiper-button-prev">
+          <div class="{{ section.id }} swiper-button-prev">
             {% render 'icon', icon: "chevron-left", width: '14px', height: '14px', color: arrow_color %}
           </div>
-          <div class="swiper-button-next">
+          <div class="{{ section.id }} swiper-button-next">
             {% render 'icon', icon: "chevron-right", width: '14px', height: '14px', color: arrow_color %}
           </div>
         {% endif %}
