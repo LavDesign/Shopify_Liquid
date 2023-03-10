@@ -5,7 +5,7 @@
     assign cart_upsell_product = all_products[settings.upsell_product]
   endif
 
-  assign settings_keys = "cart_header_text,cart_message_1,cart_message_2,free_gift_enabled,free_gift_threshold,gift_message_enabled,gift_message_text,upsell_enabled"
+  assign settings_keys = "cart_header_text,cart_message_1,cart_message_1_color,cart_message_2,cart_message_2_color,free_gift_enabled,free_gift_threshold,gift_message_enabled,gift_message_text,upsell_enabled"
   assign settings_keys = settings_keys | split: ","
 %}
 
@@ -17,13 +17,13 @@
 
 {% capture cart_settings %}
   {
-    {%- for key in settings_keys -%}
-      "{{ key }}":{{- settings[key] | default: null | json -}},
-    {%- endfor -%}
-    {%- if cart_upsell_product_data -%}
-      "upsell_product":{{ cart_upsell_product_data | escape | strip }}
-    {%- endif -%}
+  {%- for key in settings_keys -%}
+    "{{ key }}":{{- settings[key] | default: null | json -}},
+  {%- endfor -%}
+  {%- if cart_upsell_product_data -%}
+    "upsell_product":{{ cart_upsell_product_data | escape | strip }}
+  {%- endif -%}
   }
 {% endcapture %}
 
-  {{cart_settings}}
+{{ cart_settings }}

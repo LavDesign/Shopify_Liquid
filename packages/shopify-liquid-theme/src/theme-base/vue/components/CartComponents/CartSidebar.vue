@@ -15,6 +15,7 @@
       <CartMessage
         v-if="props.settings.cart_message_1?.length > 0"
         :message="props.settings.cart_message_1"
+        :color="props.settings.cart_message_1_color"
         container-classlist="mb-8"
       />
       <CartSubtotal :subtotal="props.cart.total_price" />
@@ -26,6 +27,7 @@
     <CartMessage
       v-if="props.settings.cart_message_2?.length > 0"
       :message="props.settings.cart_message_2"
+      :color="props.settings.cart_message_2_color"
       container-classlist="mt-2"
     />
     <CartUpsell
