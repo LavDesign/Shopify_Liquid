@@ -24,7 +24,7 @@
             >
           </div>
         </div>
-        <div class="gap-2 flex flex-col" v-if="hasComplexVariants">
+        <div class="gap-2 flex flex-col" v-if="hasVariants">
           <template
             :key="optionKey"
             v-for="(options, optionKey) in formattedOptions"
@@ -116,10 +116,10 @@ const product_link = computed(() => {
     : `/products/${props.product.handle}`;
 });
 
-const hasVariants = computed(() => props.product?.variants?.length > 0);
+const hasVariants = computed(() => props.product?.variants?.length > 1);
 
 const displayCta = computed(() => {
-  return hasVariants.value && !variantSelected.value
+  return hasVariants.value
     ? optionsSelected.value.length === variantOptions.value
     : true;
 });
@@ -150,16 +150,19 @@ const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
   // check availability and return a Boolean
   const filteredAvailableVariants = variants
     .filter((variant) => {
+      const options = variant.options.filter((option) => option);
+      const currentVariantOptions = currentVariant.value.options.filter(
+        (option) => option
+      );
       return (
-        variant.options[optionKeyIndices[0]] ===
-          currentVariant.value.options[optionKeyIndices[0]] &&
-        variant.options[optionKeyIndices[1]] ===
-          currentVariant.value.options[optionKeyIndices[1]] &&
+        options[optionKeyIndices[0]] ===
+          currentVariantOptions[optionKeyIndices[0]] &&
+        options[optionKeyIndices[1]] ===
+          currentVariantOptions[optionKeyIndices[1]] &&
         variant.available
       );
     })
     .some((variant) => variant.options[currentOptionIndex] === optionValue);
-
   return filteredAvailableVariants;
 };
 // Set keyed object for all option values and disabled state
@@ -236,13 +239,5 @@ watch(currentVariant, (variant) => {
 
 onMounted(() => {
   variantSelected.value = !hasComplexVariants.value;
-  if (!hasComplexVariants.value) {
-    // Note: Insertion order should be preserved here as of ES2015 (assuming string keys),
-    // but there could be edge cases where options might not be properly ordered if using an int as a key
-    props.product?.options?.forEach((option, i) => {
-      selectedOptions[option] =
-        props.product.first_available_variant.options[i];
-    });
-  }
 });
 </script>
