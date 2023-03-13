@@ -20,6 +20,11 @@
 .ra-filter-button {
   --choice-label-margin: 0;
 
+  .ra-choice__container:hover {
+    background-color: var(--color-secondary-900);
+    color: var(--c-white)
+  }
+
   .ra-choice__input:checked ~ * {
     background-color: var(--color-primary-900);
     color: var(--c-white)
