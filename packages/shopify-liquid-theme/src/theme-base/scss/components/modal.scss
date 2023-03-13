@@ -1,3 +1,25 @@
 body.modal-open {
   overflow: hidden;
 }
+
+.auth-modal {
+  --modal-width: 34.75rem;
+  --modal-outter-padding: var(--spacing);
+
+  @media (min-width: 48rem) {
+    --modal-padding: var(--spacing-2xl) var(--spacing-2xl);
+  }
+
+  .auth-form__cta-forgot-password {
+    display: block;
+    margin-top: var(--spacing-md)
+  }
+
+  .auth-form__actions {
+    margin-top: var(--spacing-md)
+  }
+
+  .auth-form-bottom {
+    margin-top: var(--spacing-sm);
+  }
+}

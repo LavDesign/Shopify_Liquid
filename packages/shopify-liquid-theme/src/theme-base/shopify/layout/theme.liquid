@@ -177,7 +177,7 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {% render 'modal', id: 'modal-login', title: 'Log In' %}
+    {% render 'ra-login-modal' %}
 
     {{ 'main.js'  | asset_url | script_tag }}
 
