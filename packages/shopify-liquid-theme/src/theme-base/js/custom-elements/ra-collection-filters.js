@@ -65,6 +65,7 @@ export default class RaCollectionFilters extends HTMLElement {
   static removeParamFromSearch(param) {
     let searchParamString = RaCollectionFilters.getSearchParamString();
 
+
     searchParamString = searchParamString
       .replace(param + "&", "")
       .replace(param, "");
@@ -78,12 +79,14 @@ export default class RaCollectionFilters extends HTMLElement {
     const param = btn.getAttribute("data-param");
     const value = btn.getAttribute("data-value");
 
-    const paramToRemove = `${param}=${value}`;
-    const searchParamString =
-      RaCollectionFilters.removeParamFromSearch(paramToRemove);
+    const formOptionInput = document.querySelector(
+      `input[name="${param}"][value="${value}"]`
+    );
 
-    RaCollectionFilters.renderSectionFromFetch(searchParamString);
-    updateURL(searchParamString);
+    formOptionInput.checked = false;
+    const filterForm = document.getElementById("CollectionFilters");
+    const changeEvent = new Event("change");
+    filterForm.dispatchEvent(changeEvent);
   }
 
   static addActiveFilterEventListeners() {

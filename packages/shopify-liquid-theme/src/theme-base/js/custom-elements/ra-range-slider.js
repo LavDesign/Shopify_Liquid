@@ -18,6 +18,7 @@ export default class RaRangeSlider extends HTMLElement {
     noUiSlider.create(slider, {
       start: [minStart, maxStart],
       tooltips: [true, true],
+      step: 1,
       connect: true,
       range: { min, max },
     });
