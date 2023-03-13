@@ -60,7 +60,7 @@
 
         {% if button_url != blank and button_label %}
           <div class="mb-4">
-            {% render 'button' type: 'a', style: 'primary', url: button_url, label: button_label %}
+            {% render 'button' type: 'a', style: button_style, url: button_url, label: button_label %}
           </div>
         {% endif %}
       </div>
@@ -249,7 +249,7 @@
       "type": "image_picker",
       "id": "mobile_bg_image",
       "label": "Background Image (mobile)",
-      "info": "Recommended Size: 800x800"
+      "info": "Recommended Size: 700x800"
     },
     {
       "type": "text",
