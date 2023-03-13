@@ -6,9 +6,7 @@
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
         <div class="flex flex-row justify-between gap-2">
-          <a :href="product_link" class="text-lg">
-            {{ props.product.title }}
-          </a>
+          <a :href="product_link" class="text-lg" v-text="product.title" />
           <div
             class="flex-row text-lg text-right"
             :class="{
@@ -26,7 +24,7 @@
             >
           </div>
         </div>
-        <div class="gap-2 flex flex-col" v-if="hasComplexVariants">
+        <div class="gap-2 flex flex-col" v-if="hasVariants">
           <template
             :key="optionKey"
             v-for="(options, optionKey) in formattedOptions"
@@ -62,9 +60,8 @@
       <button
         class="ra-button ra-button--full-width ra-button--sm mt-2"
         @click="addToCart"
-      >
-        {{ buttonLabel }}
-      </button>
+        v-text="buttonLabel"
+      />
     </div>
   </div>
 </template>
@@ -119,17 +116,15 @@ const product_link = computed(() => {
     : `/products/${props.product.handle}`;
 });
 
-const hasVariants = computed(() => props.product?.variants?.length > 0);
+const hasVariants = computed(() => props.product?.variants?.length > 1);
 
-const displayCta = computed(() =>
-  hasVariants.value && !variantSelected.value ? false : true
-);
+const displayCta = computed(() => {
+  return hasVariants.value
+    ? optionsSelected.value.length === variantOptions.value
+    : true;
+});
 const variantSelected = ref(false);
 
-// STOLEN FROM THE PRODUCT FORM
-// ToDo: Take this and the product form and make a composable from it
-// to keep parity
-// ToDo: Add these values as a prop to pull from customizer
 const swatchOptions = ["Color"];
 
 const itemsPerRow = "3";
@@ -140,6 +135,8 @@ const optionsWithValues = reactive(props.product.options_with_values);
 const selectedOptions = reactive({});
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
+  if (!optionsSelected.value.includes(optionKey))
+    optionsSelected.value.push(optionKey);
   selectedOptions[optionKey] = selectedOption.value;
 };
 
@@ -153,16 +150,19 @@ const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
   // check availability and return a Boolean
   const filteredAvailableVariants = variants
     .filter((variant) => {
+      const options = variant.options.filter((option) => option);
+      const currentVariantOptions = currentVariant.value.options.filter(
+        (option) => option
+      );
       return (
-        variant.options[optionKeyIndices[0]] ===
-          currentVariant.value.options[optionKeyIndices[0]] &&
-        variant.options[optionKeyIndices[1]] ===
-          currentVariant.value.options[optionKeyIndices[1]] &&
+        options[optionKeyIndices[0]] ===
+          currentVariantOptions[optionKeyIndices[0]] &&
+        options[optionKeyIndices[1]] ===
+          currentVariantOptions[optionKeyIndices[1]] &&
         variant.available
       );
     })
     .some((variant) => variant.options[currentOptionIndex] === optionValue);
-
   return filteredAvailableVariants;
 };
 // Set keyed object for all option values and disabled state
@@ -229,6 +229,9 @@ const addToCart = async () => {
   isAddingToCart.value = false;
 };
 
+const variantOptions = computed(() => props.product.options.length);
+const optionsSelected = ref([]);
+
 watch(currentVariant, (variant) => {
   variantSelected.value = true;
   productStore.setCurrentVariant(variant);
@@ -236,13 +239,5 @@ watch(currentVariant, (variant) => {
 
 onMounted(() => {
   variantSelected.value = !hasComplexVariants.value;
-  if (!hasComplexVariants.value) {
-    // Note: Insertion order should be preserved here as of ES2015 (assuming string keys),
-    // but there could be edge cases where options might not be properly ordered if using an int as a key
-    props.product?.options?.forEach((option, i) => {
-      selectedOptions[option] =
-        props.product.first_available_variant.options[i];
-    });
-  }
 });
 </script>

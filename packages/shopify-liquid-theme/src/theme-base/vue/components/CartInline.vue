@@ -11,7 +11,7 @@
     <Transition name="sidecart">
       <div
         v-if="cartOpen"
-        class="w-full sm:max-w-[470px] fixed h-screen top-0 right-0 z-[999] bg-tertiary-500 flex flex-col"
+        class="w-full sm:max-w-[470px] fixed max-h-screen h-full top-0 right-0 z-[999] bg-tertiary-500 flex flex-col"
         ref="cartInline"
       >
         <div class="w-full">
@@ -25,8 +25,8 @@
           </div>
           <div class="px-6 pt-4 pb-2 bg-white">
             <CartProgressBar
-              v-if="props.settings.free_gift_enabled"
-              :threshold="props.settings.free_gift_threshold"
+              v-if="settings.free_gift_enabled"
+              :threshold="settings.free_gift_threshold"
               :subtotal="cart.total_price"
             />
           </div>
@@ -40,19 +40,18 @@
               <CartProducts :cart="cart" />
             </div>
             <CartGiftMessage
-              v-if="props.settings.gift_message_enabled"
-              :message="props.settings.gift_message_text"
+              v-if="settings.gift_message_enabled"
+              :message="settings.gift_message_text"
             />
             <CartMessage
-              v-if="props.settings.cart_message_1?.length > 0"
-              :message="props.settings.cart_message_1"
+              v-if="settings.cart_message_1?.length > 0"
+              :message="settings.cart_message_1"
+              :color="settings.cart_message_1_color"
             />
             <div class="pt-3 md:pt-8">
               <CartUpsell
-                v-if="
-                  props.settings.upsell_enabled && props.settings.upsell_product
-                "
-                :product="props.settings.upsell_product"
+                v-if="settings.upsell_enabled && settings.upsell_product"
+                :product="settings.upsell_product"
               />
             </div>
           </template>
@@ -66,8 +65,9 @@
           <CartSubtotal :subtotal="cart.total_price" />
           <CartCheckoutButton :checkout-ready="cartHasItems" />
           <CartMessage
-            v-if="props.settings.cart_message_2?.length > 0"
-            :message="props.settings.cart_message_2"
+            v-if="settings.cart_message_2?.length > 0"
+            :message="settings.cart_message_2"
+            :color="settings.cart_message_2_color"
           />
         </div>
       </div>

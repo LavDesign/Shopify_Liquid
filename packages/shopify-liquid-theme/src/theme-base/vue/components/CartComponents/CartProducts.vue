@@ -1,8 +1,5 @@
 <template>
-  <template
-    v-for="(product, i) in props.cart.items"
-    :key="product.handle + '-' + i"
-  >
+  <template v-for="(product, i) in cart.items" :key="product.handle + '-' + i">
     <CartProductTile :product="product" />
   </template>
 </template>

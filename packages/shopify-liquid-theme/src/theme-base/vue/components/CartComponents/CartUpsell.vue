@@ -3,7 +3,7 @@
     <h5 class="text-center text-transform--uppercase mb-2">
       You may also like
     </h5>
-    <CartUpsellTile :product="props.product" />
+    <CartUpsellTile :product="product" />
   </div>
 </template>
 
