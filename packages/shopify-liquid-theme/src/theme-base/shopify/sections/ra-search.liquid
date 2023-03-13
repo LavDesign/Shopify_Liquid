@@ -22,7 +22,7 @@
       </div>
       <div class="search__main w-full lg:w-3/4">
         <div class="search__header mb-10 flex justify-between flex-col lg:flex-row items-center">
-          <div class="h6 text-center lg:text-left">
+          <div class="h6 text-center lg:text-left" data-results-count>
             {%- if search.results_count -%}
               {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
             {%- elsif search.products_count == search.all_products_count -%}
@@ -51,6 +51,11 @@
           </div>
         </div>
         <div id="ProductGrid" class="search__product-grid" data-product-grid>
+          {%- if search.results_count == 0 and search.filters == empty -%}
+            <div class="flex">
+              <p class="h6">{{ 'templates.search.no_results' | t: terms: search.terms }}</p>
+            </div>
+          {%- else -%}
           {%- paginate search.results by paginate_count -%}
             <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
               {%- for item in search.results -%}
@@ -68,6 +73,7 @@
               {% render "pagination", paginate: paginate, anchor: '#searchMain', hasArrows: true %}
             </div>
           {%- endpaginate -%}
+        {% endif %}
         </div>
       </div>
     </div>

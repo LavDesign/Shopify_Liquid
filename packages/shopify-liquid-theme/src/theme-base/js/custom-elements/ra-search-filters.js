@@ -27,6 +27,8 @@ export default class RaSearchFilters extends HTMLElement {
           responseDOM.querySelector("[data-search-filters]").innerHTML;
         document.querySelector("[data-active-filters]").innerHTML =
           responseDOM.querySelector("[data-active-filters]").innerHTML;
+        document.querySelector("[data-results-count]").innerHTML =
+          responseDOM.querySelector("[data-results-count]").innerHTML;
       })
       .then(() => {
         RaSearchFilters.addActiveFilterEventListeners();
