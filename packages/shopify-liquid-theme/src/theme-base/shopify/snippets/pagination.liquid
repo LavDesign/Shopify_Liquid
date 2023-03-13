@@ -1,15 +1,16 @@
 {% comment %}
   Renders a set of links for paginated results. Must be used within paginate tags.
 
-  Accepts:
-  - paginate:   {Object}
-  - hasArrows:  {Boolean} (optional) show arrows or not (default: true)
-  - anchor:     {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+  Props:
+    paginate:   Object
+    hasArrows:  Boolean (optional) show arrows or not (default: true)
+    anchor:     String (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
+  
+  Example:
+    {% paginate results by 2 %}
+      {% render 'pagination', paginate: paginate, anchor: '#yourID', hasArrows: true %}
+    {% endpaginate %}
 
-  Usage:
-  {% paginate results by 2 %}
-    {% render 'pagination', paginate: paginate, anchor: '#yourID', hasArrows: true %}
-  {% endpaginate %}
 {% endcomment %}
 
 
