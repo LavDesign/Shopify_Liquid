@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-search",
+      "type": "ra-search",
       "settings": {
         "columns_desktop": 4,
         "image_ratio": "adapt",
@@ -18,7 +18,5 @@
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }
