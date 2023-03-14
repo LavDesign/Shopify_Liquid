@@ -78,19 +78,9 @@
         {% render 'ra-header-actions' %}
       </div>
     </div>
-    <ra-search-bar class="header__search w-full justify-center hidden grid-cols-5">
-      <div class="search__inner max-w-[700px] w-full flex items-center col-start-2 col-end-5 mx-auto">
-        <form action="{{ routes.search_url }}" method="get" role="search" class="search w-full bg-white">
-          {% render "input" type: "search", size: "lg", name: "search", placeholder: "Search...", name: "q" %}
-        </form>
-      </div>
-      <div class="col-end-6 flex justify-end">
-        <button data-action-close-search>
-          {% render "icon" with "close", width: "20px", height: "20px", color: "white" %}
-        </button>
-      </div>
-    </ra-search-bar>
+    {% render "ra-search-bar" %}
   </div>
+  <div id="SearchResponse" class="search__response col-start-1 col-span-5"></div>
 </ra-header>
 
 {% schema %}
