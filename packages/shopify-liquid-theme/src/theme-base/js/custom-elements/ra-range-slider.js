@@ -3,12 +3,14 @@ import "nouislider/dist/nouislider.css";
 export default class RaRangeSlider extends HTMLElement {
   constructor() {
     super();
+    this.minInput = this.querySelector("[name='filter.v.price.gte']");
+    this.maxInput = this.querySelector("[name='filter.v.price.lte']");
   }
 
   connectedCallback() {
     const slider = this.querySelector(".ra-slider");
     const min = parseInt(this.getAttribute("data-min"));
-    const max = parseInt(this.getAttribute("data-max"));
+    const max = parseInt(this.getAttribute("data-max")) + 1;
     const minStart = parseInt(this.getAttribute("data-min-start"));
     const maxStart = parseInt(this.getAttribute("data-max-start"));
 
@@ -26,10 +28,7 @@ export default class RaRangeSlider extends HTMLElement {
     slider.noUiSlider.on("change", (values) => {
       minInput.value = parseInt(values[0]);
       maxInput.value = parseInt(values[1]);
-
-      document
-        .getElementById("CollectionFilters")
-        .dispatchEvent(new Event("change"));
+      this.maxInput.form.dispatchEvent(new Event("change"));
     });
   }
 }
