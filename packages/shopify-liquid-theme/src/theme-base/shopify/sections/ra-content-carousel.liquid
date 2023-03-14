@@ -93,7 +93,7 @@
       "enabled": true,
       "sticky": {% if section.settings.scroll_interaction == 'snap' %}true{% else %}false{% endif %}
     },
-    "snapOnRelease": true
+    "snapOnRelease": {% if section.settings.scroll_interaction == 'snap' %}false{% else %}true{% endif %}
   }
 {% endcapture %}
 
