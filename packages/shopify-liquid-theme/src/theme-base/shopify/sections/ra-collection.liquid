@@ -1,5 +1,13 @@
 {% liquid
   assign paginate_count = 12
+  assign disruptor_metafields = collection.metafields.custom.disruptors.value
+  assign disruptor_indexes = ""
+  for disruptor in disruptor_metafields
+    if disruptor.enabled
+      assign disruptor_indexes = disruptor_indexes | append: disruptor["position"] | append: ","
+    endif
+  endfor
+  assign disruptor_index = disruptor_indexes | split: ","
 %}
 
 <div id="ra-collection-section" class="ra-collection" data-section-id="{{ section.id }}">
@@ -38,8 +46,17 @@
         </div>
         <div id="ProductGrid" class="collection__product-grid" data-product-grid>
           {%- paginate collection.products by paginate_count -%}
+            {% assign paginate_offset = paginate.current_page | minus: 1 | times: paginate_count %}
             <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
               {%- for product in collection.products -%}
+                {% assign disruptor_index = forloop.index | plus: paginate_offset %}
+                {% if disruptor_indexes contains disruptor_index %}
+                  {% for disruptor in disruptor_metafields %}
+                    {% if disruptor["position"] == disruptor_index and disruptor["enabled"] %}
+                      {% render "disruptor-tile", disruptor: disruptor %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
                 {% render "ra-product-tile", product: product %}
               {%- endfor -%}
             </div>
