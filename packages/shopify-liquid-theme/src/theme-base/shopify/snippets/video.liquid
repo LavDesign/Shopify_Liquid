@@ -11,6 +11,7 @@ Props:
   loop:       Boolean - (Default: true) Allow automatically restarting a video after it ends
   width:      Int - (Optional) video width
   lazyload:   Boolean - (Default: false) Determines whether videos loaded within iframes are loaded lazily
+  class:      String - (Optional) Classes to add to element tag
 
 Usage:
 
@@ -93,7 +94,7 @@ Usage:
       &loop={%- if loop -%}1{%- else -%}0{%- endif -%}
     {%- endcapture -%}
 
-    <iframe src="https://www.youtube.com/embed/{{ video_url.id }}?enablejsapi=1{{- video_params -}}" allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+    <iframe src="https://www.youtube.com/embed/{{ video_url.id }}?enablejsapi=1{{- video_params -}}" class="{{ class }}" allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
   {%- elsif video_url.type == 'vimeo' -%}
     {%- capture video_params -%}
       &autoplay={{- autoplay -}}
@@ -102,7 +103,7 @@ Usage:
       &muted={{- muted -}}
     {%- endcapture -%}
 
-    <iframe src="https://player.vimeo.com/video/{{ video_url.id }}{{- video_params -}}" allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
+    <iframe src="https://player.vimeo.com/video/{{ video_url.id }}{{- video_params -}}" class="{{ class }}" allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media" allowfullscreen title="{{ section.settings.description | escape }}"></iframe>
   {%- endif -%}
 
 {%- elsif media -%}
@@ -146,8 +147,16 @@ Usage:
       {% assign height = width | divided_by: media.aspect_ratio %}
     {% endif %}
 
-    {{- media | external_video_url: autoplay: autoplay, loop: loop, mute: muted, controls: controls, playlist: media.external_id | external_video_tag: width: width, height: height -}}
+    {{- media | external_video_url: autoplay: autoplay, loop: loop, mute: muted, controls: controls, playlist: media.external_id | external_video_tag: width: width, height: height, class: class -}}
   {%- elsif media.media_type == 'video' -%}
-    {{- media | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url -}}
+    {{- media | video_tag:
+      image_size: width,
+      autoplay: autoplay,
+      loop: loop,
+      muted: muted,
+      controls: controls,
+      poster: poster_url,
+      class: class
+    -}}
   {%- endif -%}
 {%- endif -%}

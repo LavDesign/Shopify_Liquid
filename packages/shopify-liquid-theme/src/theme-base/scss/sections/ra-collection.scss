@@ -2,8 +2,29 @@
   --grid-columns: 2;
   --grid-columns-md: 3;
   --grid-columns-lg: 3;
-
   --grid-gap: 36px;
-
   --product-tile-font-size: 18px;
+  --accordion-border-color: var(--color-grey-400);
+}
+
+/* Collection Sidebar */
+
+.collection__sidebar {
+  // top: var(--content-position-top);
+}
+
+/* Collection Filters - Button Filter */
+
+.ra-filter-button {
+  --choice-label-margin: 0;
+
+  .ra-choice__container:hover {
+    background-color: var(--color-secondary-900);
+    color: var(--c-white)
+  }
+
+  .ra-choice__input:checked ~ * {
+    background-color: var(--color-primary-900);
+    color: var(--c-white)
+  }
 }

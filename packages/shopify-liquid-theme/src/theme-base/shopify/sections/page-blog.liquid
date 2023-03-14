@@ -61,7 +61,7 @@
     {%- endcomment -%}
     {%- if paginate.pages > 1 -%}
       <div class="flex items-center justify-center mt-10 md:mt-15">
-        {%- render 'pagination', paginate: paginate -%}
+        {%- render 'pagination', paginate: paginate, has_arrow: true -%}
       </div>
     {%- endif -%}
   </div>

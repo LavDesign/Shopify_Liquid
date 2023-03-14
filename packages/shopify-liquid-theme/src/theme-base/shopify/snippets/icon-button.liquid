@@ -10,6 +10,7 @@
     size:       string [xs, sm, md, lg] sizes - (optional)
     id:         string add id attribute used for JS - (optional)
     class:      string add custom CSS class - (optional)
+    data:       string add custom data attributes to the button
     rounded:    boolean - (optional)
     disabled:   boolean - (optional)
 
@@ -32,6 +33,7 @@
   {% if type == 'button' %} aria-label="{{ label }}"{% endif %}
   {% if disabled == true %} disabled{% endif %}
   {% if value != blank %}value="{{ value }}"{% endif %}
+  {{ data }}
 {%- endcapture -%}
 
 {% if type != blank and style != blank and label != blank %}

@@ -24,7 +24,7 @@
 import { computed, onMounted, toRefs, useSlots } from "vue";
 import { useProductPageStore } from "../stores/productPage";
 import ProductForm from "./ProductForm.vue";
-import { refreshReviewWidgets } from "../../js/utils";
+import { refreshReviewWidgets } from "../../js/utils/vendors";
 
 const productStore = useProductPageStore();
 const { currentVariant } = toRefs(productStore);

@@ -5,7 +5,11 @@
         <img v-bind="product_image" class="w-full aspect-square object-cover" />
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
-        <a :href="product.url" class="text-base" v-text="product.title" />
+        <a
+          :href="product.url"
+          class="text-base"
+          v-text="product.product_title"
+        />
         <div>
           <div
             v-for="(option, i) in product.options_with_values"

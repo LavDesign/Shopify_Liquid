@@ -12,19 +12,31 @@
         <div class="md:w-1/2 md:pl-20">
           <div class="sticky top-12">
             {% render 'ra-product-main', product_data: product_data %}
+            <div class="product-main__special-messaging">
+              {% assign special_messaging_blocks = section.blocks | where: "type", "special_messaging" -%}
+              {%- for block in special_messaging_blocks -%}
+                <div class="flex justify-center gap-1 items-center my-4">
+                  {% if block.settings.enable_icon %}
+                    <div>{% render 'icon' with block.settings.icon %}</div>
+                  {% endif %}
+                  <div>{{ block.settings.content }}</div>
+                </div>
+              {%- endfor -%}
+            </div>
+            <div class="product__accordion">
+              {% assign accordion_blocks = section.blocks | where: "type", "accordion_item" -%}
+              <ra-accordion class="ra-accordion" data-multi-open="false">
+                {%- for block in accordion_blocks -%}
+                  {% render 'accordion-item', title: block.settings.title, content: block.settings.content, show_icon: true %}
+                {%- endfor -%}
+              </ra-accordion>
+            </div>
             <div class="product__blocks">
               {%- for block in section.blocks -%}
                 {%- case block.type -%}
                   {%- when '@app' -%}
                     {% render block %}
-                  {%- when 'accordion_item' -%}
-                    {% render 'accordion-item', title: block.settings.title, content: block.settings.content, show_icon: true %}
-                  {%- when 'special_messaging' -%}
-                    <div class="flex justify-center gap-1 items-center my-4">
-                      <div>{% render 'icon' with block.settings.icon %}</div>
-                      <div>{{ block.settings.content }}</div>
-                    </div>
-                {%- endcase -%}
+                  {%- endcase 0%}
               {%- endfor -%}
             </div>
           </div>
@@ -71,144 +83,18 @@
             "label": "Content"
           },
           {
+            "type": "checkbox",
+            "id": "enable_icon",
+            "default": false,
+            "label": "Enable Icon"
+          },
+          {
             "type": "select",
             "id": "icon",
             "label": "Icon",
             "options": <%- uikit.icons -%>
           }
         ]
-      }
-    ],
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable_sticky_info",
-        "default": true,
-        "label": "t:sections.main-product.settings.enable_sticky_info.label"
-      },
-      {
-        "type": "header",
-        "content": "t:sections.main-product.settings.header.content",
-        "info": "t:sections.main-product.settings.header.info"
-      },
-      {
-        "type": "select",
-        "id": "media_size",
-        "options": [
-          {
-            "value": "small",
-            "label": "t:sections.main-product.settings.media_size.options__1.label"
-          }, {
-            "value": "medium",
-            "label": "t:sections.main-product.settings.media_size.options__2.label"
-          }, {
-            "value": "large",
-            "label": "t:sections.main-product.settings.media_size.options__3.label"
-          }
-        ],
-        "default": "large",
-        "label": "t:sections.main-product.settings.media_size.label",
-        "info": "t:sections.main-product.settings.media_size.info"
-      },
-      {
-        "type": "checkbox",
-        "id": "constrain_to_viewport",
-        "default": false,
-        "label": "t:sections.main-product.settings.constrain_to_viewport.label"
-      }, {
-        "type": "select",
-        "id": "media_fit",
-        "options": [
-          {
-            "value": "contain",
-            "label": "t:sections.main-product.settings.media_fit.options__1.label"
-          }, {
-            "value": "cover",
-            "label": "t:sections.main-product.settings.media_fit.options__2.label"
-          }
-        ],
-        "default": "contain",
-        "label": "t:sections.main-product.settings.media_fit.label"
-      }, {
-        "type": "select",
-        "id": "gallery_layout",
-        "options": [
-          {
-            "value": "stacked",
-            "label": "t:sections.main-product.settings.gallery_layout.options__1.label"
-          }, {
-            "value": "columns",
-            "label": "t:sections.main-product.settings.gallery_layout.options__2.label"
-          }, {
-            "value": "thumbnail",
-            "label": "t:sections.main-product.settings.gallery_layout.options__3.label"
-          }, {
-            "value": "thumbnail_slider",
-            "label": "t:sections.main-product.settings.gallery_layout.options__4.label"
-          }
-        ],
-        "default": "stacked",
-        "label": "t:sections.main-product.settings.gallery_layout.label"
-      }, {
-        "type": "select",
-        "id": "media_position",
-        "options": [
-          {
-            "value": "left",
-            "label": "t:sections.main-product.settings.media_position.options__1.label"
-          }, {
-            "value": "right",
-            "label": "t:sections.main-product.settings.media_position.options__2.label"
-          }
-        ],
-        "default": "left",
-        "label": "t:sections.main-product.settings.media_position.label",
-        "info": "t:sections.main-product.settings.media_position.info"
-      }, {
-        "type": "select",
-        "id": "image_zoom",
-        "options": [
-          {
-            "value": "lightbox",
-            "label": "t:sections.main-product.settings.image_zoom.options__1.label"
-          }, {
-            "value": "hover",
-            "label": "t:sections.main-product.settings.image_zoom.options__2.label"
-          }, {
-            "value": "none",
-            "label": "t:sections.main-product.settings.image_zoom.options__3.label"
-          }
-        ],
-        "default": "lightbox",
-        "label": "t:sections.main-product.settings.image_zoom.label",
-        "info": "t:sections.main-product.settings.image_zoom.info"
-      }, {
-        "type": "select",
-        "id": "mobile_thumbnails",
-        "options": [
-          {
-            "value": "columns",
-            "label": "t:sections.main-product.settings.mobile_thumbnails.options__1.label"
-          }, {
-            "value": "show",
-            "label": "t:sections.main-product.settings.mobile_thumbnails.options__2.label"
-          }, {
-            "value": "hide",
-            "label": "t:sections.main-product.settings.mobile_thumbnails.options__3.label"
-          }
-        ],
-        "default": "hide",
-        "label": "t:sections.main-product.settings.mobile_thumbnails.label"
-      }, {
-        "type": "checkbox",
-        "id": "hide_variants",
-        "default": false,
-        "label": "t:sections.main-product.settings.hide_variants.label"
-      }, {
-        "type": "checkbox",
-        "id": "enable_video_looping",
-        "default": false,
-        "label": "t:sections.main-product.settings.enable_video_looping.label"
       }
     ]
   }
