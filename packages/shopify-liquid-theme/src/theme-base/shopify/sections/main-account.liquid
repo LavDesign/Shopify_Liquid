@@ -14,6 +14,30 @@
   }
 {%- endstyle -%}
 
+<section class="account-page ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium">
+  <!-- Ra grid row -->
+  <div data-row-gap="-sm,-md,-lg" class="ra-row" style="--row-gap:1rem; --row-gap-md:2rem; --row-gap-lg:5%;">
+    <div data-col-size="-size,-md" class="ra-col" style="--col-size:100%; --col-size-md:25%;">
+      <!-- Account Navigation -->
+      <div class="account-navigation">
+        <div class="account-navigation__header flex justify-between">
+          <p class="account-navigation__header-title">
+            Hello, {{ customer.first_name }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div data-col-size="-size,-md" class="ra-col" style="--col-size:100%; --col-size-md:75%;">
+      <!-- Account Content -->
+      <div class="account-content">
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Old default account (delete after) -->
 <div class="customer account section-{{ section.id }}-padding">
   <div>
     <h1 class="customer__title">{{ 'customer.account.title' | t }}</h1>
