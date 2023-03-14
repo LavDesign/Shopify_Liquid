@@ -2,12 +2,15 @@
   assign paginate_count = 12
   assign disruptor_metafields = collection.metafields.custom.disruptors.value
   assign disruptor_indexes = ""
+  comment
+  we keep track of the index of each of the disruptors to determine placement
+  endcomment
   for disruptor in disruptor_metafields
     if disruptor.enabled
       assign disruptor_indexes = disruptor_indexes | append: disruptor["position"] | append: ","
     endif
   endfor
-  assign disruptor_index = disruptor_indexes | split: ","
+  assign disruptor_indexes_split = disruptor_indexes | split: ","
 %}
 
 <div id="ra-collection-section" class="ra-collection" data-section-id="{{ section.id }}">
@@ -46,16 +49,33 @@
         </div>
         <div id="ProductGrid" class="collection__product-grid" data-product-grid>
           {%- paginate collection.products by paginate_count -%}
+            {% comment %}
+              check the list of disruptor indexes to see if any exist on this page of the collection
+            {% endcomment %}
             {% assign paginate_offset = paginate.current_page | minus: 1 | times: paginate_count %}
+            {% assign max_pagination = paginate_offset | plus: paginate_count %}
+            {% assign has_disruptors = false %}
+            {% for index in disruptor_indexes_split %}
+              {% assign numeric_index = index | plus: 0 %}
+              {% if numeric_index >= paginate_offset and numeric_index < max_pagination %}
+                {% assign has_disruptors = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
             <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
               {%- for product in collection.products -%}
-                {% assign disruptor_index = forloop.index | plus: paginate_offset %}
-                {% if disruptor_indexes contains disruptor_index %}
-                  {% for disruptor in disruptor_metafields %}
-                    {% if disruptor["position"] == disruptor_index and disruptor["enabled"] %}
-                      {% render "disruptor-tile", disruptor: disruptor %}
-                    {% endif %}
-                  {% endfor %}
+                {% comment %}
+                  if any disruptors were found to exist on this page of the collection, find the appropriate disruptor and place it
+                {% endcomment %}
+                {% if has_disruptors %}
+                  {% assign disruptor_index = forloop.index | plus: paginate_offset %}
+                  {% if disruptor_indexes contains disruptor_index %}
+                    {% for disruptor in disruptor_metafields %}
+                      {% if disruptor["position"] == disruptor_index and disruptor["enabled"] %}
+                        {% render "disruptor-tile", disruptor: disruptor %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
                 {% endif %}
                 {% render "ra-product-tile", product: product %}
               {%- endfor -%}

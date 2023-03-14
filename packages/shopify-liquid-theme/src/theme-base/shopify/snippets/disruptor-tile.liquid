@@ -9,20 +9,15 @@
 
 <div class="disruptor-tile disruptor-tile--span-{{disruptor_width}}" style="color: {{disruptor.text_color}}">
   {% if disruptor.media != blank %}
-    {% assign media = disruptor.media | metafield_text %}
+    {% assign media_text = disruptor.media | metafield_text %}
+    {% assign media_tag = disruptor.media | metafield_tag %}
     <div
       class="disruptor-tile__background-container"
-      {% unless media contains "video" %}
+      {% unless media_text contains "video" %}
       style="background-image: url('{{disruptor.media | img_url: '800x'}}');"
       {% endunless %}>
-      {% if media contains "video" %}
-        <video
-          autoplay
-          muted
-          loop
-          playsinline>
-          <source src="https://{{media}}" type="video/mp4">
-        </video>
+      {% if media_text contains "video" %}
+        {% render 'video', metaobject_video: disruptor.media %}
       {% endif %}
     </div>
   {% endif %}
@@ -34,7 +29,7 @@
       <div>{{ disruptor.body_text | metafield_tag }}</div>
     {% endif %}
     {% if disruptor.cta_text and disruptor.cta_url and disruptor.cta_style %}
-      <a class="ra-button ra-button--{{disruptor.cta_style}} ra-button--md disruptor-cta" href="{{disruptor.cta_url}}">
+      <a class="ra-button ra-button--{{disruptor.cta_style}} ra-button--md disruptor-tile__cta" href="{{disruptor.cta_url}}">
         {{ disruptor.cta_text }}
       </a>
     {% endif %}
