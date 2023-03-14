@@ -70,84 +70,80 @@
       {%- comment -%}
         Link - columns
       {%- endcomment -%}
-      {% if has_sub_child %}
-        <div class="header__mobile-navigation-drawer-content">
-      {% endif %}
-
-      {% for child in child_links %}
-        <li class="header__mobile-navigation-item">
-          <a class="header__mobile-navigation-link" 
-            href="{{ child.url }}"
-            title="{{ child.title }}"
-            aria-label="{{ child.title }}">
-            {{ child.title }}
-          </a>
-
-          {% if has_sub_child %}
+      <div class="header__mobile-navigation-drawer-content">
+        {% for child in child_links %}
+          <li class="header__mobile-navigation-item">
             <a class="header__mobile-navigation-link" 
-              href="#" 
-              title="{{ child.title }}" 
-              aria-label="{{ child.title }} dropdown"
-              data-toggle-dropdown="dropdown-{{ child.title | handleize }}">
-        
-              {% if has_child or has_sub_child %}
-                {% render 'icon' icon: 'chevron-down' %}
-              {% endif %}
+              href="{{ child.url }}"
+              title="{{ child.title }}"
+              aria-label="{{ child.title }}">
+              {{ child.title }}
             </a>
-          {% endif %}
 
-          {% if has_sub_child %}
-            <ul class="header__mobile-navigation-dropdown" id="dropdown-{{ child.title | handleize }}" role="list" tabindex="-1">
-              <div class="header__mobile-navigation-dropdown-inner">
-                {% for sub_child in child.links %}
-                  <li class="header__mobile-navigation-item">
-                    <a class="header__mobile-navigation-link" 
-                      href="{{ sub_child.url }}"
-                      title="{{ sub_child.title }}"
-                      aria-label="{{ sub_child.title }}">
-                      {{ sub_child.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </div>
-            </ul>
-          {% endif %}
-        </li>
-      {% endfor %}
-
-      {%- comment -%}
-        featured contents - columns
-      {%- endcomment -%}
-      {% if has_sub_child %}
-        {% for featured in featured_contents %}
-          {% assign featured_item_handleize = featured.settings.menu_item | handleize %}
-          {% assign link_label_handleize = link.title | handleize %}
-
-          {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
-            <li class="header__mobile-navigation-featured-content">
-              <img class="header__mobile-navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
-              
-              <div class="header__mobile-navigation-featured-content-wrapper">
-                {% if featured.settings.title != blank %}
-                  <h4	class="header__mobile-navigation-featured-content-title">{{ featured.settings.title }}</h4>
+            {% if has_sub_child %}
+              <a class="header__mobile-navigation-link" 
+                href="#" 
+                title="{{ child.title }}" 
+                aria-label="{{ child.title }} dropdown"
+                data-toggle-dropdown="dropdown-{{ child.title | handleize }}">
+          
+                {% if has_child or has_sub_child %}
+                  {% render 'icon' icon: 'chevron-down' %}
                 {% endif %}
+              </a>
+            {% endif %}
 
-                {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
-                  {% render 'button' 
-                    type: 'a',
-                    class: 'header__mobile-navigation-featured-content-button'
-                    style: featured.settings.link_style,
-                    label: featured.settings.link_label,
-                    url: featured.settings.link_url,
-                  %}
-                {% endif %}
-              </div>
-            </li>
-          {% endif %}
+            {% if has_sub_child %}
+              <ul class="header__mobile-navigation-dropdown" id="dropdown-{{ child.title | handleize }}" role="list" tabindex="-1">
+                <div class="header__mobile-navigation-dropdown-inner">
+                  {% for sub_child in child.links %}
+                    <li class="header__mobile-navigation-item">
+                      <a class="header__mobile-navigation-link" 
+                        href="{{ sub_child.url }}"
+                        title="{{ sub_child.title }}"
+                        aria-label="{{ sub_child.title }}">
+                        {{ sub_child.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </div>
+              </ul>
+            {% endif %}
+          </li>
         {% endfor %}
-        </div>
-      {% endif %}
 
+        {%- comment -%}
+          featured contents - columns
+        {%- endcomment -%}
+        {% if has_sub_child %}
+          {% for featured in featured_contents %}
+            {% assign featured_item_handleize = featured.settings.menu_item | handleize %}
+            {% assign link_label_handleize = link.title | handleize %}
+
+            {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
+              <li class="header__mobile-navigation-featured-content">
+                <img class="header__mobile-navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
+                
+                <div class="header__mobile-navigation-featured-content-wrapper">
+                  {% if featured.settings.title != blank %}
+                    <h4	class="header__mobile-navigation-featured-content-title">{{ featured.settings.title }}</h4>
+                  {% endif %}
+
+                  {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
+                    {% render 'button' 
+                      type: 'a',
+                      class: 'header__mobile-navigation-featured-content-button'
+                      style: featured.settings.link_style,
+                      label: featured.settings.link_label,
+                      url: featured.settings.link_url,
+                    %}
+                  {% endif %}
+                </div>
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
     </ul>
   {% endif %}
 </li>

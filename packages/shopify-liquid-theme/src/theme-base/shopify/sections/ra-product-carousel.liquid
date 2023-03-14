@@ -26,9 +26,6 @@
       assign badge_text     = block.settings.badge_text
       assign badge_style    = block.settings.badge_style
 
-      assign hover_img      = block.settings.hover_img | img_url: '400x'
-      assign hover_img_alt  = block.settings.hover_img.alt
-
       assign show_wishlist  = block.settings.show_wishlist
       assign wishlist_style = block.settings.wishlist_style
     %}
@@ -67,8 +64,8 @@
       },
     {% endif %}
     "navigation": {
-      "nextEl": ".ra-carousel__nav-cta--next",
-      "prevEl": ".ra-carousel__nav-cta--prev"
+      "nextEl": ".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next",
+      "prevEl": ".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
     },
     "speed": 300,
     "draggable": true,
@@ -80,7 +77,7 @@
       "enabled": true,
       "sticky": {% if section.settings.scroll_interaction == 'snap' %}true{% else %}false{% endif %}
     },
-    "snapOnRelease": true
+    "snapOnRelease": {% if section.settings.scroll_interaction == 'snap' %}false{% else %}true{% endif %}
   }
 {% endcapture %}
 
