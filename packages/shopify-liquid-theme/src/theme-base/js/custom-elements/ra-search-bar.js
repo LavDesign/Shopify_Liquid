@@ -49,9 +49,21 @@ export default class RaSearchBar extends HTMLElement {
   }
 
   getSearchResponse(q) {
-    const url = `${window.Shopify.routes.root}search/suggest?q=${q}&section_id=predictive-search`;
+    const url = `${window.Shopify.routes.root}search/suggest`;
+    const params = {
+      q,
+      section_id: "predictive-search",
+      resources: {
+        type: "product",
+        limit: 4,
+        limit_scope: "each",
+        options: {
+          unavailable_products: "hide",
+        },
+      },
+    };
 
-    axios.get(url).then((res) => {
+    axios.get(url, { params }).then((res) => {
       const responseDOM = new DOMParser().parseFromString(
         res.data,
         "text/html"

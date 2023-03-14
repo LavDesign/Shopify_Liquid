@@ -5,6 +5,34 @@
       {%- if predictive_search.resources.products.size > 0 -%}
       {%- endif -%}
     {% endcomment %}
+    {% if settings.predictive_show_collections %}
+      {%- for collection in predictive_search.resources.collections -%}
+        <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none" role="option" aria-selected="false">
+          <a href="{{ collection.url }}">{{ collection.title }}</a>
+        </li>
+      {%- endfor -%}
+    {% endif %}
+    {% if settings.predictive_show_pages %}
+      {%- for page in predictive_search.resources.pages -%}
+        <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none" role="option" aria-selected="false">
+          <a href="{{ page.url }}">{{ page.title }}</a>
+        </li>
+      {%- endfor -%}
+    {% endif %}
+    {% if settings.predictive_show_articles %}
+      {%- for article in predictive_search.resources.articles -%}
+        <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none" role="option" aria-selected="false">
+          <a href="{{ article.url }}">{{ article.title }}</a>
+        </li>
+      {%- endfor -%}
+    {% endif %}
+    {% if settings.predictive_show_terms %}
+      {%- for article in predictive_search.resources.articles -%}
+        <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none" role="option" aria-selected="false">
+          <a href="{{ article.url }}">{{ article.title }}</a>
+        </li>
+      {%- endfor -%}
+    {% endif %}
     {%- if predictive_search.resources.products.size > 0 -%}
       <ul id="predictive-search-results-list" class="grid grid-cols-4 gap-11">
         {%- for product in predictive_search.resources.products -%}
