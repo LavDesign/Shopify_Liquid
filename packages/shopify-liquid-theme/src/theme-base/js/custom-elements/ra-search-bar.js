@@ -79,8 +79,6 @@ export default class RaSearchBar extends HTMLElement {
     this.searchInput.value = "";
   }
 
-  renderSearchResults() {}
-
   onInputChange(e) {
     const val = e.target.value;
     if (val === "") {
@@ -89,14 +87,4 @@ export default class RaSearchBar extends HTMLElement {
       this.getSearchResponse(val);
     }
   }
-
-  connectedCallback() {}
-
-  /* Predictive Search */
-  /*
-  - On key input, make API call to predictive search API
-  - Pass in section ID as param to get results returned in template
-  - Use DOM parser to get element? (might just be able to take the entire response)
-  - Update DOM element with response
-  */
 }
