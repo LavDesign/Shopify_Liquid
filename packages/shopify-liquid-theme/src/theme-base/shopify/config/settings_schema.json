@@ -1960,40 +1960,34 @@
     ]
   },
   {
-    "name": "t:settings_schema.search_input.name",
+    "name": "Header Search",
     "settings": [
       {
         "type": "header",
-        "content": "t:settings_schema.search_input.settings.header.content"
-      },
-      {
-        "type": "checkbox",
-        "id": "predictive_search_enabled",
-        "default": true,
-        "label": "t:settings_schema.search_input.settings.predictive_search_enabled.label"
+        "content": "Header Search"
       },
       {
         "type": "checkbox",
         "id": "predictive_show_terms",
-        "default": false,
+        "default": true,
         "label": "Show recommended search terms"
       },
       {
         "type": "checkbox",
         "id": "predictive_show_collections",
-        "default": false,
+        "default": true,
         "label": "Show collection search recommendations."
       },
       {
         "type": "checkbox",
         "id": "predictive_show_articles",
-        "default": false,
+        "default": true,
         "label": "Show article search recommendations."
       },
       {
         "type": "checkbox",
         "id": "predictive_show_pages",
-        "default": false,
+        "default": true,
         "label": "Show page search recommendations."
       },
       {
@@ -2009,14 +2003,15 @@
       {
         "type": "url",
         "id": "empty_search_cta_url",
-        "label": "Empty Search CTA URL"
+        "label": "Empty Search CTA URL",
+        "default": "/collections/all"
       },
       {
         "type": "select",
         "id": "empty_search_cta_style",
         "label": "Empty Search CTA Style",
-        "options": <%- uikit.colorsAll -%>,
-        "default": "--color-primary-900"
+        "options": <%- uikit.buttonStyles -%>,
+        "default": "primary"
       }
     ]
   },

@@ -54,7 +54,6 @@ export default class RaSearchBar extends HTMLElement {
       q,
       section_id: "predictive-search",
       resources: {
-        type: "product",
         limit: 4,
         limit_scope: "each",
         options: {
