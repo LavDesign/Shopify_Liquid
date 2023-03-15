@@ -1,0 +1,64 @@
+.disruptor-tile {
+  padding: 24px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+
+  &--span-1 {
+    grid-column: span 1 / span 1;
+  }
+  &--span-2 {
+    grid-column: span 2 / span 2;
+  }
+  &--span-3 {
+    grid-column: span 3 / span 3;
+    height: 0;
+    padding-top: 46%;
+
+    .diruptor-tile__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .disruptor-tile__background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+
+    video {
+      max-width: none;
+      max-height: none;
+      width: 100%;
+    }
+  }
+
+  .disruptor-tile__content {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 8px;
+    align-items: baseline;
+
+    .disruptor-tile__cta {
+      margin-top: 8px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    &--span-2 {
+      grid-column: span 1 / span 1;
+    }
+    &--span-3 {
+      grid-column: span 2 / span 2;
+      padding-top: 65%;
+    }
+  }
+}
