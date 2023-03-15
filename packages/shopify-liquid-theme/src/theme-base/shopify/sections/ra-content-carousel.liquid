@@ -73,8 +73,8 @@
       }
     },
     "navigation": {
-      "nextEl": ".ra-carousel__nav-cta--next",
-      "prevEl": ".ra-carousel__nav-cta--prev"
+      "nextEl": ".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next",
+      "prevEl": ".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
     },
     {% if section.settings.show_pagination %}
       "pagination": {
@@ -93,7 +93,7 @@
       "enabled": true,
       "sticky": {% if section.settings.scroll_interaction == 'snap' %}true{% else %}false{% endif %}
     },
-    "snapOnRelease": true
+    "snapOnRelease": {% if section.settings.scroll_interaction == 'snap' %}false{% else %}true{% endif %}
   }
 {% endcapture %}
 

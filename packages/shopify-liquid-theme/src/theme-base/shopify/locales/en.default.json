@@ -237,6 +237,11 @@
     }
   },
   "sections": {
+    "shop-the-look": {
+      "product-show": "Display product",
+      "product-hide": "Hide product",
+      "product-price": "Sale price"
+    },
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",

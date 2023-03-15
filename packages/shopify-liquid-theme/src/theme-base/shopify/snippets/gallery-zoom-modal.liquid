@@ -12,7 +12,7 @@ Props:
 
 {% if id != blank %}
   <dialog data-dialog-id="{{ id }}" class="{{ classes }}">
-    <div class="ra-modal__content bg-transparent">
+    <div class="ra-modal__content bg-transparent max-w-full">
       <div class="flex justify-between justify-items-center">
         {% if title != blank %}
           <h4 class="sr-only">{{ title }}</h4>
@@ -25,7 +25,7 @@ Props:
         </div>
       {% endif %}
     </div>
-    <form method="dialog" class="close-modal absolute top-0 right-0 z-2">
+    <form method="dialog" class="close-modal absolute top-0 right-0 z-10">
       {% render 'icon-button' type: 'button', value: 'close' style: 'tertiary', size: 'md', label: 'close modal', icon: 'close', rounded: false %}
     </form>
   </dialog>

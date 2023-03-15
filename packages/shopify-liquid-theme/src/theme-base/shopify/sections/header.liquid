@@ -9,74 +9,87 @@
 </style>
 
 <ra-header class="header">
-  <div class="header__wrapper container">
-
-    {%- comment -%}
-      hamburger
-    {%- endcomment -%}
-    <a id="header__hamburger" class="header__hamburger" href="#" title="toggle menu" aria-label="toggle menu">
-      {% render 'icon' icon: 'hamburger', width: '24px', height: '24px' class: 'hamburger-icon' %}
-      {% render 'icon' icon: 'close', width: '18px', height: '18px' class: 'close-icon' %}
-    </a>
-
-    {%- comment -%}
-      Logo
-    {%- endcomment -%}
-    {% if section.settings.logo != blank %}
-      <a class="header__logo" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
-        <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+  <div class="header__wrapper container flex-wrap">
+    <div class="header__inner flex w-full">
+      {%- comment -%}
+        hamburger
+      {%- endcomment -%}
+      <a id="header__hamburger" class="header__hamburger" href="#" title="toggle menu" aria-label="toggle menu">
+        {% render 'icon' icon: 'hamburger', width: '24px', height: '24px' class: 'hamburger-icon' %}
+        {% render 'icon' icon: 'close', width: '18px', height: '18px' class: 'close-icon' %}
       </a>
-    {% endif %}
-
-    {% if section.settings.menu != blank %}
-      {%- comment -%}
-        Navigation menu - desktop
-      {%- endcomment -%}
-      <nav class="header__navigation">
-        <ul class="header__navigation-list" role="list" tabindex="-1">
-          {%- for link in section.settings.menu.links -%}
-            {% render 'desktop-navigation-menu'
-              link: link,
-              featured_contents: section.blocks,
-              aspect_ratio: section.settings.aspect_ratio
-            %}
-          {%- endfor -%}
-        </ul>
-      </nav>
 
       {%- comment -%}
-        Navigation menu - mobile
+        Logo
       {%- endcomment -%}
-      <nav class="header__mobile-navigation">
-        <ul class="header__mobile-navigation-list" role="list" tabindex="-1">
-          {%- for link in section.settings.menu.links -%}
-            {% render 'mobile-navigation-menu'
-              link: link,
-              featured_contents: section.blocks
-            %}
-          {%- endfor -%}
+      {% if section.settings.logo != blank %}
+        <a class="header__logo" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
+          <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+        </a>
+      {% endif %}
 
-          <div class="header__mobile-navigation-util">
-            {% if section.settings.show_account %}
-              <li class="header__action-item">
-                <a class="header__action-link flex items-center" href="#" title="account" aria-label="account">
-                  {% render 'button' icon: section.settings.account_icon, width: '14px', height: '14px' %}
-                  <span class="ml-2 text-sm">sign-in / sign-up</span>
-                </a>
-              </li>
-            {% endif %}
-            {% render 'ra-header-util' %}
-          </div>
-        </ul>
-      </nav>
-    {% endif %}
+      {% if section.settings.menu != blank %}
+        {%- comment -%}
+          Navigation menu - desktop
+        {%- endcomment -%}
+        <nav class="header__navigation">
+          <ul class="header__navigation-list" role="list" tabindex="-1">
+            {%- for link in section.settings.menu.links -%}
+              {% render 'desktop-navigation-menu'
+                link: link,
+                featured_contents: section.blocks,
+                aspect_ratio: section.settings.aspect_ratio
+              %}
+            {%- endfor -%}
+          </ul>
+        </nav>
 
-    {%- comment -%}
-      Action (cart, account, search, wishlist)
-    {%- endcomment -%}
-    <div class="header__action">
-      {% render 'ra-header-actions' %}
+        {%- comment -%}
+          Navigation menu - mobile
+        {%- endcomment -%}
+        <nav class="header__mobile-navigation">
+          <ul class="header__mobile-navigation-list" role="list" tabindex="-1">
+            {%- for link in section.settings.menu.links -%}
+              {% render 'mobile-navigation-menu'
+                link: link,
+                featured_contents: section.blocks
+              %}
+            {%- endfor -%}
+
+            <div class="header__mobile-navigation-util">
+              {% if section.settings.show_account %}
+                <li class="header__action-item">
+                  <a class="header__action-link flex items-center" href="#" title="account" aria-label="account">
+                    {% render 'icon' icon: section.settings.account_icon, width: '14px', height: '14px' %}
+                    <span class="ml-2 text-sm">sign-in / sign-up</span>
+                  </a>
+                </li>
+              {% endif %}
+              {% render 'ra-header-util' %}
+            </div>
+          </ul>
+        </nav>
+      {% endif %}
+
+      {%- comment -%}
+        Action (cart, account, search, wishlist)
+      {%- endcomment -%}
+      <div class="header__action">
+        {% render 'ra-header-actions' %}
+      </div>
     </div>
+    <ra-search-bar class="header__search w-full justify-center hidden grid-cols-5">
+      <div class="search__inner max-w-[700px] w-full flex items-center col-start-2 col-end-5 mx-auto">
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search w-full bg-white">
+          {% render "input" type: "search", size: "lg", name: "search", placeholder: "Search...", name: "q" %}
+        </form>
+      </div>
+      <div class="col-end-6 flex justify-end">
+        <button data-action-close-search>
+          {% render "icon" with "close", width: "20px", height: "20px", color: "white" %}
+        </button>
+      </div>
+    </ra-search-bar>
   </div>
 </ra-header>
 
