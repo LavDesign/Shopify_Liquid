@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getSearchParamsFromForm, updateURL } from "../utils/search-params";
-export default class RaCollectionFilters extends HTMLElement {
+export default class RaSearchFilters extends HTMLElement {
   constructor() {
     super();
   }
@@ -9,8 +9,8 @@ export default class RaCollectionFilters extends HTMLElement {
   //* Reference Dawn's implementation for example
 
   static renderSectionFromFetch(searchParamString) {
-    const sectionId = document.getElementById("ra-collection-section").dataset
-      .sectionId;
+    const sectionId =
+      document.getElementById("ra-search-section").dataset.sectionId;
     const url = `${window.location.pathname}?section_id=${sectionId}&${searchParamString}`;
 
     axios
@@ -23,28 +23,40 @@ export default class RaCollectionFilters extends HTMLElement {
 
         document.querySelector("[data-product-grid]").innerHTML =
           responseDOM.querySelector("[data-product-grid]").innerHTML;
-        document.querySelector("[data-collection-filters]").innerHTML =
-          responseDOM.querySelector("[data-collection-filters]").innerHTML;
+        document.querySelector("[data-search-filters]").innerHTML =
+          responseDOM.querySelector("[data-search-filters]").innerHTML;
         document.querySelector("[data-active-filters]").innerHTML =
           responseDOM.querySelector("[data-active-filters]").innerHTML;
+        document.querySelector("[data-results-count]").innerHTML =
+          responseDOM.querySelector("[data-results-count]").innerHTML;
       })
       .then(() => {
-        RaCollectionFilters.addActiveFilterEventListeners();
+        RaSearchFilters.addActiveFilterEventListeners();
       });
   }
 
   static onBrowserPrev() {
     let params = new URLSearchParams(window.location.search);
-    RaCollectionFilters.renderSectionFromFetch(params);
+    RaSearchFilters.renderSectionFromFetch(params);
   }
 
   static clearFilters() {
-    RaCollectionFilters.renderSectionFromFetch("");
-    updateURL("");
+    const searchTerms = document
+      .querySelector(".ra-search")
+      .getAttribute("data-search-terms");
+    const searchParamString = new URLSearchParams({
+      q: searchTerms,
+    }).toString();
+
+    RaSearchFilters.renderSectionFromFetch(searchParamString);
+    updateURL(searchParamString);
   }
 
   static getSearchParamString() {
-    const filterForm = document.getElementById("CollectionFilters");
+    const searchTerms = document
+      .querySelector(".ra-search")
+      .getAttribute("data-search-terms");
+    const filterForm = document.getElementById("SearchFilters");
     const sortForm = document.querySelector("[name='sortBy']");
     const filterFormData = getSearchParamsFromForm(filterForm);
     const sortFormData = sortForm ? getSearchParamsFromForm(sortForm) : null;
@@ -52,18 +64,22 @@ export default class RaCollectionFilters extends HTMLElement {
 
     if (sortFormData) {
       searchParamString = [
+        new URLSearchParams({ q: searchTerms }).toString(),
         new URLSearchParams(filterFormData).toString(),
         new URLSearchParams(sortFormData).toString(),
       ].join("&");
     } else {
-      searchParamString = new URLSearchParams(filterFormData).toString();
+      searchParamString = [
+        new URLSearchParams({ q: searchTerms }),
+        new URLSearchParams(filterFormData).toString(),
+      ].join("&");
     }
 
     return searchParamString;
   }
 
   static removeParamFromSearch(param) {
-    let searchParamString = RaCollectionFilters.getSearchParamString();
+    let searchParamString = RaSearchFilters.getSearchParamString();
 
     searchParamString = searchParamString
       .replace(param + "&", "")
@@ -83,7 +99,7 @@ export default class RaCollectionFilters extends HTMLElement {
     );
 
     formOptionInput.checked = false;
-    const filterForm = document.getElementById("CollectionFilters");
+    const filterForm = document.getElementById("SearchFilters");
     const changeEvent = new Event("change");
     filterForm.dispatchEvent(changeEvent);
   }
@@ -99,19 +115,19 @@ export default class RaCollectionFilters extends HTMLElement {
   }
 
   static closeMobileFilters() {
-    const sidebar = document.querySelector("[data-collection-sidebar]");
+    const sidebar = document.querySelector("[data-search-sidebar]");
     document.body.classList.remove("overflow-hidden");
     sidebar.classList.add("hidden");
   }
 
   static toggleMobileFilters() {
-    const sidebar = document.querySelector("[data-collection-sidebar]");
+    const sidebar = document.querySelector("[data-search-sidebar]");
     document.body.classList.toggle("overflow-hidden");
     sidebar.classList.toggle("hidden");
   }
 
   connectedCallback() {
-    const filterForm = document.getElementById("CollectionFilters");
+    const filterForm = document.getElementById("SearchFilters");
     const clearAllBtn = document.querySelector("[data-clear-filters]");
     const mobileFilterToggles = document.querySelectorAll(
       "[data-action-toggle-mobile-filters]"
@@ -123,30 +139,29 @@ export default class RaCollectionFilters extends HTMLElement {
 
     mobileFilterCloseTriggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
-        RaCollectionFilters.closeMobileFilters();
+        RaSearchFilters.closeMobileFilters();
       });
     });
 
     mobileFilterToggles.forEach((trigger) => {
       trigger.addEventListener("click", () => {
-        RaCollectionFilters.toggleMobileFilters();
+        RaSearchFilters.toggleMobileFilters();
       });
     });
 
-
     clearAllBtn.addEventListener("click", () => {
-      RaCollectionFilters.clearFilters();
+      RaSearchFilters.clearFilters();
     });
 
     filterForm.addEventListener("change", () => {
-      const searchParamString = RaCollectionFilters.getSearchParamString();
-      RaCollectionFilters.renderSectionFromFetch(searchParamString);
+      const searchParamString = RaSearchFilters.getSearchParamString();
+      RaSearchFilters.renderSectionFromFetch(searchParamString);
       updateURL(searchParamString);
     });
 
-    RaCollectionFilters.addActiveFilterEventListeners();
+    RaSearchFilters.addActiveFilterEventListeners();
 
     /* Ensure that navigating through the browser "Back" button properly applies filters */
-    window.addEventListener("popstate", RaCollectionFilters.onBrowserPrev);
+    window.addEventListener("popstate", RaSearchFilters.onBrowserPrev);
   }
 }

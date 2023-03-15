@@ -2082,7 +2082,7 @@
     ]
   },
   {
-    "name": "t:settings_schema.cart.name",
+    "name": "Cart",
     "settings": [
       {
         "type": "text",
@@ -2096,9 +2096,21 @@
         "id": "cart_message_1"
       },
       {
+        "type": "color",
+        "label": "Cart Message (Pre-CTA) Color",
+        "id": "cart_message_1_color",
+        "default": "#000000"
+      },
+      {
         "type": "richtext",
         "label": "Cart Message (Post-CTA)",
         "id": "cart_message_2"
+      },
+      {
+        "type": "color",
+        "label": "Cart Message (Post-CTA) Color",
+        "id": "cart_message_2_color",
+        "default": "#000000"
       },
       {
         "type": "checkbox",

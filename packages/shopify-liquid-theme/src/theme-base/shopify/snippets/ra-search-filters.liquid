@@ -7,13 +7,13 @@ Make a list of filters to display as buttons based on filter.label
   assign button_filters = button_filters_string | split: ","
 %}
 
-<ra-collection-filters>
+<ra-search-filters>
   <div class="flex justify-between mb-2">
     <div class="h5 text-grey-700">Filters</div>
     <button class="ra-link ra-link--sm" data-clear-filters>Clear All</button>
   </div>
-  <div id="CollectionActiveFilters" class="ra-filters__active-filters flex flex-wrap gap-2 py-3 border-t border-grey-400" data-active-filters>
-    {% for filter in collection.filters %}
+  <div id="SearchActiveFilters" class="ra-filters__active-filters flex flex-wrap gap-2 py-3 border-t border-grey-400" data-active-filters>
+    {% for filter in search.filters %}
       {% for filter_value in filter.active_values %}
         <div class="inline-flex gap-[6px] items-center py-2 px-2 bg-grey-100 font-light">
           <span>{{ filter_value.label }}</span>
@@ -24,9 +24,9 @@ Make a list of filters to display as buttons based on filter.label
       {% endfor %}
     {% endfor %}
   </div>
-  <form id="CollectionFilters" data-collection-filters>
+  <form id="SearchFilters" data-search-filters>
     <ra-accordion class="ra-accordion" data-multi-open="true">
-      {%- for filter in collection.filters -%}
+      {%- for filter in search.filters -%}
         {% assign display_as_buttons = false %}
         {% assign filter_label = filter.label | downcase | strip %}
 
@@ -42,4 +42,4 @@ Make a list of filters to display as buttons based on filter.label
       {%- endfor -%}
     </ra-accordion>
   </form>
-</ra-collection-filters>
+</ra-search-filters>
