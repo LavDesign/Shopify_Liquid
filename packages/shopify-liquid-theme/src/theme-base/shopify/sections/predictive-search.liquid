@@ -75,9 +75,5 @@
         </div>
       {% endif %}
     </div>
-    {% comment %} <div class="search-results__actions flex justify-center">
-      {% assign search_url = routes.search_url | append: "?q=" | append: predictive_search.terms %}
-      {% render "button", label: "See All Results", style: "primary", type: "a", url: search_url %}
-    </div> {% endcomment %}
   </div>
 {%- endif -%}
