@@ -15,7 +15,7 @@
   "scripts": {
     "test": "echo $npm_package_config_store_url",
     "start": "run-p -s webpack:watch serve",
-    "serve": "shopify3 theme dev --store $npm_package_config_store_url --path ./dist",
+    "serve": "shopify3 theme dev --store $npm_package_config_store_url --path ./dist --ignore templates/*.json config/settings_data.json",
     "deploy": "run-s webpack:build && shopify3 theme push --store $npm_package_config_store_url --path ./dist --nodelete",
     "deploy:prod": "run-s webpack:build && shopify3 theme push --store $npm_package_config_store_url --theme $npm_package_config_prod-theme-id --path ./dist --nodelete",
     "deploy:new": "run-s webpack:build && shopify3 theme push --store $npm_package_config_store_url --path ./dist --nodelete --unpublished",
