@@ -1,7 +1,9 @@
 <ra-search-bar class="header__search w-full justify-center hidden grid-cols-5">
   <div class="search__inner max-w-[700px] w-full flex items-center col-start-2 col-end-5 mx-auto">
     <form id="SearchBar" action="{{ routes.search_url }}" method="get" role="search" class="search w-full bg-white relative" data-search-form>
-      {% render "input" type: "text", size: "lg", name: "search", placeholder: "Search...", name: "q" %}
+      <input type="hidden" name="type" value="product">
+      {% render "input", type: "hidden", name: "type",value: "product" %}
+      {% render "input", type: "text", name: "q", size: "lg", placeholder: "Search..." %}
       <button type="submit" class="absolute right-[13px] top-[13px]">
         {% render "icon" with "search", width: "20px", height: "20px", color: "black" %}
       </button>

@@ -11,6 +11,7 @@
     placeholder: string placeholder text - (optional)
     required:    boolean - (optional)
     disabled:    boolean - (optional)
+    value:       string - (optional) default value for hidden inputs
 
   Example input:
     {%- render 'input' type: 'text', size: 'md', placeholder: 'enter name' -%}
@@ -41,6 +42,9 @@
   {% capture attributes %}
     {% if name != blank %}
       name="{{ name | handelize }}"
+    {% endif %}
+    {% if value != blank %}
+        value="{{ value }}"
     {% endif %}
     {% if input_id != blank %}
       id="{{ input_id }}"
