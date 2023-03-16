@@ -7,44 +7,83 @@
 
 {% endcomment %}
 
-<ra-media-gallery class="ra-gallery product-media-gallery">
+{% liquid
+  assign slides_length = product.media.size
+
+  # Thumbnail Carousel
+  assign thumbnails_per_view = 6
+  assign thumbnails_gap = 8
+  assign show_thumbnail_navigation = false
+
+  if slides_length > thumbnails_per_view
+    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
+    assign show_thumbnail_navigation = true
+  else
+    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: slides_length
+  endif
+
+  # Primary Carousel
+  assign enable_primary_carousel = false
+  assign first_media = product.media[0]
+
+  if slides_length > 1
+    assign enable_primary_carousel = true
+  endif
+
+
+%}
+
+<ra-media-gallery class="ra-gallery product-media-gallery" style="--vertical-carousel-height: {{ thumbnail_carousel_height | append: "px" }}">
   <div class="ra-gallery-carousel ra-gallery-carousel--has-thumbnails">
-    <div class="ra-carousel-outer ra-gallery-carousel__thumbnails display--small-up flex justify-center">
-      <swiper-container
-        class="product-media-gallery__thumbnails w-20 h-full -top-6 hidden md:block"
-        navigation-prev-el=".swiper-thumbs-prev"
-        navigation-next-el=".swiper-thumbs-next"
-        slides-per-view="auto"
-        direction="vertical"
-        space-between="8"
-        navigation="true"
-      >
-      <div slot="container-start" class="flex justify-center">
-        {% render 'icon' with 'chevron-up', class: 'swiper-thumbs-prev' %}
-      </div>
-      <div slot="container-end" class="flex justify-center">
-        {% render 'icon' with 'chevron-down', class: 'swiper-thumbs-next' %}
-      </div>
-        {%- if product.selected_or_first_available_variant.featured_media != null -%}
-          <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
-            {{ product.selected_or_first_available_variant.featured_media.preview_image
-              | image_url:
-                width: 80,
-                height: 100,
-                crop: 'center'
-              | image_tag:
-                width: 80,
-                height: 100,
-                widths: '54, 74, 104, 162, 208, 324, 416',
-                loading: 'lazy',
-                alt: product.selected_or_first_available_variant.featured_media.alt | escape
-            }}
-          </swiper-slide>
-        {%- endif -%}
-        {%- if product.selected_or_first_available_variant.featured_media != null -%}
-          {%- for media in product.media -%}
-            {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
-              <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index }}">
+    {% if slides_length > 1 %}
+      <div class="ra-carousel-outer ra-gallery-carousel__thumbnails display--small-up flex justify-center">
+        <swiper-container
+          class="product-media-gallery__thumbnails w-20 hidden md:block mb-6"
+          navigation-prev-el=".swiper-thumbs-prev"
+          navigation-next-el=".swiper-thumbs-next"
+          slides-per-view="{{ thumbnails_per_view }}"
+          slides-per-group="{{ thumbnails_per_view }}"
+          direction="vertical"
+          space-between="{{ thumbnails_gap }}"
+        >
+          {%- if product.selected_or_first_available_variant.featured_media != null -%}
+            <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
+              {{ product.selected_or_first_available_variant.featured_media.preview_image
+                | image_url:
+                  width: 80,
+                  height: 100,
+                  crop: 'center'
+                | image_tag:
+                  width: 80,
+                  height: 100,
+                  widths: '54, 74, 104, 162, 208, 324, 416',
+                  loading: 'lazy',
+                  alt: product.selected_or_first_available_variant.featured_media.alt | escape
+              }}
+            </swiper-slide>
+          {%- endif -%}
+          {%- if product.selected_or_first_available_variant.featured_media != null -%}
+            {%- for media in product.media -%}
+              {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+                <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index }}">
+                  {{ media.preview_image
+                    | image_url:
+                      width: 80,
+                      height: 100,
+                      crop: 'center'
+                    | image_tag:
+                      width: 80,
+                      height: 100,
+                      widths: '54, 74, 104, 162, 208, 324, 416',
+                      loading: 'lazy',
+                      alt: media.alt | escape
+                  }}
+                </swiper-slide>
+              {% endunless %}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for media in product.media -%}
+              <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
                 {{ media.preview_image
                   | image_url:
                     width: 80,
@@ -58,74 +97,84 @@
                     alt: media.alt | escape
                 }}
               </swiper-slide>
-            {% endunless %}
-          {%- endfor -%}
-        {%- else -%}
-          {%- for media in product.media -%}
-            <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
-              {{ media.preview_image
-                | image_url:
-                  width: 80,
-                  height: 100,
-                  crop: 'center'
-                | image_tag:
-                  width: 80,
-                  height: 100,
-                  widths: '54, 74, 104, 162, 208, 324, 416',
-                  loading: 'lazy',
-                  alt: media.alt | escape
-              }}
-            </swiper-slide>
-          {%- endfor -%}
-        {%- endif -%}
-      </swiper-container>
-    </div>
+            {%- endfor -%}
+          {%- endif -%}
+        </swiper-container>
+        {% if show_thumbnail_navigation %}
+          <div class="justify-center absolute -top-6 swiper-thumbs-prev hidden md:flex">
+            {% render 'icon' with 'chevron-up', class: 'swiper-thumbs-prev' %}
+          </div>
+          <div class="justify-center absolute bottom-0 swiper-thumbs-next hidden md:flex">
+            {% render 'icon' with 'chevron-down', class: 'swiper-thumbs-next' %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
 
     {% comment %}
     Primary Slider
     {% endcomment %}
-    <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
-      <swiper-container
-        auto-height="true"
-        class="w-full"
-        navigation-prev-el=".swiper-primary-prev"
-        navigation-next-el=".swiper-primary-next"
-        navigation="true"
-        slides-per-view="1"
-        speed="500"
-        loop="true"
-        thumbs-swiper=".product-media-gallery__thumbnails"
-      >
-        {%- for media in product.media -%}
-          <swiper-slide data-slide-index="{{ forloop.index0 }}">
-            {% case media.media_type %}
-              {% when 'image' %}
-                {% if media.media_type == 'image' %}
-                  <div data-lightbox-trigger class="cursor-pointer" data-slide-index="{{ forloop.index0 }}">
-                    {{ media | image_url: width: 800 | image_tag:
-                      loading: 'lazy',
-                      width: 800,
-                      widths: '600, 800, 1200',
-                      alt: media.alt | escape
-                    }}
-                  </div>
-                {% endif %}
-              {% when 'video' %}
-                {% render 'video', media: media %}
-              {% when 'external_video' %}
-                {% render 'video', media: media, autoplay: false, width: 800, muted: false %}
-            {% endcase %}
-          </swiper-slide>
-        {%- endfor -%}
-      </swiper-container>
-      {% render 'icon' with 'chevron-left', color: 'white', class: 'swiper-primary-prev absolute left-0 top-1/2 z-10 -mt-3' %}
-      {% render 'icon' with 'chevron-right', color: 'white', class: 'swiper-primary-next absolute right-0 top-1/2 z-10 -mt-3' %}
-    </div>
-  </div>
-
-  {% capture "lightbox_content" %}
-    <div class="">
+    {% if enable_primary_carousel %}
       <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
+        <swiper-container
+          auto-height="true"
+          class="w-full"
+          navigation-prev-el=".swiper-primary-prev"
+          navigation-next-el=".swiper-primary-next"
+          slides-per-view="1"
+          speed="500"
+          loop="true"
+          thumbs-swiper=".product-media-gallery__thumbnails"
+        >
+          {%- for media in product.media -%}
+            <swiper-slide data-slide-index="{{ forloop.index0 }}">
+              {% case media.media_type %}
+                {% when 'image' %}
+                  {% if media.media_type == 'image' %}
+                    <div data-lightbox-trigger class="cursor-pointer" data-slide-index="{{ forloop.index0 }}">
+                      {{ media | image_url: width: 800 | image_tag:
+                        class: 'w-full',
+                        loading: 'lazy',
+                        width: 800,
+                        widths: '600, 800, 1200',
+                        alt: media.alt | escape
+                      }}
+                    </div>
+                  {% endif %}
+                {% when 'video' %}
+                  {% render 'video', media: media, class: "w-full" %}
+                {% when 'external_video' %}
+                  {% render 'video', media: media, autoplay: false, width: 800, muted: false, class: "w-full" %}
+              {% endcase %}
+            </swiper-slide>
+          {%- endfor -%}
+        </swiper-container>
+        {% render 'icon' with 'chevron-left', color: 'white', class: 'swiper-primary-prev absolute left-0 top-1/2 z-10 -mt-3' %}
+        {% render 'icon' with 'chevron-right', color: 'white', class: 'swiper-primary-next absolute right-0 top-1/2 z-10 -mt-3' %}
+      </div>
+    {% else %}
+      {% case first_media.media_type %}
+        {% when 'image' %}
+          {% if first_media.media_type == 'image' %}
+            <div data-lightbox-trigger class="cursor-pointer">
+              {{ first_media | image_url: width: 800 | image_tag:
+                loading: 'lazy',
+                width: 800,
+                widths: '600, 800, 1200',
+                alt: first_media.alt | escape
+              }}
+            </div>
+          {% endif %}
+        {% when 'video' %}
+          {% render 'video', media: first_media %}
+        {% when 'external_video' %}
+          {% render 'video', media: first_media, autoplay: false, width: 800, muted: false %}
+      {% endcase %}
+    {% endif %}
+  </div>
+  {% capture "lightbox_content" %}
+    <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
+      {% if enable_primary_carousel %}
         <swiper-container
           auto-height="true"
           class="w-full swiper--lightbox"
@@ -153,14 +202,32 @@
                 {% when 'video' %}
                   {% render 'video', media: media %}
                 {% when 'external_video' %}
-                  {% render 'video', media: media, autoplay: false, width: 1200, muted: false %}
+                  {% render 'video', media: media, autoplay: false, width: 1200, muted: false, class: "max-w-full" %}
               {% endcase %}
             </swiper-slide>
           {%- endfor -%}
         </swiper-container>
         {% render 'icon' with 'chevron-left', color: 'white', class: 'swiper-lightbox-prev absolute left-0 top-1/2 z-10 -mt-3' %}
         {% render 'icon' with 'chevron-right', color: 'white', class: 'swiper-lightbox-next absolute right-0 top-1/2 z-10 -mt-3' %}
-      </div>
+      {% else %}
+        {% case first_media.media_type %}
+          {% when 'image' %}
+            {% if first_media.media_type == 'image' %}
+              <div class="cursor-pointer">
+                {{ first_media | image_url: width: 1200 | image_tag:
+                  loading: 'lazy',
+                  width: 1200,
+                  widths: '600, 800, 1200',
+                  alt: first_media.alt | escape
+                }}
+              </div>
+            {% endif %}
+          {% when 'video' %}
+            {% render 'video', media: first_media %}
+          {% when 'external_video' %}
+            {% render 'video', media: first_media, autoplay: false, width: 1200, muted: false %}
+        {% endcase %}
+      {% endif %}
     </div>
   {% endcapture %}
   {% render 'gallery-zoom-modal' id: 'lightbox-gallery', content: lightbox_content, classes: 'ra-zoom pt-10 md:pt-0' %}

@@ -26,8 +26,8 @@
   }
 
   @breakpoint md {
-    .footer__menu {
-      border-left: 1px solid var(--link-color);
+    .footer__col:not(:last-child) {
+      border-right: 1px solid var(--link-color);
     }
   }
 }

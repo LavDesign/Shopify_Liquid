@@ -62,8 +62,6 @@ export default class RaHeader extends HTMLElement {
       "--content-position-top",
       parseInt(this.headerPositionTop) + this.clientHeight + "px"
     );
-
-    console.log();
   }
 
   handleWindowScroll() {
@@ -135,17 +133,30 @@ export default class RaHeader extends HTMLElement {
     this.dropdownToggles.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        const toggleId = btn.getAttribute("data-toggle-dropdown");
-        btn.classList.toggle("active");
-        const selectedDropdown = document.getElementById(toggleId);
-        const dropdownHeight = selectedDropdown.querySelector(
-          ".header__mobile-navigation-dropdown-inner"
-        ).offsetHeight;
-        selectedDropdown.style.setProperty(
-          "--dropdown-height",
-          dropdownHeight + "px"
-        );
-        document.getElementById(toggleId).classList.toggle("active");
+        const isActive = btn.classList.contains("active");
+        this.dropdowns.forEach((dropdown) => {
+          dropdown.classList.remove("active");
+          dropdown.style.setProperty("--dropdown-height", "0px");
+        });
+        this.querySelectorAll(
+          ".header__mobile-navigation-link[data-toggle-dropdown]"
+        ).forEach((dropdownLink) => {
+          dropdownLink.classList.remove("active");
+        });
+
+        if (!isActive) {
+          const toggleId = btn.getAttribute("data-toggle-dropdown");
+          btn.classList.toggle("active");
+          const selectedDropdown = document.getElementById(toggleId);
+          const dropdownHeight = selectedDropdown.querySelector(
+            ".header__mobile-navigation-dropdown-inner"
+          ).offsetHeight;
+          selectedDropdown.style.setProperty(
+            "--dropdown-height",
+            dropdownHeight + "px"
+          );
+          document.getElementById(toggleId).classList.toggle("active");
+        }
       });
     });
   }

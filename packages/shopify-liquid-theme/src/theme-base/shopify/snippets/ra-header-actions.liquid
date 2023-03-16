@@ -1,9 +1,9 @@
 <ul class="header__action-list">
   {% if section.settings.show_search %}
     <li class="header__action-item header__action-item--search">
-      <a class="header__action-link" href="#" title="search" aria-label="search">
-        {% render 'icon' icon: section.settings.search_icon, width: '20px', height: '20px' %}
-      </a>
+      <button class="header__action-link" data-action-toggle-search title="search" aria-label="search">
+        {% render 'icon' icon: section.settings.search_icon, width: '20px', height: '20px', color: 'white' %}
+      </button>
     </li>
   {% endif %}
   {% if section.settings.show_account %}
@@ -21,7 +21,7 @@
     </li>
   {% endif %}
   <li class="header__action-item header__action-item--cart">
-    <a class="header__action-link" href="#" title="cart" aria-label="cart">
+    <a class="header__action-link" href="/cart" title="cart" aria-label="cart" data-cart-toggle>
       {% render 'icon' icon: 'cart', width: '24px', height: '24px' %}
     </a>
   </li>

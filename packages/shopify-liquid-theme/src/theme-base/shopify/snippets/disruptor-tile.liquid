@@ -1,0 +1,37 @@
+{% liquid
+  assign disruptor_width = disruptor["width"] | split: "/3"
+  assign disruptor_width = disruptor_width | first
+  assign mobile_disruptor_width = 1
+  if disruptor_width == 3
+    assign mobile_disruptor_width = 2
+  endif
+%}
+
+<div class="disruptor-tile disruptor-tile--span-{{disruptor_width}}" style="color: {{disruptor.text_color}}">
+  {% if disruptor.media != blank %}
+    {% assign media_text = disruptor.media | metafield_text %}
+    {% assign media_tag = disruptor.media | metafield_tag %}
+    <div
+      class="disruptor-tile__background-container"
+      {% unless media_text contains "video" %}
+      style="background-image: url('{{disruptor.media | img_url: '800x'}}');"
+      {% endunless %}>
+      {% if media_text contains "video" %}
+        {% render 'video', metaobject_video: disruptor.media %}
+      {% endif %}
+    </div>
+  {% endif %}
+  <div class="disruptor-tile__content">
+    {% if disruptor.title %}
+      <h4>{{ disruptor.title }}</h4>
+    {% endif %}
+    {% if disruptor.body_text %}
+      <div>{{ disruptor.body_text | metafield_tag }}</div>
+    {% endif %}
+    {% if disruptor.cta_text and disruptor.cta_url and disruptor.cta_style %}
+      <a class="ra-button ra-button--{{disruptor.cta_style}} ra-button--md disruptor-tile__cta" href="{{disruptor.cta_url}}">
+        {{ disruptor.cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>

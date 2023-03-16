@@ -8,7 +8,7 @@
     {% if block.settings.featured_article != blank %}
       <div class="py-6 md:py-20 bg-grey-100">
         <div class="container">
-          {% render 'featured-article', 
+          {% render 'featured-article',
             article: block.settings.featured_article,
             aspect_ratio: block.settings.aspect_ratio,
             show_tags: block.settings.show_tags,
@@ -61,7 +61,7 @@
     {%- endcomment -%}
     {%- if paginate.pages > 1 -%}
       <div class="flex items-center justify-center mt-10 md:mt-15">
-        {%- render 'pagination', paginate: paginate -%}
+        {%- render 'pagination', paginate: paginate, has_arrow: true -%}
       </div>
     {%- endif -%}
   </div>

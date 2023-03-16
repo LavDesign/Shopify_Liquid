@@ -1,0 +1,134 @@
+{%- comment -%}
+  Header
+{%- endcomment -%}
+<div class="py-6 md:py-20 bg-grey-100">
+  <div class="container">
+    {% render 'featured-article', 
+      article: article,
+      aspect_ratio: section.settings.aspect_ratio,
+      show_tags: true,
+      show_date: true,
+      show_excerpt: true
+    %}
+  </div>
+</div>
+
+{%- comment -%}
+  Content
+{%- endcomment -%}
+<div class="container">
+  <div class="flex py-6 md:py-20">
+    <div class="w-full md:w-[650px] m-auto">
+      <div class="ra-wysiwyg">
+        {{ article.content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- comment -%}
+  Related Articles
+{%- endcomment -%}
+{% liquid
+ assign related_articles_found = 0
+ for tag in article.tags
+   assign skip_articles = article.handle | split: '.....'
+   for related_article in blog.articles
+     if related_article.tags contains tag
+       unless skip_articles contains related_article.handle
+         assign related_articles_found = related_articles_found | plus: 1
+       endunless
+     endif
+   endfor
+ endfor
+%}
+
+{% if related_articles_found > 0 %}
+  <div class="container py-10 md:py-20">
+    {% if section.settings.related_articles_title != blank %}
+      <h3 class="h3 flex items-center justify-center pb-5 md:pb-10">
+        {{ section.settings.related_articles_title }}
+      </h3>
+    {% endif %}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
+      {% assign counter = 0 %}
+      {% for tag in article.tags %}
+        {% assign skip_articles = article.handle | split: '.....' %}
+      
+        {% for related_article in blog.articles %}
+          {% if related_article.tags contains tag and counter < 3 %}
+            {% unless skip_articles contains related_article.handle %}
+              {% assign counter = counter | plus: 1 %}
+              {% assign temp = related_article.handle | split: '.....' %}
+              {% assign skip_articles = skip_articles | concat: temp %}
+      
+              {% render 'article-tile' 
+                article: related_article,
+                aspect_ratio: section.settings.aspect_ratio,
+                show_tags: section.settings.show_tags,
+                show_date: section.settings.show_date,
+                show_excerpt: section.settings.show_excerpt
+              %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% render 'structured-data-article', article: article %}
+
+{% schema %}
+{
+  "name": "Article",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Related Articles"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "video",
+          "label": "Horizontal"
+        }
+      ],
+      "default": "video"
+    },
+    {
+      "type": "text",
+      "id": "related_articles_title",
+      "label": "Related Articles Title",
+      "default": "Keep Reading"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show Excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show Tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show Date",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
