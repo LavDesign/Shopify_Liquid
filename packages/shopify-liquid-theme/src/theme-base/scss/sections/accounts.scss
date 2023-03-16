@@ -44,35 +44,45 @@
   text-align: right
 }
 
-@breakpoint md {
-  .addressbook-list__action[data-v-b723e922] {
-    width: 100%
-  }
-}
-
-.addressbook-edit-modal[data-v-b723e922] {
+.addressbook-edit-modal {
   --modal-width: 70.25rem
 }
 
 @breakpoint md {
-  .addressbook-edit-modal[data-v-b723e922] {
+  .addressbook-edit-modal {
     --modal-outter-padding: var(--spacing-md);
-    --modal-padding: 3.375rem var(--spacing-lg) 5.65rem
+    --modal-padding: var(--modal-padding, var(--spacing-sm));
   }
 }
 
-@breakpoint md {
-  .addressbook-edit-modal[data-v-b723e922] {
-    --modal-outter-padding: var(--spacing-sm);
-    --modal-padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-sm)
-  }
-}
-
-.addressbook-edit-modal__content[data-v-b723e922] {
+.addressbook-edit-modal__content {
   margin: auto;
   max-width: 55.75rem
 }
 
-.addressbook-edit-modal__title[data-v-b723e922] {
+.addressbook-edit-modal__title {
   margin-bottom: var(--spacing-lg)
+}
+
+.addressbook-edit-modal .ra-modal__header {
+  justify-content: flex-end;
+}
+
+.account-content__header {
+  align-items: center;
+  color: var(--c-contrast);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.account-content__header--has-divider {
+  border-bottom: .0625rem solid var(--c-gray-500);
+  padding-bottom: var(--spacing-sm)
+}
+
+.account-content__header--back {
+  position: absolute;
+  left: 0;
 }

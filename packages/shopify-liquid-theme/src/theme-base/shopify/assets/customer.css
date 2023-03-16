@@ -653,10 +653,10 @@ label[for='AddressProvinceNew'] {
   margin-bottom: 0.6rem;
 }
 
-.addresses form {
+/* .addresses form {
   display: flex;
   flex-flow: row wrap;
-}
+} */
 
 .addresses form > div {
   width: 100%;
