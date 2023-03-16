@@ -76,7 +76,7 @@ export default class RaCollectionFilters extends HTMLElement {
 
     const btn = e.currentTarget;
     const param = btn.getAttribute("data-param");
-    const value = btn.getAttribute("data-value");
+    const value = btn.getAttribute("data-value").replace("+", " ");
 
     const formOptionInput = document.querySelector(
       `input[name="${param}"][value="${value}"]`
