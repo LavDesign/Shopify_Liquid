@@ -4,6 +4,7 @@
     title:    string modal title - (optional)
     content:  string/html/markup modal content - (required)
     classes:  string extra class names - (optional)
+    overlay:  boolean, toggle modal overlay - (optional)
 
   Example:
     {% capture content %}
@@ -22,6 +23,9 @@
 
 {% if id != blank %}
   <dialog data-dialog-id="{{ id }}" class="{{ classes }}">
+    {% if overlay %}
+      <div class="ra-overlay"></div>
+    {% endif %}
     <div class="ra-modal__content">
       <div class="flex justify-between justify-items-center">
         {% if title != blank %}

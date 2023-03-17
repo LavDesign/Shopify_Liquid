@@ -438,8 +438,7 @@ blockquote {
   opacity: 0.7;
 }
 
-.link,
-.customer a {
+.link {
   cursor: pointer;
   display: inline-block;
   border: none;
@@ -539,16 +538,14 @@ details > * {
   --duration-long: 500ms;
 }
 
-.underlined-link,
-.customer a {
+.underlined-link {
   color: rgba(var(--color-link), var(--alpha-link));
   text-underline-offset: 0.3rem;
   text-decoration-thickness: 0.1rem;
   transition: text-decoration-thickness ease 100ms;
 }
 
-.underlined-link:hover,
-.customer a:hover {
+.underlined-link:hover {
   color: rgb(var(--color-link));
   text-decoration-thickness: 0.2rem;
 }
