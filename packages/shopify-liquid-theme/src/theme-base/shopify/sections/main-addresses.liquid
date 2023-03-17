@@ -17,11 +17,11 @@
 {%- endstyle -%}
 
 {%- paginate customer.addresses by 5 -%}
-  <div class="customer addresses addressbook section-{{ section.id }}-padding" data-customer-addresses>
+  <div class="customer addresses addressbook ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--medium" data-customer-addresses>
 
     <div data-v-b723e922="" class="account-content__header account-content__header--has-divider">
       <a class="account-content__header--back" href="{{ routes.account_url }}">
-        {% render 'icon', icon: 'chevron-left', width: '16px', height: '16px' %}
+        {% render 'icon', icon: 'left-arrow', width: '16px', height: '16px' %}
       </a>
 
       <h1 class="ra-title account-content__title" style="--title-font-size:var(--font-size-md30-to-lg20);">
@@ -332,10 +332,21 @@
                 </div>
               </div>
 
-              <button>{{ 'customer.addresses.add' | t }}</button>
-              <button type="reset">
-                {{ 'customer.addresses.cancel' | t }}
-              </button>
+              <div class="ra-grid-item address-form__footer-column">
+                <div data-gap="-sm" data-columns="-sm,-md,-lg" class="address-form__actions ra-grid" style="--grid-gap:1rem; --grid-columns:1; --grid-columns-md:2; --grid-columns-lg:2;">
+                  <div class="ra-grid-item">
+                    <button type="reset" class="address-form__action ra-button ra-button--full-width ra-button--tertiary">
+                      {{ 'customer.addresses.cancel' | t }}
+                    </button>
+                  </div>
+                  <div class="ra-grid-item">
+                    <button class="address-form__action ra-button ra-button--full-width">
+                      {{ 'customer.addresses.add' | t }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div>
           {%- endform -%}
         </div>
