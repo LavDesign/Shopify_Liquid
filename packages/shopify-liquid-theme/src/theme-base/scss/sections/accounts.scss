@@ -18,3 +18,156 @@
     margin-top: var(--spacing-sm);
   }
 }
+
+.addresses ul {
+  text-align: left;
+}
+
+.address-details {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.addressbook-item {
+  --link-color: currentColor;
+  border-bottom: .0625rem solid var(--c-gray-500);
+  color: var(--c-contrast);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  position: relative
+}
+
+.addressbook-item__action {
+  margin-bottom: var(--spacing-xs);
+  text-align: right
+}
+
+.addressbook-edit-modal {
+  --modal-width: 70.25rem
+}
+
+.addressbook-edit-modal__content {
+  margin: auto;
+  max-width: 55.75rem
+}
+
+.addressbook-edit-modal__title {
+  margin-bottom: var(--spacing-lg)
+}
+
+.addressbook-edit-modal .ra-modal__header {
+  justify-content: flex-end;
+}
+
+.account-content__header {
+  align-items: center;
+  color: var(--c-contrast);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.account-content__header--has-divider {
+  border-bottom: .0625rem solid var(--c-gray-500);
+  padding-bottom: var(--spacing-sm)
+}
+
+.account-content__header--back {
+  position: absolute;
+  left: 0;
+}
+
+.addressbook-edit-modal .ra-modal__content {
+  padding-bottom: var(--spacing-md);
+
+  @breakpoint md {
+    padding-bottom: var(--spacing-2xl);
+  }
+}
+
+.order-history-table__row {
+  --table-row-padding: var(--spacing) 0;
+  --table-column-padding: 0 var(--spacing-xs) 0 0
+}
+
+.order-history-table__row .ra-table__row {
+  align-items: center;
+  font-size: var(--font-size-xs-to-base);
+  position: relative
+}
+
+.order-history-table__order-number {
+  text-decoration: underline
+}
+
+.order-history-table__row-link {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%
+}
+
+.order-history-table__row-link:hover {
+  background-color: var(--c-gray-300);
+  opacity: .25
+}
+
+@breakpoint md {
+  .order-history-table__row-chevron {
+    margin-right: var(--spacing-xs)
+  }
+}
+
+
+// Ra Table Styles
+.ra-table {
+  border: none;
+  border-spacing: var(--table-border-spacing, 0);
+  width: var(--table-width, 100%)
+}
+
+.ra-table--no-border {
+  --table-row-border-width: 0
+}
+
+.ra-table__heading,
+.ra-table__row {
+  display: flex;
+  flex-wrap: wrap
+}
+
+.ra-table__heading {
+  align-items: center;
+  background-color: var(--table-heading-background);
+  border-bottom: solid var(--table-heading-border-width, .0625rem) var(--table-heading-border-color, currentColor);
+  font-family: var(--font-family-secondary);
+  font-weight: var(--font-weight-medium);
+  padding: var(--table-heading-padding, var(--spacing-sm) 0)
+}
+
+.ra-table__header {
+  color: var(--table-header-color, var(--c-copy));
+  line-height: var(--line-height-lg)
+}
+
+.ra-table__row {
+  background-color: var(--table-row-background);
+  border-bottom: solid var(--table-row-border-width, .0625rem) var(--table-row-border-color, currentColor);
+  padding: var(--table-row-padding, var(--spacing-sm) 0)
+}
+
+.ra-table__data {
+  color: var(--table-data-color, var(--c-contrast));
+  line-height: var(--line-height-xl)
+}
+
+.ra-table__data,
+.ra-table__header {
+  flex: var(--table-column-flex, 1 1);
+  padding: var(--table-column-padding, 0);
+  text-align: var(--table-column-text-align, left)
+}
