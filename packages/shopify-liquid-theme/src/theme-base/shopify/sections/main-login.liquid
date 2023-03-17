@@ -1,27 +1,11 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-
-
-<div class="customer login section-{{ section.id }}-padding">
+<div class="customer login ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--small">
   <!-- Customer Reset -->
-  <h1 id="recover" tabindex="-1">
+  <h1 class="center" id="recover" tabindex="-1">
     {{ 'customer.recover_password.title' | t }}
   </h1>
-  <div class="customer-reset">
+  <div class="customer-reset center">
     <p>
       {{ 'customer.recover_password.subtext' | t }}
     </p>
@@ -68,12 +52,14 @@
       </div>
 
       <div class="auth-form__actions">
-        <button class="auth-form__inline-cta ra-link mr-4">
+        <button class="ra-button ra-button--full-width">
           {{ 'customer.login_page.submit' | t }}
         </button>
+      </div>
 
-        <a href="#login" class="auth-form__inline-cta ra-link">
-          {{ 'customer.login_page.cancel' | t }}
+      <div class="auth-form-bottom text-align--center">
+        <a href="/account/login" class="auth-form__inline-cta ra-link">
+          Back to Login
         </a>
       </div>
 
