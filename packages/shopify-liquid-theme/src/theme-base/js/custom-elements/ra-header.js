@@ -11,9 +11,15 @@ export default class RaHeader extends HTMLElement {
     this.mobileNav = document.querySelector(".header__mobile-navigation");
     this.dropdownToggles = document.querySelectorAll("[data-toggle-dropdown]");
     this.drawerToggles = document.querySelectorAll("[data-toggle-drawer]");
-    this.drawerCloseBtns = document.querySelectorAll(".header__mobile-navigation-drawer-close");
-    this.drawers = document.querySelectorAll(".header__mobile-navigation-drawer");
-    this.dropdowns = document.querySelectorAll(".header__mobile-navigation-dropdown");
+    this.drawerCloseBtns = document.querySelectorAll(
+      ".header__mobile-navigation-drawer-close"
+    );
+    this.drawers = document.querySelectorAll(
+      ".header__mobile-navigation-drawer"
+    );
+    this.dropdowns = document.querySelectorAll(
+      ".header__mobile-navigation-dropdown"
+    );
   }
 
   connectedCallback() {

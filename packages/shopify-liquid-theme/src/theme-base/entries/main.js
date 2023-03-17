@@ -20,14 +20,19 @@ import "@bva/ui-shared/styles/components.css";
 import "tailwindcss/utilities.css";
 import "../scss/main.scss";
 
+const isDesignMode = window.Shopify.designMode || window.Shopify.inspectMode;
 const pinia = createPinia();
 
-const renderVueApps = () => {
-  const vueRoots = document.querySelectorAll("[data-vue-root]");
+/**
+ * renderVueApps
+ * @param {String} eventTarget - string selector for vue app roots.
+ */
+const renderVueApps = (eventTarget = '[data-vue-root]') => {
+  const vueRoots = document.querySelectorAll(eventTarget);
   vueRoots.forEach((root) => {
     const app = createApp();
     const componentName = root.dataset.vueRoot;
-    const component = components[root.dataset.vueRoot];
+    const component = components[componentName];
 
     app.component(componentName, component);
     app.config.globalProperties.$filters = {
@@ -40,6 +45,16 @@ const renderVueApps = () => {
     };
     app.use(pinia);
     app.mount(root);
+    if (isDesignMode) {
+      const appSectionLoad = (event) => {
+        const parentSectionId = `#shopify-section-${event.detail.sectionId}`;
+        if (root.closest(parentSectionId) !== null) {
+          app.unmount();
+          document.removeEventListener('shopify:section:load', appSectionLoad);
+        }
+      };
+      document.addEventListener('shopify:section:load', appSectionLoad);
+    }
   });
 };
 
@@ -69,3 +84,21 @@ window.addEventListener("load", () => {
   initSwipers();
   register();
 });
+
+/**
+ * Customizer Refresh Apps Code
+ */
+if (isDesignMode) {
+  window.renderVueApps = renderVueApps;
+  const refreshVue = (event) => {
+    if (event?.detail?.sectionId) {
+      renderVueApps(
+        `#shopify-section-${event.detail.sectionId} [data-vue-root]`,
+        isDesignMode
+      );
+    }
+  };
+  document.addEventListener('shopify:section:load', refreshVue);
+  document.addEventListener('shopify:section:deselect', refreshVue);
+  document.addEventListener('shopify:section:reorder', refreshVue);
+}
