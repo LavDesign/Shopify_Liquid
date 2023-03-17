@@ -10,7 +10,7 @@
 
 <ra-header class="header">
   <div class="header__wrapper container flex-wrap">
-    <div class="header__inner flex w-full">
+    <div class="header__inner flex w-full justify-between items-center">
       {%- comment -%}
         hamburger
       {%- endcomment -%}
@@ -25,6 +25,10 @@
       {% if section.settings.logo != blank %}
         <a class="header__logo" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
           <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+        </a>
+      {% else %}
+        <a href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
+          <h1 class="h4">{{ shop.name }}</h1>
         </a>
       {% endif %}
 
@@ -78,19 +82,9 @@
         {% render 'ra-header-actions' %}
       </div>
     </div>
-    <ra-search-bar class="header__search w-full justify-center hidden grid-cols-5">
-      <div class="search__inner max-w-[700px] w-full flex items-center col-start-2 col-end-5 mx-auto">
-        <form action="{{ routes.search_url }}" method="get" role="search" class="search w-full bg-white">
-          {% render "input" type: "search", size: "lg", name: "search", placeholder: "Search...", name: "q" %}
-        </form>
-      </div>
-      <div class="col-end-6 flex justify-end">
-        <button data-action-close-search>
-          {% render "icon" with "close", width: "20px", height: "20px", color: "white" %}
-        </button>
-      </div>
-    </ra-search-bar>
+    {% render "ra-search-bar" %}
   </div>
+  <div id="SearchResponse" class="search__response col-start-1 col-span-5"></div>
 </ra-header>
 
 {% schema %}

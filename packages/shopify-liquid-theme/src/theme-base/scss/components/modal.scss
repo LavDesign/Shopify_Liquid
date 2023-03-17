@@ -6,7 +6,7 @@ body.modal-open {
   --modal-width: 34.75rem;
   --modal-outter-padding: var(--spacing);
 
-  @media (min-width: 48rem) {
+  @breakpoint md {
     --modal-padding: var(--spacing-2xl) var(--spacing-2xl);
   }
 

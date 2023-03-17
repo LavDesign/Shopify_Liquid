@@ -1,5 +1,14 @@
 {
   "current": {
+    "social_twitter_link": "https:\/\/google.com",
+    "social_facebook_link": "https:\/\/google.com",
+    "social_instagram_link": "https:\/\/google.com",
+    "social_linkedin_link": "https:\/\/google.com",
+    "social_pinterest_link": "https:\/\/google.com",
+    "social_youtube_link": "https:\/\/google.com",
+    "social_tiktok_link": "https:\/\/google.com",
+    "util_link_1_url": "shopify:\/\/collections\/example-collection-1",
+    "util_link_2_url": "shopify:\/\/collections",
     "colors_solid_button_labels": "#ffffff",
     "colors_accent_1": "#121212",
     "gradient_accent_1": "",
@@ -105,19 +114,26 @@
     "sale_badge_color_scheme": "accent-2",
     "sold_out_badge_color_scheme": "inverse",
     "accent_icons": "text",
-    "social_twitter_link": "",
-    "social_facebook_link": "",
-    "social_pinterest_link": "",
-    "social_instagram_link": "",
-    "social_tiktok_link": "",
-    "social_tumblr_link": "",
-    "social_snapchat_link": "",
-    "social_youtube_link": "",
-    "social_vimeo_link": "",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
+    "review_platform": "bazaarvoice",
+    "yotpo_app_key": "9REoSVXq9la0CNQAMliDqKX4nM0CgzfIkdQqORTl",
+    "stamped_api_key": "pubkey-xaPlon8rJ33O3Y6asSnh7VqEw3psAH",
+    "bazaarvoice_client": "partner-thestable",
+    "bazaarvoice_id": "main_site",
+    "cart_header_text": "Your Cart",
+    "free_gift_enabled": true,
+    "free_gift_threshold": "100",
+    "gift_message_enabled": true,
+    "upsell_enabled": true,
+    "upsell_product": "matte-lip-kit",
+    "empty_cart_header": "Your Cart is Empty",
+    "empty_cart_link_list": "empty-cart-links",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_vimeo_link": "",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -126,6 +142,7 @@
             "type": "announcement",
             "settings": {
               "text": "Welcome to our store",
+              "text_alignment": "center",
               "color_scheme": "background-1",
               "link": ""
             }
@@ -140,32 +157,37 @@
       "header": {
         "type": "header",
         "settings": {
-          "color_scheme": "background-1",
-          "logo_width": 90,
-          "logo_position": "middle-left",
-          "menu": "main-menu",
-          "show_line_separator": true,
-          "enable_sticky_header": true,
-          "margin_bottom": 0
+          "menu": "main-menu"
         }
       },
       "footer": {
         "type": "footer",
         "blocks": {
+          "7a8012f8-388e-488d-901e-4c2bbadf2915": {
+            "type": "form",
+            "settings": {
+              "form_title": "<p>Please sign up for our newsletter to<\/p><p> receive updates & discounts<\/p>",
+              "klaviyo_list_id": ""
+            }
+          },
+          "105954a0-0907-4fe2-a7a6-b249ef195810": {
+            "type": "menu",
+            "settings": {
+              "menu": "footer"
+            }
+          }
         },
         "block_order": [
+          "7a8012f8-388e-488d-901e-4c2bbadf2915",
+          "105954a0-0907-4fe2-a7a6-b249ef195810"
         ],
         "settings": {
-          "color_scheme": "background-1",
-          "newsletter_enable": true,
-          "newsletter_heading": "Subscribe to our emails",
-          "show_social": true,
-          "enable_country_selector": true,
-          "enable_language_selector": true,
-          "payment_enable": true,
-          "margin_top": 48,
-          "padding_top": 36,
-          "padding_bottom": 36
+          "bg_color": "--color-primary-900",
+          "link_color": "--color-util-white",
+          "link_hover_color": "--color-util-yellow",
+          "show_social_icon": true,
+          "util_menu": "footer-util",
+          "copyright_text": "All rights reserved."
         }
       },
       "main-password-header": {
@@ -181,7 +203,10 @@
           "color_scheme": "background-1"
         }
       }
-    }
+    },
+    "content_for_index": [
+
+    ]
   },
   "presets": {
     "Default": {
@@ -337,8 +362,17 @@
         "footer": {
           "type": "footer",
           "blocks": {
+            "footer-0": {
+              "type": "menu"
+            },
+            "footer-1": {
+              "type": "menu"
+            }
           },
           "block_order": [
+            "footer-0",
+            "footer-1",
+            "footer-2"
           ],
           "settings": {
             "color_scheme": "background-1",
