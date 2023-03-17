@@ -25,6 +25,12 @@ export default class RaSearchBar extends HTMLElement {
         this.onInputChange(e);
       }, 300).bind(this)
     );
+
+    this.searchResponse.addEventListener("click", (e) => {
+      if (e.target.classList.contains("predictive-search__overlay")) {
+        this.hideSearch();
+      }
+    });
   }
 
   showSearch() {
@@ -52,7 +58,7 @@ export default class RaSearchBar extends HTMLElement {
     const url = `${window.Shopify.routes.root}search/suggest`;
     const params = {
       q,
-      section_id: "predictive-search",
+      section_id: "ra-predictive-search",
       resources: {
         limit: 4,
         limit_scope: "each",
@@ -69,7 +75,7 @@ export default class RaSearchBar extends HTMLElement {
       );
 
       this.searchResponse.innerHTML = responseDOM.querySelector(
-        "#shopify-section-predictive-search"
+        "#shopify-section-ra-predictive-search"
       ).innerHTML;
     });
   }

@@ -51,7 +51,8 @@
     </div>
   {% endcapture %}
 
-  <div id="predictive-search-results" class="absolute bg-white left-0 right-0 top-full p-10 justify-center">
+  <div class="predictive-search__overlay absolute left-0 right-0 top-full h-screen opacity-50 bg-primary-900"></div>
+  <div id="predictive-search-results" class="absolute bg-white left-0 right-0 top-full p-10 justify-center flex">
     <div class="w-full md:max-w-screen-2xl flex flex-col md:flex-row">
       {% if show_sidebar %}
         {{ sidebar_content }}
@@ -68,6 +69,11 @@
           <div class="search-results__actions flex justify-center">
             {% assign search_url = routes.search_url | append: "?q=" | append: predictive_search.terms %}
             {% render "button", label: "See All Results", style: "primary", type: "a", url: search_url %}
+          </div>
+        {% elsif show_sidebar %}
+          <div class="text-center">
+            <p class="h6 mb-5">{{ 'templates.search.no_product_results' | t: terms: predictive_search.terms }}</p>
+            {% render "button", label: settings.empty_search_cta_text, style: settings.empty_search_cta_style, type: "a", url: settings.empty_search_cta_url %}
           </div>
         {% else %}
           <div class="text-center">

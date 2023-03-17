@@ -10,7 +10,7 @@
 
 <ra-header class="header">
   <div class="header__wrapper container flex-wrap">
-    <div class="header__inner flex w-full">
+    <div class="header__inner flex w-full justify-between items-center">
       {%- comment -%}
         hamburger
       {%- endcomment -%}
@@ -25,6 +25,10 @@
       {% if section.settings.logo != blank %}
         <a class="header__logo" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
           <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+        </a>
+      {% else %}
+        <a href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
+          <h1 class="h4">{{ shop.name }}</h1>
         </a>
       {% endif %}
 

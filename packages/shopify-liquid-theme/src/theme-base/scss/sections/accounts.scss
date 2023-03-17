@@ -1,0 +1,20 @@
+.customer.login, .customer.register {
+
+  .ra-grid-item {
+    text-align: left;
+  }
+
+  .auth-form__cta-forgot-password {
+    display: block;
+    margin-top: var(--spacing-md);
+    text-align: left;
+  }
+
+  .auth-form__actions {
+    margin-top: var(--spacing-md)
+  }
+
+  .auth-form-bottom {
+    margin-top: var(--spacing-sm);
+  }
+}
