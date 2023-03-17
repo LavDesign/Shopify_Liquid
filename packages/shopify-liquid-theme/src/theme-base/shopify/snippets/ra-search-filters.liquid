@@ -35,7 +35,6 @@ Make a list of filters to display as buttons based on filter.label
         {% endif %}
 
         {% capture filter_content %}
-          {{ filter.type }}
           {% render "ra-filter-group", filter: filter, display_as_buttons: display_as_buttons %}
         {% endcapture %}
 
