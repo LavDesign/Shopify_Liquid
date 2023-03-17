@@ -92,7 +92,8 @@ export default class RaSearchFilters extends HTMLElement {
 
     const btn = e.currentTarget;
     const param = btn.getAttribute("data-param");
-    const value = btn.getAttribute("data-value").replace("+", " ");
+    const value = btn.getAttribute("data-value").replaceAll("+", " ");
+    // TODO: There may be an issue with filter values that contain a + in them
 
     const formOptionInput = document.querySelector(
       `input[name="${param}"][value="${value}"]`
