@@ -118,42 +118,40 @@
           </div>
         {% endif %}
       </div>
-      <div data-col-size="-size,-md" class="component-details ra-col" style="--col-size:100%; {{ rightSplit }}">
-        <div class="ra-split-section__details h-full">
-          <div class="ra-split-section__copy {{ verticalClasses }} {{ horizontalClasses }}">
-            {% if section.settings.subtitle != blank %}
-              <div class="ra-split-section__subtitle">
-                {{- section.settings.subtitle -}}
-              </div>
-            {% endif %}
-            {% if section.settings.title != blank %}
-              <{{ titleLevel }} class="ra-title ra-split-section__title" style="--title-font-size:var(--font-size-{{ titleAs }});">
-                <div>{{- section.settings.title -}}</div>
-              </{{ titleLevel }}>
-            {% endif %}
-            {% if section.settings.description != blank %}
-              <div class="ra-split-section__description {{ section.settings.description_copy_size }}">
-                {{- section.settings.description -}}
-              </div>
-            {% endif %}
-            <div class="ra-link-list ra-split-section__link-list">
-              {% if ctaOneText != blank and ctaOneUrl != blank %}
-                {% render 'button'
-                , type: 'a',
-                style: ctaOneStyle,
-                url: ctaOneUrl,
-                label: ctaOneText,
-                class: 'ra-link-list' %}
-              {% endif %}
-              {% if ctaTwoText != blank and ctaTwoUrl != blank %}
-                {% render 'button'
-                , type: 'a',
-                style: ctaTwoStyle,
-                url: ctaTwoUrl,
-                label: ctaTwoText,
-                class: 'ra-link-list' %}
-              {% endif %}
+      <div data-col-size="-size,-md" class="component-details ra-split-section__details ra-col" style="--col-size:100%; {{ rightSplit }}">
+        <div class="ra-split-section__copy {{ verticalClasses }} {{ horizontalClasses }}">
+          {% if section.settings.subtitle != blank %}
+            <div class="ra-split-section__subtitle">
+              {{- section.settings.subtitle -}}
             </div>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            <{{ titleLevel }} class="ra-title ra-split-section__title" style="--title-font-size:var(--font-size-{{ titleAs }});">
+              <div>{{- section.settings.title -}}</div>
+            </{{ titleLevel }}>
+          {% endif %}
+          {% if section.settings.description != blank %}
+            <div class="ra-split-section__description {{ section.settings.description_copy_size }}">
+              {{- section.settings.description -}}
+            </div>
+          {% endif %}
+          <div class="ra-link-list ra-split-section__link-list">
+            {% if ctaOneText != blank and ctaOneUrl != blank %}
+              {% render 'button'
+              , type: 'a',
+              style: ctaOneStyle,
+              url: ctaOneUrl,
+              label: ctaOneText,
+              class: 'ra-link-list' %}
+            {% endif %}
+            {% if ctaTwoText != blank and ctaTwoUrl != blank %}
+              {% render 'button'
+              , type: 'a',
+              style: ctaTwoStyle,
+              url: ctaTwoUrl,
+              label: ctaTwoText,
+              class: 'ra-link-list' %}
+            {% endif %}
           </div>
         </div>
       </div>
