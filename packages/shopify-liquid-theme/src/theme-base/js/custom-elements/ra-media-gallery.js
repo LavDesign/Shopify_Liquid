@@ -7,9 +7,30 @@ export default class RaMediaGallery extends HTMLElement {
     );
     this.open = false;
     this.swiperEl = this.querySelector(".swiper--lightbox");
+    this.primarySwiper = this.querySelector(
+      ".ra-gallery-carousel__main swiper-container"
+    );
+
+    this.youtubeVideos = this.querySelectorAll(".video--youtube");
+
+    this.loadVideoTriggers = this.querySelectorAll("[data-action-load-video]");
+    this.setupEventListeners();
   }
 
-  connectedCallback() {
+  pauseGalleryVideos() {
+    document.querySelectorAll(".ra-iframe--youtube").forEach((video) => {
+      video.contentWindow.postMessage(
+        '{"event":"command","func":"' + "pauseVideo" + '","args":""}',
+        "*"
+      );
+    });
+    document.querySelectorAll(".ra-frame--vimeo").forEach((video) => {
+      video.contentWindow.postMessage('{"method":"pause"}', "*");
+    });
+    document.querySelectorAll("video").forEach((video) => video.pause());
+  }
+
+  setupEventListeners() {
     if (this.lightBoxTriggers.length > 0) {
       this.lightBoxTriggers.forEach((trigger) =>
         trigger.addEventListener("click", (e) => this.triggerModal(e))
@@ -19,9 +40,27 @@ export default class RaMediaGallery extends HTMLElement {
     this.lightBoxGallery.addEventListener("click", (e) => {
       // if the dialog backdrop pseudoelement is clicked, close the dialog
       if (e.target === this.lightBoxGallery) {
-        this.lightBoxGallery.close();
+        this.lightBoxGallery.close().bind(this);
         document.body.classList.remove("fixed", "w-full");
       }
+    });
+
+    this.primarySwiper.addEventListener("slidechange", () => {
+      this.pauseGalleryVideos();
+    });
+
+    this.primarySwiper.addEventListener("beforeinit", () => {
+      this.primarySwiper.querySelectorAll("swiper-slide").forEach((slide) => {
+        slide.classList.remove("hidden");
+      });
+    });
+
+    this.loadVideoTriggers.forEach((trigger) => {
+      const videoContent = trigger.nextElementSibling.innerHTML;
+      trigger.addEventListener("click", () => {
+        trigger.parentElement.innerHTML = videoContent;
+        this.youtubeVideos = this.querySelectorAll(".video--youtube");
+      });
     });
   }
 

@@ -127,7 +127,7 @@
           thumbs-swiper=".product-media-gallery__thumbnails"
         >
           {%- for media in product.media -%}
-            <swiper-slide data-slide-index="{{ forloop.index0 }}">
+            <swiper-slide data-slide-index="{{ forloop.index0 }}" class="ra-carousel-slide {% if forloop.index != 1 %}hidden{% endif %}">
               {% case media.media_type %}
                 {% when 'image' %}
                   {% if media.media_type == 'image' %}
@@ -142,9 +142,22 @@
                     </div>
                   {% endif %}
                 {% when 'video' %}
-                  {% render 'video', media: media, class: "w-full" %}
+                  {% render 'video', media: media, class: "w-full", lazyload: true, controls: true %}
                 {% when 'external_video' %}
-                  {% render 'video', media: media, autoplay: false, width: 800, muted: false, class: "w-full" %}
+                  <div class="ra-carousel-slide__inner cursor-pointer">
+                    <button data-action-load-video class="w-full">
+                      {{ media.preview_image | image_url: width: 800 | image_tag:
+                        class: 'w-full',
+                        loading: 'lazy',
+                        width: 800,
+                        widths: '600, 800, 1200',
+                        alt: media.alt | escape
+                      }}
+                    </button>
+                    <template>
+                      {% render 'video', media: media, autoplay: true, width: 800, muted: false, class: "w-full ra-iframe--{{ media.host }}", lazyload: true %}
+                    </template>
+                  </div>
               {% endcase %}
             </swiper-slide>
           {%- endfor -%}
@@ -202,7 +215,7 @@
                 {% when 'video' %}
                   {% render 'video', media: media %}
                 {% when 'external_video' %}
-                  {% render 'video', media: media, autoplay: false, width: 1200, muted: false, class: "max-w-full" %}
+                  {% render 'video', media: media, autoplay: true, width: 1200, muted: false, class: "max-w-full" %}
               {% endcase %}
             </swiper-slide>
           {%- endfor -%}
@@ -225,7 +238,7 @@
           {% when 'video' %}
             {% render 'video', media: first_media %}
           {% when 'external_video' %}
-            {% render 'video', media: first_media, autoplay: false, width: 1200, muted: false %}
+            {% render 'video', media: first_media, autoplay: true, width: 1200, muted: false, class: "max-w-full" %}
         {% endcase %}
       {% endif %}
     </div>
