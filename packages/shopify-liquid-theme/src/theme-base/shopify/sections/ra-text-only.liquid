@@ -64,7 +64,7 @@
           {{- section.settings.description -}}
         </div>
       {% endif %}
-      {% if ctaOneText != blank and ctaOneUrl != blank and ctaTwoText != blank and ctaTwoUrl != blank %}
+      {% if ctaOneText != blank or ctaTwoText != blank %}
         <div class="ra-link-list ra-text-only-banner__link-list">
           {% if ctaOneText != blank and ctaOneUrl != blank %}
             {% render 'button'
