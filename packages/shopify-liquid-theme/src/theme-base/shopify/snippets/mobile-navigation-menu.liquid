@@ -16,19 +16,21 @@
   endfor
 %}
 
-<li class="header__mobile-navigation-item">
-  <a class="header__mobile-navigation-link" 
-    href="{{ link.url }}" 
-    title="{{ link.title }}" 
+  <li class="header__mobile-navigation-item flex justify-between items-center">
+  <a
+    class="header__mobile-navigation-link"
+    href="{{ link.url }}"
+    title="{{ link.title }}"
     data-navigation-drawer="drawer-{{ link.title | handleize }}"
     aria-label="{{ link.title }}">
     {{ link.title }}
   </a>
 
   {% if has_child or has_sub_child %}
-    <a class="header__mobile-navigation-link" 
-      href="#" 
-      title="{{ link.title }}" 
+    <a
+      class="header__mobile-navigation-link"
+      href="#"
+      title="{{ link.title }}"
       aria-label="{{ link.title }} drawer"
       data-toggle-drawer="drawer-{{ link.title | handleize }}">
 
@@ -39,28 +41,33 @@
   {% endif %}
 
   {%- comment -%}
-    drawer
+  drawer
   {%- endcomment -%}
   {% if has_child or has_sub_child %}
-    <ul class="header__mobile-navigation-drawer" id="drawer-{{ link.title | handleize }}" role="list" tabindex="-1">
-      
+    <ul class="header__mobile-navigation-drawer fixed flex-col top-0 left-full w-full flex h-full z-[515] transition-all duration-500"
+      id="drawer-{{ link.title | handleize }}"
+      role="list"
+      tabindex="-1">
+
       {%- comment -%}
-        drawer header
+      drawer header
       {%- endcomment -%}
-      <div class="header__mobile-navigation-drawer-header">
-        <a class="header__mobile-navigation-drawer-close" 
-          href="#" 
-          title="close {{ link.title }} drawer" 
+      <div class="header__mobile-navigation-drawer-header absolute top-0 left-0 w-full flex items-center justify-between">
+        <a
+          class="header__mobile-navigation-drawer-close flex"
+          href="#"
+          title="close {{ link.title }} drawer"
           aria-label="close {{ link.title }} drawer"
           data-close-drawer="drawer-{{ link.title | handleize }}">
           {% render 'icon' icon: 'chevron-left' %}
         </a>
 
-        <p class="header__mobile-navigation-drawer-title"></p>
+        <p class="header__mobile-navigation-drawer-title capitalize font-medium"></p>
 
-        <a class="header__mobile-navigation-drawer-close" 
-          href="#" 
-          title="close {{ link.title }} drawer" 
+        <a
+          class="header__mobile-navigation-drawer-close flex"
+          href="#"
+          title="close {{ link.title }} drawer"
           aria-label="close {{ link.title }} drawer"
           data-close-drawer="drawer-{{ link.title | handleize }}">
           {% render 'icon' icon: 'close' %}
@@ -68,12 +75,13 @@
       </div>
 
       {%- comment -%}
-        Link - columns
+      Link - columns
       {%- endcomment -%}
-      <div class="header__mobile-navigation-drawer-content">
+      <div class="header__mobile-navigation-drawer-content overflow-y-auto overflow-x-hidden block">
         {% for child in child_links %}
-          <li class="header__mobile-navigation-item">
-            <a class="header__mobile-navigation-link" 
+          <li class="header__mobile-navigation-item flex flex-wrap p-0 justify-between items-center">
+            <a
+              class="header__mobile-navigation-link"
               href="{{ child.url }}"
               title="{{ child.title }}"
               aria-label="{{ child.title }}">
@@ -81,12 +89,13 @@
             </a>
 
             {% if has_sub_child %}
-              <a class="header__mobile-navigation-link" 
-                href="#" 
-                title="{{ child.title }}" 
+              <a
+                class="header__mobile-navigation-link"
+                href="#"
+                title="{{ child.title }}"
                 aria-label="{{ child.title }} dropdown"
                 data-toggle-dropdown="dropdown-{{ child.title | handleize }}">
-          
+
                 {% if has_child or has_sub_child %}
                   {% render 'icon' icon: 'chevron-down' %}
                 {% endif %}
@@ -94,11 +103,16 @@
             {% endif %}
 
             {% if has_sub_child %}
-              <ul class="header__mobile-navigation-dropdown" id="dropdown-{{ child.title | handleize }}" role="list" tabindex="-1">
+              <ul
+                class="header__mobile-navigation-dropdown w-full flex flex-col h-0 overflow-hidden transition-all duration-300 ease-in-out"
+                id="dropdown-{{ child.title | handleize }}"
+                role="list"
+                tabindex="-1">
                 <div class="header__mobile-navigation-dropdown-inner">
                   {% for sub_child in child.links %}
-                    <li class="header__mobile-navigation-item">
-                      <a class="header__mobile-navigation-link" 
+                    <li class="header__mobile-navigation-item flex flex-wrap p-0 justify-between items-center !border-0 !p-0">
+                      <a
+                        class="header__mobile-navigation-link !border-0 !p-0"
                         href="{{ sub_child.url }}"
                         title="{{ sub_child.title }}"
                         aria-label="{{ sub_child.title }}">
@@ -113,7 +127,7 @@
         {% endfor %}
 
         {%- comment -%}
-          featured contents - columns
+        featured contents - columns
         {%- endcomment -%}
         {% if has_sub_child %}
           {% for featured in featured_contents %}
@@ -121,22 +135,24 @@
             {% assign link_label_handleize = link.title | handleize %}
 
             {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
-              <li class="header__mobile-navigation-featured-content">
-                <img class="header__mobile-navigation-featured-content-image" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
-                
-                <div class="header__mobile-navigation-featured-content-wrapper">
+              <li class="header__mobile-navigation-featured-content relative flex aspect-[3.8/2]">
+                <img
+                  class="header__mobile-navigation-featured-content-image w-full h-full absolute top-0 z-1 object-cover"
+                  src="{{ featured.settings.image | img_url: "600x" }}"
+                  alt="{{ featured.settings.image.alt }}">
+
+                <div class="header__mobile-navigation-featured-content-wrapper w-full h-full absolute top-0 flex flex-col justify-end items-start z-2">
                   {% if featured.settings.title != blank %}
-                    <h4	class="header__mobile-navigation-featured-content-title">{{ featured.settings.title }}</h4>
+                    <h4 class="header__mobile-navigation-featured-content-title">{{ featured.settings.title }}</h4>
                   {% endif %}
 
                   {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
-                    {% render 'button' 
-                      type: 'a',
-                      class: 'header__mobile-navigation-featured-content-button'
-                      style: featured.settings.link_style,
-                      label: featured.settings.link_label,
-                      url: featured.settings.link_url,
-                    %}
+                    {% render 'button'
+                     type: 'a',
+                     class: 'header__mobile-navigation-featured-content-button'
+                     style: featured.settings.link_style,
+                     label: featured.settings.link_label,
+                     url: featured.settings.link_url, %}
                   {% endif %}
                 </div>
               </li>

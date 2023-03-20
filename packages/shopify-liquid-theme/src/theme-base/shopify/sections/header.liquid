@@ -8,13 +8,13 @@
   }
 </style>
 
-<ra-header class="header">
-  <div class="header__wrapper container flex-wrap">
+<ra-header class="header flex items-center justify-center fixed w-full left-0 transition-all duration-300 z-[500]">
+  <div class="header__wrapper flex h-full container flex-wrap justify-between md:justify-start">
     <div class="header__inner flex w-full justify-between items-center">
       {%- comment -%}
         hamburger
       {%- endcomment -%}
-      <a id="header__hamburger" class="header__hamburger" href="#" title="toggle menu" aria-label="toggle menu">
+      <a id="header__hamburger" class="header__hamburger flex items-center md:hidden" href="#" title="toggle menu" aria-label="toggle menu">
         {% render 'icon' icon: 'hamburger', width: '24px', height: '24px' class: 'hamburger-icon' %}
         {% render 'icon' icon: 'close', width: '18px', height: '18px' class: 'close-icon' %}
       </a>
@@ -23,8 +23,8 @@
         Logo
       {%- endcomment -%}
       {% if section.settings.logo != blank %}
-        <a class="header__logo" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
-          <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+        <a class="header__logo flex items-center !m-0 md:!m-auto" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
+          <img class="header__logo-image w-full block" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
         </a>
       {% else %}
         <a href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
@@ -36,8 +36,8 @@
         {%- comment -%}
           Navigation menu - desktop
         {%- endcomment -%}
-        <nav class="header__navigation">
-          <ul class="header__navigation-list" role="list" tabindex="-1">
+        <nav class="header__navigation h-full hidden md:block">
+          <ul class="header__navigation-list flex h-full justify-center items-center leading-[100%] cursor-pointer list-none p-0 m-0" role="list" tabindex="-1">
             {%- for link in section.settings.menu.links -%}
               {% render 'desktop-navigation-menu'
                 link: link,
@@ -51,7 +51,7 @@
         {%- comment -%}
           Navigation menu - mobile
         {%- endcomment -%}
-        <nav class="header__mobile-navigation">
+        <nav class="header__mobile-navigation hidden opacity-0 left-0 fixed w-full z-[510] overflow-x-hidden overflow-y-scroll transition-all duration-300">
           <ul class="header__mobile-navigation-list" role="list" tabindex="-1">
             {%- for link in section.settings.menu.links -%}
               {% render 'mobile-navigation-menu'
@@ -62,7 +62,7 @@
 
             <div class="header__mobile-navigation-util">
               {% if section.settings.show_account %}
-                <li class="header__action-item">
+                <li class="header__action-item border-0">
                   <a class="header__action-link flex items-center" href="#" title="account" aria-label="account">
                     {% render 'icon' icon: section.settings.account_icon, width: '14px', height: '14px' %}
                     <span class="ml-2 text-sm">sign-in / sign-up</span>
@@ -78,7 +78,7 @@
       {%- comment -%}
         Action (cart, account, search, wishlist)
       {%- endcomment -%}
-      <div class="header__action">
+      <div class="header__action m-0 md:ml-auto">
         {% render 'ra-header-actions' %}
       </div>
     </div>
