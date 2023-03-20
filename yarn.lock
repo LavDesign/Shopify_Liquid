@@ -930,21 +930,10 @@
   resolved "https://registry.yarnpkg.com/@bva/stickie/-/stickie-0.1.3.tgz#bb62b50eae1fd4ad6dadd3960ff14b5b88321714"
   integrity sha512-8meSq/NpNSJJy3xvVcHRDu7Ldq/yEbRK83xTd7465oDZGPFNrK3HFybZkYrkhy99R8qqO2AkWFCpSpYSaSLQ5w==
 
-"@bva/ui-shared@1.4.6":
+"@bva/ui-shared@1.4.6", "@bva/ui-shared@^1.4.6":
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.6.tgz#4a1b0005f589350078095f20da9d01ebb20c6b37"
   integrity sha512-0wThPJcfcK84U9jslSTvdL7XjvI98bD15kBRFPMM9FhY6JkOGRHYsrdd8GQ5EJn1TRdWCMXnAPwTyAY5HMSjcA==
-  dependencies:
-    lilconfig "^2.0.6"
-    postcss-import "^15.0.0"
-    postcss-nested "^6.0.0"
-    postcss-simple-vars "^6.0.3"
-    postcss-value-parser "^4.2.0"
-
-"@bva/ui-shared@^1.4.4":
-  version "1.4.5"
-  resolved "https://registry.npmjs.org/@bva/ui-shared/-/ui-shared-1.4.5.tgz"
-  integrity sha512-rpfBZosHHMW7lZV0nIDOEORCLnnxK9kC6w2V2ulmsZrhd6BXBM8rZKAe6MtxeXsbOG8lxEswMX0+WDU/t4JItQ==
   dependencies:
     lilconfig "^2.0.6"
     postcss-import "^15.0.0"
@@ -2072,6 +2061,15 @@
   integrity sha512-jjMmK1tnZbm1Jq5a7fBliM4gQwjxMU7TFoRNwIyzwlO+eHPRCFv/Nv+H/Gi1jc3WR7QURG8D5d0Tn12YGrUqBQ==
   dependencies:
     esquery "^1.0.1"
+
+"@shopify/prettier-plugin-liquid@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@shopify/prettier-plugin-liquid/-/prettier-plugin-liquid-1.0.6.tgz#f269150e48b211d41bc141ff2cffbcd0ca449ff3"
+  integrity sha512-Z4fo0H4jkmlRBRDxFbayiXDu4nWV2ZoUqdYKT7QFjIqMRM/xsBOd+GiLgZE6Nomdl8I0DF9Oyy0UCZZMn6QYXg==
+  dependencies:
+    html-styles "^1.0.0"
+    line-column "^1.0.2"
+    ohm-js "^16.3.0"
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -5582,6 +5580,11 @@ hosted-git-info@^5.0.0:
   dependencies:
     lru-cache "^7.5.1"
 
+html-styles@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/html-styles/-/html-styles-1.0.0.tgz#a18061fd651f99c6b75c45c8e0549a3bc3e01a75"
+  integrity sha512-cDl5dcj73oI4Hy0DSUNh54CAwslNLJRCCoO+RNkVo+sBrjA/0+7E/xzvj3zH/GxbbBLGJhE0hBe1eg+0FINC6w==
+
 html-tags@^3.2.0:
   version "3.2.0"
   resolved "https://registry.npmjs.org/html-tags/-/html-tags-3.2.0.tgz"
@@ -6192,7 +6195,7 @@ is-wsl@^2.2.0:
   dependencies:
     is-docker "^2.0.0"
 
-isarray@1.0.0, isarray@~1.0.0:
+isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
   integrity sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==
@@ -6497,6 +6500,14 @@ lilconfig@^2.0.3, lilconfig@^2.0.5, lilconfig@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmjs.org/lilconfig/-/lilconfig-2.0.6.tgz"
   integrity sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==
+
+line-column@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/line-column/-/line-column-1.0.2.tgz#d25af2936b6f4849172b312e4792d1d987bc34a2"
+  integrity sha512-Ktrjk5noGYlHsVnYWh62FLVs4hTb8A3e+vucNZMgPeAOITdshMSgv4cCZQeRDjm7+goqmo6+liZwTXo+U3sVww==
+  dependencies:
+    isarray "^1.0.0"
+    isobject "^2.0.0"
 
 lines-and-columns@^1.1.6:
   version "1.2.4"
@@ -7422,6 +7433,11 @@ object.reduce@^1.0.0:
   dependencies:
     for-own "^1.0.0"
     make-iterator "^1.0.0"
+
+ohm-js@^16.3.0:
+  version "16.6.0"
+  resolved "https://registry.yarnpkg.com/ohm-js/-/ohm-js-16.6.0.tgz#a54508b002161b35d4feec2f628d5ab4e07d2f29"
+  integrity sha512-X9P4koSGa7swgVQ0gt71UCYtkAQGOjciJPJAz74kDxWt8nXbH5HrDOQG6qBDH7SR40ktNv4x61BwpTDE9q4lRA==
 
 once@^1.3.0, once@^1.3.1, once@^1.3.2, once@^1.4.0:
   version "1.4.0"

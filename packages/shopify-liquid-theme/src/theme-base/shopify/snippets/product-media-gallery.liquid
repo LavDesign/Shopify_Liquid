@@ -155,7 +155,10 @@
                       }}
                     </button>
                     <template>
-                      {% render 'video', media: media, autoplay: true, width: 800, muted: false, class: "w-full ra-iframe--{{ media.host }}", lazyload: true %}
+                      {%- capture video_classes -%}
+                        w-full ra-iframe--{{- media.host -}}
+                      {%- endcapture -%}
+                      {% render 'video', media: media, autoplay: true, width: 800, muted: false, class: video_classes, lazyload: true %}
                     </template>
                   </div>
               {% endcase %}

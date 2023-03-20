@@ -33,18 +33,16 @@
 %}
 
 {% capture verticalClasses %}
-  set--v-align-{{ verticalAlign }}{% if verticalAlignMD != blank %}-sm set--v-align-{{ verticalAlignMD }}-md{% endif %}
+  set--v-align-{{ verticalAlign }}-sm set--v-align-{{ verticalAlignMD }}-md
 {% endcapture %}
 
 {% capture horizontalClasses %}
-  set--h-align-{{ horizontalAlign }}{% if horizontalAlignMD != blank %}-sm set--h-align-{{ horizontalAlignMD }}-md{% endif %}
+  set--h-align-{{ horizontalAlign }}-sm set--h-align-{{ horizontalAlignMD }}-md
 {% endcapture %}
 
 {% capture classes %}
-  ra-split-section set--details-{{ detailsLocation }}-{% if detailsLocationMD != blank %}sm{% endif %}
-  {% if detailsLocationMD != blank %}
-    set--details-{{ detailsLocationMD }}-md
-  {% endif %}
+  ra-split-section set--details-{{ detailsLocation }}-sm
+  set--details-{{ detailsLocationMD }}-md
   {% if section_img != blank %}
     set--aspect-ratio-{{ aspectRatio }}
   {% endif %}
@@ -104,7 +102,7 @@
 
 <div class="max-w-screen-2xl mx-auto">
   <article class="{{ classes }}" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
-    <div class="ra-split-section__layout-container component-layout ra-row ra-no-gap">
+    <div class="ra-split-section__layout-container component-layout ra-row ra-no-gap !items-stretch">
       <div data-col-size="-size" data-col-auto="-md" class="component-media ra-col" style="--col-size:100%; {{ leftSplit }}">
         {% if section.settings.image != blank %}
           <div class="ra-split-section__media">
@@ -121,7 +119,7 @@
         {% endif %}
       </div>
       <div data-col-size="-size,-md" class="component-details ra-col" style="--col-size:100%; {{ rightSplit }}">
-        <div class="ra-split-section__details">
+        <div class="ra-split-section__details h-full">
           <div class="ra-split-section__copy {{ verticalClasses }} {{ horizontalClasses }}">
             {% if section.settings.subtitle != blank %}
               <div class="ra-split-section__subtitle">

@@ -8,8 +8,6 @@
 
 {% assign horizontalAlign = section.settings.horizontal_align %}
 {% assign horizontalAlignMD = section.settings.horizontal_align_md %}
-{% assign verticalAlign = section.settings.vertical_align %}
-{% assign verticalAlignMD = section.settings.vertical_align_md %}
 
 {% assign titleAs = section.settings.title_as %}
 {% assign titleLevel = section.settings.title_level %}
@@ -27,10 +25,6 @@
 {% assign ctaTwoText = section.settings.cta_two_text %}
 {% assign ctaTwoUrl = section.settings.cta_two_url %}
 {% assign ctaTwoStyle = section.settings.cta_two_style %}
-
-{% capture verticalClasses %}
-  set--v-align-{{ verticalAlign }}{% if verticalAlignMD != blank %}-sm set--v-align-{{ verticalAlignMD }}-md{% endif %}
-{% endcapture %}
 
 {% capture horizontalClasses %}
   set--h-align-{{ horizontalAlign }}{% if horizontalAlignMD != blank %}-sm set--h-align-{{ horizontalAlignMD }}-md{% endif %}
@@ -54,7 +48,7 @@
 
 <article class="{{ classes }}" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
   <div class="ra-text-only-banner__details max-width--{{ maxWidth }}">
-    <div class="ra-text-only-banner__copy {{ verticalClasses }} {{ horizontalClasses }}">
+    <div class="ra-text-only-banner__copy {{ horizontalClasses }}">
       {% if section.settings.subtitle != blank %}
         <div class="ra-text-only-banner__subtitle">
           {{- section.settings.subtitle -}}
@@ -70,24 +64,26 @@
           {{- section.settings.description -}}
         </div>
       {% endif %}
-      <div class="ra-link-list ra-text-only-banner__link-list">
-        {% if ctaOneText != blank and ctaOneUrl != blank %}
-          {% render 'button'
-           , type: 'a',
-           style: ctaOneStyle,
-           url: ctaOneUrl,
-           label: ctaOneText,
-           class: 'ra-link-list' %}
-        {% endif %}
-        {% if ctaTwoText != blank and ctaTwoUrl != blank %}
-          {% render 'button'
-           , type: 'a',
-           style: ctaTwoStyle,
-           url: ctaTwoUrl,
-           label: ctaTwoText,
-           class: 'ra-link-list' %}
-        {% endif %}
-      </div>
+      {% if ctaOneText != blank or ctaTwoText != blank %}
+        <div class="ra-link-list ra-text-only-banner__link-list">
+          {% if ctaOneText != blank and ctaOneUrl != blank %}
+            {% render 'button'
+            , type: 'a',
+            style: ctaOneStyle,
+            url: ctaOneUrl,
+            label: ctaOneText,
+            class: 'ra-link-list' %}
+          {% endif %}
+          {% if ctaTwoText != blank and ctaTwoUrl != blank %}
+            {% render 'button'
+            , type: 'a',
+            style: ctaTwoStyle,
+            url: ctaTwoUrl,
+            label: ctaTwoText,
+            class: 'ra-link-list' %}
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </article>
@@ -260,41 +256,6 @@
           }
         ],
         "default": "center"
-      }, {
-        "type": "select",
-        "id": "vertical_align",
-        "label": "Mobile Vertical Alignment",
-        "info": "Set vertical alignment for content on mobile devices",
-        "options": [
-          {
-            "value": "top",
-            "label": "Top"
-          }, {
-            "value": "middle",
-            "label": "Middle"
-          }, {
-            "value": "bottom",
-            "label": "Bottom"
-          }
-        ],
-        "default": "middle"
-      }, {
-        "type": "select",
-        "id": "vertical_align_md",
-        "label": "Desktop Vertical Alignment",
-        "info": "Set vertical alignment for content on desktop",
-        "options": [
-          {
-            "value": "top",
-            "label": "Top"
-          }, {
-            "value": "middle",
-            "label": "Middle"
-          }, {
-            "value": "bottom",
-            "label": "Bottom"
-          }
-        ]
       }, {
         "type": "header",
         "content": "Section Content"
