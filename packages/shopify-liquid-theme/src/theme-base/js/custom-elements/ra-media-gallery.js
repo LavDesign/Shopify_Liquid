@@ -64,8 +64,6 @@ export default class RaMediaGallery extends HTMLElement {
     });
   }
 
-  connectedCallback() {}
-
   triggerModal(e) {
     this.lightBoxGallery.showModal();
     document.body.classList.add("fixed", "w-full");
