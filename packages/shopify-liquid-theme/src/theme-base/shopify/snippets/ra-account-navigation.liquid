@@ -1,0 +1,28 @@
+<div class="account-navigation">
+  <div class="account-navigation__header flex justify-between">
+    <p class="account-navigation__header-title">
+      Hello, {{ customer.first_name }}
+    </p>
+    <a href="{{ routes.account_logout_url }}" class="account-navigation__header-link display--md-max ra-link">
+      Logout
+    </a>
+  </div>
+
+  <ul class="account-navigation__list ra-list ra-list--hide-bullets">
+    <li class="account-navigation__item ra-list__item">
+      <a href="/account" class="account-navigation__link ra-link ra-link--inherit-color">
+        Order history
+      </a>
+    </li>
+    <li class="account-navigation__item ra-list__item">
+      <a href="{{ routes.account_addresses_url }}" class="account-navigation__link ra-link ra-link--inherit-color">
+        Address Book
+      </a>
+    </li>
+    <li class="account-navigation__item account-navigation__item--extra-spacing display--md ra-list__item">
+      <a href="{{ routes.account_logout_url }}" class="account-navigation__link account-navigation__link--no-highlight text-transform--uppercase ra-link ra-link--inherit-color">
+        Logout
+      </a>
+    </li>
+  </ul>
+</div>
