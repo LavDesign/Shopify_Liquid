@@ -58,13 +58,12 @@
 
 @breakpoint md {
   .account-navigation__item {
-    --list-item-margin: 0 0 var(--spacing-sm) 0
+    --list-item-margin: 0 0 var(--spacing-sm) 0;
   }
   .account-navigation__item--extra-spacing {
-    --list-item-margin: var(--spacing-lg) 0 var(--spacing) 0
+    --list-item-margin: var(--spacing-lg) 0 var(--spacing) 0;
   }
 }
-
 
 // Address book
 .addresses ul {
