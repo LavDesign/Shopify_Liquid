@@ -19,6 +19,54 @@
   }
 }
 
+// Account Navigation & Content
+.account-navigation__header {
+  margin-bottom: var(--spacing-sm);
+
+  @breakpoint md {
+    .account-navigation__header {
+      margin-bottom: var(--spacing-xl);
+    }
+  }
+}
+
+.account-navigation__header-title {
+  color: var(--c-gray-900);
+  font-size: var(--font-size-md-to-md20);
+}
+
+.account-navigation__link {
+  font-size: var(--font-size-sm-to-md);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  text-underline-position: under;
+}
+
+@breakpoint md-max {
+  .account-navigation__list {
+    --list-margin: 0 -1rem;
+    --list-padding: 0 1rem 1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  .account-navigation__item {
+    --list-item-margin: 0 var(--spacing-sm) 0 0;
+  }
+}
+
+@breakpoint md {
+  .account-navigation__item {
+    --list-item-margin: 0 0 var(--spacing-sm) 0
+  }
+  .account-navigation__item--extra-spacing {
+    --list-item-margin: var(--spacing-lg) 0 var(--spacing) 0
+  }
+}
+
+
+// Address book
 .addresses ul {
   text-align: left;
 }

@@ -1,27 +1,18 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-<section class="customer account account-page ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--large">
-  <div></div>
+<section class="customer account account-page ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium">
 
   <div data-row-gap="-sm,-md,-lg" class="ra-row" style="--row-gap:1rem; --row-gap-md:2rem; --row-gap-lg:5%;">
-    <div data-col-size="-size,-md" class="ra-col" style="--col-size:100%; --col-size-md:40%;">
-      <h2 class="ra-title account-content__title">Hello, {{ customer.first_name }}</h2>
-
-      {{ customer.default_address | format_address }}
-
-      <a href="{{ routes.account_addresses_url }}" class="ra-link flex mt-8">
-        {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }}) </a
-      ><br>
-
-      <a href="{{ routes.account_logout_url }}" class="ra-link flex mt-4">
-        {{ 'customer.log_out' | t }}
-      </a>
+    <div data-col-size="-size,-md" class="ra-col" style="--col-size:100%; --col-size-md:25%;">
+      {% render 'ra-account-navigation' %}
     </div>
 
-    <div data-col-size="-size,-md" class="ra-col" style="--col-size:100%; --col-size-md:60%;">
-      <h2 class="ra-title account-content__title">
-        {{ 'customer.orders.title' | t }}
-      </h2>
+    <div data-col-size="-size,-md" class="ra-col" style="--col-size:100%; --col-size-md:75%;">
+      <div class="account-content__header pb-4">
+        <h1 class="ra-title account-content__title" style="--title-font-size:var(--font-size-md30-to-lg20);">
+          {{ 'customer.orders.title' | t }}
+        </h1>
+      </div>
 
       {% paginate customer.orders by 20 %}
         {%- if customer.orders.size > 0 -%}
