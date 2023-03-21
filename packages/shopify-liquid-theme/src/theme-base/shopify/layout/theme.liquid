@@ -12,14 +12,6 @@
       Dawn theme - to be deleted or updated later
     {%- endcomment -%}
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {%- if settings.predictive_search_enabled -%}
-      <link
-        rel="stylesheet"
-        href="{{ 'component-predictive-search.css' | asset_url }}"
-        media="print"
-        onload="this.media='all'"
-      >
-    {%- endif -%}
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 
     {% render 'vendor-scripts' %}
@@ -178,10 +170,6 @@
     {% section 'footer' %}
     {%- render 'js-variables' -%}
 
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
-
     {% render 'ra-login-modal' %}
 
     {{ 'main.js' | asset_url | script_tag }}
@@ -190,7 +178,10 @@
       {% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
       {% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
       <div data-vue-root="CartInline">
-        <cart-inline :settings="{{- cart_settings | escape | strip -}}" :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}" />
+        <cart-inline
+          :settings="{{- cart_settings | escape | strip -}}"
+          :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}"
+        />
       </div>
     {% endunless %}
   </body>

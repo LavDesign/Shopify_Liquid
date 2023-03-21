@@ -1,5 +1,8 @@
 {% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
 {% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
 <div data-vue-root="CartPage" class="min-h-[500px] !block transition-all">
-  <cart-page :settings="{{- cart_settings | escape | strip -}}" :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}" />
+  <cart-page
+    :settings="{{- cart_settings | escape | strip -}}"
+    :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}"
+  />
 </div>

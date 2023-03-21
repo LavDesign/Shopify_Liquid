@@ -8,8 +8,17 @@
   {% endif %}
   {% if section.settings.show_account %}
     <li class="header__action-item hidden md:flex justify-center items-center h-full mr-4 last:mr-0">
-      <a class="header__action-link" {% if customer %}href="/account"{% else %}href="#" id="modal-login"{% endif %} title="account" aria-label="account">
-        {% render 'icon' icon: section.settings.account_icon, width: '20px', height: '20px' %}
+      <a
+        class="header__action-link"
+        {% if customer %}
+          href="/account"
+        {% else %}
+          href="#" id="modal-login"
+        {% endif %}
+        title="account"
+        aria-label="account"
+      >
+        {% render 'icon', icon: section.settings.account_icon, width: '20px', height: '20px' %}
       </a>
     </li>
   {% endif %}
