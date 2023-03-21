@@ -16,31 +16,31 @@
   endfor
 %}
 
-<li class="header__navigation-item flex h-full justify-center items-center leading-[100%] cursor-pointer{% if has_child %} relative header__navigation-item--has-child{% endif %}{% if has_mega_menu %} relative header__navigation-item--has-mega-menu{% endif %}">
-  <a class="header__navigation-link flex h-full justify-center items-center leading-[100%] cursor-pointer"
+<li class="header__navigation-item flex h-full justify-center items-center leading-[100%] cursor-pointer group {% if has_child %} relative header__navigation-item--has-child{% endif %}{% if has_mega_menu %} relative header__navigation-item--has-mega-menu{% endif %}">
+  <a class="text-lg flex h-full justify-center items-center leading-[100%] cursor-pointer px-6 py-0"
     href="{{ link.url }}"
     title="{{ link.title }}"
     aria-label="{{ link.title }}">
     {{ link.title }}
 
     {% if has_child or has_mega_menu %}
-      {% render 'icon' icon: 'chevron-down' %}
+      {% render 'icon' icon: 'chevron-down', class: 'transition-all group-hover:rotate-180 ml-4', width: '12px', height: '12px' %}
     {% endif %}
   </a>
 
   {% if has_child or has_mega_menu %}
-    <ul class="{% if has_mega_menu %}fixed w-full {% else %}absolute {% endif %}header__navigation-dropdown  top-full left-0 opacity-0 hidden z-[505]" role="list" tabindex="-1">
+    <ul class="{% if has_mega_menu %}fixed w-full py-6 px-0 {% else %}absolute p-6 {% endif %}header__navigation-dropdown top-full left-0 opacity-0 hidden z-[505] p-6 min-w-[250px] list-none group-[.active]:flex group-[.active]:opacity-100 group-[.active]:flex-col" role="list" tabindex="-1">
 
       {% if has_mega_menu %}
-        <div class="container header__navigation-dropdown-mega-menu grid w-full">
+        <div class="px-6 grid-cols-3 md:grid-cols-5 gap-6 grid w-full">
       {% endif %}
 
       {%- comment -%}
         Link - columns
       {%- endcomment -%}
       {% for child in child_links %}
-        <li class="header__navigation-dropdown-item flex flex-col">
-          <a class="header__navigation-dropdown-link flex flex-col{% if has_mega_menu %} header__navigation-dropdown-link--label uppercase font-medium{% endif %}"
+        <li class="flex flex-col {% unless has_mega_menu %}mb-3 last:mb-0{% endunless %}">
+          <a class="text-base leading-4 flex flex-col{% if has_mega_menu %} mb-6 uppercase font-medium{% endif %}"
             href="{{ child.url }}"
             title="{{ child.title }}"
             aria-label="{{ child.title }}">
@@ -48,10 +48,10 @@
           </a>
 
           {% if has_mega_menu %}
-            <ul class="header__navigation-mega-menu flex flex-col" role="list" tabindex="-1">
+            <ul class="flex flex-col" role="list" tabindex="-1">
               {% for sub_child in child.links %}
-                <li class="header__navigation-dropdown-item flex flex-col m-0">
-                  <a class="header__navigation-dropdown-link flex flex-col"
+                <li class="flex flex-col m-0 mb-3 last:mb-0">
+                  <a class="flex flex-col"
                     href="{{ sub_child.url }}"
                     title="{{ sub_child.title }}"
                     aria-label="{{ sub_child.title }}">
@@ -73,18 +73,18 @@
           {% assign link_label_handleize = link.title | handleize %}
 
           {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
-            <li class="header__navigation-featured-content relative w-full h-auto {{ aspect_ratio }}">
-              <img class="header__navigation-featured-content-image absolute top-0 left-0 z-1 object-cover w-full h-full" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
+            <li class="relative w-full h-auto aspect-{{ aspect_ratio }}">
+              <img class="absolute top-0 left-0 z-1 object-cover w-full h-full" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
 
-              <div class="header__navigation-featured-content-wrapper flex flex-col justify-end absolute top-0 left-0 z-2 w-full h-full">
+              <div class="p-6 flex flex-col justify-end absolute top-0 left-0 z-2 w-full h-full">
                 {% if featured.settings.title != blank %}
-                  <h4	class="header__navigation-featured-content-title">{{ featured.ysettings.title }}</h4>
+                  <h4	class="text-[24px] color-grey-900">{{ featured.ysettings.title }}</h4>
                 {% endif %}
 
                 {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
                   {% render 'button'
                     type: 'a',
-                    class: 'header__navigation-featured-content-button'
+                    class: 'mt-3'
                     style: featured.settings.link_style,
                     label: featured.settings.link_label,
                     url: featured.settings.link_url,

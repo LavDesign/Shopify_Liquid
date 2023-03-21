@@ -1,26 +1,26 @@
-<ul class="header__action-list flex justify-center items-center h-full">
+<ul class="flex justify-center items-center h-full">
   {% if section.settings.show_search %}
-    <li class="header__action-item flex justify-center items-center h-full header__action-item--search">
+    <li class="header__action-item flex justify-center items-center h-full mr-4 last:mr-0">
       <button class="header__action-link" data-action-toggle-search title="search" aria-label="search">
         {% render 'icon' icon: section.settings.search_icon, width: '20px', height: '20px', color: 'white' %}
       </button>
     </li>
   {% endif %}
   {% if section.settings.show_account %}
-    <li class="header__action-item hidden md:flex justify-center items-center h-full header__action-item--account">
+    <li class="header__action-item hidden md:flex justify-center items-center h-full mr-4 last:mr-0">
       <a class="header__action-link" {% if customer %}href="/account"{% else %}href="#" id="modal-login"{% endif %} title="account" aria-label="account">
         {% render 'icon' icon: section.settings.account_icon, width: '20px', height: '20px' %}
       </a>
     </li>
   {% endif %}
   {% if section.settings.show_wishlist %}
-    <li class="header__action-item hidden md:flex justify-center items-center h-full header__action-item--wishlist">
+    <li class="header__action-item hidden md:flex justify-center items-center h-full mr-4 last:mr-0">
       <a class="header__action-link" href="#" title="wishlist" aria-label="wishlist">
         {% render 'icon' icon: section.settings.wishlist_icon, width: '20px', height: '20px' %}
       </a>
     </li>
   {% endif %}
-  <li class="header__action-item flex justify-center items-center h-full header__action-item--cart">
+  <li class="header__action-item flex justify-center items-center h-full mr-4 last:mr-0">
     <a class="header__action-link" href="/cart" title="cart" aria-label="cart" data-cart-toggle>
       {% render 'icon' icon: 'cart', width: '24px', height: '24px' %}
     </a>

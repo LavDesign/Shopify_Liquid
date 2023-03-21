@@ -74,6 +74,14 @@ module.exports = {
       yellow: "var(--color-util-yellow)",
       white: "var(--color-util-white)",
     },
+    extend: {
+      aspectRatio: {
+        portrait: "0.85 / 1",
+      },
+      fontSize: {
+        sizeInherit: "inherit",
+      },
+    },
     screens,
   },
   plugins: [],
@@ -81,6 +89,7 @@ module.exports = {
   safelist: [
     "aspect-square",
     "aspect-video",
+    "aspect-portrait",
     "h-full",
     "w-full",
     "object-cover",
@@ -89,5 +98,6 @@ module.exports = {
     "order-1",
     "order-2",
     "mb-1",
+    "text-sizeInherit",
   ],
 };
