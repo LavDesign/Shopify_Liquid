@@ -1,25 +1,15 @@
 {% if settings.util_link_1_url != blank or settings.util_link_2_url != blank or settings.util_link_3_url != blank %}
-  <ul class="ra-header-util">
+  <ul class="ra-header-util !static flex flex-col list-none md:!absolute md:top-1/2 md:right-0 md:-translate-y-1/2 md:flex-row max-md:transform-none">
     {% if settings.util_link_1_url != blank and settings.util_link_1_label != blank %}
-      <li class="ra-header-util__item">
-        <a
-          class="text-sm"
-          title="{{ settings.util_link_1_label }}"
-          aria-label="{{ settings.util_link_1_label }}"
-          href="{{ settings.util_link_1_url }}"
-        >
+      <li class="ra-header-util__item px-[10px] last:pr-0">
+        <a class="text-sm" title="{{ settings.util_link_1_label }}" aria-label="{{ settings.util_link_1_label }}" href="{{ settings.util_link_1_url }}">
           {{ settings.util_link_1_label }}
         </a>
       </li>
     {% endif %}
     {% if settings.util_link_2_url != blank and settings.util_link_2_label != blank %}
-      <li class="ra-header-util__item">
-        <a
-          class="text-sm"
-          title="{{ settings.util_link_2_label }}"
-          aria-label="{{ settings.util_link_2_label }}"
-          href="{{ settings.util_link_2_url }}"
-        >
+      <li class="ra-header-util__item px-[10px] last:pr-0">
+        <a class="text-sm" title="{{ settings.util_link_2_label }}" aria-label="{{ settings.util_link_2_label }}" href="{{ settings.util_link_2_url }}">
           {{ settings.util_link_2_label }}
         </a>
       </li>

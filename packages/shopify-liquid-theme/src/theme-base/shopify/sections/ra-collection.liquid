@@ -74,9 +74,11 @@
             {% comment %}
               check the list of disruptor indexes to see if any exist on this page of the collection
             {% endcomment %}
+
             {% assign paginate_offset = paginate.current_page | minus: 1 | times: paginate_count %}
             {% assign max_pagination = paginate_offset | plus: paginate_count %}
             {% assign has_disruptors = false %}
+
             {% for index in disruptor_indexes_split %}
               {% assign numeric_index = index | plus: 0 %}
               {% if numeric_index >= paginate_offset and numeric_index < max_pagination %}
@@ -84,6 +86,7 @@
                 {% break %}
               {% endif %}
             {% endfor %}
+
             <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
               {%- for product in collection.products -%}
                 {% comment %}
