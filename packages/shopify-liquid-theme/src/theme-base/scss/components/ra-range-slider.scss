@@ -4,7 +4,7 @@
 
 .ra-slider,
 .ra-slider .noUi-handle {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .ra-slider {
@@ -15,7 +15,7 @@
 /* Hide markers on slider handles */
 .ra-slider .noUi-handle::before,
 .ra-slider .noUi-handle::after {
-    display: none;
+  display: none;
 }
 
 .ra-slider .noUi-handle .noUi-touch-area {

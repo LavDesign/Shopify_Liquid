@@ -13,14 +13,20 @@
     {%- form 'recover_customer_password' -%}
       {% assign recover_success = form.posted_successfully? %}
 
-      <div data-gap="-sm,-md" data-columns="-sm" class="ra-grid" style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;">
+      <div
+        data-gap="-sm,-md"
+        data-columns="-sm"
+        class="ra-grid"
+        style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;"
+      >
         <div class="ra-grid-item">
           <div class="ra-input">
             <label class="ra-input__label" for="RecoverEmail">
               {{ 'customer.login_page.email' | t }}
             </label>
             <div class="ra-input__wrapper">
-              <input type="email"
+              <input
+                type="email"
                 class="ra-input__control ra-input__control--text"
                 value=""
                 name="email"
@@ -38,7 +44,7 @@
               {%- if form.errors -%}
                 <small id="RecoverEmail-email-error" class="form__message">
                   {% render 'icon', icon: 'warning', height: '13px', width: '13px' %}
-                  {{ form.errors.messages['form'] }}
+                  {{ form.errors.messages.form }}
                 </small>
               {%- endif -%}
             </div>
@@ -53,11 +59,8 @@
       </div>
 
       <div class="auth-form-bottom text-align--center">
-        <a href="/account/login" class="auth-form__inline-cta ra-link">
-          Back to Login
-        </a>
+        <a href="/account/login" class="auth-form__inline-cta ra-link"> Back to Login </a>
       </div>
-
     {%- endform -%}
   </div>
 
@@ -82,7 +85,12 @@
         {{ form.errors | default_errors }}
       {%- endif -%}
 
-      <div data-gap="-sm,-md" data-columns="-sm" class="ra-grid" style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;">
+      <div
+        data-gap="-sm,-md"
+        data-columns="-sm"
+        class="ra-grid"
+        style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;"
+      >
         <div class="ra-grid-item">
           <div class="ra-input">
             <label class="ra-input__label" for="CustomerEmail">
@@ -149,7 +157,6 @@
           {{ 'customer.login_page.create_account' | t }}
         </a>
       </div>
-
     {%- endform -%}
   </div>
 

@@ -1,6 +1,6 @@
 {% liquid
-  assign empty_cart_settings_keys = "empty_cart_header,"
-  assign empty_cart_settings_keys = empty_cart_settings_keys | split: ","
+  assign empty_cart_settings_keys = 'empty_cart_header,'
+  assign empty_cart_settings_keys = empty_cart_settings_keys | split: ','
 %}
 
 {% capture empty_cart_settings %}
@@ -21,4 +21,4 @@
   }
 {% endcapture %}
 
-{{empty_cart_settings}}
+{{ empty_cart_settings }}

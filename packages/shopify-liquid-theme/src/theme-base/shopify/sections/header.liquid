@@ -15,8 +15,8 @@
         hamburger
       {%- endcomment -%}
       <a id="header__hamburger" class="header__hamburger" href="#" title="toggle menu" aria-label="toggle menu">
-        {% render 'icon' icon: 'hamburger', width: '24px', height: '24px' class: 'hamburger-icon' %}
-        {% render 'icon' icon: 'close', width: '18px', height: '18px' class: 'close-icon' %}
+        {% render 'icon', icon: 'hamburger', width: '24px', height: '24px', class: 'hamburger-icon' %}
+        {% render 'icon', icon: 'close', width: '18px', height: '18px', class: 'close-icon' %}
       </a>
 
       {%- comment -%}
@@ -24,7 +24,11 @@
       {%- endcomment -%}
       {% if section.settings.logo != blank %}
         <a class="header__logo" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
-          <img class="header__logo-image" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+          <img
+            class="header__logo-image"
+            src="{{ section.settings.logo | img_url: "500x" }}"
+            alt="{{ shop.name }} logo"
+          >
         </a>
       {% else %}
         <a href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
@@ -39,7 +43,7 @@
         <nav class="header__navigation">
           <ul class="header__navigation-list" role="list" tabindex="-1">
             {%- for link in section.settings.menu.links -%}
-              {% render 'desktop-navigation-menu'
+              {% render 'desktop-navigation-menu',
                 link: link,
                 featured_contents: section.blocks,
                 aspect_ratio: section.settings.aspect_ratio
@@ -54,17 +58,14 @@
         <nav class="header__mobile-navigation">
           <ul class="header__mobile-navigation-list" role="list" tabindex="-1">
             {%- for link in section.settings.menu.links -%}
-              {% render 'mobile-navigation-menu'
-                link: link,
-                featured_contents: section.blocks
-              %}
+              {% render 'mobile-navigation-menu', link: link, featured_contents: section.blocks %}
             {%- endfor -%}
 
             <div class="header__mobile-navigation-util">
               {% if section.settings.show_account %}
                 <li class="header__action-item">
                   <a class="header__action-link flex items-center" href="#" title="account" aria-label="account">
-                    {% render 'icon' icon: section.settings.account_icon, width: '14px', height: '14px' %}
+                    {% render 'icon', icon: section.settings.account_icon, width: '14px', height: '14px' %}
                     <span class="ml-2 text-sm">sign-in / sign-up</span>
                   </a>
                 </li>
@@ -82,7 +83,7 @@
         {% render 'ra-header-actions' %}
       </div>
     </div>
-    {% render "ra-search-bar" %}
+    {% render 'ra-search-bar' %}
   </div>
   <div id="SearchResponse" class="search__response col-start-1 col-span-5"></div>
 </ra-header>

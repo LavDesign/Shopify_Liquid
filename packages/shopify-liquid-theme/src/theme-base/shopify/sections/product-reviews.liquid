@@ -7,15 +7,16 @@
 <div class="product-reviews max-w-screen-2xl my-0 mx-auto">
   {% case platform %}
     {% when 'yotpo' %}
-      <div class="yotpo yotpo-main-widget"
+      <div
+        class="yotpo yotpo-main-widget"
         data-product-id="{{ product.id }}"
         data-name="{{ product.title | escape }}"
         data-url="{{ shop.url }}{{ product.url }}"
         data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
         data-price="{{ variant.price | money_without_currency }}"
         data-currency="{{ shop.currency }}"
-        data-description="{{ product.description | escape }}">
-      </div>
+        data-description="{{ product.description | escape }}"
+      ></div>
     {% when 'stamped' %}
       <div
         id="stamped-main-widget"
@@ -25,7 +26,8 @@
         data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}"
         data-description="{{ product.description | escape }}"
         data-product-sku="{{ product.handle }}"
-        data-product-type="{{ product.type }}">
+        data-product-type="{{ product.type }}"
+      >
         {{ product.metafields.stamped.reviews }}
       </div>
     {% when 'bazaarvoice' %}
@@ -39,15 +41,15 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Product Reviews",
-    "settings": [],
-    "templates": ["product"],
-    "presets": [
-      {
-        "name": "Product Reviews",
-        "category": "Reviews"
-      }
-    ]
-  }
+{
+  "name": "Product Reviews",
+  "settings": [],
+  "templates": ["product"],
+  "presets": [
+    {
+      "name": "Product Reviews",
+      "category": "Reviews"
+    }
+  ]
+}
 {% endschema %}

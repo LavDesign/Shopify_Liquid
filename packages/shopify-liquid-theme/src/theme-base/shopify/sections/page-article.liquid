@@ -3,7 +3,7 @@
 {%- endcomment -%}
 <div class="py-6 md:py-20 bg-grey-100">
   <div class="container">
-    {% render 'featured-article', 
+    {% render 'featured-article',
       article: article,
       aspect_ratio: section.settings.aspect_ratio,
       show_tags: true,
@@ -30,17 +30,17 @@
   Related Articles
 {%- endcomment -%}
 {% liquid
- assign related_articles_found = 0
- for tag in article.tags
-   assign skip_articles = article.handle | split: '.....'
-   for related_article in blog.articles
-     if related_article.tags contains tag
-       unless skip_articles contains related_article.handle
-         assign related_articles_found = related_articles_found | plus: 1
-       endunless
-     endif
-   endfor
- endfor
+  assign related_articles_found = 0
+  for tag in article.tags
+    assign skip_articles = article.handle | split: '.....'
+    for related_article in blog.articles
+      if related_article.tags contains tag
+        unless skip_articles contains related_article.handle
+          assign related_articles_found = related_articles_found | plus: 1
+        endunless
+      endif
+    endfor
+  endfor
 %}
 
 {% if related_articles_found > 0 %}
@@ -55,15 +55,15 @@
       {% assign counter = 0 %}
       {% for tag in article.tags %}
         {% assign skip_articles = article.handle | split: '.....' %}
-      
+
         {% for related_article in blog.articles %}
           {% if related_article.tags contains tag and counter < 3 %}
             {% unless skip_articles contains related_article.handle %}
               {% assign counter = counter | plus: 1 %}
               {% assign temp = related_article.handle | split: '.....' %}
               {% assign skip_articles = skip_articles | concat: temp %}
-      
-              {% render 'article-tile' 
+
+              {% render 'article-tile',
                 article: related_article,
                 aspect_ratio: section.settings.aspect_ratio,
                 show_tags: section.settings.show_tags,

@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     title:       string item title - (required)
     content:     string item content - (required)
@@ -11,7 +10,6 @@
 
   Example accordion item + icon:
     {%- render 'accordion-item', title: 'title', content: 'some content as raw or <strong>HTML</strong>.', show_icon: true -%}
-
 {% endcomment %}
 
 {%- liquid
@@ -30,8 +28,8 @@
     <summary class="ra-accordion-item__header">
       {{- title -}}
       {% if show_icon %}
-       {%- render 'icon' icon: 'plus', class: 'ra-accordion-item__plus-icon', width: '14px', height: '14px' -%}
-       {%- render 'icon' icon: 'minus', class: 'ra-accordion-item__minus-icon' width: '14px', height: '14px' -%}
+        {%- render 'icon', icon: 'plus', class: 'ra-accordion-item__plus-icon', width: '14px', height: '14px' -%}
+        {%- render 'icon', icon: 'minus', class: 'ra-accordion-item__minus-icon', width: '14px', height: '14px' -%}
       {% endif %}
     </summary>
     <div class="ra-accordion-item__content">

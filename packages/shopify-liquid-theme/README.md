@@ -302,7 +302,6 @@ shopify3 version
 
 If your machine is already running Shopify CLI v3.x, you still have the option to install using the instructions above. If you'd prefer to use a single installation of the Shopify CLI, you can create a symlink to the existing install using the instructions below.
 
-
 ```
 # Make a symlink for 'shopify3' assuming shopify-cli was installed using Homebrew
 

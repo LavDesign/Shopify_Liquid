@@ -28,7 +28,6 @@
 
 {% if section.blocks.size > 0 %}
   <div class="ra-preheader__wrapper">
-    
     <div class="ra-preheader__slider ra-preheader__slider--{{ section.settings.alignment }}">
       <div class="swiper" data-swiper-settings="{{ swiper_settings | escape | strip }}">
         <div class="swiper-wrapper">
@@ -43,10 +42,10 @@
 
         {% if section.blocks.size > 1 %}
           <div class="{{ section.id }} swiper-button-prev">
-            {% render 'icon', icon: "chevron-left", width: '14px', height: '14px', color: arrow_color %}
+            {% render 'icon', icon: 'chevron-left', width: '14px', height: '14px', color: arrow_color %}
           </div>
           <div class="{{ section.id }} swiper-button-next">
-            {% render 'icon', icon: "chevron-right", width: '14px', height: '14px', color: arrow_color %}
+            {% render 'icon', icon: 'chevron-right', width: '14px', height: '14px', color: arrow_color %}
           </div>
         {% endif %}
       </div>

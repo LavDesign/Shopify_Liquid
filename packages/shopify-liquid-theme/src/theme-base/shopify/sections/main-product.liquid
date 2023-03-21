@@ -13,7 +13,7 @@
           <div class="sticky top-12">
             {% render 'ra-product-main', product_data: product_data %}
             <div class="product-main__special-messaging">
-              {% assign special_messaging_blocks = section.blocks | where: "type", "special_messaging" -%}
+              {% assign special_messaging_blocks = section.blocks | where: 'type', 'special_messaging' -%}
               {%- for block in special_messaging_blocks -%}
                 <div class="flex justify-center gap-1 items-center my-4">
                   {% if block.settings.enable_icon %}
@@ -24,10 +24,14 @@
               {%- endfor -%}
             </div>
             <div class="product__accordion">
-              {% assign accordion_blocks = section.blocks | where: "type", "accordion_item" -%}
+              {% assign accordion_blocks = section.blocks | where: 'type', 'accordion_item' -%}
               <ra-accordion class="ra-accordion" data-multi-open="false">
                 {%- for block in accordion_blocks -%}
-                  {% render 'accordion-item', title: block.settings.title, content: block.settings.content, show_icon: true %}
+                  {% render 'accordion-item',
+                    title: block.settings.title,
+                    content: block.settings.content,
+                    show_icon: true
+                  %}
                 {%- endfor -%}
               </ra-accordion>
             </div>
@@ -36,7 +40,7 @@
                 {%- case block.type -%}
                   {%- when '@app' -%}
                     {% render block %}
-                  {%- endcase 0%}
+                {%- endcase %}
               {%- endfor -%}
             </div>
           </div>
@@ -46,56 +50,56 @@
   </div>
 </div>
 {% schema %}
-  {
-    "name": "t:sections.main-product.name",
-    "tag": "section",
-    "class": "section",
-    "blocks": [
-      {
-        "type": "@app"
-      },
-      {
-        "type": "accordion_item",
-        "name": "Accordion Item",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "default": "Accordion Title",
-            "label": "Accordion Title"
-          },
-          {
-            "type": "richtext",
-            "id": "content",
-            "default": "<p>Accordion Content</p>",
-            "label": "Accordion Content"
-          }
-        ]
-      },
-      {
-        "type": "special_messaging",
-        "name": "Special Messaging",
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "content",
-            "default": "<p>Special messaging.</p>",
-            "label": "Content"
-          },
-          {
-            "type": "checkbox",
-            "id": "enable_icon",
-            "default": false,
-            "label": "Enable Icon"
-          },
-          {
-            "type": "select",
-            "id": "icon",
-            "label": "Icon",
-            "options": <%- uikit.icons -%>
-          }
-        ]
-      }
-    ]
-  }
+{
+  "name": "t:sections.main-product.name",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Accordion Title",
+          "label": "Accordion Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "default": "<p>Accordion Content</p>",
+          "label": "Accordion Content"
+        }
+      ]
+    },
+    {
+      "type": "special_messaging",
+      "name": "Special Messaging",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "default": "<p>Special messaging.</p>",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_icon",
+          "default": false,
+          "label": "Enable Icon"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": <%- uikit.icons -%>
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}

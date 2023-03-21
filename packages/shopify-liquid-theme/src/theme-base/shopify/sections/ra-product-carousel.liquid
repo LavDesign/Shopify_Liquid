@@ -1,12 +1,12 @@
 {% liquid
-  assign section_title       = section.settings.title
+  assign section_title = section.settings.title
   assign section_description = section.settings.description
 
-  assign title_as            = section.settings.title_as
-  assign title_level         = section.settings.title_level
+  assign title_as = section.settings.title_as
+  assign title_level = section.settings.title_level
 
-  assign bg_color            = section.settings.bg_color
-  assign fg_color            = section.settings.fg_color
+  assign bg_color = section.settings.bg_color
+  assign fg_color = section.settings.fg_color
 %}
 
 {% capture bgStyles %}
@@ -81,11 +81,19 @@
   }
 {% endcapture %}
 
-<section class="ra-carousel-outer product-carousel product-carousel--{{ section.id }} p-4" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
+<section
+  class="ra-carousel-outer product-carousel product-carousel--{{ section.id }} p-4"
+  {% if bgStyles or colorStyles %}
+    style="{{- bgStyles -}};{{- colorStyles -}}"
+  {% endif %}
+>
   <div class="ra-carousel-wrapper">
     <div class="ra-heading ra-carousel__details" style="--heading-margin:var(--spacing-lg); --heading-text-align:left;">
       {% if section_title != blank %}
-        <{{ title_level }} class="ra-title ra-heading__title" style="--title-font-size:var(--font-size-{{ title_as }});">
+        <{{ title_level }}
+          class="ra-title ra-heading__title"
+          style="--title-font-size:var(--font-size-{{ title_as }});"
+        >
           <div>{{- section_title -}}</div>
         </{{ title_level }}>
       {% endif %}
@@ -99,7 +107,7 @@
     <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
       {% if section.settings.show_navigation %}
         <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
-          {% render 'icon-button'
+          {% render 'icon-button',
             type: 'button',
             style: 'tertiary',
             size: 'sm',
@@ -108,7 +116,7 @@
             icon: 'left-arrow',
             class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev'
           %}
-          {% render 'icon-button'
+          {% render 'icon-button',
             type: 'button',
             style: 'tertiary',
             size: 'sm',
@@ -120,7 +128,7 @@
         </div>
       {% endif %}
       <!-- Swiper -->
-      <div data-swiper-settings="{{ swiper_settings | escape | strip }}"  class="swiper">
+      <div data-swiper-settings="{{ swiper_settings | escape | strip }}" class="swiper">
         <div class="swiper-wrapper">
           {{ slides }}
         </div>
@@ -147,301 +155,301 @@
 </style>
 
 {% schema %}
-  {
-    "name": "Product Carousel",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Section Content"
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Section Title"
-      },
-      {
-        "type": "richtext",
-        "id": "description",
-        "label": "Section Description"
-      },
-      {
-        "type": "select",
-        "id": "title_as",
-        "label": "Title As",
-        "info": "Choose which heading to (style) the title",
-        "options": [
-          {
-            "value": "h1",
-            "label": "H1"
-          },
-          {
-            "value": "h2",
-            "label": "H2"
-          },
-          {
-            "value": "h3",
-            "label": "H3"
-          },
-          {
-            "value": "h4",
-            "label": "H4"
-          }, {
-            "value": "h5",
-            "label": "H5"
-          }, {
-            "value": "h6",
-            "label": "H6"
-          }
-        ],
-        "default": "h4"
-      },
-      {
-        "type": "select",
-        "id": "title_level",
-        "label": "Title Level",
-        "info": "Choose the semantic H-Tag for this title",
-        "options": [
-          {
-            "value": "h1",
-            "label": "H1"
-          },
-          {
-            "value": "h2",
-            "label": "H2"
-          },
-          {
-            "value": "h3",
-            "label": "H3"
-          },
-          {
-            "value": "h4",
-            "label": "H4"
-          }, {
-            "value": "h5",
-            "label": "H5"
-          }, {
-            "value": "h6",
-            "label": "H6"
-          }
-        ],
-        "default": "h2"
-      },
-      {
-        "type": "select",
-        "id": "bg_color",
-        "label": "Background Color",
-        "options": <%- uikit.colorsAll -%>,
-        "default": "--color-util-white"
-      },
-      {
-        "type": "select",
-        "id": "fg_color",
-        "label": "Text Color",
-        "options": <%- uikit.colorsAll -%>,
-        "default": "--color-primary-900"
-      },
-      {
-        "type": "header",
-        "content": "Slider Settings"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_navigation",
-        "label": "Show Navigation",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_pagination",
-        "label": "Show pagination",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "carousel_nav_location",
-        "label": "Carousel Navigation Location",
-        "info": "Choose which heading to (style) the title",
-        "options": [
-          {
-            "value": "auto",
-            "label": "Center"
-          },
-          {
-            "value": "top-right",
-            "label": "Top"
-          }
-        ],
-        "default": "top-right"
-      },
-      {
-        "type": "text",
-        "id": "mobile_slides_view",
-        "label": "Mobile slides per view",
-        "info": "Enter amount of slides to show on mobile viewport (supports fractions) maximum of 3",
-        "default": "1.5"
-      },
-      {
-        "type": "text",
-        "id": "tablet_slides_view",
-        "label": "Tablet slides per view",
-        "info": "Enter amount of slides to show on tablet viewport (supports fractions) maximum of 5",
-        "default": "3"
-      },
-      {
-        "type": "text",
-        "id": "desktop_slides_view",
-        "label": "Desktop slides per view",
-        "info": "Enter amount of slides to show on desktop viewport (supports fractions) maximum of 5",
-        "default": "4"
-      },
-      {
-        "type": "select",
-        "id": "scroll_interaction",
-        "label": "Scroll Interaction",
-        "options": [
-          {
-            "value": "free",
-            "label": "Free Scroll"
-          },
-          {
-            "value": "snap",
-            "label": "Snap to slides"
-          }
-        ],
-        "default": "snap"
-      },
-      {
-        "type": "header",
-        "content": "Spacing"
-      },
-      {
-        "type": "range",
-        "id": "mobile_padding_vertical",
-        "min": 1,
-        "max": 10,
-        "step": 0.5,
-        "unit": "rem",
-        "label": "Mobile Padding Vertical (rem)",
-        "default": 1
-      },
-      {
-        "type": "range",
-        "id": "mobile_padding_horizontal",
-        "min": 1,
-        "max": 5,
-        "step": 0.5,
-        "unit": "rem",
-        "label": "Mobile Padding Horizontal (rem)",
-        "default": 2
-      },
-      {
-        "type": "range",
-        "id": "desktop_padding",
-        "min": 1,
-        "max": 10,
-        "step": 0.5,
-        "unit": "rem",
-        "label": "Desktop Padding (rem)",
-        "default": 3
-      },
-      {
-        "type": "range",
-        "id": "mobile_margin",
-        "min": 1,
-        "max": 10,
-        "step": 0.5,
-        "unit": "rem",
-        "label": "Mobile Margin (rem)",
-        "default": 2
-      },
-      {
-        "type": "range",
-        "id": "desktop_margin",
-        "min": 1,
-        "max": 10,
-        "step": 0.5,
-        "unit": "rem",
-        "label": "Desktop Margin (rem)",
-        "default": 4
-      }
-    ],
-    "blocks": [
-      {
-        "type": "product-slide",
-        "name": "Product Slide",
-        "limit": 12,
-        "settings": [
-          {
-            "type": "header",
-            "content": "Slide Content"
-          },
-          {
-            "type": "product",
-            "id": "product",
-            "label": "Product"
-          },
-          {
-            "type": "text",
-            "id": "cta_text",
-            "label": "CTA Text",
-            "info": "Set CTA text for individual product",
-            "default": "Add To Cart"
-          },
-          {
-            "type": "select",
-            "id": "cta_style",
-            "label": "CTA Style",
-            "info": "Choose a button style for CTA",
-            "options": [
-              {
-                "value": "primary",
-                "label": "Primary"
-              },
-              {
-                "value": "secondary",
-                "label": "Secondary"
-              },
-              {
-                "value": "tertiary",
-                "label": "Tertiary"
-              }
-            ],
-            "default": "tertiary"
-          },
-          {
-            "type": "checkbox",
-            "id": "show_wishlist",
-            "label": "Show Wishlist",
-            "default": false
-          },
-          {
-            "type": "select",
-            "id": "wishlist_style",
-            "label": "Wishlist Style",
-            "info": "Choose a button style for wishlist",
-            "options": [
-              {
-                "value": "primary",
-                "label": "Primary"
-              },
-              {
-                "value": "secondary",
-                "label": "Secondary"
-              },
-              {
-                "value": "tertiary",
-                "label": "Tertiary"
-              }
-            ],
-            "default": "tertiary"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Product Carousel"
-      }
-    ]
-  }
+{
+  "name": "Product Carousel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Section Description"
+    },
+    {
+      "type": "select",
+      "id": "title_as",
+      "label": "Title As",
+      "info": "Choose which heading to (style) the title",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        }, {
+          "value": "h5",
+          "label": "H5"
+        }, {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h4"
+    },
+    {
+      "type": "select",
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        }, {
+          "value": "h5",
+          "label": "H5"
+        }, {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Background Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-white"
+    },
+    {
+      "type": "select",
+      "id": "fg_color",
+      "label": "Text Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show Navigation",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show pagination",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "carousel_nav_location",
+      "label": "Carousel Navigation Location",
+      "info": "Choose which heading to (style) the title",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top"
+        }
+      ],
+      "default": "top-right"
+    },
+    {
+      "type": "text",
+      "id": "mobile_slides_view",
+      "label": "Mobile slides per view",
+      "info": "Enter amount of slides to show on mobile viewport (supports fractions) maximum of 3",
+      "default": "1.5"
+    },
+    {
+      "type": "text",
+      "id": "tablet_slides_view",
+      "label": "Tablet slides per view",
+      "info": "Enter amount of slides to show on tablet viewport (supports fractions) maximum of 5",
+      "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "desktop_slides_view",
+      "label": "Desktop slides per view",
+      "info": "Enter amount of slides to show on desktop viewport (supports fractions) maximum of 5",
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "scroll_interaction",
+      "label": "Scroll Interaction",
+      "options": [
+        {
+          "value": "free",
+          "label": "Free Scroll"
+        },
+        {
+          "value": "snap",
+          "label": "Snap to slides"
+        }
+      ],
+      "default": "snap"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_vertical",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Mobile Padding Vertical (rem)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_horizontal",
+      "min": 1,
+      "max": 5,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Mobile Padding Horizontal (rem)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Desktop Padding (rem)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "mobile_margin",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Mobile Margin (rem)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Desktop Margin (rem)",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product-slide",
+      "name": "Product Slide",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Slide Content"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text",
+          "info": "Set CTA text for individual product",
+          "default": "Add To Cart"
+        },
+        {
+          "type": "select",
+          "id": "cta_style",
+          "label": "CTA Style",
+          "info": "Choose a button style for CTA",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "tertiary"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_wishlist",
+          "label": "Show Wishlist",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "wishlist_style",
+          "label": "Wishlist Style",
+          "info": "Choose a button style for wishlist",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "tertiary",
+              "label": "Tertiary"
+            }
+          ],
+          "default": "tertiary"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Carousel"
+    }
+  ]
+}
 {% endschema %}

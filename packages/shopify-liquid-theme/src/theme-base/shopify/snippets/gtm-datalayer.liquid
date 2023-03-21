@@ -1,4 +1,4 @@
-{% liquid 
+{% liquid
   assign checkout_step = null
   if checkout
     if content_for_layout contains 'data-step="contact_information"'
@@ -16,7 +16,7 @@
 {%- case action_step -%}
   {%- when 'init' -%}
     <script>
-      window.dataLayer = window.dataLayer || []; 
+      window.dataLayer = window.dataLayer || [];
       dataLayer.push({
         'event': 'acn_gtm_init',
         'event_id': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
@@ -76,12 +76,12 @@
             'billingAddressHash': {
               'firstName': {% if billing.first_name %}'{{ billing.first_name | sha256 }}'{% else %}''{% endif %},
               'lastName': {% if billing.last_name %}'{{ billing.last_name | sha256 }}'{% else %}''{% endif %},
-              'street': {% if billing.street %}'{{ billing.street | sha256 }}'{% else %}''{% endif %}, 
+              'street': {% if billing.street %}'{{ billing.street | sha256 }}'{% else %}''{% endif %},
               'phone': {% if billing.phone %}'{{ billing.phone | sha256 }}'{% else %}''{% endif %},
               'zip': {% if billing.zip %}'{{ billing.zip | sha256 }}'{% else %}''{% endif %},
               'city': {% if billing.city %}'{{ billing.city | sha256 }}'{% else %}''{% endif %},
               'province': {% if billing.province %}'{{ billing.province | sha256 }}'{% else %}''{% endif %},
-              'country': {% if billing.country %}'{{ billing.country | sha256 }}'{% else %}''{% endif %} 
+              'country': {% if billing.country %}'{{ billing.country | sha256 }}'{% else %}''{% endif %}
             },
             'shippingAddressHash': {
               'firstName': {% if shipping.first_name %}'{{ shipping.first_name | sha256 }}'{% else %}''{% endif %},
@@ -99,20 +99,31 @@
     </script>
     <!-- GTM ID added via Theme Settings -->
     <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','{{- settings.datalayer_gtm_id -}}');
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', '{{- settings.datalayer_gtm_id -}}');
     </script>
     <!-- End Google Tag Manager -->
 
   {%- when 'body-init' -%}
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{- settings.datalayer_gtm_id -}}"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id={{- settings.datalayer_gtm_id -}}"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-  
+
   {%- when 'view-item' -%}
     {%- capture options_json -%}
       {
@@ -188,7 +199,7 @@
                 'handle': '{{ product.handle }}',
                 'productId': '{{ product.id | json }}',
                 'variantId': '{{ product.selected_or_first_available_variant.id | json }}',
-                'name': '{{ product.title | replace: "'", "" }}',   
+                'name': '{{ product.title | replace: "'", "" }}',
                 'price': {{ product.selected_or_first_available_variant.price | divided_by: 100.00 | json }},
                 'brand': '{{ product.vendor | replace: "'", "" }}',
                 'variant': '{{ product.selected_or_first_available_variant.title | replace: "'", "" }}',
@@ -262,7 +273,7 @@
         }
       });
     </script>
-    
+
   {%- when 'checkout-steps' -%}
     <script>
       if ( !!Shopify.Checkout.step && !!!Shopify.Checkout.isOrderStatusPage ) {
@@ -287,10 +298,10 @@
           } else if (Shopify.Checkout.step == "processing") {
             step = 6;
             stepName = Shopify.Checkout.step;
-          } 
+          }
           return { step, stepName };
         }
-        
+
         if (!Shopify.Checkout.page.includes('thank_you')) {
           dataLayer.push({ ecommerce: null });
           dataLayer.push({
@@ -305,7 +316,7 @@
                     {
                       'name': '{{ line_item.product.title | replace: "'", "" }}',
                       'id': '{{ line_item.variant.id | replace: "'", "" }}',
-                      'handle': '{{ line_item.product.handle }}', 
+                      'handle': '{{ line_item.product.handle }}',
                       'productId': '{{ line_item.product_id | json }}',
                       'variantId': '{{ line_item.variant_id | json }}',
                       'price': {{ line_item.price | divided_by: 100.00 }},
@@ -355,7 +366,7 @@
               ]
             }
           });
-        } 
+        }
 
         if (Shopify.Checkout.page.includes('thank_you')) {
           // create discounts array
@@ -450,8 +461,8 @@
               },
               'shopify_transaction': {
                 'gateway': '{{ transaction.gateway }}',
-                'paymentDetails': '{{ transaction.payment_details }}' 
-              }, 
+                'paymentDetails': '{{ transaction.payment_details }}'
+              },
               'shopify_checkout': {
                 'id': '{{checkout.id}}',
                 'orderId': '{{ checkout.order_id }}',

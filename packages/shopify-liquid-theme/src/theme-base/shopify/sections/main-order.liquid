@@ -15,7 +15,6 @@
 {%- endstyle -%}
 
 <section class="customer order ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium">
-
   <div>
     <div class="account-content__header account-content__header--has-divider">
       <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
@@ -27,9 +26,9 @@
       </h1>
 
       <div class="order-details__header-additional">
-        {%- assign order_date = order.created_at | time_tag: format: "date_at_time" -%}
+        {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
         <p class="order-details__date">
-          {%- assign cancelled_at = order.cancelled_at | time_tag: format: "date_at_time" -%}
+          {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
           {%- if order.cancelled -%}
             <p>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
             <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
@@ -45,7 +44,12 @@
 
     <!-- Order details info grid -->
     <div class="order-details__info">
-      <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid" style="--grid-gap:1rem; --grid-columns:2; --grid-columns-md:2; --grid-columns-lg:4;">
+      <div
+        data-gap="-sm"
+        data-columns="-sm,-md,-lg"
+        class="ra-grid"
+        style="--grid-gap:1rem; --grid-columns:2; --grid-columns-md:2; --grid-columns-lg:4;"
+      >
         <div class="ra-grid-item">
           <p class="order-details__info-title">
             {{ 'customer.order.shipping_address' | t }}
@@ -54,7 +58,9 @@
           <div>{{ order.shipping_address.address1 }}</div>
           <div>{{ order.shipping_address.address2 }}</div>
           <div>
-            {{ order.shipping_address.city }} {{ order.shipping_address.province_code }} {{ order.shipping_address.country_code }}
+            {{ order.shipping_address.city }}
+            {{ order.shipping_address.province_code }}
+            {{ order.shipping_address.country_code }}
           </div>
           <div>{{ order.shipping_address.country.name }}</div>
           <p>{{ order.shipping_address.city }}</p>
@@ -67,7 +73,9 @@
           <div>{{ order.billing_address.address1 }}</div>
           <div>{{ order.billing_address.address2 }}</div>
           <div>
-            {{ order.billing_address.city }} {{ order.billing_address.province_code }} {{ order.billing_address.country_code }}
+            {{ order.billing_address.city }}
+            {{ order.billing_address.province_code }}
+            {{ order.billing_address.country_code }}
           </div>
           <div>{{ order.billing_address.country.name }}</div>
           <p>{{ order.billing_address.city }}</p>
@@ -76,7 +84,7 @@
     </div>
 
     <div class="order-details__tracking">
-      {% render 'button'
+      {% render 'button',
         type: 'a',
         style: 'primary',
         url: order.order_status_url,
@@ -89,16 +97,38 @@
     <ul class="order-details__items ra-list ra-list--hide-bullets">
       {% for line_item in order.line_items %}
         <li class="order-details__item ra-list__item">
-          <div data-gap="-sm,-md,-lg" data-columns="-sm,-md,-lg" class="order-line-item ra-grid" style="--grid-gap:1rem; --grid-gap-md:1.25rem; --grid-gap-lg:2.5rem; --grid-columns:3; --grid-columns-md:5; --grid-columns-lg:6;">
+          <div
+            data-gap="-sm,-md,-lg"
+            data-columns="-sm,-md,-lg"
+            class="order-line-item ra-grid"
+            style="--grid-gap:1rem; --grid-gap-md:1.25rem; --grid-gap-lg:2.5rem; --grid-columns:3; --grid-columns-md:5; --grid-columns-lg:6;"
+          >
             <div class="ra-grid-item">
               <a href="{{ line_item.url }}" class="order-line-item__media-link">
-                <div class="order-line-item__media ra-image ra-image--use-aspect-ratio" style="--media-width:1; --media-height:1.25;">
-                  <img loading="lazy" class="ra-image__media" width="1" height="1.25" alt="{{- line_item.product.featured_image.alt -}}" src="{{ line_item.product.featured_image | image_url:    width: 200 }}" />
+                <div
+                  class="order-line-item__media ra-image ra-image--use-aspect-ratio"
+                  style="--media-width:1; --media-height:1.25;"
+                >
+                  <img
+                    loading="lazy"
+                    class="ra-image__media"
+                    width="1"
+                    height="1.25"
+                    alt="{{- line_item.product.featured_image.alt -}}"
+                    src="{{ line_item.product.featured_image | image_url:    width: 200 }}"
+                  >
                 </div>
               </a>
             </div>
-            <div data-column="-sm,-md,-lg" class="ra-grid-item order-line-item__details" style="--grid-column:2; --grid-column-md:4; --grid-column-lg:5;">
-              <a href="{{ line_item.url }}" class="order-line-item__name ra-link ra-link--no-underline ra-link--inherit-color">
+            <div
+              data-column="-sm,-md,-lg"
+              class="ra-grid-item order-line-item__details"
+              style="--grid-column:2; --grid-column-md:4; --grid-column-lg:5;"
+            >
+              <a
+                href="{{ line_item.url }}"
+                class="order-line-item__name ra-link ra-link--no-underline ra-link--inherit-color"
+              >
                 {{ line_item.title }}
               </a>
               <ul class="order-line-item__options ra-list ra-list--hide-bullets">
@@ -159,7 +189,10 @@
         <span class="ra-property__value">$9.70</span>
       </div>
       <div class="order-details__summary-item ra-property ra-property--split ra-property--inherit-color">
-    <span class="ra-property__name">{{ 'customer.order.shipping' | t }} {% if shipping_method %}({{ shipping_method.title }}){% endif %}</span>
+        <span class="ra-property__name">
+          {{- 'customer.order.shipping' | t }}
+          {% if shipping_method %}({{ shipping_method.title }}){% endif -%}
+        </span>
         <span class="ra-property__value">
           {{ shipping_method.price | money }}
         </span>

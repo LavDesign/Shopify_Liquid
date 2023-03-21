@@ -1,16 +1,16 @@
 {
   "current": {
-    "social_twitter_link": "https:\/\/google.com",
-    "social_facebook_link": "https:\/\/google.com",
-    "social_instagram_link": "https:\/\/google.com",
-    "social_linkedin_link": "https:\/\/google.com",
-    "social_pinterest_link": "https:\/\/google.com",
-    "social_youtube_link": "https:\/\/google.com",
-    "social_tiktok_link": "https:\/\/google.com",
+    "social_twitter_link": "https://google.com",
+    "social_facebook_link": "https://google.com",
+    "social_instagram_link": "https://google.com",
+    "social_linkedin_link": "https://google.com",
+    "social_pinterest_link": "https://google.com",
+    "social_youtube_link": "https://google.com",
+    "social_tiktok_link": "https://google.com",
     "util_link_1_label": "Help",
-    "util_link_1_url": "shopify:\/\/collections",
+    "util_link_1_url": "shopify://collections",
     "util_link_2_label": "Support",
-    "util_link_2_url": "shopify:\/\/products\/example-hat",
+    "util_link_2_url": "shopify://products/example-hat",
     "colors_solid_button_labels": "#ffffff",
     "colors_accent_1": "#121212",
     "gradient_accent_1": "",
@@ -121,7 +121,7 @@
     "predictive_show_articles": true,
     "predictive_show_pages": true,
     "empty_search_cta_text": "See All Products - Test",
-    "empty_search_cta_url": "shopify:\/\/collections\/example-collection-1",
+    "empty_search_cta_url": "shopify://collections/example-collection-1",
     "empty_search_cta_style": "tertiary",
     "currency_code_enabled": true,
     "review_platform": "yotpo",
@@ -130,9 +130,9 @@
     "bazaarvoice_client": "partner-thestable",
     "bazaarvoice_id": "main_site",
     "cart_header_text": "Your Cart",
-    "cart_message_1": "<h3><em><strong>I have a message for ya<\/strong><\/em><\/h3>",
+    "cart_message_1": "<h3><em><strong>I have a message for ya</strong></em></h3>",
     "cart_message_1_color": "#576041",
-    "cart_message_2": "<h5>Post CTA message<\/h5>",
+    "cart_message_2": "<h5>Post CTA message</h5>",
     "cart_message_2_color": "#576041",
     "free_gift_enabled": true,
     "free_gift_threshold": "5000",
@@ -146,7 +146,7 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "util_link_3_label": "NO WAY a Third LINK!!!",
-    "util_link_3_url": "shopify:\/\/blogs\/blog",
+    "util_link_3_url": "shopify://blogs/blog",
     "social_tumblr_link": "",
     "social_snapchat_link": "",
     "social_vimeo_link": "",
@@ -164,11 +164,8 @@
             }
           }
         },
-        "block_order": [
-          "announcement-bar-0"
-        ],
-        "settings": {
-        }
+        "block_order": ["announcement-bar-0"],
+        "settings": {}
       },
       "header": {
         "type": "header",
@@ -182,7 +179,7 @@
           "7a8012f8-388e-488d-901e-4c2bbadf2915": {
             "type": "form",
             "settings": {
-              "form_title": "<p>Please sign up for our newsletter to<\/p><p> <\/p><p>receive updates & discounts<\/p>",
+              "form_title": "<p>Please sign up for our newsletter to</p><p> </p><p>receive updates & discounts</p>",
               "klaviyo_list_id": ""
             }
           },
@@ -220,9 +217,7 @@
         }
       }
     },
-    "content_for_index": [
-
-    ]
+    "content_for_index": []
   },
   "presets": {
     "Default": {
@@ -357,11 +352,8 @@
               }
             }
           },
-          "block_order": [
-            "announcement-bar-0"
-          ],
-          "settings": {
-          }
+          "block_order": ["announcement-bar-0"],
+          "settings": {}
         },
         "header": {
           "type": "header",

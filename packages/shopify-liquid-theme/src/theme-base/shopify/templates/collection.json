@@ -17,7 +17,5 @@
       }
     }
   },
-  "order": [
-    "product-grid"
-  ]
+  "order": ["product-grid"]
 }

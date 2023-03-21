@@ -7,12 +7,13 @@ function getFocusableElements(container) {
 }
 
 function cartClick(e) {
-  if (window.location.pathname !== '/cart') window.dispatchEvent(new Event("toggleCart"))
+  if (window.location.pathname !== "/cart")
+    window.dispatchEvent(new Event("toggleCart"));
   e.preventDefault();
 }
 
-const cartToggle = document.querySelector("[data-cart-toggle]")
-cartToggle.addEventListener("click", cartClick)
+const cartToggle = document.querySelector("[data-cart-toggle]");
+cartToggle.addEventListener("click", cartClick);
 
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute("role", "button");

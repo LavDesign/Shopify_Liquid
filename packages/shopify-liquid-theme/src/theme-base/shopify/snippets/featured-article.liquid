@@ -17,13 +17,19 @@
 {% endcomment %}
 
 <div class="grid grid-cols-1 md:grid-cols-2">
-  <a class="flex mb-5 aspect-{{ aspect_ratio }}" href="{{ article.url }}" title="{{ article.title }}" aria-label="{{ article.title }}">
+  <a
+    class="flex mb-5 aspect-{{ aspect_ratio }}"
+    href="{{ article.url }}"
+    title="{{ article.title }}"
+    aria-label="{{ article.title }}"
+  >
     {% capture srcset %}
       {{ article.image.src | image_url: width: 500 }} 400w,
       {{ article.image.src | image_url: width: 600 }} 800w,
       {{ article.image.src | image_url: width: 700 }} 1200w
     {% endcapture %}
-    {% render 'image',
+    {%
+      render 'image',
       alt: article.image.src.alt,
       src: article.image.src | image_url: width: 600,
       srcset: srcset,
@@ -36,7 +42,7 @@
     {% if article.tags.size > 0 and show_tags %}
       <div class="capitalize mb-2">
         {% for tag in article.tags %}
-          {% render 'badge' style: 'primary', label: tag.title, class: 'mb-1' %}
+          {% render 'badge', style: 'primary', label: tag.title, class: 'mb-1' %}
         {% endfor %}
       </div>
     {% endif %}
@@ -58,7 +64,7 @@
     {%- endif -%}
 
     <div class="mt-5">
-      {% render 'button' type: 'a', as_text: true, url: article.url, label: 'Read More' %}
+      {% render 'button', type: 'a', as_text: true, url: article.url, label: 'Read More' %}
     </div>
   </div>
 </div>

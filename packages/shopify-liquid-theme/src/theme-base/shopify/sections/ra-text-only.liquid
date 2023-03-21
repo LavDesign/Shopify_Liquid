@@ -46,7 +46,12 @@
   {% endif %}
 {% endcapture %}
 
-<article class="{{ classes }}" {% if bgStyles or colorStyles %}style="{{- bgStyles -}};{{- colorStyles -}}"{% endif %}>
+<article
+  class="{{ classes }}"
+  {% if bgStyles or colorStyles %}
+    style="{{- bgStyles -}};{{- colorStyles -}}"
+  {% endif %}
+>
   <div class="ra-text-only-banner__details max-width--{{ maxWidth }}">
     <div class="ra-text-only-banner__copy {{ horizontalClasses }}">
       {% if section.settings.subtitle != blank %}
@@ -55,7 +60,10 @@
         </div>
       {% endif %}
       {% if section.settings.title != blank %}
-        <{{ titleLevel }} class="ra-title ra-text-only-banner__title" style="--title-font-size:var(--font-size-{{ titleAs }})">
+        <{{ titleLevel }}
+          class="ra-title ra-text-only-banner__title"
+          style="--title-font-size:var(--font-size-{{ titleAs }})"
+        >
           <div>{{ section.settings.title }}</div>
         </{{ titleLevel }}>
       {% endif %}
@@ -67,20 +75,22 @@
       {% if ctaOneText != blank or ctaTwoText != blank %}
         <div class="ra-link-list ra-text-only-banner__link-list">
           {% if ctaOneText != blank and ctaOneUrl != blank %}
-            {% render 'button'
-            , type: 'a',
-            style: ctaOneStyle,
-            url: ctaOneUrl,
-            label: ctaOneText,
-            class: 'ra-link-list' %}
+            {% render 'button',
+              type: 'a',
+              style: ctaOneStyle,
+              url: ctaOneUrl,
+              label: ctaOneText,
+              class: 'ra-link-list'
+            %}
           {% endif %}
           {% if ctaTwoText != blank and ctaTwoUrl != blank %}
-            {% render 'button'
-            , type: 'a',
-            style: ctaTwoStyle,
-            url: ctaTwoUrl,
-            label: ctaTwoText,
-            class: 'ra-link-list' %}
+            {% render 'button',
+              type: 'a',
+              style: ctaTwoStyle,
+              url: ctaTwoUrl,
+              label: ctaTwoText,
+              class: 'ra-link-list'
+            %}
           {% endif %}
         </div>
       {% endif %}
@@ -89,355 +99,397 @@
 </article>
 
 {%- schema -%}
-  {
-    "name": "Text-Only Component",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Content Spacing"
-      },
-      {
-        "type": "select",
-        "id": "spacing_top",
-        "label": "Spacing Top",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "small",
-            "label": "Small"
-          },
-          {
-            "value": "regular",
-            "label": "Regular"
-          },
-          {
-            "value": "medium",
-            "label": "Medium"
-          }, {
-            "value": "large",
-            "label": "Large"
-          }
-        ],
-        "default": "large"
-      },
-      {
-        "type": "select",
-        "id": "spacing_bottom",
-        "label": "Spacing Bottom",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "small",
-            "label": "Small"
-          },
-          {
-            "value": "regular",
-            "label": "Regular"
-          },
-          {
-            "value": "medium",
-            "label": "Medium"
-          }, {
-            "value": "large",
-            "label": "Large"
-          }
-        ],
-        "default": "large"
-      },
-      {
-        "type": "select",
-        "id": "spacing_edge",
-        "label": "Spacing Edge",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "small",
-            "label": "Small"
-          },
-          {
-            "value": "regular",
-            "label": "Regular"
-          },
-          {
-            "value": "medium",
-            "label": "Medium"
-          }, {
-            "value": "large",
-            "label": "Large"
-          }
-        ],
-        "default": "regular"
-      }, {
-        "type": "select",
-        "id": "max_width",
-        "label": "Max Width",
-        "options": [
-          {
-            "value": "min",
-            "label": "Min"
-          },
-          {
-            "value": "tiny",
-            "label": "Tiny"
-          },
-          {
-            "value": "small",
-            "label": "Small"
-          },
-          {
-            "value": "xsmall",
-            "label": "X-Small"
-          }, {
-            "value": "medium",
-            "label": "Medium"
-          }, {
-            "value": "xmedium",
-            "label": "X-Medium"
-          }, {
-            "value": "large",
-            "label": "Large"
-          }, {
-            "value": "xlarge",
-            "label": "X-Large"
-          }, {
-            "value": "max",
-            "label": "Max"
-          }, {
-            "value": "full",
-            "label": "Full"
-          }
-        ],
-        "default": "medium"
-      }, {
-        "type": "header",
-        "content": "Content Layout"
-      }, {
-        "type": "select",
-        "id": "horizontal_align",
-        "label": "Mobile Horizontal Align",
-        "info": "Set horizontal alignment for content on mobile devices",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          }, {
-            "value": "center",
-            "label": "Center"
-          }, {
-            "value": "right",
-            "label": "Right"
-          }
-        ],
-        "default": "center"
-      }, {
-        "type": "select",
-        "id": "horizontal_align_md",
-        "label": "Desktop Horizontal Alignment",
-        "info": "Set horizontal alignment for content on desktop",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          }, {
-            "value": "center",
-            "label": "Center"
-          }, {
-            "value": "right",
-            "label": "Right"
-          }
-        ],
-        "default": "center"
-      }, {
-        "type": "header",
-        "content": "Section Content"
-      }, {
-        "type": "text",
-        "id": "subtitle",
-        "label": "Section Subtitle"
-      }, {
-        "type": "text",
-        "id": "title",
-        "label": "Section Title"
-      }, {
-        "type": "select",
-        "id": "title_as",
-        "label": "Title As",
-        "info": "Choose which heading to (style) the title",
-        "options": [
-          {
-            "value": "h1",
-            "label": "H1"
-          },
-          {
-            "value": "h2",
-            "label": "H2"
-          },
-          {
-            "value": "h3",
-            "label": "H3"
-          },
-          {
-            "value": "h4",
-            "label": "H4"
-          }, {
-            "value": "h5",
-            "label": "H5"
-          }, {
-            "value": "h6",
-            "label": "H6"
-          }
-        ],
-        "default": "h2"
-      }, {
-        "type": "select",
-        "id": "title_level",
-        "label": "Title Level",
-        "info": "Choose the semantic H-Tag for this title",
-        "options": [
-          {
-            "value": "h1",
-            "label": "H1"
-          },
-          {
-            "value": "h2",
-            "label": "H2"
-          },
-          {
-            "value": "h3",
-            "label": "H3"
-          },
-          {
-            "value": "h4",
-            "label": "H4"
-          }, {
-            "value": "h5",
-            "label": "H5"
-          }, {
-            "value": "h6",
-            "label": "H6"
-          }
-        ],
-        "default": "h2"
-      }, {
-        "type": "richtext",
-        "id": "description",
-        "label": "Section Description"
-      },
-      {
-        "type": "select",
-        "id": "description_copy_size",
-        "label": "Description body copy size",
-        "options": [
-          {
-            "value": "text-xs",
-            "label": "Tiny"
-          },
-          {
-            "value": "text-sm",
-            "label": "Small"
-          },
-          {
-            "value": "text-base",
-            "label": "Base"
-          },
-          {
-            "value": "text-lg",
-            "label": "Large"
-          }
-        ],
-        "default": "text-lg"
-      },
-      {
-        "type": "color",
-        "id": "bg_color",
-        "label": "Mobile Background Color"
-      }, {
-        "type": "color",
-        "id": "bg_color_md",
-        "label": "Desktop Background Color",
-        "info": "Set background color for larger screen sizes (if different from mobile)"
-      }, {
-        "type": "color",
-        "id": "fg_color",
-        "label": "Mobile Text Color"
-      }, {
-        "type": "color",
-        "id": "fg_color_md",
-        "label": "Desktop Text Color",
-        "info": "Set text color for larger screen sizes (if different from mobile)"
-      }, {
-        "type": "header",
-        "content": "CTA's"
-      }, {
-        "type": "text",
-        "id": "cta_one_text",
-        "label": "CTA 1 Text",
-        "default": "Default"
-      }, {
-        "type": "url",
-        "id": "cta_one_url",
-        "label": "CTA 1 Url"
-      }, {
-        "type": "select",
-        "id": "cta_one_style",
-        "label": "CTA One Style",
-        "options": [
-          {
-            "value": "primary",
-            "label": "Primary"
-          }, {
-            "value": "secondary",
-            "label": "Secondary"
-          }, {
-            "value": "tertiary",
-            "label": "Tertiary"
-          }
-        ],
-        "default": "primary"
-      }, {
-        "type": "header",
-        "content": "CTA Two"
-      }, {
-        "type": "text",
-        "id": "cta_two_text",
-        "label": "CTA 2 Text",
-        "default": "Secondary"
-      }, {
-        "type": "url",
-        "id": "cta_two_url",
-        "label": "CTA 2 Url"
-      }, {
-        "type": "select",
-        "id": "cta_two_style",
-        "label": "CTA Two Style",
-        "options": [
-          {
-            "value": "primary",
-            "label": "Primary"
-          }, {
-            "value": "secondary",
-            "label": "Secondary"
-          }, {
-            "value": "tertiary",
-            "label": "Tertiary"
-          }
-        ],
-        "default": "secondary"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Text Only - Component"
-      }
-    ]
-  }
+{
+  "name": "Text-Only Component",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Spacing"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Spacing Top",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "regular",
+          "label": "Regular"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing Bottom",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "regular",
+          "label": "Regular"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "spacing_edge",
+      "label": "Spacing Edge",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "regular",
+          "label": "Regular"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "regular"
+    },
+    {
+      "type": "select",
+      "id": "max_width",
+      "label": "Max Width",
+      "options": [
+        {
+          "value": "min",
+          "label": "Min"
+        },
+        {
+          "value": "tiny",
+          "label": "Tiny"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "xsmall",
+          "label": "X-Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "xmedium",
+          "label": "X-Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "xlarge",
+          "label": "X-Large"
+        },
+        {
+          "value": "max",
+          "label": "Max"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Content Layout"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_align",
+      "label": "Mobile Horizontal Align",
+      "info": "Set horizontal alignment for content on mobile devices",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_align_md",
+      "label": "Desktop Horizontal Alignment",
+      "info": "Set horizontal alignment for content on desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "select",
+      "id": "title_as",
+      "label": "Title As",
+      "info": "Choose which heading to (style) the title",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Section Description"
+    },
+    {
+      "type": "select",
+      "id": "description_copy_size",
+      "label": "Description body copy size",
+      "options": [
+        {
+          "value": "text-xs",
+          "label": "Tiny"
+        },
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Base"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Mobile Background Color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_md",
+      "label": "Desktop Background Color",
+      "info": "Set background color for larger screen sizes (if different from mobile)"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Mobile Text Color"
+    },
+    {
+      "type": "color",
+      "id": "fg_color_md",
+      "label": "Desktop Text Color",
+      "info": "Set text color for larger screen sizes (if different from mobile)"
+    },
+    {
+      "type": "header",
+      "content": "CTA's"
+    },
+    {
+      "type": "text",
+      "id": "cta_one_text",
+      "label": "CTA 1 Text",
+      "default": "Default"
+    },
+    {
+      "type": "url",
+      "id": "cta_one_url",
+      "label": "CTA 1 Url"
+    },
+    {
+      "type": "select",
+      "id": "cta_one_style",
+      "label": "CTA One Style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "Tertiary"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "CTA Two"
+    },
+    {
+      "type": "text",
+      "id": "cta_two_text",
+      "label": "CTA 2 Text",
+      "default": "Secondary"
+    },
+    {
+      "type": "url",
+      "id": "cta_two_url",
+      "label": "CTA 2 Url"
+    },
+    {
+      "type": "select",
+      "id": "cta_two_style",
+      "label": "CTA Two Style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "Tertiary"
+        }
+      ],
+      "default": "secondary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Only - Component"
+    }
+  ]
+}
 {%- endschema -%}

@@ -4,7 +4,6 @@
 
   Accepts:
   - product: {Object} Product liquid object
-
 {% endcomment %}
 
 {% liquid
@@ -29,11 +28,12 @@
   if slides_length > 1
     assign enable_primary_carousel = true
   endif
-
-
 %}
 
-<ra-media-gallery class="ra-gallery product-media-gallery" style="--vertical-carousel-height: {{ thumbnail_carousel_height | append: "px" }}">
+<ra-media-gallery
+  class="ra-gallery product-media-gallery"
+  style="--vertical-carousel-height: {{ thumbnail_carousel_height | append: "px" }}"
+>
   <div class="ra-gallery-carousel ra-gallery-carousel--has-thumbnails">
     {% if slides_length > 1 %}
       <div class="ra-carousel-outer ra-gallery-carousel__thumbnails display--small-up flex justify-center">
@@ -48,17 +48,16 @@
         >
           {%- if product.selected_or_first_available_variant.featured_media != null -%}
             <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
-              {{ product.selected_or_first_available_variant.featured_media.preview_image
-                | image_url:
-                  width: 80,
-                  height: 100,
-                  crop: 'center'
+              {{
+                product.selected_or_first_available_variant.featured_media.preview_image
+                | image_url: width: 80, height: 100, crop: 'center'
                 | image_tag:
                   width: 80,
                   height: 100,
                   widths: '54, 74, 104, 162, 208, 324, 416',
                   loading: 'lazy',
-                  alt: product.selected_or_first_available_variant.featured_media.alt | escape
+                  alt: product.selected_or_first_available_variant.featured_media.alt
+                | escape
               }}
             </swiper-slide>
           {%- endif -%}
@@ -66,17 +65,16 @@
             {%- for media in product.media -%}
               {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
                 <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index }}">
-                  {{ media.preview_image
-                    | image_url:
-                      width: 80,
-                      height: 100,
-                      crop: 'center'
+                  {{
+                    media.preview_image
+                    | image_url: width: 80, height: 100, crop: 'center'
                     | image_tag:
                       width: 80,
                       height: 100,
                       widths: '54, 74, 104, 162, 208, 324, 416',
                       loading: 'lazy',
-                      alt: media.alt | escape
+                      alt: media.alt
+                    | escape
                   }}
                 </swiper-slide>
               {% endunless %}
@@ -84,17 +82,16 @@
           {%- else -%}
             {%- for media in product.media -%}
               <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
-                {{ media.preview_image
-                  | image_url:
-                    width: 80,
-                    height: 100,
-                    crop: 'center'
+                {{
+                  media.preview_image
+                  | image_url: width: 80, height: 100, crop: 'center'
                   | image_tag:
                     width: 80,
                     height: 100,
                     widths: '54, 74, 104, 162, 208, 324, 416',
                     loading: 'lazy',
-                    alt: media.alt | escape
+                    alt: media.alt
+                  | escape
                 }}
               </swiper-slide>
             {%- endfor -%}
@@ -112,7 +109,7 @@
     {% endif %}
 
     {% comment %}
-    Primary Slider
+      Primary Slider
     {% endcomment %}
     {% if enable_primary_carousel %}
       <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
@@ -127,57 +124,81 @@
           thumbs-swiper=".product-media-gallery__thumbnails"
         >
           {%- for media in product.media -%}
-            <swiper-slide data-slide-index="{{ forloop.index0 }}" class="ra-carousel-slide {% if forloop.index != 1 %}hidden{% endif %}">
+            <swiper-slide
+              data-slide-index="{{ forloop.index0 }}"
+              class="ra-carousel-slide {% if forloop.index != 1 %}hidden{% endif %}"
+            >
               {% case media.media_type %}
                 {% when 'image' %}
                   {% if media.media_type == 'image' %}
                     <div data-lightbox-trigger class="cursor-pointer" data-slide-index="{{ forloop.index0 }}">
-                      {{ media | image_url: width: 800 | image_tag:
-                        class: 'w-full',
-                        loading: 'lazy',
-                        width: 800,
-                        widths: '600, 800, 1200',
-                        alt: media.alt | escape
+                      {{
+                        media
+                        | image_url: width: 800
+                        | image_tag:
+                          class: 'w-full',
+                          loading: 'lazy',
+                          width: 800,
+                          widths: '600, 800, 1200',
+                          alt: media.alt
+                        | escape
                       }}
                     </div>
                   {% endif %}
                 {% when 'video' %}
-                  {% render 'video', media: media, class: "w-full", lazyload: true, controls: true %}
+                  {% render 'video', media: media, class: 'w-full', lazyload: true, controls: true %}
                 {% when 'external_video' %}
                   <div class="ra-carousel-slide__inner cursor-pointer">
                     <button data-action-load-video class="w-full">
-                      {{ media.preview_image | image_url: width: 800 | image_tag:
-                        class: 'w-full',
-                        loading: 'lazy',
-                        width: 800,
-                        widths: '600, 800, 1200',
-                        alt: media.alt | escape
+                      {{
+                        media.preview_image
+                        | image_url: width: 800
+                        | image_tag:
+                          class: 'w-full',
+                          loading: 'lazy',
+                          width: 800,
+                          widths: '600, 800, 1200',
+                          alt: media.alt
+                        | escape
                       }}
                     </button>
                     <template>
                       {%- capture video_classes -%}
                         w-full ra-iframe--{{- media.host -}}
                       {%- endcapture -%}
-                      {% render 'video', media: media, autoplay: true, width: 800, muted: false, class: video_classes, lazyload: true %}
+                      {% render 'video',
+                        media: media,
+                        autoplay: true,
+                        width: 800,
+                        muted: false,
+                        class: video_classes,
+                        lazyload: true
+                      %}
                     </template>
                   </div>
               {% endcase %}
             </swiper-slide>
           {%- endfor -%}
         </swiper-container>
-        {% render 'icon' with 'chevron-left', color: 'white', class: 'swiper-primary-prev absolute left-0 top-1/2 z-10 -mt-3' %}
-        {% render 'icon' with 'chevron-right', color: 'white', class: 'swiper-primary-next absolute right-0 top-1/2 z-10 -mt-3' %}
+        {% render 'icon' with 'chevron-left',
+          color: 'white',
+          class: 'swiper-primary-prev absolute left-0 top-1/2 z-10 -mt-3'
+        %}
+        {% render 'icon' with 'chevron-right',
+          color: 'white',
+          class: 'swiper-primary-next absolute right-0 top-1/2 z-10 -mt-3'
+        %}
       </div>
     {% else %}
       {% case first_media.media_type %}
         {% when 'image' %}
           {% if first_media.media_type == 'image' %}
             <div data-lightbox-trigger class="cursor-pointer">
-              {{ first_media | image_url: width: 800 | image_tag:
-                loading: 'lazy',
-                width: 800,
-                widths: '600, 800, 1200',
-                alt: first_media.alt | escape
+              {{
+                first_media
+                | image_url: width: 800
+                | image_tag: loading: 'lazy', width: 800, widths: '600, 800, 1200', alt: first_media.alt
+                | escape
               }}
             </div>
           {% endif %}
@@ -246,5 +267,5 @@
       {% endif %}
     </div>
   {% endcapture %}
-  {% render 'gallery-zoom-modal' id: 'lightbox-gallery', content: lightbox_content, classes: 'ra-zoom pt-10 md:pt-0' %}
+  {% render 'gallery-zoom-modal', id: 'lightbox-gallery', content: lightbox_content, classes: 'ra-zoom pt-10 md:pt-0' %}
 </ra-media-gallery>

@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     type:       string [a, button] - (required)
     style:      string [primary, secondary, tertiary] - (required)
@@ -18,7 +17,6 @@
 
   Example standard button:
     {% render 'button' type: 'a', style: 'primary', url: '#', size: 'sm', label: 'learn more' %}
-
 {% endcomment %}
 
 {% capture classes %}
@@ -45,10 +43,10 @@
 {% endcapture %}
 
 {% if type != blank and label != blank %}
-  <{{type}} class="{{ classes }}" {{ attributes }}>
+  <{{ type }} class="{{ classes }}" {{ attributes }}>
     {{ label }}
     {% if icon != blank %}
-      {% render 'icon' width: '14px', height: '14px', icon: icon %}
+      {% render 'icon', width: '14px', height: '14px', icon: icon %}
     {% endif %}
-  </{{type}}>
+  </{{ type }}>
 {% endif %}

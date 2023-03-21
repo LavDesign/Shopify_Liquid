@@ -7,10 +7,7 @@ dialog {
   left: 50%;
   top: 50%;
   overflow: auto;
-
-
 }
-dialog::backdrop {}
 dialog[open] {
   transform: translate(-50%, -50%);
   animation-name: bottom-to-center;
@@ -25,7 +22,7 @@ dialog[open] {
   from {
     transform: translate(-50%, 0%);
     opacity: 0;
-  } 
+  }
   to {
     transform: translate(-50%, -50%);
     opacity: 1;

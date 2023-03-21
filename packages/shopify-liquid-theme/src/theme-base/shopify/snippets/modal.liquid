@@ -33,7 +33,15 @@
           <h4 class="h4">{{ title }}</h4>
         {% endif %}
         <form method="dialog" class="close-modal">
-          {% render 'icon-button' type: 'button', value: 'close' style: 'tertiary', size: 'sm', label: 'close modal', icon: 'close', rounded: true %}
+          {% render 'icon-button',
+            type: 'button',
+            value: 'close',
+            style: 'tertiary',
+            size: 'sm',
+            label: 'close modal',
+            icon: 'close',
+            rounded: true
+          %}
         </form>
       </div>
       {% if content != blank %}
