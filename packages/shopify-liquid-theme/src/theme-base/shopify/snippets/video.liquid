@@ -93,7 +93,7 @@ autoplay: true
   {% endif %}
 
   {% if media_type and media_text %}
-    <video autoplay="{{autoplay}}" width="{{width}}" loop="{{loop}}" playsinline muted="{{muted}}">
+    <video autoplay="{{autoplay}}" width="{{width}}" loop="{{loop}}" playsinline muted="{{muted}}" class="{{ class }}">
       <source src="https://{{media_text}}" type="{{media_type}}"></source>
     </video>
   {% endif  %}
