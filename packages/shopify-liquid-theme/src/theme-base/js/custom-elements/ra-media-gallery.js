@@ -11,6 +11,10 @@ export default class RaMediaGallery extends HTMLElement {
       ".ra-gallery-carousel__main swiper-container"
     );
 
+    this.lightboxSwiper = this.querySelector(
+      ".ra-gallery-carousel__lightbox swiper-container"
+    );
+
     this.youtubeVideos = this.querySelectorAll(".video--youtube");
 
     this.loadVideoTriggers = this.querySelectorAll("[data-action-load-video]");
@@ -40,12 +44,17 @@ export default class RaMediaGallery extends HTMLElement {
     this.lightBoxGallery.addEventListener("click", (e) => {
       // if the dialog backdrop pseudoelement is clicked, close the dialog
       if (e.target === this.lightBoxGallery) {
-        this.lightBoxGallery.close().bind(this);
+        this.pauseGalleryVideos();
+        this.lightBoxGallery.close();
         document.body.classList.remove("fixed", "w-full");
       }
     });
 
     this.primarySwiper.addEventListener("slidechange", () => {
+      this.pauseGalleryVideos();
+    });
+
+    this.lightboxSwiper.addEventListener("slidechange", () => {
       this.pauseGalleryVideos();
     });
 
@@ -72,6 +81,6 @@ export default class RaMediaGallery extends HTMLElement {
       e.currentTarget?.getAttribute("data-slide-index")
     );
 
-    this.swiperEl.swiper.slideTo(slideIndex, 0);
+    this.lightboxSwiper.swiper.slideToLoop(slideIndex, 0);
   }
 }

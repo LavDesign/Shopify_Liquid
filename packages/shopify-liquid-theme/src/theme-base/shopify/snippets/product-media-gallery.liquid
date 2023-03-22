@@ -114,7 +114,7 @@
     {% if enable_primary_carousel %}
       <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
         <swiper-container
-          auto-height="true"
+          auto-height="false"
           class="w-full"
           navigation-prev-el=".swiper-primary-prev"
           navigation-next-el=".swiper-primary-next"
@@ -168,7 +168,7 @@
                       {%- endcapture -%}
                       {% render 'video',
                         media: media,
-                        autoplay: true,
+                        autoplay: false,
                         width: 800,
                         muted: false,
                         class: video_classes,
@@ -205,15 +205,40 @@
         {% when 'video' %}
           {% render 'video', media: first_media %}
         {% when 'external_video' %}
-          {% render 'video', media: first_media, autoplay: false, width: 800, muted: false %}
+          <button data-action-load-video class="w-full">
+            {{
+              first_media.preview_image
+              | image_url: width: 800
+              | image_tag:
+                class: 'w-full',
+                loading: 'lazy',
+                width: 800,
+                widths: '600, 800, 1200',
+                alt: first_media.alt
+              | escape
+            }}
+          </button>
+          <template>
+            {%- capture video_classes -%}
+              w-full ra-iframe--{{- first_media.host -}}
+            {%- endcapture -%}
+            {% render 'video',
+              media: first_media,
+              autoplay: false,
+              width: 800,
+              muted: false,
+              class: video_classes,
+              lazyload: true
+            %}
+          </template>
       {% endcase %}
     {% endif %}
   </div>
   {% capture "lightbox_content" %}
-    <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
+    <div class="ra-carousel-outer ra-gallery-carousel__lightbox ra-carousel--has-arrows relative">
       {% if enable_primary_carousel %}
         <swiper-container
-          auto-height="true"
+          auto-height="false"
           class="w-full swiper--lightbox"
           navigation-prev-el=".swiper-lightbox-prev"
           navigation-next-el=".swiper-lightbox-next"
@@ -239,7 +264,32 @@
                 {% when 'video' %}
                   {% render 'video', media: media %}
                 {% when 'external_video' %}
-                  {% render 'video', media: media, autoplay: true, width: 1200, muted: false, class: "max-w-full" %}
+                  <button data-action-load-video class="w-full">
+                    {{
+                      media.preview_image
+                      | image_url: width: 800
+                      | image_tag:
+                        class: 'w-full max-w-full',
+                        loading: 'lazy',
+                        width: 1200,
+                        widths: '600, 800, 1200',
+                        alt: media.alt
+                      | escape
+                    }}
+                  </button>
+                  <template>
+                    {%- capture video_classes -%}
+                      max-w-full w-full ra-iframe--{{- media.host -}}
+                    {%- endcapture -%}
+                    {% render 'video',
+                      media: media,
+                      autoplay: false,
+                      width: 1200,
+                      muted: false,
+                      class: video_classes,
+                      lazyload: true
+                    %}
+                  </template>
               {% endcase %}
             </swiper-slide>
           {%- endfor -%}
@@ -262,7 +312,7 @@
           {% when 'video' %}
             {% render 'video', media: first_media %}
           {% when 'external_video' %}
-            {% render 'video', media: first_media, autoplay: true, width: 1200, muted: false, class: "max-w-full" %}
+            {% render 'video', media: first_media, autoplay: false, width: 1200, muted: false, class: "max-w-full" %}
         {% endcase %}
       {% endif %}
     </div>
