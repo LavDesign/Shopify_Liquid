@@ -37,7 +37,7 @@
         <{{ title_level }}
           class="ra-title ra-text-only-banner__title {{ section.settings.title_as }}"
         >
-          <div>{{ section.settings.title }}</div>
+          {{ section.settings.title }}
         </{{ title_level }}>
       {% endif %}
       {% if section.settings.description != blank %}
@@ -75,6 +75,211 @@
 {
   "name": "Text-Only Component",
   "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Section Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title"
+    },
+    {
+      "type": "select",
+      "id": "title_as",
+      "label": "Title As",
+      "info": "Choose which heading to (style) the title",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Section Description"
+    },
+    {
+      "type": "select",
+      "id": "description_copy_size",
+      "label": "Description body copy size",
+      "options": [
+        {
+          "value": "text-xs",
+          "label": "Tiny"
+        },
+        {
+          "value": "text-sm",
+          "label": "Small"
+        },
+        {
+          "value": "text-base",
+          "label": "Base"
+        },
+        {
+          "value": "text-lg",
+          "label": "Large"
+        }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "header",
+      "content": "CTA's"
+    },
+    {
+      "type": "text",
+      "id": "cta_one_text",
+      "label": "CTA 1 Text",
+      "default": "Default"
+    },
+    {
+      "type": "url",
+      "id": "cta_one_url",
+      "label": "CTA 1 Url"
+    },
+    {
+      "type": "select",
+      "id": "cta_one_style",
+      "label": "CTA One Style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "Tertiary"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "CTA Two"
+    },
+    {
+      "type": "text",
+      "id": "cta_two_text",
+      "label": "CTA 2 Text",
+      "default": "Secondary"
+    },
+    {
+      "type": "url",
+      "id": "cta_two_url",
+      "label": "CTA 2 Url"
+    },
+    {
+      "type": "select",
+      "id": "cta_two_style",
+      "label": "CTA Two Style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "Tertiary"
+        }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "header",
+      "content": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Mobile Background Color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_md",
+      "label": "Desktop Background Color",
+      "info": "Set background color for larger screen sizes (if different from mobile)"
+    },
+    {
+      "type": "color",
+      "id": "fg_color",
+      "label": "Mobile Text Color"
+    },
+    {
+      "type": "color",
+      "id": "fg_color_md",
+      "label": "Desktop Text Color",
+      "info": "Set text color for larger screen sizes (if different from mobile)"
+    },
     {
       "type": "header",
       "content": "Content Spacing"
@@ -256,207 +461,6 @@
         }
       ],
       "default": "center"
-    },
-    {
-      "type": "header",
-      "content": "Section Content"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Section Subtitle"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title"
-    },
-    {
-      "type": "select",
-      "id": "title_as",
-      "label": "Title As",
-      "info": "Choose which heading to (style) the title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "h5",
-          "label": "H5"
-        },
-        {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
-      "default": "h2"
-    },
-    {
-      "type": "select",
-      "id": "title_level",
-      "label": "Title Level",
-      "info": "Choose the semantic H-Tag for this title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "h5",
-          "label": "H5"
-        },
-        {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
-      "default": "h2"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Section Description"
-    },
-    {
-      "type": "select",
-      "id": "description_copy_size",
-      "label": "Description body copy size",
-      "options": [
-        {
-          "value": "text-xs",
-          "label": "Tiny"
-        },
-        {
-          "value": "text-sm",
-          "label": "Small"
-        },
-        {
-          "value": "text-base",
-          "label": "Base"
-        },
-        {
-          "value": "text-lg",
-          "label": "Large"
-        }
-      ],
-      "default": "text-lg"
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Mobile Background Color"
-    },
-    {
-      "type": "color",
-      "id": "bg_color_md",
-      "label": "Desktop Background Color",
-      "info": "Set background color for larger screen sizes (if different from mobile)"
-    },
-    {
-      "type": "color",
-      "id": "fg_color",
-      "label": "Mobile Text Color"
-    },
-    {
-      "type": "color",
-      "id": "fg_color_md",
-      "label": "Desktop Text Color",
-      "info": "Set text color for larger screen sizes (if different from mobile)"
-    },
-    {
-      "type": "header",
-      "content": "CTA's"
-    },
-    {
-      "type": "text",
-      "id": "cta_one_text",
-      "label": "CTA 1 Text",
-      "default": "Default"
-    },
-    {
-      "type": "url",
-      "id": "cta_one_url",
-      "label": "CTA 1 Url"
-    },
-    {
-      "type": "select",
-      "id": "cta_one_style",
-      "label": "CTA One Style",
-      "options": [
-        {
-          "value": "primary",
-          "label": "Primary"
-        },
-        {
-          "value": "secondary",
-          "label": "Secondary"
-        },
-        {
-          "value": "tertiary",
-          "label": "Tertiary"
-        }
-      ],
-      "default": "primary"
-    },
-    {
-      "type": "header",
-      "content": "CTA Two"
-    },
-    {
-      "type": "text",
-      "id": "cta_two_text",
-      "label": "CTA 2 Text",
-      "default": "Secondary"
-    },
-    {
-      "type": "url",
-      "id": "cta_two_url",
-      "label": "CTA 2 Url"
-    },
-    {
-      "type": "select",
-      "id": "cta_two_style",
-      "label": "CTA Two Style",
-      "options": [
-        {
-          "value": "primary",
-          "label": "Primary"
-        },
-        {
-          "value": "secondary",
-          "label": "Secondary"
-        },
-        {
-          "value": "tertiary",
-          "label": "Tertiary"
-        }
-      ],
-      "default": "secondary"
     }
   ],
   "presets": [
