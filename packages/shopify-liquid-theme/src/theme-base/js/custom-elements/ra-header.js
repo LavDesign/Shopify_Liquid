@@ -11,9 +11,7 @@ export default class RaHeader extends HTMLElement {
     this.mobileNav = document.querySelector(".header__mobile-navigation");
     this.dropdownToggles = document.querySelectorAll("[data-toggle-dropdown]");
     this.drawerToggles = document.querySelectorAll("[data-toggle-drawer]");
-    this.drawerCloseBtns = document.querySelectorAll(
-      ".header__mobile-navigation-drawer-close"
-    );
+    this.drawerCloseBtns = document.querySelectorAll("[data-close-drawer]");
     this.drawers = document.querySelectorAll(
       ".header__mobile-navigation-drawer"
     );
@@ -144,18 +142,18 @@ export default class RaHeader extends HTMLElement {
           dropdown.classList.remove("active");
           dropdown.style.setProperty("--dropdown-height", "0px");
         });
-        this.querySelectorAll(
-          ".header__mobile-navigation-link[data-toggle-dropdown]"
-        ).forEach((dropdownLink) => {
-          dropdownLink.classList.remove("active");
-        });
+        this.querySelectorAll("[data-toggle-dropdown]").forEach(
+          (dropdownLink) => {
+            dropdownLink.classList.remove("active");
+          }
+        );
 
         if (!isActive) {
           const toggleId = btn.getAttribute("data-toggle-dropdown");
           btn.classList.toggle("active");
           const selectedDropdown = document.getElementById(toggleId);
           const dropdownHeight = selectedDropdown.querySelector(
-            ".header__mobile-navigation-dropdown-inner"
+            "[data-header-inner-mobile]"
           ).offsetHeight;
           selectedDropdown.style.setProperty(
             "--dropdown-height",

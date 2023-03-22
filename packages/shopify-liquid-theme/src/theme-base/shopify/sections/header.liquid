@@ -80,7 +80,7 @@
         {%- comment -%}
           Navigation menu - mobile
         {%- endcomment -%}
-        <nav class="header__mobile-navigation hidden opacity-0 left-0 fixed w-full z-[510] overflow-x-hidden overflow-y-scroll transition-all duration-300">
+        <nav class="header__mobile-navigation border-t max-md:[&.active]:flex max-md:[&.active]:flex-col max-md:[&.active]:opacity-100 hidden opacity-0 left-0 fixed w-full z-[510] overflow-x-hidden overflow-y-scroll transition-all duration-300">
           <ul class="list-none" role="list" tabindex="-1">
             {%- for link in section.settings.menu.links -%}
               {% render 'mobile-navigation-menu', link: link, featured_contents: section.blocks %}
@@ -88,7 +88,7 @@
 
             <div class="header__mobile-navigation-util p-4 pb-8">
               {% if section.settings.show_account %}
-                <li class="header__action-item border-0">
+                <li class="mb-4 border-0">
                   <a class="flex items-center" href="#" title="account" aria-label="account">
                     {% render 'icon',
                       icon: section.settings.account_icon,
@@ -100,7 +100,7 @@
                   </a>
                 </li>
               {% endif %}
-              {% render 'ra-header-util' %}
+              {% render 'ra-header-util', is_mobile: true %}
             </div>
           </ul>
         </nav>
