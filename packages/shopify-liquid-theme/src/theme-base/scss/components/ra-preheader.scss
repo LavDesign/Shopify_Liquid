@@ -62,6 +62,8 @@
   }
 
   @breakpoint md-max {
-    .ra-header-util { display: none;}
+    .ra-header-util {
+      display: none;
+    }
   }
 }

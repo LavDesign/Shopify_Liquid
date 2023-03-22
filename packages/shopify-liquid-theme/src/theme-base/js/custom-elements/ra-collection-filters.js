@@ -134,7 +134,6 @@ export default class RaCollectionFilters extends HTMLElement {
       });
     });
 
-
     clearAllBtn.addEventListener("click", () => {
       RaCollectionFilters.clearFilters();
     });

@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     id:       string unique ID - (required)
     name:     string input name (required)
@@ -9,7 +8,6 @@
     checked:  boolean - (optional)
     required: boolean - (optional)
     disabled: boolean - (optional)
-
 {% endcomment %}
 
 {% if id != blank and style != blank and label != blank %}
@@ -21,7 +19,7 @@
     {{ class }}
   {% endcapture %}
 
-  {% assign label_handelize = label | handleize | prepend: '_'  %}
+  {% assign label_handelize = label | handleize | prepend: '_' %}
   {% capture input_id %}
     {{ id | handleize | append: label_handelize }}
   {% endcapture %}
@@ -39,7 +37,14 @@
   {% endcapture %}
 
   <div class="ra-choice {{ classes }} ra-filter-button">
-    <input class="ra-choice__input" name="{{ name }}" value="{{ value }}" id="{{ input_id }}" type="checkbox"{{ attributes }}>
+    <input
+      class="ra-choice__input"
+      name="{{ name }}"
+      value="{{ value }}"
+      id="{{ input_id }}"
+      type="checkbox"
+      {{ attributes }}
+    >
     <label class="ra-choice__container set--sibling-deep-focus border border-grey-400 p-3" for="{{ input_id }}">
       <span class="ra-choice__label">{{ label }}</span>
     </label>

@@ -1,29 +1,28 @@
 {% comment %}
+  Props:
+  imgSrc:              String, url for tile image - (required)
+  imgAlt:              String, alt text for tile image
+  imgWidth:            String, number used to define px value of image width - (optional) (default maintains aspect-ratio)
+  subtitle:            String, text for subtitle - (optional)
+  title:               String, text for main title - (required)
+  description:         String, text for description area - (required)
+  linkUrl:             String, text for link url - (optional)
+  linkText:            String, text for link - (optional)
 
-Props:
-imgSrc:              String, url for tile image - (required)
-imgAlt:              String, alt text for tile image
-imgWidth:            String, number used to define px value of image width - (optional) (default maintains aspect-ratio)
-subtitle:            String, text for subtitle - (optional)
-title:               String, text for main title - (required)
-description:         String, text for description area - (required)
-linkUrl:             String, text for link url - (optional)
-linkText:            String, text for link - (optional)
+  titleAs:             Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
+  titleLevel:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
+  stacked:             Boolean, stack content vertically (default is false) - (optional)
 
-titleAs:             Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
-titleLevel:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
-stacked:             Boolean, stack content vertically (default is false) - (optional)
+  // Layout & Alignment
+  detailsLocation:     String, [before, overlay, after] - (optional)
+  detailsLocationMD:   String, [before, overlay, after] (larger screen size) - optional
+  horizontalAlign:     String, [left, center, right] - (optional)
+  horizontalAlignMD:   String, [left, center, right] - (larger screen size)
+  verticalAlign:       String, [top, middle, bottom] set vertical alignment - (default = top) - (optional)
+  verticalAlignMD:     String, [top, middle, bottom] - (larger screen size)
 
-// Layout & Alignment
-detailsLocation:     String, [before, overlay, after] - (optional)
-detailsLocationMD:   String, [before, overlay, after] (larger screen size) - optional
-horizontalAlign:     String, [left, center, right] - (optional)
-horizontalAlignMD:   String, [left, center, right] - (larger screen size)
-verticalAlign:       String, [top, middle, bottom] set vertical alignment - (default = top) - (optional)
-verticalAlignMD:     String, [top, middle, bottom] - (larger screen size)
-
-Example Breadcrumb:
-{% render 'icon-tile' %}
+  Example Breadcrumb:
+  {% render 'icon-tile' %}
 {% endcomment %}
 
 {% capture classes %}
@@ -68,7 +67,8 @@ Example Breadcrumb:
           width="{{ imgWidth | default: 64 }}"
           alt="{{ imgAlt }}"
           src="ra-image__media"
-          class="ra-image__media" />
+          class="ra-image__media"
+        >
       </div>
     </div>
   {% endif %}
@@ -80,7 +80,10 @@ Example Breadcrumb:
         </div>
       {% endif %}
       {% if title != blank %}
-        <h2 class="ra-title ra-icon-title__title" style="--title-font-size:var(--font-size-h{{- titleAs | default: '6'  -}});">
+        <h2
+          class="ra-title ra-icon-title__title"
+          style="--title-font-size:var(--font-size-h{{- titleAs | default: '6'  -}});"
+        >
           <div>{{ title }}</div>
         </h2>
       {% endif %}
@@ -96,7 +99,8 @@ Example Breadcrumb:
             class="ra-link-list__cta ra-link"
             label="{{ linkText }}"
             title="Click Me"
-            aria-label="Click Me, navigate out">
+            aria-label="Click Me, navigate out"
+          >
             {{ linkText }}
           </a>
         </div>

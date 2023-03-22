@@ -3,8 +3,14 @@
   max-width: 13.75rem;
 }
 
-.ra-scrollable__expand .ra-collapse { display: none }
+.ra-scrollable__expand .ra-collapse {
+  display: none;
+}
 
-.ra-scrollable--expanded .ra-expand { display: none }
+.ra-scrollable--expanded .ra-expand {
+  display: none;
+}
 
-.ra-scrollable--expanded .ra-collapse { display: block }
+.ra-scrollable--expanded .ra-collapse {
+  display: block;
+}

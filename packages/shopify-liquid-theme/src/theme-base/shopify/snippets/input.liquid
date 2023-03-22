@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     type:        string input types [text, email, password, search, tel, hidden] - (required)
     size:        string [md, lg, xl] - (required)
@@ -21,7 +20,6 @@
 
   Example input + message:
     {%- render 'input' type: 'text', size: 'md', message: 'This is a custom message' -%}
-
 {% endcomment %}
 
 {% if type != blank %}

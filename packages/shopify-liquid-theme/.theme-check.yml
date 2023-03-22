@@ -200,4 +200,4 @@ DeprecatedGlobalAppBlockType:
 SchemaJsonFormat:
   enabled: true
   start_level: 0
-  indent: '  '
+  indent: "  "

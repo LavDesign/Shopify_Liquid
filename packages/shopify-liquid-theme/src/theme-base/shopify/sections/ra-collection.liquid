@@ -1,28 +1,31 @@
 {% liquid
   assign paginate_count = 12
   assign disruptor_metafields = collection.metafields.custom.disruptors.value
-  assign disruptor_indexes = ""
+  assign disruptor_indexes = ''
   comment
-  we keep track of the index of each of the disruptors to determine placement
+    we keep track of the index of each of the disruptors to determine placement
   endcomment
   for disruptor in disruptor_metafields
     if disruptor.enabled
-      assign disruptor_indexes = disruptor_indexes | append: disruptor["position"] | append: ","
+      assign disruptor_indexes = disruptor_indexes | append: disruptor.position | append: ','
     endif
   endfor
-  assign disruptor_indexes_split = disruptor_indexes | split: ","
+  assign disruptor_indexes_split = disruptor_indexes | split: ','
 %}
 
 <div id="ra-collection-section" class="ra-collection" data-section-id="{{ section.id }}">
   <div class="flex justify-center">
     <div class="flex w-full md:max-w-screen-2xl pt-8 md:pt-20 px-4 md:px-10" id="collectionMain">
-      <div class="collection__sidebar hidden fixed bg-white z-[500] lg:z-10 top-0 left-0 right-0 bottom-0 pt-4 overflow-y-scroll lg:overflow-y-visible lg:relative lg:block lg:w-1/4 lg:pr-20" data-collection-sidebar>
+      <div
+        class="collection__sidebar hidden fixed bg-white z-[500] lg:z-10 top-0 left-0 right-0 bottom-0 pt-4 overflow-y-scroll lg:overflow-y-visible lg:relative lg:block lg:w-1/4 lg:pr-20"
+        data-collection-sidebar
+      >
         <div class="lg:hidden grid grid-cols-5 h-14 text-white items-center bg-tertiary-900">
           <div class="col-start-2 col-span-3 text-center text-[18px]">Item</div>
-          <button class="col-span-1" data-action-close-filters>{% render "icon", icon: "close" %}</button>
+          <button class="col-span-1" data-action-close-filters>{% render 'icon', icon: 'close' %}</button>
         </div>
         <aside class="collection__filters facets-wrapper px-20 lg:px-5 pt-4" id="main-collection-filters">
-          {% render 'ra-collection-filters' collection: collection %}
+          {% render 'ra-collection-filters', collection: collection %}
         </aside>
       </div>
       <div class="collection__main w-full lg:w-3/4">
@@ -30,18 +33,37 @@
           <h1 class="h2 text-grey-700 text-center md:text-left">{{ collection.title }}</h1>
           <div class="flex justify-between mt-6 md:mt-0">
             <div class="collection__toggle-filters lg:hidden">
-              {% render "button", label: "Filter", style: "tertiary", type: "button", icon: "hamburger", class: "h-11 min-h-0" data: "data-action-toggle-mobile-filters" %}
+              {% render 'button',
+                label: 'Filter',
+                style: 'tertiary',
+                type: 'button',
+                icon: 'hamburger',
+                class: 'h-11 min-h-0',
+                data: 'data-action-toggle-mobile-filters'
+              %}
             </div>
             <ra-collection-sort>
               <form name="sortBy">
                 <div class="select relative z-0">
                   {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-                  <select name="sort_by" class="appearance-none border-2 border-black px-3 pr-6 z-1 bg-transparent h-11" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                  <select
+                    name="sort_by"
+                    class="appearance-none border-2 border-black px-3 pr-6 z-1 bg-transparent h-11"
+                    id="SortBy"
+                    aria-describedby="a11y-refresh-page-message"
+                  >
                     {%- for option in collection.sort_options -%}
-                      <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                      <option
+                        value="{{ option.value | escape }}"
+                        {% if option.value == sort_by %}
+                          selected="selected"
+                        {% endif %}
+                      >
+                        {{ option.name | escape }}
+                      </option>
                     {%- endfor -%}
                   </select>
-                  {% render "icon" with "chevron-down", width: "12px", class: "absolute right-3 -mt-3 top-1/2 -z-1" %}
+                  {% render 'icon' with 'chevron-down', width: '12px', class: 'absolute right-3 -mt-3 top-1/2 -z-1' %}
                 </div>
               </form>
             </ra-collection-sort>
@@ -74,17 +96,17 @@
                   {% assign disruptor_index = forloop.index | plus: paginate_offset %}
                   {% if disruptor_indexes contains disruptor_index %}
                     {% for disruptor in disruptor_metafields %}
-                      {% if disruptor["position"] == disruptor_index and disruptor["enabled"] %}
-                        {% render "disruptor-tile", disruptor: disruptor %}
+                      {% if disruptor.position == disruptor_index and disruptor.enabled %}
+                        {% render 'disruptor-tile', disruptor: disruptor %}
                       {% endif %}
                     {% endfor %}
                   {% endif %}
                 {% endif %}
-                {% render "ra-product-tile", product: product %}
+                {% render 'ra-product-tile', product: product %}
               {%- endfor -%}
             </div>
             <div class="flex justify-center">
-              {% render "pagination", paginate: paginate, anchor: '#collectionMain', hasArrows: true %}
+              {% render 'pagination', paginate: paginate, anchor: '#collectionMain', hasArrows: true %}
             </div>
           {%- endpaginate -%}
         </div>
@@ -97,7 +119,6 @@
 {
   "name": "ra-product-grid",
   "class": "section",
-  "settings": [
-  ]
+  "settings": []
 }
 {% endschema %}

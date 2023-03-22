@@ -1,13 +1,12 @@
 {% comment %}
+  Props:
+  product:      object - used instead of manually passing all prices -  (required)
+  class:        string add custom CSS class - (optional)
+  stacked:      boolean - toggle if layout of two prices should stack or not [default - false] - (optional)
+  show_range:   boolean - show price range if variants vary in price - (optional)
 
-Props:
-product:      object - used instead of manually passing all prices -  (required)
-class:        string add custom CSS class - (optional)
-stacked:      boolean - toggle if layout of two prices should stack or not [default - false] - (optional)
-show_range:   boolean - show price range if variants vary in price - (optional)
-
-Example price-snippet:
-{% render 'ra-price' product: product, stacked: true %}
+  Example price-snippet:
+  {% render 'ra-price' product: product, stacked: true %}
 {% endcomment %}
 
 {% capture classes %}

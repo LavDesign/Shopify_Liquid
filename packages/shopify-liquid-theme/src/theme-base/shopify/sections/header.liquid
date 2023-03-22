@@ -14,17 +14,42 @@
       {%- comment -%}
         hamburger
       {%- endcomment -%}
-      <a id="header__hamburger" class="flex items-center md:hidden mr-12 w-6 group" href="#" title="toggle menu" aria-label="toggle menu">
-        {% render 'icon' icon: 'hamburger', width: '24px', height: '24px' class: 'hamburger-icon flex group-[.active]:hidden transition-all delay-300' %}
-        {% render 'icon' icon: 'close', width: '18px', height: '18px' class: 'close-icon hidden group-[.active]:flex transition-all delay-300' %}
+      <a
+        id="header__hamburger"
+        class="flex items-center md:hidden mr-12 w-6 group"
+        href="#"
+        title="toggle menu"
+        aria-label="toggle menu"
+      >
+        {% render 'icon',
+          icon: 'hamburger',
+          width: '24px',
+          height: '24px',
+          class: 'hamburger-icon flex group-[.active]:hidden transition-all delay-300'
+        %}
+        {% render 'icon',
+          icon: 'close',
+          width: '18px',
+          height: '18px',
+          class: 'close-icon hidden group-[.active]:flex transition-all delay-300'
+        %}
       </a>
 
       {%- comment -%}
         Logo
       {%- endcomment -%}
       {% if section.settings.logo != blank %}
-        <a class="header__logo flex items-center !m-0 md:!mr-4" href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
-          <img class="header__logo-image w-full block" src="{{ section.settings.logo | img_url: "500x" }}" alt="{{ shop.name }} logo">
+        <a
+          class="header__logo flex items-center !m-0 md:!mr-4"
+          href="{{ shop.url }}"
+          title="{{ shop.name }} logo"
+          aria-label="{{ shop.name }} logo"
+        >
+          <img
+            class="header__logo-image w-full block"
+            src="{{ section.settings.logo | image_url: width: "500x" }}"
+            alt="{{ shop.name }} logo"
+          >
         </a>
       {% else %}
         <a href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
@@ -37,9 +62,13 @@
           Navigation menu - desktop
         {%- endcomment -%}
         <nav class="header__navigation h-full hidden md:block">
-          <ul class="flex h-full justify-center items-center leading-[100%] cursor-pointer list-none p-0 m-0" role="list" tabindex="-1">
+          <ul
+            class="flex h-full justify-center items-center leading-[100%] cursor-pointer list-none p-0 m-0"
+            role="list"
+            tabindex="-1"
+          >
             {%- for link in section.settings.menu.links -%}
-              {% render 'desktop-navigation-menu'
+              {% render 'desktop-navigation-menu',
                 link: link,
                 featured_contents: section.blocks,
                 aspect_ratio: section.settings.aspect_ratio
@@ -54,17 +83,19 @@
         <nav class="header__mobile-navigation hidden opacity-0 left-0 fixed w-full z-[510] overflow-x-hidden overflow-y-scroll transition-all duration-300">
           <ul class="list-none" role="list" tabindex="-1">
             {%- for link in section.settings.menu.links -%}
-              {% render 'mobile-navigation-menu'
-                link: link,
-                featured_contents: section.blocks
-              %}
+              {% render 'mobile-navigation-menu', link: link, featured_contents: section.blocks %}
             {%- endfor -%}
 
             <div class="header__mobile-navigation-util p-4 pb-8">
               {% if section.settings.show_account %}
                 <li class="header__action-item border-0">
                   <a class="flex items-center" href="#" title="account" aria-label="account">
-                    {% render 'icon' icon: section.settings.account_icon, width: '14px', height: '14px', class: 'transition-all delay-300' %}
+                    {% render 'icon',
+                      icon: section.settings.account_icon,
+                      width: '14px',
+                      height: '14px',
+                      class: 'transition-all delay-300'
+                    %}
                     <span class="ml-2 text-sm">sign-in / sign-up</span>
                   </a>
                 </li>
@@ -82,7 +113,7 @@
         {% render 'ra-header-actions' %}
       </div>
     </div>
-    {% render "ra-search-bar" %}
+    {% render 'ra-search-bar' %}
   </div>
   <div id="SearchResponse" class="col-start-1 col-span-5"></div>
 </ra-header>

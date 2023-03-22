@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     type:       string [a, button] - (required)
     style:      string [primary, secondary, tertiary] - (required)
@@ -16,7 +15,6 @@
 
   Example icon button:
     {% render 'icon-button' type: 'a', style: 'primary', url: '#', size: 'sm', label: 'learn more', icon: 'check' %}
-
 {% endcomment %}
 
 {%- capture classes -%}
@@ -37,11 +35,11 @@
 {%- endcapture -%}
 
 {% if type != blank and style != blank and label != blank %}
-  <{{type}} class="{{ classes }}" {{ attributes }}>
+  <{{ type }} class="{{ classes }}" {{ attributes }}>
     {% if icon != blank %}
       <svg class="ra-icon ra-icon--{{size}}">
         <use xlink:href="#{{ icon }}"></use>
       </svg>
     {% endif %}
-  </{{type}}>
+  </{{ type }}>
 {% endif %}

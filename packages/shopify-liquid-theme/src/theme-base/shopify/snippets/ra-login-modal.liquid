@@ -86,10 +86,4 @@
   {%- endform -%}
 {% endcapture %}
 
-{% render 'modal',
-  id: 'modal-login',
-  title: 'Log In',
-  content: modal_content,
-  classes: 'auth-modal',
-  overlay: true
-%}
+{% render 'modal', id: 'modal-login', title: 'Log In', content: modal_content, classes: 'auth-modal', overlay: true %}

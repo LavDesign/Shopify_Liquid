@@ -20,14 +20,23 @@
         --grid-column:1; --grid-column-md:2; --grid-column-lg:1;
       {% endcapture %}
       <div data-column="-sm,-md,-lg" class="ra-grid-item" style="{{ gridItemStyle }}">
-        <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap" style="--grid-columns:2; --grid-columns-md:2; --grid-columns-lg:1;">
-
+        <div
+          data-gap="-sm"
+          data-columns="-sm,-md,-lg"
+          class="ra-grid ra-grid--inherit-gap"
+          style="--grid-columns:2; --grid-columns-md:2; --grid-columns-lg:1;"
+        >
           <div class="ra-grid-item">
             <article class="ra-content-tile set--details-overlay set--aspect-ratio-fill-space">
               {% if block.settings.image %}
                 <div class="ra-content-tile__media component-media">
                   <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
-                    <img loading="lazy" src="{{ block.settings.image | img_url: '500x' }}" alt="{{ block.settings.image.alt }}" class="ra-image__media">
+                    <img
+                      loading="lazy"
+                      src="{{ block.settings.image | img_url: '500x' }}"
+                      alt="{{ block.settings.image.alt }}"
+                      class="ra-image__media"
+                    >
                   </div>
                 </div>
               {% endif %}
@@ -58,7 +67,12 @@
                 {% if block.settings.image_2 %}
                   <div class="ra-content-tile__media component-media">
                     <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
-                      <img loading="lazy" src="{{ block.settings.image_2 | img_url: '500x' }}" alt="{{ block.settings.image.alt }}" class="ra-image__media">
+                      <img
+                        loading="lazy"
+                        src="{{ block.settings.image_2 | img_url: '500x' }}"
+                        alt="{{ block.settings.image.alt }}"
+                        class="ra-image__media"
+                      >
                     </div>
                   </div>
                 {% endif %}
@@ -92,7 +106,12 @@
           {% if block.settings.image %}
             <div class="ra-content-tile__media component-media">
               <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
-                <img loading="lazy" src="{{ block.settings.image | img_url: '500x' }}" alt="{{ block.settings.image.alt }}" class="ra-image__media">
+                <img
+                  loading="lazy"
+                  src="{{ block.settings.image | img_url: '500x' }}"
+                  alt="{{ block.settings.image.alt }}"
+                  class="ra-image__media"
+                >
               </div>
             </div>
           {% endif %}
@@ -122,90 +141,90 @@
 </div>
 
 {%- schema -%}
-  {
-    "name": "Content Tile Grid",
-    "settings": [
-      {
-        "type": "range",
-        "id": "grid_gap",
-        "min": 0,
-        "max": 5,
-        "step": 1,
-        "unit": "rem",
-        "label": "Grid Gap (in rem)",
-        "default": 1
-      },
-      {
-        "type": "color",
-        "id": "bg_color",
-        "label": "Background Color",
-        "info": "Set Background color that is visible between the gaps"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "grid-column",
-        "name": "Grid Column",
-        "limit": 3,
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Image"
-          },
-          {
-            "type": "text",
-            "id": "subtitle",
-            "label": "Grid Item Sub-title"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Grid Item Title"
-          },
-          {
-            "type": "richtext",
-            "id": "description",
-            "label": "Grid Item Description"
-          },
-          {
-            "type": "checkbox",
-            "id": "two_grid_items",
-            "label": "Enable two column split",
-            "info": "Enable ability to add two tiles in this column",
-            "default": false
-          },
-          {
-            "type": "header",
-            "content": "Second Grid Column Item (if applicable)"
-          },
-          {
-            "type": "image_picker",
-            "id": "image_2",
-            "label": "Image"
-          },
-          {
-            "type": "text",
-            "id": "subtitle_2",
-            "label": "Grid Item Sub-title"
-          },
-          {
-            "type": "text",
-            "id": "title_2",
-            "label": "Grid Item Title"
-          },
-          {
-            "type": "richtext",
-            "id": "description_2",
-            "label": "Grid Item Description"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Content Tile Grid"
-      }
-    ]
-  }
+{
+  "name": "Content Tile Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "rem",
+      "label": "Grid Gap (in rem)",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "info": "Set Background color that is visible between the gaps"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "grid-column",
+      "name": "Grid Column",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Grid Item Sub-title"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Grid Item Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Grid Item Description"
+        },
+        {
+          "type": "checkbox",
+          "id": "two_grid_items",
+          "label": "Enable two column split",
+          "info": "Enable ability to add two tiles in this column",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Second Grid Column Item (if applicable)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "subtitle_2",
+          "label": "Grid Item Sub-title"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Grid Item Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description_2",
+          "label": "Grid Item Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Tile Grid"
+    }
+  ]
+}
 {%- endschema -%}

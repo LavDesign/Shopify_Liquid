@@ -37,7 +37,6 @@
     {%- endif -%}
 
     <div data-columns="-sm,-md" class="ra-grid" style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;">
-
       <div class="ra-grid-item">
         <div class="ra-input">
           <label class="ra-input__label" for="RegisterForm-FirstName">
@@ -49,7 +48,9 @@
               type="text"
               name="customer[first_name]"
               id="RegisterForm-FirstName"
-              {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+              {% if form.first_name %}
+                value="{{ form.first_name }}"
+              {% endif %}
               autocomplete="given-name"
               placeholder="{{ 'customer.register.first_name' | t }}"
             >
@@ -68,7 +69,9 @@
               type="text"
               name="customer[last_name]"
               id="RegisterForm-LastName"
-              {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+              {% if form.last_name %}
+                value="{{ form.last_name }}"
+              {% endif %}
               autocomplete="family-name"
               placeholder="{{ 'customer.register.last_name' | t }}"
             >
@@ -87,7 +90,9 @@
               type="email"
               name="customer[email]"
               id="RegisterForm-email"
-              {% if form.email %} value="{{ form.email }}"{% endif %}
+              {% if form.email %}
+                value="{{ form.email }}"
+              {% endif %}
               spellcheck="false"
               autocapitalize="off"
               autocomplete="email"
@@ -103,7 +108,8 @@
                 <svg aria-hidden="true" focusable="false">
                   <use href="#icon-error" />
                 </svg>
-                {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}.
               </span>
             {%- endif -%}
           </div>
@@ -133,7 +139,8 @@
                 <svg aria-hidden="true" focusable="false">
                   <use href="#icon-error" />
                 </svg>
-                {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
+                {{ form.errors.translated_fields.password | capitalize }}
+                {{ form.errors.messages.password }}.
               </span>
             {%- endif -%}
           </div>
@@ -148,13 +155,10 @@
     </div>
 
     <div class="auth-form-bottom text-align--center">
-      <a href="/account/login" class="auth-form__inline-cta ra-link">
-        Back to Login
-      </a>
+      <a href="/account/login" class="auth-form__inline-cta ra-link"> Back to Login </a>
     </div>
   {%- endform -%}
 </div>
-
 
 {% schema %}
 {

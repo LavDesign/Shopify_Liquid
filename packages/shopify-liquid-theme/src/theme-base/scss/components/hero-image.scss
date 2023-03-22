@@ -54,16 +54,19 @@
 
 .ra-hero.set--aspect-ratio-short:not(.ra-hero--stack-mobile) {
   @breakpoint md-max {
-    aspect-ratio: var(--component-media-ratio-x, 1) / var(--component-media-ratio-y, .25) !important;
+    aspect-ratio: var(--component-media-ratio-x, 1) /
+      var(--component-media-ratio-y, 0.25) !important;
   }
 }
 .ra-hero.set--aspect-ratio-main:not(.ra-hero--stack-mobile) {
   @breakpoint md-max {
-    aspect-ratio: var(--component-media-ratio-x, 1) / var(--component-media-ratio-y, .42) !important;
+    aspect-ratio: var(--component-media-ratio-x, 1) /
+      var(--component-media-ratio-y, 0.42) !important;
   }
 }
 .ra-hero.set--aspect-ratio-tall:not(.ra-hero--stack-mobile) {
   @breakpoint md-max {
-    aspect-ratio: var(--component-media-ratio-x, 1) / var(--component-media-ratio-y, .6) !important;
+    aspect-ratio: var(--component-media-ratio-x, 1) /
+      var(--component-media-ratio-y, 0.6) !important;
   }
 }

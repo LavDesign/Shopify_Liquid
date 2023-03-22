@@ -27,7 +27,7 @@ const pinia = createPinia();
  * renderVueApps
  * @param {String} eventTarget - string selector for vue app roots.
  */
-const renderVueApps = (eventTarget = '[data-vue-root]') => {
+const renderVueApps = (eventTarget = "[data-vue-root]") => {
   const vueRoots = document.querySelectorAll(eventTarget);
   vueRoots.forEach((root) => {
     const app = createApp();
@@ -50,10 +50,10 @@ const renderVueApps = (eventTarget = '[data-vue-root]') => {
         const parentSectionId = `#shopify-section-${event.detail.sectionId}`;
         if (root.closest(parentSectionId) !== null) {
           app.unmount();
-          document.removeEventListener('shopify:section:load', appSectionLoad);
+          document.removeEventListener("shopify:section:load", appSectionLoad);
         }
       };
-      document.addEventListener('shopify:section:load', appSectionLoad);
+      document.addEventListener("shopify:section:load", appSectionLoad);
     }
   });
 };
@@ -98,7 +98,7 @@ if (isDesignMode) {
       );
     }
   };
-  document.addEventListener('shopify:section:load', refreshVue);
-  document.addEventListener('shopify:section:deselect', refreshVue);
-  document.addEventListener('shopify:section:reorder', refreshVue);
+  document.addEventListener("shopify:section:load", refreshVue);
+  document.addEventListener("shopify:section:deselect", refreshVue);
+  document.addEventListener("shopify:section:reorder", refreshVue);
 }

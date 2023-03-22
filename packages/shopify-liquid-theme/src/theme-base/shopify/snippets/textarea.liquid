@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     rows:        number determines the input height in rows - (required)
     label:       string input label - (optional)
@@ -21,10 +20,9 @@
 
   Example textarea + minlength & maxlength:
     {%- render 'textarea' rows: 4, label: 'Your message', minlength: 5, maxlength: 100, placeholder: 'Enter your message' -%}
-
 {% endcomment %}
 
-{%- if rows != blank -%} 
+{%- if rows != blank -%}
   {% capture classes %}
     ra-textarea__control
     {{ class }}

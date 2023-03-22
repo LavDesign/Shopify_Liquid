@@ -12,9 +12,6 @@
       Dawn theme - to be deleted or updated later
     {%- endcomment -%}
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {%- if settings.predictive_search_enabled -%}
-      <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
-    {%- endif -%}
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 
     {% render 'vendor-scripts' %}
@@ -136,7 +133,7 @@
     {%- comment -%}
       Palomino & Bedrock UI
     {%- endcomment -%}
-    <link rel=“stylesheet” href=“https://use.typekit.net/uuq0jfz.css”>
+    <link rel="stylesheet" href="https://use.typekit.net/uuq0jfz.css">
     {{ 'main.css' | asset_url | stylesheet_tag }}
     {%- render 'css-variables' -%}
     {%- render 'icon-store' -%}
@@ -173,19 +170,18 @@
     {% section 'footer' %}
     {%- render 'js-variables' -%}
 
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
-
     {% render 'ra-login-modal' %}
 
-    {{ 'main.js'  | asset_url | script_tag }}
+    {{ 'main.js' | asset_url | script_tag }}
 
-    {% unless template.name == "cart" %}
+    {% unless template.name == 'cart' %}
       {% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
       {% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
       <div data-vue-root="CartInline">
-        <cart-inline :settings='{{- cart_settings -}}' :empty-cart-settings='{{- empty_cart_settings -}}' />
+        <cart-inline
+          :settings="{{- cart_settings | escape | strip -}}"
+          :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}"
+        />
       </div>
     {% endunless %}
   </body>

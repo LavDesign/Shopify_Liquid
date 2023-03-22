@@ -4,7 +4,6 @@
   color: var(--link-color);
   --icon-color: var(--link-color);
 
-
   // reset
   .header__inner a:link,
   .header__inner a:visited {
@@ -99,7 +98,9 @@
         transform: unset;
       }
 
-      .ra-header-util__item { padding: 0; }
+      .ra-header-util__item {
+        padding: 0;
+      }
       .ra-header-util__item:not(:last-child),
       .header__action-item {
         margin-bottom: 24px;

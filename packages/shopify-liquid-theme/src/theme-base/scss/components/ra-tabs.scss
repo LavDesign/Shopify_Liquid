@@ -10,11 +10,11 @@
     transition: all 0.3s ease-in-out;
     opacity: 0;
     padding: 0;
-  
+
     &.ra-tab__content--open {
       opacity: 1;
     }
-  
+
     .ra-tab__content-inner {
       padding: 20px;
     }
@@ -42,7 +42,6 @@
   }
 }
 
-// default 
 .ra-tabs--default {
   .ra-tab__toggle svg,
   .ra-tab__toggle .ra-icon {

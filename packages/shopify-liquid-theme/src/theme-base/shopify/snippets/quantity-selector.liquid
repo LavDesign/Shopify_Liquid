@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     style:        string button styles [primary, secondary, tertiary] - (required)
     value:        number specifies the default value - (required)
@@ -17,7 +16,6 @@
 
   Example quantity selector + max:
     {%- render 'quantity-selector' value: 1, style: 'tertiary' min: 0, max: 10 -%}
-
 {% endcomment %}
 
 {% if style != blank and value != blank %}
@@ -65,7 +63,12 @@
   {% endcapture %}
 
   <div aria-label="Quantity" class="ra-quantity-selector ra-quantity-selector--input">
-    <button type="button" aria-label="{{ 'accessibility.qty_decrement' | t }}" class="ra-quantity-selector__button--minus {{ btn_classes }}" {{ dec_attributes }}>
+    <button
+      type="button"
+      aria-label="{{ 'accessibility.qty_decrement' | t }}"
+      class="ra-quantity-selector__button--minus {{ btn_classes }}"
+      {{ dec_attributes }}
+    >
       <svg class="ra-icon">
         <use xlink:href="#minus"></use>
       </svg>
@@ -75,7 +78,12 @@
         <input type="number" class="{{ input_classes }}" {{ input_attributes }}>
       </div>
     </div>
-    <button type="button" aria-label="{{ 'accessibility.qty_increment' | t }}" class="ra-quantity-selector__button--plus {{ btn_classes }}" {{ inc_attributes }}>
+    <button
+      type="button"
+      aria-label="{{ 'accessibility.qty_increment' | t }}"
+      class="ra-quantity-selector__button--plus {{ btn_classes }}"
+      {{ inc_attributes }}
+    >
       <svg class="ra-icon">
         <use xlink:href="#plus"></use>
       </svg>

@@ -25,7 +25,8 @@
     }
 
     &:focus {
-      outline: var(--input-border-width) var(--input-border-style) var(--input-outline-color);
+      outline: var(--input-border-width) var(--input-border-style)
+        var(--input-outline-color);
     }
 
     &.is-invalid {
@@ -108,9 +109,6 @@
       color: var(--color-util-white);
     }
   }
-
-  /* checkbox */
-  &.ra-choice--checkbox {}
 
   /* radio */
   &.ra-choice--radio {

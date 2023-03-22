@@ -24,11 +24,7 @@
           }
         }
       },
-      "block_order": [
-        "preheader-0",
-        "preheader-1",
-        "preheader-2"
-      ],
+      "block_order": ["preheader-0", "preheader-1", "preheader-2"],
       "settings": {
         "bg_color": "--color-secondary-500",
         "text_color": "--color-util-red"
@@ -38,8 +34,5 @@
       "type": "header"
     }
   },
-  "order": [
-    "preheader",
-    "header"
-  ]
+  "order": ["preheader", "header"]
 }

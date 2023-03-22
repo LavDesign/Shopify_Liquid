@@ -1,41 +1,64 @@
 {% comment %}
+  Props:
+    product:     Object - Shopify product Obj -  (required)
+    class:       String add custom CSS class - (optional)
+    pre_title:   String, extra text before product title - (optional)
+    atc_button:  Boolean, toggle ATC button - (optional) [default=false]
+    atc_label:   String, add custom ATC button text - (optional)
+    atc_style:   String, [primary, secondary, tertiary] - optional
+    badge_text:  String, Add custom badge text
+    badge_style: String, [primary, secondary, warning, danger, info, success] - (required if badge text)
+    wishlist:    Boolean, toggle add wishlist button on hover - (optional) [default=false]
+    wishlist_style: String, [primary, secondary, warning, danger, info, success] - optional
 
-Props:
-  product:     Object - Shopify product Obj -  (required)
-  class:       String add custom CSS class - (optional)
-  pre_title:   String, extra text before product title - (optional)
-  atc_button:  Boolean, toggle ATC button - (optional) [default=false]
-  atc_label:   String, add custom ATC button text - (optional)
-  atc_style:   String, [primary, secondary, tertiary] - optional
-  badge_text:  String, Add custom badge text
-  badge_style: String, [primary, secondary, warning, danger, info, success] - (required if badge text)
-  wishlist:    Boolean, toggle add wishlist button on hover - (optional) [default=false]
-  wishlist_style: String, [primary, secondary, warning, danger, info, success] - optional
+    hover_img: String, define hover image that will be used
+    hover_img_alt: String, define alt text for hover image
 
-  hover_img: String, define hover image that will be used
-  hover_img_alt: String, define alt text for hover image
-
-  font_color:  String, hex code for text color - (optional)
+    font_color:  String, hex code for text color - (optional)
 
 
-Example product-tile snippet:
-  {% render 'ra-product-tile' product: product %}
+  Example product-tile snippet:
+    {% render 'ra-product-tile' product: product %}
 {% endcomment %}
 
-{% assign wishlistStyle = wishlist_style | default: 'danger'  %}
+{% assign wishlistStyle = wishlist_style | default: 'danger' %}
 
 <div class="ra-product-tile ra-product-tile--default">
   <div class="ra-product-tile__media">
     {% if product.featured_image %}
       <a href="{{ product.url }}" class="ra-product-tile__media-link">
         <!-- ra-image -->
-        <div class="ra-image ra-image--use-aspect-ratio ra-product-tile__image" style="--media-width:1; --media-height:1.2;">
-          <img loading="lazy" src="{{ product.featured_image.src | img_url: '450x' }}" srcset="" sizes="" width="1" height="1.2" alt="{{ product.featured_image.alt }}" class="ra-image__media">
+        <div
+          class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
+          style="--media-width:1; --media-height:1.2;"
+        >
+          <img
+            loading="lazy"
+            src="{{ product.featured_image.src | img_url: '450x' }}"
+            srcset=""
+            sizes=""
+            width="1"
+            height="1.2"
+            alt="{{ product.featured_image.alt }}"
+            class="ra-image__media"
+          >
         </div>
         <!-- ra hover-image -->
         {% if hover_img != blank %}
-          <div class="ra-image ra-image--use-aspect-ratio ra-product-tile__image" style="--media-width:1; --media-height:1.2;">
-            <img loading="lazy" src="{{ hover_img | img_url: '450x' }}" srcset="" sizes="" width="1" height="1.2" alt="{{ hover_img_alt | default: product.title  }}" class="ra-image__media">
+          <div
+            class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
+            style="--media-width:1; --media-height:1.2;"
+          >
+            <img
+              loading="lazy"
+              src="{{ hover_img | img_url: '450x' }}"
+              srcset=""
+              sizes=""
+              width="1"
+              height="1.2"
+              alt="{{ hover_img_alt | default: product.title  }}"
+              class="ra-image__media"
+            >
           </div>
         {% endif %}
       </a>
@@ -46,7 +69,8 @@ Example product-tile snippet:
       </div>
     {% endif %}
     {% if wishlist %}
-      {% render 'icon-button'
+      {%
+        render 'icon-button'
         type: 'button',
         style: wishlistStyle,
         size: 'sm',
@@ -58,7 +82,11 @@ Example product-tile snippet:
     {% endif %}
     {% if atc_button == true %}
       <div>
-        <button type="button" aria-label="Add to Cart {{ product.title }}" class="ra-product-tile__atc ra-button ra-button--{{ atc_style | default: 'tertiary' }} ra-button--sm">
+        <button
+          type="button"
+          aria-label="Add to Cart {{ product.title }}"
+          class="ra-product-tile__atc ra-button ra-button--{{ atc_style | default: 'tertiary' }} ra-button--sm"
+        >
           {% if atc_label != blank %}
             {{ atc_label }}
           {% else %}
@@ -68,7 +96,12 @@ Example product-tile snippet:
       </div>
     {% endif %}
   </div>
-  <div class="ra-product-tile__details" {% if font_color %}style="color: var({{ font_color }})"{% endif %}>
+  <div
+    class="ra-product-tile__details"
+    {% if font_color %}
+      style="color: var({{ font_color }})"
+    {% endif %}
+  >
     {% if pre_title != blank %}
       <p class="ra-product-tile__attribute">
         {{- pre_title -}}
@@ -78,7 +111,7 @@ Example product-tile snippet:
       {{ product.title }}
     </a>
     <!-- Product Price -->
-    {% render 'ra-price' product: product, class: 'ra-product-tile__price' %}
+    {% render 'ra-price', product: product, class: 'ra-product-tile__price' %}
     <!-- Rating -->
     <div raw link class="ra-product-tile__rating ra-rating">
       {% render 'review-stars', platform: settings.review_platform, product: product %}
