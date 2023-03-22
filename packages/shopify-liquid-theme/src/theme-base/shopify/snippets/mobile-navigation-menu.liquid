@@ -16,7 +16,7 @@
   endfor
 %}
 
-  <li class="header__mobile-navigation-item border-b flex justify-between items-center">
+<li class="header__mobile-navigation-item border-b flex justify-between items-center">
   <a
     class="p-6 text-lg"
     href="{{ link.url }}"
@@ -45,7 +45,8 @@
     drawer
   {%- endcomment -%}
   {% if has_child or has_sub_child %}
-    <ul class="header__mobile-navigation-drawer [&.active]:left-0  fixed flex-col top-0 left-full w-full flex h-full z-[515] transition-all duration-500"
+    <ul
+      class="header__mobile-navigation-drawer [&.active]:left-0  fixed flex-col top-0 left-full w-full flex h-full z-[515] transition-all duration-500"
       id="drawer-{{ link.title | handleize }}"
       role="list"
       tabindex="-1"
@@ -71,7 +72,7 @@
           aria-label="close {{ link.title }} drawer"
           data-close-drawer="drawer-{{ link.title | handleize }}"
         >
-          {% render 'icon' icon: 'close', class: 'transition-all delay-300', width: '16px', height: '16px' %}
+          {% render 'icon', icon: 'close', class: 'transition-all delay-300', width: '16px', height: '16px' %}
         </a>
       </div>
 
@@ -114,7 +115,8 @@
                 class="header__mobile-navigation-dropdown [&.active]:overflow-visible px-6 py-0 w-full flex flex-col h-0 overflow-hidden transition-all ease-in-out"
                 id="dropdown-{{ child.title | handleize }}"
                 role="list"
-                tabindex="-1">
+                tabindex="-1"
+              >
                 <div data-header-inner-mobile>
                   {% for sub_child in child.links %}
                     <li class="header__mobile-navigation-item border-b flex flex-wrap mb-3 last:mb-6 p-6 justify-between items-center !border-0 !p-0">
