@@ -1,94 +1,67 @@
-{% assign spacingTop = section.settings.spacing_top %}
-{% assign spacingBottom = section.settings.spacing_bottom %}
-{% assign spacingEdge = section.settings.spacing_edge %}
-{% assign maxWidth = section.settings.max_width %}
+{% liquid
+  assign title_level = section.settings.title_level
 
-{% assign detailsLocation = section.settings.details_location %}
-{% assign detailsLocationMD = section.settings.details_location_md %}
+  assign cta_one_text = section.settings.cta_one_text
+  assign cta_one_url = section.settings.cta_one_url
+  assign cta_one_style = section.settings.cta_one_style
 
-{% assign horizontalAlign = section.settings.horizontal_align %}
-{% assign horizontalAlignMD = section.settings.horizontal_align_md %}
+  assign cta_two_text = section.settings.cta_two_text
+  assign cta_two_url = section.settings.cta_two_url
+  assign cta_two_style = section.settings.cta_two_style
+%}
 
-{% assign titleAs = section.settings.title_as %}
-{% assign titleLevel = section.settings.title_level %}
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.bg_color != "rgba(0,0,0,0)" %}
+    --component-bg-color: {{ section.settings.bg_color }}
+    {% endif %}
+    {% if section.settings.bg_color_md != "rgba(0,0,0,0)" %}
+    --component-bg-color-md: {{ section.settings.bg_color_md }}
+    {% endif %}
+    {% if section.settings.fg_color != "rgba(0,0,0,0)" %}
+    --component-fg-color: {{ section.settings.fg_color }}
+    {% endif %}
+    {% if section.settings.fg_color_md != "rgba(0,0,0,0)" %}
+    --component-fg-color-md: {{ section.settings.fg_color_md }}
+    {% endif %}
+  }
+</style>
 
-{% assign bgColor = section.settings.bg_color %}
-{% assign bgColorMD = section.settings.bg_color_md %}
-
-{% assign fgColor = section.settings.fg_color %}
-{% assign fgColorMD = section.settings.fg_color_md %}
-
-{% assign ctaOneText = section.settings.cta_one_text %}
-{% assign ctaOneUrl = section.settings.cta_one_url %}
-{% assign ctaOneStyle = section.settings.cta_one_style %}
-
-{% assign ctaTwoText = section.settings.cta_two_text %}
-{% assign ctaTwoUrl = section.settings.cta_two_url %}
-{% assign ctaTwoStyle = section.settings.cta_two_style %}
-
-{% capture horizontalClasses %}
-  set--h-align-{{ horizontalAlign }}{% if horizontalAlignMD != blank %}-sm set--h-align-{{ horizontalAlignMD }}-md{% endif %}
-{% endcapture %}
-
-{%- capture classes -%}
-  ra-text-only-banner set--spacing-top-{{ spacingTop }} set--spacing-bottom-{{ spacingBottom }} gutter--{{ spacingEdge }}
-{%- endcapture -%}
-
-{% capture bgStyles %}
-  {% if bgColor != 'rgba(0,0,0,0)' %}
-    --component-bg-color: {{ bgColor }}{% if bgColorMD != 'rgba(0,0,0,0)' %}; --component-bg-color-md: {{ bgColorMD }}{% endif %}
-  {% endif %}
-{% endcapture %}
-
-{% capture colorStyles %}
-  {% if fgColor != 'rgba(0,0,0,0)' %}
-    --component-fg-color: {{ fgColor }}{% if fgColorMD != 'rgba(0,0,0,0)' %}; --component-fg-color-md: {{ fgColorMD }}{% endif %}
-  {% endif %}
-{% endcapture %}
-
-<article
-  class="{{ classes }}"
-  {% if bgStyles or colorStyles %}
-    style="{{- bgStyles -}};{{- colorStyles -}}"
-  {% endif %}
->
-  <div class="ra-text-only-banner__details max-width--{{ maxWidth }}">
-    <div class="ra-text-only-banner__copy {{ horizontalClasses }}">
+<article class="ra-text-only-banner set--spacing-top-{{ section.settings.spacing_top }} set--spacing-bottom-{{ section.settings.spacing_bottom }} gutter--{{ section.settings.spacing_edge }}">
+  <div class="ra-text-only-banner__details max-width--{{ section.settings.max_width }}">
+    <div class="ra-text-only-banner__copy set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
       {% if section.settings.subtitle != blank %}
-        <div class="ra-text-only-banner__subtitle">
-          {{- section.settings.subtitle -}}
-        </div>
+        <div class="ra-text-only-banner__subtitle">{{- section.settings.subtitle -}}</div>
       {% endif %}
       {% if section.settings.title != blank %}
-        <{{ titleLevel }}
-          class="ra-title ra-text-only-banner__title"
-          style="--title-font-size:var(--font-size-{{ titleAs }})"
+        <{{ title_level }}
+          class="ra-title ra-text-only-banner__title {{ section.settings.title_as }}"
         >
           <div>{{ section.settings.title }}</div>
-        </{{ titleLevel }}>
+        </{{ title_level }}>
       {% endif %}
       {% if section.settings.description != blank %}
         <div class="ra-text-only-banner__description {{ section.settings.description_copy_size }}">
           {{- section.settings.description -}}
         </div>
       {% endif %}
-      {% if ctaOneText != blank or ctaTwoText != blank %}
+      {% if cta_one_text != blank or cta_two_text != blank %}
         <div class="ra-link-list ra-text-only-banner__link-list">
-          {% if ctaOneText != blank and ctaOneUrl != blank %}
+          {% if cta_one_text != blank and cta_one_url != blank %}
             {% render 'button',
               type: 'a',
-              style: ctaOneStyle,
-              url: ctaOneUrl,
-              label: ctaOneText,
+              style: cta_one_style,
+              url: cta_one_url,
+              label: cta_one_text,
               class: 'ra-link-list'
             %}
           {% endif %}
-          {% if ctaTwoText != blank and ctaTwoUrl != blank %}
+          {% if cta_two_text != blank and cta_two_url != blank %}
             {% render 'button',
               type: 'a',
-              style: ctaTwoStyle,
-              url: ctaTwoUrl,
-              label: ctaTwoText,
+              style: cta_two_style,
+              url: cta_two_url,
+              label: cta_two_text,
               class: 'ra-link-list'
             %}
           {% endif %}
@@ -98,7 +71,7 @@
   </div>
 </article>
 
-{%- schema -%}
+{% schema %}
 {
   "name": "Text-Only Component",
   "settings": [
@@ -492,4 +465,4 @@
     }
   ]
 }
-{%- endschema -%}
+{% endschema %}
