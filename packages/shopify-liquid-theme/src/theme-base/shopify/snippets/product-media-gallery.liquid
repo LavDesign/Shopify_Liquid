@@ -45,7 +45,6 @@
           slides-per-group="{{ thumbnails_per_view }}"
           direction="vertical"
           space-between="{{ thumbnails_gap }}"
-          {% comment %} a11y-enabled="false" {% endcomment %}
         >
           {%- if product.selected_or_first_available_variant.featured_media != null -%}
             <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
@@ -123,7 +122,6 @@
           speed="500"
           loop="true"
           thumbs-swiper=".product-media-gallery__thumbnails"
-          {% comment %} a11y-enabled="false" {% endcomment %}
         >
           {%- for media in product.media -%}
             <swiper-slide
@@ -248,7 +246,6 @@
           slides-per-view="1"
           speed="500"
           loop="true"
-          {% comment %} a11y-enabled="false" {% endcomment %}
         >
           {%- for media in product.media -%}
             <swiper-slide data-media-id="{{ media.id }}">
