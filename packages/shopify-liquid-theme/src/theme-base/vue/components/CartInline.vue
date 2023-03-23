@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full pb-10 flex items-center justify-between flex-col">
+  <div class="w-full flex items-center justify-between flex-col">
     <Transition name="fade">
       <div
         v-if="cartOpen && cartReady"

@@ -2,32 +2,36 @@
 
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}
+    px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}
+    px;
   }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top }}
+      px;
+      padding-bottom: {{ section.settings.padding_bottom }}
+      px;
     }
   }
 {%- endstyle -%}
 
 <section class="customer order ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium">
   <div>
-    <div class="account-content__header account-content__header--has-divider">
+    <div class="items-center flex justify-center flex-wrap relative pb-4 border-b border-grey-500">
       <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
         {% render 'icon', icon: 'left-arrow', width: '24px', height: '24px' %}
       </a>
 
-      <h1 class="ra-title account-content__title">
+      <h1 class="ra-title">
         {{ 'customer.order.title' | t: name: order.name }}
       </h1>
 
-      <div class="order-details__header-additional">
+      <div class="max-md:flex-[1_0_100%] md:items-end md:self-end md:flex md:flex-col md:ml-auto">
         {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
-        <p class="order-details__date">
+        <p class="text-sm md:text-base ">
           {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
           {%- if order.cancelled -%}
             <p>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
@@ -36,22 +40,21 @@
             {{ 'customer.order.date_html' | t: date: order_date }}
           {%- endif -%}
         </p>
-        <div class="order-details__status-badge ra-badge ra-badge--standard ra-badge--has-text ra-badge--tertiary">
+        <div class="mt-2 ra-badge ra-badge--standard ra-badge--has-text ra-badge--tertiary">
           Status: {{ order.fulfillment_status_label }}
         </div>
       </div>
     </div>
 
     <!-- Order details info grid -->
-    <div class="order-details__info">
+    <div class="mt-5 md:mt-10 text-sm md:text-base">
       <div
         data-gap="-sm"
         data-columns="-sm,-md,-lg"
         class="ra-grid"
-        style="--grid-gap:1rem; --grid-columns:2; --grid-columns-md:2; --grid-columns-lg:4;"
-      >
+        style="--grid-gap:1rem; --grid-columns:2; --grid-columns-md:2; --grid-columns-lg:4;">
         <div class="ra-grid-item">
-          <p class="order-details__info-title">
+          <p class="order-details__info-title mb-2 color-grey-500">
             {{ 'customer.order.shipping_address' | t }}
           </p>
           <p>{{ order.shipping_address.name }}</p>
@@ -66,7 +69,7 @@
           <p>{{ order.shipping_address.city }}</p>
         </div>
         <div class="ra-grid-item">
-          <p class="order-details__info-title">
+          <p class="order-details__info-title mb-2 color-grey-500">
             {{ 'customer.order.billing_address' | t }}
           </p>
           <p>{{ order.billing_address.name }}</p>
@@ -83,55 +86,45 @@
       </div>
     </div>
 
-    <div class="order-details__tracking">
-      {% render 'button',
-        type: 'a',
-        style: 'primary',
-        url: order.order_status_url,
-        size: 'md',
-        label: 'Track Package',
-        class: 'order-details__tracking-cta inline-flex ml-auto'
-      %}
+    <div class="mt-2.5 flex">
+      {% render 'button'
+       , type: 'a',
+       style: 'primary',
+       url: order.order_status_url,
+       size: 'md',
+       label: 'Track Package',
+       class: 'inline-flex max-md:w-full md:ml-auto' %}
     </div>
 
-    <ul class="order-details__items ra-list ra-list--hide-bullets">
+    <ul class="mt-10 md:mt-4.5 md:mb-8 md:pb-8 md:first:pt-8 ra-list ra-list--hide-bullets">
       {% for line_item in order.line_items %}
-        <li class="order-details__item ra-list__item">
+        <li class="md-max:mb-4 md-max:pb-4 md-max:first:pt-4 first:border-t border-b ra-list__item">
           <div
             data-gap="-sm,-md,-lg"
             data-columns="-sm,-md,-lg"
             class="order-line-item ra-grid"
-            style="--grid-gap:1rem; --grid-gap-md:1.25rem; --grid-gap-lg:2.5rem; --grid-columns:3; --grid-columns-md:5; --grid-columns-lg:6;"
-          >
+            style="--grid-gap:1rem; --grid-gap-md:1.25rem; --grid-gap-lg:2.5rem; --grid-columns:3; --grid-columns-md:5; --grid-columns-lg:6;">
             <div class="ra-grid-item">
-              <a href="{{ line_item.url }}" class="order-line-item__media-link">
-                <div
-                  class="order-line-item__media ra-image ra-image--use-aspect-ratio"
-                  style="--media-width:1; --media-height:1.25;"
-                >
+              <a href="{{ line_item.url }}">
+                <div class="ra-image ra-image--use-aspect-ratio" style="--media-width:1; --media-height:1.25;">
                   <img
                     loading="lazy"
                     class="ra-image__media"
                     width="1"
                     height="1.25"
                     alt="{{- line_item.product.featured_image.alt -}}"
-                    src="{{ line_item.product.featured_image | image_url:    width: 200 }}"
-                  >
+                    src="{{ line_item.product.featured_image | image_url:    width: 200 }}">
                 </div>
               </a>
             </div>
             <div
               data-column="-sm,-md,-lg"
-              class="ra-grid-item order-line-item__details"
-              style="--grid-column:2; --grid-column-md:4; --grid-column-lg:5;"
-            >
-              <a
-                href="{{ line_item.url }}"
-                class="order-line-item__name ra-link ra-link--no-underline ra-link--inherit-color"
-              >
+              class="ra-grid-item pr-4 relative"
+              style="--grid-column:2; --grid-column-md:4; --grid-column-lg:5;">
+              <a href="{{ line_item.url }}" class="text-sm md:text-base font-medium ra-link ra-link--no-underline ra-link--inherit-color">
                 {{ line_item.title }}
               </a>
-              <ul class="order-line-item__options ra-list ra-list--hide-bullets">
+              <ul class="mt-2 text-sm font-normal ra-list ra-list--hide-bullets">
                 <li class="ra-list__item">
                   <div class="ra-property ra-property--stack" style="--property-name-separator: ;">
                     <span class="ra-property__name">
@@ -153,7 +146,7 @@
                   </div>
                 </li>
               </ul>
-              <span class="order-line-item__price">
+              <span class="text-sm md:text-base absolute top-0 right-0">
                 {%- if line_item.original_line_price != line_item.final_line_price -%}
                   <dl>
                     <dt>
@@ -179,16 +172,16 @@
       {% endfor %}
     </ul>
 
-    <div class="order-details__summary">
-      <div class="order-details__summary-item ra-property ra-property--split ra-property--inherit-color">
+    <div class="order-details__summary text-sm mt-4 md:text-base md:ml-auto md:mt-3 md:max-w-[19.5rem]">
+      <div class="mb-2 last:mb-0 ra-property ra-property--split ra-property--inherit-color">
         <span class="ra-property__name">{{ 'customer.order.subtotal' | t }}</span>
         <span class="ra-property__value">{{ order.line_items_subtotal_price | money }}</span>
       </div>
-      <div class="order-details__summary-item ra-property ra-property--split ra-property--inherit-color">
+      <div class="mb-2 last:mb-0 ra-property ra-property--split ra-property--inherit-color">
         <span class="ra-property__name">Tax</span>
         <span class="ra-property__value">$9.70</span>
       </div>
-      <div class="order-details__summary-item ra-property ra-property--split ra-property--inherit-color">
+      <div class="mb-2 last:mb-0 ra-property ra-property--split ra-property--inherit-color">
         <span class="ra-property__name">
           {{- 'customer.order.shipping' | t }}
           {% if shipping_method %}({{ shipping_method.title }}){% endif -%}
@@ -198,7 +191,7 @@
         </span>
       </div>
       {%- if order.total_duties -%}
-        <div class="order-details__summary-item ra-property ra-property--split ra-property--inherit-color">
+        <div class="mb-2 last:mb-0 ra-property ra-property--split ra-property--inherit-color">
           <span class="ra-property__name">
             {{ 'customer.order.total_duties' | t }}
           </span>
@@ -208,7 +201,7 @@
         </div>
       {%- endif -%}
       <hr class="ra-divider">
-      <div class="order-details__summary-total ra-property ra-property--split ra-property--inherit-color">
+      <div class="text-sm md:text-base ra-property ra-property--split ra-property--inherit-color">
         <span class="ra-property__name">
           {{ 'customer.order.total' | t }}
         </span>
@@ -221,33 +214,31 @@
 </section>
 
 {% schema %}
-{
-  "name": "t:sections.main-order.name",
-  "settings": [
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ]
-}
+  {
+    "name": "t:sections.main-order.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ]
+  }
 {% endschema %}

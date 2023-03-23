@@ -1,25 +1,24 @@
 <div class="account-navigation">
-  <div class="account-navigation__header flex justify-between">
-    <p class="account-navigation__header-title">Hello, {{ customer.first_name }}</p>
-    <a href="{{ routes.account_logout_url }}" class="account-navigation__header-link display--md-max ra-link">
+  <div class="mb-4 md:mb-10 flex justify-between">
+    <p class="text-lg color-grey-900">Hello, {{ customer.first_name }}</p>
+    <a href="{{ routes.account_logout_url }}" class="display--md-max ra-link">
       Logout
     </a>
   </div>
 
-  <ul class="account-navigation__list ra-list ra-list--hide-bullets">
+  <ul class="account-navigation__list flex flex-col flex-nowrap overflow-auto whitespace-nowrap ra-list ra-list--hide-bullets">
     <li class="account-navigation__item ra-list__item">
-      <a href="/account" class="account-navigation__link ra-link ra-link--inherit-color"> Order history </a>
+      <a href="/account" class="account-navigation__link text-sm md:text-base font-bold no-underline ra-link ra-link--inherit-color">
+        Order history
+      </a>
     </li>
     <li class="account-navigation__item ra-list__item">
-      <a href="{{ routes.account_addresses_url }}" class="account-navigation__link ra-link ra-link--inherit-color">
+      <a href="{{ routes.account_addresses_url }}" class="account-navigation__link text-sm md:text-base font-bold no-underline ra-link ra-link--inherit-color">
         Address Book
       </a>
     </li>
     <li class="account-navigation__item account-navigation__item--extra-spacing display--md ra-list__item">
-      <a
-        href="{{ routes.account_logout_url }}"
-        class="account-navigation__link account-navigation__link--no-highlight text-transform--uppercase ra-link ra-link--inherit-color"
-      >
+      <a href="{{ routes.account_logout_url }}" class="text-sm md:text-base font-bold no-underline text-transform--uppercase ra-link ra-link--inherit-color">
         Logout
       </a>
     </li>
