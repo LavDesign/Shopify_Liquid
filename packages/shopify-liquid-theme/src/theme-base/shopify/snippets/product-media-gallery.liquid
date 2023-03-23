@@ -45,6 +45,7 @@
           slides-per-group="{{ thumbnails_per_view }}"
           direction="vertical"
           space-between="{{ thumbnails_gap }}"
+          {% comment %} a11y-enabled="false" {% endcomment %}
         >
           {%- if product.selected_or_first_available_variant.featured_media != null -%}
             <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
@@ -64,7 +65,7 @@
           {%- if product.selected_or_first_available_variant.featured_media != null -%}
             {%- for media in product.media -%}
               {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
-                <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index }}">
+                <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
                   {{
                     media.preview_image
                     | image_url: width: 80, height: 100, crop: 'center'
@@ -115,13 +116,14 @@
       <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
         <swiper-container
           auto-height="false"
-          class="w-full"
+          class="w-full product-media-gallery__primary"
           navigation-prev-el=".swiper-primary-prev"
           navigation-next-el=".swiper-primary-next"
           slides-per-view="1"
           speed="500"
           loop="true"
           thumbs-swiper=".product-media-gallery__thumbnails"
+          {% comment %} a11y-enabled="false" {% endcomment %}
         >
           {%- for media in product.media -%}
             <swiper-slide
@@ -246,6 +248,7 @@
           slides-per-view="1"
           speed="500"
           loop="true"
+          {% comment %} a11y-enabled="false" {% endcomment %}
         >
           {%- for media in product.media -%}
             <swiper-slide data-media-id="{{ media.id }}">
