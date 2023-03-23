@@ -1,4 +1,4 @@
-{% liquid 
+{% liquid
   assign layout = section.settings.layout
   assign title = section.settings.title
   assign title_as = section.settings.title_style
@@ -70,9 +70,9 @@
       {%- endcomment -%}
       {% if layout == 'fifty-fifty' %}
         <div class="hidden md:flex w-96 relative">
-          <swiper-container 
+          <swiper-container
             slides-per-view="1"
-            navigation-prev-el=".{{ section.id }}.swiper-button-prev" 
+            navigation-prev-el=".{{ section.id }}.swiper-button-prev"
             navigation-next-el=".{{ section.id }}.swiper-button-next">
 
             {% for block in section.blocks %}
@@ -87,7 +87,7 @@
                           <img class="w-full" src="{{ product.featured_media | image_url: width: 450 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
                         </a>
                       {%- endif -%}
-        
+
                       <div class="w-full text-center flex flex-col justify-center">
                         {% if product.vendor %}
                           <p class="text-xs mt-2 mb-1">{{ product.vendor }}</p>
@@ -115,7 +115,7 @@
       {% endif %}
     </div>
   {% endif %}
- 
+
   {% if section.blocks.size > 0 %}
     <div class="order-1 flex items-center relative">
 
@@ -182,7 +182,7 @@
             {%- comment -%}
               Product popover
             {%- endcomment -%}
-            <div class="ra-shop-the-look__product absolute z-20 flex p-3 pr-8 {% if block.settings.horizontal_position > 60 or block.settings.horizontal_position_mobile > 60 %}ra-shop-the-look__product--left{% endif %}" 
+            <div class="ra-shop-the-look__product absolute z-20 flex p-3 pr-8 {% if block.settings.horizontal_position > 60 or block.settings.horizontal_position_mobile > 60 %}ra-shop-the-look__product--left{% endif %}"
               id="product-{{ block.id }}">
               <button class="absolute flex w-3.5 h-3.5 top-2.5 right-2.5" data-popover="product-{{ block.id }}">
                 {% render 'icon' icon: 'close', width: '14px', height: '14px' %}

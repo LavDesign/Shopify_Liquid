@@ -11,6 +11,10 @@ export default class RaMediaGallery extends HTMLElement {
       ".ra-gallery-carousel__main swiper-container"
     );
 
+    this.lightBoxSwiper = this.querySelector(
+      ".ra-gallery-carousel__lightbox swiper-container"
+    );
+
     this.youtubeVideos = this.querySelectorAll(".video--youtube");
 
     this.loadVideoTriggers = this.querySelectorAll("[data-action-load-video]");
@@ -37,15 +41,33 @@ export default class RaMediaGallery extends HTMLElement {
       );
     }
 
+    this.lightBoxGallery.addEventListener("reachend", () => {
+      // A hacky way to ensure that the proper lightbox slide is shown on primary slide click after a loop
+      // Default swiper attributes/methods realIndex and slideToLoop don't account for the a11y span and
+      // indexes are off when a11y are disabled
+      const spanToRemove = document.querySelector(
+        ".swiper--lightbox .swiper-notification"
+      );
+
+      if (spanToRemove) {
+        spanToRemove.remove();
+      }
+    });
+
     this.lightBoxGallery.addEventListener("click", (e) => {
       // if the dialog backdrop pseudoelement is clicked, close the dialog
       if (e.target === this.lightBoxGallery) {
-        this.lightBoxGallery.close().bind(this);
+        this.pauseGalleryVideos();
+        this.lightBoxGallery.close();
         document.body.classList.remove("fixed", "w-full");
       }
     });
 
     this.primarySwiper.addEventListener("slidechange", () => {
+      this.pauseGalleryVideos();
+    });
+
+    this.lightBoxSwiper.addEventListener("slidechange", () => {
       this.pauseGalleryVideos();
     });
 
@@ -68,10 +90,7 @@ export default class RaMediaGallery extends HTMLElement {
     this.lightBoxGallery.showModal();
     document.body.classList.add("fixed", "w-full");
 
-    const slideIndex = parseInt(
-      e.currentTarget?.getAttribute("data-slide-index")
-    );
-
-    this.swiperEl.swiper.slideTo(slideIndex, 0);
+    const slideIndex = this.primarySwiper.swiper.realIndex;
+    this.lightBoxSwiper.swiper.slideToLoop(slideIndex, 0);
   }
 }
