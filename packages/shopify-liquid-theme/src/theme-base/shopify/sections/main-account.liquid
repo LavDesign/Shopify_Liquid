@@ -1,21 +1,12 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
 <section class="customer account account-page ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium">
-  <div
-    data-row-gap="-sm,-md,-lg"
-    class="ra-row"
-    style="--row-gap:1rem; --row-gap-md:2rem; --row-gap-lg:5%;">
-    <div
-      data-col-size="-size,-md"
-      class="ra-col"
-      style="--col-size:100%; --col-size-md:25%;">
+  <div class="ra-row">
+    <div class="ra-col basis-full md:basis-1/4">
       {% render 'ra-account-navigation' %}
     </div>
 
-    <div
-      data-col-size="-size,-md"
-      class="ra-col"
-      style="--col-size:100%; --col-size-md:75%;">
+    <div class="ra-col basis-full md:basis-3/4">
       <div class="items-center flex justify-center flex-wrap relative pb-4">
         <h1 class="ra-title" style="--title-font-size:var(--font-size-md30-to-lg20);">
           {{ 'customer.orders.title' | t }}
@@ -24,10 +15,7 @@
 
       {% paginate customer.orders by 20 %}
         {%- if customer.orders.size > 0 -%}
-          <table
-            role="table"
-            class="w-full border-none border-spacing-0"
-            style="--_table-column-width:2;">
+          <table role="table" class="w-full border-none border-spacing-0">
             <caption class="visually-hidden">
               {{ 'customer.orders.title' | t }}
             </caption>

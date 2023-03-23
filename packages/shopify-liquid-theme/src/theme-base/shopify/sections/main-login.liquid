@@ -3,7 +3,7 @@
   <div class="customer login ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-w-[428px] mx-auto">
   <!-- Customer Reset -->
   <h1
-    class="center  mb-8"
+    class="center mb-8"
     id="recover"
     tabindex="-1">
     {{ 'customer.recover_password.title' | t }}
@@ -16,11 +16,7 @@
     {%- form 'recover_customer_password' -%}
       {% assign recover_success = form.posted_successfully? %}
 
-      <div
-        data-gap="-sm,-md"
-        data-columns="-sm"
-        class="ra-grid"
-        style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;">
+      <div class="grid gap-4 md:gap-6 grid-cols-1">
         <div class="ra-grid-item text-left">
           <div class="ra-input">
             <label class="ra-input__label" for="RecoverEmail">
@@ -98,11 +94,7 @@
         {{ form.errors | default_errors }}
       {%- endif -%}
 
-      <div
-        data-gap="-sm,-md"
-        data-columns="-sm"
-        class="ra-grid"
-        style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;">
+      <div class="grid gap-4 md:gap-6 grid-cols-1">
         <div class="ra-grid-item text-left">
           <div class="ra-input">
             <label class="ra-input__label" for="CustomerEmail">

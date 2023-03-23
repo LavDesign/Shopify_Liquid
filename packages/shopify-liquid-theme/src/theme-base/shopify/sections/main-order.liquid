@@ -48,11 +48,7 @@
 
     <!-- Order details info grid -->
     <div class="mt-5 md:mt-10 text-sm md:text-base">
-      <div
-        data-gap="-sm"
-        data-columns="-sm,-md,-lg"
-        class="ra-grid"
-        style="--grid-gap:1rem; --grid-columns:2; --grid-columns-md:2; --grid-columns-lg:4;">
+      <div class="grid gap-4 grid-cols-2 lg:grid-cols-4">
         <div class="ra-grid-item">
           <p class="order-details__info-title mb-2 color-grey-500">
             {{ 'customer.order.shipping_address' | t }}
@@ -99,11 +95,7 @@
     <ul class="mt-10 md:mt-4.5 md:mb-8 md:pb-8 md:first:pt-8 ra-list ra-list--hide-bullets">
       {% for line_item in order.line_items %}
         <li class="md-max:mb-4 md-max:pb-4 md-max:first:pt-4 first:border-t border-b ra-list__item">
-          <div
-            data-gap="-sm,-md,-lg"
-            data-columns="-sm,-md,-lg"
-            class="order-line-item ra-grid"
-            style="--grid-gap:1rem; --grid-gap-md:1.25rem; --grid-gap-lg:2.5rem; --grid-columns:3; --grid-columns-md:5; --grid-columns-lg:6;">
+          <div class="order-line-item ra-grid gap-4 md:gap-5 lg:gap-10 grid-cols-3 md:grid-cols-5 lg:grid-cols-6">
             <div class="ra-grid-item">
               <a href="{{ line_item.url }}">
                 <div class="ra-image ra-image--use-aspect-ratio" style="--media-width:1; --media-height:1.25;">
@@ -117,10 +109,7 @@
                 </div>
               </a>
             </div>
-            <div
-              data-column="-sm,-md,-lg"
-              class="ra-grid-item pr-4 relative"
-              style="--grid-column:2; --grid-column-md:4; --grid-column-lg:5;">
+            <div class="ra-grid-item pr-4 relative grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
               <a href="{{ line_item.url }}" class="text-sm md:text-base font-medium ra-link ra-link--no-underline ra-link--inherit-color">
                 {{ line_item.title }}
               </a>

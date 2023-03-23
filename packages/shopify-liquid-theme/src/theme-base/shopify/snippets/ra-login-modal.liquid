@@ -36,11 +36,7 @@
       {{ form.errors | default_errors }}
     {%- endif -%}
 
-    <div
-      data-gap="-sm,-md"
-      data-columns="-sm"
-      class="ra-grid"
-      style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;">
+    <div class="grid gap-4 md:gap-6 grid-cols-1">
       <div class="ra-grid-item">
         <div class="ra-input">
           <label class="ra-input__label" for="CustomerEmail">

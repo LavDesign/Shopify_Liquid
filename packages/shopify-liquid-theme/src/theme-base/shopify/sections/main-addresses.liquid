@@ -22,20 +22,11 @@
 
 {%- paginate customer.addresses by 5 -%}
   <section class="customer addresses addressbook ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium" data-customer-addresses>
-    <div
-      data-row-gap="-sm,-md,-lg"
-      class="ra-row"
-      style="--row-gap:1rem;   --row-gap-md:2rem; --row-gap-lg:5%;">
-      <div
-        data-col-size="-size,-md"
-        class="ra-col"
-        style="--col-size:100%; --col-size-md:25%;">
+    <div class="ra-row">
+      <div class="ra-col basis-full md:basis-1/4">
         {% render 'ra-account-navigation' %}
       </div>
-      <div
-        data-col-size="-size,-md"
-        class="ra-col"
-        style="--col-size:100%; --col-size-md:75%;">
+      <div class="ra-col basis-full md:basis-3/4">
         <div class="items-center flex justify-center flex-wrap relative pb-4 border-b border-grey-500">
           <h1 class="ra-title" style="--title-font-size:var(--font-size-md30-to-lg20);">
             <div></div>
@@ -46,15 +37,8 @@
         <ul role="list" class="addressbook-list text-left">
           {%- for address in customer.addresses -%}
             <div class="addressbook-item mb-2 p-2 relative border-b border-grey-500">
-              <div
-                data-gap="-sm"
-                data-columns="-sm"
-                class="ra-grid"
-                style="--grid-gap:1rem; --grid-columns:5;">
-                <div
-                  data-column="-sm"
-                  class="ra-grid-item"
-                  style="--grid-column:3;">
+              <div class="ra-grid gap-4 grid-cols-5">
+                <div class="ra-grid-item col-span-3">
                   <address class="not-italic flex flex-col items-start">
                     <p>{{ address.name }}</p>
                     {% if address.company != blank %}
@@ -78,10 +62,7 @@
                   </address>
                 </div>
 
-                <div
-                  data-column="-sm"
-                  class="ra-grid-item flex flex-col items-end"
-                  style="--grid-column:2;">
+                <div class="ra-grid-item flex col-span-2 flex-col items-end">
                   <button
                     type="button"
                     class="mb-2 text-right ra-link"
@@ -265,11 +246,7 @@
                 {{ 'customer.addresses.add_new' | t }}
               </h2>
               {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
-                <div
-                  data-gap="-sm,-md,-lg"
-                  data-columns="-sm,-md"
-                  class="ra-grid"
-                  style="--grid-gap:0.5rem; --grid-gap-md:1.25rem; --grid-gap-lg:2.25rem; --grid-columns:1; --grid-columns-md:2;">
+                <div class="ra-grid gap:2 md:gap-5 lg:gap-9 grid-cols-1 md:grid-cols-2">
                   <!-- First Name -->
                   <div class="ra-grid-item">
                     <div class="ra-input">
@@ -311,10 +288,7 @@
                   </div>
 
                   <!-- Street Name -->
-                  <div
-                    data-column="-sm,-md"
-                    class="ra-grid-item"
-                    style="--grid-column:1; --grid-column-md:2;">
+                  <div class="col-span-1 md:col-span-2">
                     <div class="ra-input">
                       <label class="ra-input__label" for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
                       <div class="ra-input__wrapper">
@@ -470,11 +444,7 @@
                   </div>
 
                   <div class="ra-grid-item">
-                    <div
-                      data-gap="-sm"
-                      data-columns="-sm,-md,-lg"
-                      class="ra-grid"
-                      style="--grid-gap:1rem; --grid-columns:1; --grid-columns-md:2; --grid-columns-lg:2;">
+                    <div class="ra-grid gap-4 grid-cols-1 md:grid-cols-2">
                       <div class="ra-grid-item">
                         <button type="reset" class="ra-button ra-button--full-width ra-button--tertiary">
                           {{ 'customer.addresses.cancel' | t }}

@@ -289,17 +289,19 @@ Shopify.CountryProvinceSelector.prototype = {
     var provinces = JSON.parse(raw);
 
     this.clearOptions(this.provinceEl);
-    if (provinces && provinces.length == 0) {
-      this.provinceContainer.style.display = "none";
-    } else {
-      for (var i = 0; i < provinces.length; i++) {
-        var opt = document.createElement("option");
-        opt.value = provinces[i][0];
-        opt.innerHTML = provinces[i][1];
-        this.provinceEl.appendChild(opt);
-      }
+    if (this.provinceContainer) {
+      if (provinces && provinces.length == 0) {
+        this.provinceContainer.style.display = "none";
+      } else {
+        for (var i = 0; i < provinces.length; i++) {
+          var opt = document.createElement("option");
+          opt.value = provinces[i][0];
+          opt.innerHTML = provinces[i][1];
+          this.provinceEl.appendChild(opt);
+        }
 
-      this.provinceContainer.style.display = "";
+        this.provinceContainer.style.display = "";
+      }
     }
   },
 
