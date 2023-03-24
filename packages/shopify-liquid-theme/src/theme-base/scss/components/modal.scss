@@ -1,4 +1,5 @@
-body.modal-open {
+body.modal-open,
+html:has(dialog[open][data-modal-hide-overflow]) {
   overflow: hidden;
 }
 

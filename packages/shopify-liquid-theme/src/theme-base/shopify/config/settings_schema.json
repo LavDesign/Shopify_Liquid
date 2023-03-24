@@ -499,7 +499,7 @@
         "step": 1,
         "unit": "px",
         "label": "Font size (large)",
-        "default": 16
+        "default": 18
       },
       {
         "type": "range",
@@ -509,7 +509,7 @@
         "step": 1,
         "unit": "px",
         "label": "Font size (base)",
-        "default": 14
+        "default": 16
       },
       {
         "type": "range",
@@ -519,7 +519,7 @@
         "step": 1,
         "unit": "px",
         "label": "Font size (small)",
-        "default": 12
+        "default": 13
       },
       {
         "type": "range",
@@ -529,7 +529,7 @@
         "step": 1,
         "unit": "px",
         "label": "Font size (x-small)",
-        "default": 11
+        "default": 12
       }
     ]
   },

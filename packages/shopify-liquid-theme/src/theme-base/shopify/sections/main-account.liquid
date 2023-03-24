@@ -2,15 +2,15 @@
 
 <section class="customer account account-page ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium">
   <div class="ra-row">
-    <div class="ra-col basis-full md:basis-1/4">
+    <div class="basis-full md:basis-1/4">
       {% render 'ra-account-navigation' %}
     </div>
 
-    <div class="ra-col basis-full md:basis-3/4">
-      <div class="items-center flex justify-center flex-wrap relative pb-4">
-        <h1 class="ra-title" style="--title-font-size:var(--font-size-md30-to-lg20);">
+    <div class="basis-full md:basis-3/4">
+      <div class="flex flex-wrap relative mb-10">
+        <h3 class="h3 color-grey-900 !font-[300]">
           {{ 'customer.orders.title' | t }}
-        </h1>
+        </h3>
       </div>
 
       {% paginate customer.orders by 20 %}
@@ -51,9 +51,9 @@
                 </th>
               </tr>
             </thead>
-            <tbody class="order-history-table__row" role="rowgroup">
+            <tbody role="rowgroup">
               {%- for order in customer.orders -%}
-                <tr class="ra-table__row border-b py-4 text-xs md:text-base flex flex-wrap items-center relative" role="row">
+                <tr class="border-b py-7 text-xs md:text-lg flex flex-wrap items-center relative font-[300]" role="row">
                   <td
                     class="flex-1 leading-normal p-0 text-left underline"
                     id="RowOrder"
@@ -81,9 +81,9 @@
                     headers="RowOrder ColumnTotal"
                     role="cell"
                     data-label="{{ 'customer.orders.total' | t }}">
-                    {{ order.total_price | money_with_currency }}
-                    <span class="order-history-table__row-chevron display--md ra-icon ra-icon--lg md:mr-2">
-                      {% render 'icon', icon: 'chevron-right', width: '24px', height: '24px' %}
+                    {{ order.total_price | money }}
+                    <span class="hidden md:flex ra-icon ra-icon--lg md:mr-2">
+                      {% render 'icon', icon: 'chevron-right', width: '10px', height: '16px' %}
                     </span>
                     <a href="{{ order.customer_url }}" class="h-full left-0 absolute top-0 w-full ra-link hover:opacity-25 hover:bg-grey-300">
                       <span class="sr-only">

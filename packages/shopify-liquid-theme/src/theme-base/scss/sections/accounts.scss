@@ -1,63 +1,45 @@
-// Account Navigation & Content
-
-@breakpoint md-max {
-  .account-navigation__list {
-    --list-margin: 0 -1rem;
-    --list-padding: 0 1rem 1rem;
-  }
-  .account-navigation__item {
-    --list-item-margin: 0 1rem 0 0;
-  }
-}
-
-@breakpoint md {
-  .account-navigation__item {
-    --list-item-margin: 0 0 1rem 0;
-  }
-  .account-navigation__item--extra-spacing {
-    --list-item-margin: 2rem 0 1.25rem 0;
-  }
-}
-
 // Address book
-
-.addressbook-item {
-  --link-color: currentColor;
-}
 
 .addressbook-edit-modal {
   --modal-width: 70.25rem;
+
+  &.closing {
+    transform: translate(50%,50%);
+    animation-name: center-to-bottom;
+    animation-duration: 1s;
+  }
 }
+
+@keyframes center-to-bottom {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
+}
+
 
 .addressbook-edit-modal .ra-modal__header {
   justify-content: flex-end;
 }
 
-.order-history-table__row {
-  --table-row-padding: 1.25rem 0;
-  --table-column-padding: 0 0.5rem 0 0;
+.addressbook-edit-modal .ra-modal__content {
+  padding: .75rem 1rem 1rem 1rem;
+  @media screen and (min-width: 1200px) {
+    padding: 1rem 2rem 2rem 2rem;
+  }
 }
 
 // Ra Table Styles
-
-.ra-table--no-border {
-  --table-row-border-width: 0;
-}
-
 .ra-table__heading {
   background-color: var(--table-heading-background);
   font-family: var(--font-family-secondary);
 }
 
-.ra-table__row {
-  background-color: var(--table-row-background);
-}
-
 // Order Line Items
-
-.order-details__info-title {
-  font-family: var(--font-family-secondary);
-}
 
 .order-details__summary {
   --divider-color: var(--c-gray-300);
