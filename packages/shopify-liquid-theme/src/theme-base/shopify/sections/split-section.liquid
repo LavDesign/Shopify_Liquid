@@ -1,186 +1,172 @@
 {% liquid
-  assign titleAs = section.settings.title_as
-  assign titleLevel = section.settings.title_level
+  assign title_level = section.settings.title_level
 
-  assign ctaOneText = section.settings.cta_one_text
-  assign ctaOneUrl = section.settings.cta_one_url
-  assign ctaOneStyle = section.settings.cta_one_style
+  assign cta_one_text = section.settings.cta_one_text
+  assign cta_one_url = section.settings.cta_one_url
+  assign cta_one_style = section.settings.cta_one_style
 
-  assign ctaTwoText = section.settings.cta_two_text
-  assign ctaTwoUrl = section.settings.cta_two_url
-  assign ctaTwoStyle = section.settings.cta_two_style
+  assign cta_two_text = section.settings.cta_two_text
+  assign cta_two_url = section.settings.cta_two_url
+  assign cta_two_style = section.settings.cta_two_style
 
-  assign detailsLocation = section.settings.details_location
-  assign detailsLocationMD = section.settings.details_location_md
+  assign enable_cta_one = false
+  assign enable_cta_two = false
 
-  assign verticalAlign = section.settings.vertical_align
-  assign verticalAlignMD = section.settings.vertical_align_md
+  if cta_one_text != blank and cta_one_url != blank
+    assign enable_cta_one = true
+  endif
 
-  assign horizontalAlign = section.settings.horizontal_align
-  assign horizontalAlignMD = section.settings.horizontal_align_md
+  if cta_two_text != blank and cta_two_url != blank
+    assign enable_cta_two = true
+  endif
 
-  assign aspectRatio = section.settings.aspect_ratio
-  assign imageHeight = section.settings.image_height
-  assign imageWidth = section.settings.image_width
+  assign section_split = section.settings.section_split
+  assign aspect_ratio = section.settings.aspect_ratio
+  assign image_width = 850
 
-  assign bgColor = section.settings.bg_color
-  assign bgColorMD = section.settings.bg_color_md
-
-  assign fgColor = section.settings.fg_color
-  assign fgColorMD = section.settings.fg_color_md
-
-  assign sectionSplit = section.settings.section_split
+  case aspect_ratio
+    when 'square'
+      assign width = image_width
+      assign height = image_width
+    when 'tall'
+      assign width = image_width
+      assign height = image_width | divided_by: 0.85
+    when 'wide'
+      assign width = image_width
+      assign height = image_width | times: 0.625
+    else
+      assign width = section.settings.image.width
+      assign height = width | divided_by: section.settings.image.aspect_ratio
+  endcase
 %}
 
-{% capture verticalClasses %}
-  set--v-align-{{ verticalAlign }}-sm set--v-align-{{ verticalAlignMD }}-md
-{% endcapture %}
+{% style %}
+  #shopify-section-{{ section.id }} .ra-split-section {
+    {%- if section.settings.bg_color != blank -%}
+      --component-bg-color: {{- section.settings.bg_color -}};
+    {%- endif -%}
+    {%- if section.settings.bg_color_md != blank -%}
+      --component-bg-color-md: {{- section.settings.bg_color_md -}};
+    {%- endif -%}
+    {%- if section.settings.fg_color != blank -%}
+      --component-fg-color: {{- section.settings.fg_color -}};
+    {%- endif -%}
+    {%- if section.settings.fg_color_md != blank -%}
+      --component-fg-color-md: {{- section.settings.fg_color_md -}};
+    {%- endif -%}
+  }
 
-{% capture horizontalClasses %}
-  set--h-align-{{ horizontalAlign }}-sm set--h-align-{{ horizontalAlignMD }}-md
-{% endcapture %}
+  #shopify-section-{{ section.id }} .ra-left-split {
+    --col-size: 100%;
+    {% case section_split %}
+      {% when '1' %}
+        --col-size-md: 50%;
+      {% when '2' %}
+      --col-size-md: 60%;
+      {% when '3' %}
+      --col-size-md: 40%;
+    {% endcase %}
+  }
 
-{% capture classes %}
-  ra-split-section set--details-{{ detailsLocation }}-sm
-  set--details-{{ detailsLocationMD }}-md
-  {% if section_img != blank %}
-    set--aspect-ratio-{{ aspectRatio }}
-  {% endif %}
-{% endcapture %}
+  #shopify-section-{{ section.id }} .ra-right-split {
+    {% case section_split %}
+      {% when '1' %}
+        --col-size-md: 50%;
+      {% when '2' %}
+      --col-size-md: 40%;
+      {% when '3' %}
+      --col-size-md: 60%;
+    {% endcase %}
+  }
 
-{% capture aspectRatioStyle %}
-  {% if aspectRatio == 'square' %}
-    --media-width:1; --media-height:0.85;
-  {% elsif aspectRatio == 'tall' %}
-    --media-width:1; --media-height:1;
-  {% elsif aspectRatio == 'wide' %}
-    --media-width:1; --media-height:0.625;
-  {% endif %}
-{% endcapture %}
-
-{% capture widthHeightValues %}
-  {% if aspectRatio == 'square' %}
-    width="1" height="0.85"
-  {% elsif aspectRatio == 'tall' %}
-    width="1" height="1"
-  {% elsif aspectRatio == 'wide' %}
-    width="1" height="0.625"
-  {% endif %}
-{% endcapture %}
-
-{% capture leftSplit %}
-  {% if sectionSplit == '1' %}
-    --col-size-md:50%
-  {% elsif sectionSplit == '2' %}
-    --col-size-md:60%
-  {% else %}
-    --col-size-md:40%
-  {% endif %}
-{% endcapture %}
-
-{% capture rightSplit %}
-  {% if sectionSplit == '1' %}
-    --col-size-md:50%
-  {% elsif sectionSplit == '2' %}
-    --col-size-md:40%
-  {% else %}
-    --col-size-md:60%
-  {% endif %}
-{% endcapture %}
-
-{% capture bgStyles %}
-  {% if bgColor != 'rgba(0,0,0,0)' %}
-    --component-bg-color: {{ bgColor }}{% if bgColorMD != 'rgba(0,0,0,0)' %}; --component-bg-color-md: {{ bgColorMD }}{% endif %}
-  {% endif %}
-{% endcapture %}
-
-{% capture colorStyles %}
-  {% if fgColor != 'rgba(0,0,0,0)' %}
-    --component-fg-color: {{ fgColor }}{% if fgColorMD != 'rgba(0,0,0,0)' %}; --component-fg-color-md: {{ fgColorMD }}{% endif %}
-  {% endif %}
-{% endcapture %}
+  #shopify-section-{{- section.id -}} .ra-split-section__image {
+    {% case aspect_ratio %}
+      {% when 'square' %}
+        --media-width:1; --media-height: 1;
+      {% when 'tall' %}
+        --media-width:1; --media-height: 0.85;
+      {% when 'wide' %}
+        --media-width:1; --media-height: 0.625;
+    {% endcase %}
+  }
+{% endstyle %}
 
 <div class="max-w-screen-2xl mx-auto">
-  <article
-    class="{{ classes }}"
-    {% if bgStyles or colorStyles %}
-      style="{{- bgStyles -}};{{- colorStyles -}}"
-    {% endif %}
-  >
+  <article class="ra-split-section set--details-{{ section.settings.details_location }}-sm set--details-{{ section.settings.details_location_md }} set--aspect-ratio-{{ section.settings.aspect_ratio -}}">
     <div class="ra-split-section__layout-container component-layout ra-row ra-no-gap !items-stretch">
       <div
         data-col-size="-size"
         data-col-auto="-md"
-        class="component-media ra-col"
-        style="--col-size:100%; {{ leftSplit }}"
+        class="component-media ra-col ra-left-split"
       >
         {% if section.settings.image != blank %}
           <div class="ra-split-section__media">
-            <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio" style="{{ aspectRatioStyle }}">
-              <img
+            <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
+              {% render "image", image: section.settings.image, width: width, height: height, class: "ra-image__media" %}
+              {% comment %} <img
                 loading="lazy"
                 src="{{ section.settings.image | img_url: '700x' }}"
                 alt="{{ section.settings.image.alt | default: 'split-image' }}"
-                {% if widthHeightValues %}
-                  {{- widthHeightValues -}}
-                {% endif %}
+                width="{{ width }}"
+                height="{{ height }}"
                 class="ra-image__media"
-              >
+              > {% endcomment %}
             </div>
           </div>
         {% endif %}
       </div>
       <div
         data-col-size="-size,-md"
-        class="component-details ra-split-section__details ra-col"
-        style="--col-size:100%; {{ rightSplit }}"
+        class="component-details ra-split-section__details ra-col ra-right-split"
       >
-        <div class="ra-split-section__copy {{ verticalClasses }} {{ horizontalClasses }}">
+        <div class="ra-split-section__copy set--v-align-{{ section.settings.vertical_align }}-sm set--v-align-{{ section.settings.vertical_align_md }}-md set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
           {% if section.settings.subtitle != blank %}
             <div class="ra-split-section__subtitle">
               {{- section.settings.subtitle -}}
             </div>
           {% endif %}
           {% if section.settings.title != blank %}
-            <{{ titleLevel }}
-              class="ra-title ra-split-section__title"
-              style="--title-font-size:var(--font-size-{{ titleAs }});"
+            <{{ title_level }}
+              class="ra-title ra-split-section__title {{ section.settings.title_as }}"
             >
               <div>{{- section.settings.title -}}</div>
-            </{{ titleLevel }}>
+            </{{ title_level }}>
           {% endif %}
           {% if section.settings.description != blank %}
             <div class="ra-split-section__description {{ section.settings.description_copy_size }}">
               {{- section.settings.description -}}
             </div>
           {% endif %}
-          <div class="ra-link-list ra-split-section__link-list">
-            {% if ctaOneText != blank and ctaOneUrl != blank %}
-              {% render 'button',
-                type: 'a',
-                style: ctaOneStyle,
-                url: ctaOneUrl,
-                label: ctaOneText,
-                class: 'ra-link-list'
-              %}
-            {% endif %}
-            {% if ctaTwoText != blank and ctaTwoUrl != blank %}
-              {% render 'button',
-                type: 'a',
-                style: ctaTwoStyle,
-                url: ctaTwoUrl,
-                label: ctaTwoText,
-                class: 'ra-link-list'
-              %}
-            {% endif %}
-          </div>
+
+          {% if enable_cta_one or enable_cta_two %}
+            <div class="ra-link-list ra-text-only-banner__link-list">
+              {% if enable_cta_one %}
+                {% render 'button',
+                  type: 'a',
+                  style: cta_one_style,
+                  url: cta_one_url,
+                  label: cta_one_text,
+                  class: 'ra-link-list'
+                %}
+              {% endif %}
+              {% if enable_cta_two %}
+                {% render 'button',
+                  type: 'a',
+                  style: cta_two_style,
+                  url: cta_two_url,
+                  label: cta_two_text,
+                  class: 'ra-link-list'
+                %}
+              {% endif %}
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>
   </article>
 </div>
 
-{%- schema -%}
+{% schema %}
 {
   "name": "Split Section",
   "settings": [
@@ -580,4 +566,4 @@
     }
   ]
 }
-{%- endschema -%}
+{% endschema %}

@@ -1,6 +1,6 @@
-/* 
+/*
   inherits style from @bva/ui-shared/styles/components.css
-  overriding CSS var for colors only 
+  overriding CSS var for colors only
 */
 
 .ra-button {
@@ -10,6 +10,7 @@
   outline-style: solid;
   outline-color: transparent;
   --button-display: inline-flex;
+  min-width: 105px;
 
   &:disabled {
     background-color: var(--input-disabled-background-color);
