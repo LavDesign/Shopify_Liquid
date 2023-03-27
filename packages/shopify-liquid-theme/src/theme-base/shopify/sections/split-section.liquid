@@ -32,7 +32,7 @@
     else
       echo 'component-details ra-split-section__details z-10 p-5 md:p-10 '
       if details_location_mobile == 'after'
-        echo '-order-1'
+        echo '-order-1 md:order-none'
       endif
     endif
   endcapture
@@ -41,7 +41,7 @@
     if details_location == 'after'
       echo 'component-details ra-split-section__details z-10 p-5 md:p-10 '
       if details_location_mobile == 'after'
-        echo '-order-1'
+        echo '-order-1 md:order-none'
       endif
     else
       echo 'component-media '
