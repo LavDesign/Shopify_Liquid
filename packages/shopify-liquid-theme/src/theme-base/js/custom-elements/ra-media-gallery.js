@@ -57,10 +57,13 @@ export default class RaMediaGallery extends HTMLElement {
     this.lightBoxGallery.addEventListener("click", (e) => {
       // if the dialog backdrop pseudoelement is clicked, close the dialog
       if (e.target === this.lightBoxGallery) {
-        this.pauseGalleryVideos();
         this.lightBoxGallery.close();
-        document.body.classList.remove("fixed", "w-full");
       }
+    });
+
+    this.lightBoxGallery.addEventListener("close", () => {
+      this.pauseGalleryVideos();
+      document.body.classList.remove("fixed", "w-full");
     });
 
     this.primarySwiper.addEventListener("slidechange", () => {
@@ -86,7 +89,7 @@ export default class RaMediaGallery extends HTMLElement {
     });
   }
 
-  triggerModal(e) {
+  triggerModal() {
     this.lightBoxGallery.showModal();
     document.body.classList.add("fixed", "w-full");
 
