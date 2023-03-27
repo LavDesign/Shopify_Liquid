@@ -13,67 +13,51 @@
 {% endstyle %}
 
 {% capture arrow_color %}
-  var({{section.settings.arrow_color}})
+  var({{ section.settings.arrow_color }})
 {% endcapture %}
 
-{% capture swiper_settings %}
-  {
-    "effect": {{ section.settings.effect | json }},
-    "loop": true,
+<div class="relative">
+  <swiper-container
+  class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{%- endif -%}"
     {% if section.settings.autoplay %}
-      "autoplay": {
-        "delay": {{ section.settings.delay | times: 1000 }}
-      },
+      autoplay-delay="{{ section.settings.delay | times: 1000 }}"
     {% endif %}
-    "slidesPerView": 1,
-    "spaceBetween": 0,
-    "pagination": {
-      "el": ".swiper-pagination",
-      "clickable": true
-    },
-    "navigation": {
-      "nextEl": ".{{ section.id }}.swiper-button-next",
-      "prevEl": ".{{ section.id }}.swiper-button-prev"
-    }
-  }
-{% endcapture %}
-
-<div
-  data-swiper-settings="{{ swiper_settings | escape | strip }}"
-  class="swiper ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{% endif %}"
->
-  <div class="swiper-wrapper">
+    effect="{{ section.settings.effect | json }}"
+    navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
+    navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
+    pagination-el=".swiper-pagination"
+    pagination-clickable="true"
+    slides-per-view="1"
+    space-between="0"
+    loop="true"
+  >
     {% for block in section.blocks %}
-      <div class="swiper-slide" id="block-{{ section.id }}-{{ block.id }}">
+      <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
         <div class="ra-hero__media component-media">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
-            <img
-              class="ra-image__media ra-image__media--desktop ra-image__media--loaded"
-              loading="lazy"
-              src="{{ block.settings.desktop_bg_image | img_url: '2000x' }}"
-              alt="{{ block.settings.desktop_bg_image.alt }}"
-            >
-            <img
-              class="ra-image__media ra-image__media--mobile ra-image__media--loaded"
-              loading="lazy"
-              src="{{ block.settings.mobile_bg_image | img_url: '800x' }}"
-              alt="{{ block.settings.mobile_bg_image.alt }}"
-            >
+            {% render "image" with block.settings.desktop_bg_image
+              classes: "ra-image__media ra-image__media--desktop"
+              width: 2000,
+              lazyload: true
+             %}
+            {% render "image" with block.settings.mobile_bg_image
+              classes: "ra-image__media ra-image__media--mobile"
+              width: 800,
+              lazyload: true
+             %}
           {% endif %}
-
           <div class="ra-hero__details component-details--set-order">
             <div class="ra-hero__copy {{ block.settings.text_alignment }}">
-              {% if block.settings['sub-heading'] != blank %}
-                <div class="ra-hero__subtitle">{{ block.settings['sub-heading'] }}</div>
+              {% if block.settings.subtitle != blank %}
+                <div class="ra-hero__subtitle">{{ block.settings.subtitle }}</div>
               {% endif %}
 
               {% if block.settings.title != blank %}
-                <{{ block.settings.title_style }}
-                  class="ra-title ra-hero__title"
-                  style="--title-font-size:var(--font-size-{{ block.settings.title_style }});"
+                <{{ block.settings.title_level }}
+                  class="ra-title ra-hero__title {{ block.settings.title_style }}"
                 >
                   {{ block.settings.title }}
-                </{{ block.settings.title_style }}>
+                </{{ block.settings.title_level }}>
               {% endif %}
 
               {% if block.settings.body != blank %}
@@ -110,9 +94,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </swiper-slide>
     {% endfor %}
-  </div>
+  </swiper-container>
 
   {% if section.settings.show_pagination and section.blocks.size > 1 %}
     <div class="swiper-pagination"></div>
@@ -139,7 +123,7 @@
       "settings": [
         {
           "type": "text",
-          "id": "sub-heading",
+          "id": "subtitle",
           "label": "Section Sub Title",
           "default": "SUB-HEADING"
         },
@@ -151,8 +135,17 @@
         },
         {
           "type": "select",
+          "id": "title_level",
+          "label": "Title Level",
+          "info": "Choose the semantic H-Tag for this title",
+          "options": <%- uikit.headingStyles -%>,
+          "default": "h2"
+        },
+        {
+          "type": "select",
           "id": "title_style",
-          "label": "Title As",
+          "label": "Title Style",
+          "info": "Choose which heading to (style) the title",
           "options": <%- uikit.headingStyles -%>,
           "default": "h2"
         },
