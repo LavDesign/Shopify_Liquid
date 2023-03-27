@@ -35,7 +35,7 @@
       <div class="ra-hero__copy {{ section.settings.text_alignment }}">
 
         {% if section.settings.sub-heading != blank %}
-          <div class="ra-hero__subtitle">{{ section.settings.sub-heading }}</div> 
+          <div class="ra-hero__subtitle">{{ section.settings.sub-heading }}</div>
         {% endif %}
 
         {% if section.settings.title != blank %}
@@ -49,24 +49,26 @@
             {{ section.settings.body }}
           </div>
         {% endif %}
-      
+
         {% if section.settings.button_1_url != blank or section.settings.button_2_url != blank %}
           <div class="ra-link-list ra-hero__link-list">
             {% if section.settings.button_1_label != blank and section.settings.button_1_url != blank %}
-              {% render 'button' 
+              {% render 'button'
                 type: 'a',
                 style: section.settings.button_1_style,
                 label: section.settings.button_1_label,
                 url: section.settings.button_1_url,
+                class: "min-w-[175px]"
               %}
             {% endif %}
 
             {% if section.settings.button_2_label != blank and section.settings.button_2_url != blank %}
-              {% render 'button' 
+              {% render 'button'
                 type: 'a',
                 style: section.settings.button_2_style,
                 label: section.settings.button_2_label,
                 url: section.settings.button_2_url,
+                class: "min-w-[175px]"
               %}
             {% endif %}
           </div>

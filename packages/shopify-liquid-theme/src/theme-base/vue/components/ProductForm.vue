@@ -1,27 +1,34 @@
 <template>
   <div class="ra-product-form">
-    <template :key="optionKey" v-for="(options, optionKey) in formattedOptions">
-      <SwatchPicker
-        v-if="swatchOptions.includes(optionKey)"
-        :label="optionKey"
-        :options="options"
-        :selected="selectedOptions[optionKey]"
-        @change:option="
-          (selected, option) => handleOptionSelect(optionKey, selected, option)
-        "
-      />
+    <template v-if="!product.has_only_default_variant">
+      <template
+        :key="optionKey"
+        v-for="(options, optionKey) in formattedOptions"
+      >
+        <SwatchPicker
+          v-if="swatchOptions.includes(optionKey)"
+          :label="optionKey"
+          :options="options"
+          :selected="selectedOptions[optionKey]"
+          @change:option="
+            (selected, option) =>
+              handleOptionSelect(optionKey, selected, option)
+          "
+        />
 
-      <OptionPicker
-        v-else
-        :label="optionKey"
-        :options="options"
-        :selected="selectedOptions[optionKey]"
-        :variant="getOptionVariant(optionKey)"
-        :itemsPerRow="itemsPerRow"
-        @change:option="
-          (selected, option) => handleOptionSelect(optionKey, selected, option)
-        "
-      />
+        <OptionPicker
+          v-else
+          :label="optionKey"
+          :options="options"
+          :selected="selectedOptions[optionKey]"
+          :variant="getOptionVariant(optionKey)"
+          :itemsPerRow="itemsPerRow"
+          @change:option="
+            (selected, option) =>
+              handleOptionSelect(optionKey, selected, option)
+          "
+        />
+      </template>
     </template>
 
     <!-- Bug: @click event triggered on all @input events -->

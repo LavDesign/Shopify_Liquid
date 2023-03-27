@@ -76,7 +76,9 @@ module.exports = {
     },
     extend: {
       aspectRatio: {
+        landscape: "1 / 0.625",
         portrait: "0.85 / 1",
+        square: "1 / 1",
       },
       fontSize: {
         sizeInherit: "inherit",

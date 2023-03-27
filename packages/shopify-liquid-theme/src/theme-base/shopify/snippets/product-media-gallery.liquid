@@ -164,7 +164,7 @@
                     </button>
                     <template>
                       {%- capture video_classes -%}
-                        w-full ra-iframe--{{- media.host -}}
+                        aspect-video w-full ra-iframe--{{- media.host -}}
                       {%- endcapture -%}
                       {% render 'video',
                         media: media,
@@ -279,7 +279,7 @@
                   </button>
                   <template>
                     {%- capture video_classes -%}
-                      max-w-full w-full ra-iframe--{{- media.host -}}
+                      aspect-video max-w-full w-full ra-iframe--{{- media.host -}}
                     {%- endcapture -%}
                     {% render 'video',
                       media: media,

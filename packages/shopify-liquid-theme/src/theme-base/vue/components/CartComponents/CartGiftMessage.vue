@@ -79,6 +79,6 @@ watch(giftMessageActive, () => {
 });
 
 onMounted(() => {
-  giftMessageActive.value = note.value.length > 0;
+  giftMessageActive.value = note?.value?.length > 0;
 });
 </script>

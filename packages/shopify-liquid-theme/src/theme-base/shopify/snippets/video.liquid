@@ -168,7 +168,7 @@ autoplay: true
     {%- endif -%}
 
     {% if width != null %}
-      {% assign height = width | divided_by: media.aspect_ratio %}
+      {% comment %} {% assign height = width | divided_by: media.aspect_ratio %} {% endcomment %}
     {% endif %}
 
     {{- media | external_video_url: autoplay: autoplay, loop: loop, mute: muted, controls: controls, modestbranding: 1, enablejsapi: 1, playlist: media.external_id | external_video_tag: width: width, height: height, class: class, lazyload: lazyload -}}
