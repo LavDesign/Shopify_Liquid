@@ -31,7 +31,6 @@
       </template>
     </template>
 
-    <!-- Bug: @click event triggered on all @input events -->
     <RaAddToCart
       v-bind="{ buttonLabel, qty }"
       @input="(value) => (qty = value)"
