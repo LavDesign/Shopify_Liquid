@@ -24,7 +24,7 @@
       {% render 'ra-account-navigation' %}
     </div>
     <div class="basis-full md:basis-3/4">
-      <div class="items-center flex justify-center flex-wrap relative pb-4 md:pb-10 border-b border-grey-500">
+      <div class="items-center flex flex-wrap relative pb-4 md:pb-10 border-b border-grey-500">
         <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
           {% render 'icon', icon: 'left-arrow', width: '24px', height: '24px' %}
         </a>
@@ -35,7 +35,7 @@
 
         <div class="max-md:flex-[1_0_100%] md:items-end md:self-end md:flex md:flex-col md:ml-auto font-[300] color-grey-800">
           {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
-          <p class="text-sm md:text-base ">
+          <p class="text-sm md:text-base max-md:mt-4">
             {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
             {%- if order.cancelled -%}
               <p>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>

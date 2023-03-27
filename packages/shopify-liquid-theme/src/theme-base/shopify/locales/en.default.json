@@ -338,7 +338,7 @@
       "cancel": "Decline invitation"
     },
     "addresses": {
-      "title": "Addresses",
+      "title": "Address Book",
       "default": "Default",
       "add_new": "Add Address",
       "edit_address": "Edit address",
@@ -400,12 +400,12 @@
       "total_duties": "Duties"
     },
     "orders": {
-      "title": "Order history",
+      "title": "Order History",
       "order_number": "Order",
       "order_number_link": "Order number {{ number }}",
       "date": "Date",
       "payment_status": "Payment status",
-      "fulfillment_status": "Fulfillment status",
+      "fulfillment_status": "Fulfillment Status",
       "total": "Total",
       "none": "You haven't placed any orders yet."
     },

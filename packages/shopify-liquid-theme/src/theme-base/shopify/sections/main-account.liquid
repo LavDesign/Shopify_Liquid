@@ -7,7 +7,7 @@
     </div>
 
     <div class="basis-full md:basis-3/4">
-      <div class="flex flex-wrap relative mb-10">
+      <div class="flex flex-wrap relative mb-2 md:mb-10">
         <h3 class="h3 color-grey-900 !font-[300]">
           {{ 'customer.orders.title' | t }}
         </h3>
@@ -40,7 +40,8 @@
                   id="ColumnFulfillment"
                   scope="col"
                   role="columnheader">
-                  {{ 'customer.orders.fulfillment_status' | t }}
+                  <span class="hidden md:flex">{{ 'customer.orders.fulfillment_status' | t }}</span>
+                  <span class="md:hidden">Status</span>
                 </th>
                 <th
                   class="flex-1 leading-[1.3] p-0 text-left"

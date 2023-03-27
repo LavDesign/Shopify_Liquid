@@ -27,18 +27,21 @@
         {% render 'ra-account-navigation' %}
       </div>
       <div class="basis-full md:basis-3/4">
-        <div class="flex pb-10 border-b border-grey-500">
-          <h3 class="h3 color-grey-900 !font-[300]">
+        <div class="flex mb-6 md:mb-10">
+          <h3 class="color-grey-900 !font-[300]">
             {{ 'customer.addresses.title' | t }}
-          </h1>
+          </h3>
         </div>
 
         <ul role="list" class="text-left">
           {%- for address in customer.addresses -%}
-            <div class="py-6 relative border-b border-grey-500">
-              <div class="grid gap-4 grid-cols-5">
+            <div class="py-6 relative border-b first:border-t border-grey-500">
+              <div class="grid gap-4 grid-cols-5 max-md:text-sm ">
                 <div class="ra-grid-item col-span-3">
-                  <address class="not-italic flex flex-col items-start font-[300]">
+                  <address class="not-italic flex flex-col items-start font-[300] leading-4 md:leading-6">
+                    {% if address == customer.default_address %}
+                      <h6 class="mb-2">Default Address</h6>
+                    {% endif %}
                     <p>{{ address.name }}</p>
                     {% if address.company != blank %}
                       <p>{{ address.company }}</p>
@@ -84,7 +87,7 @@
                   <!-- Edit Address Form / Modal -->
                   {% capture edit_address_form %}
                     <div id="EditAddress_{{ address.id }}">
-                      <h4>{{ 'customer.addresses.edit_address' | t }}</h4>
+                      <h4 class="mb-6 -mt-8 md:-mt-6">{{ 'customer.addresses.edit_address' | t }}</h4>
                       {%- form 'customer_address', address -%}
                         <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
                           <div class="ra-grid-item">
@@ -98,8 +101,10 @@
                                   name="address[first_name]"
                                   value="{{ form.first_name }}"
                                   autocomplete="given-name"
+                                  required
                                   placeholder="{{ 'customer.addresses.first_name' | t }}">
                               </div>
+                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -113,8 +118,10 @@
                                   name="address[last_name]"
                                   value="{{ form.last_name }}"
                                   autocomplete="family-name"
+                                  required
                                   placeholder="{{ 'customer.addresses.last_name' | t }}">
                               </div>
+                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="col-span-1 md:col-span-2">
@@ -128,8 +135,10 @@
                                   name="address[address1]"
                                   value="{{ form.address1 }}"
                                   autocomplete="address-line1"
+                                  required
                                   placeholder="{{ 'customer.addresses.address1' | t }}">
                               </div>
+                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -173,8 +182,10 @@
                                   name="address[city]"
                                   value="{{ form.city }}"
                                   autocomplete="address-level2"
+                                  required
                                   placeholder="{{ 'customer.addresses.city' | t }}">
                               </div>
+                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item hidden">
@@ -214,11 +225,13 @@
                                   id="AddressProvince_{{ form.id }}"
                                   name="address[province]"
                                   data-default="{{ form.province }}"
+                                  required
                                   autocomplete="address-level1"></select>
                                 <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
                                   {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                                 </span>
                               </div>
+                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -233,8 +246,10 @@
                                   value="{{ form.zip }}"
                                   autocapitalize="characters"
                                   autocomplete="postal-code"
+                                  required
                                   placeholder="{{ 'customer.addresses.zip' | t }}">
                               </div>
+                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -256,19 +271,19 @@
                             <div class="form__checkbox-isDefault ra-choice ra-choice--checkbox ra-choice--classic ra-choice--checkbox-classic">
                               <input
                                 type="checkbox"
-                                id="address_default_address_new"
+                                id="address_default_address_{{ form.id }}"
                                 class="ra-choice__input"
                                 name="address[default]"
                                 value="1">
-                              <label class="ra-choice__label-container ra-choice__container" for="address_default_address_new">
-                                <div data-focus="" class="ra-choice__checkmark"><!----></div>
+                              <label class="ra-choice__label-container ra-choice__container" for="address_default_address_{{ form.id }}">
+                                <div data-focus="" class="ra-choice__checkmark"></div>
                                 <span class="ra-choice__label font-secondary text-sm">
                                   {{ 'customer.addresses.set_default' | t }}
                                 </span>
                               </label>
                             </div>
                           </div>
-                          <div class="ra-grid-item mt-8 md:mt-14">
+                          <div class="ra-grid-item mt-4 md:mt-12">
                             <div class="ra-grid gap-4 grid-cols-1 md:grid-cols-2">
                               <div class="ra-grid-item max-md:row-start-2">
                                 <button type="reset" class="ra-button ra-button--full-width ra-button--tertiary">{{ 'customer.addresses.cancel' | t }}</button>
@@ -298,7 +313,7 @@
 
         <button
           id="modal-add-address"
-          class="ra-button ra-button--has-icon ra-button--icon-trailing mt-9 flex ml-auto"
+          class="ra-button ra-button--has-icon ra-button--icon-trailing mt-4 max-md:w-full md:mt-9 flex md:ml-auto"
           type="button"
           aria-expanded="false"
           aria-controls="AddAddress">
@@ -312,7 +327,7 @@
           <!-- Add address -->
           <div data-address>
             <div id="AddAddress" class="m-auto max-w-[55.75rem]">
-              <h4 class="mb-9">
+              <h4 class="mb-6 -mt-8 md:-mt-6">
                 {{ 'customer.addresses.add_new' | t }}
               </h4>
               {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
@@ -331,9 +346,10 @@
                           name="address[first_name]"
                           value="{{ form.first_name }}"
                           autocomplete="given-name"
+                          required
                           placeholder="{{ 'customer.addresses.first_name' | t }}">
                       </div>
-                      <div class="ra-input__message">Required</div>
+                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -351,9 +367,10 @@
                           name="address[last_name]"
                           value="{{ form.last_name }}"
                           autocomplete="family-name"
+                          required
                           placeholder="{{ 'customer.addresses.last_name' | t }}">
                       </div>
-                      <div class="ra-input__message">Required</div>
+                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -369,9 +386,10 @@
                           name="address[address1]"
                           value="{{ form.address1 }}"
                           autocomplete="address-line1"
+                          required
                           placeholder="{{ 'customer.addresses.address1' | t }}">
                       </div>
-                      <div class="ra-input__message">Required</div>
+                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -418,8 +436,10 @@
                           name="address[city]"
                           value="{{ form.city }}"
                           autocomplete="address-level2"
+                          required
                           placeholder="{{ 'customer.addresses.city' | t }}">
                       </div>
+                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -440,11 +460,11 @@
                           {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
-                      <div class="ra-input__message">Required</div>
+                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
-                  <div class="ra-grid-item">
+                  <div id="AddressProvinceContainerNew" class="ra-grid-item">
                     <div class="form__select form__element ra-input ra-select">
                       <label class="ra-input__label" for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
                       <div class="ra-input__wrapper">
@@ -453,12 +473,13 @@
                           id="AddressProvinceNew"
                           name="address[province]"
                           data-default="{{ form.province }}"
+                          required
                           autocomplete="address-level1"></select>
                         <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
                           {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
-                      <div class="ra-input__message">Required</div>
+                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -474,9 +495,10 @@
                           value="{{ form.zip }}"
                           autocapitalize="characters"
                           autocomplete="postal-code"
+                          required
                           placeholder="{{ 'customer.addresses.zip' | t }}">
                       </div>
-                      <div class="ra-input__message">Required</div>
+                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 

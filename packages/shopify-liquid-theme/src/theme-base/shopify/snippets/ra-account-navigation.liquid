@@ -6,19 +6,19 @@
     </a>
   </div>
 
-  <ul class="flex flex-col flex-nowrap overflow-auto whitespace-nowrap">
-    <li class="max-md:mr-4 md:mb-4 leading-[1.3]">
-      <a href="/account" class="text-sm md:text-lg font-[600] {% if request.path == "/account" or request.path contains "/account/orders" %}underline{% else %}no-underline{% endif %} color-current">
+  <ul class="flex flex-row md:flex-col flex-nowrap overflow-auto whitespace-nowrap max-md:mb-8 list-none">
+    <li class="max-md:mr-4 md:mb-5 leading-[1.3]">
+      <a href="/account" class="text-[14px] md:text-lg font-[600] {% if request.path == "/account" or request.path contains "/account/orders" %}underline text-grey-900{% else %}no-underline max-md:text-grey-600{% endif %}">
         Order History
       </a>
     </li>
-    <li class="max-md:mr-4 md:mb-4 leading-[1.3]">
-      <a href="{{ routes.account_addresses_url }}" class="text-sm md:text-lg font-[600] {% if request.path == "/account/addresses" %}underline{% else %}no-underline{% endif %} color-current">
+    <li class="max-md:mr-4 md:mb-5 leading-[1.3]">
+      <a href="{{ routes.account_addresses_url }}" class="text-[14px] md:text-lg font-[600] {% if request.path == "/account/addresses" %}underline text-grey-900{% else %}no-underline max-md:text-grey-600{% endif %}">
         Address Book
       </a>
     </li>
     <li class="max-md:mr-4 md:mt-6 hidden md:flex leading-[1.3]">
-      <a href="{{ routes.account_logout_url }}" class="text-sm md:text-lg font-[600] no-underline uppercase color-current">
+      <a href="{{ routes.account_logout_url }}" class="text-[14px] md:text-lg font-[600] no-underline uppercase color-current">
         Logout
       </a>
     </li>

@@ -30,11 +30,7 @@ Example:
       <div class="ra-overlay"></div>
     {% endif %}
     <div class="ra-modal__content max-w-full">
-      <div class="ra-modal__header flex justify-between justify-items-center">
-        {% if title != blank %}
-          <h4 class="sr-only">{{ title }}</h4>
-          <h4 class="h4">{{ title }}</h4>
-        {% endif %}
+      <div class="absolute top-4 right-4">
         <form method="dialog" class="close-modal">
           {% render 'icon-button'
            , type: 'button',
@@ -47,9 +43,7 @@ Example:
         </form>
       </div>
       {% if content != blank %}
-        <div class="pt-3">
-          {{ content }}
-        </div>
+        {{ content }}
       {% endif %}
     </div>
   </dialog>
