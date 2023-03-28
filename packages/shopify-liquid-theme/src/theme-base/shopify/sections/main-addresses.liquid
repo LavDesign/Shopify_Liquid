@@ -21,24 +21,24 @@
 {%- endstyle -%}
 
 {%- paginate customer.addresses by 5 -%}
-  <section class="customer addresses addressbook ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium" data-customer-addresses>
+  <section class="customer addresses address-book ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium" data-customer-addresses>
     <div class="ra-row">
       <div class="basis-full md:basis-1/4">
         {% render 'ra-account-navigation' %}
       </div>
       <div class="basis-full md:basis-3/4">
         <div class="flex mb-6 md:mb-10">
-          <h3 class="color-grey-900 !font-[300]">
+          <h3 class="color-grey-900 !font-light">
             {{ 'customer.addresses.title' | t }}
           </h3>
         </div>
 
-        <ul role="list" class="text-left">
+        <div>
           {%- for address in customer.addresses -%}
             <div class="py-6 relative border-b first:border-t border-grey-500">
               <div class="grid gap-4 grid-cols-5 max-md:text-sm ">
                 <div class="ra-grid-item col-span-3">
-                  <address class="not-italic flex flex-col items-start font-[300] leading-4 md:leading-6">
+                  <address class="not-italic flex flex-col items-start font-light leading-4 md:leading-6">
                     {% if address == customer.default_address %}
                       <h6 class="mb-2">Default Address</h6>
                     {% endif %}
@@ -67,7 +67,7 @@
                 <div class="ra-grid-item flex col-span-2 flex-col items-end">
                   <button
                     type="button"
-                    class="mb-2 text-right ra-link !font-[300] text-grey-700"
+                    class="mb-2 text-right ra-link !font-light text-grey-700"
                     id="modal-edit-address-{{ address.id }}"
                     aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}"
                     aria-controls="EditAddress_{{ address.id }}"
@@ -77,7 +77,7 @@
                   </button>
                   <button
                     type="button"
-                    class="mb-2 text-right ra-link !font-[300] text-grey-700"
+                    class="mb-2 text-right ra-link !font-light text-grey-700"
                     aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
                     data-target="{{ address.url }}"
                     data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
@@ -87,7 +87,7 @@
                   <!-- Edit Address Form / Modal -->
                   {% capture edit_address_form %}
                     <div id="EditAddress_{{ address.id }}">
-                      <h4 class="mb-6 font-[300]">{{ 'customer.addresses.edit_address' | t }}</h4>
+                      <h4 class="mb-6 font-light">{{ 'customer.addresses.edit_address' | t }}</h4>
                       {%- form 'customer_address', address -%}
                         <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
                           <div class="ra-grid-item">
@@ -104,7 +104,7 @@
                                   required
                                   placeholder="{{ 'customer.addresses.first_name' | t }}">
                               </div>
-                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                              <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -121,7 +121,7 @@
                                   required
                                   placeholder="{{ 'customer.addresses.last_name' | t }}">
                               </div>
-                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                              <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="col-span-1 md:col-span-2">
@@ -138,7 +138,7 @@
                                   required
                                   placeholder="{{ 'customer.addresses.address1' | t }}">
                               </div>
-                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                              <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -185,7 +185,7 @@
                                   required
                                   placeholder="{{ 'customer.addresses.city' | t }}">
                               </div>
-                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                              <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item hidden">
@@ -231,7 +231,7 @@
                                   {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                                 </span>
                               </div>
-                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                              <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -249,7 +249,7 @@
                                   required
                                   placeholder="{{ 'customer.addresses.zip' | t }}">
                               </div>
-                              <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                              <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                             </div>
                           </div>
                           <div class="ra-grid-item">
@@ -303,13 +303,13 @@
                   {% render 'modal'
                    , id: modal_id,
                    content: edit_address_form,
-                   classes: 'addressbook-edit-modal max-w-[calc(100% - 30px)] rounded-[5px]',
+                   classes: 'address-book-edit-modal max-w-[calc(100% - 30px)] rounded-[5px]',
                    overlay: true %}
                 </div>
               </div>
             </div>
           {%- endfor -%}
-        </ul>
+        </div>
 
         <button
           id="modal-add-address"
@@ -327,7 +327,7 @@
           <!-- Add address -->
           <div data-address>
             <div id="AddAddress" class="m-auto max-w-[55.75rem]">
-              <h4 class="mb-6 font-[300]">
+              <h4 class="mb-6 font-light">
                 {{ 'customer.addresses.add_new' | t }}
               </h4>
               {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
@@ -349,7 +349,7 @@
                           required
                           placeholder="{{ 'customer.addresses.first_name' | t }}">
                       </div>
-                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -370,7 +370,7 @@
                           required
                           placeholder="{{ 'customer.addresses.last_name' | t }}">
                       </div>
-                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -389,7 +389,7 @@
                           required
                           placeholder="{{ 'customer.addresses.address1' | t }}">
                       </div>
-                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -439,7 +439,7 @@
                           required
                           placeholder="{{ 'customer.addresses.city' | t }}">
                       </div>
-                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -460,7 +460,7 @@
                           {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
-                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -479,7 +479,7 @@
                           {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
-                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -498,7 +498,7 @@
                           required
                           placeholder="{{ 'customer.addresses.zip' | t }}">
                       </div>
-                      <div class="font-[300] text-grey-500 text-xs mt-1">Required</div>
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -559,71 +559,10 @@
         {% render 'modal'
          , id: 'modal-add-address',
          content: addAddressContent,
-         classes: 'addressbook-edit-modal max-w-[calc(100% - 30px)] rounded-[5px]',
+         classes: 'address-book-edit-modal max-w-[calc(100% - 30px)] rounded-[5px]',
          overlay: true %}
 
-        {%- if paginate.pages > 1 -%}
-          {%- if paginate.parts.size > 0 -%}
-            <nav
-              class="pagination"
-              role="navigation"
-              aria-label="{{ 'general.pagination.label' | t }}">
-              <ul role="list" class="text-left">
-                {%- if paginate.previous -%}
-                  <li>
-                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        viewBox="0 0 10 6">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-                          fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
-                {%- endif -%}
-
-                {%- for part in paginate.parts -%}
-                  <li>
-                    {%- if part.is_link -%}
-                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                        {{- part.title -}}
-                      </a>
-                    {%- else -%}
-                      {%- if part.title == paginate.current_page -%}
-                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                          {{- part.title -}}
-                        </span>
-                      {%- else -%}
-                        <span>{{ part.title }}</span>
-                      {%- endif -%}
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-
-                {%- if paginate.next -%}
-                  <li>
-                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        viewBox="0 0 10 6">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-                          fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
-                {%- endif -%}
-              </ul>
-            </nav>
-          {%- endif -%}
-        {%- endif -%}
+        {% render 'ra-account-pagination', paginate: paginate %}
       </div>
     </div>
   </section>

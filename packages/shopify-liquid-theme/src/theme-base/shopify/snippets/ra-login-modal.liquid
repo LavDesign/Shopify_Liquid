@@ -1,5 +1,5 @@
 {% capture login_content %}
-  <h3 class="text-center font-[300] mb-8 md:mb-14 text-grey-600">Log In</h3>
+  <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Log In</h3>
   {% form 'customer_login' %}
     <div class="grid gap-4 md:gap-6 grid-cols-1">
       <div class="ra-grid-item">
@@ -56,7 +56,7 @@
       </div>
     </div>
   {% endform %}
-  <span class="text-center mt-4 text-base block font-[300] text-grey-600">Here for the first time?
+  <span class="text-center mt-4 text-base block font-light text-grey-600">Here for the first time?
     <a
       href="#"
       class="underline"
@@ -65,7 +65,7 @@
 {% endcapture %}
 
 {% capture register_content %}
-  <h3 class="text-center font-[300] mb-8 md:mb-14 text-grey-600">Create An Account</h3>
+  <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Create An Account</h3>
   {%- form 'create_customer' -%}
     <div class="grid gap-4 md:gap-6 grid-cols-2">
       <div class="ra-grid-item text-left col-span-2">
@@ -208,7 +208,7 @@
 
       <div class="ra-grid-item text-left col-span-2">
         {% capture accept_tos %}
-          <span class="font-[300] text-base text-grey-600">To continue, please
+          <span class="font-light text-base text-grey-600">To continue, please
             <a href="#" class="underline">Accept Terms & Conditions</a>
           </span>
         {% endcapture %}
@@ -220,7 +220,7 @@
       </button>
     </div>
   {%- endform -%}
-  <span class="mt-4 text-center block font-[300] text-grey-600">
+  <span class="mt-4 text-center block font-light text-grey-600">
     Already have an account?
     <a
       href="#"

@@ -1,6 +1,6 @@
 // Address book
 
-.addressbook-edit-modal {
+.address-book-edit-modal {
   --modal-width: 70.25rem;
 
   &.closing {
@@ -22,11 +22,11 @@
 }
 
 
-.addressbook-edit-modal .ra-modal__header {
+.address-book-edit-modal .ra-modal__header {
   justify-content: flex-end;
 }
 
-.addressbook-edit-modal .ra-modal__content {
+.address-book-edit-modal .ra-modal__content {
   padding: 1rem;
   @media screen and (min-width: 1200px) {
     padding: 2rem;

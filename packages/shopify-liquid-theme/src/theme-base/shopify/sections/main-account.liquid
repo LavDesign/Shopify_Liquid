@@ -8,12 +8,12 @@
 
     <div class="basis-full md:basis-3/4">
       <div class="flex flex-wrap relative mb-2 md:mb-10">
-        <h3 class="h3 color-grey-900 !font-[300]">
+        <h3 class="h3 color-grey-900 !font-light">
           {{ 'customer.orders.title' | t }}
         </h3>
       </div>
 
-      {% paginate customer.orders by 20 %}
+      {% paginate customer.orders by 10 %}
         {%- if customer.orders.size > 0 -%}
           <table role="table" class="w-full border-none border-spacing-0">
             <caption class="visually-hidden">
@@ -54,7 +54,7 @@
             </thead>
             <tbody role="rowgroup">
               {%- for order in customer.orders -%}
-                <tr class="border-b py-7 text-xs md:text-lg flex flex-wrap items-center relative font-[300]" role="row">
+                <tr class="border-b py-7 text-xs md:text-lg flex flex-wrap items-center relative font-light" role="row">
                   <td
                     class="flex-1 leading-normal p-0 text-left underline"
                     id="RowOrder"
@@ -100,68 +100,7 @@
           <p>{{ 'customer.orders.none' | t }}</p>
         {%- endif -%}
 
-        {%- if paginate.pages > 1 -%}
-          {%- if paginate.parts.size > 0 -%}
-            <nav
-              class="pagination"
-              role="navigation"
-              aria-label="{{ 'general.pagination.label' | t }}">
-              <ul role="list">
-                {%- if paginate.previous -%}
-                  <li>
-                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        viewBox="0 0 10 6">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-                          fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
-                {%- endif -%}
-
-                {%- for part in paginate.parts -%}
-                  <li>
-                    {%- if part.is_link -%}
-                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                        {{- part.title -}}
-                      </a>
-                    {%- else -%}
-                      {%- if part.title == paginate.current_page -%}
-                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                          {{- part.title -}}
-                        </span>
-                      {%- else -%}
-                        <span>{{ part.title }}</span>
-                      {%- endif -%}
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-
-                {%- if paginate.next -%}
-                  <li>
-                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        viewBox="0 0 10 6">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z"
-                          fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
-                {%- endif -%}
-              </ul>
-            </nav>
-          {%- endif -%}
-        {%- endif -%}
+        {% render 'ra-account-pagination', paginate: paginate %}
       {% endpaginate %}
     </div>
   </div>

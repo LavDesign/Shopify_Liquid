@@ -90,10 +90,10 @@ class CustomerAddresses {
   };
 
   _handleCancelButtonClick = ({ currentTarget }) => {
-    currentTarget.closest(".addressbook-edit-modal").classList.add("closing")
+    currentTarget.closest(".address-book-edit-modal").classList.add("closing")
     setTimeout(() => {
-      currentTarget.closest(".addressbook-edit-modal").close()
-      currentTarget.closest(".addressbook-edit-modal").classList.remove("closing")
+      currentTarget.closest(".address-book-edit-modal").close()
+      currentTarget.closest(".address-book-edit-modal").classList.remove("closing")
     }, 500)
   };
 
