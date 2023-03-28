@@ -12,8 +12,19 @@ function cartClick(e) {
   e.preventDefault();
 }
 
-const cartToggle = document.querySelector("[data-cart-toggle]");
+const cartToggle = document.querySelector("[data-toggle-cart]");
 cartToggle.addEventListener("click", cartClick);
+
+function accountModalToggle(e) {
+  e.preventDefault();
+  const login_container = e.target.closest("[data-login-container]")
+  Array.from(login_container.children).forEach(c => c.classList.toggle("hidden"))
+}
+
+const accountToggle = document.querySelectorAll("[data-toggle-account]")
+accountToggle.forEach((toggle) => {
+  toggle.addEventListener("click", accountModalToggle)
+});
 
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute("role", "button");
@@ -289,17 +300,19 @@ Shopify.CountryProvinceSelector.prototype = {
     var provinces = JSON.parse(raw);
 
     this.clearOptions(this.provinceEl);
-    if (provinces && provinces.length == 0) {
-      this.provinceContainer.style.display = "none";
-    } else {
-      for (var i = 0; i < provinces.length; i++) {
-        var opt = document.createElement("option");
-        opt.value = provinces[i][0];
-        opt.innerHTML = provinces[i][1];
-        this.provinceEl.appendChild(opt);
-      }
+    if (this.provinceContainer) {
+      if (provinces && provinces.length == 0) {
+        this.provinceContainer.style.display = "none";
+      } else {
+        for (var i = 0; i < provinces.length; i++) {
+          var opt = document.createElement("option");
+          opt.value = provinces[i][0];
+          opt.innerHTML = provinces[i][1];
+          this.provinceEl.appendChild(opt);
+        }
 
-      this.provinceContainer.style.display = "";
+        this.provinceContainer.style.display = "";
+      }
     }
   },
 

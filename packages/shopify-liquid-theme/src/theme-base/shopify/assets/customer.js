@@ -90,11 +90,11 @@ class CustomerAddresses {
   };
 
   _handleCancelButtonClick = ({ currentTarget }) => {
-    this._toggleExpanded(
-      currentTarget
-        .closest(selectors.addressContainer)
-        .querySelector(`[${attributes.expanded}]`)
-    );
+    currentTarget.closest(".address-book-edit-modal").classList.add("closing")
+    setTimeout(() => {
+      currentTarget.closest(".address-book-edit-modal").close()
+      currentTarget.closest(".address-book-edit-modal").classList.remove("closing")
+    }, 500)
   };
 
   _handleDeleteButtonClick = ({ currentTarget }) => {

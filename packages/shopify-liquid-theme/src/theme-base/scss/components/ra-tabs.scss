@@ -10,9 +10,11 @@
     transition: all 0.3s ease-in-out;
     opacity: 0;
     padding: 0;
+    overflow: hidden;
 
     &.ra-tab__content--open {
       opacity: 1;
+      height: auto;
     }
 
     .ra-tab__content-inner {

@@ -1,8 +1,11 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-<div class="customer login ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--small">
+  <div class="customer login ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-w-[428px] mx-auto">
   <!-- Customer Reset -->
-  <h1 class="center" id="recover" tabindex="-1">
+  <h1
+    class="center mb-8"
+    id="recover"
+    tabindex="-1">
     {{ 'customer.recover_password.title' | t }}
   </h1>
   <div class="customer-reset center">
@@ -13,13 +16,8 @@
     {%- form 'recover_customer_password' -%}
       {% assign recover_success = form.posted_successfully? %}
 
-      <div
-        data-gap="-sm,-md"
-        data-columns="-sm"
-        class="ra-grid"
-        style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;"
-      >
-        <div class="ra-grid-item">
+      <div class="grid gap-4 md:gap-6 grid-cols-1">
+        <div class="ra-grid-item text-left">
           <div class="ra-input">
             <label class="ra-input__label" for="RecoverEmail">
               {{ 'customer.login_page.email' | t }}
@@ -35,12 +33,11 @@
                 autocapitalize="off"
                 autocomplete="email"
                 {% if form.errors %}
-                  aria-invalid="true"
-                  aria-describedby="RecoverEmail-email-error"
-                  autofocus
+                aria-invalid="true"
+                aria-describedby="RecoverEmail-email-error"
+                autofocus
                 {% endif %}
-                placeholder="{{ 'customer.login_page.email' | t }}"
-              >
+                placeholder="{{ 'customer.login_page.email' | t }}">
               {%- if form.errors -%}
                 <small id="RecoverEmail-email-error" class="form__message">
                   {% render 'icon', icon: 'warning', height: '13px', width: '13px' %}
@@ -52,46 +49,53 @@
         </div>
       </div>
 
-      <div class="auth-form__actions">
+      <div class="mt-6">
         <button class="ra-button ra-button--full-width">
           {{ 'customer.login_page.submit' | t }}
         </button>
       </div>
 
-      <div class="auth-form-bottom text-align--center">
-        <a href="/account/login" class="auth-form__inline-cta ra-link"> Back to Login </a>
+      <div class="mt-4 text-center">
+        <a href="/account/login" class="ra-link">
+          Back to Login
+        </a>
       </div>
     {%- endform -%}
   </div>
 
   <!-- Login -->
-  <h1 id="login" tabindex="-1" class="ra-title auth-form__title text-align--center">
+  <h1
+    id="login"
+    tabindex="-1"
+    class="ra-title text-center h3 mb-8 md:mb-14">
     {{ 'customer.login_page.title' | t }}
   </h1>
   <div class="customer-login">
     {%- if recover_success == true -%}
-      <h3 class="form__message" tabindex="-1" autofocus>
+      <h3
+        class="form__message"
+        tabindex="-1"
+        autofocus>
         {% render 'icon', icon: 'check-circle', height: '13px', width: '13px' %}
         {{ 'customer.recover_password.success' | t }}
       </h3>
     {%- endif -%}
     {%- form 'customer_login', novalidate: 'novalidate' -%}
       {%- if form.errors -%}
-        <h2 class="form__message" tabindex="-1" autofocus>
-          <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
+        <h2
+          class="form__message"
+          tabindex="-1"
+          autofocus>
+          <span class="visually-hidden">{{ 'accessibility.error' | t }}
+          </span>
           {% render 'icon', icon: 'warning', height: '13px', width: '13px' %}
           {{ 'templates.contact.form.error_heading' | t }}
         </h2>
         {{ form.errors | default_errors }}
       {%- endif -%}
 
-      <div
-        data-gap="-sm,-md"
-        data-columns="-sm"
-        class="ra-grid"
-        style="--grid-gap:1rem; --grid-gap-md:1.5rem; --grid-columns:1;"
-      >
-        <div class="ra-grid-item">
+      <div class="grid gap-4 md:gap-6 grid-cols-1">
+        <div class="ra-grid-item text-left">
           <div class="ra-input">
             <label class="ra-input__label" for="CustomerEmail">
               {{ 'customer.login_page.email' | t }}
@@ -106,16 +110,15 @@
                 autocorrect="off"
                 autocapitalize="off"
                 {% if form.errors contains 'form' %}
-                  aria-invalid="true"
+                aria-invalid="true"
                 {% endif %}
-                placeholder="{{ 'customer.login_page.email' | t }}"
-              >
+                placeholder="{{ 'customer.login_page.email' | t }}">
             </div>
           </div>
         </div>
 
         {%- if form.password_needed -%}
-          <div class="ra-grid-item">
+          <div class="ra-grid-item text-left">
             <div class="ra-input">
               <label class="ra-input__label" for="CustomerPassword">
                 {{ 'customer.login_page.password' | t }}
@@ -129,10 +132,9 @@
                   id="CustomerPassword"
                   autocomplete="current-password"
                   {% if form.errors contains 'form' %}
-                    aria-invalid="true"
+                  aria-invalid="true"
                   {% endif %}
-                  placeholder="{{ 'customer.login_page.password' | t }}"
-                >
+                  placeholder="{{ 'customer.login_page.password' | t }}">
               </div>
             </div>
           </div>
@@ -140,20 +142,20 @@
       </div>
 
       {%- if form.password_needed -%}
-        <a href="#recover" class="auth-form__cta-forgot-password auth-form__inline-cta font-size-sm ra-link">
+        <a href="#recover" class="block mt-6 font-size-sm ra-link block text-left">
           {{ 'customer.login_page.forgot_password' | t }}
         </a>
       {%- endif -%}
 
-      <div class="auth-form__actions">
+      <div class="mt-6">
         <button type="submit" class="ra-button ra-button--full-width ra-button--lg">
           {{ 'customer.login_page.sign_in' | t }}
         </button>
       </div>
 
-      <div class="auth-form-bottom text-align--center">
+      <div class="mt-4 text-center">
         <span class="mr-4">Don't have account yet?</span>
-        <a href="{{ routes.account_register_url }}" class="auth-form__inline-cta ra-link">
+        <a href="{{ routes.account_register_url }}" class="ra-link">
           {{ 'customer.login_page.create_account' | t }}
         </a>
       </div>
@@ -175,33 +177,31 @@
 </div>
 
 {% schema %}
-{
-  "name": "t:sections.main-login.name",
-  "settings": [
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ]
-}
+  {
+    "name": "t:sections.main-login.name",
+    "settings": [
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ]
+  }
 {% endschema %}

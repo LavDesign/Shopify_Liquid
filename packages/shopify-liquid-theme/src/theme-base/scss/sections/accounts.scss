@@ -1,383 +1,47 @@
-.customer.login,
-.customer.register {
-  .ra-grid-item {
-    text-align: left;
-  }
-
-  .auth-form__cta-forgot-password {
-    display: block;
-    margin-top: var(--spacing-md);
-    text-align: left;
-  }
-
-  .auth-form__actions {
-    margin-top: var(--spacing-md);
-  }
-
-  .auth-form-bottom {
-    margin-top: var(--spacing-sm);
-  }
-}
-
-// Account Navigation & Content
-.account-navigation__header {
-  margin-bottom: var(--spacing-sm);
-
-  @breakpoint md {
-    .account-navigation__header {
-      margin-bottom: var(--spacing-xl);
-    }
-  }
-}
-
-.account-navigation__header-title {
-  color: var(--c-gray-900);
-  font-size: var(--font-size-md-to-md20);
-}
-
-.account-navigation__link {
-  font-size: var(--font-size-sm-to-md);
-  font-weight: var(--font-weight-bold);
-  text-decoration: none;
-  text-underline-position: under;
-}
-
-@breakpoint md-max {
-  .account-navigation__list {
-    --list-margin: 0 -1rem;
-    --list-padding: 0 1rem 1rem;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: auto;
-    white-space: nowrap;
-  }
-  .account-navigation__item {
-    --list-item-margin: 0 var(--spacing-sm) 0 0;
-  }
-}
-
-@breakpoint md {
-  .account-navigation__item {
-    --list-item-margin: 0 0 var(--spacing-sm) 0;
-  }
-  .account-navigation__item--extra-spacing {
-    --list-item-margin: var(--spacing-lg) 0 var(--spacing) 0;
-  }
-}
-
 // Address book
-.addresses ul {
-  text-align: left;
-}
 
-.address-details {
-  font-style: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.addressbook-item {
-  --link-color: currentColor;
-  border-bottom: 0.0625rem solid var(--c-gray-500);
-  color: var(--c-contrast);
-  margin-bottom: var(--spacing-lg);
-  padding: var(--spacing-lg);
-  position: relative;
-}
-
-.addressbook-item__action {
-  margin-bottom: var(--spacing-xs);
-  text-align: right;
-}
-
-.addressbook-edit-modal {
+.address-book-edit-modal {
   --modal-width: 70.25rem;
+
+  &.closing {
+    transform: translate(50%,50%);
+    animation-name: center-to-bottom;
+    animation-duration: 1s;
+  }
 }
 
-.addressbook-edit-modal__content {
-  margin: auto;
-  max-width: 55.75rem;
+@keyframes center-to-bottom {
+  from {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 0;
+  }
 }
 
-.addressbook-edit-modal__title {
-  margin-bottom: var(--spacing-lg);
-}
 
-.addressbook-edit-modal .ra-modal__header {
+.address-book-edit-modal .ra-modal__header {
   justify-content: flex-end;
 }
 
-.account-content__header {
-  align-items: center;
-  color: var(--c-contrast);
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-}
-
-.account-content__header--has-divider {
-  border-bottom: 0.0625rem solid var(--c-gray-500);
-  padding-bottom: var(--spacing-sm);
-}
-
-.account-content__header--back {
-  position: absolute;
-  left: 0;
-}
-
-.addressbook-edit-modal .ra-modal__content {
-  padding-bottom: var(--spacing-md);
-
-  @breakpoint md {
-    padding-bottom: var(--spacing-2xl);
-  }
-}
-
-.order-history-table__row {
-  --table-row-padding: var(--spacing) 0;
-  --table-column-padding: 0 var(--spacing-xs) 0 0;
-}
-
-.order-history-table__row .ra-table__row {
-  align-items: center;
-  font-size: var(--font-size-xs-to-base);
-  position: relative;
-}
-
-.order-history-table__order-number {
-  text-decoration: underline;
-}
-
-.order-history-table__row-link {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
-
-.order-history-table__row-link:hover {
-  background-color: var(--c-gray-300);
-  opacity: 0.25;
-}
-
-@breakpoint md {
-  .order-history-table__row-chevron {
-    margin-right: var(--spacing-xs);
+.address-book-edit-modal .ra-modal__content {
+  padding: 1rem;
+  @media screen and (min-width: 1200px) {
+    padding: 2rem;
   }
 }
 
 // Ra Table Styles
-.ra-table {
-  border: none;
-  border-spacing: var(--table-border-spacing, 0);
-  width: var(--table-width, 100%);
-}
-
-.ra-table--no-border {
-  --table-row-border-width: 0;
-}
-
-.ra-table__heading,
-.ra-table__row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .ra-table__heading {
-  align-items: center;
   background-color: var(--table-heading-background);
-  border-bottom: solid var(--table-heading-border-width, 0.0625rem)
-    var(--table-heading-border-color, currentColor);
   font-family: var(--font-family-secondary);
-  font-weight: var(--font-weight-medium);
-  padding: var(--table-heading-padding, var(--spacing-sm) 0);
-}
-
-.ra-table__header {
-  color: var(--table-header-color, var(--c-copy));
-  line-height: var(--line-height-lg);
-}
-
-.ra-table__row {
-  background-color: var(--table-row-background);
-  border-bottom: solid var(--table-row-border-width, 0.0625rem)
-    var(--table-row-border-color, currentColor);
-  padding: var(--table-row-padding, var(--spacing-sm) 0);
-}
-
-.ra-table__data {
-  color: var(--table-data-color, var(--c-contrast));
-  line-height: var(--line-height-xl);
-}
-
-.ra-table__data,
-.ra-table__header {
-  flex: var(--table-column-flex, 1 1);
-  padding: var(--table-column-padding, 0);
-  text-align: var(--table-column-text-align, left);
 }
 
 // Order Line Items
-.order-line-item__name {
-  font-size: var(--font-size-sm-to-md);
-  font-weight: var(--font-weight-medium);
-}
-
-.order-line-item__options {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-normal);
-  margin-top: var(--spacing-xs);
-}
-
-.order-line-item__details {
-  padding-right: 4rem;
-  position: relative;
-}
-
-.order-line-item__price {
-  font-size: var(--font-size-sm-to-md);
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-@media (min-width: 48rem) {
-  .order-details__header-additional {
-    align-items: flex-end;
-    align-self: flex-end;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-  }
-}
-
-@media (max-width: 47.9375rem) {
-  .order-details__header-additional {
-    flex: 1 0 100%;
-  }
-}
-
-.order-details__date {
-  font-size: var(--font-size-sm-to-base);
-}
-
-.order-details__status-badge {
-  margin-top: var(--spacing-xs);
-}
-
-.order-details__info {
-  font-size: var(--font-size-sm-to-base);
-}
-
-@media (min-width: 48rem) {
-  .order-details__info {
-    margin-top: var(--spacing-xl);
-  }
-}
-
-@media (max-width: 47.9375rem) {
-  .order-details__info {
-    margin-top: var(--spacing);
-  }
-}
-
-.order-details__info-title {
-  color: var(--c-gray-500);
-  font-family: var(--font-family-secondary);
-  margin-bottom: var(--spacing-xs);
-}
-
-.order-details__tracking {
-  display: flex;
-  margin-top: var(--spacing-xl);
-}
-
-.order-details__tracking-cta {
-  display: inline-flex;
-}
-
-@media (min-width: 48rem) {
-  .order-details__tracking-cta {
-    margin-left: auto;
-  }
-}
-
-@media (max-width: 47.9375rem) {
-  .order-details__tracking-cta {
-    width: 100%;
-  }
-}
-
-@media (min-width: 48rem) {
-  .order-details__items {
-    margin-top: 4.5rem;
-  }
-}
-
-@media (max-width: 47.9375rem) {
-  .order-details__items {
-    margin-top: var(--spacing-lg);
-  }
-}
-
-.order-details__item {
-  border-bottom: 0.0625rem solid;
-}
-
-.order-details__item:first-child {
-  border-top: 0.0625rem solid;
-}
-
-@media (min-width: 48rem) {
-  .order-details__item {
-    margin-bottom: var(--spacing-lg);
-    padding-bottom: var(--spacing-lg);
-  }
-
-  .order-details__item:first-child {
-    padding-top: var(--spacing-lg);
-  }
-}
-
-@media (max-width: 47.9375rem) {
-  .order-details__item {
-    margin-bottom: var(--spacing-sm);
-    padding-bottom: var(--spacing-sm);
-  }
-
-  .order-details__item:first-child {
-    padding-top: var(--spacing-sm);
-  }
-}
 
 .order-details__summary {
   --divider-color: var(--c-gray-300);
-  --divider-margin: var(--spacing-sm) 0;
-  color: var(--c-contrast);
-  font-size: var(--font-size-sm-to-base);
-}
-
-@media (min-width: 48rem) {
-  .order-details__summary {
-    margin-left: auto;
-    margin-top: 3rem;
-    max-width: 19.5rem;
-  }
-}
-
-@media (max-width: 47.9375rem) {
-  .order-details__summary {
-    margin-top: var(--spacing-sm);
-  }
-}
-
-.order-details__summary-item:not(:last-child) {
-  margin-bottom: var(--spacing-xs);
-}
-
-.order-details__summary-total {
-  font-size: var(--font-size-base-to-md);
+  --divider-margin: 1rem 0;
 }
