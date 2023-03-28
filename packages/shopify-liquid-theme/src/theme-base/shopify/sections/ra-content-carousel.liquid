@@ -1,67 +1,15 @@
 {% liquid
-  assign section_title = section.settings.title
-  assign section_description = section.settings.description
-
   assign title_as = section.settings.title_as
   assign title_level = section.settings.title_level
 
-  assign bg_color = section.settings.bg_color
-  assign fg_color = section.settings.fg_color
+  assign show_pagination = false
+  if section.settings.show_pagination and section.blocks.size > 1
+    assign show_pagination = true
+  endif
 %}
 
-{% capture bgStyles %}
-  --component-bg-color: var({{ bg_color }})
-{% endcapture %}
-
-{% capture colorStyles %}
-  --component-fg-color: var({{ fg_color }})
-{% endcapture %}
-
-{% capture slides %}
-  {%- for block in section.blocks -%}
-    {% liquid
-      assign src    = block.settings.slide_img | img_url: '400x'
-      assign alt    = block.settings.slide_img.alt
-      assign title  = block.settings.slide_title
-      assign description = block.settings.slide_description
-
-      assign width  = block.settings.slide_image_width
-      assign height = block.settings.slide_image_height
-      assign aspect_ratio = section.settings.aspect_ratio
-      assign details_location = block.settings.details_location
-
-      assign overlay_url = block.settings.slide_url
-
-      assign cta_one_text = block.settings.slide_cta_1_title
-      assign cta_two_text = block.settings.slide_cta_2_title
-
-      assign cta_one_url = block.settings.slide_cta_1_url
-      assign cta_two_url = block.settings.slide_cta_2_url
-    %}
-    <div class="ra-carousel-item swiper-slide">
-      {% render 'ra-content-tile'
-        src: src,
-        alt: alt,
-        title: title,
-        description: description,
-        width: width,
-        height: height,
-        overlay_link: overlay_url,
-        link_text_1: cta_one_text,
-        link_text_2: cta_two_text,
-        link_url_1: cta_one_url,
-        link_url_2: cta_two_url,
-        aspect_ratio: aspect_ratio,
-        details_location: details_location
-      %}
-    </div>
-  {%- endfor -%}
-{% endcapture %}
-
-{% capture swiper_settings %}
+{% capture swiper_init_params %}
   {
-    "slidesPerView": {{ section.settings.mobile_slides_view | at_most: 3 }},
-    "spaceBetween": 16,
     "breakpoints": {
       "768": {
         "slidesPerView": {{ section.settings.tablet_slides_view | at_most: 5 }},
@@ -71,51 +19,46 @@
         "slidesPerView": {{ section.settings.desktop_slides_view | at_most: 5 }},
         "spaceBetween": 24
       }
-    },
-    "navigation": {
-      "nextEl": ".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next",
-      "prevEl": ".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
-    },
-    {% if section.settings.show_pagination %}
-      "pagination": {
-        "el": ".swiper-pagination",
-        "type": "bullets",
-        "clickable": true
-      },
-    {% endif %}
-    "speed": 300,
-    "draggable": true,
-    "mousewheel": {
-      "releaseOnEdges": true,
-      "forceToAxis": true
-    },
-    "freeMode": {
-      "enabled": true,
-      "sticky": {% if section.settings.scroll_interaction == 'snap' %}true{% else %}false{% endif %}
-    },
-    "snapOnRelease": {% if section.settings.scroll_interaction == 'snap' %}false{% else %}true{% endif %}
+    }
   }
 {% endcapture %}
 
-<section
-  class="ra-carousel-outer content-carousel content-carousel--{{ section.id }} p-4"
-  {% if bgStyles or colorStyles %}
-    style="{{- bgStyles -}};{{- colorStyles -}}"
-  {% endif %}
->
-  <div class="ra-heading ra-carousel__details" style="--heading-margin:var(--spacing-lg); --heading-text-align:left;">
-    {% if section_title != blank %}
-      <{{ title_level }} class="ra-title ra-heading__title" style="--title-font-size:var(--font-size-{{ title_as }});">
-        <div>{{- section_title -}}</div>
+{% style %}
+  .content-carousel--{{ section.id }} {
+    --component-bg-color: var({{ section.settings.bg_color }});
+    --component-fg-color: var({{ section.settings.fg_color }});
+
+    padding: {{ section.settings.mobile_padding_vertical }}rem {{ section.settings.mobile_padding_horizontal }}rem;
+    margin: {{ section.settings.mobile_margin }}rem 0;
+  }
+
+  .content-carousel--{{ section.id }} .ra-heading {
+    --heading-margin:var(--spacing-lg);
+    --heading-text-align:left;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .content-carousel--{{ section.id }} {
+      padding: {{ section.settings.desktop_padding }}rem 2rem;
+      margin: {{ section.settings.desktop_margin }}rem 0;
+    }
+  }
+{% endstyle %}
+
+<section class="ra-carousel-outer content-carousel content-carousel--{{ section.id }} p-4">
+  <div class="ra-heading ra-carousel__details">
+    {% if section.settings.title != blank %}
+      <{{ title_level }} class="ra-title ra-heading__title {{ title_as }}">
+        {{- section.settings.title -}}
       </{{ title_level }}>
     {% endif %}
-    {% if section_description != blank %}
+    {% if section.settings.description != blank %}
       <div class="ra-heading__description">
-        {{- section_description -}}
+        {{- section.settings.description -}}
       </div>
     {% endif %}
   </div>
-  <!-- Carousel -->
+
   <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
     {% if section.settings.show_navigation %}
       <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
@@ -139,31 +82,51 @@
         %}
       </div>
     {% endif %}
-    <!-- Swiper -->
-    <div data-swiper-settings="{{ swiper_settings | escape | strip }}" class="swiper swiper--{{ section.id }}">
-      <div class="swiper-wrapper">
-        {{ slides }}
-      </div>
-      {% if section.settings.show_pagination and section.blocks.size > 1 %}
-        <div class="swiper-pagination"></div>
-      {% endif %}
-    </div>
+
+    <!-- prettier-ignore-attribute (data-init-params) -->
+    <swiper-container
+      class="swiper--{{ section.id }}"
+      init="false"
+      space-between="16"
+      navigation-next-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
+      navigation-prev-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+      pagination-clickable="true"
+      {% if show_pagination %}pagination="true"{% endif %}
+      speed="300"
+      draggable="true"
+      mousewheel-release-on-edges="true"
+      mousewheel-force-to-axis="true"
+      free-mode-enabled="true"
+      free-mode-sticky="{% if section.settings.scroll_interaction == "snap" %}true{% else %} false{% endif %}"
+      snap-on-release="{% if section.settings.scroll_interaction == "snap" %}false {% else %}true{% endif %}"
+      slides-per-view="{{ section.settings.mobile_slides_view | at_most: 3 }}"
+      data-init-params='{{ swiper_init_params }}'
+    >
+    <!-- prettier-ignore-end -->
+      {%- for block in section.blocks -%}
+        {% assign src = block.settings.slide_img | image_url: width: 400 %}
+        <swiper-slide>
+          {% render 'ra-content-tile',
+            src: src,
+            alt: block.settings.slide_img.alt,
+            title: block.settings.slide_title,
+            description: block.settings.slide_description,
+            width: block.settings.slide_image_width,
+            height: block.settings.slide_image_height,
+            overlay_link: block.settings.slide_url,
+            link_text_1: block.settings.slide_cta_1_title,
+            link_text_2: block.settings.slide_cta_2_title,
+            link_url_1: block.settings.slide_cta_1_url,
+            link_url_2: block.settings.slide_cta_2_url,
+            aspect_ratio: section.settings.aspect_ratio,
+            details_location: block.settings.details_location
+          %}
+        </swiper-slide>
+      {% endfor %}
+    </swiper-container>
+
   </div>
 </section>
-
-<style>
-  .content-carousel--{{ section.id }} {
-    padding: {{ section.settings.mobile_padding_vertical }}rem {{ section.settings.mobile_padding_horizontal }}rem;
-    margin: {{ section.settings.mobile_margin }}rem 0;
-  }
-
-  @media only screen and (min-width: 768px) {
-    .content-carousel--{{ section.id }} {
-      padding: {{ section.settings.desktop_padding }}rem 2rem;
-      margin: {{ section.settings.desktop_margin }}rem 0;
-    }
-  }
-</style>
 
 {% schema %}
 {
