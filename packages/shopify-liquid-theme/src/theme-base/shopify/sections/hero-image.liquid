@@ -18,7 +18,7 @@
 
 <div class="relative">
   <swiper-container
-  class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{%- endif -%}"
+    class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{%- endif -%}"
     {% if section.settings.autoplay %}
       autoplay-delay="{{ section.settings.delay | times: 1000 }}"
     {% endif %}
@@ -35,16 +35,16 @@
       <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
         <div class="ra-hero__media component-media">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
-            {% render "image" with block.settings.desktop_bg_image
-              classes: "ra-image__media ra-image__media--desktop"
+            {% render 'image' with block.settings.desktop_bg_image,
+              classes: 'ra-image__media ra-image__media--desktop',
               width: 2000,
               lazyload: true
-             %}
-            {% render "image" with block.settings.mobile_bg_image
-              classes: "ra-image__media ra-image__media--mobile"
+            %}
+            {% render 'image' with block.settings.mobile_bg_image,
+              classes: 'ra-image__media ra-image__media--mobile',
               width: 800,
               lazyload: true
-             %}
+            %}
           {% endif %}
           <div class="ra-hero__details component-details--set-order">
             <div class="ra-hero__copy {{ block.settings.text_alignment }}">
@@ -69,24 +69,22 @@
               {% if block.settings.button_1_url != blank or block.settings.button_2_url != blank %}
                 <div class="ra-link-list ra-hero__link-list">
                   {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
-                    {%
-                      render 'button'
+                    {% render 'button',
                       type: 'a',
                       style: block.settings.button_1_style,
                       label: block.settings.button_1_label,
                       url: block.settings.button_1_url,
-                      class: "min-w-[175px]"
+                      class: 'min-w-[175px]'
                     %}
                   {% endif %}
 
                   {% if block.settings.button_2_label != blank and block.settings.button_2_url != blank %}
-                    {%
-                      render 'button'
+                    {% render 'button',
                       type: 'a',
                       style: block.settings.button_2_style,
                       label: block.settings.button_2_label,
                       url: block.settings.button_2_url,
-                      class: "min-w-[175px]"
+                      class: 'min-w-[175px]'
                     %}
                   {% endif %}
                 </div>

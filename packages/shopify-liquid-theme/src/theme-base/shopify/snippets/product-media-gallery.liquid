@@ -209,12 +209,7 @@
             {{
               first_media.preview_image
               | image_url: width: 800
-              | image_tag:
-                class: 'w-full',
-                loading: 'lazy',
-                width: 800,
-                widths: '600, 800, 1200',
-                alt: first_media.alt
+              | image_tag: class: 'w-full', loading: 'lazy', width: 800, widths: '600, 800, 1200', alt: first_media.alt
               | escape
             }}
           </button>

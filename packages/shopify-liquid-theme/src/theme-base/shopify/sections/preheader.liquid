@@ -1,63 +1,57 @@
 {% style %}
-  #shopify-section-{{ section.id }} {
-    --preheader-background-color: var({{ section.settings.bg_color }});
-    --preheader-text-color: var({{ section.settings.text_color }});
+  #shopify-section-{{ section.id }} .ra-preheader {
+    background-color: var({{ section.settings.bg_color }});
+    color: var({{ section.settings.text_color }});
+  }
+
+  #shopify-section-{{ section.id }} .ra-preheader__text {
+    color: var({{ section.settings.text_color }});
   }
 {% endstyle %}
 
-{% capture arrow_color %}
-  var({{section.settings.text_color}})
-{% endcapture %}
-
-{% capture swiper_settings %}
-  {
-    "loop": true,
-    {% if section.settings.autoplay %}
-      "autoplay": {
-        "delay": {{ section.settings.delay | times: 1000 }}
-      },
-    {% endif %}
-    "slidesPerView": 1,
-    "spaceBetween": 0,
-    "navigation": {
-      "nextEl": ".{{ section.id }}.swiper-button-next",
-      "prevEl": ".{{ section.id }}.swiper-button-prev"
-    }
-  }
-{% endcapture %}
+{%- capture arrow_color -%}
+  var({{ section.settings.text_color }})
+{%- endcapture -%}
 
 {% if section.blocks.size > 0 %}
-  <div class="ra-preheader__wrapper">
-    <div class="ra-preheader__slider ra-preheader__slider--{{ section.settings.alignment }}">
-      <div class="swiper" data-swiper-settings="{{ swiper_settings | escape | strip }}">
-        <div class="swiper-wrapper">
-          {% for block in section.blocks %}
-            <div class="swiper-slide">
-              {% if block.settings.text != blank %}
-                <div class="ra-preheader__text">{{ block.settings.text }}</div>
-              {% endif %}
+  <div class="ra-preheader top-0 left-0 w-full z-50 px-6 fixed">
+    <div class="ra-preheader__wrapper relative">
+      <div class="ra-preheader__slider ra-preheader__slider--{{ section.settings.alignment }} flex items-center justify-center">
+        <div class="swiper-wrapper max-w-[400px] mx-0">
+          <swiper-container
+            loop="true"
+            autoplay-delay="{{ section.settings.delay | times: 1000 }}"
+            slides-per-view="1"
+            space-between="0"
+            navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
+            navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
+          >
+            {% for block in section.blocks %}
+              <swiper-slide class="px-2 py-4 h-full">
+                {% if block.settings.text != blank %}
+                  <div class="ra-preheader__text">{{ block.settings.text }}</div>
+                {% endif %}
+              </swiper-slide>
+            {% endfor %}
+          </swiper-container>
+          {% if section.blocks.size > 1 %}
+            <div class="{{ section.id }} swiper-button-prev -left-2.5">
+              {% render 'icon', icon: 'chevron-left', width: '14px', height: '14px', color: arrow_color %}
             </div>
-          {% endfor %}
+            <div class="{{ section.id }} swiper-button-next -right-2.5">
+              {% render 'icon', icon: 'chevron-right', width: '14px', height: '14px', color: arrow_color %}
+            </div>
+          {% endif %}
         </div>
-
-        {% if section.blocks.size > 1 %}
-          <div class="{{ section.id }} swiper-button-prev">
-            {% render 'icon', icon: 'chevron-left', width: '14px', height: '14px', color: arrow_color %}
-          </div>
-          <div class="{{ section.id }} swiper-button-next">
-            {% render 'icon', icon: 'chevron-right', width: '14px', height: '14px', color: arrow_color %}
-          </div>
-        {% endif %}
       </div>
+      {% render 'ra-header-util' %}
     </div>
-    {% render 'ra-header-util' %}
   </div>
 {% endif %}
 
 {% schema %}
 {
   "name": "Pre-header",
-  "class": "ra-preheader",
   "max_blocks": 5,
   "settings": [
     {
@@ -126,19 +120,6 @@
         }
       ]
     }
-  ],
-  "default": {
-    "blocks": [
-      {
-        "type": "message"
-      },
-      {
-        "type": "message"
-      },
-      {
-        "type": "message"
-      }
-    ]
-  }
+  ]
 }
 {% endschema %}
