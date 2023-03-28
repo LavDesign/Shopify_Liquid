@@ -90,8 +90,10 @@
       space-between="16"
       navigation-next-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
       navigation-prev-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+      {% if show_pagination %}
+      pagination="true"
       pagination-clickable="true"
-      {% if show_pagination %}pagination="true"{% endif %}
+      {% endif %}
       speed="300"
       draggable="true"
       mousewheel-release-on-edges="true"
@@ -102,7 +104,7 @@
       slides-per-view="{{ section.settings.mobile_slides_view | at_most: 3 }}"
       data-init-params='{{ swiper_init_params }}'
     >
-    <!-- prettier-ignore-end -->
+      <!-- prettier-ignore-end -->
       {%- for block in section.blocks -%}
         {% assign src = block.settings.slide_img | image_url: width: 400 %}
         <swiper-slide>
@@ -124,7 +126,6 @@
         </swiper-slide>
       {% endfor %}
     </swiper-container>
-
   </div>
 </section>
 
