@@ -420,7 +420,8 @@
       "last_name": "Last name",
       "email": "Email",
       "password": "Password",
-      "submit": "Create"
+      "confirm_password": "Confirm Password",
+      "submit": "Create an account"
     },
     "reset_password": {
       "title": "Reset account password",

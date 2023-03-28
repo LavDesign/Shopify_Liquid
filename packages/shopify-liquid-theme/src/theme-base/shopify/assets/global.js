@@ -12,8 +12,19 @@ function cartClick(e) {
   e.preventDefault();
 }
 
-const cartToggle = document.querySelector("[data-cart-toggle]");
+const cartToggle = document.querySelector("[data-toggle-cart]");
 cartToggle.addEventListener("click", cartClick);
+
+function accountModalToggle(e) {
+  e.preventDefault();
+  const login_container = e.target.closest("[data-login-container]")
+  Array.from(login_container.children).forEach(c => c.classList.toggle("hidden"))
+}
+
+const accountToggle = document.querySelectorAll("[data-toggle-account]")
+accountToggle.forEach((toggle) => {
+  toggle.addEventListener("click", accountModalToggle)
+});
 
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute("role", "button");

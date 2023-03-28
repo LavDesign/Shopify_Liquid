@@ -14,6 +14,7 @@ import "../js/custom-elements/custom-elements.js";
 import "../js/custom-elements/ra-dialog.js";
 import "../js/custom-elements/scrollable.js";
 
+import "tailwindcss/base.css";
 import "@bva/ui-shared/styles/reset.css";
 import "@bva/ui-shared/styles/required.css";
 import "@bva/ui-shared/styles/components.css";

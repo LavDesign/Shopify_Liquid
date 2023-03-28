@@ -136,7 +136,7 @@ const toggleCart = () => {
   } else body[0].classList.remove("modal-open");
 };
 
-const headerToggle = document.querySelector("[data-cart-toggle]");
+const headerToggle = document.querySelector("[data-toggle-cart]");
 
 const keyboardHandler = (event) => {
   if (event.key == "Escape" || event.code == "Escape") toggleCart();

@@ -87,7 +87,7 @@
                   <!-- Edit Address Form / Modal -->
                   {% capture edit_address_form %}
                     <div id="EditAddress_{{ address.id }}">
-                      <h4 class="mb-6 -mt-8 md:-mt-6">{{ 'customer.addresses.edit_address' | t }}</h4>
+                      <h4 class="mb-6 font-[300]">{{ 'customer.addresses.edit_address' | t }}</h4>
                       {%- form 'customer_address', address -%}
                         <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
                           <div class="ra-grid-item">
@@ -327,7 +327,7 @@
           <!-- Add address -->
           <div data-address>
             <div id="AddAddress" class="m-auto max-w-[55.75rem]">
-              <h4 class="mb-6 -mt-8 md:-mt-6">
+              <h4 class="mb-6 font-[300]">
                 {{ 'customer.addresses.add_new' | t }}
               </h4>
               {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
