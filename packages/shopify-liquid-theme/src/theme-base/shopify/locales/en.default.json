@@ -358,7 +358,8 @@
       "cancel": "Cancel",
       "edit": "Edit",
       "delete": "Delete",
-      "delete_confirm": "Are you sure you wish to delete this address?"
+      "delete_confirm": "Are you sure you wish to delete this address?",
+      "none": "You have no saved addresses"
     },
     "log_in": "Log in",
     "log_out": "Log out",
@@ -407,7 +408,7 @@
       "payment_status": "Payment status",
       "fulfillment_status": "Fulfillment Status",
       "total": "Total",
-      "none": "You haven't placed any orders yet."
+      "none": "You have no order history."
     },
     "recover_password": {
       "title": "Reset your password",
