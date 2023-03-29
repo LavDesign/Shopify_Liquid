@@ -75,6 +75,9 @@ module.exports = {
       white: "var(--color-util-white)",
     },
     extend: {
+      animation: {
+        skeleton: "skeleton 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
       aspectRatio: {
         landscape: "1 / 0.625",
         portrait: "0.85 / 1",
@@ -82,6 +85,12 @@ module.exports = {
       },
       fontSize: {
         sizeInherit: "inherit",
+      },
+      keyframes: {
+        skeleton: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0.5 },
+        },
       },
     },
     screens,
