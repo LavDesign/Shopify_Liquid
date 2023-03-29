@@ -40,7 +40,7 @@
 import { ref, watch, onMounted } from "vue";
 import { useCartStore } from "../../stores/cart";
 
-const props = defineProps({
+defineProps({
   message: {
     type: String,
     default: "",
