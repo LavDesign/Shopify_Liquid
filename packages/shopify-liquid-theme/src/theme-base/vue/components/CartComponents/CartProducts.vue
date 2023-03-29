@@ -7,7 +7,7 @@
 <script setup>
 import { CartProductTile } from "./";
 
-const props = defineProps({
+defineProps({
   cart: {
     type: Object,
     default: () => {},
