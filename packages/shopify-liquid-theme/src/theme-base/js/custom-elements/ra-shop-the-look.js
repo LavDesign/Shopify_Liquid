@@ -4,14 +4,10 @@ export default class RaShopTheLook extends HTMLElement {
     this.lookItems = Array.from(
       this.querySelectorAll(".ra-shop-the-look__item")
     );
-    this.swiper = this.querySelector(".swiper") || null;
+    this.swiperEl = this.querySelector("swiper-container") || null;
   }
 
   connectedCallback() {
-    this.init();
-  }
-
-  init() {
     this.initDots();
   }
 
@@ -32,15 +28,7 @@ export default class RaShopTheLook extends HTMLElement {
   toggleSlider(toggleBtn) {
     const index = toggleBtn.getAttribute("data-index");
     if (!index) return;
-    document.dispatchEvent(
-      new CustomEvent("swiper:slideTo", {
-        bubbles: true,
-        detail: {
-          swiper: this.querySelector("swiper-container"),
-          slideTo: index,
-        },
-      })
-    );
+    this.swiperEl.swiper.slideTo(index, 500, false);
   }
 
   togglePopover(toggleBtn) {
