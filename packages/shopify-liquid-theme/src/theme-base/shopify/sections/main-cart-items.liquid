@@ -1,8 +1,15 @@
 {% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
 {% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
-<div data-vue-root="CartPage" class="min-h-[500px] !block transition-all">
-  <cart-page
-    :settings="{{- cart_settings | escape | strip -}}"
-    :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}"
-  />
+
+<div class="w-full bg-tertiary-500">
+  <div class="md:max-w-screen-2xl px-4 mx-auto md:p-5 md:px-10 ">
+    <div data-vue-root="CartPage" class="min-h-[500px] !block transition-all">
+      <cart-page
+        :settings="{{- cart_settings | escape | strip -}}"
+        :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}"
+      >
+        {% render 'cart-page-skeleton' %}
+      </cart-page>
+    </div>
+  </div>
 </div>
