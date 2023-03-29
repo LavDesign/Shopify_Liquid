@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo $npm_package_config_prod_store_url",
     "start": "run-p -s webpack:watch serve",
-    "serve": "shopify3 theme dev --store $npm_package_config_store_url --path ./dist",
+    "serve": "shopify3 theme dev --store $npm_package_config_prod_store_url --path ./dist",
     "deploy": "run-s webpack:build && shopify3 theme push --store $npm_package_config_prod_store_url --path ./dist --nodelete",
     "deploy:new": "run-s webpack:build && shopify3 theme push --store $npm_package_config_prod_store_url --path ./dist --nodelete --unpublished",
     "pull-theme": "shopify3 theme pull --store $npm_package_config_prod_store_url --path ./src/theme-override/shopify",
