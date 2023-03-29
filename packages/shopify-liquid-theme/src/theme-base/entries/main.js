@@ -5,7 +5,6 @@ import { getSizedImageFromUrl } from "../vue/filters/image.js";
 import { ucfirst, upcase, unhandleize } from "../vue/filters/string.js";
 import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
 
-import Swiper from "swiper/bundle";
 import { register } from "swiper/element/bundle";
 import "swiper/css/bundle";
 
@@ -60,30 +59,22 @@ const renderVueApps = (eventTarget = "[data-vue-root]") => {
 };
 
 const initSwipers = () => {
-  const swipers = document.querySelectorAll(".swiper");
-  if (!swipers) return;
+  const preInitSwipers = document.querySelectorAll(
+    "swiper-container[init='false']"
+  );
 
-  swipers.forEach((swiperEle) => {
-    const swiperData = swiperEle.getAttribute("data-swiper-settings");
-    if (!swiperData) return;
-    new Swiper(swiperEle, JSON.parse(swiperData));
-  });
-
-  // Shop the look - slideTo product slides
-  document.addEventListener("swiper:slideTo", function (event) {
-    if (!event.detail.swiper || !event.detail.slideTo) return;
-    const swiperEle = event.detail.swiper;
-    const slideIndex = parseInt(event.detail.slideTo);
-    const swiper = new Swiper(swiperEle);
-    swiper.translateTo(0, 500, false, false);
-    swiper.slideTo(slideIndex, 500, false);
+  if (!preInitSwipers) return;
+  preInitSwipers.forEach((swiperEl) => {
+    const swiperParams = JSON.parse(swiperEl.getAttribute("data-init-params"));
+    Object.assign(swiperEl, swiperParams);
+    swiperEl.initialize();
   });
 };
 
 window.addEventListener("load", () => {
+  register();
   renderVueApps();
   initSwipers();
-  register();
 });
 
 /**
