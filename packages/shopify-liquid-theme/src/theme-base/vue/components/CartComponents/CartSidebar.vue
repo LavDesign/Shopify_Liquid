@@ -1,5 +1,5 @@
 <template>
-  <div class="basis-4/12 flex flex-col">
+  <div>
     <div class="pt-4 md:px-8 bg-white mb-4">
       <!-- FREE SHIPPING BAR -->
       <CartProgressBar
