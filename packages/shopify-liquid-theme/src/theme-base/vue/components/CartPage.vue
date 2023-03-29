@@ -57,10 +57,6 @@ const props = defineProps({
     default: () => {},
   },
 });
-
-const settings = ref(props.settings);
-
-const emptyCartSettings = ref(props.emptyCartSettings);
 </script>
 
 <style scoped>
