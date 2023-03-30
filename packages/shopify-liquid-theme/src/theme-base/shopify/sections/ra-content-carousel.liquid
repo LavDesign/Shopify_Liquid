@@ -12,12 +12,10 @@
   {
     "breakpoints": {
       "768": {
-        "loop": true,
         "slidesPerView": {{ section.settings.tablet_slides_view | at_most: 5 }},
         "spaceBetween": 16
       },
       "1024": {
-        "loop": true,
         "slidesPerView": {{ section.settings.desktop_slides_view | at_most: 5 }},
         "spaceBetween": 24
       }
@@ -67,7 +65,6 @@
     <swiper-container
       class="swiper--{{ section.id }}"
       init="false"
-      loop="true"
       space-between="16"
       navigation-next-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
       navigation-prev-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
