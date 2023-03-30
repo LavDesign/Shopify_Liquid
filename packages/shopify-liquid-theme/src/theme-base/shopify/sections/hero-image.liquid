@@ -1,0 +1,360 @@
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --pagination-color: var({{section.settings.pagination_color}});
+  }
+
+  {%- for block in section.blocks -%}
+    #block-{{ section.id }}-{{ block.id }} {
+      --background-color: var({{ block.settings.bg_color }});
+      --text-color-mobile: var({{ block.settings.text_color_mobile }});
+      --text-color-desktop: var({{ block.settings.text_color_desktop }});
+    }
+  {%- endfor -%}
+{% endstyle %}
+
+{% capture arrow_color %}
+  var({{ section.settings.arrow_color }})
+{% endcapture %}
+
+<div class="relative">
+  <swiper-container
+    class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{%- endif -%}"
+    {% if section.settings.autoplay %}
+      autoplay-delay="{{ section.settings.delay | times: 1000 }}"
+    {% endif %}
+    effect="{{ section.settings.effect | json }}"
+    navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
+    navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
+    pagination-el=".swiper-pagination"
+    pagination-clickable="true"
+    slides-per-view="1"
+    space-between="0"
+    loop="true"
+  >
+    {% for block in section.blocks %}
+      <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
+        <div class="ra-hero__media component-media">
+          {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
+            {% render 'image' with block.settings.desktop_bg_image,
+              classes: 'ra-image__media ra-image__media--desktop',
+              width: 2000,
+              lazyload: true
+            %}
+            {% render 'image' with block.settings.mobile_bg_image,
+              classes: 'ra-image__media ra-image__media--mobile',
+              width: 800,
+              lazyload: true
+            %}
+          {% endif %}
+          <div class="ra-hero__details component-details--set-order">
+            <div class="ra-hero__copy {{ block.settings.text_alignment }}">
+              {% if block.settings.subtitle != blank %}
+                <div class="ra-hero__subtitle">{{ block.settings.subtitle }}</div>
+              {% endif %}
+
+              {% if block.settings.title != blank %}
+                <{{ block.settings.title_level }}
+                  class="ra-title ra-hero__title {{ block.settings.title_style }}"
+                >
+                  {{ block.settings.title }}
+                </{{ block.settings.title_level }}>
+              {% endif %}
+
+              {% if block.settings.body != blank %}
+                <div class="ra-hero__description">
+                  {{ block.settings.body }}
+                </div>
+              {% endif %}
+
+              {% if block.settings.button_1_url != blank or block.settings.button_2_url != blank %}
+                <div class="ra-link-list ra-hero__link-list">
+                  {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
+                    {% render 'button',
+                      type: 'a',
+                      style: block.settings.button_1_style,
+                      label: block.settings.button_1_label,
+                      url: block.settings.button_1_url,
+                      class: 'min-w-[175px]'
+                    %}
+                  {% endif %}
+
+                  {% if block.settings.button_2_label != blank and block.settings.button_2_url != blank %}
+                    {% render 'button',
+                      type: 'a',
+                      style: block.settings.button_2_style,
+                      label: block.settings.button_2_label,
+                      url: block.settings.button_2_url,
+                      class: 'min-w-[175px]'
+                    %}
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </swiper-slide>
+    {% endfor %}
+  </swiper-container>
+
+  {% if section.settings.show_pagination and section.blocks.size > 1 %}
+    <div class="swiper-pagination"></div>
+  {% endif %}
+
+  {% if section.settings.show_arrows and section.blocks.size > 1 %}
+    <div class="{{ section.id }} swiper-button-prev">
+      {% render 'icon', icon: 'chevron-left', color: arrow_color %}
+    </div>
+    <div class="{{ section.id }} swiper-button-next">
+      {% render 'icon', icon: 'chevron-right', color: arrow_color %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Hero - Image",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Section Sub Title",
+          "default": "SUB-HEADING"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "default": "This is a title"
+        },
+        {
+          "type": "select",
+          "id": "title_level",
+          "label": "Title Level",
+          "info": "Choose the semantic H-Tag for this title",
+          "options": <%- uikit.headingStyles -%>,
+          "default": "h2"
+        },
+        {
+          "type": "select",
+          "id": "title_style",
+          "label": "Title Style",
+          "info": "Choose which heading to (style) the title",
+          "options": <%- uikit.headingStyles -%>,
+          "default": "h2"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": <%- uikit.textAligments -%>,
+          "default": "set--v-align-middle set--h-align-center"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Section Body Copy"
+        },
+        {
+          "type": "header",
+          "content": "Media"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_bg_image",
+          "label": "Background Image (desktop)",
+          "info": "Recommended Size: 1800x1800"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_bg_image",
+          "label": "Background Image (mobile)",
+          "info": "Recommended Size: 800x800"
+        },
+        {
+          "type": "header",
+          "content": "Color Settings"
+        },
+        {
+          "type": "select",
+          "id": "text_color_desktop",
+          "label": "Text Color (desktop)",
+          "options": <%- uikit.colorsAll -%>,
+          "default": "--color-primary-900"
+        },
+        {
+          "type": "select",
+          "id": "text_color_mobile",
+          "label": "Text Color (mobile)",
+          "options": <%- uikit.colorsAll -%>,
+          "default": "--color-primary-900"
+        },
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Background Color",
+          "options": <%- uikit.colorsAll -%>,
+          "default": "--color-primary-900"
+        },
+        {
+          "type": "header",
+          "content": "CTA 1"
+        },
+        {
+          "type": "text",
+          "id": "button_1_label",
+          "label": "CTA 1 Label",
+          "default": "learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_1_url",
+          "label": "CTA 1 URL"
+        },
+        {
+          "type": "select",
+          "id": "button_1_style",
+          "label": "CTA 1 Style",
+          "options": <%- uikit.buttonStyles -%>,
+          "default": "primary"
+        },
+        {
+          "type": "header",
+          "content": "Button 2"
+        },
+        {
+          "type": "text",
+          "id": "button_2_label",
+          "label": "CTA 2 Label",
+          "default": "learn more"
+        },
+        {
+          "type": "url",
+          "id": "button_2_url",
+          "label": "CTA 2 URL"
+        },
+        {
+          "type": "select",
+          "id": "button_2_style",
+          "label": "CTA 2 Style",
+          "options": <%- uikit.buttonStyles -%>,
+          "default": "secondary"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "default": "main",
+      "info": "Select hero height",
+      "options": [
+        {
+          "value": "short",
+          "label": "Small"
+        },
+        {
+          "value": "main",
+          "label": "Medium"
+        },
+        {
+          "value": "tall",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_mobile",
+      "label": "Stack on Mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Delay",
+      "default": 5,
+      "info": "Delay between transitions (in seconds). Applys delay only if 'Autoplay' is checked."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show Pagination",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "arrow_color",
+      "label": "Arrow Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "pagination_color",
+      "label": "Pagination Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "effect",
+      "label": "Slider Effect",
+      "default": "slide",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "coverflow",
+          "label": "Coverflow"
+        },
+        {
+          "value": "flip",
+          "label": "Flip"
+        },
+        {
+          "value": "creative",
+          "label": "Creative"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero - Image"
+    }
+  ]
+}
+{% endschema %}

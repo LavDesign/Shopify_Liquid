@@ -1,6 +1,5 @@
 {% comment %}
-
-  NOTE: To see all available icons or to add 
+  NOTE: To see all available icons or to add
   additional SVG icons see: '/src/icons' dir
 
   Props:
@@ -24,20 +23,15 @@
       title: 'Account Notification',
       message: 'My account notification.'
     -%}
-
 {% endcomment %}
 
 {%- capture classes -%}
   ra-notification ra-notification--{{ style | default: 'primary' }} {{ class }}
 {%- endcapture -%}
 
-<div class="ra-notification ra-notification--{{ style | default: 'primary' }} {{ class }}">
+<ra-notification class="ra-notification ra-notification--{{ style | default: 'primary' }} {{ class }}">
   {% if icon %}
-    {%- render 'icon',
-      icon: icon,
-      size: 'sm'
-      class: 'ra-notification__icon'
-    -%}
+    {%- render 'icon', icon: icon, size: 'sm', class: 'ra-notification__icon' -%}
   {% endif %}
   <div class="ra-notification__content">
     {% if title %}
@@ -48,6 +42,6 @@
     {% endif %}
   </div>
   <button class="ra-notification__close ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--sm ra-icon-button--rounded">
-    {%- render 'icon' icon: 'close', size: 'sm' -%}
+    {%- render 'icon', icon: 'close', size: 'sm' -%}
   </button>
-</div>
+</ra-notification>

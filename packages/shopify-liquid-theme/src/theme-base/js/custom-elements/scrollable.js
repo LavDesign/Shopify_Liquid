@@ -1,4 +1,3 @@
-
 var elements = document.querySelectorAll(".ra-scrollable button");
 
 elements.forEach((el) => {

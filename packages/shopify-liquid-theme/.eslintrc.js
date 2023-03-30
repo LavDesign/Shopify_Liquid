@@ -7,6 +7,7 @@ module.exports = {
   root: true,
   extends: ["eslint:recommended", "prettier", "plugin:vue/vue3-essential"],
   plugins: ["prettier", "vue"],
+  parser: "vue-eslint-parser",
   parserOptions: {
     parser: "@babel/eslint-parser",
     requireConfigFile: false,
@@ -18,6 +19,7 @@ module.exports = {
     browser: true,
     node: true,
     commonjs: true,
+    "vue/setup-compiler-macros": true,
   },
   /**
    * Define globals to solve '[GLOBAL]' is not define – no undef

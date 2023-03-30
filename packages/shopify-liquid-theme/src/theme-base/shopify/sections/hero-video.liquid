@@ -1,0 +1,260 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    --background-color: var({{ section.settings.bg_color }});
+    --text-color-mobile: var({{ section.settings.text_color_mobile }});
+    --text-color-desktop: var({{ section.settings.text_color_desktop }});
+  }
+</style>
+
+{% liquid
+  assign video_source = 'embed'
+  assign video_background_url = ''
+
+  if section.settings.background_video_embed != blank
+    if section.settings.background_video_embed.type == 'youtube'
+      assign video_background_url = 'https://www.youtube.com/embed/' | append: section.settings.background_video_embed.id
+    else
+      assign video_background_url = 'https://player.vimeo.com/video/' | append: section.settings.background_video_embed.id
+    endif
+
+  elsif section.settings.background_video_file != blank
+    assign video_source = 'file'
+
+    for resource in section.settings.background_video_file.sources
+      if resource.format == 'mp4'
+        assign video_background_url = resource.url
+      endif
+    endfor
+  endif
+%}
+
+<div class="w-full">
+	<article class="ra-hero set--details-overlay{% if video_source == 'file' %} set--aspect-ratio-main {% endif %}{% if section.settings.stack_mobile %} ra-hero--stack-mobile{% endif %}">
+
+    <div class="ra-hero__details component-details--set-order">
+      <div class="ra-hero__copy {{ section.settings.text_alignment }}">
+
+        {% if section.settings.sub-heading != blank %}
+          <div class="ra-hero__subtitle">{{ section.settings.sub-heading }}</div>
+        {% endif %}
+
+        {% if section.settings.title != blank %}
+          <{{ section.settings.title_style }} class="ra-title ra-hero__title" style="--title-font-size:var(--font-size-{{ section.settings.title_style }});">
+            {{ section.settings.title }}
+          </{{ section.settings.title_style }}>
+        {% endif %}
+
+        {% if section.settings.body != blank %}
+          <div class="ra-hero__description">
+            {{ section.settings.body }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_1_url != blank or section.settings.button_2_url != blank %}
+          <div class="ra-link-list ra-hero__link-list">
+            {% if section.settings.button_1_label != blank and section.settings.button_1_url != blank %}
+              {% render 'button'
+                type: 'a',
+                style: section.settings.button_1_style,
+                label: section.settings.button_1_label,
+                url: section.settings.button_1_url,
+                class: "min-w-[175px]"
+              %}
+            {% endif %}
+
+            {% if section.settings.button_2_label != blank and section.settings.button_2_url != blank %}
+              {% render 'button'
+                type: 'a',
+                style: section.settings.button_2_style,
+                label: section.settings.button_2_label,
+                url: section.settings.button_2_url,
+                class: "min-w-[175px]"
+              %}
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.background_video_embed == blank and section.settings.background_video_file != blank %}
+      <div class="ra-hero__media component-media">
+        <video autoplay loop muted playsinline class="ra-video__media ra-video__media--loaded">
+          <source src="{{ video_background_url }}" type="video/mp4">
+        </video>
+      </div>
+    {% else %}
+      <div class="ra-hero__media component-media">
+        <div class="embed {{ section.settings.video_aspect_ratio }}">
+          <iframe src="{{ video_background_url }}">
+        </div>
+      </div>
+    {% endif %}
+	</article>
+</div>
+
+{% schema %}
+{
+  "name": "Hero - Video",
+  "tag": "section",
+  "class": "hero-video",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "stack_mobile",
+      "label": "Stack on mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Video",
+      "info": "Choose between embed or file upload to import video"
+    },
+    {
+      "type": "video_url",
+      "id": "background_video_embed",
+      "label": "Video upload (embed option)",
+      "info": "Paste link for Youtube or Vimeo",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
+      "type": "video",
+      "id": "background_video_file",
+      "label": "Video upload (file upload)",
+      "info": "Upload as MP4"
+    },
+    {
+      "type": "select",
+      "id": "video_aspect_ratio",
+      "label": "Video aspect ratio",
+      "options": [
+        {
+          "value": "embed--21x9",
+          "label": "21x9"
+        },
+        {
+          "value": "embed--16x9",
+          "label": "16x9"
+        },
+        {
+          "value": "embed--4x3",
+          "label": "4x3"
+        },
+        {
+          "value": "embed--1x1",
+          "label": "1x1"
+        }
+      ],
+      "default": "embed--16x9"
+    },
+    {
+      "type": "text",
+      "id": "sub-heading",
+      "label": "Section Sub-Title",
+      "default": "SUB-HEADING"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "This is a title"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title As",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": <%- uikit.textAligments -%>,
+      "default": "set--v-align-middle set--h-align-center"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Section Body Copy",
+      "default": "<p>I'm not thinking about anything when I'm climbing, which is part of the appeal. I'm focused on executing what's in front of me.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "select",
+      "id": "text_color_desktop",
+      "label": "Text color (desktop)",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "text_color_mobile",
+      "label": "Text color (mobile)",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Background color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-primary-900"
+    },
+    {
+      "type": "header",
+      "content": "CTA 1"
+    },
+    {
+      "type": "text",
+      "id": "button_1_label",
+      "label": "CTA 1 Text",
+      "default": "learn more"
+    },
+    {
+      "type": "url",
+      "id": "button_1_url",
+      "label": "CTA 1 URL"
+    },
+    {
+      "type": "select",
+      "id": "button_1_style",
+      "label": "CTA 1 Style",
+      "options": <%- uikit.buttonStyles -%>,
+      "default": "primary"
+    },
+    {
+      "type": "header",
+      "content": "CTA 2"
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "CTA Text",
+      "default": "learn more"
+    },
+    {
+      "type": "url",
+      "id": "button_2_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "select",
+      "id": "button_2_style",
+      "label": "CTA Style",
+      "options": <%- uikit.buttonStyles -%>,
+      "default": "secondary"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero - Video"
+    }
+  ]
+}
+{% endschema %}

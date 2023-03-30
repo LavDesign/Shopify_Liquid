@@ -4,7 +4,5 @@
       "type": "page-ui-kit"
     }
   },
-  "order": [
-    "ui-kit"
-  ]
+  "order": ["ui-kit"]
 }

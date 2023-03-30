@@ -1,0 +1,13 @@
+body.modal-open,
+html:has(dialog[open][data-modal-hide-overflow]) {
+  overflow: hidden;
+}
+
+.auth-modal {
+  --modal-width: 34.75rem;
+  --modal-outter-padding: var(--spacing);
+
+  @breakpoint md {
+    --modal-padding: var(--spacing-2xl) var(--spacing-2xl);
+  }
+}

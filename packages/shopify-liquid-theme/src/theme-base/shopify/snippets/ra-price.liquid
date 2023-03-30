@@ -1,0 +1,39 @@
+{% comment %}
+  Props:
+  product:      object - used instead of manually passing all prices -  (required)
+  class:        string add custom CSS class - (optional)
+  stacked:      boolean - toggle if layout of two prices should stack or not [default - false] - (optional)
+  show_range:   boolean - show price range if variants vary in price - (optional)
+
+  Example price-snippet:
+  {% render 'ra-price' product: product, stacked: true %}
+{% endcomment %}
+
+{% capture classes %}
+  ra-price
+  {% if stacked %}
+    ra-price--stacked
+  {% endif %}
+  {% if class %}
+    {{ class }}
+  {% endif %}
+{% endcapture %}
+
+<div class="{{ classes }}">
+  {% assign selected = product.selected_or_first_available_variant %}
+
+  {% if product.price_varies and show_range %}
+    <span class="ra-price__regular">{{ product.price_min | money }}</span>
+    <span class="px-1">&nbsp;&#8212;&nbsp;</span>
+    <span class="ra-price__regular">{{ product.price_max | money }}</span>
+  {% elsif selected.compare_at_price and selected.compare_at_price > selected.price %}
+    <ins class="ra-price__special ra-price__regular">
+      {{ selected.price | money }}
+    </ins>
+    <del class="ra-price__old">
+      {{ selected.compare_at_price | money }}
+    </del>
+  {% else %}
+    <span class="ra-price__regular">{{ selected.price | money }}</span>
+  {% endif %}
+</div>

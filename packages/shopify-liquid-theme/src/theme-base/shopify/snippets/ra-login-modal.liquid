@@ -1,0 +1,243 @@
+{% capture login_content %}
+  <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Log In</h3>
+  {% form 'customer_login' %}
+    <div class="grid gap-4 md:gap-6 grid-cols-1">
+      <div class="ra-grid-item">
+        <div class="ra-input">
+          <label class="font-secondary text-sm text-tertiary-900 mb-1" for="CustomerEmail">
+            {{ 'customer.login_page.email' | t }}
+          </label>
+          <div class="ra-input__wrapper">
+            <input
+              class="ra-input__control ra-input__control--text"
+              type="email"
+              name="customer[email]"
+              id="CustomerEmail"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              required
+              {% if form.errors contains 'form' %}
+              aria-invalid="true"
+              {% endif %}
+              placeholder="{{ 'customer.login_page.email' | t }}">
+          </div>
+        </div>
+      </div>
+
+      {% if form.password_needed %}
+        <!-- Password -->
+        <div class="ra-grid-item">
+          <div class="ra-input">
+            <label class="font-secondary text-sm text-tertiary-900 mb-1" for="CustomerPassword">
+              {{ 'customer.login_page.password' | t }}
+            </label>
+            <div class="ra-input__wrapper">
+              <input
+                class="ra-input__control ra-input__control--text"
+                type="password"
+                value=""
+                name="customer[password]"
+                id="CustomerPassword"
+                autocomplete="current-password"
+                required
+                {% if form.errors contains 'form' %}
+                aria-invalid="true"
+                {% endif %}
+                placeholder="{{ 'customer.login_page.password' | t }}">
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <div class="mt-4 text-center">
+        <button class="ra-button ra-button--primary ra-button--full-width ra-button--lg" data-cy="login-btn_submit">
+          {{ 'customer.login_page.sign_in' | t }}
+        </button>
+      </div>
+    </div>
+  {% endform %}
+  <span class="text-center mt-4 text-base block font-light text-grey-600">Here for the first time?
+    <a
+      href="#"
+      class="underline"
+      data-toggle-account>Create an account</a>
+  </span>
+{% endcapture %}
+
+{% capture register_content %}
+  <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Create An Account</h3>
+  {%- form 'create_customer' -%}
+    <div class="grid gap-4 md:gap-6 grid-cols-2">
+      <div class="ra-grid-item text-left col-span-2">
+        <div class="ra-input">
+          <label class="font-secondary text-sm text-tertiary-900 mb-1" for="RegisterForm-email">
+            {{ 'customer.register.email' | t }}
+          </label>
+          <div class="ra-input__wrapper">
+            <input
+              class="ra-input__control ra-input__control--text"
+              type="email"
+              name="customer[email]"
+              id="RegisterForm-email"
+              {% if form.email %}
+              value="{{ form.email }}"
+              {% endif %}
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="email"
+              aria-required="true"
+              {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="RegisterForm-email-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.email' | t }}">
+            {%- if form.errors contains 'email' -%}
+              <span id="RegisterForm-email-error" class="form__message">
+                <svg aria-hidden="true" focusable="false">
+                  <use href="#icon-error" />
+                </svg>
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}.
+              </span>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      <div class="ra-grid-item text-left">
+        <div class="ra-input">
+          <label class="font-secondary text-sm text-tertiary-900 mb-1" for="RegisterForm-FirstName">
+            {{ 'customer.register.first_name' | t }}
+          </label>
+          <div class="ra-input__wrapper">
+            <input
+              class="ra-input__control ra-input__control--text"
+              type="text"
+              name="customer[first_name]"
+              id="RegisterForm-FirstName"
+              {% if form.first_name %}
+              value="{{ form.first_name }}"
+              {% endif %}
+              autocomplete="given-name"
+              required
+              placeholder="{{ 'customer.register.first_name' | t }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="ra-grid-item text-left">
+        <div class="ra-input">
+          <label class="font-secondary text-sm text-tertiary-900 mb-1" for="RegisterForm-LastName">
+            {{ 'customer.register.last_name' | t }}
+          </label>
+          <div class="ra-input__wrapper">
+            <input
+              class="ra-input__control ra-input__control--text"
+              type="text"
+              name="customer[last_name]"
+              id="RegisterForm-LastName"
+              {% if form.last_name %}
+              value="{{ form.last_name }}"
+              {% endif %}
+              autocomplete="family-name"
+              required
+              placeholder="{{ 'customer.register.last_name' | t }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="ra-grid-item text-left col-span-2">
+        <div class="ra-input">
+          <label class="font-secondary text-sm text-tertiary-900 mb-1" for="RegisterForm-password">
+            {{ 'customer.register.password' | t }}
+          </label>
+          <div class="ra-input__wrapper">
+            <input
+              class="ra-input__control ra-input__control--text"
+              type="password"
+              name="customer[password]"
+              id="RegisterForm-password"
+              aria-required="true"
+              {% if form.errors contains 'password' %}
+              aria-invalid="true"
+              aria-describedby="RegisterForm-password-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.password' | t }}">
+            {%- if form.errors contains 'password' -%}
+              <span id="RegisterForm-password-error" class="form__message">
+                <svg aria-hidden="true" focusable="false">
+                  <use href="#icon-error" />
+                </svg>
+                {{ form.errors.translated_fields.password | capitalize }}
+                {{ form.errors.messages.password }}.
+              </span>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      <div class="ra-grid-item text-left col-span-2">
+        <div class="ra-input">
+          <label class="font-secondary text-sm text-tertiary-900 mb-1" for="RegisterForm-password">
+            {{ 'customer.register.password' | t }}
+          </label>
+          <div class="ra-input__wrapper">
+            <input
+              class="ra-input__control ra-input__control--text"
+              type="password"
+              name="customer[password]"
+              id="RegisterForm-password"
+              aria-required="true"
+              {% if form.errors contains 'password' %}
+              aria-invalid="true"
+              aria-describedby="RegisterForm-password-error"
+              {% endif %}
+              placeholder="{{ 'customer.register.confirm_password' | t }}">
+            {%- if form.errors contains 'password' -%}
+              <span id="RegisterForm-password-error" class="form__message">
+                <svg aria-hidden="true" focusable="false">
+                  <use href="#icon-error" />
+                </svg>
+                {{ form.errors.translated_fields.password | capitalize }}
+                {{ form.errors.messages.password }}.
+              </span>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      <div class="ra-grid-item text-left col-span-2">
+        {% capture accept_tos %}
+          <span class="font-light text-base text-grey-600">To continue, please
+            <a href="#" class="underline">Accept Terms & Conditions</a>
+          </span>
+        {% endcapture %}
+        {%- render 'checkbox' id: 'checkobx_2', style: 'classic', label: accept_tos, checked: false -%}
+      </div>
+
+      <button class="ra-button ra-button--full-width ra-button--lg col-span-2">
+        {{ 'customer.register.submit' | t }}
+      </button>
+    </div>
+  {%- endform -%}
+  <span class="mt-4 text-center block font-light text-grey-600">
+    Already have an account?
+    <a
+      href="#"
+      class="underline"
+      data-toggle-account>Log In Now</a>
+  </span>
+{% endcapture %}
+
+{% capture modal_content %}
+  <div data-login-container>
+    <div id="login">
+      {{ login_content }}
+    </div>
+    <div id="register" class="hidden">
+      {{ register_content }}
+    </div>
+  </div>
+{% endcapture %}
+
+{% render 'modal', id: 'modal-login', content: modal_content, classes: 'auth-modal bg-tertiary-500', overlay: true %}

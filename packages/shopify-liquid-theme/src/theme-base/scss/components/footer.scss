@@ -1,0 +1,33 @@
+.footer {
+  background-color: var(--background-color);
+  color: var(--link-color);
+
+  a:link,
+  a:visited {
+    color: var(--link-color);
+
+    &:hover,
+    &:focus {
+      color: var(--link-hover-color);
+    }
+  }
+
+  .footer__form-title,
+  .footer__form-title * {
+    color: var(--link-color);
+  }
+
+  .footer_util {
+    border-top: 1px solid var(--link-color);
+
+    li:not(:last-child) {
+      margin-right: 24px;
+    }
+  }
+
+  @breakpoint md {
+    .footer__col:not(:last-child) {
+      border-right: 1px solid var(--link-color);
+    }
+  }
+}

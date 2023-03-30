@@ -1,11 +1,29 @@
-h1,h2,h3,h4,h5,h6,
-.h1,.h2,.h3,.h4,.h5,.h6 {
-  line-height: 100%;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 125%;
   font-family: var(--font-family-primary);
   font-weight: 500;
 }
 
-h1, .h1 {
+h2,
+h6,
+.h2,
+.h6 {
+  font-family: var(--font-family-secondary);
+}
+
+h1,
+.h1 {
   font-size: var(--h1-mobile-size);
 
   @breakpoint sm {
@@ -13,7 +31,8 @@ h1, .h1 {
   }
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-size: var(--h2-mobile-size);
 
   @breakpoint sm {
@@ -21,7 +40,8 @@ h2, .h2 {
   }
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-size: var(--h3-mobile-size);
 
   @breakpoint sm {
@@ -29,7 +49,8 @@ h3, .h3 {
   }
 }
 
-h4, .h4 {
+h4,
+.h4 {
   font-size: var(--h4-mobile-size);
 
   @breakpoint sm {
@@ -37,7 +58,8 @@ h4, .h4 {
   }
 }
 
-h5, .h5 {
+h5,
+.h5 {
   font-size: var(--h5-mobile-size);
 
   @breakpoint sm {
@@ -45,7 +67,8 @@ h5, .h5 {
   }
 }
 
-h6, .h6 {
+h6,
+.h6 {
   font-size: var(--h6-mobile-size);
 
   @breakpoint sm {

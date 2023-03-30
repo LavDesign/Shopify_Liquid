@@ -74,8 +74,41 @@ module.exports = {
       yellow: "var(--color-util-yellow)",
       white: "var(--color-util-white)",
     },
+    extend: {
+      animation: {
+        skeleton: "skeleton 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      aspectRatio: {
+        landscape: "1 / 0.625",
+        portrait: "0.85 / 1",
+        square: "1 / 1",
+      },
+      fontSize: {
+        sizeInherit: "inherit",
+      },
+      keyframes: {
+        skeleton: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0.5 },
+        },
+      },
+    },
     screens,
   },
   plugins: [],
   content: [path.resolve(__dirname, "**/*.{js,vue,liquid,scss}")],
+  safelist: [
+    "aspect-square",
+    "aspect-video",
+    "aspect-portrait",
+    "h-full",
+    "w-full",
+    "object-cover",
+    "object-center",
+    "absolute",
+    "order-1",
+    "order-2",
+    "mb-1",
+    "text-sizeInherit",
+  ],
 };

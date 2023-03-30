@@ -1,0 +1,97 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{%- if predictive_search.performed -%}
+  {% assign show_sidebar = false %}
+
+  {% capture sidebar_content %}
+    <div class="w-full md:w-1/6">
+      {% if settings.predictive_show_collections and predictive_search.resources.collections.size > 0  %}
+        {% assign show_sidebar = true %}
+        <div class="h6 mb-2">Collections</div>
+        <ul class="ml-2 mb-3">
+          {%- for collection in predictive_search.resources.collections -%}
+            <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none mb-2">
+              <a href="{{ collection.url }}">{{ collection.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+      {% if settings.predictive_show_pages and predictive_search.resources.pages.size > 0 %}
+        {% assign show_sidebar = true %}
+        <div class="h6 mb-2">Pages</div>
+        <ul class="ml-2 mb-3">
+          {%- for page in predictive_search.resources.pages -%}
+            <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none mb-2">
+              <a href="{{ page.url }}">{{ page.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+      {% if settings.predictive_show_articles and predictive_search.resources.articles.size > 0 %}
+        {% assign show_sidebar = true %}
+        <div class="h6 mb-2">Articles</div>
+        <ul class="ml-2 mb-3">
+          {%- for article in predictive_search.resources.articles -%}
+            <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none mb-2">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+      {% if settings.predictive_show_terms and predictive_search.resources.queries.size > 0 %}
+        {% assign show_sidebar = true %}
+        <div class="h6 mb-2">Terms</div>
+        <ul class="ml-2 mb-3">
+          {%- for query in predictive_search.resources.queries -%}
+            <li id="predictive-search-option-query-{{ forloop.index }}" class="predictive-search__list-item list-none mb-2">
+              <a href="{{ query.url }}" tabindex="-1">{{ query.styled_text }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+    </div>
+  {% endcapture %}
+
+  <div class="predictive-search__overlay absolute left-0 right-0 top-full h-screen opacity-50 bg-primary-900"></div>
+  <div id="predictive-search-results" class="absolute bg-white left-0 right-0 top-full p-10 justify-center flex">
+    <div class="w-full md:max-w-screen-2xl flex flex-col md:flex-row">
+      {% if show_sidebar %}
+        {{ sidebar_content }}
+      {% endif %}
+      <div class="{% if show_sidebar %}md:w-5/6{% endif%} w-full">
+        {%- if predictive_search.resources.products.size > 0 -%}
+          <ul id="predictive-search-results-list" class="grid grid-cols-2 md:grid-cols-4 md:gap-11 gap-5">
+            {%- for product in predictive_search.resources.products -%}
+              <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none mb-2">
+                {% render 'ra-product-tile', product: product %}
+              </li>
+            {%- endfor -%}
+          </ul>
+          <div class="search-results__actions flex justify-center">
+            {% assign search_url = routes.search_url | append: '?q=' | append: predictive_search.terms %}
+            {% render 'button', label: 'See All Results', style: 'primary', type: 'a', url: search_url %}
+          </div>
+        {% elsif show_sidebar %}
+          <div class="text-center">
+            <p class="h6 mb-5">{{ 'templates.search.no_product_results' | t: terms: predictive_search.terms }}</p>
+            {% render 'button',
+              label: settings.empty_search_cta_text,
+              style: settings.empty_search_cta_style,
+              type: 'a',
+              url: settings.empty_search_cta_url
+            %}
+          </div>
+        {% else %}
+          <div class="text-center">
+            <p class="h6 mb-5">{{ 'templates.search.no_results' | t: terms: predictive_search.terms }}</p>
+            {% render 'button',
+              label: settings.empty_search_cta_text,
+              style: settings.empty_search_cta_style,
+              type: 'a',
+              url: settings.empty_search_cta_url
+            %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

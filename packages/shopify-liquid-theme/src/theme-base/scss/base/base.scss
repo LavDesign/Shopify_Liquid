@@ -3,6 +3,7 @@
  *  See: https://cssguidelin.es/#table-of-contents
  */
 
+@import "variables";
 @import "fonts";
 @import "typography";
 
@@ -12,4 +13,10 @@ body {
   font-family: var(--font-family-primary);
   background-color: var(--color-util-white);
   font-weight: 400;
+}
+
+main {
+  position: relative;
+  transition: all 0.3s;
+  margin-top: var(--content-position-top);
 }

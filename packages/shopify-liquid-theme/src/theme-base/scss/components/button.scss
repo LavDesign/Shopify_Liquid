@@ -1,10 +1,10 @@
-/* 
+/*
   inherits style from @bva/ui-shared/styles/components.css
-  overriding CSS var for colors only 
+  overriding CSS var for colors only
 */
 
 .ra-button {
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   outline-offset: 2px;
   outline-width: 1px;
   outline-style: solid;
@@ -67,5 +67,7 @@
 }
 
 .ra-split-button__alt-action {
-  svg { width: 11px; }
+  svg {
+    width: 11px;
+  }
 }

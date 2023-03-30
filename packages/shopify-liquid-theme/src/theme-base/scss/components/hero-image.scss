@@ -1,0 +1,72 @@
+.ra-hero {
+  overflow: hidden;
+
+  .ra-image__media--desktop {
+    display: block;
+    @breakpoint md-max {
+      display: none;
+    }
+  }
+
+  .ra-image__media--mobile {
+    display: none;
+    @breakpoint md-max {
+      display: block;
+    }
+  }
+
+  .ra-hero__details {
+    color: var(--text-color-desktop);
+    @breakpoint md-max {
+      color: var(--text-color-mobile);
+    }
+  }
+}
+
+// Stack on mobile
+.ra-hero.ra-hero--stack-mobile {
+  @breakpoint md-max {
+    .ra-hero__media {
+      display: flex;
+      flex-direction: column;
+      position: static;
+      aspect-ratio: 0 !important;
+    }
+    .ra-hero__details {
+      background-color: var(--background-color);
+      aspect-ratio: 0 !important;
+      position: static;
+      height: auto;
+    }
+  }
+}
+
+.ra-hero:not(.ra-hero--stack-mobile) {
+  @breakpoint md-max {
+    .ra-hero__details {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.ra-hero.set--aspect-ratio-short:not(.ra-hero--stack-mobile) {
+  @breakpoint md-max {
+    aspect-ratio: var(--component-media-ratio-x, 1) /
+      var(--component-media-ratio-y, 0.25) !important;
+  }
+}
+.ra-hero.set--aspect-ratio-main:not(.ra-hero--stack-mobile) {
+  @breakpoint md-max {
+    aspect-ratio: var(--component-media-ratio-x, 1) /
+      var(--component-media-ratio-y, 0.42) !important;
+  }
+}
+.ra-hero.set--aspect-ratio-tall:not(.ra-hero--stack-mobile) {
+  @breakpoint md-max {
+    aspect-ratio: var(--component-media-ratio-x, 1) /
+      var(--component-media-ratio-y, 0.6) !important;
+  }
+}

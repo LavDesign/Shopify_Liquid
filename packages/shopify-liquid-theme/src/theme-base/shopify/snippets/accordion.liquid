@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     item1_title:      string item 1 title - (required)
     item1_content:    string item 1 content - (required)
@@ -11,7 +10,7 @@
     first_item_open:  boolean whether the first item should be open on page load - (optional)
 
   Example accordion:
-    {% render 'accordion', 
+    {% render 'accordion',
       item1_title: 'Heading 1',
       item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
       item2_title: 'Heading 2'
@@ -19,14 +18,13 @@
     %}
 
   Example accordion + icon:
-    {% render 'accordion', 
+    {% render 'accordion',
       show_icon: true
       item1_title: 'Heading 1',
       item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
       item2_title: 'Heading 2',
       item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
     %}
-
 {% endcomment %}
 
 {%- capture item_titles -%}

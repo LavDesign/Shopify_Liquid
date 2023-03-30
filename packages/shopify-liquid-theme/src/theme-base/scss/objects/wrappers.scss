@@ -1,0 +1,8 @@
+/* TODO: Remove this class and replace with tailwind, OR make sure it's used consistently from tailwind properties */
+.container {
+  width: 100%;
+  max-width: var(--max-width-large);
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0 auto;
+}

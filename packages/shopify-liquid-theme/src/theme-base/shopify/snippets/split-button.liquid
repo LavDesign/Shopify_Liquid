@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     style:      string [primary, secondary, tertiary] - (required)
     label:      string button label text - (required)
@@ -11,10 +10,9 @@
     main_class: string custom CSS class to main button - (optional)
     alt_class:  string custom CSS class to alt(icon) button - (optional)
     disabled:   boolean - (optional)
-  
+
   Example split button:
     {% render 'split-button' label: 'learn more', icon: 'chevron-down', style: 'primary', size: 'sm' %}
-
 {% endcomment %}
 
 {%- capture main_btn_classes -%}
@@ -39,7 +37,7 @@
   <div class="ra-split-button ra-split-button--{{ size }}">
     <button type="button" class="{{ main_btn_classes }}" {{ main_btn_attributes }}>
       {{ label }}
-    </button> 
+    </button>
 
     {%- if icon != blank -%}
       <button type="button" class="{{ alt_btn_classes }}" {{ alt_btn_attributes }}>

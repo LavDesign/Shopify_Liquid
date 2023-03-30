@@ -29,6 +29,9 @@ dist/*
 # [Ignore] Local NPM configuration
 .npmrc
 
+# [Ignore] NVM Node version
+~/
+
 # END USER-DEFINED IGNORES
 
 # GENERATED .GITIGNORE

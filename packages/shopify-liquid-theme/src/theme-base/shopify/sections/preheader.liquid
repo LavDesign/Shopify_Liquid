@@ -1,0 +1,125 @@
+{% style %}
+  #shopify-section-{{ section.id }} .ra-preheader {
+    background-color: var({{ section.settings.bg_color }});
+    color: var({{ section.settings.text_color }});
+  }
+
+  #shopify-section-{{ section.id }} .ra-preheader__text {
+    color: var({{ section.settings.text_color }});
+  }
+{% endstyle %}
+
+{%- capture arrow_color -%}
+  var({{ section.settings.text_color }})
+{%- endcapture -%}
+
+{% if section.blocks.size > 0 %}
+  <div class="ra-preheader top-0 left-0 w-full z-50 px-6 fixed">
+    <div class="ra-preheader__wrapper relative">
+      <div class="ra-preheader__slider ra-preheader__slider--{{ section.settings.alignment }} flex items-center justify-center">
+        <div class="swiper-wrapper max-w-[400px] mx-0">
+          <swiper-container
+            loop="true"
+            autoplay-delay="{{ section.settings.delay | times: 1000 }}"
+            slides-per-view="1"
+            space-between="0"
+            navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
+            navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
+          >
+            {% for block in section.blocks %}
+              <swiper-slide class="px-2 py-4 h-full">
+                {% if block.settings.text != blank %}
+                  <div class="ra-preheader__text">{{ block.settings.text }}</div>
+                {% endif %}
+              </swiper-slide>
+            {% endfor %}
+          </swiper-container>
+          {% if section.blocks.size > 1 %}
+            <div class="{{ section.id }} swiper-button-prev -left-2.5">
+              {% render 'icon', icon: 'chevron-left', width: '14px', height: '14px', color: arrow_color %}
+            </div>
+            <div class="{{ section.id }} swiper-button-next -right-2.5">
+              {% render 'icon', icon: 'chevron-right', width: '14px', height: '14px', color: arrow_color %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      {% render 'ra-header-util' %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Pre-header",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Background color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-secondary-500"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Text color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-red"
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Slider alignment",
+      "info": "Select hero height",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center align"
+        },
+        {
+          "value": "left",
+          "label": "Left align"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Delay",
+      "default": 5,
+      "info": "Delay between transitions (in seconds). Applys delay only if 'Autoplay' is checked."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Welcome to our store.</p>",
+          "label": "Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

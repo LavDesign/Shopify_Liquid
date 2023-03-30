@@ -18,7 +18,7 @@
  * See: https://ejs.co/#docs
  */
 
-/* 
+/*
   Color Palletes
 */
 const colorsPrimary = [
@@ -76,7 +76,7 @@ const colorsUtil = [
   { label: "White", value: "#FFFFFF" },
 ];
 
-/* 
+/*
   All Colors
 */
 const colorsAll = [
@@ -122,12 +122,71 @@ const colorsAll = [
   { label: "Util-White", value: "--color-util-white" },
 ];
 
-/* 
+/*
   Fonts - Typography
 */
 const fonts = [
   { label: "Gibson", value: "'gibson', sans-serif" },
   { label: "Mono", value: "'mono', monospace" },
+];
+
+/*
+  Button - Styles
+*/
+
+const buttonStyles = [
+  { label: "Primary", value: "primary" },
+  { label: "Secondary", value: "secondary" },
+  { label: "Tertiary", value: "tertiary" },
+];
+
+/*
+  Heading - Styles
+*/
+const headingStyles = [
+  { label: "H1", value: "h1" },
+  { label: "H2", value: "h2" },
+  { label: "H3", value: "h3" },
+  { label: "H4", value: "h4" },
+  { label: "H5", value: "h5" },
+  { label: "H6", value: "h6" },
+];
+
+/*
+  Text - Alignments
+*/
+const textAligments = [
+  { label: "Top Right", value: "set--v-align-top set--h-align-right" },
+  { label: "Top Center", value: "set--v-align-top set--h-align-center" },
+  { label: "Top Left", value: "set--v-align-top set--h-align-left" },
+  { label: "Middle Right", value: "set--v-align-middle set--h-align-right" },
+  { label: "Middle Center", value: "set--v-align-middle set--h-align-center" },
+  { label: "Middle Left", value: "set--v-align-middle set--h-align-left" },
+  { label: "Bottom Right", value: "set--v-align-bottom set--h-align-right" },
+  { label: "Bottom Center", value: "set--v-align-bottom set--h-align-center" },
+  { label: "Bottom Left", value: "set--v-align-bottom set--h-align-left" },
+];
+
+/*
+  SVG - Icons
+*/
+const icons = [
+  { label: "Chevron Down", value: "chevron-down" },
+  { label: "Chevron Left", value: "chevron-left" },
+  { label: "Chevron Right", value: "chevron-right" },
+  { label: "Chevron Up", value: "chevron-up" },
+  { label: "Left Arrow", value: "left-arrow" },
+  { label: "Right Arrow", value: "right-arrow" },
+  { label: "Account", value: "account" },
+  { label: "Cart", value: "cart" },
+  { label: "Checkmark", value: "check" },
+  { label: "Circle Check", value: "circle-check" },
+  { label: "Close", value: "close" },
+  { label: "Hamberger", value: "hamberger" },
+  { label: "Heart", value: "heart" },
+  { label: "Plus", value: "plus" },
+  { label: "Minus", value: "minus" },
+  { label: "Search", value: "search" },
 ];
 
 module.exports = {
@@ -139,5 +198,9 @@ module.exports = {
     colorsUtil,
     colorsAll: JSON.stringify(colorsAll),
     fonts: JSON.stringify(fonts),
+    icons: JSON.stringify(icons),
+    buttonStyles: JSON.stringify(buttonStyles),
+    headingStyles: JSON.stringify(headingStyles),
+    textAligments: JSON.stringify(textAligments),
   },
 };

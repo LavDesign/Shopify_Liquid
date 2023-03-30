@@ -4,12 +4,14 @@
     {%- render 'head-meta' -%}
 
     {%- comment -%}
+      GTM-Datalayer
+    {%- endcomment -%}
+    {% render 'gtm-datalayer', action_step: 'init' %}
+
+    {%- comment -%}
       Dawn theme - to be deleted or updated later
     {%- endcomment -%}
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {%- if settings.predictive_search_enabled -%}
-      <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
-    {%- endif -%}
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 
     {% render 'vendor-scripts' %}
@@ -131,39 +133,56 @@
     {%- comment -%}
       Palomino & Bedrock UI
     {%- endcomment -%}
-    <link rel=“stylesheet” href=“https://use.typekit.net/uuq0jfz.css”>
+    <link rel="stylesheet" href="https://use.typekit.net/uuq0jfz.css">
     {{ 'main.css' | asset_url | stylesheet_tag }}
     {%- render 'css-variables' -%}
     {%- render 'icon-store' -%}
     {%- comment -%}
       END - Palomino
     {%- endcomment -%}
-
     {{ content_for_header }}
   </head>
 
-  <body class="gradient">
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-      {{ "accessibility.skip_to_text" | t }}
-    </a>
+  <body>
+    {%- comment -%}
+      GTM-Datalayer
+    {%- endcomment -%}
+    {% render 'gtm-datalayer', action_step: 'body-init' %}
+    {% if template.name == 'cart' %}
+      {% render 'gtm-datalayer', action_step: 'view-cart' %}
+    {% elsif template.name == 'product' %}
+      {% render 'gtm-datalayer', action_step: 'view-item' %}
+    {% endif %}
+    {%- comment -%}
+      END GTM
+    {%- endcomment -%}
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    {% section 'announcement-bar' %}
-    {% section 'header' %}
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    {% sections 'header-group' %}
+
+    <main role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
     {% section 'footer' %}
     {%- render 'js-variables' -%}
 
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+    {% render 'ra-login-modal' %}
 
-    {{ 'main.js'  | asset_url | script_tag }}
+    {{ 'main.js' | asset_url | script_tag }}
+
+    {% unless template.name == 'cart' %}
+      {% capture cart_settings %}{%- render 'cart-settings' -%}{% endcapture %}
+      {% capture empty_cart_settings %}{%- render 'empty-cart-settings' -%}{% endcapture %}
+      <div data-vue-root="CartInline">
+        <cart-inline
+          :settings="{{- cart_settings | escape | strip -}}"
+          :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}"
+        />
+      </div>
+    {% endunless %}
   </body>
 </html>

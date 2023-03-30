@@ -1,5 +1,4 @@
 {% comment %}
-
   Props:
     id:       string unique ID - (required)
     label:    string radio label - (required)
@@ -14,7 +13,6 @@
 
   Example radio + message:
     {%- render 'radio' id: 'message_radio', label: 'message', message: 'This is an info message' -%}
-
 {% endcomment %}
 
 {% if id != blank and label != blank %}
@@ -26,7 +24,7 @@
     {{ class }}
   {% endcapture %}
 
-  {% assign label_handelize = label | handleize | prepend: '_'  %}
+  {% assign label_handelize = label | handleize | prepend: '_' %}
   {% capture input_id %}
     {{ id | handleize | append: label_handelize }}
   {% endcapture %}
