@@ -12,10 +12,12 @@
   {
     "breakpoints": {
       "768": {
+        "loop": true,
         "slidesPerView": {{ section.settings.tablet_slides_view | at_most: 5 }},
         "spaceBetween": 16
       },
       "1024": {
+        "loop": true,
         "slidesPerView": {{ section.settings.desktop_slides_view | at_most: 5 }},
         "spaceBetween": 24
       }
@@ -60,33 +62,12 @@
   </div>
 
   <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
-    {% if section.settings.show_navigation %}
-      <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
-        {% render 'icon-button',
-          type: 'button',
-          style: 'tertiary',
-          size: 'sm',
-          rounded: true,
-          label: 'Go to previous slide',
-          icon: 'left-arrow',
-          class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev'
-        %}
-        {% render 'icon-button',
-          type: 'button',
-          style: 'tertiary',
-          size: 'sm',
-          rounded: true,
-          label: 'Go to next slide',
-          icon: 'right-arrow',
-          class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next'
-        %}
-      </div>
-    {% endif %}
 
     <!-- prettier-ignore-attribute (data-init-params) -->
     <swiper-container
       class="swiper--{{ section.id }}"
       init="false"
+      loop="true"
       space-between="16"
       navigation-next-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
       navigation-prev-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
@@ -126,6 +107,28 @@
         </swiper-slide>
       {% endfor %}
     </swiper-container>
+    {% if section.settings.show_navigation %}
+      <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
+        {% render 'icon-button',
+          type: 'button',
+          style: 'tertiary',
+          size: 'sm',
+          rounded: true,
+          label: 'Go to previous slide',
+          icon: 'left-arrow',
+          class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev !pointer-events-auto'
+        %}
+        {% render 'icon-button',
+          type: 'button',
+          style: 'tertiary',
+          size: 'sm',
+          rounded: true,
+          label: 'Go to next slide',
+          icon: 'right-arrow',
+          class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next !pointer-events-auto'
+        %}
+      </div>
+    {% endif %}
   </div>
 </section>
 
