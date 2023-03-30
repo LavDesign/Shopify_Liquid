@@ -103,9 +103,10 @@
                                     autocomplete="given-name"
                                     data-required
                                     placeholder="{{ 'customer.addresses.first_name' | t }}">
-                                  <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a first name.</span>
+                                  <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a first name.</span>
+                                  <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                 </div>
-                                {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
+                                8
                               </div>
                             </div>
                             <div class="ra-grid-item">
@@ -121,9 +122,9 @@
                                     autocomplete="family-name"
                                     data-required
                                     placeholder="{{ 'customer.addresses.last_name' | t }}">
-                                  <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a last name.</span>
+                                  <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a last name.</span>
+                                  <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                 </div>
-                                {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                               </div>
                             </div>
                             <div class="col-span-1 md:col-span-2">
@@ -139,9 +140,9 @@
                                     autocomplete="address-line1"
                                     data-required
                                     placeholder="{{ 'customer.addresses.address1' | t }}">
-                                  <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter an address.</span>
+                                  <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter an address.</span>
+                                  <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                 </div>
-                                {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                               </div>
                             </div>
                             <div class="ra-grid-item">
@@ -187,9 +188,9 @@
                                     autocomplete="address-level2"
                                     data-required
                                     placeholder="{{ 'customer.addresses.city' | t }}">
-                                  <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a city.</span>
+                                  <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a city.</span>
+                                  <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                 </div>
-                                {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                               </div>
                             </div>
                             <div class="ra-grid-item hidden">
@@ -234,7 +235,7 @@
                                     {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                                   </span>
                                 </div>
-                                {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
+                                <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                               </div>
                             </div>
                             <div class="ra-grid-item">
@@ -251,9 +252,9 @@
                                     autocomplete="postal-code"
                                     data-required
                                     placeholder="{{ 'customer.addresses.zip' | t }}">
-                                  <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a zipcode.</span>
+                                  <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a zipcode.</span>
+                                  <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                 </div>
-                                {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                               </div>
                             </div>
                             <div class="ra-grid-item">
@@ -376,14 +377,16 @@
                                   <div class="ra-input__wrapper">
                                     <input
                                       type="text"
-                                      class="ra-input__control ra-input__control--text"
+                                      class="ra-input__control ra-input__control--text peer"
                                       id="AddressFirstName_{{ form.id }}"
                                       name="address[first_name]"
                                       value="{{ form.first_name }}"
                                       autocomplete="given-name"
+                                      data-required
                                       placeholder="{{ 'customer.addresses.first_name' | t }}">
+                                    <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a first name.</span>
+                                    <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                   </div>
-                                  {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                                 </div>
                               </div>
                               <div class="ra-grid-item">
@@ -392,14 +395,16 @@
                                   <div class="ra-input__wrapper">
                                     <input
                                       type="text"
-                                      class="ra-input__control ra-input__control--text"
+                                      class="ra-input__control ra-input__control--text peer"
                                       id="AddressLastName_{{ form.id }}"
                                       name="address[last_name]"
                                       value="{{ form.last_name }}"
                                       autocomplete="family-name"
+                                      data-required
                                       placeholder="{{ 'customer.addresses.last_name' | t }}">
+                                    <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a last name.</span>
+                                    <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                   </div>
-                                  {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                                 </div>
                               </div>
                               <div class="col-span-1 md:col-span-2">
@@ -408,14 +413,16 @@
                                   <div class="ra-input__wrapper">
                                     <input
                                       type="text"
-                                      class="ra-input__control ra-input__control--text"
+                                      class="ra-input__control ra-input__control--text peer"
                                       id="AddressAddress1_{{ form.id }}"
                                       name="address[address1]"
                                       value="{{ form.address1 }}"
                                       autocomplete="address-line1"
+                                      data-required
                                       placeholder="{{ 'customer.addresses.address1' | t }}">
+                                    <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter an address.</span>
+                                    <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                   </div>
-                                  {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                                 </div>
                               </div>
                               <div class="ra-grid-item">
@@ -454,14 +461,16 @@
                                   <div class="ra-input__wrapper">
                                     <input
                                       type="text"
-                                      class="ra-input__control ra-input__control--text"
+                                      class="ra-input__control ra-input__control--text peer"
                                       id="AddressCity_{{ form.id }}"
                                       name="address[city]"
                                       value="{{ form.city }}"
                                       autocomplete="address-level2"
+                                      data-required
                                       placeholder="{{ 'customer.addresses.city' | t }}">
+                                    <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a city.</span>
+                                    <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                   </div>
-                                  {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                                 </div>
                               </div>
                               <div class="ra-grid-item hidden">
@@ -506,7 +515,7 @@
                                       {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                                     </span>
                                   </div>
-                                  {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
+                                  <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                                 </div>
                               </div>
                               <div class="ra-grid-item">
@@ -515,16 +524,17 @@
                                   <div class="ra-input__wrapper">
                                     <input
                                       type="text"
-                                      class="ra-input__control ra-input__control--text"
+                                      class="ra-input__control ra-input__control--text peer"
                                       id="AddressZip_{{ form.id }}"
                                       name="address[zip]"
                                       value="{{ form.zip }}"
                                       autocapitalize="characters"
                                       autocomplete="postal-code"
-                                      required
+                                      data-required
                                       placeholder="{{ 'customer.addresses.zip' | t }}">
+                                    <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a zip code.</span>
+                                    <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                                   </div>
-                                  {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                                 </div>
                               </div>
                               <div class="ra-grid-item">
@@ -665,7 +675,8 @@
                           autocomplete="given-name"
                           data-required
                           placeholder="{{ 'customer.addresses.first_name' | t }}">
-                        <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a first name.</span>
+                        <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a first name.</span>
+                        <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                       </div>
                       {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                     </div>
@@ -687,7 +698,8 @@
                           autocomplete="family-name"
                           data-required
                           placeholder="{{ 'customer.addresses.last_name' | t }}">
-                        <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a last name.</span>
+                        <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a last name.</span>
+                        <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                       </div>
                       {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                     </div>
@@ -707,7 +719,8 @@
                           autocomplete="address-line1"
                           data-required
                           placeholder="{{ 'customer.addresses.address1' | t }}">
-                        <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter an address.</span>
+                        <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter an address.</span>
+                        <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                       </div>
                       {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                     </div>
@@ -758,9 +771,9 @@
                           autocomplete="address-level2"
                           data-required
                           placeholder="{{ 'customer.addresses.city' | t }}">
-                        <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a city</span>
+                        <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a city</span>
+                        <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                       </div>
-                      {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                     </div>
                   </div>
 
@@ -782,7 +795,7 @@
                           {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
-                      {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -801,7 +814,7 @@
                           {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
-                      {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
+                      <div class="font-light text-grey-500 text-xs mt-1">Required</div>
                     </div>
                   </div>
 
@@ -819,9 +832,9 @@
                           autocomplete="postal-code"
                           data-required
                           placeholder="{{ 'customer.addresses.zip' | t }}">
-                        <span class="hidden text-sm font-light text-red peer-[.border-red]:flex">Please enter a zipcode.</span>
+                        <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a zipcode.</span>
+                        <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
                       </div>
-                      {% comment %}<div class="font-light text-grey-500 text-xs mt-1">Required</div>{% endcomment %}
                     </div>
                   </div>
 
