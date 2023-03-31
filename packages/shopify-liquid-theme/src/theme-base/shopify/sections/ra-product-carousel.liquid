@@ -62,29 +62,6 @@
     </div>
 
     <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
-      {% if section.settings.show_navigation %}
-        <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
-          {% render 'icon-button',
-            type: 'button',
-            style: 'tertiary',
-            size: 'sm',
-            rounded: true,
-            label: 'Go to previous slide',
-            icon: 'left-arrow',
-            class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev'
-          %}
-          {% render 'icon-button',
-            type: 'button',
-            style: 'tertiary',
-            size: 'sm',
-            rounded: true,
-            label: 'Go to next slide',
-            icon: 'right-arrow',
-            class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next'
-          %}
-        </div>
-      {% endif %}
-
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
         class="swiper--{{ section.id }}"
@@ -132,6 +109,29 @@
           </swiper-slide>
         {% endfor %}
       </swiper-container>
+
+      {% if section.settings.show_navigation %}
+        <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
+          {% render 'icon-button',
+            type: 'button',
+            style: 'tertiary',
+            size: 'sm',
+            rounded: true,
+            label: 'Go to previous slide',
+            icon: 'left-arrow',
+            class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev !pointer-events-auto'
+          %}
+          {% render 'icon-button',
+            type: 'button',
+            style: 'tertiary',
+            size: 'sm',
+            rounded: true,
+            label: 'Go to next slide',
+            icon: 'right-arrow',
+            class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next !pointer-events-auto'
+          %}
+        </div>
+      {% endif %}
     </div>
   </div>
 </section>
