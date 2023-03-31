@@ -98,10 +98,10 @@
           {%- endif -%}
         </swiper-container>
         {% if show_thumbnail_navigation %}
-          <div class="justify-center absolute -top-6 swiper-thumbs-prev hidden md:flex">
+          <div class="swiper-thumbs-prev justify-center absolute -top-6 hidden md:flex">
             {% render 'icon' with 'chevron-up', class: 'swiper-thumbs-prev' %}
           </div>
-          <div class="justify-center absolute bottom-0 swiper-thumbs-next hidden md:flex">
+          <div class="swiper-thumbs-next justify-center absolute bottom-0 hidden md:flex">
             {% render 'icon' with 'chevron-down', class: 'swiper-thumbs-next' %}
           </div>
         {% endif %}

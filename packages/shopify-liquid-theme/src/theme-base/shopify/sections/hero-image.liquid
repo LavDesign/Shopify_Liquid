@@ -30,6 +30,7 @@
     slides-per-view="1"
     space-between="0"
     loop="true"
+    auto-height="true"
   >
     {% for block in section.blocks %}
       <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
@@ -74,7 +75,7 @@
                       style: block.settings.button_1_style,
                       label: block.settings.button_1_label,
                       url: block.settings.button_1_url,
-                      class: 'min-w-[175px]'
+                      class: 'min-w-[175px] ra-link-list__cta'
                     %}
                   {% endif %}
 
@@ -84,7 +85,7 @@
                       style: block.settings.button_2_style,
                       label: block.settings.button_2_label,
                       url: block.settings.button_2_url,
-                      class: 'min-w-[175px]'
+                      class: 'min-w-[175px] ra-link-list__cta'
                     %}
                   {% endif %}
                 </div>
