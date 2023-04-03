@@ -33,7 +33,7 @@
 
   .product-carousel--{{ section.id }} .ra-heading {
     --heading-margin:var(--spacing-lg);
-    --heading-text-align:left;
+    --heading-text-align: left;
   }
 
   @media only screen and (min-width: 768px) {
@@ -68,7 +68,7 @@
     <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
-        class="swiper--{{ section.id }}"
+        class="swiper--{{ section.id }} mt-16"
         init="false"
         space-between="15"
         navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
