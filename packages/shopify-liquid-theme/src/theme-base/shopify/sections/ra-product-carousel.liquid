@@ -6,6 +6,12 @@
   if section.settings.show_pagination and section.blocks.size > 1
     assign show_pagination = true
   endif
+
+  assign show_navigation = false
+  assign mobile_slide_count = section.settings.mobile_slides_view | plus: 0
+  if section.settings.show_navigation and section.blocks.size > mobile_slide_count
+    assign show_navigation = true
+  endif
 %}
 
 {% capture swiper_init_params %}
@@ -65,7 +71,7 @@
       {% endif %}
     </div>
 
-    <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
+    <div class="ra-carousel {% if show_navigation %}ra-carousel--has-nav{% endif %}">
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
         class="swiper--{{ section.id }} mt-16"
@@ -76,6 +82,7 @@
         {% if show_pagination %}
         pagination="true"
         pagination-clickable="true"
+        pagination-el=".product-carousel--{{ section.id }} .ra-carousel__pagination"
         {% endif %}
         speed="300"
         draggable="true"
@@ -114,7 +121,7 @@
         {% endfor %}
       </swiper-container>
 
-      {% if section.settings.show_navigation %}
+      {% if show_navigation %}
         <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
           {% render 'icon-button',
             type: 'button',
@@ -135,6 +142,9 @@
             class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next !pointer-events-auto'
           %}
         </div>
+      {% endif %}
+      {% if show_pagination %}
+        <div class="ra-carousel__pagination flex justify-center gap-1 mt-4"></div>
       {% endif %}
     </div>
   </div>
