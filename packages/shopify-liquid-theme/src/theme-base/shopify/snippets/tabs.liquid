@@ -1,47 +1,47 @@
 {% comment %}
-  Props:
-    tabs:         string/html/markup tabs content - (required)
-    layout:       string [default, stack] desktop - (required)
-    center:       boolean - (optional)
-    stack_mobile: boolean stack/accordion tabs on mobile - (optional)
+Props:
+tabs:         string/html/markup tabs content - (required)
+layout:       string [default, stack] desktop - (required)
+center:       boolean - (optional)
+stack_mobile: boolean stack/accordion tabs on mobile - (optional)
 
-  Example Tabs:
-    {% capture tabs %}
-      <div class="ra-tab">
-        {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
-        <div class="ra-tab__content">
-          <div class="ra-tab__content-inner">
-            <strong>Description</strong>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </div>
-        </div>
-      </div>
-      <div class="ra-tab">
-        {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
-        <div class="ra-tab__content">
-          <div class="ra-tab__content-inner">
-            <strong>Read reviews</strong>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </div>
-        </div>
-      </div>
-      <div class="ra-tab">
-        {% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
-        <div class="ra-tab__content">
-          <div class="ra-tab__content-inner">
-            <strong>Additional Information</strong>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </div>
-        </div>
-      </div>
-    {% endcapture %}
+Example Tabs:
+{% capture tabs %}
+<div class="ra-tab">
+{% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Description', icon: 'chevron-down' %}
+<div class="ra-tab__content">
+<div class="ra-tab__content-inner">
+<strong>Description</strong>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+</div>
+</div>
+</div>
+<div class="ra-tab">
+{% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Read reviews', icon: 'chevron-down' %}
+<div class="ra-tab__content">
+<div class="ra-tab__content-inner">
+<strong>Read reviews</strong>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+</div>
+</div>
+</div>
+<div class="ra-tab">
+{% render 'button' type: 'button', style: 'secondary', class: 'ra-tab__toggle', label: 'Additional Information', icon: 'chevron-down' %}
+<div class="ra-tab__content">
+<div class="ra-tab__content-inner">
+<strong>Additional Information</strong>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+</div>
+</div>
+</div>
+{% endcapture %}
 
-    {% render 'tabs'
-      tabs: tabs,
-      layout: 'default',
-      center: false,
-      stack_mobile: true
-    %}
+{% render 'tabs'
+tabs: tabs,
+layout: 'default',
+center: false,
+stack_mobile: true
+%}
 {% endcomment %}
 
 {% capture classes %}
@@ -56,7 +56,9 @@
 {% endcapture %}
 
 {% capture attributes %}
-  {% if stack_mobile %} data-stack-mobile="true" {% endif %}
+  {% if stack_mobile %}
+    data-stack-mobile="true"
+  {% endif %}
 {% endcapture %}
 
 {% if tabs != blank %}
@@ -64,3 +66,61 @@
     {{ tabs }}
   </ra-tabs>
 {% endif %}
+
+<div class="pt-5">
+
+  <style>
+    .tab-panel:not(.hidden) {
+      display: block;
+    }
+    .closing {
+      animation-name: center-to-bottom;
+      animation-duration: 0.5s;
+    }
+    .opening {
+      animation-name: bottom-to-center;
+      animation-duration: 0.5s;
+    }
+    @keyframes center-to-bottom {
+      from {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      to {
+        transform: translate(0, -100%);
+        opacity: 0;
+      }
+    }
+    @keyframes bottom-to-center {
+      from {
+        transform: translate(0, -100%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <ra-new-tabs id="login" external-toggle="#modal-login">
+    <div class="">
+      <div class="flex text-grey-500 text-left text-lg">
+        <button class="py-2 px-5 text-left active text-grey-900" data-tab="tab1">Tab 1</button>
+        <button class="py-2 px-5 text-left" data-tab="tab2">Tab 2</button>
+      </div>
+      <div class="p-4 border border-grey-500 overflow-hidden transition-all h-full text-base font-2light" data-tab-container>
+        <div class="tab-panel" data-tab="tab1">
+          <p>
+            <span class="text-red">Tab 1</span>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in massa a mi vestibulum mattis. Donec tincidunt urna sed mauris pharetra fringilla. Nunc id dui imperdiet, viverra turpis vel, feugiat elit. Mauris commodo commodo turpis, vel dapibus velit feugiat vitae.</p>
+        </div>
+        <div class="tab-panel hidden" data-tab="tab2">
+          <p>
+            <span class="text-red">Tab 2</span>
+            Nullam in sapien euismod, sagittis nisl id, tincidunt sapien. Duis rhoncus est a sapien bibendum tempus. Etiam fermentum euismod nibh, id elementum nulla pharetra vel. Praesent auctor vel libero ac tristique. Sed in nisl lorem. Proin commodo erat ac nisi rutrum, eget lacinia lectus vestibulum.</p>
+        </div>
+      </div>
+    </div>
+  </ra-new-tabs>
+</div>
