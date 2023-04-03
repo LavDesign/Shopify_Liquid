@@ -14,7 +14,7 @@
       </div>
 
       {% paginate customer.orders by 10 %}
-        <table role="table" class="w-full border-none border-spacing-0">
+        <table role="table" class="w-full border-none border-spacing-y-0">
           <caption class="visually-hidden">
             {{ 'customer.orders.title' | t }}
           </caption>
@@ -68,7 +68,7 @@
                     headers="RowOrder ColumnDate"
                     role="cell"
                     data-label="{{ 'customer.orders.date' | t }}">
-                    {{ order.created_at | time_tag: format: 'date' }}
+                    {{ order.created_at | date: '%Y-%m-%d' }}
                   </td>
                   <td
                     class="flex-1 leading-normal p-0 text-left"
