@@ -41,6 +41,10 @@
       padding: {{ section.settings.desktop_padding }}rem 2rem;
       margin: {{ section.settings.desktop_margin }}rem 0;
     }
+
+    .product-carousel--{{ section.id }} .ra-carousel__nav--top-right {
+      --carousel-controls-bottom: calc(100% + 1rem);
+    }
   }
 {% endstyle %}
 
