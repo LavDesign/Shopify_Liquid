@@ -6,6 +6,16 @@
   if section.settings.show_pagination and section.blocks.size > 1
     assign show_pagination = true
   endif
+
+  assign mobile_slides_count = section.settings.mobile_slides_view | plus: 0 | ceil
+  assign tablet_slides_count = section.settings.tablet_slides_view | plus: 0 | ceil
+  assign desktop_slides_count = section.settings.desktop_slides_view | plus: 0 | ceil
+
+  assign show_navigation = false
+  assign mobile_slide_count = section.settings.mobile_slides_view | plus: 0
+  if section.settings.show_navigation and section.blocks.size > mobile_slide_count
+    assign show_navigation = true
+  endif
 %}
 
 {% capture swiper_init_params %}
@@ -33,7 +43,7 @@
 
   .product-carousel--{{ section.id }} .ra-heading {
     --heading-margin:var(--spacing-lg);
-    --heading-text-align:left;
+    --heading-text-align: left;
   }
 
   @media only screen and (min-width: 768px) {
@@ -41,7 +51,25 @@
       padding: {{ section.settings.desktop_padding }}rem 2rem;
       margin: {{ section.settings.desktop_margin }}rem 0;
     }
+
+    .product-carousel--{{ section.id }} .ra-carousel__nav--top-right {
+      --carousel-controls-bottom: calc(100% + 1rem);
+    }
+
+    {% if section.blocks.size <= tablet_slides_count %}
+    .product-carousel--{{ section.id }} .ra-carousel__nav {
+      display: none;
+    }
+    {% endif %}
   }
+
+  {% if section.blocks.size <= desktop_slides_count %}
+  @media only screen and (min-width: 1024px) {
+    .product-carousel--{{ section.id }} .ra-carousel__nav {
+      display: none;
+    }
+  }
+  {% endif %}
 {% endstyle %}
 
 <section class="ra-carousel-outer product-carousel product-carousel--{{ section.id }} p-4">
@@ -61,17 +89,20 @@
       {% endif %}
     </div>
 
-    <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
+    <div class="ra-carousel {% if show_navigation %}ra-carousel--has-nav{% endif %}">
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
-        class="swiper--{{ section.id }}"
+        class="swiper--{{ section.id }} mt-16"
         init="false"
         space-between="15"
+        {% if show_navigation %}
         navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
         navigation-prev-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+        {% endif %}
         {% if show_pagination %}
         pagination="true"
         pagination-clickable="true"
+        pagination-el=".product-carousel--{{ section.id }} .ra-carousel__pagination"
         {% endif %}
         speed="300"
         draggable="true"
@@ -110,7 +141,7 @@
         {% endfor %}
       </swiper-container>
 
-      {% if section.settings.show_navigation %}
+      {% if show_navigation %}
         <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
           {% render 'icon-button',
             type: 'button',
@@ -131,6 +162,9 @@
             class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next !pointer-events-auto'
           %}
         </div>
+      {% endif %}
+      {% if show_pagination %}
+        <div class="ra-carousel__pagination flex justify-center gap-1 mt-4"></div>
       {% endif %}
     </div>
   </div>

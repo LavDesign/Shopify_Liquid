@@ -6,6 +6,15 @@
   if section.settings.show_pagination and section.blocks.size > 1
     assign show_pagination = true
   endif
+
+  assign mobile_slides_count = section.settings.mobile_slides_view | plus: 0 | ceil
+  assign tablet_slides_count = section.settings.tablet_slides_view | plus: 0 | ceil
+  assign desktop_slides_count = section.settings.desktop_slides_view | plus: 0 | ceil
+
+  assign show_navigation = false
+  if section.settings.show_navigation and section.blocks.size > mobile_slides_count
+    assign show_navigation = true
+  endif
 %}
 
 {% capture swiper_init_params %}
@@ -27,14 +36,13 @@
   .content-carousel--{{ section.id }} {
     --component-bg-color: var({{ section.settings.bg_color }});
     --component-fg-color: var({{ section.settings.fg_color }});
-
     padding: {{ section.settings.mobile_padding_vertical }}rem {{ section.settings.mobile_padding_horizontal }}rem;
     margin: {{ section.settings.mobile_margin }}rem 0;
   }
 
   .content-carousel--{{ section.id }} .ra-heading {
     --heading-margin:var(--spacing-lg);
-    --heading-text-align:left;
+    --heading-text-align: left;
   }
 
   @media only screen and (min-width: 768px) {
@@ -42,7 +50,21 @@
       padding: {{ section.settings.desktop_padding }}rem 2rem;
       margin: {{ section.settings.desktop_margin }}rem 0;
     }
+
+    {% if section.blocks.size <= tablet_slides_count %}
+    .content-carousel--{{ section.id }} .ra-carousel__nav {
+      display: none;
+    }
+    {% endif %}
   }
+
+  {% if section.blocks.size <= desktop_slides_count %}
+  @media only screen and (min-width: 1024px) {
+    .content-carousel--{{ section.id }} .ra-carousel__nav {
+      display: none;
+    }
+  }
+  {% endif %}
 {% endstyle %}
 
 <section class="ra-carousel-outer content-carousel content-carousel--{{ section.id }} p-4">
@@ -59,18 +81,20 @@
     {% endif %}
   </div>
 
-  <div class="ra-carousel {% if section.settings.show_navigation %}ra-carousel--has-nav{% endif %}">
-
+  <div class="ra-carousel {% if show_navigation %}ra-carousel--has-nav{% endif %}">
     <!-- prettier-ignore-attribute (data-init-params) -->
     <swiper-container
       class="swiper--{{ section.id }}"
       init="false"
       space-between="16"
+      {% if show_navigation %}
       navigation-next-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
       navigation-prev-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+      {% endif %}
       {% if show_pagination %}
       pagination="true"
       pagination-clickable="true"
+      pagination-el=".content-carousel--{{ section.id }} .ra-carousel__pagination"
       {% endif %}
       speed="300"
       draggable="true"
@@ -104,7 +128,7 @@
         </swiper-slide>
       {% endfor %}
     </swiper-container>
-    {% if section.settings.show_navigation %}
+    {% if show_navigation %}
       <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
         {% render 'icon-button',
           type: 'button',
@@ -125,6 +149,9 @@
           class: 'ra-carousel__nav-cta ra-carousel__nav-cta--next !pointer-events-auto'
         %}
       </div>
+    {% endif %}
+    {% if show_pagination %}
+      <div class="ra-carousel__pagination flex justify-center gap-1 mt-4"></div>
     {% endif %}
   </div>
 </section>
