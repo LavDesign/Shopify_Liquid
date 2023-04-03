@@ -7,7 +7,6 @@
     assign show_pagination = true
   endif
 
-
   assign mobile_slides_count = section.settings.mobile_slides_view | plus: 0 | ceil
   assign tablet_slides_count = section.settings.tablet_slides_view | plus: 0 | ceil
   assign desktop_slides_count = section.settings.desktop_slides_view | plus: 0 | ceil
@@ -83,14 +82,15 @@
   </div>
 
   <div class="ra-carousel {% if show_navigation %}ra-carousel--has-nav{% endif %}">
-
     <!-- prettier-ignore-attribute (data-init-params) -->
     <swiper-container
       class="swiper--{{ section.id }}"
       init="false"
       space-between="16"
+      {% if show_navigation %}
       navigation-next-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
       navigation-prev-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+      {% endif %}
       {% if show_pagination %}
       pagination="true"
       pagination-clickable="true"

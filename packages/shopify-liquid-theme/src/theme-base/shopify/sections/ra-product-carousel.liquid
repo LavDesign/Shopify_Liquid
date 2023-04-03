@@ -95,8 +95,10 @@
         class="swiper--{{ section.id }} mt-16"
         init="false"
         space-between="15"
+        {% if show_navigation %}
         navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
         navigation-prev-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+        {% endif %}
         {% if show_pagination %}
         pagination="true"
         pagination-clickable="true"
