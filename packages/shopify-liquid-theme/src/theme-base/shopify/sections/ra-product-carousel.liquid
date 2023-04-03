@@ -7,6 +7,10 @@
     assign show_pagination = true
   endif
 
+  assign mobile_slides_count = section.settings.mobile_slides_view | plus: 0 | ceil
+  assign tablet_slides_count = section.settings.tablet_slides_view | plus: 0 | ceil
+  assign desktop_slides_count = section.settings.desktop_slides_view | plus: 0 | ceil
+
   assign show_navigation = false
   assign mobile_slide_count = section.settings.mobile_slides_view | plus: 0
   if section.settings.show_navigation and section.blocks.size > mobile_slide_count
@@ -51,7 +55,21 @@
     .product-carousel--{{ section.id }} .ra-carousel__nav--top-right {
       --carousel-controls-bottom: calc(100% + 1rem);
     }
+
+    {% if section.blocks.size <= tablet_slides_count %}
+    .product-carousel--{{ section.id }} .ra-carousel__nav {
+      display: none;
+    }
+    {% endif %}
   }
+
+  {% if section.blocks.size <= desktop_slides_count %}
+  @media only screen and (min-width: 1024px) {
+    .product-carousel--{{ section.id }} .ra-carousel__nav {
+      display: none;
+    }
+  }
+  {% endif %}
 {% endstyle %}
 
 <section class="ra-carousel-outer product-carousel product-carousel--{{ section.id }} p-4">
