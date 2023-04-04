@@ -47,11 +47,11 @@
 <section class="ra-carousel-outer product-carousel product-carousel--{{ section.id }} p-4">
   <div class="ra-carousel-wrapper">
     <div class="ra-heading ra-carousel__details">
-      {% if section.settings.section_title != blank %}
+      {% if section.settings.title != blank %}
         <{{ title_level }}
           class="ra-title ra-heading__title {{ title_as }}"
         >
-          <div>{{- section.settings.section_title -}}</div>
+          <div>{{- section.settings.title -}}</div>
         </{{ title_level }}>
       {% endif %}
       {% if section.settings.description != blank %}
