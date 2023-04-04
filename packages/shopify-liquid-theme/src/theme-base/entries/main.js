@@ -10,7 +10,6 @@ import "swiper/css/bundle";
 
 import components from "../vue/components/index.js";
 import "../js/custom-elements/custom-elements.js";
-import "../js/custom-elements/ra-dialog.js";
 import "../js/custom-elements/scrollable.js";
 
 import "tailwindcss/base.css";

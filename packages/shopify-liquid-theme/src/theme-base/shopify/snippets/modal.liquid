@@ -22,29 +22,31 @@ Example:
 {% endcomment %}
 
 {% if id != blank %}
-  <dialog
-    data-dialog-id="{{ id }}"
-    data-modal-hide-overflow="true"
-    class="{{ classes }}">
-    {% if overlay %}
-      <div class="ra-overlay"></div>
-    {% endif %}
-    <div class="ra-modal__content max-w-full">
-      <div class="absolute top-2.5 md:top-4 right-2.5 md:right-4">
-        <form method="dialog" class="close-modal">
-          {% render 'icon-button'
-           , type: 'button',
-           value: 'close',
-           style: 'tertiary',
-           size: 'sm',
-           label: 'close modal',
-           icon: 'close',
-           rounded: true %}
-        </form>
-      </div>
-      {% if content != blank %}
-        {{ content }}
+  <ra-modal dialog-id="{{id}}">
+    <dialog
+      data-dialog-id="{{ id }}"
+      data-modal-hide-overflow="true"
+      class="{{ classes }}">
+      {% if overlay %}
+        <div class="ra-overlay"></div>
       {% endif %}
-    </div>
-  </dialog>
+      <div class="ra-modal__content max-w-full">
+        <div class="absolute top-2.5 md:top-4 right-2.5 md:right-4">
+          <form method="dialog" class="close-modal">
+            {% render 'icon-button'
+             , type: 'button',
+             value: 'close',
+             style: 'tertiary',
+             size: 'sm',
+             label: 'close modal',
+             icon: 'close',
+             rounded: true %}
+          </form>
+        </div>
+        {% if content != blank %}
+          {{ content }}
+        {% endif %}
+      </div>
+    </dialog>
+  </ra-modal>
 {% endif %}
