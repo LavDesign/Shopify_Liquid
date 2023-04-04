@@ -44,7 +44,7 @@
     "help": "if ! command -v jq &> /dev/null; then cat ./package.json; exit 0; fi && cat ./package.json | jq .scripts"
   },
   "dependencies": {
-    "@bva/ui-shared": "^1.4.6",
+    "@bva/ui-shared": "^1.4.9",
     "@bva/ui-vue": "^1.4.6",
     "axios": "^1.3.2",
     "install": "^0.13.0",
