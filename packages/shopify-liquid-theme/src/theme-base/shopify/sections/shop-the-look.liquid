@@ -1,7 +1,7 @@
 {% liquid
   assign layout = section.settings.layout
   assign title = section.settings.title
-  assign title_as = section.settings.title_style
+  assign title_level = section.settings.title_level
   assign body = section.settings.body
   assign button_url = section.settings.button_url
   assign button_label = section.settings.button_label
@@ -50,7 +50,7 @@
       <div class="w-full md:w-2/3 text-center">
         {% if title != blank %}
           <div class="mb-4">
-            <{{ title_as }} class="{{ title_as }} ra-shop-the-look__title">{{ title }}</{{ title_as }}>
+            <{{ title_level }} class="{{ section.settings.title_style }} ra-shop-the-look__title">{{ title }}</{{ title_level }}>
           </div>
         {% endif %}
 
@@ -259,15 +259,24 @@
     },
     {
       "type": "select",
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h2"
+    },
+    {
+      "type": "select",
       "id": "title_style",
-      "label": "Title As",
+      "label": "Title Style",
+      "info": "Choose the styling of the header",
       "options": <%- uikit.headingStyles -%>,
       "default": "h3"
     },
     {
       "type": "richtext",
-      "id": "body",
-      "label": "Section Body Copy"
+      "id": "description",
+      "label": "Description"
     },
     {
       "type": "header",
@@ -277,7 +286,7 @@
       "type": "text",
       "id": "button_label",
       "label": "CTA Label",
-      "default": "learn more"
+      "default": "Learn More"
     },
     {
       "type": "url",

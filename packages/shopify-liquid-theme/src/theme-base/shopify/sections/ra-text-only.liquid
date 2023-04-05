@@ -29,11 +29,11 @@
     {%- if section.settings.bg_color_md != blank -%}
     --component-bg-color-md: {{- section.settings.bg_color_md -}};
     {%- endif -%}
-    {%- if section.settings.fg_color != blank -%}
-    --component-fg-color: {{- section.settings.fg_color -}};
+    {%- if section.settings.text_color_mobile != blank -%}
+    --component-fg-color: {{- section.settings.text_color_mobile -}};
     {%- endif -%}
-    {%- if section.settings.fg_color_md != blank -%}
-    --component-fg-color-md: {{- section.settings.fg_color_md -}};
+    {%- if section.settings.text_color_desktop != blank -%}
+    --component-fg-color-md: {{- section.settings.text_color_desktop -}};
     {%- endif -%}
   }
 </style>
@@ -41,14 +41,12 @@
 <article class="ra-text-only-banner set--spacing-top-{{ section.settings.spacing_top }} set--spacing-bottom-{{ section.settings.spacing_bottom }} gutter--{{ section.settings.spacing_edge }}">
   <div class="ra-text-only-banner__details max-width--{{ section.settings.max_width }}">
     <div class="ra-text-only-banner__copy set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
-      {% if section.settings.subtitle != blank %}
-        <div class="ra-text-only-banner__subtitle">{{- section.settings.subtitle -}}</div>
+      {% if section.settings.eyebrow_text != blank %}
+        <div class="ra-text-only-banner__subtitle">{{- section.settings.eyebrow_text -}}</div>
       {% endif %}
 
       {% if section.settings.title != blank %}
-        <{{ title_level }}
-          class="ra-title ra-text-only-banner__title {{ section.settings.title_as }}"
-        >
+        <{{ title_level }} class="ra-title ra-text-only-banner__title {{ section.settings.title_style }}">
           {{ section.settings.title }}
         </{{ title_level }}>
       {% endif %}
@@ -95,79 +93,31 @@
     },
     {
       "type": "text",
-      "id": "subtitle",
-      "label": "Section Subtitle"
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Eyebrow Text"
     },
     {
       "type": "text",
       "id": "title",
-      "label": "Section Title"
-    },
-    {
-      "type": "select",
-      "id": "title_as",
-      "label": "Title As",
-      "info": "Choose which heading to (style) the title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "h5",
-          "label": "H5"
-        },
-        {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
-      "default": "h2"
+      "label": "Section Title",
+      "default": "Title"
     },
     {
       "type": "select",
       "id": "title_level",
       "label": "Title Level",
       "info": "Choose the semantic H-Tag for this title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "h5",
-          "label": "H5"
-        },
-        {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
+      "options": <%- uikit.headingStyles -%>,
       "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title Style",
+      "info": "Choose the styling of the header",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h3"
     },
     {
       "type": "richtext",
@@ -285,13 +235,13 @@
     },
     {
       "type": "color",
-      "id": "fg_color",
-      "label": "Mobile Text Color"
+      "id": "text_color_mobile",
+      "label": "Text Color (mobile)"
     },
     {
       "type": "color",
-      "id": "fg_color_md",
-      "label": "Desktop Text Color",
+      "id": "text_color_desktop",
+      "label": "Text Color (desktop)",
       "info": "Set text color for larger screen sizes (if different from mobile)"
     },
     {

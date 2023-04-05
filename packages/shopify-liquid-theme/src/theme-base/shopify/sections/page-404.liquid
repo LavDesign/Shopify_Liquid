@@ -23,13 +23,13 @@
       <h1 class="h1 mb-2 md:mb-4 text-center">{{ section.settings.title }}</h1>
     {% endif %}
 
-    {% if section.settings.body_copy != blank %}
-      <div class="ra-wysiwyg leading-5 text-center">{{ section.settings.body_copy }}</div>
+    {% if section.settings.description != blank %}
+      <div class="ra-wysiwyg leading-5 text-center">{{ section.settings.description }}</div>
     {% endif %}
 
     {% if section.settings.button_label != blank and section.settings.button_url != blank %}
       <div class="text-center mt-5 md:mt-8">
-        {% render 'button' 
+        {% render 'button'
           type: 'a',
           style: section.settings.button_style,
           label: section.settings.button_label,
@@ -64,8 +64,8 @@
     },
     {
       "type": "richtext",
-      "id": "body_copy",
-      "label": "Body Copy",
+      "id": "description",
+      "label": "Description",
       "default": "<p>Sorry we couldn’t find that page! Click here to navigate back to homepage/keep shopping OR see our favorites below.</p>"
     },
     {

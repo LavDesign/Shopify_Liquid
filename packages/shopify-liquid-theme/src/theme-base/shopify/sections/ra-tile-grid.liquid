@@ -42,9 +42,9 @@
               {% endif %}
               <div class="ra-content-tile__details component-details">
                 <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
-                  {% if block.settings.subtitle != blank %}
+                  {% if block.settings.eyebrow_text != blank %}
                     <div class="ra-content-tile__subtitle">
-                      {{- block.settings.subtitle -}}
+                      {{- block.settings.eyebrow_text -}}
                     </div>
                   {% endif %}
                   {% if block.settings.title != blank %}
@@ -78,9 +78,9 @@
                 {% endif %}
                 <div class="ra-content-tile__details component-details">
                   <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
-                    {% if block.settings.subtitle_2 != blank %}
+                    {% if block.settings.eyebrow_text_2 != blank %}
                       <div class="ra-content-tile__subtitle">
-                        {{- block.settings.subtitle_2 -}}
+                        {{- block.settings.eyebrow_text_2 -}}
                       </div>
                     {% endif %}
                     {% if block.settings.title_2 != blank %}
@@ -117,9 +117,9 @@
           {% endif %}
           <div class="ra-content-tile__details component-details">
             <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
-              {% if block.settings.subtitle != blank %}
+              {% if block.settings.eyebrow_text != blank %}
                 <div class="ra-content-tile__subtitle">
-                  {{- block.settings.subtitle -}}
+                  {{- block.settings.eyebrow_text -}}
                 </div>
               {% endif %}
               {% if block.settings.title != blank %}
@@ -174,8 +174,8 @@
         },
         {
           "type": "text",
-          "id": "subtitle",
-          "label": "Grid Item Sub-title"
+          "id": "eyebrow_text",
+          "label": "Grid Item Eyebrow Text"
         },
         {
           "type": "text",
@@ -205,8 +205,8 @@
         },
         {
           "type": "text",
-          "id": "subtitle_2",
-          "label": "Grid Item Sub-title"
+          "id": "eyebrow_text_2",
+          "label": "Grid Item Eyebrow Text"
         },
         {
           "type": "text",

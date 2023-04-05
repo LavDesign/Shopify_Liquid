@@ -1,5 +1,4 @@
 {% liquid
-  assign title_as = section.settings.title_as
   assign title_level = section.settings.title_level
 
   assign show_pagination = false
@@ -36,7 +35,7 @@
 {% style %}
   .product-carousel--{{ section.id }} {
     --component-bg-color: var({{ section.settings.bg_color }});
-    --component-fg-color: var({{ section.settings.fg_color }});
+    --component-fg-color: var({{ section.settings.text_color }});
     padding: {{ section.settings.mobile_padding_vertical }}rem {{ section.settings.mobile_padding_horizontal }}rem;
     margin: {{ section.settings.mobile_margin }}rem 0;
   }
@@ -77,7 +76,7 @@
     <div class="ra-heading ra-carousel__details">
       {% if section.settings.title != blank %}
         <{{ title_level }}
-          class="ra-title ra-heading__title {{ title_as }}"
+          class="ra-title ra-heading__title {{ section.settings.title_style }}"
         >
           <div>{{- section.settings.title -}}</div>
         </{{ title_level }}>
@@ -130,7 +129,7 @@
               product: block.settings.product,
               atc_label: block.settings.cta_label,
               atc_style: block.settings.cta_style,
-              font_color: fg_color
+              font_color: text_color
             %}
           </swiper-slide>
         {% endfor %}
@@ -185,78 +184,34 @@
     },
     {
       "type": "select",
-      "id": "title_as",
-      "label": "Title As",
-      "info": "Choose which heading to (style) the title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        }, {
-          "value": "h5",
-          "label": "H5"
-        }, {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
-      "default": "h4"
-    },
-    {
-      "type": "select",
       "id": "title_level",
       "label": "Title Level",
       "info": "Choose the semantic H-Tag for this title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        }, {
-          "value": "h5",
-          "label": "H5"
-        }, {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
+      "options": <%- uikit.headingStyles -%>,
       "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title Style",
+      "info": "Choose the styling of the header",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h3"
     },
     {
       "type": "select",
       "id": "bg_color",
       "label": "Background Color",
-      "options": <%- uikit.colorsAll -%>,
+      "info": "Set the background color for all screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-util-white"
     },
     {
       "type": "select",
-      "id": "fg_color",
+      "id": "text_color",
       "label": "Text Color",
-      "options": <%- uikit.colorsAll -%>,
+      "info": "Set the text color for all screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-primary-900"
     },
     {

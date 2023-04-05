@@ -30,12 +30,10 @@
 
 <div class="w-full">
 	<article class="ra-hero set--details-overlay{% if video_source == 'file' %} set--aspect-ratio-main {% endif %}{% if section.settings.stack_mobile %} ra-hero--stack-mobile{% endif %}">
-
     <div class="ra-hero__details component-details--set-order">
       <div class="ra-hero__copy {{ section.settings.text_alignment }}">
-
-        {% if section.settings.sub-heading != blank %}
-          <div class="ra-hero__subtitle">{{ section.settings.sub-heading }}</div>
+        {% if section.settings.eyebrow_text != blank %}
+          <div class="ra-hero__subtitle">{{ section.settings.eyebrow_text }}</div>
         {% endif %}
 
         {% if section.settings.title != blank %}
@@ -44,9 +42,9 @@
           </{{ section.settings.title_style }}>
         {% endif %}
 
-        {% if section.settings.body != blank %}
+        {% if section.settings.description != blank %}
           <div class="ra-hero__description">
-            {{ section.settings.body }}
+            {{ section.settings.description }}
           </div>
         {% endif %}
 
@@ -151,22 +149,31 @@
     },
     {
       "type": "text",
-      "id": "sub-heading",
-      "label": "Section Sub-Title",
-      "default": "SUB-HEADING"
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Eyebrow Text"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "This is a title"
+      "default": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h2"
     },
     {
       "type": "select",
       "id": "title_style",
-      "label": "Title As",
+      "label": "Title Style",
+      "info": "Choose the styling of the header",
       "options": <%- uikit.headingStyles -%>,
-      "default": "h2"
+      "default": "h3"
     },
     {
       "type": "select",
@@ -177,8 +184,8 @@
     },
     {
       "type": "richtext",
-      "id": "body",
-      "label": "Section Body Copy",
+      "id": "description",
+      "label": "Description",
       "default": "<p>I'm not thinking about anything when I'm climbing, which is part of the appeal. I'm focused on executing what's in front of me.</p>"
     },
     {
@@ -214,7 +221,7 @@
       "type": "text",
       "id": "button_1_label",
       "label": "CTA 1 Text",
-      "default": "learn more"
+      "default": "Learn More"
     },
     {
       "type": "url",
@@ -236,7 +243,7 @@
       "type": "text",
       "id": "button_2_label",
       "label": "CTA Text",
-      "default": "learn more"
+      "default": "Learn More"
     },
     {
       "type": "url",
