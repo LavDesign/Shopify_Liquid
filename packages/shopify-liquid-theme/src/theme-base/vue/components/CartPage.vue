@@ -28,7 +28,7 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { useCartStore } from "../stores/cart";
 import { CartProducts, CartSidebar, EmptyCart } from "./CartComponents";
 
@@ -45,7 +45,7 @@ const cartIsEmpty = computed(() => {
 
 const cartReady = computed(() => Object.keys(cart).length > 0);
 
-const props = defineProps({
+defineProps({
   settings: {
     type: Object,
     default: () => {},
