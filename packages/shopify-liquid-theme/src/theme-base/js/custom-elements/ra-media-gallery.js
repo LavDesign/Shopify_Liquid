@@ -66,19 +66,22 @@ export default class RaMediaGallery extends HTMLElement {
       document.body.classList.remove("fixed", "w-full");
     });
 
-    this.primarySwiper.addEventListener("slidechange", () => {
-      this.pauseGalleryVideos();
-    });
-
-    this.lightBoxSwiper.addEventListener("slidechange", () => {
-      this.pauseGalleryVideos();
-    });
-
-    this.primarySwiper.addEventListener("beforeinit", () => {
-      this.primarySwiper.querySelectorAll("swiper-slide").forEach((slide) => {
-        slide.classList.remove("hidden");
+    this.primarySwiper &&
+      this.primarySwiper.addEventListener("slidechange", () => {
+        this.pauseGalleryVideos();
       });
-    });
+
+    this.lightBoxSwiper &&
+      this.lightBoxSwiper.addEventListener("slidechange", () => {
+        this.pauseGalleryVideos();
+      });
+
+    this.primarySwiper &&
+      this.primarySwiper.addEventListener("beforeinit", () => {
+        this.primarySwiper.querySelectorAll("swiper-slide").forEach((slide) => {
+          slide.classList.remove("hidden");
+        });
+      });
 
     this.loadVideoTriggers.forEach((trigger) => {
       const videoContent = trigger.nextElementSibling.innerHTML;
