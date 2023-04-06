@@ -120,9 +120,6 @@
             assign _product = block.settings.product
             assign cta_label = block.settings.cta_label
             assign cta_style = block.settings.cta_style
-
-            assign show_wishlist = block.settings.show_wishlist
-            assign wishlist_style = block.settings.wishlist_style
           %}
         {% endfor %}
 
@@ -133,8 +130,6 @@
               product: block.settings.product,
               atc_label: block.settings.cta_label,
               atc_style: block.settings.cta_style,
-              wishlist: block.settings.show_wishlist,
-              wishlist_style: block.settings.wishlist_style,
               font_color: fg_color
             %}
           </swiper-slide>
@@ -416,33 +411,6 @@
           "id": "cta_style",
           "label": "CTA Style",
           "info": "Choose a button style for CTA",
-          "options": [
-            {
-              "value": "primary",
-              "label": "Primary"
-            },
-            {
-              "value": "secondary",
-              "label": "Secondary"
-            },
-            {
-              "value": "tertiary",
-              "label": "Tertiary"
-            }
-          ],
-          "default": "tertiary"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_wishlist",
-          "label": "Show Wishlist",
-          "default": false
-        },
-        {
-          "type": "select",
-          "id": "wishlist_style",
-          "label": "Wishlist Style",
-          "info": "Choose a button style for wishlist",
           "options": [
             {
               "value": "primary",

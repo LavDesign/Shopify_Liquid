@@ -40,7 +40,7 @@
 
 <div class="relative">
   <swiper-container
-    class="ra-hero set--details-overlay overflow-hidden set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{%- endif -%}"
+    class="ra-hero overflow-hidden set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}set--details-after-sm set--details-overlay-md{% else %}set--details-overlay{% endif %}"
     {% if section.settings.autoplay %}
       autoplay-delay="{{ section.settings.delay | times: 1000 }}"
     {% endif %}
