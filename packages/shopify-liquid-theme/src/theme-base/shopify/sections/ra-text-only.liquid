@@ -21,22 +21,14 @@
   endif
 %}
 
-<style>
+{% style %}
   #shopify-section-{{- section.id -}} {
-    {%- if section.settings.bg_color != blank -%}
-    --component-bg-color: {{- section.settings.bg_color -}};
-    {%- endif -%}
-    {%- if section.settings.bg_color_md != blank -%}
-    --component-bg-color-md: {{- section.settings.bg_color_md -}};
-    {%- endif -%}
-    {%- if section.settings.text_color_mobile != blank -%}
-    --component-fg-color: {{- section.settings.text_color_mobile -}};
-    {%- endif -%}
-    {%- if section.settings.text_color_desktop != blank -%}
-    --component-fg-color-md: {{- section.settings.text_color_desktop -}};
-    {%- endif -%}
+  --component-bg-color: var({{- section.settings.bg_color -}});
+  --component-bg-color-md: var({{- section.settings.bg_color_md -}});
+  --component-fg-color: var({{- section.settings.text_color_mobile -}});
+  --component-fg-color-md: var({{- section.settings.text_color_desktop -}});
   }
-</style>
+{% endstyle %}
 
 <article class="ra-text-only-banner set--spacing-top-{{ section.settings.spacing_top }} set--spacing-bottom-{{ section.settings.spacing_bottom }} gutter--{{ section.settings.spacing_edge }}">
   <div class="ra-text-only-banner__details max-width--{{ section.settings.max_width }}">
@@ -223,27 +215,37 @@
       "content": "Background Color"
     },
     {
-      "type": "color",
+      "type": "select",
       "id": "bg_color",
-      "label": "Mobile Background Color"
+      "label": "Mobile Background Color",
+      "info": "Set the background color for mobile screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-util-white"
     },
     {
-      "type": "color",
+      "type": "select",
       "id": "bg_color_md",
       "label": "Desktop Background Color",
-      "info": "Set background color for larger screen sizes (if different from mobile)"
+      "info": "Set the background color for larger screen sizes (if different from mobile)",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-util-white"
     },
     {
-      "type": "color",
+      "type": "select",
       "id": "text_color_mobile",
-      "label": "Text Color (mobile)"
+      "label": "Text Color (mobile)",
+      "info": "Set the text color for mobile screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-grey-900"
     },
     {
-      "type": "color",
+      "type": "select",
       "id": "text_color_desktop",
       "label": "Text Color (desktop)",
-      "info": "Set text color for larger screen sizes (if different from mobile)"
-    },
+      "info": "Set the text color for larger screen sizes (if different from mobile)",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-grey-900"
+    }
     {
       "type": "header",
       "content": "Content Spacing"
