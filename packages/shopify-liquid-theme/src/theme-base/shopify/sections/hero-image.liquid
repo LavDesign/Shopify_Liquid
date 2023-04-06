@@ -5,13 +5,13 @@
   {%- for block in section.blocks -%}
     {%- capture mobile_block_styles -%}
     #block-{{- section.id -}}-{{- block.id -}} {
-      background-color: {{- block.settings.bg_color -}};
-      color: {{- block.settings.text_color_mobile -}};
+      background-color: var({{- block.settings.bg_color -}});
+      color: var({{- block.settings.text_color_mobile -}});
     }
     {%- endcapture -%}
     {%- capture desktop_block_styles -%}
     #block-{{- section.id -}}-{{- block.id -}} {
-      color: {{- block.settings.text_color_desktop -}}
+      color: var({{- block.settings.text_color_desktop -}});
     }
     {%- endcapture -%}
 
@@ -27,7 +27,7 @@
   @media (min-width: 768px) {
     #shopify-section-{{- section.id }} .ra-hero__details {
       {%- if block.settings.text_color_desktop != blank -%}
-      color: {{- block.settings.text_color_desktop | default: "inherit" -}};
+      color: var({{- block.settings.text_color_desktop | default: "inherit" -}});
       {%- endif -%}
     }
     {{- desktop_styles -}}
@@ -74,8 +74,8 @@
         </div>
         <div class="ra-hero__details component-details--set-order h-auto {% if section.settings.stack_mobile %}!relative md:!absolute{% endif %}">
           <div class="ra-hero__copy {{ block.settings.text_alignment }}">
-            {% if block.settings.subtitle != blank %}
-              <div class="ra-hero__subtitle">{{ block.settings.subtitle }}</div>
+            {% if block.settings.eyebrow_text != blank %}
+              <div class="ra-hero__subtitle">{{ block.settings.eyebrow_text }}</div>
             {% endif %}
 
             {% if block.settings.title != blank %}
@@ -86,9 +86,9 @@
               </{{ block.settings.title_level }}>
             {% endif %}
 
-            {% if block.settings.body != blank %}
-              <div class="ra-hero__description">
-                {{ block.settings.body }}
+            {% if block.settings.description != blank %}
+              <div class="ra-hero__description rte">
+                {{ block.settings.description }}
               </div>
             {% endif %}
 
@@ -146,21 +146,21 @@
       "settings": [
         {
           "type": "text",
-          "id": "subtitle",
-          "label": "Section Sub Title",
-          "default": "SUB-HEADING"
+          "id": "eyebrow_text",
+          "label": "Eyebrow Text",
+          "default": "Eyebrow Text"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Section Title",
+          "label": "Title",
           "default": "This is a title"
         },
         {
           "type": "select",
           "id": "title_level",
           "label": "Title Level",
-          "info": "Choose the semantic H-Tag for this title",
+          "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
           "options": <%- uikit.headingStyles -%>,
           "default": "h2"
         },
@@ -168,9 +168,9 @@
           "type": "select",
           "id": "title_style",
           "label": "Title Style",
-          "info": "Choose which heading to (style) the title",
+          "info": "Choose the styling of the header",
           "options": <%- uikit.headingStyles -%>,
-          "default": "h2"
+          "default": "h3"
         },
         {
           "type": "select",
@@ -181,8 +181,8 @@
         },
         {
           "type": "richtext",
-          "id": "body",
-          "label": "Section Body Copy"
+          "id": "description",
+          "label": "Description"
         },
         {
           "type": "header",
@@ -208,21 +208,22 @@
           "type": "select",
           "id": "text_color_desktop",
           "label": "Text Color (desktop)",
-          "options": <%- uikit.colorsAll -%>,
+          "options": <%- uikit.colorsSchemaPicker -%>,
           "default": "--color-primary-900"
         },
         {
           "type": "select",
           "id": "text_color_mobile",
           "label": "Text Color (mobile)",
-          "options": <%- uikit.colorsAll -%>,
+          "options": <%- uikit.colorsSchemaPicker -%>,
           "default": "--color-primary-900"
         },
         {
           "type": "select",
           "id": "bg_color",
           "label": "Background Color",
-          "options": <%- uikit.colorsAll -%>,
+          "info": "Set the background color for all screen sizes",
+          "options": <%- uikit.colorsSchemaPicker -%>,
           "default": "--color-primary-900"
         },
         {
@@ -232,8 +233,8 @@
         {
           "type": "text",
           "id": "button_1_label",
-          "label": "CTA 1 Label",
-          "default": "learn more"
+          "label": "CTA 1 Text",
+          "default": "Learn More"
         },
         {
           "type": "url",
@@ -254,8 +255,8 @@
         {
           "type": "text",
           "id": "button_2_label",
-          "label": "CTA 2 Label",
-          "default": "learn more"
+          "label": "CTA 2 Text",
+          "default": "Learn More"
         },
         {
           "type": "url",

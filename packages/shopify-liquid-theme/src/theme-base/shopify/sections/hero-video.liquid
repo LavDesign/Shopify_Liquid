@@ -30,12 +30,10 @@
 
 <div class="w-full">
 	<article class="ra-hero set--details-overlay{% if video_source == 'file' %} set--aspect-ratio-main {% endif %}{% if section.settings.stack_mobile %} ra-hero--stack-mobile{% endif %}">
-
     <div class="ra-hero__details component-details--set-order">
       <div class="ra-hero__copy {{ section.settings.text_alignment }}">
-
-        {% if section.settings.sub-heading != blank %}
-          <div class="ra-hero__subtitle">{{ section.settings.sub-heading }}</div>
+        {% if section.settings.eyebrow_text != blank %}
+          <div class="ra-hero__subtitle">{{ section.settings.eyebrow_text }}</div>
         {% endif %}
 
         {% if section.settings.title != blank %}
@@ -44,9 +42,9 @@
           </{{ section.settings.title_style }}>
         {% endif %}
 
-        {% if section.settings.body != blank %}
-          <div class="ra-hero__description">
-            {{ section.settings.body }}
+        {% if section.settings.description != blank %}
+          <div class="ra-hero__description rte">
+            {{ section.settings.description }}
           </div>
         {% endif %}
 
@@ -101,7 +99,7 @@
     {
       "type": "checkbox",
       "id": "stack_mobile",
-      "label": "Stack on mobile",
+      "label": "Stack On Mobile",
       "default": true
     },
     {
@@ -112,7 +110,7 @@
     {
       "type": "video_url",
       "id": "background_video_embed",
-      "label": "Video upload (embed option)",
+      "label": "Video Upload (embed option)",
       "info": "Paste link for Youtube or Vimeo",
       "accept": [
         "youtube",
@@ -122,13 +120,13 @@
     {
       "type": "video",
       "id": "background_video_file",
-      "label": "Video upload (file upload)",
+      "label": "Video Upload (file upload)",
       "info": "Upload as MP4"
     },
     {
       "type": "select",
       "id": "video_aspect_ratio",
-      "label": "Video aspect ratio",
+      "label": "Video Aspect Ratio",
       "options": [
         {
           "value": "embed--21x9",
@@ -151,34 +149,43 @@
     },
     {
       "type": "text",
-      "id": "sub-heading",
-      "label": "Section Sub-Title",
-      "default": "SUB-HEADING"
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "Eyebrow Text"
     },
     {
       "type": "text",
       "id": "title",
-      "label": "Section Title",
-      "default": "This is a title"
+      "label": "Title",
+      "default": "Title"
     },
     {
       "type": "select",
-      "id": "title_style",
-      "label": "Title As",
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
       "options": <%- uikit.headingStyles -%>,
       "default": "h2"
     },
     {
       "type": "select",
+      "id": "title_style",
+      "label": "Title Style",
+      "info": "Choose the styling of the header",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h3"
+    },
+    {
+      "type": "select",
       "id": "text_alignment",
-      "label": "Text alignment",
+      "label": "Text Alignment",
       "options": <%- uikit.textAligments -%>,
       "default": "set--v-align-middle set--h-align-center"
     },
     {
       "type": "richtext",
-      "id": "body",
-      "label": "Section Body Copy",
+      "id": "description",
+      "label": "Description",
       "default": "<p>I'm not thinking about anything when I'm climbing, which is part of the appeal. I'm focused on executing what's in front of me.</p>"
     },
     {
@@ -188,21 +195,21 @@
     {
       "type": "select",
       "id": "text_color_desktop",
-      "label": "Text color (desktop)",
+      "label": "Text Color (desktop)",
       "options": <%- uikit.colorsAll -%>,
       "default": "--color-primary-900"
     },
     {
       "type": "select",
       "id": "text_color_mobile",
-      "label": "Text color (mobile)",
+      "label": "Text Color (mobile)",
       "options": <%- uikit.colorsAll -%>,
       "default": "--color-primary-900"
     },
     {
       "type": "select",
       "id": "bg_color",
-      "label": "Background color",
+      "label": "Background Color",
       "options": <%- uikit.colorsAll -%>,
       "default": "--color-primary-900"
     },
@@ -214,7 +221,7 @@
       "type": "text",
       "id": "button_1_label",
       "label": "CTA 1 Text",
-      "default": "learn more"
+      "default": "Learn More"
     },
     {
       "type": "url",
@@ -235,18 +242,18 @@
     {
       "type": "text",
       "id": "button_2_label",
-      "label": "CTA Text",
-      "default": "learn more"
+      "label": "CTA 2 Text",
+      "default": "Learn More"
     },
     {
       "type": "url",
       "id": "button_2_url",
-      "label": "CTA URL"
+      "label": "CTA 2 URL"
     },
     {
       "type": "select",
       "id": "button_2_style",
-      "label": "CTA Style",
+      "label": "CTA 2 Style",
       "options": <%- uikit.buttonStyles -%>,
       "default": "secondary"
     }

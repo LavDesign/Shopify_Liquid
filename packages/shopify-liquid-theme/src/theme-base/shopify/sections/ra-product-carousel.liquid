@@ -1,5 +1,4 @@
 {% liquid
-  assign title_as = section.settings.title_as
   assign title_level = section.settings.title_level
 
   assign show_pagination = false
@@ -36,7 +35,7 @@
 {% style %}
   .product-carousel--{{ section.id }} {
     --component-bg-color: var({{ section.settings.bg_color }});
-    --component-fg-color: var({{ section.settings.fg_color }});
+    --component-fg-color: var({{ section.settings.text_color }});
     padding: {{ section.settings.mobile_padding_vertical }}rem {{ section.settings.mobile_padding_horizontal }}rem;
     margin: {{ section.settings.mobile_margin }}rem 0;
   }
@@ -77,13 +76,13 @@
     <div class="ra-heading ra-carousel__details">
       {% if section.settings.title != blank %}
         <{{ title_level }}
-          class="ra-title ra-heading__title {{ title_as }}"
+          class="ra-title ra-heading__title {{ section.settings.title_style }}"
         >
           <div>{{- section.settings.title -}}</div>
         </{{ title_level }}>
       {% endif %}
       {% if section.settings.description != blank %}
-        <div class="ra-heading__description">
+        <div class="ra-heading__description rte">
           {{- section.settings.description -}}
         </div>
       {% endif %}
@@ -130,12 +129,11 @@
               product: block.settings.product,
               atc_label: block.settings.cta_label,
               atc_style: block.settings.cta_style,
-              font_color: fg_color
+              font_color: text_color
             %}
           </swiper-slide>
         {% endfor %}
       </swiper-container>
-
       {% if show_navigation %}
         <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
           {% render 'icon-button',
@@ -176,87 +174,43 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Section Title"
+      "label": "Title"
     },
     {
       "type": "richtext",
       "id": "description",
-      "label": "Section Description"
-    },
-    {
-      "type": "select",
-      "id": "title_as",
-      "label": "Title As",
-      "info": "Choose which heading to (style) the title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        }, {
-          "value": "h5",
-          "label": "H5"
-        }, {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
-      "default": "h4"
+      "label": "Description"
     },
     {
       "type": "select",
       "id": "title_level",
       "label": "Title Level",
-      "info": "Choose the semantic H-Tag for this title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        }, {
-          "value": "h5",
-          "label": "H5"
-        }, {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
+      "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
+      "options": <%- uikit.headingStyles -%>,
       "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "title_style",
+      "label": "Title Style",
+      "info": "Choose the styling of the header",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h3"
     },
     {
       "type": "select",
       "id": "bg_color",
       "label": "Background Color",
-      "options": <%- uikit.colorsAll -%>,
+      "info": "Set the background color for all screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-util-white"
     },
     {
       "type": "select",
-      "id": "fg_color",
+      "id": "text_color",
       "label": "Text Color",
-      "options": <%- uikit.colorsAll -%>,
+      "info": "Set the text color for all screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-primary-900"
     },
     {
@@ -272,7 +226,7 @@
     {
       "type": "checkbox",
       "id": "show_pagination",
-      "label": "Show pagination",
+      "label": "Show Pagination",
       "default": false
     },
     {
@@ -295,21 +249,21 @@
     {
       "type": "text",
       "id": "mobile_slides_view",
-      "label": "Mobile slides per view",
+      "label": "Mobile Slides Per View",
       "info": "Enter amount of slides to show on mobile viewport (supports fractions) maximum of 3",
       "default": "1.5"
     },
     {
       "type": "text",
       "id": "tablet_slides_view",
-      "label": "Tablet slides per view",
+      "label": "Tablet Slides Per View",
       "info": "Enter amount of slides to show on tablet viewport (supports fractions) maximum of 5",
       "default": "3"
     },
     {
       "type": "text",
       "id": "desktop_slides_view",
-      "label": "Desktop slides per view",
+      "label": "Desktop Slides Per View",
       "info": "Enter amount of slides to show on desktop viewport (supports fractions) maximum of 5",
       "default": "4"
     },

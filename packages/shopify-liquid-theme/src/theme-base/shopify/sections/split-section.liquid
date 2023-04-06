@@ -66,18 +66,10 @@
 
 {% style %}
   #shopify-section-{{ section.id }} .ra-split-section {
-    {%- if section.settings.bg_color != blank -%}
-      --component-bg-color: {{- section.settings.bg_color -}};
-    {%- endif -%}
-    {%- if section.settings.bg_color_md != blank -%}
-      --component-bg-color-md: {{- section.settings.bg_color_md -}};
-    {%- endif -%}
-    {%- if section.settings.fg_color != blank -%}
-      --component-fg-color: {{- section.settings.fg_color -}};
-    {%- endif -%}
-    {%- if section.settings.fg_color_md != blank -%}
-      --component-fg-color-md: {{- section.settings.fg_color_md -}};
-    {%- endif -%}
+    --component-bg-color: var({{- section.settings.bg_color -}});
+    --component-bg-color-md: var({{- section.settings.bg_color_md -}});
+    --component-fg-color: var({{- section.settings.text_color_mobile -}});
+    --component-fg-color-md: var({{- section.settings.text_color_desktop -}});
   }
 
   #shopify-section-{{ section.id }} .ra-left-split {
@@ -125,20 +117,20 @@
 
 {% capture text_content %}
   <div class="ra-split-section__copy set--v-align-{{ section.settings.vertical_align }}-sm set--v-align-{{ section.settings.vertical_align_md }}-md set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
-    {% if section.settings.subtitle != blank %}
+    {% if section.settings.eyebrow_text != blank %}
       <div class="ra-split-section__subtitle">
-        {{- section.settings.subtitle -}}
+        {{- section.settings.eyebrow_text -}}
       </div>
     {% endif %}
     {% if section.settings.title != blank %}
       <{{ title_level }}
-        class="ra-title ra-split-section__title {{ section.settings.title_as }}"
+        class="ra-title ra-split-section__title {{ section.settings.title_style }}"
       >
         <div>{{- section.settings.title -}}</div>
       </{{ title_level }}>
     {% endif %}
     {% if section.settings.description != blank %}
-      <div class="ra-split-section__description {{ section.settings.description_copy_size }}">
+      <div class="ra-split-section__description {{ section.settings.description_copy_size }} rte">
         {{- section.settings.description -}}
       </div>
     {% endif %}
@@ -222,23 +214,25 @@
     },
     {
       "type": "text",
-      "id": "subtitle",
-      "label": "Section Sub-Title"
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "Eyebrow Text"
     },
     {
       "type": "text",
       "id": "title",
-      "label": "Section Title"
+      "label": "Title",
+      "default": "Title"
     },
     {
       "type": "richtext",
       "id": "description",
-      "label": "Section Description"
+      "label": "Description"
     },
     {
       "type": "select",
       "id": "description_copy_size",
-      "label": "Description body copy size",
+      "label": "Description Body Copy Size",
       "options": [
         {
           "value": "text-xs",
@@ -261,69 +255,19 @@
     },
     {
       "type": "select",
-      "id": "title_as",
-      "label": "Title As",
-      "info": "Choose which heading to (style) the title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "h5",
-          "label": "H5"
-        },
-        {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
-      "default": "h4"
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h2"
     },
     {
       "type": "select",
-      "id": "title_level",
-      "label": "Title Level",
-      "info": "Choose the semantic H-Tag for this title",
-      "options": [
-        {
-          "value": "h1",
-          "label": "H1"
-        },
-        {
-          "value": "h2",
-          "label": "H2"
-        },
-        {
-          "value": "h3",
-          "label": "H3"
-        },
-        {
-          "value": "h4",
-          "label": "H4"
-        },
-        {
-          "value": "h5",
-          "label": "H5"
-        },
-        {
-          "value": "h6",
-          "label": "H6"
-        }
-      ],
-      "default": "h1"
+      "id": "title_style",
+      "label": "Title Style",
+      "info": "Choose the styling of the header",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h3"
     },
     {
       "type": "header",
@@ -530,7 +474,7 @@
     {
       "type": "url",
       "id": "cta_one_url",
-      "label": "CTA 1 Url"
+      "label": "CTA 1 URL"
     },
     {
       "type": "select",
@@ -565,7 +509,7 @@
     {
       "type": "url",
       "id": "cta_two_url",
-      "label": "CTA 2 Url"
+      "label": "CTA 2 URL"
     },
     {
       "type": "select",
@@ -592,26 +536,36 @@
       "content": "Section Styles"
     },
     {
-      "type": "color",
+      "type": "select",
       "id": "bg_color",
-      "label": "Mobile Background Color"
+      "label": "Mobile Background Color",
+      "info": "Set the background color for mobile screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-util-white"
     },
     {
-      "type": "color",
+      "type": "select",
       "id": "bg_color_md",
       "label": "Desktop Background Color",
-      "info": "Set background color for larger screen sizes (if different from mobile)"
+      "info": "Set the background color for larger screen sizes (if different from mobile)",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-util-white"
     },
     {
-      "type": "color",
-      "id": "fg_color",
-      "label": "Mobile Text Color"
+      "type": "select",
+      "id": "text_color_mobile",
+      "label": "Text Color (mobile)",
+      "info": "Set the text color for mobile screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-grey-900"
     },
     {
-      "type": "color",
-      "id": "fg_color_md",
-      "label": "Desktop Text Color",
-      "info": "Set text color for larger screen sizes (if different from mobile)"
+      "type": "select",
+      "id": "text_color_desktop",
+      "label": "Text Color (desktop)",
+      "info": "Set the text color for larger screen sizes (if different from mobile)",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-grey-900"
     }
   ],
   "presets": [
