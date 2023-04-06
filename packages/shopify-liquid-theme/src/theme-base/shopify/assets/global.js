@@ -17,8 +17,15 @@ cartToggle.addEventListener("click", cartClick);
 
 function accountModalToggle(e) {
   e.preventDefault();
-  const login_container = e.target.closest("[data-login-container]")
-  Array.from(login_container.children).forEach(c => c.classList.toggle("hidden"))
+  const { target } = e;
+  const login_container = target.closest("[data-login-container]")
+  Array.from(login_container.children).forEach(c => {
+    if (c.getAttribute("id") == target.dataset.toggleAccount) {
+      c.classList.remove("hidden")
+    } else {
+      c.classList.add("hidden")
+    }
+  })
 }
 
 const accountToggle = document.querySelectorAll("[data-toggle-account]")
