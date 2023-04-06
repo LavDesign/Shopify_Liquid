@@ -74,7 +74,7 @@
       </{{ title_level }}>
     {% endif %}
     {% if section.settings.description != blank %}
-      <div class="ra-heading__description">
+      <div class="ra-heading__description rte">
         {{- section.settings.description -}}
       </div>
     {% endif %}
@@ -177,7 +177,7 @@
       "type": "select",
       "id": "title_level",
       "label": "Title Level",
-      "info": "Choose the semantic H-Tag for this title",
+      "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
       "options": <%- uikit.headingStyles -%>,
       "default": "h2"
     },
@@ -218,7 +218,7 @@
     {
       "type": "checkbox",
       "id": "show_pagination",
-      "label": "Show pagination",
+      "label": "Show Pagination",
       "default": false
     },
     {
@@ -269,21 +269,21 @@
     {
       "type": "text",
       "id": "mobile_slides_view",
-      "label": "Mobile slides per view",
+      "label": "Mobile Slides Per View",
       "info": "Enter amount of slides to show on mobile viewport (supports fractions) maximum of 3",
       "default": "1.5"
     },
     {
       "type": "text",
       "id": "tablet_slides_view",
-      "label": "Tablet slides per view",
+      "label": "Tablet Slides Per View",
       "info": "Enter amount of slides to show on tablet viewport (supports fractions) maximum of 5",
       "default": "3"
     },
     {
       "type": "text",
       "id": "desktop_slides_view",
-      "label": "Desktop slides per view",
+      "label": "Desktop Slides Per View",
       "info": "Enter amount of slides to show on desktop viewport (supports fractions) maximum of 5",
       "default": "4"
     },
@@ -419,7 +419,7 @@
         {
           "type": "url",
           "id": "slide_url",
-          "label": "Optional Slide Url link",
+          "label": "Optional Slide URL link",
           "default": "/"
         },
         {
@@ -429,22 +429,22 @@
         {
           "type": "text",
           "id": "slide_cta_1_title",
-          "label": "CTA One Title"
+          "label": "CTA 1 Text"
         },
         {
           "type": "url",
           "id": "slide_cta_1_url",
-          "label": "CTA One Link Url"
+          "label": "CTA 1 URL"
         },
         {
           "type": "text",
           "id": "slide_cta_2_title",
-          "label": "CTA Two Title"
+          "label": "CTA 2 Text"
         },
         {
           "type": "url",
           "id": "slide_cta_2_url",
-          "label": "CTA Two Link Url"
+          "label": "CTA 2 Url"
         }
       ]
     }

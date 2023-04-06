@@ -52,7 +52,7 @@
       {% endif %}
 
       {% if section.settings.description != blank %}
-        <div class="ra-text-only-banner__description {{ section.settings.description_copy_size }}">
+        <div class="ra-text-only-banner__description {{ section.settings.description_copy_size }} rte">
           {{- section.settings.description -}}
         </div>
       {% endif %}
@@ -107,7 +107,7 @@
       "type": "select",
       "id": "title_level",
       "label": "Title Level",
-      "info": "Choose the semantic H-Tag for this title",
+      "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
       "options": <%- uikit.headingStyles -%>,
       "default": "h2"
     },
@@ -127,7 +127,7 @@
     {
       "type": "select",
       "id": "description_copy_size",
-      "label": "Description body copy size",
+      "label": "Description Body Copy Size",
       "options": [
         {
           "value": "text-xs",
@@ -161,7 +161,7 @@
     {
       "type": "url",
       "id": "cta_one_url",
-      "label": "CTA 1 Url"
+      "label": "CTA 1 URL"
     },
     {
       "type": "select",
@@ -196,7 +196,7 @@
     {
       "type": "url",
       "id": "cta_two_url",
-      "label": "CTA 2 Url"
+      "label": "CTA 2 URL"
     },
     {
       "type": "select",
