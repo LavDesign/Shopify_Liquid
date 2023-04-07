@@ -35,13 +35,13 @@ export default class RaMediaGallery extends HTMLElement {
   }
 
   setupEventListeners() {
-    if (this.lightBoxTriggers.length > 0) {
+    if (this.lightBoxTriggers.length) {
       this.lightBoxTriggers.forEach((trigger) =>
         trigger.addEventListener("click", (e) => this.triggerModal(e))
       );
     }
 
-    this.lightBoxGallery.addEventListener("reachend", () => {
+    this.lightBoxGallery?.addEventListener("reachend", () => {
       // A hacky way to ensure that the proper lightbox slide is shown on primary slide click after a loop
       // Default swiper attributes/methods realIndex and slideToLoop don't account for the a11y span and
       // indexes are off when a11y are disabled
@@ -54,27 +54,27 @@ export default class RaMediaGallery extends HTMLElement {
       }
     });
 
-    this.lightBoxGallery.addEventListener("click", (e) => {
+    this.lightBoxGallery?.addEventListener("click", (e) => {
       // if the dialog backdrop pseudoelement is clicked, close the dialog
       if (e.target === this.lightBoxGallery) {
         this.lightBoxGallery.close();
       }
     });
 
-    this.lightBoxGallery.addEventListener("close", () => {
+    this.lightBoxGallery?.addEventListener("close", () => {
       this.pauseGalleryVideos();
       document.body.classList.remove("fixed", "w-full");
     });
 
-    this.primarySwiper.addEventListener("slidechange", () => {
+    this.primarySwiper?.addEventListener("slidechange", () => {
       this.pauseGalleryVideos();
     });
 
-    this.lightBoxSwiper.addEventListener("slidechange", () => {
+    this.lightBoxSwiper?.addEventListener("slidechange", () => {
       this.pauseGalleryVideos();
     });
 
-    this.primarySwiper.addEventListener("beforeinit", () => {
+    this.primarySwiper?.addEventListener("beforeinit", () => {
       this.primarySwiper.querySelectorAll("swiper-slide").forEach((slide) => {
         slide.classList.remove("hidden");
       });
