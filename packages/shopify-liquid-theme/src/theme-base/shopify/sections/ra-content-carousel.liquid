@@ -112,7 +112,7 @@
           {% render 'ra-content-tile',
             src: src,
             alt: block.settings.slide_img.alt,
-            title: block.settings.slide_title,
+            title: block.settings.title,
             description: block.settings.slide_description,
             width: block.settings.slide_image_width,
             height: block.settings.slide_image_height,
@@ -369,14 +369,14 @@
           "content": "Slide Content"
         },
         {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
           "type": "image_picker",
           "id": "slide_img",
           "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "slide_title",
-          "label": "Title"
         },
         {
           "type": "richtext",
