@@ -1,7 +1,7 @@
 {% if address != blank %}
   <div id="EditAddress_{%if has_address %}{{ address.id }}{% else %}new{% endif %}">
     <h4 class="mb-6 font-light">{{ 'customer.addresses.edit_address' | t }}</h4>
-    {%- form 'customer_address', address, onsubmit: 'return validateForm(event)' -%}
+    {%- form 'customer_address', address -%}
       <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
         <div class="ra-grid-item">
           <div class="ra-input">

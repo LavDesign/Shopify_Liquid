@@ -1,20 +1,10 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
-
-  <div class="customer login ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-w-[428px] mx-auto">
+<div class="customer login ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-w-[428px] mx-auto">
   <!-- Customer Reset -->
-  <h1
-    class="center mb-8"
-    id="recover"
-    tabindex="-1">
-    {{ 'customer.recover_password.title' | t }}
-  </h1>
-  <div class="customer-reset center">
-    <p>
-      {{ 'customer.recover_password.subtext' | t }}
-    </p>
 
+
+  {% capture recover_content %}
+    <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Reset Your Password</h3>
     {%- form 'recover_customer_password' -%}
-      {% assign recover_success = form.posted_successfully? %}
 
       <div class="grid gap-4 md:gap-6 grid-cols-1">
         <div class="ra-grid-item text-left">
@@ -25,25 +15,34 @@
             <div class="ra-input__wrapper">
               <input
                 type="email"
-                class="ra-input__control ra-input__control--text"
+                class="ra-input__control ra-input__control--text peer"
                 value=""
                 name="email"
                 id="RecoverEmail"
                 autocorrect="off"
                 autocapitalize="off"
                 autocomplete="email"
+                data-required
                 {% if form.errors %}
                 aria-invalid="true"
                 aria-describedby="RecoverEmail-email-error"
                 autofocus
                 {% endif %}
                 placeholder="{{ 'customer.login_page.email' | t }}">
-              {%- if form.errors -%}
-                <small id="RecoverEmail-email-error" class="form__message">
-                  {% render 'icon', icon: 'warning', height: '13px', width: '13px' %}
-                  {{ form.errors.messages.form }}
-                </small>
-              {%- endif -%}
+              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter an email.</span>
+              {% if form.errors %}
+                <ul>
+                  {% for error in form.errors %}
+                    <li class="text-sm font-light text-red mt-1 flex">
+                      {% if error == 'form' %}
+                        {{ form.errors.messages[error] }}
+                      {% else %}
+                        {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -55,127 +54,108 @@
         </button>
       </div>
 
-      <div class="mt-4 text-center">
-        <a href="/account/login" class="ra-link">
-          Back to Login
-        </a>
-      </div>
+      <span class="mt-4 text-center block font-light text-grey-600">
+        Already have an account?
+        <a
+          href="#"
+          class="underline"
+          data-toggle-account="login">Log In Now</a>
+      </span>
     {%- endform -%}
-  </div>
+  {% endcapture %}
 
-  <!-- Login -->
-  <h1
-    id="login"
-    tabindex="-1"
-    class="ra-title text-center h3 mb-8 md:mb-14">
-    {{ 'customer.login_page.title' | t }}
-  </h1>
-  <div class="customer-login">
-    {%- if recover_success == true -%}
-      <h3
-        class="form__message"
-        tabindex="-1"
-        autofocus>
-        {% render 'icon', icon: 'check-circle', height: '13px', width: '13px' %}
-        {{ 'customer.recover_password.success' | t }}
-      </h3>
-    {%- endif -%}
-    {%- form 'customer_login', novalidate: 'novalidate' -%}
-      {%- if form.errors -%}
-        <h2
-          class="form__message"
-          tabindex="-1"
-          autofocus>
-          <span class="visually-hidden">{{ 'accessibility.error' | t }}
-          </span>
-          {% render 'icon', icon: 'warning', height: '13px', width: '13px' %}
-          {{ 'templates.contact.form.error_heading' | t }}
-        </h2>
-        {{ form.errors | default_errors }}
-      {%- endif -%}
-
+  {% capture login_content %}
+    <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Log In</h3>
+    {% form 'customer_login', validate: 'novalidate' %}
       <div class="grid gap-4 md:gap-6 grid-cols-1">
-        <div class="ra-grid-item text-left">
+        <div class="ra-grid-item">
           <div class="ra-input">
-            <label class="ra-input__label" for="CustomerEmail">
+            <label class="font-secondary text-sm text-tertiary-900 mb-1" for="CustomerEmail">
               {{ 'customer.login_page.email' | t }}
             </label>
             <div class="ra-input__wrapper">
               <input
-                class="ra-input__control ra-input__control--text"
+                class="ra-input__control ra-input__control--text peer"
                 type="email"
                 name="customer[email]"
                 id="CustomerEmail"
                 autocomplete="email"
                 autocorrect="off"
                 autocapitalize="off"
+                data-required
                 {% if form.errors contains 'form' %}
                 aria-invalid="true"
                 {% endif %}
                 placeholder="{{ 'customer.login_page.email' | t }}">
+              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter an email.</span>
             </div>
           </div>
         </div>
 
-        {%- if form.password_needed -%}
-          <div class="ra-grid-item text-left">
+        {% if form.password_needed %}
+          <!-- Password -->
+          <div class="ra-grid-item">
             <div class="ra-input">
-              <label class="ra-input__label" for="CustomerPassword">
+              <label class="font-secondary text-sm text-tertiary-900 mb-1" for="CustomerPassword">
                 {{ 'customer.login_page.password' | t }}
               </label>
               <div class="ra-input__wrapper">
                 <input
-                  class="ra-input__control ra-input__control--text"
+                  class="ra-input__control ra-input__control--text peer"
                   type="password"
                   value=""
                   name="customer[password]"
                   id="CustomerPassword"
                   autocomplete="current-password"
+                  data-required
                   {% if form.errors contains 'form' %}
                   aria-invalid="true"
                   {% endif %}
                   placeholder="{{ 'customer.login_page.password' | t }}">
+                <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a password.</span>
+                {% if form.errors %}
+                  <ul>
+                    {% for error in form.errors %}
+                      <li class="text-sm font-light text-red mt-1 flex">
+                        {% if error == 'form' %}
+                          {{ form.errors.messages[error] }}
+                        {% else %}
+                          {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               </div>
             </div>
           </div>
         {% endif %}
-      </div>
-
-      {%- if form.password_needed -%}
-        <a href="#recover" class="block mt-6 font-size-sm ra-link block text-left">
-          {{ 'customer.login_page.forgot_password' | t }}
-        </a>
-      {%- endif -%}
-
-      <div class="mt-6">
-        <button type="submit" class="ra-button ra-button--full-width ra-button--lg">
+        {%- if form.password_needed -%}
+          <a
+            href="#"
+            data-toggle-account="recover"
+            class="text-sm ra-link block text-left font-light">
+            {{ 'customer.login_page.forgot_password' | t }}
+          </a>
+        {%- endif -%}
+        <button class="ra-button ra-button--primary ra-button--full-width ra-button--lg text-center" data-cy="login-btn_submit">
           {{ 'customer.login_page.sign_in' | t }}
         </button>
       </div>
-
-      <div class="mt-4 text-center">
-        <span class="mr-4">Don't have account yet?</span>
-        <a href="{{ routes.account_register_url }}" class="ra-link">
-          {{ 'customer.login_page.create_account' | t }}
-        </a>
-      </div>
-    {%- endform -%}
-  </div>
-
-  {%- if shop.checkout.guest_login -%}
-    <div>
-      <hr>
-      <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
-
-      {%- form 'guest_login' -%}
-        <button>
-          {{ 'customer.login_page.guest_continue' | t }}
-        </button>
-      {%- endform -%}
+    {% endform %}
+    <span class="text-center mt-4 text-base block font-light text-grey-600">Here for the first time?
+      <a href="/account/register" class="underline">Create an account</a>
+    </span>
+  {% endcapture %}
+  <ra-account-auth>
+    <div data-account-container="login">
+      {{ login_content }}
     </div>
-  {%- endif -%}
+    <div data-account-container="recover" class="hidden">
+      {{ recover_content }}
+    </div>
+  </ra-account-auth>
 </div>
-
 {% schema %}
   {
     "name": "t:sections.main-login.name",

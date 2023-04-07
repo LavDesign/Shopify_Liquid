@@ -15,31 +15,6 @@ function cartClick(e) {
 const cartToggle = document.querySelector("[data-toggle-cart]");
 cartToggle.addEventListener("click", cartClick);
 
-function accountModalToggle(e) {
-  e.preventDefault();
-  const login_container = e.target.closest("[data-login-container]")
-  Array.from(login_container.children).forEach(c => c.classList.toggle("hidden"))
-}
-
-const accountToggle = document.querySelectorAll("[data-toggle-account]")
-accountToggle.forEach((toggle) => {
-  toggle.addEventListener("click", accountModalToggle)
-});
-
-function validateForm(e) {
-  const requiredInputs = e.target.querySelectorAll('[data-required]');
-  let invalidInputs = [];
-  requiredInputs.forEach((input) => {
-    if (input.value.length == 0) {
-      input.classList.add("border-red")
-      invalidInputs.push(input.getAttribute("name"))
-    } else {
-      input.classList.remove("border-red");
-    }
-  })
-  if (invalidInputs.length > 0) e.preventDefault();
-}
-
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute("role", "button");
   summary.setAttribute(
