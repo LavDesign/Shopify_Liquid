@@ -4,14 +4,26 @@ const validateEmail = (email) => {
   return isValid;
 };
 
+const validatePasswords = (arr) => {
+  return arr.length <= 1 || arr.every((str) => str === arr[0]);
+};
+
 const validateForm = (e) => {
   const form = e.target.closest("form");
-  const requiredInputs = form.querySelectorAll("[data-required]");
-  const invalidInputs = Array.from(requiredInputs).filter((input) => {
+  const requiredInputs = Array.from(form.querySelectorAll("[data-required]"));
+  const passwordInputs = requiredInputs
+    .filter(
+      (input) =>
+        input.getAttribute("type") == "password" && input.value.length > 0
+    )
+    .map((input) => input.value);
+  const passwordsMatch = validatePasswords(passwordInputs);
+  const invalidInputs = requiredInputs.filter((input) => {
     const isEmpty = input.value.length === 0;
     const isInvalidEmail =
       input.getAttribute("type") == "email" && !validateEmail(input.value);
-    if (isEmpty || isInvalidEmail) {
+    const isPasswordInput = input.getAttribute("type") == "password";
+    if (isEmpty || isInvalidEmail || (isPasswordInput && !passwordsMatch)) {
       input.classList.add("border-red");
       return true;
     } else {
@@ -20,6 +32,7 @@ const validateForm = (e) => {
     }
   });
   if (invalidInputs.length > 0) e.preventDefault();
+  return invalidInputs.length === 0;
 };
 
 export { validateEmail, validateForm };
