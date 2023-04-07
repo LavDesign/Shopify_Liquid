@@ -15,20 +15,6 @@ function cartClick(e) {
 const cartToggle = document.querySelector("[data-toggle-cart]");
 cartToggle.addEventListener("click", cartClick);
 
-function validateForm(e) {
-  const requiredInputs = e.target.querySelectorAll('[data-required]');
-  let invalidInputs = [];
-  requiredInputs.forEach((input) => {
-    if (input.value.length == 0) {
-      input.classList.add("border-red")
-      invalidInputs.push(input.getAttribute("name"))
-    } else {
-      input.classList.remove("border-red");
-    }
-  })
-  if (invalidInputs.length > 0) e.preventDefault();
-}
-
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute("role", "button");
   summary.setAttribute(

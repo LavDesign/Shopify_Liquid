@@ -1,4 +1,6 @@
-export default class RaAccount extends HTMLElement {
+import { validateForm } from "../utils/account-utils";
+
+export default class RaAccountAuth extends HTMLElement {
   constructor() {
     super();
     this.accountToggles = this.querySelectorAll("[data-toggle-account]");
@@ -11,7 +13,7 @@ export default class RaAccount extends HTMLElement {
     });
     this.accountForms.forEach((form) => {
       const button = form.querySelector("button");
-      button.addEventListener("click", this.validateForm.bind(this));
+      button.addEventListener("click", validateForm.bind(this));
     });
   }
 
@@ -25,20 +27,5 @@ export default class RaAccount extends HTMLElement {
         c.classList.add("hidden");
       }
     });
-  }
-
-  validateForm(e) {
-    const form = e.target.closest("form");
-    const requiredInputs = form.querySelectorAll("[data-required]");
-    let invalidInputs = [];
-    requiredInputs.forEach((input) => {
-      if (input.value.length == 0) {
-        input.classList.add("border-red");
-        invalidInputs.push(input.getAttribute("name"));
-      } else {
-        input.classList.remove("border-red");
-      }
-    });
-    if (invalidInputs.length > 0) e.preventDefault();
   }
 }
