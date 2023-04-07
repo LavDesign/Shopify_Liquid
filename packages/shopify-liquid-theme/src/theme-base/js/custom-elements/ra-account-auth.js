@@ -18,10 +18,9 @@ export default class RaAccountAuth extends HTMLElement {
   }
 
   accountModalToggle(e) {
-    const { target } = e;
     e.preventDefault();
     Array.from(this.children).forEach((c) => {
-      if (c.getAttribute("id") == target.dataset.toggleAccount) {
+      if (c.dataset.accountContainer === e.target.dataset.toggleAccount) {
         c.classList.remove("hidden");
       } else {
         c.classList.add("hidden");
