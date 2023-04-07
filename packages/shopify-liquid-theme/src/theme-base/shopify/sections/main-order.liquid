@@ -132,13 +132,17 @@
                     </ul>
                   {% endunless %}
                   <span class="text-sm md:text-lg absolute top-0 right-0 font-light">
-                    {%- if line_item.original_line_price != line_item.final_line_price -%}
-                      <dl>
+                    {%- if line_item.variant.compare_at_price != line_item.variant.price -%}
+                      {% liquid
+                        assign compare_at_price = line_item.variant.compare_at_price | plus: 0
+                        assign compare_at_price = compare_at_price | times: line_item.quantity | money
+                      %}
+                      <dl class="flex flex-row-reverse gap-1">
                         <dt>
                           <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
                         </dt>
                         <dd class="regular-price">
-                          <s class="text-grey-500">{{ line_item.original_line_price | money }}</s>
+                          <s class="text-grey-500">{{ compare_at_price }}</s>
                         </dd>
                         <dt>
                           <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
