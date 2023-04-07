@@ -15,24 +15,6 @@ function cartClick(e) {
 const cartToggle = document.querySelector("[data-toggle-cart]");
 cartToggle.addEventListener("click", cartClick);
 
-function accountModalToggle(e) {
-  e.preventDefault();
-  const { target } = e;
-  const login_container = target.closest("[data-login-container]")
-  Array.from(login_container.children).forEach(c => {
-    if (c.getAttribute("id") == target.dataset.toggleAccount) {
-      c.classList.remove("hidden")
-    } else {
-      c.classList.add("hidden")
-    }
-  })
-}
-
-const accountToggle = document.querySelectorAll("[data-toggle-account]")
-accountToggle.forEach((toggle) => {
-  toggle.addEventListener("click", accountModalToggle)
-});
-
 function validateForm(e) {
   const requiredInputs = e.target.querySelectorAll('[data-required]');
   let invalidInputs = [];
