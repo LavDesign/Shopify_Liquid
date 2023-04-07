@@ -136,15 +136,19 @@
                 {% endif %}
                 placeholder="{{ 'customer.register.confirm_password' | t }}">
               <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a password.</span>
-              {%- if form.errors contains 'password' -%}
-                <span id="RegisterForm-password-error" class="form__message">
-                  <svg aria-hidden="true" focusable="false">
-                    <use href="#icon-error" />
-                  </svg>
-                  {{ form.errors.translated_fields.password | capitalize }}
-                  {{ form.errors.messages.password }}.
-                </span>
-              {%- endif -%}
+              {% if form.errors %}
+                <ul>
+                  {% for error in form.errors %}
+                    <li class="text-sm font-light text-red mt-1 flex">
+                      {% if error == 'form' %}
+                        {{ form.errors.messages[error] }}
+                      {% else %}
+                        {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
             </div>
           </div>
         </div>
