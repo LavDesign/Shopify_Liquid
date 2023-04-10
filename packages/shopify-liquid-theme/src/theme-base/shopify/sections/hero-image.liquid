@@ -92,24 +92,24 @@
               </div>
             {% endif %}
 
-            {% if block.settings.button_1_url != blank or block.settings.button_2_url != blank %}
+            {% if block.settings.cta_1_url != blank or block.settings.cta_2_url != blank %}
               <div class="ra-link-list ra-hero__link-list">
-                {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
+                {% if block.settings.cta_1_label != blank and block.settings.cta_1_url != blank %}
                   {% render 'button',
                     type: 'a',
-                    style: block.settings.button_1_style,
-                    label: block.settings.button_1_label,
-                    url: block.settings.button_1_url,
+                    style: block.settings.cta_1_style,
+                    label: block.settings.cta_1_label,
+                    url: block.settings.cta_1_url,
                     class: 'min-w-[175px] ra-link-list__cta'
                   %}
                 {% endif %}
 
-                {% if block.settings.button_2_label != blank and block.settings.button_2_url != blank %}
+                {% if block.settings.cta_2_label != blank and block.settings.cta_2_url != blank %}
                   {% render 'button',
                     type: 'a',
-                    style: block.settings.button_2_style,
-                    label: block.settings.button_2_label,
-                    url: block.settings.button_2_url,
+                    style: block.settings.cta_2_style,
+                    label: block.settings.cta_2_label,
+                    url: block.settings.cta_2_url,
                     class: 'min-w-[175px] ra-link-list__cta'
                   %}
                 {% endif %}
@@ -232,40 +232,40 @@
         },
         {
           "type": "text",
-          "id": "button_1_label",
+          "id": "cta_1_label",
           "label": "CTA 1 Text",
           "default": "Learn More"
         },
         {
           "type": "url",
-          "id": "button_1_url",
+          "id": "cta_1_url",
           "label": "CTA 1 URL"
         },
         {
           "type": "select",
-          "id": "button_1_style",
+          "id": "cta_1_style",
           "label": "CTA 1 Style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "primary"
         },
         {
           "type": "header",
-          "content": "Button 2"
+          "content": "CTA 2"
         },
         {
           "type": "text",
-          "id": "button_2_label",
+          "id": "cta_2_label",
           "label": "CTA 2 Text",
           "default": "Learn More"
         },
         {
           "type": "url",
-          "id": "button_2_url",
+          "id": "cta_2_url",
           "label": "CTA 2 URL"
         },
         {
           "type": "select",
-          "id": "button_2_style",
+          "id": "cta_2_style",
           "label": "CTA 2 Style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "secondary"

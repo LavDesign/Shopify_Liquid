@@ -1,23 +1,23 @@
 {% liquid
   assign title_level = section.settings.title_level
 
-  assign cta_one_text = section.settings.cta_one_text
-  assign cta_one_url = section.settings.cta_one_url
-  assign cta_one_style = section.settings.cta_one_style
+  assign cta_1_text = section.settings.cta_1_text
+  assign cta_1_url = section.settings.cta_1_url
+  assign cta_1_style = section.settings.cta_1_style
 
-  assign cta_two_text = section.settings.cta_two_text
-  assign cta_two_url = section.settings.cta_two_url
-  assign cta_two_style = section.settings.cta_two_style
+  assign cta_2_text = section.settings.cta_2_text
+  assign cta_2_url = section.settings.cta_2_url
+  assign cta_2_style = section.settings.cta_2_style
 
-  assign enable_cta_one = false
-  assign enable_cta_two = false
+  assign enable_cta_1 = false
+  assign enable_cta_2 = false
 
-  if cta_one_text != blank and cta_one_url != blank
-    assign enable_cta_one = true
+  if cta_1_text != blank and cta_1_url != blank
+    assign enable_cta_1 = true
   endif
 
-  if cta_two_text != blank and cta_two_url != blank
-    assign enable_cta_two = true
+  if cta_2_text != blank and cta_2_url != blank
+    assign enable_cta_2 = true
   endif
 %}
 
@@ -49,23 +49,23 @@
         </div>
       {% endif %}
 
-      {% if enable_cta_one or enable_cta_two %}
+      {% if enable_cta_1 or enable_cta_2 %}
         <div class="ra-link-list ra-text-only-banner__link-list">
-          {% if enable_cta_one %}
+          {% if enable_cta_1 %}
             {% render 'button',
               type: 'a',
-              style: cta_one_style,
-              url: cta_one_url,
-              label: cta_one_text,
+              style: cta_1_style,
+              url: cta_1_url,
+              label: cta_1_text,
               class: 'ra-link-list min-w-[175px]'
             %}
           {% endif %}
-          {% if enable_cta_two %}
+          {% if enable_cta_2 %}
             {% render 'button',
               type: 'a',
-              style: cta_two_style,
-              url: cta_two_url,
-              label: cta_two_text,
+              style: cta_2_style,
+              url: cta_2_url,
+              label: cta_2_text,
               class: 'ra-link-list min-w-[175px]'
             %}
           {% endif %}
@@ -146,19 +146,19 @@
     },
     {
       "type": "text",
-      "id": "cta_one_text",
+      "id": "cta_1_text",
       "label": "CTA 1 Text",
       "default": "Default"
     },
     {
       "type": "url",
-      "id": "cta_one_url",
+      "id": "cta_1_url",
       "label": "CTA 1 URL"
     },
     {
       "type": "select",
-      "id": "cta_one_style",
-      "label": "CTA One Style",
+      "id": "cta_1_style",
+      "label": "CTA 1 Style",
       "options": [
         {
           "value": "primary",
@@ -177,23 +177,23 @@
     },
     {
       "type": "header",
-      "content": "CTA Two"
+      "content": "CTA 2"
     },
     {
       "type": "text",
-      "id": "cta_two_text",
+      "id": "cta_2_text",
       "label": "CTA 2 Text",
       "default": "Secondary"
     },
     {
       "type": "url",
-      "id": "cta_two_url",
+      "id": "cta_2_url",
       "label": "CTA 2 URL"
     },
     {
       "type": "select",
-      "id": "cta_two_style",
-      "label": "CTA Two Style",
+      "id": "cta_2_style",
+      "label": "CTA 2 Style",
       "options": [
         {
           "value": "primary",

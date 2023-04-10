@@ -2,9 +2,9 @@
   assign layout = section.settings.layout
   assign title = section.settings.title
   assign title_level = section.settings.title_level
-  assign button_url = section.settings.button_url
-  assign button_label = section.settings.button_label
-  assign button_style = section.settings.button_style
+  assign cta_url = section.settings.cta_url
+  assign cta_label = section.settings.cta_label
+  assign cta_style = section.settings.cta_style
   assign desktop_image = section.settings.desktop_bg_image
   assign mobile_image = section.settings.mobile_bg_image
   assign bg_color = section.settings.bg_color
@@ -44,7 +44,7 @@
     <div class="md:grid md:grid-cols-2 items-center">
   {% endif %}
 
-  {% if title != blank or section.settings.description != blank or button_url != blank %}
+  {% if title != blank or section.settings.description != blank or cta_url != blank %}
     <div class="flex flex-col items-center justify-center px-5 py-8 md:py-15 {% if layout == 'fifty-fifty' %}order-2{% endif %}">
       <div class="w-full md:w-2/3 text-center">
         {% if title != blank %}
@@ -57,9 +57,9 @@
           <div class="mb-4 ra-shop-the-look__body rte">{{ section.settings.description }}</div>
         {% endif %}
 
-        {% if button_url != blank and button_label %}
+        {% if cta_url != blank and cta_label %}
           <div class="mb-4">
-            {% render 'button' type: 'a', style: button_style, url: button_url, label: button_label %}
+            {% render 'button' type: 'a', style: cta_style, url: cta_url, label: cta_label %}
           </div>
         {% endif %}
       </div>
@@ -283,18 +283,18 @@
     },
     {
       "type": "text",
-      "id": "button_label",
+      "id": "cta_label",
       "label": "CTA Label",
       "default": "Learn More"
     },
     {
       "type": "url",
-      "id": "button_url",
+      "id": "cta_url",
       "label": "CTA URL"
     },
     {
       "type": "select",
-      "id": "button_style",
+      "id": "cta_style",
       "label": "CTA Style",
       "options": <%- uikit.buttonStyles -%>,
       "default": "primary"
@@ -307,35 +307,35 @@
       "type": "select",
       "id": "text_color",
       "label": "Text Color",
-      "options": <%- uikit.colorsAll -%>,
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-primary-900"
     },
     {
       "type": "select",
       "id": "bg_color",
       "label": "Background Color",
-      "options": <%- uikit.colorsAll -%>,
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-util-white"
     },
     {
       "type": "select",
       "id": "look_dot_color",
       "label": "Look Dot Color",
-      "options": <%- uikit.colorsAll -%>,
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-util-white"
     },
     {
       "type": "select",
       "id": "look_bg_color",
       "label": "Look Background Color",
-      "options": <%- uikit.colorsAll -%>,
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-util-white"
     },
     {
       "type": "select",
       "id": "look_text_color",
       "label": "Look Text Color",
-      "options": <%- uikit.colorsAll -%>,
+      "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-primary-900"
     }
   ],
