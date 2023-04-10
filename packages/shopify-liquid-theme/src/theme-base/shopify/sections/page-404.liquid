@@ -27,13 +27,13 @@
       <div class="ra-wysiwyg leading-5 text-center">{{ section.settings.description }}</div>
     {% endif %}
 
-    {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+    {% if section.settings.cta_label != blank and section.settings.cta_url != blank %}
       <div class="text-center mt-5 md:mt-8">
         {% render 'button'
           type: 'a',
-          style: section.settings.button_style,
-          label: section.settings.button_label,
-          url: section.settings.button_url,
+          style: section.settings.cta_style,
+          label: section.settings.cta_label,
+          url: section.settings.cta_url,
         %}
       </div>
     {% endif %}
@@ -70,18 +70,18 @@
     },
     {
       "type": "text",
-      "id": "button_label",
+      "id": "cta_abel",
       "label": "CTA Label",
       "default": "Back to Homepage"
     },
     {
       "type": "url",
-      "id": "button_url",
+      "id": "cta_url",
       "label": "CTA URL"
     },
     {
       "type": "select",
-      "id": "button_style",
+      "id": "cta_style",
       "label": "CTA Style",
       "options": <%- uikit.buttonStyles -%>,
       "default": "primary"
