@@ -53,24 +53,6 @@
             <tbody role="rowgroup">
               {%- if customer.orders.size > 0 -%}
                 {%- for order in customer.orders -%}
-                  <script>
-                    console
-                      .log("Order ID")
-                      console
-                      .log({{order.name | json}})
-                      console
-                      .log("Total Discounts")
-                      console
-                      .log({{order.total_discounts | json}})
-                    console
-                    .log("Discount Applications")
-                  console
-                  .log({{order.discount_applications | json}})
-                console
-                .log("Cart Level Discount Applications")
-              console
-              .log({{order.cart_level_discount_applications | json}})
-                  </script>
                   <tr class="border-b py-7 text-xs md:text-lg flex flex-wrap items-center relative font-light" role="row">
                     <td
                       class="flex-1 leading-normal p-0 text-left underline"
