@@ -1,0 +1,49 @@
+<script>
+  dataLayer.push({ ecommerce: null });
+  // prettier-ignore
+  dataLayer.push({
+    'event': 'acn_view_item',
+    'event_id': new Date().getTime() + '.' + Math.random().toString(36).substring(5),
+    'ecommerce': {
+      'currencyCode': {{ localization.country.currency.iso_code | json }},
+      'detail': {
+        'products': [
+          {
+            'id': {{ product.selected_or_first_available_variant.id | json }},
+            'sku': {{ product.selected_or_first_available_variant.sku | json}},
+            'handle': {{ product.handle | json }},
+            'productId': {{ product.id | json }},
+            'variantId': {{ product.selected_or_first_available_variant.id | json }},
+            'name': {{ product.title | json }},
+            'price': {{ product.selected_or_first_available_variant.price | divided_by: 100.00 | json }},
+            'brand': {{ product.vendor | json }},
+            'variant': {{ product.selected_or_first_available_variant.title | json }},
+            'category': {{ product.type | json }},
+          }
+        ]
+      },
+      items: [
+        {
+          item_id: {{ product.selected_or_first_available_variant.id | json }},
+          shopify_product_id: {{ product.id | json }},
+          shopify_variant_id: {{ product.selected_or_first_available_variant.id | json }},
+          shopify_sku: {{ product.selected_or_first_available_variant.sku | json }},
+          shopify_handle: {{ product.handle | json }},
+          shopify_compare_price: {{ product.compare_at_price | divided_by: 100.00 | json }},
+          item_name: {{ product.title | json }},
+          affiliation: {{ shop.name | json }},
+          currency: {{ localization.country.currency.iso_code | json }},
+          item_brand: {{ product.vendor | json }},
+          item_category: {{ product.type | json }},
+          item_variant: {% if product.has_only_default_variant %}{{ product.title | json }}{% else %}{{ product.selected_or_first_available_variant.title | json }}{% endif %},
+          {% for product_option in product.options_with_values %}
+            {% for value in product_option.values %}
+              {% if product_option.selected_value == value %}{{ product_option.name | downcase | json }}:{{ value | json }},{% endif %}
+            {% endfor %}
+          {% endfor %}
+          price: {{ product.selected_or_first_available_variant.price | divided_by: 100.00 | json }},
+        }
+      ]
+    }
+  });
+</script>

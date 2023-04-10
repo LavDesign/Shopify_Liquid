@@ -1,0 +1,42 @@
+<script>
+  dataLayer.push({ecommerce: null});
+  // prettier-ignore
+  dataLayer.push({
+    'event': 'acn_view_cart',
+    'ecommerce': {
+      currency: {{ cart.currency.iso_code | json }},
+      value: {{ cart.total_price | divided_by: 100.00 }},
+      items: [
+        {% for line_item in cart.items %}
+          {
+            item_id: {{ line_item.variant.id | json }},
+            shopify_product_id: {{ line_item.product_id | json }},
+            shopify_variant_id: {{ line_item.variant.id | json }},
+            shopify_sku: {{ line_item.variant.sku | json }},
+            shopify_handle: {{ line_item.product.handle | json }},
+            shopify_compare_price: {{ line_item.variants.compare_at_price | divided_by: 100.00 | json }},
+            item_name: {{ line_item.product.title | json }},
+            affiliation: {{ shop.name | json }},
+            currency: {{ localization.country.currency.iso_code | json }},
+            item_brand: {{ line_item.product.vendor | json }},
+            item_category: {{ line_item.product.type | json }},
+            item_variant: {{ line_item.variant.title | json }},
+            {% unless line_item.product.has_only_default_variant %}
+              {% for option in line_item.options_with_values %}
+                {{ option.name | downcase | json }} : {{ option.value | json }},
+              {% endfor %}
+            {% endunless %}
+            price: {{ line_item.price | divided_by: 100.00 }},
+            quantity: {{ line_item.quantity }},
+            {% for discount_allocation in line_item.discount_allocations %}
+              {% if discount_allocation.discount_application.type == 'discount_code' %}
+                coupon : {{ discount_allocation.discount_application.title | json }},
+              {% endif %}
+            {% endfor %}
+          }
+          {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+  });
+</script>
