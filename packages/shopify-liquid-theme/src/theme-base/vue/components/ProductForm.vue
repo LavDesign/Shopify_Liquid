@@ -47,6 +47,7 @@ import { useProductPageStore } from "../stores/productPage";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
+import { viewItem } from "./datalayer/ViewItem.js";
 
 const props = defineProps({
   product: Object,
@@ -80,6 +81,7 @@ props.product?.options?.forEach((option, i) => {
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
   selectedOptions[optionKey] = selectedOption.value;
+  viewItem(props.product, currentVariant);
 };
 
 const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
