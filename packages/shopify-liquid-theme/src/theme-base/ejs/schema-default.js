@@ -126,11 +126,11 @@ const colorsSchemaPicker = [
   { label: "Primary", value: "--color-primary-900" },
   { label: "Secondary", value: "--color-secondary-900" },
   { label: "Tertiary", value: "--color-tertiary-900" },
-  { label: "Util Red", value: "--color-util-red" },
-  { label: "Util Green", value: "--color-util-green" },
-  { label: "Util Yellow", value: "--color-util-yellow" },
-  { label: "Util White", value: "--color-util-white" },
   { label: "Black", value: "--color-grey-900" },
+  { label: "Util - Red", value: "--color-util-red" },
+  { label: "Util - Green", value: "--color-util-green" },
+  { label: "Util - Yellow", value: "--color-util-yellow" },
+  { label: "Util - White", value: "--color-util-white" },
 ];
 
 /*
