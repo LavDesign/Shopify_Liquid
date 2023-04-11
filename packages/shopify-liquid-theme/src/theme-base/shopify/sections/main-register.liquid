@@ -2,6 +2,10 @@
   <ra-account-auth>
     <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Create An Account</h3>
     {%- form 'create_customer', validate: 'novalidate' -%}
+      <input
+        type="hidden"
+        name="return_to"
+        value="/account">
       <div class="grid gap-4 md:gap-6 grid-cols-2">
         <div class="ra-grid-item text-left col-span-2">
           <div class="ra-input">
@@ -141,7 +145,7 @@
               {% if form.errors %}
                 <ul>
                   {% for error in form.errors %}
-                    <li class="text-sm font-light text-red mt-1 flex">
+                    <li class="text-sm font-light text-red mt-1 inline-block">
                       {% if error == 'form' %}
                         {{ form.errors.messages[error] }}
                       {% else %}

@@ -69,6 +69,10 @@
 {% capture register_content %}
   <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Create An Account</h3>
   {%- form 'create_customer', validate: 'novalidate' -%}
+    <input
+      type="hidden"
+      name="return_to"
+      value="/account">
     <div class="grid gap-4 md:gap-6 grid-cols-2">
       <div class="ra-grid-item text-left col-span-2">
         <div class="ra-input">
