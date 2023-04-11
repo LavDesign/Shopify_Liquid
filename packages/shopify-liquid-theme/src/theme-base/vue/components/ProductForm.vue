@@ -47,7 +47,7 @@ import { useProductPageStore } from "../stores/productPage";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
-import { viewItem } from "./datalayer/ViewItem.js";
+import { dataViewItem, dataAddToCart } from "./datalayer/";
 
 const props = defineProps({
   product: Object,
@@ -81,7 +81,7 @@ props.product?.options?.forEach((option, i) => {
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
   selectedOptions[optionKey] = selectedOption.value;
-  viewItem(props.product, currentVariant);
+  dataViewItem(props.product, currentVariant);
 };
 
 const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
@@ -165,11 +165,13 @@ const isAddingToCart = ref(false);
 
 const addToCart = async () => {
   isAddingToCart.value = true;
-  await cartStore.addItem({
-    id: currentVariant.value.id,
-    quantity: qty.value,
-    // properties: null
-  });
+  await cartStore
+    .addItem({
+      id: currentVariant.value.id,
+      quantity: qty.value,
+      // properties: null
+    })
+    .then(() => dataAddToCart(props.product, currentVariant, qty));
   isAddingToCart.value = false;
 };
 

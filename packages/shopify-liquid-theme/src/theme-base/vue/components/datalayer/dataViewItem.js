@@ -1,6 +1,4 @@
-export function viewItem(product, variant) {
-  window.dataLayer = window.dataLayer || [];
-
+export function dataViewItem(product, variant) {
   const optionsWithValues = Object.entries(product.options_with_values);
   const currentOptions = optionsWithValues.map(([key, value]) => {
     const selectedValue = variant.value.options
