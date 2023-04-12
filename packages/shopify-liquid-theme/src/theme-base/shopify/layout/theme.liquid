@@ -8,10 +8,6 @@
     {%- endcomment -%}
     {% render 'gtm-datalayer', action_step: 'init' %}
 
-    {%- comment -%}
-      Dawn theme - to be deleted or updated later
-    {%- endcomment -%}
-    {{ 'base.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 
     {% render 'vendor-scripts' %}
