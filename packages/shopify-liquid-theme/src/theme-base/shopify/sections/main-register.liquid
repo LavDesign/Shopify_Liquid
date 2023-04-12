@@ -1,11 +1,7 @@
 <div class="customer register ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-w-[428px] mx-auto">
   <ra-account-auth>
     <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Create An Account</h3>
-    {%- form 'create_customer', validate: 'novalidate' -%}
-      <input
-        type="hidden"
-        name="return_to"
-        value="/account">
+    {%- form 'create_customer', validate: 'novalidate', return_to: "/account" -%}
       <div class="grid gap-4 md:gap-6 grid-cols-2">
         <div class="ra-grid-item text-left col-span-2">
           <div class="ra-input">

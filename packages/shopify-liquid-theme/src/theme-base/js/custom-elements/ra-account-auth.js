@@ -5,6 +5,9 @@ export default class RaAccountAuth extends HTMLElement {
     super();
     this.accountToggles = this.querySelectorAll("[data-toggle-account]");
     this.accountForms = this.querySelectorAll("form");
+    this.passwordResetText = this.querySelector(
+      "[data-password-reset-success]"
+    );
   }
 
   connectedCallback() {
@@ -15,6 +18,9 @@ export default class RaAccountAuth extends HTMLElement {
       const button = form.querySelector("button");
       button.addEventListener("click", validateForm.bind(this));
     });
+    if (window.location.search.includes("password_reset_success")) {
+      this.passwordResetText.classList.remove("hidden");
+    }
   }
 
   accountModalToggle(e) {
