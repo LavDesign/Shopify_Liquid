@@ -1,3 +1,10 @@
+const passwordResetToken = () => {
+  const tokenExists = Number(window.localStorage.getItem("pw_request"));
+  if (tokenExists === 1 || !tokenExists) {
+    window.localStorage.setItem("pw_request", 1);
+  }
+};
+
 const validateEmail = (email) => {
   const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isValid = emailTest.test(email);
@@ -32,6 +39,9 @@ const validateForm = (e) => {
     }
   });
   if (invalidInputs.length > 0) e.preventDefault();
+  else if (form.action.includes("/recover")) {
+    passwordResetToken();
+  }
   return invalidInputs.length === 0;
 };
 

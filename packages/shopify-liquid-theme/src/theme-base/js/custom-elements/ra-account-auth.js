@@ -18,8 +18,9 @@ export default class RaAccountAuth extends HTMLElement {
       const button = form.querySelector("button");
       button.addEventListener("click", validateForm.bind(this));
     });
-    if (window.location.search.includes("password_reset_success")) {
+    if (Number(localStorage.getItem("pw_request")) === 1) {
       this.passwordResetText.classList.remove("hidden");
+      localStorage.setItem("pw_request", 0);
     }
   }
 
