@@ -4,7 +4,7 @@
 <div id="ra-main-product" class="ra-main-product" data-section-id="{{ section.id }}">
   <div class="wrapper mt-4">
     <div class="w-full md:max-w-screen-2xl mt-40 px-4 md:px-10 mx-auto">
-      {% render 'breadcrumbs', classes: 'my-10 hidden md:block' %}
+      {% render 'breadcrumbs', classes: 'my-10 hidden md:block', divider: "minus" %}
       <div class="flex product pt-3 flex-col md:flex-row">
         <div class="md:w-1/2 pl-0">
           {% render 'product-media-gallery', product: product %}
