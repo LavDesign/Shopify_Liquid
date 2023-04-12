@@ -138,13 +138,13 @@
                       %}
                       <dl class="flex flex-row-reverse gap-1">
                         <dt>
-                          <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
                         </dt>
                         <dd class="regular-price">
                           <s class="text-grey-500">{{ compare_at_price | money }}</s>
                         </dd>
                         <dt>
-                          <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                          <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
                         </dt>
                         <dd>
                           <span class="text-red">{{ line_item.final_line_price | money }}</span>

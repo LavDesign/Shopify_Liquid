@@ -14,7 +14,7 @@
 
         {% paginate customer.orders by 10 %}
           <table role="table" class="w-full border-none border-spacing-0">
-            <caption class="visually-hidden">
+            <caption class="sr-only">
               {{ 'customer.orders.title' | t }}
             </caption>
             <thead role="rowgroup">
