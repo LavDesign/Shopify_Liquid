@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getSearchParamsFromForm, updateURL } from "../utils/search-params";
+import { refreshReviewWidgets } from "../utils/vendors";
 export default class RaSearchFilters extends HTMLElement {
   constructor() {
     super();
@@ -32,6 +33,7 @@ export default class RaSearchFilters extends HTMLElement {
       })
       .then(() => {
         RaSearchFilters.addActiveFilterEventListeners();
+        refreshReviewWidgets();
       });
   }
 
