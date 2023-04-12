@@ -105,6 +105,8 @@ set--v-align-{{ vertical_align | default: 'bottom' }}{% if vertical_align_md != 
           class="ra-image__media"
         >
       </div>
+    {% elsif src == blank %}
+      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio bg-grey-100" style="{{ imageStyle }}"></div>
     {% endif %}
   </div>
   <a href="{{ overlay_link }}" class="ra-component-anchor-overlay">
