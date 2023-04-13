@@ -1,7 +1,9 @@
 const passwordResetToken = () => {
-  const tokenExists = Number(window.localStorage.getItem("pw_request"));
-  if (tokenExists === 1 || !tokenExists) {
-    window.localStorage.setItem("pw_request", 1);
+  const passwordResetDisplay = window.localStorage.getItem(
+    "PW_RESET_NOTIFICATION"
+  );
+  if (!passwordResetDisplay) {
+    window.localStorage.setItem("PW_RESET_NOTIFICATION", "show");
   }
 };
 
