@@ -118,10 +118,7 @@
                   </a>
                 </div>
                 <div class="relative col-span-2 md:col-span-4 lg:col-span-5">
-                  {% assign product_title = line_item.product.title %}
-                  {% unless product_title %}
-                    {% assign product_title = line_item.title %}
-                  {% endunless %}
+                  {% assign product_title = line_item.product.title | default: line_item.title %}
                   <a href="{{ line_item.url }}" class="text-sm md:text-lg font-light ra-link no-underline text-current">
                     {{ product_title }}
                   </a>

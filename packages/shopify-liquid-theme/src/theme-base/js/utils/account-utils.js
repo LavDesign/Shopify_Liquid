@@ -1,9 +1,9 @@
 const passwordResetToken = () => {
   const passwordResetDisplay = window.localStorage.getItem(
-    "PW_RESET_NOTIFICATION"
+    "RA_PW_RESET_NOTIFICATION"
   );
   if (!passwordResetDisplay) {
-    window.localStorage.setItem("PW_RESET_NOTIFICATION", "show");
+    window.localStorage.setItem("RA_PW_RESET_NOTIFICATION", "show");
   }
 };
 
