@@ -1,3 +1,12 @@
+const passwordResetToken = () => {
+  const passwordResetDisplay = window.localStorage.getItem(
+    "RA_PW_RESET_NOTIFICATION"
+  );
+  if (!passwordResetDisplay) {
+    window.localStorage.setItem("RA_PW_RESET_NOTIFICATION", "show");
+  }
+};
+
 const validateEmail = (email) => {
   const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isValid = emailTest.test(email);
@@ -32,6 +41,9 @@ const validateForm = (e) => {
     }
   });
   if (invalidInputs.length > 0) e.preventDefault();
+  else if (form.action.includes("/recover")) {
+    passwordResetToken();
+  }
   return invalidInputs.length === 0;
 };
 

@@ -5,6 +5,9 @@ export default class RaAccountAuth extends HTMLElement {
     super();
     this.accountToggles = this.querySelectorAll("[data-toggle-account]");
     this.accountForms = this.querySelectorAll("form");
+    this.passwordResetText = this.querySelector(
+      "[data-password-reset-success]"
+    );
   }
 
   connectedCallback() {
@@ -15,6 +18,13 @@ export default class RaAccountAuth extends HTMLElement {
       const button = form.querySelector("button");
       button.addEventListener("click", validateForm.bind(this));
     });
+    if (
+      localStorage.getItem("RA_PW_RESET_NOTIFICATION") &&
+      !window.location.pathname.includes("/challenge")
+    ) {
+      this.passwordResetText.classList.remove("hidden");
+      localStorage.removeItem("RA_PW_RESET_NOTIFICATION");
+    }
   }
 
   accountModalToggle(e) {
