@@ -93,7 +93,7 @@
                         {% endif %}
                         <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
                         <span class="flex justify-center items-center">
-                          <span class="visually-hidden">{{ 'sections.shop-the-look.product-price' | t }}</span>
+                          <span class="sr-only">{{ 'sections.shop-the-look.product-price' | t }}</span>
                           {{ product.price | money }}
                         </span>
                       </div>
@@ -163,18 +163,18 @@
                 data-index="{{ forloop.index0 }}"
                 data-slider="product-{{ block.id }}"
                 class="hidden md:block ra-shop-the-look__dot relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
-                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
+                <span class="sr-only">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
               </button>
               <button
                 data-popover="product-{{ block.id }}"
                 class="block md:hidden ra-shop-the-look__dot relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
-                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
+                <span class="sr-only">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
               </button>
             {% else %}
               <button
                 data-popover="product-{{ block.id }}"
                 class="ra-shop-the-look__dot block relative z-10 bg-transparent rounded-full w-6 h-6 after:content-[''] after:absolute after:w-8 after:h-8 after:-left-1 after:-top-1 after:rounded-full">
-                <span class="visually-hidden">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
+                <span class="sr-only">{{ 'sections.shop-the-look.product-show' | t }} {{ product.title }}</span>
               </button>
             {% endif %}
 
@@ -185,7 +185,7 @@
               id="product-{{ block.id }}">
               <button class="absolute flex w-3.5 h-3.5 top-2.5 right-2.5" data-popover="product-{{ block.id }}">
                 {% render 'icon' icon: 'close', width: '14px', height: '14px' %}
-                <span class="visually-hidden">{{ 'sections.shop-the-look.product-hide' | t }} {{ product.title }}</span>
+                <span class="sr-only">{{ 'sections.shop-the-look.product-hide' | t }} {{ product.title }}</span>
               </button>
 
               {%- if product.featured_media -%}
@@ -200,7 +200,7 @@
                 {% endif %}
                 <a class="text-lg mb-1.5" href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a>
                 <span class="flex">
-                  <span class="visually-hidden">{{ 'sections.shop-the-look.product-price' | t }}</span>
+                  <span class="sr-only">{{ 'sections.shop-the-look.product-price' | t }}</span>
                   {{ product.price | money }}
                 </span>
               </div>
