@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getSearchParamsFromForm, updateURL } from "../utils/search-params";
+import { refreshReviewWidgets } from "../utils/vendors";
 export default class RaCollectionSort extends HTMLElement {
   constructor() {
     super();
@@ -14,16 +15,20 @@ export default class RaCollectionSort extends HTMLElement {
       .sectionId;
     const url = `${window.location.pathname}?section_id=${sectionId}&${searchParamString}`;
 
-    axios.get(url).then((res) => {
-      const html = res.data;
+    axios
+      .get(url)
+      .then((res) => {
+        const html = res.data;
 
-      // Grab grid html from fetch with params and update DOM element
-      document.getElementById("ProductGrid").innerHTML = new DOMParser()
-        .parseFromString(html, "text/html")
-        .getElementById("ProductGrid").innerHTML;
+        document.getElementById("ProductGrid").innerHTML = new DOMParser()
+          .parseFromString(html, "text/html")
+          .getElementById("ProductGrid").innerHTML;
 
-      updateURL(searchParamString);
-    });
+        updateURL(searchParamString);
+      })
+      .then(() => {
+        refreshReviewWidgets();
+      });
   }
 
   connectedCallback() {

@@ -10,7 +10,6 @@ import "swiper/css/bundle";
 
 import components from "../vue/components/index.js";
 import "../js/custom-elements/custom-elements.js";
-import "../js/custom-elements/ra-dialog.js";
 import "../js/custom-elements/scrollable.js";
 
 import "tailwindcss/base.css";
@@ -71,6 +70,22 @@ const initSwipers = () => {
   });
 };
 
+const updateSwipers = () => {
+  const swipers = document.querySelectorAll("swiper-container");
+
+  swipers.forEach((swiperEl) => {
+    if (swiperEl.hasAttribute("init")) {
+      const swiperParams = JSON.parse(
+        swiperEl.getAttribute("data-init-params")
+      );
+
+      swiperEl.initialized = false;
+      Object.assign(swiperEl, swiperParams);
+      swiperEl.initialize();
+    }
+  });
+};
+
 window.addEventListener("load", () => {
   register();
   renderVueApps();
@@ -90,7 +105,17 @@ if (isDesignMode) {
       );
     }
   };
-  document.addEventListener("shopify:section:load", refreshVue);
-  document.addEventListener("shopify:section:deselect", refreshVue);
-  document.addEventListener("shopify:section:reorder", refreshVue);
+
+  const onShopifySectionChange = () => {
+    updateSwipers();
+    refreshVue();
+  };
+
+  document.addEventListener("shopify:section:load", () => {
+    onShopifySectionChange();
+  });
+
+  document.addEventListener("shopify:section:reorder", () => {
+    onShopifySectionChange();
+  });
 }
