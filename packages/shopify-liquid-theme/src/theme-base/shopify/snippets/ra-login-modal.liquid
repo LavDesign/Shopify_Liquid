@@ -2,7 +2,7 @@
   <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Log In</h3>
   {% form 'customer_login', validate: 'novalidate' %}
     <div class="hidden bg-primary-600 px-2 py-1 mb-4" data-password-reset-success>
-      <p class="text-sm font-light">We've sent you an email with further instructions. Check your inbox!</p>
+      <p class="text-sm font-light">{{ customer.recover_password.success | t }}</p>
     </div>
     <div class="grid gap-4 md:gap-6 grid-cols-1">
       <div class="ra-grid-item">
@@ -197,7 +197,8 @@
 {% endcapture %}
 
 {% capture recover_content %}
-  <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">Reset Your Password</h3>
+  <h3 class="text-center font-light mb-8 md:mb-14 text-grey-600">{{ 'customer.recover_password.title' | t }}</h3>
+  <p class="text-grey-600 font-light mb-4">{{ 'customer.recover_password.subtext' | t }}</p>
   {%- form 'recover_customer_password', validate: 'novalidate' -%}
     {% assign recover_success = form.posted_successfully? %}
 
