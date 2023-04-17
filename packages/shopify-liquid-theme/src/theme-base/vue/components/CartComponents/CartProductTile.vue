@@ -83,6 +83,7 @@ import { computed } from "vue";
 import { useCartStore } from "../../stores/cart";
 import { getSizedImageFromUrl } from "../../filters/image.js";
 import QuantityAdjuster from "../QuantityAdjuster.vue";
+import { dataRemoveFromCart } from "../datalayer/";
 
 const props = defineProps({
   product: {
@@ -110,6 +111,7 @@ const updateQuantity = (qty) => {
     quantity: qty.toString(),
     properties: props.product.properties,
   };
+  if (qty == 0) dataRemoveFromCart(props.product);
   cartStore.updateItem(productObj);
 };
 

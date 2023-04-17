@@ -10,7 +10,7 @@ export function dataAddToCart(product, variant, qty) {
       new Date().getTime() + "." + Math.random().toString(36).substring(5),
     ecommerce: {
       currency: Shopify.currency.active,
-      value: variant.value.price,
+      value: variant.value.price / 100,
       items: [
         {
           item_id: variant.value.id,
@@ -31,7 +31,7 @@ export function dataAddToCart(product, variant, qty) {
           option_one: variant.value.option1,
           option_two: variant.value.option2,
           option_three: variant.value.option3,
-          price: variant.value.price,
+          price: variant.value.price / 100,
           quantity: qty.value,
         },
       ],
