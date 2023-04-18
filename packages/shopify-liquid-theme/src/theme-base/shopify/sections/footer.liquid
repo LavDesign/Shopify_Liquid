@@ -76,6 +76,11 @@
                   </div>
                 {%- endfor -%}
               {% endcapture %}
+              <ra-accordion>
+                {% for link in block.settings.menu.links %}
+                  {% render 'accordion-item', title: link.title, content: "null", show_icon: true, class: "ra-button ra-tab__toggle" %}
+                {% endfor %}
+              </ra-accordion>
 
                 {% render 'tabs', tabs: tabs, layout: 'default', center: false, stack_mobile: true %}
               </div>

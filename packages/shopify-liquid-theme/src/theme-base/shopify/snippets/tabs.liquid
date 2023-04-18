@@ -105,19 +105,25 @@ stack_mobile: true
 
   <ra-new-tabs id="login" external-toggle="#modal-login">
     <div class="">
-      <div class="flex text-grey-500 text-left text-lg">
-        <button class="py-2 px-5 text-left active text-grey-900" data-tab="tab1">Tab 1</button>
-        <button class="py-2 px-5 text-left" data-tab="tab2">Tab 2</button>
+      <div class="flex text-grey-500 text-left text-lg flex-nowrap overflow-x-scroll">
+        <button class="py-2 px-5 text-left active text-grey-900 whitespace-nowrap" data-tab="tab1">Tab 1</button>
+        <button class="py-2 px-5 text-left whitespace-nowrap" data-tab="tab2">Tab 2</button>
+        <button class="py-2 px-5 text-left whitespace-nowrap" data-tab="tab3">THIS WOULD BE A LONG TAB TITLE</button>
       </div>
       <div class="p-4 border border-grey-500 overflow-hidden transition-all h-full text-base font-2light" data-tab-container>
-        <div class="tab-panel" data-tab="tab1">
+        <div class="tab-panel" data-tab-target="tab1">
           <p>
             <span class="text-red">Tab 1</span>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in massa a mi vestibulum mattis. Donec tincidunt urna sed mauris pharetra fringilla. Nunc id dui imperdiet, viverra turpis vel, feugiat elit. Mauris commodo commodo turpis, vel dapibus velit feugiat vitae.</p>
         </div>
-        <div class="tab-panel hidden" data-tab="tab2">
+        <div class="tab-panel hidden" data-tab-target="tab2">
           <p>
             <span class="text-red">Tab 2</span>
+            Nullam in sapien euismod, sagittis nisl id, tincidunt sapien. Duis rhoncus est a sapien bibendum tempus. Etiam fermentum euismod nibh, id elementum nulla pharetra vel. Praesent auctor vel libero ac tristique. Sed in nisl lorem. Proin commodo erat ac nisi rutrum, eget lacinia lectus vestibulum.</p>
+        </div>
+        <div class="tab-panel hidden" data-tab-target="tab3">
+          <p>
+            <span class="text-red">Tab 3</span>
             Nullam in sapien euismod, sagittis nisl id, tincidunt sapien. Duis rhoncus est a sapien bibendum tempus. Etiam fermentum euismod nibh, id elementum nulla pharetra vel. Praesent auctor vel libero ac tristique. Sed in nisl lorem. Proin commodo erat ac nisi rutrum, eget lacinia lectus vestibulum.</p>
         </div>
       </div>
