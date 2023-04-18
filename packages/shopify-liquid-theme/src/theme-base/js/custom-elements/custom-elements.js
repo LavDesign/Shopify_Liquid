@@ -9,6 +9,9 @@ import RaCollectionFilters from "./ra-collection-filters.js";
 import RaSearchFilters from "./ra-search-filters.js";
 import RaRangeSlider from "./ra-range-slider.js";
 import RaSearchBar from "./ra-search-bar.js";
+import RaModal from "./ra-modal.js";
+import RaAccountAuth from "./ra-account-auth.js";
+import RaAccount from "./ra-account.js";
 
 customElements.define("ra-tabs", RaTabs);
 customElements.define("ra-header", RaHeader);
@@ -21,3 +24,6 @@ customElements.define("ra-collection-filters", RaCollectionFilters);
 customElements.define("ra-search-filters", RaSearchFilters);
 customElements.define("ra-range-slider", RaRangeSlider);
 customElements.define("ra-search-bar", RaSearchBar);
+customElements.define("ra-modal", RaModal);
+customElements.define("ra-account-auth", RaAccountAuth);
+customElements.define("ra-account", RaAccount);

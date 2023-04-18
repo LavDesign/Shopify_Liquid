@@ -1,203 +1,207 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
-
 <section class="customer order ra-container set--spacing-top-large set--spacing-bottom-large gutter--regular max-width--xmedium">
-  <div class="ra-row">
-    <div class="basis-full md:basis-1/4">
-      {% render 'ra-account-navigation' %}
-    </div>
-    <div class="basis-full md:basis-3/4">
-      <div class="items-center flex flex-wrap relative pb-4 md:pb-10 border-b border-grey-500">
-        <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
-          {% render 'icon', icon: 'left-arrow', width: '24px', height: '24px' %}
-        </a>
-
-        <h3 class="h3 color-grey-900 !font-light">
-          {{ 'customer.order.title' | t: name: order.name }}
-        </h3>
-
-        <div class="max-md:flex-[1_0_100%] md:items-end md:self-end md:flex md:flex-col md:ml-auto font-light color-grey-800">
-          {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
-          <p class="text-sm md:text-base max-md:mt-4">
-            {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
-            {%- if order.cancelled -%}
-              <p>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
-              <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
-            {% else %}
-              {{ 'customer.order.date_html' | t: date: order_date }}
-            {%- endif -%}
-          </p>
-        </div>
+  <ra-account>
+    <div class="ra-row">
+      <div class="basis-full md:basis-1/4">
+        {% render 'ra-account-navigation' %}
       </div>
+      <div class="basis-full md:basis-3/4">
+        <div class="items-center flex flex-wrap relative pb-4 md:pb-10 border-b border-grey-500">
+          <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
+            {% render 'icon', icon: 'left-arrow', width: '24px', height: '24px' %}
+          </a>
 
-      <!-- Order details info grid -->
-      <div class="mt-5 md:mt-12 text-sm md:text-base">
-        <div class="grid gap-4 grid-cols-2 lg:grid-cols-4">
-          <div class="font-light">
-            <p class="font-secondary h6 mb-2 font-bold text-grey-800">
-              {{ 'customer.order.shipping_address' | t }}
-            </p>
-            <p>{{ order.shipping_address.name }}</p>
-            <div>{{ order.shipping_address.address1 }}</div>
-            <div>{{ order.shipping_address.address2 }}</div>
-            <div>
-              {{ order.shipping_address.city }}
-              {{ order.shipping_address.province_code }},
-              {{ order.shipping_address.country_code }}
-            </div>
-            <div>{{ order.shipping_address.country.name }}</div>
-            <p>{{ order.shipping_address.city }}</p>
-          </div>
-          <div class="font-light">
-            <p class="font-secondary mb-2 font-bold text-grey-800">
-              {{ 'customer.order.billing_address' | t }}
-            </p>
-            <p>{{ order.billing_address.name }}</p>
-            <div>{{ order.billing_address.address1 }}</div>
-            <div>{{ order.billing_address.address2 }}</div>
-            <div>
-              {{ order.billing_address.city }}
-              {{ order.billing_address.province_code }}
-              {{ order.billing_address.country_code }}
-            </div>
-            <div>{{ order.billing_address.country.name }}</div>
-            <p>{{ order.billing_address.city }}</p>
-          </div>
-          <div class="font-light">
-            <p class="font-secondary mb-2 font-bold text-grey-800">
-              Shipping Method
-            </p>
-            <p>
-              {% if shipping_method %}
-                {{ shipping_method.price | money }}<br/>
-                {{ shipping_method.title }}
+          <h3 class="h3 color-grey-900 !font-light">
+            {{ 'customer.order.title' | t: name: order.name }}
+          </h3>
+
+          <div class="max-md:flex-[1_0_100%] md:items-end md:self-end md:flex md:flex-col md:ml-auto font-light color-grey-800">
+            {%- assign order_date = order.created_at | time_tag: format: 'date_at_time' -%}
+            <p class="text-sm md:text-base max-md:mt-4">
+              {%- assign cancelled_at = order.cancelled_at | time_tag: format: 'date_at_time' -%}
+              {%- if order.cancelled -%}
+                <p>{{ 'customer.order.cancelled_html' | t: date: cancelled_at }}</p>
+                <p>{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason_label }}</p>
               {% else %}
-                no shipping method
-              {% endif %}
-            </p>
-          </div>
-          <div class="font-light">
-            <p class="font-secondary mb-2 font-bold text-grey-800">
-              Billing Method
-            </p>
-            <p>
-              {% if billing_method %}
-                {{ billing_method.price | money }}<br/>
-                {{ billing_method.title }}
-              {% else %}
-                no billing method
-              {% endif %}
+                {{ 'customer.order.date_html' | t: date: order_date }}
+              {%- endif -%}
             </p>
           </div>
         </div>
-      </div>
 
-      <div class="mt-10 flex">
-        {% render 'button'
-         , type: 'a',
-         style: 'primary',
-         url: order.order_status_url,
-         size: 'md',
-         label: 'Track Package',
-         class: 'inline-flex max-md:w-full md:ml-auto' %}
-      </div>
-
-      <ul class="mt-10 md:mt-20 md:mb-12 md:first:pt-8 ra-list list-none">
-        {% for line_item in order.line_items %}
-          <li class="max-md:mb-4 max-md:pb-4 max-md:first:pt-4 first:border-t border-b ra-list__item">
-            <div class="py-4 md:py-8 ra-grid gap-4 md:gap-5 lg:gap-10 grid-cols-3 md:grid-cols-5 lg:grid-cols-6">
+        <!-- Order details info grid -->
+        <div class="mt-5 md:mt-12 text-sm md:text-base">
+          <div class="grid gap-4 grid-cols-2 lg:grid-cols-4">
+            <div class="font-light">
+              <p class="font-secondary h6 mb-2 font-bold text-grey-800">
+                {{ 'customer.order.shipping_address' | t }}
+              </p>
+              <p>{{ order.shipping_address.name }}</p>
+              <div>{{ order.shipping_address.address1 }}</div>
+              <div>{{ order.shipping_address.address2 }}</div>
               <div>
-                <a href="{{ line_item.url }}">
-                  <div class="ra-image ra-image--use-aspect-ratio" style="--media-width:1; --media-height:1.25;">
-                    <img
-                      loading="lazy"
-                      class="ra-image__media"
-                      width="1"
-                      height="1.25"
-                      alt="{{- line_item.product.featured_image.alt -}}"
-                      src="{{ line_item.product.featured_image | image_url:    width: 200 }}">
-                  </div>
-                </a>
+                {{ order.shipping_address.city }}
+                {{ order.shipping_address.province_code }},
+                {{ order.shipping_address.country_code }}
               </div>
-              <div class="relative col-span-2 md:col-span-4 lg:col-span-5">
-                <a href="{{ line_item.url }}" class="text-sm md:text-lg font-light ra-link no-underline text-current">
-                  {{ line_item.product.title }}
-                </a>
-                {%- unless line_item.product.has_only_default_variant %}
-                  <ul class="mt-2 text-sm font-light ra-list list-none">
-                    {% for option in line_item.options_with_values -%}
-                      <li class="mb-2 last:mb-0 text-grey-600">
-                        <span class="text-grey-900 block">{{ option.name }}</span>
-                        {{ option.value }}
-                      </li>
-                    {%- endfor %}
-                  </ul>
-                {% endunless %}
-                <span class="text-sm md:text-lg absolute top-0 right-0 font-light">
-                  {%- if line_item.original_line_price != line_item.final_line_price -%}
-                    <dl>
-                      <dt>
-                        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
-                      </dt>
-                      <dd class="regular-price">
-                        <s class="text-grey-500">{{ line_item.original_line_price | money }}</s>
-                      </dd>
-                      <dt>
-                        <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
-                      </dt>
-                      <dd>
-                        <span class="text-red">{{ line_item.final_line_price | money }}</span>
-                      </dd>
-                    </dl>
-                  {%- else -%}
-                    {{ line_item.original_line_price | money }}
-                  {%- endif -%}
-                </span>
-              </div>
+              <div>{{ order.shipping_address.country.name }}</div>
+              <p>{{ order.shipping_address.city }}</p>
             </div>
-          </li>
-        {% endfor %}
-      </ul>
+            <div class="font-light">
+              <p class="font-secondary mb-2 font-bold text-grey-800">
+                {{ 'customer.order.billing_address' | t }}
+              </p>
+              <p>{{ order.billing_address.name }}</p>
+              <div>{{ order.billing_address.address1 }}</div>
+              <div>{{ order.billing_address.address2 }}</div>
+              <div>
+                {{ order.billing_address.city }}
+                {{ order.billing_address.province_code }}
+                {{ order.billing_address.country_code }}
+              </div>
+              <div>{{ order.billing_address.country.name }}</div>
+              <p>{{ order.billing_address.city }}</p>
+            </div>
+            <div class="font-light">
+              <p class="font-secondary mb-2 font-bold text-grey-800">
+                Shipping Method
+              </p>
+              <p>
+                {% if shipping_method %}
+                  {{ shipping_method.price | money }}<br/>
+                  {{ shipping_method.title }}
+                {% else %}
+                  no shipping method
+                {% endif %}
+              </p>
+            </div>
+            <div class="font-light">
+              <p class="font-secondary mb-2 font-bold text-grey-800">
+                Billing Method
+              </p>
+              <p>
+                {% if billing_method %}
+                  {{ billing_method.price | money }}<br/>
+                  {{ billing_method.title }}
+                {% else %}
+                  no billing method
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
 
-      <div class="order-details__summary text-sm mt-4 md:text-base md:ml-auto md:mt-3 md:max-w-[19.5rem] font-light">
-        <div class="mb-2 last:mb-0 flex justify-between color-current">
-          <span>{{ 'customer.order.subtotal' | t }}</span>
-          <span>{{ order.line_items_subtotal_price | money }}</span>
+        <div class="mt-10 flex">
+          {% render 'button'
+           , type: 'a',
+           style: 'primary',
+           url: order.order_status_url,
+           size: 'md',
+           label: 'Track Package',
+           class: 'inline-flex max-md:w-full md:ml-auto' %}
         </div>
-        <div class="mb-2 last:mb-0 flex justify-between color-current">
-          <span>Tax</span>
-          <span>{{ order.tax_price | money }}</span>
-        </div>
-        {% if shipping_method %}
+
+        <ul class="mt-10 md:mt-20 md:mb-12 md:first:pt-8 ra-list list-none">
+          {% for line_item in order.line_items %}
+            <li class="max-md:mb-4 max-md:pb-4 max-md:first:pt-4 first:border-t border-b ra-list__item">
+              <div class="py-4 md:py-8 ra-grid gap-4 md:gap-5 lg:gap-10 grid-cols-3 md:grid-cols-5 lg:grid-cols-6">
+                <div>
+                  <a href="{{ line_item.url }}">
+                    <div class="ra-image ra-image--use-aspect-ratio" style="--media-width:1; --media-height:1.25;">
+                      <img
+                        loading="lazy"
+                        class="ra-image__media"
+                        width="1"
+                        height="1.25"
+                        alt="{{- line_item.product.featured_image.alt -}}"
+                        src="{{ line_item.product.featured_image | image_url:    width: 200 }}">
+                    </div>
+                  </a>
+                </div>
+                <div class="relative col-span-2 md:col-span-4 lg:col-span-5">
+                  {% assign product_title = line_item.product.title | default: line_item.title %}
+                  <a href="{{ line_item.url }}" class="text-sm md:text-lg font-light ra-link no-underline text-current">
+                    {{ product_title }}
+                  </a>
+                  {%- unless line_item.product.has_only_default_variant %}
+                    <ul class="mt-2 text-sm font-light ra-list list-none">
+                      {% for option in line_item.options_with_values -%}
+                        <li class="mb-2 last:mb-0 text-grey-600">
+                          <span class="text-grey-900 block">{{ option.name }}</span>
+                          {{ option.value }}
+                        </li>
+                      {%- endfor %}
+                    </ul>
+                  {% endunless %}
+                  <span class="text-sm md:text-lg absolute top-0 right-0 font-light">
+                    {%- if line_item.variant.compare_at_price != line_item.variant.price -%}
+                      {% liquid
+                        assign compare_at_price = line_item.variant.compare_at_price | plus: 0 | times: line_item.quantity
+                      %}
+                      <dl class="flex flex-row-reverse gap-1">
+                        <dt>
+                          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+                        </dt>
+                        <dd class="regular-price">
+                          <s class="text-grey-500">{{ compare_at_price | money }}</s>
+                        </dd>
+                        <dt>
+                          <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
+                        </dt>
+                        <dd>
+                          <span class="text-red">{{ line_item.final_line_price | money }}</span>
+                        </dd>
+                      </dl>
+                    {%- else -%}
+                      {{ line_item.original_line_price | money }}
+                    {%- endif -%}
+                  </span>
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="order-details__summary text-sm mt-4 md:text-base md:ml-auto md:mt-3 md:max-w-[19.5rem] font-light">
           <div class="mb-2 last:mb-0 flex justify-between color-current">
+            <span>{{ 'customer.order.subtotal' | t }}</span>
+            <span>{{ order.line_items_subtotal_price | money }}</span>
+          </div>
+          <div class="mb-2 last:mb-0 flex justify-between color-current">
+            <span>Tax</span>
+            <span>{{ order.tax_price | money }}</span>
+          </div>
+          {% if shipping_method %}
+            <div class="mb-2 last:mb-0 flex justify-between color-current">
+              <span>
+                {{- 'customer.order.shipping' | t }}
+                ({{ shipping_method.title }})
+              </span>
+              <span>
+                {{ shipping_method.price | money }}
+              </span>
+            </div>
+          {% endif %}
+          {%- if order.total_duties -%}
+            <div class="mb-2 last:mb-0 flex justify-between color-current">
+              <span>
+                {{ 'customer.order.total_duties' | t }}
+              </span>
+              <span>
+                {{ order.total_duties | money }}
+              </span>
+            </div>
+          {%- endif -%}
+          <hr class="ra-divider">
+          <div class="text-sm md:text-base flex justify-between color-current">
             <span>
-              {{- 'customer.order.shipping' | t }}
-              ({{ shipping_method.title }})
+              {{ 'customer.order.total' | t }}
             </span>
             <span>
-              {{ shipping_method.price | money }}
+              {{ order.total_price | money }}
             </span>
           </div>
-        {% endif %}
-        {%- if order.total_duties -%}
-          <div class="mb-2 last:mb-0 flex justify-between color-current">
-            <span>
-              {{ 'customer.order.total_duties' | t }}
-            </span>
-            <span>
-              {{ order.total_duties | money }}
-            </span>
-          </div>
-        {%- endif -%}
-        <hr class="ra-divider">
-        <div class="text-sm md:text-base flex justify-between color-current">
-          <span>
-            {{ 'customer.order.total' | t }}
-          </span>
-          <span>
-            {{ order.total_price | money }}
-          </span>
         </div>
       </div>
     </div>
-  </div>
+  </ra-account>
 </section>

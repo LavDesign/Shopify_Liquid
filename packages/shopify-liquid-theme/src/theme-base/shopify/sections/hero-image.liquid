@@ -1,16 +1,38 @@
-{% style %}
-  #shopify-section-{{ section.id }} {
-    --pagination-color: var({{section.settings.pagination_color}});
-  }
+{%- style -%}
+  {%- assign mobile_styles = blank -%}
+  {%- assign desktop_styles = blank -%}
 
   {%- for block in section.blocks -%}
-    #block-{{ section.id }}-{{ block.id }} {
-      --background-color: var({{ block.settings.bg_color }});
-      --text-color-mobile: var({{ block.settings.text_color_mobile }});
-      --text-color-desktop: var({{ block.settings.text_color_desktop }});
+    {%- capture mobile_block_styles -%}
+    #block-{{- section.id -}}-{{- block.id -}} {
+      background-color: var({{- block.settings.bg_color -}});
+      color: var({{- block.settings.text_color_mobile -}});
     }
+    {%- endcapture -%}
+    {%- capture desktop_block_styles -%}
+    #block-{{- section.id -}}-{{- block.id -}} {
+      color: var({{- block.settings.text_color_desktop -}});
+    }
+    {%- endcapture -%}
+
+    {%- assign mobile_styles = mobile_styles | append: mobile_block_styles -%}
+    {%- assign desktop_styles = desktop_styles | append: desktop_block_styles -%}
   {%- endfor -%}
-{% endstyle %}
+
+  #shopify-section-{{ section.id }} {
+    --swiper-pagination-color: var({{- section.settings.pagination_color -}})
+  }
+
+  {{- mobile_styles -}}
+  @media (min-width: 768px) {
+    #shopify-section-{{- section.id }} .ra-hero__details {
+      {%- if block.settings.text_color_desktop != blank -%}
+      color: var({{- block.settings.text_color_desktop | default: "inherit" -}});
+      {%- endif -%}
+    }
+    {{- desktop_styles -}}
+  }
+{%- endstyle -%}
 
 {% capture arrow_color %}
   var({{ section.settings.arrow_color }})
@@ -18,7 +40,7 @@
 
 <div class="relative">
   <swiper-container
-    class="ra-hero set--details-overlay set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}ra-hero--stack-mobile{%- endif -%}"
+    class="ra-hero overflow-hidden set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}set--details-after-sm set--details-overlay-md{% else %}set--details-overlay{% endif %}"
     {% if section.settings.autoplay %}
       autoplay-delay="{{ section.settings.delay | times: 1000 }}"
     {% endif %}
@@ -34,63 +56,65 @@
   >
     {% for block in section.blocks %}
       <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
-        <div class="ra-hero__media component-media">
+        <div class="ra-hero__media component-media relative">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
-            {% render 'image' with block.settings.desktop_bg_image,
-              classes: 'ra-image__media ra-image__media--desktop',
-              width: 2000,
-              lazyload: true
-            %}
-            {% render 'image' with block.settings.mobile_bg_image,
-              classes: 'ra-image__media ra-image__media--mobile',
-              width: 800,
-              lazyload: true
-            %}
-          {% endif %}
-          <div class="ra-hero__details component-details--set-order">
-            <div class="ra-hero__copy {{ block.settings.text_alignment }}">
-              {% if block.settings.subtitle != blank %}
-                <div class="ra-hero__subtitle">{{ block.settings.subtitle }}</div>
-              {% endif %}
-
-              {% if block.settings.title != blank %}
-                <{{ block.settings.title_level }}
-                  class="ra-title ra-hero__title {{ block.settings.title_style }}"
-                >
-                  {{ block.settings.title }}
-                </{{ block.settings.title_level }}>
-              {% endif %}
-
-              {% if block.settings.body != blank %}
-                <div class="ra-hero__description">
-                  {{ block.settings.body }}
-                </div>
-              {% endif %}
-
-              {% if block.settings.button_1_url != blank or block.settings.button_2_url != blank %}
-                <div class="ra-link-list ra-hero__link-list">
-                  {% if block.settings.button_1_label != blank and block.settings.button_1_url != blank %}
-                    {% render 'button',
-                      type: 'a',
-                      style: block.settings.button_1_style,
-                      label: block.settings.button_1_label,
-                      url: block.settings.button_1_url,
-                      class: 'min-w-[175px] ra-link-list__cta'
-                    %}
-                  {% endif %}
-
-                  {% if block.settings.button_2_label != blank and block.settings.button_2_url != blank %}
-                    {% render 'button',
-                      type: 'a',
-                      style: block.settings.button_2_style,
-                      label: block.settings.button_2_label,
-                      url: block.settings.button_2_url,
-                      class: 'min-w-[175px] ra-link-list__cta'
-                    %}
-                  {% endif %}
-                </div>
-              {% endif %}
+            <div class="ra-hero__image ra-image ra-image--use-as-background">
+              {% render 'image' with block.settings.desktop_bg_image,
+                classes: 'ra-image__media ra-image__media--desktop hidden md:block',
+                width: 2000,
+                lazyload: true
+              %}
+              {% render 'image' with block.settings.mobile_bg_image,
+                classes: 'ra-image__media ra-image__media--mobile md:hidden',
+                width: 800,
+                lazyload: true
+              %}
             </div>
+          {% endif %}
+        </div>
+        <div class="ra-hero__details component-details--set-order h-auto {% if section.settings.stack_mobile %}!relative md:!absolute{% endif %}">
+          <div class="ra-hero__copy {{ block.settings.text_alignment }}">
+            {% if block.settings.eyebrow_text != blank %}
+              <div class="ra-hero__subtitle">{{ block.settings.eyebrow_text }}</div>
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+              <{{ block.settings.title_level }}
+                class="ra-title ra-hero__title {{ block.settings.title_style }}"
+              >
+                {{ block.settings.title }}
+              </{{ block.settings.title_level }}>
+            {% endif %}
+
+            {% if block.settings.description != blank %}
+              <div class="ra-hero__description rte">
+                {{ block.settings.description }}
+              </div>
+            {% endif %}
+
+            {% if block.settings.cta_1_url != blank or block.settings.cta_2_url != blank %}
+              <div class="ra-link-list ra-hero__link-list">
+                {% if block.settings.cta_1_label != blank and block.settings.cta_1_url != blank %}
+                  {% render 'button',
+                    type: 'a',
+                    style: block.settings.cta_1_style,
+                    label: block.settings.cta_1_label,
+                    url: block.settings.cta_1_url,
+                    class: 'min-w-[175px] ra-link-list__cta'
+                  %}
+                {% endif %}
+
+                {% if block.settings.cta_2_label != blank and block.settings.cta_2_url != blank %}
+                  {% render 'button',
+                    type: 'a',
+                    style: block.settings.cta_2_style,
+                    label: block.settings.cta_2_label,
+                    url: block.settings.cta_2_url,
+                    class: 'min-w-[175px] ra-link-list__cta'
+                  %}
+                {% endif %}
+              </div>
+            {% endif %}
           </div>
         </div>
       </swiper-slide>
@@ -122,21 +146,21 @@
       "settings": [
         {
           "type": "text",
-          "id": "subtitle",
-          "label": "Section Sub Title",
-          "default": "SUB-HEADING"
+          "id": "eyebrow_text",
+          "label": "Eyebrow Text",
+          "default": "Eyebrow Text"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Section Title",
+          "label": "Title",
           "default": "This is a title"
         },
         {
           "type": "select",
           "id": "title_level",
           "label": "Title Level",
-          "info": "Choose the semantic H-Tag for this title",
+          "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
           "options": <%- uikit.headingStyles -%>,
           "default": "h2"
         },
@@ -144,9 +168,9 @@
           "type": "select",
           "id": "title_style",
           "label": "Title Style",
-          "info": "Choose which heading to (style) the title",
+          "info": "Choose the styling of the header",
           "options": <%- uikit.headingStyles -%>,
-          "default": "h2"
+          "default": "h3"
         },
         {
           "type": "select",
@@ -157,8 +181,8 @@
         },
         {
           "type": "richtext",
-          "id": "body",
-          "label": "Section Body Copy"
+          "id": "description",
+          "label": "Description"
         },
         {
           "type": "header",
@@ -184,21 +208,22 @@
           "type": "select",
           "id": "text_color_desktop",
           "label": "Text Color (desktop)",
-          "options": <%- uikit.colorsAll -%>,
+          "options": <%- uikit.colorsSchemaPicker -%>,
           "default": "--color-primary-900"
         },
         {
           "type": "select",
           "id": "text_color_mobile",
           "label": "Text Color (mobile)",
-          "options": <%- uikit.colorsAll -%>,
+          "options": <%- uikit.colorsSchemaPicker -%>,
           "default": "--color-primary-900"
         },
         {
           "type": "select",
           "id": "bg_color",
           "label": "Background Color",
-          "options": <%- uikit.colorsAll -%>,
+          "info": "Set the background color for all screen sizes",
+          "options": <%- uikit.colorsSchemaPicker -%>,
           "default": "--color-primary-900"
         },
         {
@@ -207,40 +232,40 @@
         },
         {
           "type": "text",
-          "id": "button_1_label",
-          "label": "CTA 1 Label",
-          "default": "learn more"
+          "id": "cta_1_label",
+          "label": "CTA 1 Text",
+          "default": "Learn More"
         },
         {
           "type": "url",
-          "id": "button_1_url",
+          "id": "cta_1_url",
           "label": "CTA 1 URL"
         },
         {
           "type": "select",
-          "id": "button_1_style",
+          "id": "cta_1_style",
           "label": "CTA 1 Style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "primary"
         },
         {
           "type": "header",
-          "content": "Button 2"
+          "content": "CTA 2"
         },
         {
           "type": "text",
-          "id": "button_2_label",
-          "label": "CTA 2 Label",
-          "default": "learn more"
+          "id": "cta_2_label",
+          "label": "CTA 2 Text",
+          "default": "Learn More"
         },
         {
           "type": "url",
-          "id": "button_2_url",
+          "id": "cta_2_url",
           "label": "CTA 2 URL"
         },
         {
           "type": "select",
-          "id": "button_2_style",
+          "id": "cta_2_style",
           "label": "CTA 2 Style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "secondary"

@@ -29,7 +29,7 @@
             {% for block in section.blocks %}
               <swiper-slide class="px-2 py-4 h-full">
                 {% if block.settings.text != blank %}
-                  <div class="ra-preheader__text">{{ block.settings.text }}</div>
+                  <div class="ra-preheader__text rte">{{ block.settings.text }}</div>
                 {% endif %}
               </swiper-slide>
             {% endfor %}
@@ -57,14 +57,14 @@
     {
       "type": "select",
       "id": "bg_color",
-      "label": "Background color",
+      "label": "Background Color",
       "options": <%- uikit.colorsAll -%>,
       "default": "--color-secondary-500"
     },
     {
       "type": "select",
       "id": "text_color",
-      "label": "Text color",
+      "label": "Text Color",
       "options": <%- uikit.colorsAll -%>,
       "default": "--color-util-red"
     },
@@ -75,7 +75,7 @@
     {
       "type": "select",
       "id": "alignment",
-      "label": "Slider alignment",
+      "label": "Slider Alignment",
       "info": "Select hero height",
       "options": [
         {
