@@ -4,32 +4,43 @@ export default class RaNewTabs extends HTMLElement {
     this.tabButtons = this.querySelectorAll("[data-tab]");
     this.tabContainer = this.querySelector("[data-tab-container]");
     this.tabPanels = this.tabContainer.querySelectorAll("[data-tab-target]");
+    this.init();
+  }
 
+  init() {
+    this.setActiveTab(this.tabButtons[0]);
+    this.toggleTab();
+  }
+
+  toggleTab() {
     this.tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        if (button.classList.contains("active")) return false;
-        const tabId = button.dataset.tab;
-
-        // Hide all the tab panels
-        const selectedTabPanel = this.tabContainer.querySelector(
-          `[data-tab-target="${tabId}"]`
-        );
-        this.tabPanels.forEach((panel) => {
-          if (
-            panel != selectedTabPanel &&
-            !panel.classList.contains("hidden")
-          ) {
-            panel.classList.toggle("hidden");
-          }
-        });
-        selectedTabPanel.classList.toggle("hidden");
-
-        // Set the active state on the selected tab button
-        this.tabButtons.forEach((button) => {
-          button.classList.remove("text-grey-900", "active");
-        });
-        button.classList.add("text-grey-900", "active");
+        this.setActiveTab(button);
       });
     });
+  }
+
+  setActiveTab(button) {
+    if (button.classList.contains("active")) return false;
+    const tabId = button.dataset.tab;
+    const selectedTabPanel = this.tabContainer.querySelector(
+      `[data-tab-target="${tabId}"]`
+    );
+    const contentHeight = selectedTabPanel.children[0].offsetHeight;
+
+    this.tabPanels.forEach((panel) => {
+      if (panel !== selectedTabPanel) {
+        panel.classList.remove("active");
+        panel.style.height = "0px";
+      }
+    });
+
+    selectedTabPanel.classList.add("active");
+    selectedTabPanel.style.height = `${contentHeight}px`;
+
+    this.tabButtons.forEach((button) => {
+      button.classList.remove("active");
+    });
+    button.classList.add("active");
   }
 }
