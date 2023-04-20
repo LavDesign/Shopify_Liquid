@@ -5,7 +5,7 @@
 .ra-tab__button {
   @apply py-2 text-left whitespace-nowrap text-grey-900;
   &.active {
-    @apply border-b-2;
+    @apply border-b-2 border-primary-900;
   }
 }
 
