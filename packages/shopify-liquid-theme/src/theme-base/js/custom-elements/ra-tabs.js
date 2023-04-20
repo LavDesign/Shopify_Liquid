@@ -1,4 +1,4 @@
-export default class RaNewTabs extends HTMLElement {
+export default class RaTabs extends HTMLElement {
   constructor() {
     super();
     this.tabButtons = this.querySelectorAll("[data-tab]");
