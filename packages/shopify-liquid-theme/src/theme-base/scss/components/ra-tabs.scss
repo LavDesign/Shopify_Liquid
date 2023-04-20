@@ -1,10 +1,11 @@
 .ra-tab__button-container {
-  @apply flex text-grey-500 text-left text-lg flex-nowrap overflow-x-scroll;
+  @apply flex text-grey-500 text-left text-lg flex-nowrap overflow-x-scroll pb-4 gap-6;
+  &::-webkit-scrollbar { display: none; }
 }
 .ra-tab__button {
-  @apply py-2 py-2 px-5 text-left whitespace-nowrap;
+  @apply py-2 text-left whitespace-nowrap text-grey-900;
   &.active {
-    @apply text-grey-900;
+    @apply border-b-2;
   }
 }
 
