@@ -10,9 +10,6 @@ export default class RaModal extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log("Connected Callback");
-    console.log(dialogPolyfill);
-    console.log(this.dialog);
     dialogPolyfill.registerDialog(this.dialog);
 
     if (this.modalToggleButtons?.length) {
