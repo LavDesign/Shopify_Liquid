@@ -89,12 +89,12 @@
             <div class="header__mobile-navigation-util p-4 pb-8">
               {% if section.settings.show_account %}
                 <li class="mb-4 border-0">
-                  <a class="flex items-center"
-                  {% if customer %}
+                  <a
+                    class="flex items-center"
                     href="/account"
-                  {% else %}
-                    href="#" id="modal-login"
-                  {% endif %} title="account" aria-label="account">
+                    title="account"
+                    aria-label="account"
+                  >
                     {% render 'icon',
                       icon: section.settings.account_icon,
                       width: '14px',
