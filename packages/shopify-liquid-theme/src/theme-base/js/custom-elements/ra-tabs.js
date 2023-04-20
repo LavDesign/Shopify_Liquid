@@ -1,78 +1,48 @@
-export default class RaTabs extends HTMLElement {
+export default class RaNewTabs extends HTMLElement {
   constructor() {
     super();
-    this.tabItems = this.querySelectorAll(".ra-tab");
-    this.tabToggleBtns = this.querySelectorAll(".ra-tab__toggle");
-    this.tabContents = this.querySelectorAll(".ra-tab__content");
-    this.isStacked = this.getAttribute("data-stack-mobile");
-    this.mobile = 768;
+    this.tabButtons = this.querySelectorAll("[data-tab]");
+    this.tabContainer = this.querySelector("[data-tab-container]");
+    this.tabPanels = this.tabContainer.querySelectorAll("[data-tab-target]");
+    this.init();
   }
 
-  connectedCallback() {
-    if (this.tabItems === null || this.tabItems === undefined) return;
-    window.addEventListener("resize", this.handleWindowResize.bind(this));
-    this.render();
-  }
-
-  render() {
-    this.handleWindowResize();
+  init() {
+    this.setActiveTab(this.tabButtons[0]);
     this.toggleTab();
   }
 
-  getNextSibling(elem, selector) {
-    var sibling = elem.nextElementSibling;
-    while (sibling) {
-      if (sibling.matches(selector)) return sibling;
-      sibling = sibling.nextElementSibling;
-    }
-  }
-
-  // handle window resize - stack on mobile
-  handleWindowResize() {
-    if (window.innerWidth <= this.mobile && this.isStacked == "true") {
-      this.classList.remove("ra-tabs--default");
-      this.classList.add("ra-tabs--stack");
-    } else {
-      this.classList.remove("ra-tabs--stack");
-      this.classList.add("ra-tabs--default");
-    }
-  }
-
-  // set active collapsable tab
-  setActiveTab(button) {
-    const isActive = button.classList.contains("ra-tab__toggle--open");
-    const tabContent = this.getNextSibling(button, ".ra-tab__content");
-    const contentHeight = tabContent.querySelector(
-      ".ra-tab__content-inner"
-    ).offsetHeight;
-    if (!tabContent) return;
-
-    this.tabContents.forEach((content) => {
-      content.classList.remove("ra-tab__content--open");
-      content.style.height = "0px";
-    });
-
-    this.tabToggleBtns.forEach((button) => {
-      button.setAttribute("aria-pressed", false);
-      button.classList.remove("ra-tab__toggle--open");
-    });
-
-    if (!isActive) {
-      button.setAttribute("aria-pressed", true);
-      button.classList.add("ra-tab__toggle--open");
-
-      tabContent.classList.add("ra-tab__content--open");
-      tabContent.style.height = "0px";
-      tabContent.style.height = `${contentHeight}px`;
-    }
-  }
-
-  // attach event listener to toggle buttons
   toggleTab() {
-    this.tabToggleBtns.forEach((button) => {
+    this.tabButtons.forEach((button) => {
       button.addEventListener("click", () => {
         this.setActiveTab(button);
       });
     });
+  }
+
+  setActiveTab(button) {
+    if (button.classList.contains("active")) return false;
+    const tabId = button.dataset.tab;
+    const selectedTabPanel = this.tabContainer.querySelector(
+      `[data-tab-target="${tabId}"]`
+    );
+    const contentHeight = selectedTabPanel.children[0].offsetHeight;
+
+    this.tabPanels.forEach((panel) => {
+      if (panel !== selectedTabPanel) {
+        panel.classList.remove("active");
+        panel.style.height = "0px";
+      }
+    });
+
+    selectedTabPanel.classList.add("active");
+    selectedTabPanel.style.height = `${contentHeight}px`;
+
+    this.tabButtons.forEach((button) => {
+      button.classList.remove("active");
+      button.setAttribute("aria-pressed", false);
+    });
+    button.classList.add("active");
+    button.setAttribute("aria-pressed", true);
   }
 }
