@@ -1,8 +1,6 @@
-export function dataAddToCart(product, variant, qty) {
-  const splitPath = window.location.pathname.split("/").slice(1);
-  const pageType = splitPath[0];
-  const handle = splitPath[1];
+import { itemList } from "./utilities";
 
+export function dataAddToCart(product, variant, qty) {
   dataLayer.push({ ecommerce: null });
   dataLayer.push({
     event: "acn_add_to_cart",
@@ -24,8 +22,6 @@ export function dataAddToCart(product, variant, qty) {
           currency: Shopify.currency.active,
           item_brand: product.vendor,
           item_category: product.type,
-          item_list_id: pageType === "product" ? "product" : handle,
-          item_list_name: "product", // unsure what this should be specifically
           item_variant: variant.value.title,
           item_featured_image: variant.value.featured_image,
           option_one: variant.value.option1,
@@ -33,6 +29,7 @@ export function dataAddToCart(product, variant, qty) {
           option_three: variant.value.option3,
           price: variant.value.price / 100,
           quantity: qty.value,
+          ...itemList(product),
         },
       ],
     },

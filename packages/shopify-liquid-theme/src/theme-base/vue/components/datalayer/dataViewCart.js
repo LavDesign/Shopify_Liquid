@@ -1,3 +1,5 @@
+import { itemList, selectedOptions } from "./utilities";
+
 export function dataViewCart(cart) {
   if (!cart.value.items) return false;
   const items = Array.from(cart.value.items).map((line_item) => {

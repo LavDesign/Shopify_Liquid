@@ -1,8 +1,6 @@
-export function dataRemoveFromCart(line_item) {
-  const splitPath = window.location.pathname.split("/").slice(1);
-  const pageType = splitPath[0];
-  const handle = splitPath[1];
+import { itemList } from "./utilities";
 
+export function dataRemoveFromCart(line_item) {
   dataLayer.push({ ecommerce: null });
   dataLayer.push({
     event: "acn_remove_from_cart",
@@ -24,8 +22,6 @@ export function dataRemoveFromCart(line_item) {
           currency: Shopify.currency.active,
           item_brand: line_item.vendor,
           item_category: line_item.product_type,
-          item_list_id: pageType === "product" ? "product" : handle,
-          item_list_name: "product", // unsure what this should be specifically
           item_variant: line_item.variant_title,
           item_featured_image: line_item.image,
           option_one: line_item.option1,
@@ -33,6 +29,7 @@ export function dataRemoveFromCart(line_item) {
           option_three: line_item.option3,
           price: line_item.price / 100,
           quantity: 0,
+          ...itemList(line_item),
         },
       ],
     },
