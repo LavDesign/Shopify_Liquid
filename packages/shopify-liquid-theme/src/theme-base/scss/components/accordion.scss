@@ -2,11 +2,11 @@
   display: none;
 }
 
-.ra-accordion-item[open]:not(.is-closing) .ra-accordion-item__minus-icon {
+.ra-accordion-item.open:not(.is-closing) .ra-accordion-item__minus-icon {
   display: block;
 }
 
-.ra-accordion-item[open]:not(.is-closing) .ra-accordion-item__plus-icon {
+.ra-accordion-item.open:not(.is-closing) .ra-accordion-item__plus-icon {
   display: none;
 }
 
@@ -18,7 +18,6 @@
   transition: 0.3s ease;
   cursor: pointer;
   transition-property: transform, opacity;
-  padding: 10px 0;
 }
 
 .ra-accordion-item__header::-webkit-details-marker {
@@ -28,5 +27,9 @@
 .ra-accordion-item__content {
   transition: height 0.3s ease;
   overflow: hidden;
+  padding: 0;
+}
+
+.ra-tab__content-inner {
   padding: 10px 0;
 }

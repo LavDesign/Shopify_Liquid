@@ -7,14 +7,32 @@ export default class RaAccordion extends HTMLElement {
   }
 
   connectedCallback() {
-    this.items.forEach((btn) =>
-      btn.addEventListener("click", () => this.toggleAccordion(btn))
-    );
+    this.items.forEach((btn) => {
+      this.toggleHeight(btn);
+      btn.addEventListener("click", () => this.toggleAccordion(btn));
+    });
   }
 
-  toggleAccordion() {
+  toggleAccordion(btn) {
+    btn.classList.toggle("open");
+    this.toggleHeight(btn);
     if (this.allowMultipleOpen !== "true") {
-      this.items.forEach((item) => item.removeAttribute("open"));
+      this.items.forEach((item) => {
+        if (item !== btn) {
+          item.classList.remove("open");
+          this.toggleHeight(item);
+        }
+      });
+    }
+  }
+
+  toggleHeight(btn) {
+    const accordionContent = btn.querySelector(".ra-accordion-item__content");
+    const contentHeight = accordionContent.children[0].offsetHeight;
+    if (btn.classList.contains("open")) {
+      accordionContent.style.height = `${contentHeight}px`;
+    } else {
+      accordionContent.style.height = "0px";
     }
   }
 }

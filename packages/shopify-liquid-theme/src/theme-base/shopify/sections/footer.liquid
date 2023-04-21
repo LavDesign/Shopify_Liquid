@@ -56,28 +56,23 @@
                 mobile menu - accordion
               {%- endcomment -%}
               <div class="md:hidden w-full">
-                {% capture tabs %}
-                {%- for link in block.settings.menu.links -%}
-                  <div class="ra-tab">
-                    {% render 'button' type: 'button', as_gost: true, class: 'ra-tab__toggle', label: link.title, icon: 'chevron-down' %}
-                    <div class="ra-tab__content">
-                      <div class="ra-tab__content-inner">
-                        {% if link.links.size > 0 %}
-                          <ul role="list" tabindex="-1">
-                            {% for child in link.links %}
-                              <li class="list-none flex">
-                                <a class="text-sm py-2" href="{{ child.url }}" title="{{ child.title }}" aria-label="{{ child.title }}">{{ child.title | escape }}</a>
-                              </li>
-                            {%- endfor -%}
-                          </ul>
-                        {% endif %}
-                      </div>
-                    </div>
-                  </div>
-                {%- endfor -%}
-              {% endcapture %}
+              <ra-accordion>
+                {% for link in block.settings.menu.links %}
+                  {% capture link_content %}
+                    {% if link.links.size > 0 %}
+                      <ul role="list" tabindex="-1">
+                        {% for child in link.links %}
+                          <li class="list-none flex">
+                            <a class="text-sm py-2" href="{{ child.url }}" title="{{ child.title }}" aria-label="{{ child.title }}">{{ child.title | escape }}</a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {% endif %}
+                  {% endcapture %}
+                  {% render 'accordion-item', title: link.title, content: link_content, show_icon: true, class: "py-6" %}
+                {% endfor %}
+              </ra-accordion>
 
-                {% render 'tabs', tabs: tabs, layout: 'default', center: false, stack_mobile: true %}
               </div>
             </ul>
 
