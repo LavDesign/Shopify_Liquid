@@ -2,44 +2,51 @@
   Props:
     type:       string [a, button] - (required)
     style:      string [primary, secondary, tertiary] - (required)
-    icon:       string icon-name - (required)
-    label:      string button label text - (required for ADA)
+    label:      string button label text - (required)
     value:      string value attr text - (optional)
     url:        string url used when button 'type' is set to 'a' - (required)
+    icon:       string icon-name - (optional)
     size:       string [xs, sm, md, lg] sizes - (optional)
     id:         string add id attribute used for JS - (optional)
     class:      string add custom CSS class - (optional)
     data:       string add custom data attributes to the button
-    rounded:    boolean - (optional)
+    ghost:      boolean - (optional)
+    as_text:    boolean - (optional)
+    full_width: boolean - (optional)
     disabled:   boolean - (optional)
 
-  Example icon button:
-    {% render 'icon-button' type: 'a', style: 'primary', url: '#', size: 'sm', label: 'Learn More', icon: 'check' %}
+  Example standard button:
+    {% render 'button' type: 'a', style: 'primary', url: '#', size: 'sm', label: 'Learn More' %}
 {% endcomment %}
 
-{%- capture classes -%}
-  ra-button ra-icon-button ra-button--{{ style }} ra-icon-button--{{ size }}
-  {% if rounded %}
-    ra-icon-button--rounded
+{% capture classes %}
+  {% if ghost %}
+    ra-button ra-button--ghost
+  {% elsif as_text %}
+    ra-link ra-button--{{ style }} ra-button--{{ size }}
+  {% else %}
+    ra-button ra-button ra-button--{{ style }} ra-button--{{ size }}
+  {% endif %}
+  {% if full_width %}
+    ra-button--full-width
   {% endif %}
   {{ class }}
-{%- endcapture -%}
+{% endcapture %}
 
-{%- capture attributes -%}
+{% capture attributes %}
   {% if id != blank %} id="{{ id }}"{% endif %}
   {% if type == 'a' and url != blank and label != blank %} href="{{ url }}" title="{{ label }}"{% endif %}
   {% if type == 'button' %} aria-label="{{ label }}"{% endif %}
   {% if disabled == true %} disabled{% endif %}
   {% if value != blank %}value="{{ value }}"{% endif %}
   {{ data }}
-{%- endcapture -%}
+{% endcapture %}
 
-{% if type != blank and style != blank and label != blank %}
+{% if type != blank and label != blank %}
   <{{ type }} class="{{ classes }}" {{ attributes }}>
+    {{ label }}
     {% if icon != blank %}
-      <svg class="ra-icon ra-icon--{{size}}">
-        <use xlink:href="#{{ icon }}"></use>
-      </svg>
+      {% render 'ra-icon', width: '14px', height: '14px', icon: icon %}
     {% endif %}
   </{{ type }}>
 {% endif %}

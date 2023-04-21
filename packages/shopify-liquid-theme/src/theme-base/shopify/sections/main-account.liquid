@@ -83,7 +83,7 @@
                       data-label="{{ 'customer.orders.total' | t }}">
                       {{ order.total_price | money }}
                       <span class="hidden md:flex ra-icon ra-icon--lg md:mr-2">
-                        {% render 'icon', icon: 'chevron-right', width: '10px', height: '16px' %}
+                        {% render 'ra-icon', icon: 'chevron-right', width: '10px', height: '16px' %}
                       </span>
                       <a href="{{ order.customer_url }}" class="h-full left-0 absolute top-0 w-full ra-link hover:opacity-25 hover:bg-grey-300">
                         <span class="sr-only">
@@ -98,7 +98,7 @@
                   <td>
                     <div class="flex items-center justify-center flex-col py-[7.5rem]">
                       <h4 class="font-light">{{ 'customer.orders.none' | t }}</h4>
-                      {% render 'button' type: 'a', class: 'mt-10', label: 'Start Shopping', url: '/', %}
+                      {% render 'ra-button' type: 'a', class: 'mt-10', label: 'Start Shopping', url: '/', %}
                     </div>
                   </td>
                 </tr>

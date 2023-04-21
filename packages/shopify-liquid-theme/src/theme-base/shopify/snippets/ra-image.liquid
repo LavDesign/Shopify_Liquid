@@ -14,27 +14,27 @@
   Usage:
 
     Render an image with an image object
-    {%- render 'image' with product.featured_image -%}
+    {%- render 'ra-image' with product.featured_image -%}
 
     Render an image with an override alt tag (by default will take an image object's alt)
-    {%- render 'image' with product.featured_image,
+    {%- render 'ra-image' with product.featured_image,
       alt: "A sample image description"
     -%}
 
     Render an image with a specific width
-    {%- render 'image' with product.featured_image,
+    {%- render 'ra-image' with product.featured_image,
       width: 400
     -%}
 
     Render an image with specific dimensions and crop
-    {%- render 'image' with product.featured_image,
+    {%- render 'ra-image' with product.featured_image,
       width: 400,
       height: 300,
       crop: 'center'
     -%}
 
     Render an image by image source URL
-    {%- render 'image',
+    {%- render 'ra-image',
       alt: "Alt tag needed for externally loaded images",
       src: product.featured_image.src
     -%}
@@ -47,7 +47,7 @@
       {{ product.featured_image | image_url: width: 1200 }} 1200w
     {% endcapture %}
 
-    {% render 'image',
+    {% render 'ra-image',
       alt: product.featured_image.alt,
       src: product.featured_image | image_url: width: 300,
       srcset: srcset,

@@ -12,13 +12,13 @@
     disabled: boolean - (optional)
 
   Example classic checkbox:
-    {%- render 'checkbox' id: 'classic_checkbox', style: 'classic', label: 'classic' -%}
+    {%- render 'ra-checkbox' id: 'classic_checkbox', style: 'classic', label: 'classic' -%}
 
   Example toggle checkbox:
-    {%- render 'checkbox' id: 'toggle_checkbox', style: 'toggle', label: 'toggle' -%}
+    {%- render 'ra-checkbox' id: 'toggle_checkbox', style: 'toggle', label: 'toggle' -%}
 
   Example checkbox + message:
-    {%- render 'checkbox' id: 'toggle_checkbox', style: 'toggle', label: 'toggle', message: 'This is an info message' -%}
+    {%- render 'ra-checkbox' id: 'toggle_checkbox', style: 'toggle', label: 'toggle', message: 'This is an info message' -%}
 {% endcomment %}
 
 {% if id != blank and style != blank and label != blank %}

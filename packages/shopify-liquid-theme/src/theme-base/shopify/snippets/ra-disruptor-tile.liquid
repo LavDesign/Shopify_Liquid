@@ -19,25 +19,21 @@
   endcapture
 %}
 
-<div
-  class="disruptor-tile flex p-6 relative overflow-hidden {{ disruptor_classes }}"
-  style="color: {{ disruptor.text_color }}"
->
+<div class="ra-disruptor-tile flex p-6 relative overflow-hidden {{ disruptor_classes }}" style="color: {{ disruptor.text_color }}">
   {% if disruptor.media != blank %}
     {% assign media_text = disruptor.media | metafield_text %}
     {% assign media_tag = disruptor.media | metafield_tag %}
     <div
-      class="disruptor-tile__background-container absolute top-0 left-0 right-0 bottom-0 bg-no-repeat bg-cover bg-center -z-10"
+      class="ra-disruptor-tile__background-container absolute top-0 left-0 right-0 bottom-0 bg-no-repeat bg-cover bg-center -z-10"
       {% unless media_text contains 'video' %}
-        style="background-image: url('{{ disruptor.media | image_url: width: "800x" }}');"
-      {% endunless %}
-    >
+      style="background-image: url('{{ disruptor.media | image_url: width: "800x" }}');"
+      {% endunless %}>
       {% if media_text contains 'video' %}
-        {% render 'video', metaobject_video: disruptor.media, class: 'max-h-[none] max-w-none w-full' %}
+        {% render 'ra-video', metaobject_video: disruptor.media, class: 'max-h-[none] max-w-none w-full' %}
       {% endif %}
     </div>
   {% endif %}
-  <div class="disruptor-tile__content flex justify-end flex-col items-baseline gap-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+  <div class="ra-disruptor-tile__content flex justify-end flex-col items-baseline gap-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
     {% if disruptor.title %}
       <h4>{{ disruptor.title }}</h4>
     {% endif %}
