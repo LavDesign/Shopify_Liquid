@@ -1,3 +1,6 @@
+.ra-accordion-item {
+  @apply py-4 md:py-3 px-2 md:px-1;
+}
 .ra-accordion-item .ra-accordion-item__minus-icon {
   display: none;
 }
