@@ -1,0 +1,44 @@
+body.modal-open,
+html:has(dialog[open][data-modal-hide-overflow]) {
+  overflow: hidden;
+}
+
+dialog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  background: white;
+  color: black;
+  display: block;
+}
+
+dialog:not([open]) {
+  display: none;
+}
+
+dialog[open] {
+  @breakpoint md-max {
+    width: 90%;
+    --modal-width: 100%;
+  }
+}
+
+dialog + .backdrop {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0,0,0,0.1);
+}
+
+._dialog_overlay {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+dialog.fixed {
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+}
