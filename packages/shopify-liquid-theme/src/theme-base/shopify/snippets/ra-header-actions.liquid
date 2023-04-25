@@ -6,7 +6,7 @@
         data-action-toggle-search
         title="search"
         aria-label="search">
-        {% render 'icon', icon: section.settings.search_icon, width: '20px', height: '20px', color: 'white' %}
+        {% render 'ra-icon', icon: section.settings.search_icon, width: '20px', height: '20px', color: 'white' %}
       </button>
     </li>
   {% endif %}
@@ -17,7 +17,7 @@
         href="/account"
         title="account"
         aria-label="account">
-        {% render 'icon', icon: section.settings.account_icon, width: '20px', height: '20px' %}
+        {% render 'ra-icon', icon: section.settings.account_icon, width: '20px', height: '20px' %}
       </a>
     </li>
   {% endif %}
@@ -28,7 +28,7 @@
         href="#"
         title="wishlist"
         aria-label="wishlist">
-        {% render 'icon', icon: section.settings.wishlist_icon, width: '20px', height: '20px' %}
+        {% render 'ra-icon', icon: section.settings.wishlist_icon, width: '20px', height: '20px' %}
       </a>
     </li>
   {% endif %}
@@ -40,7 +40,7 @@
         title="cart"
         aria-label="cart"
         data-toggle-cart>
-        {% render 'icon', icon: 'cart', width: '24px', height: '24px' %}
+        {% render 'ra-icon', icon: 'cart', width: '24px', height: '24px' %}
       </a>
     </ra-cart-toggle>
   </li>
