@@ -46,14 +46,14 @@ Accepts:
             <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
               {{
                  product.selected_or_first_available_variant.featured_media.preview_image
-                 | image_url: width: 80, height: 100, crop: 'center'
-                 | image_tag:
-                 width: 80,
-                 height: 100,
-                 widths: '54, 74, 104, 162, 208, 324, 416',
-                 loading: 'lazy',
-                 alt: product.selected_or_first_available_variant.featured_media.alt
-                 | escape }}
+               | image_url: width: 80, height: 100, crop: 'center'
+               | image_tag:
+               width: 80,
+               height: 100,
+               widths: '54, 74, 104, 162, 208, 324, 416',
+               loading: 'lazy',
+               alt: product.selected_or_first_available_variant.featured_media.alt
+               | escape }}
             </swiper-slide>
           {%- endif -%}
           {%- if product.selected_or_first_available_variant.featured_media != null -%}
@@ -62,22 +62,6 @@ Accepts:
                 <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
                   {{
                      media.preview_image
-                     | image_url: width: 80, height: 100, crop: 'center'
-                     | image_tag:
-                     width: 80,
-                     height: 100,
-                     widths: '54, 74, 104, 162, 208, 324, 416',
-                     loading: 'lazy',
-                     alt: media.alt
-                     | escape }}
-                </swiper-slide>
-              {% endunless %}
-            {%- endfor -%}
-          {%- else -%}
-            {%- for media in product.media -%}
-              <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
-                {{
-                   media.preview_image
                    | image_url: width: 80, height: 100, crop: 'center'
                    | image_tag:
                    width: 80,
@@ -86,6 +70,22 @@ Accepts:
                    loading: 'lazy',
                    alt: media.alt
                    | escape }}
+                </swiper-slide>
+              {% endunless %}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for media in product.media -%}
+              <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
+                {{
+                   media.preview_image
+                 | image_url: width: 80, height: 100, crop: 'center'
+                 | image_tag:
+                 width: 80,
+                 height: 100,
+                 widths: '54, 74, 104, 162, 208, 324, 416',
+                 loading: 'lazy',
+                 alt: media.alt
+                 | escape }}
               </swiper-slide>
             {%- endfor -%}
           {%- endif -%}
@@ -118,22 +118,22 @@ Accepts:
           {%- for media in product.media -%}
             <swiper-slide data-slide-index="{{ forloop.index0 }}" class="ra-carousel-slide {% if forloop.index != 1 %}hidden{% endif %}">
               {% case media.media_type %}
-                {% when 'ra-image' %}
-                {% if media.media_type == 'ra-image' %}
+                {% when 'image' %}
+                {% if media.media_type == 'image' %}
                   <div
                     data-lightbox-trigger
                     class="cursor-pointer"
                     data-slide-index="{{ forloop.index0 }}">
                     {{
                        media
-                       | image_url: width: 800
-                       | image_tag:
-                       class: 'w-full',
-                       loading: 'lazy',
-                       width: 800,
-                       widths: '600, 800, 1200',
-                       alt: media.alt
-                       | escape }}
+                     | image_url: width: 800
+                     | image_tag:
+                     class: 'w-full',
+                     loading: 'lazy',
+                     width: 800,
+                     widths: '600, 800, 1200',
+                     alt: media.alt
+                     | escape }}
                   </div>
                 {% endif %}
                 {% when 'video' %}
@@ -143,14 +143,14 @@ Accepts:
                   <button data-action-load-video class="w-full">
                     {{
                        media.preview_image
-                       | image_url: width: 800
-                       | image_tag:
-                       class: 'w-full',
-                       loading: 'lazy',
-                       width: 800,
-                       widths: '600, 800, 1200',
-                       alt: media.alt
-                       | escape }}
+                     | image_url: width: 800
+                     | image_tag:
+                     class: 'w-full',
+                     loading: 'lazy',
+                     width: 800,
+                     widths: '600, 800, 1200',
+                     alt: media.alt
+                     | escape }}
                   </button>
                   <template>
                     {%- capture video_classes -%}
@@ -178,14 +178,14 @@ Accepts:
       </div>
     {% else %}
       {% case first_media.media_type %}
-        {% when 'ra-image' %}
-        {% if first_media.media_type == 'ra-image' %}
+        {% when 'image' %}
+        {% if first_media.media_type == 'image' %}
           <div data-lightbox-trigger class="cursor-pointer">
             {{
                first_media
-               | image_url: width: 800
-               | image_tag: loading: 'lazy', width: 800, widths: '600, 800, 1200', alt: first_media.alt
-               | escape }}
+             | image_url: width: 800
+             | image_tag: loading: 'lazy', width: 800, widths: '600, 800, 1200', alt: first_media.alt
+             | escape }}
           </div>
         {% endif %}
         {% when 'video' %}
@@ -194,9 +194,9 @@ Accepts:
         <button data-action-load-video class="w-full">
           {{
              first_media.preview_image
-             | image_url: width: 800
-             | image_tag: class: 'w-full', loading: 'lazy', width: 800, widths: '600, 800, 1200', alt: first_media.alt
-             | escape }}
+           | image_url: width: 800
+           | image_tag: class: 'w-full', loading: 'lazy', width: 800, widths: '600, 800, 1200', alt: first_media.alt
+           | escape }}
         </button>
         <template>
           {%- capture video_classes -%}
@@ -228,8 +228,8 @@ Accepts:
           {%- for media in product.media -%}
             <swiper-slide data-media-id="{{ media.id }}">
               {% case media.media_type %}
-                {% when 'ra-image' %}
-                {% if media.media_type == 'ra-image' %}
+                {% when 'image' %}
+                {% if media.media_type == 'image' %}
                   <div class="cursor-pointer">
                     {{ media | image_url: width: 1200 | image_tag:
                      loading: 'lazy',
@@ -244,14 +244,14 @@ Accepts:
                 <button data-action-load-video class="w-full">
                   {{
                      media.preview_image
-                     | image_url: width: 800
-                     | image_tag:
-                     class: 'w-full max-w-full',
-                     loading: 'lazy',
-                     width: 1200,
-                     widths: '600, 800, 1200',
-                     alt: media.alt
-                     | escape }}
+                   | image_url: width: 800
+                   | image_tag:
+                   class: 'w-full max-w-full',
+                   loading: 'lazy',
+                   width: 1200,
+                   widths: '600, 800, 1200',
+                   alt: media.alt
+                   | escape }}
                 </button>
                 <template>
                   {%- capture video_classes -%}
@@ -273,8 +273,8 @@ Accepts:
         {% render 'ra-icon' with 'chevron-right', color: 'white', class: 'swiper-lightbox-next absolute right-0 top-1/2 z-10 -mt-3' %}
       {% else %}
         {% case first_media.media_type %}
-          {% when 'ra-image' %}
-          {% if first_media.media_type == 'ra-image' %}
+          {% when 'image' %}
+          {% if first_media.media_type == 'image' %}
             <div class="cursor-pointer">
               {{ first_media | image_url: width: 1200 | image_tag:
                loading: 'lazy',
