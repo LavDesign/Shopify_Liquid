@@ -1,25 +1,25 @@
 {% comment %}
-  Props:
-    rows:        number determines the input height in rows - (required)
-    label:       string input label - (optional)
-    name:        string name attr - (optional)
-    minlength:   string minimum characters allowed, validation - (optional)
-    maxlength:   string maximum characters allowed, validation - (optional)
-    id:          string add id attribute used for JS - (optional)
-    class:       string add custom CSS class - (optional)
-    message:     string info message - (optional)
-    placeholder: string placeholder text - (optional)
-    required:    boolean - (optional)
-    disabled:    boolean - (optional)
+Props:
+rows:        number determines the input height in rows - (required)
+label:       string input label - (optional)
+name:        string name attr - (optional)
+minlength:   string minimum characters allowed, validation - (optional)
+maxlength:   string maximum characters allowed, validation - (optional)
+id:          string add id attribute used for JS - (optional)
+class:       string add custom CSS class - (optional)
+message:     string info message - (optional)
+placeholder: string placeholder text - (optional)
+required:    boolean - (optional)
+disabled:    boolean - (optional)
 
-  Example textarea:
-    {%- render 'textarea' rows: 4, placeholder: 'Enter your message' -%}
+Example textarea:
+{%- render 'ra-textarea' rows: 4, placeholder: 'Enter your message' -%}
 
-  Example textarea + label + message:
-    {%- render 'textarea' rows: 4, label: 'Your message', placeholder: 'Enter your message', message: 'This is custom message' -%}
+Example textarea + label + message:
+{%- render 'ra-textarea' rows: 4, label: 'Your message', placeholder: 'Enter your message', message: 'This is custom message' -%}
 
-  Example textarea + minlength & maxlength:
-    {%- render 'textarea' rows: 4, label: 'Your message', minlength: 5, maxlength: 100, placeholder: 'Enter your message' -%}
+Example textarea + minlength & maxlength:
+{%- render 'ra-textarea' rows: 4, label: 'Your message', minlength: 5, maxlength: 100, placeholder: 'Enter your message' -%}
 {% endcomment %}
 
 {%- if rows != blank -%}

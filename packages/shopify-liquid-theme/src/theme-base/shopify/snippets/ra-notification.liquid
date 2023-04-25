@@ -10,14 +10,14 @@
     class:   String, custom CSS class - (optional)
 
   Example default notification with primary styles:
-    {%- render 'notification',
+    {%- render 'ra-notification',
       icon: 'account',
       title: 'Account Notification',
       message: 'My account notification.'
     -%}
 
   Example notifcation using secondary style:
-    {%- render 'notification',
+    {%- render 'ra-notification',
       style: 'secondary',
       icon: 'account',
       title: 'Account Notification',
@@ -31,7 +31,7 @@
 
 <ra-notification class="ra-notification ra-notification--{{ style | default: 'primary' }} {{ class }}">
   {% if icon %}
-    {%- render 'icon', icon: icon, size: 'sm', class: 'ra-notification__icon' -%}
+    {%- render 'ra-icon', icon: icon, size: 'sm', class: 'ra-notification__icon' -%}
   {% endif %}
   <div class="ra-notification__content">
     {% if title %}
@@ -42,6 +42,6 @@
     {% endif %}
   </div>
   <button class="ra-notification__close ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--sm ra-icon-button--rounded">
-    {%- render 'icon', icon: 'close', size: 'sm' -%}
+    {%- render 'ra-icon', icon: 'close', size: 'sm' -%}
   </button>
 </ra-notification>

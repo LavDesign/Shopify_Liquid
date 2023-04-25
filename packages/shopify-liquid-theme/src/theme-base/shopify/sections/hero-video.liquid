@@ -51,7 +51,7 @@
         {% if section.settings.cta_1_url != blank or section.settings.cta_2_url != blank %}
           <div class="ra-link-list ra-hero__link-list">
             {% if section.settings.cta_1_label != blank and section.settings.cta_1_url != blank %}
-              {% render 'button'
+              {% render 'ra-button'
                 type: 'a',
                 style: section.settings.cta_1_style,
                 label: section.settings.cta_1_label,
@@ -61,7 +61,7 @@
             {% endif %}
 
             {% if section.settings.cta_2_label != blank and section.settings.cta_2_url != blank %}
-              {% render 'button'
+              {% render 'ra-button'
                 type: 'a',
                 style: section.settings.cta_2_style,
                 label: section.settings.cta_2_label,

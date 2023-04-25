@@ -52,7 +52,7 @@
       {% if enable_cta_1 or enable_cta_2 %}
         <div class="ra-link-list ra-text-only-banner__link-list">
           {% if enable_cta_1 %}
-            {% render 'button',
+            {% render 'ra-button',
               type: 'a',
               style: cta_1_style,
               url: cta_1_url,
@@ -61,7 +61,7 @@
             %}
           {% endif %}
           {% if enable_cta_2 %}
-            {% render 'button',
+            {% render 'ra-button',
               type: 'a',
               style: cta_2_style,
               url: cta_2_url,

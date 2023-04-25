@@ -69,7 +69,7 @@
                       </ul>
                     {% endif %}
                   {% endcapture %}
-                  {% render 'accordion-item', title: link.title, content: link_content, show_icon: true, class: "py-6" %}
+                  {% render 'ra-accordion-item', title: link.title, content: link_content, show_icon: true, class: "py-6" %}
                 {% endfor %}
               </ra-accordion>
 
@@ -91,7 +91,7 @@
 
               {% if section.settings.show_social_icon %}
                 <div class="mt-8 md:mt-12">
-                  {% render 'social-icons' %}
+                  {% render 'ra-social-icons' %}
                 </div>
               {% endif %}
             </div>

@@ -68,12 +68,12 @@
           </ul>
           <div class="search-results__actions flex justify-center">
             {% assign search_url = routes.search_url | append: '?q=' | append: predictive_search.terms %}
-            {% render 'button', label: 'See All Results', style: 'primary', type: 'a', url: search_url %}
+            {% render 'ra-button', label: 'See All Results', style: 'primary', type: 'a', url: search_url %}
           </div>
         {% elsif show_sidebar %}
           <div class="text-center">
             <p class="h6 mb-5">{{ 'templates.search.no_product_results' | t: terms: predictive_search.terms }}</p>
-            {% render 'button',
+            {% render 'ra-button',
               label: settings.empty_search_cta_text,
               style: settings.empty_search_cta_style,
               type: 'a',
@@ -83,7 +83,7 @@
         {% else %}
           <div class="text-center">
             <p class="h6 mb-5">{{ 'templates.search.no_results' | t: terms: predictive_search.terms }}</p>
-            {% render 'button',
+            {% render 'ra-button',
               label: settings.empty_search_cta_text,
               style: settings.empty_search_cta_style,
               type: 'a',

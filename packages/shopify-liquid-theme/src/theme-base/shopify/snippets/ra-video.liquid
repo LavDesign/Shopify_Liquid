@@ -16,27 +16,27 @@ class:      String - (Optional) Classes to add to element tag
 Usage:
 
 Render video with a Shopify video object from section schema
-{%- render 'video' with section.settings.video -%}
+{%- render 'ra-video' with section.settings.video -%}
 
 Render video from a Shopify video_url theme or section schema (Accepts Youtube and Vimeo URLs)
-{%- render 'video',
+{%- render 'ra-video',
 video_url: section.settings.video
 -%}
 
 Render media object from a product's media library or file_reference metafield
-{%- render 'video',
+{%- render 'ra-video',
 media: product.metafields.media.featured_video
 -%}
 
 Render video object with that autoplays and loops with no sound
-{% render 'video' with section.settings.video,
+{% render 'ra-video' with section.settings.video,
 muted: true,
 controls: false,
 autoplay: true
 %}
 
 Render video object with that autoplays and loops with no sound
-{% render 'video' with section.settings.video,
+{% render 'ra-video' with section.settings.video,
 muted: true,
 controls: false,
 autoplay: true

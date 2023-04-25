@@ -90,7 +90,7 @@
                       <!-- End Edit Address -->
                       {% assign modal_id = 'modal-edit-address-' | append: default_address.id %}
 
-                      {% render 'modal'
+                      {% render 'ra-modal'
                        , id: modal_id,
                        content: edit_address_form,
                        classes: 'address-book-edit-modal max-w-[calc(100% - 30px)] rounded-[5px]',
@@ -154,7 +154,7 @@
                         <!-- End Edit Address -->
                         {% assign modal_id = 'modal-edit-address-' | append: address.id %}
 
-                        {% render 'modal'
+                        {% render 'ra-modal'
                          , id: modal_id,
                          content: edit_address_form,
                          classes: 'address-book-edit-modal max-w-[calc(100% - 30px)] rounded-[5px]',
@@ -172,7 +172,7 @@
                 aria-controls="AddAddress">
                 {{ 'customer.addresses.add_new' | t }}
                 <span aria-hidden="true" class="ra-icon ra-icon--sm">
-                  {% render 'icon', icon: 'plus', width: '16px', height: '16px' %}
+                  {% render 'ra-icon', icon: 'plus', width: '16px', height: '16px' %}
                 </span>
               </button>
             {% else %}
@@ -187,7 +187,7 @@
                   aria-controls="AddAddress">
                   {{ 'customer.addresses.add_new' | t }}
                   <span aria-hidden="true" class="ra-icon ra-icon--sm">
-                    {% render 'icon', icon: 'plus', width: '16px', height: '16px' %}
+                    {% render 'ra-icon', icon: 'plus', width: '16px', height: '16px' %}
                   </span>
                 </button>
               </div>
@@ -332,7 +332,7 @@
                           {{ all_country_option_tags }}
                         </select>
                         <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
-                          {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
+                          {% render 'ra-icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
                       <div class="font-light text-grey-500 text-xs mt-1">Required</div>
@@ -351,7 +351,7 @@
                           autocomplete="address-level1"
                           data-required></select>
                         <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
-                          {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
+                          {% render 'ra-icon', icon: 'caret-down', width: '24px', height: '24px' %}
                         </span>
                       </div>
                       <div class="font-light text-grey-500 text-xs mt-1">Required</div>
@@ -431,7 +431,7 @@
             </div>
           {% endcapture %}
 
-          {% render 'modal'
+          {% render 'ra-modal'
            , id: 'modal-add-address',
            content: addAddressContent,
            classes: 'address-book-edit-modal max-w-[calc(100% - 30px)] rounded-[5px]',

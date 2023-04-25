@@ -36,7 +36,7 @@
       data-toggle-drawer="drawer-{{ link.title | handleize }}"
     >
       {% if has_child or has_sub_child %}
-        {% render 'icon', icon: 'chevron-right', class: 'transition-all delay-300', height: '12px', width: '12px' %}
+        {% render 'ra-icon', icon: 'chevron-right', class: 'transition-all delay-300', height: '12px', width: '12px' %}
       {% endif %}
     </a>
   {% endif %}
@@ -62,7 +62,7 @@
           aria-label="close {{ link.title }} drawer"
           data-close-drawer="drawer-{{ link.title | handleize }}"
         >
-          {% render 'icon', icon: 'chevron-left', class: 'transition-all delay-300', width: '16px', height: '16px' %}
+          {% render 'ra-icon', icon: 'chevron-left', class: 'transition-all delay-300', width: '16px', height: '16px' %}
         </a>
         <p class="header__mobile-navigation-drawer-title text-lg capitalize font-medium"></p>
         <a
@@ -72,7 +72,7 @@
           aria-label="close {{ link.title }} drawer"
           data-close-drawer="drawer-{{ link.title | handleize }}"
         >
-          {% render 'icon', icon: 'close', class: 'transition-all delay-300', width: '16px', height: '16px' %}
+          {% render 'ra-icon', icon: 'close', class: 'transition-all delay-300', width: '16px', height: '16px' %}
         </a>
       </div>
 
@@ -100,7 +100,7 @@
                 data-toggle-dropdown="dropdown-{{ child.title | handleize }}"
               >
                 {% if has_child or has_sub_child %}
-                  {% render 'icon',
+                  {% render 'ra-icon',
                     icon: 'chevron-down',
                     class: 'transition-all group-[.active]:-rotate-180',
                     width: '12px',
@@ -159,7 +159,7 @@
 
                   {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
                     {%
-                      render 'button'
+                      render 'ra-button'
                       type: 'a',
                       class: 'text-sizeInherit mt-3'
                       style: featured.settings.link_style,

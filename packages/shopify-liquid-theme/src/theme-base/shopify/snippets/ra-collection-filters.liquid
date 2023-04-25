@@ -1,5 +1,5 @@
 {% comment %}
-  Make a list of filters to display as buttons based on filter.label
+Make a list of filters to display as buttons based on filter.label
 {% endcomment %}
 
 {% liquid
@@ -15,8 +15,7 @@
   <div
     id="CollectionActiveFilters"
     class="ra-filters__active-filters flex flex-wrap gap-2 py-3 border-t border-grey-400"
-    data-active-filters
-  >
+    data-active-filters>
     {% for filter in collection.filters %}
       {% for filter_value in filter.active_values %}
         <div class="inline-flex gap-[6px] items-center py-2 px-2 bg-grey-100 font-light">
@@ -25,9 +24,8 @@
             class="flex items-center"
             data-action-remove-filter
             data-param="{{ filter.param_name }}"
-            data-value="{{ filter_value.value | replace: " ", "+" }}"
-          >
-            {% render 'icon' with 'close', width: '12px', height: '12px' %}
+            data-value="{{ filter_value.value | replace: " ", "+" }}">
+            {% render 'ra-icon' with 'close', width: '12px', height: '12px' %}
           </button>
         </div>
       {% endfor %}
@@ -47,7 +45,7 @@
           {% render "ra-filter-group", filter: filter, display_as_buttons: display_as_buttons %}
         {% endcapture %}
 
-        {% render 'accordion-item', title: filter.label, content: filter_content, show_icon: true, is_open: true %}
+        {% render 'ra-accordion-item', title: filter.label, content: filter_content, show_icon: true, is_open: true %}
       {%- endfor -%}
     </ra-accordion>
   </form>

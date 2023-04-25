@@ -10,7 +10,7 @@ multiple_open:    boolean whether to allow multiple items to be open - (optional
 first_item_open:  boolean whether the first item should be open on page load - (optional)
 
 Example accordion:
-{% render 'accordion',
+{% render 'ra-accordion',
 item1_title: 'Heading 1',
 item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
 item2_title: 'Heading 2'
@@ -18,7 +18,7 @@ item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
 %}
 
 Example accordion + icon:
-{% render 'accordion',
+{% render 'ra-accordion',
 show_icon: true
 item1_title: 'Heading 1',
 item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
@@ -51,7 +51,7 @@ item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
             assign is_open = false
           endif
 
-          render 'accordion-item', title: title, content: item_contents[forloop.index0], show_icon: show_icon, is_open: is_open
+          render 'ra-accordion-item', title: title, content: item_contents[forloop.index0], show_icon: show_icon, is_open: is_open
         endif
       endfor
     endif

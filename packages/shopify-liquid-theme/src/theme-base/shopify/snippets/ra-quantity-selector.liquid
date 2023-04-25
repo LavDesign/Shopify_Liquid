@@ -12,22 +12,22 @@
     required:     boolean - (optional)
 
   Example quantity selector:
-    {%- render 'quantity-selector' value: 1, style: 'tertiary', min: 0 -%}
+    {%- render 'ra-quantity-selector' value: 1, style: 'tertiary', min: 0 -%}
 
   Example quantity selector + max:
-    {%- render 'quantity-selector' value: 1, style: 'tertiary' min: 0, max: 10 -%}
+    {%- render 'ra-quantity-selector' value: 1, style: 'tertiary' min: 0, max: 10 -%}
 {% endcomment %}
 
 {% if style != blank and value != blank %}
   {% capture btn_classes %}
-    ra-quantity-selector__button 
-    ra-button ra-icon-button ra-icon-button--{{ style }} 
+    ra-quantity-selector__button
+    ra-button ra-icon-button ra-icon-button--{{ style }}
     ra-icon-button--square
     {{ btn_class }}
   {% endcapture %}
 
   {% capture input_classes %}
-    ra-input__control 
+    ra-input__control
     ra-input__control--text
     {{ input_class }}
   {% endcapture %}

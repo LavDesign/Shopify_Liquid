@@ -7,7 +7,7 @@
       <div class="basis-full md:basis-3/4">
         <div class="items-center flex flex-wrap relative pb-4 md:pb-10 border-b border-grey-500">
           <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
-            {% render 'icon', icon: 'left-arrow', width: '24px', height: '24px' %}
+            {% render 'ra-icon', icon: 'left-arrow', width: '24px', height: '24px' %}
           </a>
 
           <h3 class="h3 color-grey-900 !font-light">
@@ -91,7 +91,7 @@
         </div>
 
         <div class="mt-10 flex">
-          {% render 'button'
+          {% render 'ra-button'
            , type: 'a',
            style: 'primary',
            url: order.order_status_url,
