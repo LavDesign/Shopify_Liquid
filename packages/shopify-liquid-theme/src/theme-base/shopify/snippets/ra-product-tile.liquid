@@ -56,20 +56,18 @@ Example product-tile snippet:
       </a>
     {% endif %}
     {% if badge_text and badge_style != blank %}
-      <div class="ra-product-tile__badge ra-badge ra-badge--standard ra-badge--has-text ra-badge--{{ badge_style }}">
-        {{ badge_text }}
-      </div>
+      {% render 'ra-badge', class: 'ra-product-tile__badge', label: badge_text, style: badge_style %}
     {% endif %}
     {% if wishlist %}
       {%
          render 'ra-icon-button'
-         type: 'ra-button',
-         style: wishlistStyle,
-         size: 'sm',
-         label: 'Add {{ product.title }} to wishlist',
-         rounded: true,
-         class: 'ra-product-tile__wishlist',
-         icon: 'heart' %}
+       type: 'ra-button',
+       style: wishlistStyle,
+       size: 'sm',
+       label: 'Add {{ product.title }} to wishlist',
+       rounded: true,
+       class: 'ra-product-tile__wishlist',
+       icon: 'heart' %}
     {% endif %}
     {% if atc_button == true %}
       <div>
