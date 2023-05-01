@@ -1,11 +1,6 @@
-import { itemList, selectedOptions } from "./utilities";
+import { itemList, selectedOptions, featuredVariantImage } from "./utilities";
 
 export function dataViewItem(product, variant) {
-  console.log("Logging Data View");
-  console.log(product);
-  console.log(variant.value);
-  console.log("---------------");
-
   dataLayer.push({ ecommerce: null });
   dataLayer.push({
     event: "acn_view_item",
@@ -17,14 +12,14 @@ export function dataViewItem(product, variant) {
       items: [
         {
           item_id: variant.value.id,
-          item_featured_image: null,
+          item_featured_image: featuredVariantImage(product, variant.value),
           shopify_product_id: product.id,
           shopify_variant_id: variant.value.id,
           shopify_sku: variant.value.sku,
           shopify_handle: product.handle,
           shopify_compare_price: product.compare_at_price,
           item_name: product.title,
-          affiliation: Shopify.shop,
+          affiliation: window.shop_name,
           currency: Shopify.currency.active,
           item_brand: product.vendor,
           item_category: product.type,

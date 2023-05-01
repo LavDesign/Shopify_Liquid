@@ -23,7 +23,7 @@
           item_list_id:{% if template.name contains 'product' %}'product' {% else %}{{ collection.handle | json }}{% endif %},
           item_list_name: 'product',
           item_variant: {{ current_variant.title | json }},
-          item_featured_image: "{{ current_variant.featured_image }}",
+          item_featured_image: "{{ current_variant.featured_image | default: product.featured_image }}",
           option_one: {{ current_variant.option1 | json }},
           option_two: {{ current_variant.option2 | json }},
           option_three: {{ current_variant.option3 | json }},
