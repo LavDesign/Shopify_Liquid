@@ -1,4 +1,4 @@
-import { itemList, selectedOptions, featuredVariantImage } from "./utilities";
+import { itemList, featuredVariantImage } from "./utilities";
 
 export function dataViewItem(product, variant) {
   dataLayer.push({ ecommerce: null });

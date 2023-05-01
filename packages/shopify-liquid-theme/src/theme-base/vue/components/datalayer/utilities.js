@@ -16,20 +16,6 @@ export function itemList(product = {}, variant = {}, collection = {}) {
   };
 }
 
-export function selectedOptions(product = {}, variant = {}) {
-  const optionsWithValues = Object.entries(product.options_with_values);
-  const currentOptions = optionsWithValues.map(([key, value]) => {
-    const selectedValue = variant.value.options
-      .filter((o) => {
-        if (value.includes(o)) return true;
-      })
-      .pop();
-    return [key.toLowerCase(), selectedValue];
-  });
-  const optionsObject = Object.fromEntries(currentOptions);
-  return optionsObject;
-}
-
 export function featuredVariantImage(product, variant) {
   const featuredImage = variant?.images?.default || product?.featured_image;
   let featuredImagePath;
