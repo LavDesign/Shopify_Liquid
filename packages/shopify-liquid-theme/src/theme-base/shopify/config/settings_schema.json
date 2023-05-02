@@ -1996,8 +1996,8 @@
       },
       {
         "type": "text",
-        "id": "empty_search_cta_text",
-        "label": "Empty Search CTA Text",
+        "id": "empty_search_cta_label",
+        "label": "Empty Search CTA Label",
         "default": "See All Products"
       },
       {
