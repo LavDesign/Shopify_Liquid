@@ -5,9 +5,6 @@
         "header__border": {
           "content": "Border"
         },
-        "header__shadow": {
-          "content": "Shadow"
-        },
         "blur": {
           "label": "Blur"
         },
@@ -43,48 +40,6 @@
         }
       }
     },
-    "cards": {
-      "name": "Product cards",
-      "settings": {
-        "style": {
-          "options__1": {
-            "label": "Standard"
-          },
-          "options__2": {
-            "label": "Card"
-          },
-          "label": "Style"
-        }
-      }
-    },
-    "collection_cards": {
-      "name": "Collection cards",
-      "settings": {
-        "style": {
-          "options__1": {
-            "label": "Standard"
-          },
-          "options__2": {
-            "label": "Card"
-          },
-          "label": "Style"
-        }
-      }
-    },
-    "blog_cards": {
-      "name": "Blog cards",
-      "settings": {
-        "style": {
-          "options__1": {
-            "label": "Standard"
-          },
-          "options__2": {
-            "label": "Card"
-          },
-          "label": "Style"
-        }
-      }
-    },
     "badges": {
       "name": "Badges",
       "settings": {
@@ -108,54 +63,6 @@
         },
         "sold_out_badge_color_scheme": {
           "label": "Sold out badge color scheme"
-        }
-      }
-    },
-    "colors": {
-      "name": "Colors",
-      "settings": {
-        "colors_solid_button_labels": {
-          "label": "Solid button label",
-          "info": "Used as foreground color on accent colors."
-        },
-        "colors_accent_1": {
-          "label": "Accent 1",
-          "info": "Used for solid button background."
-        },
-        "gradient_accent_1": {
-          "label": "Accent 1 gradient"
-        },
-        "colors_accent_2": {
-          "label": "Accent 2"
-        },
-        "gradient_accent_2": {
-          "label": "Accent 2 gradient"
-        },
-        "header__1": {
-          "content": "Primary colors"
-        },
-        "header__2": {
-          "content": "Secondary colors"
-        },
-        "colors_text": {
-          "label": "Text",
-          "info": "Used as foreground color on background colors."
-        },
-        "colors_outline_button_labels": {
-          "label": "Outline button",
-          "info": "Also used for text links."
-        },
-        "colors_background_1": {
-          "label": "Background 1"
-        },
-        "gradient_background_1": {
-          "label": "Background 1 gradient"
-        },
-        "colors_background_2": {
-          "label": "Background 2"
-        },
-        "gradient_background_2": {
-          "label": "Background 2 gradient"
         }
       }
     },
@@ -192,68 +99,6 @@
         },
         "brand_image_width": {
           "label": "Image width"
-        }
-      }
-    },
-    "typography": {
-      "name": "Typography",
-      "settings": {
-        "type_header_font": {
-          "label": "Font",
-          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
-        },
-        "heading_scale": {
-          "label": "Font size scale"
-        },
-        "header__1": {
-          "content": "Headings"
-        },
-        "header__2": {
-          "content": "Body"
-        },
-        "type_body_font": {
-          "label": "Font",
-          "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/manual/online-store/os/store-speed/improving-speed#fonts)"
-        },
-        "body_scale": {
-          "label": "Font size scale"
-        }
-      }
-    },
-    "buttons": {
-      "name": "Buttons"
-    },
-    "variant_pills": {
-      "name": "Variant pills",
-      "paragraph": "Variant pills are one way of displaying your product variants. [Learn more](https://help.shopify.com/en/manual/online-store/themes/theme-structure/page-types#variant-picker-block)"
-    },
-    "inputs": {
-      "name": "Inputs"
-    },
-    "content_containers": {
-      "name": "Content containers"
-    },
-    "popups": {
-      "name": "Dropdowns and pop-ups",
-      "paragraph": "Affects areas like navigation dropdowns, pop-up modals, and cart pop-ups."
-    },
-    "media": {
-      "name": "Media"
-    },
-    "drawers": {
-      "name": "Drawers"
-    },
-    "styles": {
-      "name": "Icons",
-      "settings": {
-        "accent_icons": {
-          "options__3": {
-            "label": "Outline button"
-          },
-          "options__4": {
-            "label": "Text"
-          },
-          "label": "Color"
         }
       }
     },
@@ -301,35 +146,6 @@
         }
       }
     },
-    "search_input": {
-      "name": "Search behavior",
-      "settings": {
-        "header": {
-          "content": "Search suggestions"
-        },
-        "predictive_search_enabled": {
-          "label": "Enable search suggestions"
-        },
-        "predictive_search_show_vendor": {
-          "label": "Show product vendor",
-          "info": "Visible when search suggestions enabled."
-        },
-        "predictive_search_show_price": {
-          "label": "Show product price",
-          "info": "Visible when search suggestions enabled."
-        }
-      }
-    },
-    "currency_format": {
-      "name": "Currency format",
-      "settings": {
-        "content": "Currency codes",
-        "paragraph": "Cart and checkout prices always show currency codes. Example: $1.00 USD.",
-        "currency_code_enabled": {
-          "label": "Show currency codes"
-        }
-      }
-    },
     "cart": {
       "name": "Cart",
       "settings": {
@@ -357,29 +173,6 @@
             "label": "Collection",
             "info": "Visible when cart drawer is empty."
           }
-        }
-      }
-    },
-    "layout": {
-      "name": "Layout",
-      "settings": {
-        "page_width": {
-          "label": "Page width"
-        },
-        "spacing_sections": {
-          "label": "Space between template sections"
-        },
-        "header__grid": {
-          "content": "Grid"
-        },
-        "paragraph__grid": {
-          "content": "Affects areas with multiple columns or rows."
-        },
-        "spacing_grid_horizontal": {
-          "label": "Horizontal space"
-        },
-        "spacing_grid_vertical": {
-          "label": "Vertical space"
         }
       }
     }
@@ -427,34 +220,6 @@
         }
       }
     },
-    "announcement-bar": {
-      "name": "Announcement bar",
-      "blocks": {
-        "announcement": {
-          "name": "Announcement",
-          "settings": {
-            "text": {
-              "label": "Text"
-            },
-            "text_alignment": {
-              "label": "Text alignment",
-              "options__1": {
-                "label": "Left"
-              },
-              "options__2": {
-                "label": "Center"
-              },
-              "options__3": {
-                "label": "Right"
-              }
-            },
-            "link": {
-              "label": "Link"
-            }
-          }
-        }
-      }
-    },
     "apps": {
       "name": "Apps",
       "settings": {
@@ -488,16 +253,6 @@
           },
           "options__2": {
             "label": "Column"
-          }
-        },
-        "card_styles": {
-          "label": "Card style",
-          "info": "Product, collection, and blog card styles can be updated in theme settings.",
-          "options__1": {
-            "label": "Use individual card styles"
-          },
-          "options__2": {
-            "label": "Style all as product cards"
           }
         }
       },
