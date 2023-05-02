@@ -8,10 +8,7 @@
     {%- endcomment -%}
     {% render 'gtm-datalayer', action_step: 'init' %}
 
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    <script>
-      window.shop_name = "{{ shop.name }}";
-    </script>
+    {% render 'script-tags' %}
 
     {% render 'vendor-scripts' %}
 
