@@ -120,7 +120,7 @@
     "predictive_show_collections": true,
     "predictive_show_articles": true,
     "predictive_show_pages": true,
-    "empty_search_cta_text": "See All Products - Test",
+    "empty_search_cta_label": "See All Products - Test",
     "empty_search_cta_url": "shopify://collections/example-collection-1",
     "empty_search_cta_style": "tertiary",
     "currency_code_enabled": true,
