@@ -42,7 +42,7 @@ Make a list of filters to display as buttons based on filter.label
         {% endif %}
 
         {% capture filter_content %}
-          {% render "ra-filter-group", filter: filter, display_as_buttons: display_as_buttons %}
+          {% render 'ra-filter-group', filter: filter, display_as_buttons: display_as_buttons %}
         {% endcapture %}
 
         {% render 'ra-accordion-item', title: filter.label, content: filter_content, show_icon: true, is_open: true %}
