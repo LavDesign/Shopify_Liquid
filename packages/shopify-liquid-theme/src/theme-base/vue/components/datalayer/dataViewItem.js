@@ -1,7 +1,7 @@
 import { itemList, selectedOptions } from "./utilities";
+console.log("test");
 
 export function dataViewItem(product, variant) {
-
   dataLayer.push({ ecommerce: null });
   dataLayer.push({
     event: "acn_view_item",

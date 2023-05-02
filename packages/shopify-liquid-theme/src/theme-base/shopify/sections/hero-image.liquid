@@ -59,12 +59,12 @@
         <div class="ra-hero__media component-media relative">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
             <div class="ra-hero__image ra-image ra-image--use-as-background">
-              {% render 'ra-image' with block.settings.desktop_bg_image,
+              {% render 'ra-image', image:  block.settings.desktop_bg_image,
                 classes: 'ra-image__media ra-image__media--desktop hidden md:block',
                 width: 2000,
                 lazyload: true
               %}
-              {% render 'ra-image' with block.settings.mobile_bg_image,
+              {% render 'ra-image', image: block.settings.mobile_bg_image,
                 classes: 'ra-image__media ra-image__media--mobile md:hidden',
                 width: 800,
                 lazyload: true

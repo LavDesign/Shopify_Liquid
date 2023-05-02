@@ -88,9 +88,9 @@
                     {%- when 'product' -%}
                       {% render 'ra-product-tile', product: item %}
                     {%- when 'article' -%}
-                      {% comment %} {% render "ra-product-tile", product: item %} {% endcomment %}
+                      {% render 'ra-article-tile', article: item %}
                     {%- when 'page' -%}
-                      {% comment %} {% render "ra-product-tile", product: item %} {% endcomment %}
+                      {% render 'ra-content-tile', src: item.image.src, title: item.title %}
                   {%- endcase -%}
                 {%- endfor -%}
               </div>
