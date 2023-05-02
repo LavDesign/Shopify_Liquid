@@ -47,7 +47,7 @@
     effect="{{ section.settings.effect | json }}"
     navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
     navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
-    pagination-el=".swiper-pagination"
+    pagination-el=".swiper-pagination-{{ section.id }}"
     pagination-clickable="true"
     slides-per-view="1"
     space-between="0"
@@ -59,12 +59,14 @@
         <div class="ra-hero__media component-media relative">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
             <div class="ra-hero__image ra-image ra-image--use-as-background">
-              {% render 'ra-image' with block.settings.desktop_bg_image,
+              {% render 'ra-image',
+                image: block.settings.desktop_bg_image,
                 classes: 'ra-image__media ra-image__media--desktop hidden md:block',
                 width: 2000,
                 lazyload: true
               %}
-              {% render 'ra-image' with block.settings.mobile_bg_image,
+              {% render 'ra-image',
+                image: block.settings.mobile_bg_image,
                 classes: 'ra-image__media ra-image__media--mobile md:hidden',
                 width: 800,
                 lazyload: true
@@ -122,7 +124,7 @@
   </swiper-container>
 
   {% if section.settings.show_pagination and section.blocks.size > 1 %}
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination swiper-pagination-{{ section.id }}"></div>
   {% endif %}
 
   {% if section.settings.show_arrows and section.blocks.size > 1 %}
