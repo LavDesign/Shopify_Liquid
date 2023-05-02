@@ -74,7 +74,7 @@
 
           {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
             <li class="relative w-full h-auto aspect-{{ aspect_ratio }}">
-              <img class="absolute top-0 left-0 z-1 object-cover w-full h-full" src="{{ featured.settings.image | img_url: "600x" }}" alt="{{ featured.settings.image.alt }}">
+              <img class="absolute top-0 left-0 z-1 object-cover w-full h-full" src="{{ featured.settings.image | image_url: width: 600 }}" alt="{{ featured.settings.image.alt }}">
 
               <div class="p-6 flex flex-col justify-end absolute top-0 left-0 z-2 w-full h-full">
                 {% if featured.settings.title != blank %}

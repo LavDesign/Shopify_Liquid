@@ -34,7 +34,7 @@
         >
           <img
             loading="lazy"
-            src="{{ product.featured_image.src | img_url: '450x' }}"
+            src="{{ product.featured_image.src | image_url: width: 450 }}"
             srcset=""
             sizes=""
             width="1"
@@ -51,12 +51,12 @@
           >
             <img
               loading="lazy"
-              src="{{ hover_img | img_url: '450x' }}"
+              src="{{ hover_img | image_url: width: 450 }}"
               srcset=""
               sizes=""
               width="1"
               height="1.2"
-              alt="{{ hover_img_alt | default: product.title  }}"
+              alt="{{ hover_img_alt | default: product.title }}"
               class="ra-image__media"
             >
           </div>
