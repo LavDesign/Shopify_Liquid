@@ -1091,8 +1091,9 @@
     {% assign videoUrl = section.settings.video_url %}
     <h4 class="text-h4 mt-10 mb-5">Content Tiles</h4>
     <div style="max-width: 22rem;">
+      {{ section.settings.featured_product.featured_image.url }}
       {% render 'ra-content-tile'
-        src: img_src,
+        image: section.settings.featured_product.featured_image,
         alt: img_alt,
         title: 'This is a title',
         description: "I'm not thinking about anything when I'm climbing.",
@@ -1108,7 +1109,7 @@
     <h4 class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
     <div style="max-width: 22rem;">
       {% render 'ra-content-tile'
-        src: img_src,
+        image: section.settings.featured_product.featured_image,
         alt: img_alt,
         title: 'This is a title',
         description: "I'm not thinking about anything when I'm climbing.",
