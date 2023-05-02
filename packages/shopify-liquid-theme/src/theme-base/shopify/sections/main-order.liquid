@@ -6,7 +6,10 @@
       </div>
       <div class="basis-full md:basis-3/4">
         <div class="items-center flex flex-wrap relative pb-4 md:pb-10 border-b border-grey-500">
-          <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
+          <a
+            href="{{ routes.account_url }}"
+            class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded"
+          >
             {% render 'ra-icon', icon: 'left-arrow', width: '24px', height: '24px' %}
           </a>
 
@@ -62,12 +65,11 @@
               <p>{{ order.billing_address.city }}</p>
             </div>
             <div class="font-light">
-              <p class="font-secondary mb-2 font-bold text-grey-800">
-                Shipping Method
-              </p>
+              <p class="font-secondary mb-2 font-bold text-grey-800">Shipping Method</p>
               <p>
                 {% if shipping_method %}
-                  {{ shipping_method.price | money }}<br/>
+                  {{ shipping_method.price | money -}}
+                  <br>
                   {{ shipping_method.title }}
                 {% else %}
                   no shipping method
@@ -75,12 +77,11 @@
               </p>
             </div>
             <div class="font-light">
-              <p class="font-secondary mb-2 font-bold text-grey-800">
-                Billing Method
-              </p>
+              <p class="font-secondary mb-2 font-bold text-grey-800">Billing Method</p>
               <p>
                 {% if billing_method %}
-                  {{ billing_method.price | money }}<br/>
+                  {{ billing_method.price | money -}}
+                  <br>
                   {{ billing_method.title }}
                 {% else %}
                   no billing method
@@ -91,13 +92,14 @@
         </div>
 
         <div class="mt-10 flex">
-          {% render 'ra-button'
-           , type: 'a',
-           style: 'primary',
-           url: order.order_status_url,
-           size: 'md',
-           label: 'Track Package',
-           class: 'inline-flex max-md:w-full md:ml-auto' %}
+          {% render 'ra-button',
+            type: 'a',
+            style: 'primary',
+            url: order.order_status_url,
+            size: 'md',
+            label: 'Track Package',
+            class: 'inline-flex max-md:w-full md:ml-auto'
+          %}
         </div>
 
         <ul class="mt-10 md:mt-20 md:mb-12 md:first:pt-8 ra-list list-none">
@@ -113,7 +115,8 @@
                         width="1"
                         height="1.25"
                         alt="{{- line_item.product.featured_image.alt -}}"
-                        src="{{ line_item.product.featured_image | image_url:    width: 200 }}">
+                        src="{{ line_item.product.featured_image | image_url:    width: 200 }}"
+                      >
                     </div>
                   </a>
                 </div>

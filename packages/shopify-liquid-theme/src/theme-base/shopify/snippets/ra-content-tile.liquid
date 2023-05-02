@@ -1,35 +1,35 @@
 {% comment %}
-Props:
-classes:       String - (Optional) custom classes on the img element
-src:           String - (Required) img src that will be used
-srcset:        String - (Optional) srcset attribute for loading assets at different viewport sizes
-alt:
-width:         Int - (Optional) Image width
-height:        Int - (Optional) Image height
-aspect_ratio:  String - (Optional) determines the sizing of the image [square, tall, wide, respect-media, fill-space]
+  Props:
+  classes:       String - (Optional) custom classes on the img element
+  src:           String - (Required) img src that will be used
+  srcset:        String - (Optional) srcset attribute for loading assets at different viewport sizes
+  alt:
+  width:         Int - (Optional) Image width
+  height:        Int - (Optional) Image height
+  aspect_ratio:  String - (Optional) determines the sizing of the image [square, tall, wide, respect-media, fill-space]
 
-video:         String, - (Optional) src file for .mp4 video ONLY
+  video:         String, - (Optional) src file for .mp4 video ONLY
 
-subtitle:      String, text for subtitle - (optional)
-title:         String, text for main title - (required)
-description:   String, text for description area - (required)
-overlay_link:  String, link url for global tile (optional)
-link_url_1:    String, text for link url - (optional)
-link_text_1:   String, text for link - (optional)
-link_url_2:    String, text for second link url - (optional)
-link_text_2:   String, text for second link - (optional)
+  subtitle:      String, text for subtitle - (optional)
+  title:         String, text for main title - (required)
+  description:   String, text for description area - (required)
+  overlay_link:  String, link url for global tile (optional)
+  link_url_1:    String, text for link url - (optional)
+  link_text_1:   String, text for link - (optional)
+  link_url_2:    String, text for second link url - (optional)
+  link_text_2:   String, text for second link - (optional)
 
-header_style:          Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
-header_level:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
+  header_style:          Number, style title as [h1, h2, h3] etc, (optional) - default is h6 (pass in just a number)
+  header_level:          Number, determine which h-tag semantically [h1, h2, h3] - (optional) - default is <h2></h2>
 
-// Layout & Alignment
+  // Layout & Alignment
 
-details_location:     String, [before, overlay, after] - (optional) set content layout
-details_location_md:   String, [before, overlay, after] (larger screen size) - optional
-horizontal_align:     String, [left, center, right] - (optional)
-horizontal_align_md:   String, [left, center, right] - (larger screen size)
-vertical_align:       String, [top, middle, bottom] set vertical alignment - (default = top) - (optional)
-vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
+  details_location:     String, [before, overlay, after] - (optional) set content layout
+  details_location_md:   String, [before, overlay, after] (larger screen size) - optional
+  horizontal_align:     String, [left, center, right] - (optional)
+  horizontal_align_md:   String, [left, center, right] - (larger screen size)
+  vertical_align:       String, [top, middle, bottom] set vertical alignment - (default = top) - (optional)
+  vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
 {% endcomment %}
 
 {% liquid
@@ -92,7 +92,8 @@ vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
           autoplay="autoplay"
           playsinline="true"
           muted
-          class="ra-video__media ra-video__media--loaded">
+          class="ra-video__media ra-video__media--loaded"
+        >
           <source src="{{ video }}" type="video/mp4">
         </video>
       </div>
@@ -102,15 +103,19 @@ vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
           loading="lazy"
           src="{{ src }}"
           {% if srcset != blank %}
-          srcset="{{ srcset }}"
+            srcset="{{ srcset }}"
           {% endif %}
           width="{{ width | default: '400px' }}"
           height="{{ height | default: '480px'  }}"
           alt="{{ alt | default: 'A content tile image' }}"
-          class="ra-image__media">
+          class="ra-image__media"
+        >
       </div>
     {% elsif src == blank %}
-      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio bg-grey-100" style="{{ imageStyle }}"></div>
+      <div
+        class="ra-image ra-content-tile__image ra-image--use-aspect-ratio bg-grey-100"
+        style="{{ imageStyle }}"
+      ></div>
     {% endif %}
   </div>
   <a href="{{ overlay_link }}" class="ra-component-anchor-overlay">
@@ -121,7 +126,10 @@ vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
   <div class="ra-content-tile__details component-details">
     <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }}">
       {% if title != blank %}
-        <{{ header_level }} class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-{{ header_style }});">
+        <{{ header_level }}
+          class="ra-title ra-content-tile__title"
+          style="--title-font-size:var(--font-size-{{ header_style }});"
+        >
           <div>{{ title }}</div>
         </{{ header_level }}>
       {% endif %}
@@ -138,7 +146,8 @@ vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
             tabindex="-1"
             label="{{ link_text_1 }}"
             title="Click Me"
-            aria-label="Click Me, navigate out">
+            aria-label="Click Me, navigate out"
+          >
             {{ link_text_1 }}
           </a>
         {% endif %}
@@ -148,7 +157,8 @@ vertical_align_md:     String, [top, middle, bottom] - (larger screen size)
             class="ra-link-list__cta ra-button ra-button--tertiary"
             label="{{ link_text_2 }}"
             title="Click Me"
-            aria-label="Click Me, navigate out">
+            aria-label="Click Me, navigate out"
+          >
             {{ link_text_2 }}
           </a>
         {% endif %}

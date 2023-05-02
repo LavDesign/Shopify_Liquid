@@ -163,7 +163,7 @@
   {% if section.settings.image != blank %}
     <div class="ra-split-section__media">
       <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
-        {% render "image", image: section.settings.image, width: width, height: height, classes: "ra-image__media w-full", lazyload: true %}
+        {% render 'ra-image', image: section.settings.image, width: width, height: height, classes: "ra-image__media w-full", lazyload: true %}
       </div>
     </div>
   {% endif %}

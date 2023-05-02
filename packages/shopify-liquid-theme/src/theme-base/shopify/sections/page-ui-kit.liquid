@@ -14,7 +14,7 @@
 
   <div class="container py-30">
     {%- comment -%}
-    Colors
+      Colors
     {%- endcomment -%}
     <h4 class="text-h4 mt-10">Colors</h4>
     <h5 class="text-h5 my-4">Primary</h5>
@@ -79,7 +79,7 @@
 
     <hr class="border my-20">
     {%- comment -%}
-    Typogrpahy
+      Typogrpahy
     {%- endcomment -%}
     <h4 class="text-h4 my-10">Typography</h4>
     <div class="grid gap-6">
@@ -99,589 +99,443 @@
     <hr class="border my-20">
     <h4 class="text-h4 mb-2 mt-10">Standard Buttons</h4>
     {%- comment -%}
-    primary standard button
+      primary standard button
     {%- endcomment -%}
-    <h5 class="text-h5 my-4">Primary</h4>
+    <h5 class="text-h5 my-4">Primary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">primary - large</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'lg'
-          style: 'primary'
-          url: '#'
-          label: 'large'
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'lg', style: 'primary', url: '#', label: 'large' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - medium</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'md'
-          style: 'primary'
-          url: '#'
-          label: "medium"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'md', style: 'primary', url: '#', label: 'medium' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - small</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'sm'
-          style: 'primary'
-          url: '#'
-          label: "small"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', url: '#', label: 'small' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - x-small</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'xs'
-          style: 'primary'
-          url: '#'
-          label: "x-small"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'xs', style: 'primary', url: '#', label: 'x-small' -%}
       </div>
     </div>
 
     {%- comment -%}
-    secondary standard button
+      secondary standard button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">secondary - large</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'lg'
-          style: 'secondary'
-          url: '#'
-          label: 'large'
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'lg', style: 'secondary', url: '#', label: 'large' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - medium</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'md'
-          style: 'secondary'
-          url: '#'
-          label: "medium"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'md', style: 'secondary', url: '#', label: 'medium' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - small</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'sm'
-          style: 'secondary'
-          url: '#'
-          label: "small"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'secondary', url: '#', label: 'small' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - x-small</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'xs'
-          style: 'secondary'
-          url: '#'
-          label: "x-small"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'xs', style: 'secondary', url: '#', label: 'x-small' -%}
       </div>
     </div>
 
     {%- comment -%}
-    tertiary standard button
+      tertiary standard button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">tertiary - large</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'lg'
-          style: 'tertiary'
-          url: '#'
-          label: 'large'
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'lg', style: 'tertiary', url: '#', label: 'large' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - medium</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'md'
-          style: 'tertiary'
-          url: '#'
-          label: "medium"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'md', style: 'tertiary', url: '#', label: 'medium' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - small</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'sm'
-          style: 'tertiary'
-          url: '#'
-          label: "small"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'tertiary', url: '#', label: 'small' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - x-small</p>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'xs'
-          style: 'tertiary'
-          url: '#'
-          label: "x-small"
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'xs', style: 'tertiary', url: '#', label: 'x-small' -%}
       </div>
     </div>
 
     <h5 class="text-h5 mt-10 mb-8">Misc</h5>
     <div class="grid gap-6 grid--col-1">
       <div>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'sm'
-          label: 'disabled'
-          disabled: true
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'sm', label: 'disabled', disabled: true -%}
       </div>
       <div>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'sm'
-          style: 'primary'
-          label: 'As Text'
-          as_text: true
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'As Text', as_text: true -%}
       </div>
       <div>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'sm'
-          label: 'Ghost'
-          ghost: true
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'sm', label: 'Ghost', ghost: true -%}
       </div>
       <div>
-        {%- render 'ra-button'
-          type: 'a'
-          size: 'sm'
-          style: 'primary'
-          label: 'full width'
-          full_width: true
-        -%}
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'full width', full_width: true -%}
       </div>
     </div>
 
     <hr class="border my-20">
     <h4 class="text-h4 mt-10 mb-5">Split Buttons</h4>
     {%- comment -%}
-    primary split button
+      primary split button
     {%- endcomment -%}
     <h5 class="text-h5 mt-4">Primary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">primary - large</p>
-        {%- render 'ra-split-button'
-          size: 'lg'
-          style: 'primary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'lg', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - medium</p>
-        {%- render 'ra-split-button'
-          size: 'md'
-          style: 'primary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'md', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - small</p>
-        {%- render 'ra-split-button'
-          size: 'sm'
-          style: 'primary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'sm', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - x-small</p>
-        {%- render 'ra-split-button'
-          size: 'xs'
-          style: 'primary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'xs', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
       </div>
     </div>
 
     {%- comment -%}
-    secondary split button
+      secondary split button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">secondary - large</p>
-        {%- render 'ra-split-button'
-          size: 'lg'
-          style: 'secondary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'lg', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - medium</p>
-        {%- render 'ra-split-button'
-          size: 'md'
-          style: 'secondary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'md', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - small</p>
-        {%- render 'ra-split-button'
-          size: 'sm'
-          style: 'secondary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'sm', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - x-small</p>
-        {%- render 'ra-split-button'
-          size: 'xs'
-          style: 'secondary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'xs', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
       </div>
     </div>
 
     {%- comment -%}
-    tertiary split button
+      tertiary split button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">tertiary - large</p>
-        {%- render 'ra-split-button'
-          size: 'lg'
-          style: 'tertiary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'lg', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - medium</p>
-        {%- render 'ra-split-button'
-          size: 'md'
-          style: 'tertiary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'md', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - small</p>
-        {%- render 'ra-split-button'
-          size: 'sm'
-          style: 'tertiary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'sm', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - x-small</p>
-        {%- render 'ra-split-button'
-          size: 'xs'
-          style: 'tertiary'
-          label: 'read more'
-          icon: 'chevron-down'
-        -%}
+        {%- render 'ra-split-button', size: 'xs', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
       </div>
     </div>
 
     <hr class="border my-20">
     <h4 class="text-h4 mt-10 mb-5">Icon Buttons</h4>
     {%- comment -%}
-    primary icon button
+      primary icon button
     {%- endcomment -%}
     <h5 class="text-h5 mt-4">Primary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">primary - x-large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'xl'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'xl',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">primary circle - x-large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'xl'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'xl',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'lg'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'lg',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">primary circle - large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'lg'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'lg',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - medium</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'md'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'md',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">primary circle - medium</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'md'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'md',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
       <div>
         <p class="mb-2 mt-5">primary - small</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'sm'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'sm',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">primary circle - small</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'sm'
-          style: 'primary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'sm',
+          style: 'primary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
     </div>
 
     {%- comment -%}
-    secondary icon button
+      secondary icon button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">secondary - x-large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'xl'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus' -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'xl',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus'
+        -%}
 
         <p class="mb-2 mt-5">secondary circle - x-large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'xl'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
-          rounded: true -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'xl',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
+          rounded: true
+        -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'lg'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus' -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'lg',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus'
+        -%}
 
         <p class="mb-2 mt-5">secondary circle - large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'lg'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
-          rounded: true -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'lg',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
+          rounded: true
+        -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - medium</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'md'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus' -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'md',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus'
+        -%}
 
         <p class="mb-2 mt-5">secondary circle - medium</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'md'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
-          rounded: true -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'md',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
+          rounded: true
+        -%}
       </div>
       <div>
         <p class="mb-2 mt-5">secondary - small</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'sm'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus' -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'sm',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus'
+        -%}
 
         <p class="mb-2 mt-5">secondary circle - small</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'sm'
-          style: 'secondary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
-          rounded: true -%}
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'sm',
+          style: 'secondary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
+          rounded: true
+        -%}
       </div>
     </div>
 
     {%- comment -%}
-    tertiary icon button
+      tertiary icon button
     {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
         <p class="mb-2 mt-5">tertiary - x-large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'xl'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'xl',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">tertiary circle - x-large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'xl'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'xl',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'lg'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'lg',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">tertiary circle - large</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'lg'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'lg',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - medium</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'md'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'md',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">tertiary circle - medium</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'md'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'md',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
       <div>
         <p class="mb-2 mt-5">tertiary - small</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'sm'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'sm',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
           icon: 'plus'
         -%}
 
         <p class="mb-2 mt-5">tertiary circle - small</p>
-        {%- render 'ra-icon-button'
-          type: 'a'
-          size: 'sm'
-          style: 'tertiary'
-          url: '#'
-          label: 'read more'
-          icon: 'plus'
+        {%- render 'ra-icon-button',
+          type: 'a',
+          size: 'sm',
+          style: 'tertiary',
+          url: '#',
+          label: 'read more',
+          icon: 'plus',
           rounded: true
         -%}
       </div>
@@ -691,91 +545,82 @@
 
     <h4 class="text-h4 mt-10 mb-5">Input</h4>
     {%- comment -%}
-    form - input
+      form - input
     {%- endcomment -%}
     <div class="grid gap-6 grid-cols-3">
       <div>
-        {%- render 'ra-input'
-          type: 'text'
-          size: 'md'
-          label: 'medium'
-          placeholder: 'enter name'
+        {%- render 'ra-input',
+          type: 'text',
+          size: 'md',
+          label: 'medium',
+          placeholder: 'enter name',
           message: 'This is a custom message'
         -%}
       </div>
       <div>
-        {%- render 'ra-input'
-          type: 'text'
-          size: 'lg'
-          label: 'large'
-          placeholder: 'enter name'
+        {%- render 'ra-input',
+          type: 'text',
+          size: 'lg',
+          label: 'large',
+          placeholder: 'enter name',
           message: 'This is a custom message'
         -%}
       </div>
       <div>
-        {%- render 'ra-input'
-          type: 'text'
-          size: 'xl'
-          label: 'x-large'
-          message: 'This is a custom message'
+        {%- render 'ra-input', type: 'text', size: 'xl', label: 'x-large', message: 'This is a custom message' -%}
+      </div>
+      <div>
+        {%- render 'ra-input', type: 'text', size: 'md', label: 'disabled - medium', disabled: true -%}
+      </div>
+      <div>
+        {%- render 'ra-input', type: 'text', size: 'lg', label: 'disabled - large', disabled: true -%}
+      </div>
+      <div>
+        {%- render 'ra-input', type: 'text', size: 'xl', label: 'disabled - x-large', disabled: true -%}
+      </div>
+      <div>
+        {%- render 'ra-textarea',
+          rows: 4,
+          label: 'Your message',
+          message: 'This is a custom message',
+          placeholder: 'Enter your message'
         -%}
       </div>
       <div>
-        {%- render 'ra-input'
-          type: 'text'
-          size: 'md'
-          label: 'disabled - medium'
+        {%- render 'ra-textarea',
+          rows: 4,
+          label: 'Your message (disabled)',
+          message: 'This is a custom message',
+          placeholder: 'Enter your message',
           disabled: true
         -%}
-      </div>
-      <div>
-        {%- render 'ra-input'
-          type: 'text'
-          size: 'lg'
-          label: 'disabled - large'
-          disabled: true
-        -%}
-      </div>
-      <div>
-        {%- render 'ra-input'
-          type: 'text'
-          size: 'xl'
-          label: 'disabled - x-large'
-          disabled: true
-        -%}
-      </div>
-      <div>
-        {%- render 'ra-textarea' rows: 4, label: 'Your message', message: 'This is a custom message', placeholder: 'Enter your message' -%}
-      </div>
-      <div>
-        {%- render 'ra-textarea' rows: 4, label: 'Your message (disabled)', message: 'This is a custom message', placeholder: 'Enter your message', disabled: true -%}
       </div>
     </div>
 
     {%- comment -%}
-    form - quantity selectors
+      form - quantity selectors
     {%- endcomment -%}
     <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">QTY - Selector</p>
         <p class="mb-2">Primary - <code>style:'primary'</code></p>
-        {%- render 'ra-quantity-selector' value: 1, style: 'primary' -%}
+        {%- render 'ra-quantity-selector', value: 1, style: 'primary' -%}
 
         <br>
         <p class="mb-2">Secondary - <code>style:'secondary'</code></p>
-        {%- render 'ra-quantity-selector' value: 1, style: 'secondary' -%}
+        {%- render 'ra-quantity-selector', value: 1, style: 'secondary' -%}
 
         <br>
         <p class="mb-2">Tertiary - <code>style:'tertiary'</code></p>
-        {%- render 'ra-quantity-selector' value: 1, style: 'tertiary' -%}
+        {%- render 'ra-quantity-selector', value: 1, style: 'tertiary' -%}
 
         <br>
         <p class="mb-2">Defalut - <code>value:5</code></p>
-        {%- render 'ra-quantity-selector' value: 5, style: 'tertiary' -%}
+        {%- render 'ra-quantity-selector', value: 5, style: 'tertiary' -%}
 
         <br>
         <p class="mb-2">Max - <code>max:10</code></p>
-        {%- render 'ra-quantity-selector' value: 1, max: 10, style: 'tertiary' -%}
+        {%- render 'ra-quantity-selector', value: 1, max: 10, style: 'tertiary' -%}
       </div>
       <div>
         <p class="text-h5 mt-10 mb-5">QTY - Selector</p>
@@ -786,23 +631,33 @@
               <select
                 id=""
                 name=""
-                class="ra-input__control ra-select__control">
+                class="ra-input__control ra-select__control"
+              >
                 <option
                   tabindex="0"
                   class="ra-select__option"
-                  value="1">1</option>
+                  value="1"
+                >
+                  1
+                </option>
                 <option
                   tabindex="0"
                   class="ra-select__option"
-                  value="2">2</option>
+                  value="2"
+                >
+                  2
+                </option>
                 <option
                   tabindex="0"
                   class="ra-select__option"
-                  value="3">3</option>
+                  value="3"
+                >
+                  3
+                </option>
               </select>
               <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
                 <svg viewBox="0 0 24 24" class="ra-icon-path">
-                    <path d="m15.924 16-4.59-4.58L6.744 16l-1.41-1.41 6-6 6 6-1.41 1.41Z" fill=""></path>
+                  <path d="m15.924 16-4.59-4.58L6.744 16l-1.41-1.41 6-6 6 6-1.41 1.41Z" fill=""></path>
                 </svg>
               </span>
             </div>
@@ -812,28 +667,38 @@
     </div>
 
     {%- comment -%}
-    form - checkbox & toggle
+      form - checkbox & toggle
     {%- endcomment -%}
     <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">Checkbox</p>
-        {%- render 'ra-checkbox' id: 'checkobx_1', style: 'classic', label: 'default' -%}
+        {%- render 'ra-checkbox', id: 'checkobx_1', style: 'classic', label: 'default' -%}
         <br>
-        {%- render 'ra-checkbox' id: 'checkobx_2', style: 'classic', label: 'checked', checked: true -%}
+        {%- render 'ra-checkbox', id: 'checkobx_2', style: 'classic', label: 'checked', checked: true -%}
         <br>
-        {%- render 'ra-checkbox' id: 'checkobx_2', style: 'classic', label: 'disabled', disabled: true -%}
+        {%- render 'ra-checkbox', id: 'checkobx_2', style: 'classic', label: 'disabled', disabled: true -%}
         <br>
-        {%- render 'ra-checkbox' id: 'checkobx_2', style: 'classic', label: 'message', message: 'This is info message.' -%}
+        {%- render 'ra-checkbox',
+          id: 'checkobx_2',
+          style: 'classic',
+          label: 'message',
+          message: 'This is info message.'
+        -%}
       </div>
       <div>
         <p class="text-h5 mt-10 mb-5">Toggle</p>
-        {%- render 'ra-checkbox' id: 'toggle_1', style: 'toggle', label: 'default' -%}
+        {%- render 'ra-checkbox', id: 'toggle_1', style: 'toggle', label: 'default' -%}
         <br>
-        {%- render 'ra-checkbox' id: 'toggle_2', style: 'toggle', label: 'checked', checked: true -%}
+        {%- render 'ra-checkbox', id: 'toggle_2', style: 'toggle', label: 'checked', checked: true -%}
         <br>
-        {%- render 'ra-checkbox' id: 'toggle_2', style: 'toggle', label: 'disabled', disabled: true -%}
+        {%- render 'ra-checkbox', id: 'toggle_2', style: 'toggle', label: 'disabled', disabled: true -%}
         <br>
-        {%- render 'ra-checkbox' id: 'toggle_2', style: 'toggle', label: 'message', message: 'This is info message.' -%}
+        {%- render 'ra-checkbox',
+          id: 'toggle_2',
+          style: 'toggle',
+          label: 'message',
+          message: 'This is info message.'
+        -%}
       </div>
       <div>
         <p class="text-h5 mt-10 mb-5">Radio</p>
@@ -849,7 +714,7 @@
 
     <hr class="border my-20">
     {%- comment -%}
-    Icons
+      Icons
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Icons</h4>
     <p class="mb-2">
@@ -861,58 +726,72 @@
     </p>
     <div class="grid gap-6 grid-cols-4">
       <div>
-        <p class="mt-10 mb-8">small <br><span class="text-xs">size: 'sm'</span>
+        <p class="mt-10 mb-8">
+          small <br>
+          <span class="text-xs">size: 'sm'</span>
         </p>
-        {%- render 'ra-icon' icon: 'account', size: 'sm' -%}
+        {%- render 'ra-icon', icon: 'account', size: 'sm' -%}
       </div>
       <div>
-        <p class="mt-10 mb-8">medium <br><span class="text-xs">size: 'md'</span>
+        <p class="mt-10 mb-8">
+          medium <br>
+          <span class="text-xs">size: 'md'</span>
         </p>
-        {%- render 'ra-icon' icon: 'account', size: 'md' -%}
+        {%- render 'ra-icon', icon: 'account', size: 'md' -%}
       </div>
       <div>
-        <p class="mt-10 mb-8">large <br><span class="text-xs">size: 'lg'</span>
+        <p class="mt-10 mb-8">
+          large <br>
+          <span class="text-xs">size: 'lg'</span>
         </p>
-        {%- render 'ra-icon' icon: 'account', size: 'lg' -%}
+        {%- render 'ra-icon', icon: 'account', size: 'lg' -%}
       </div>
       <div>
-        <p class="mt-10 mb-8">x-large <br><span class="text-xs">size: 'xl'</span>
+        <p class="mt-10 mb-8">
+          x-large <br>
+          <span class="text-xs">size: 'xl'</span>
         </p>
-        {%- render 'ra-icon' icon: 'account', size: 'xl' -%}
+        {%- render 'ra-icon', icon: 'account', size: 'xl' -%}
       </div>
       <div>
-        <p class="mt-10 mb-8">custom size <br><span class="text-xs">width: 50px, height: 50px</span>
+        <p class="mt-10 mb-8">
+          custom size <br>
+          <span class="text-xs">width: 50px, height: 50px</span>
         </p>
-        {%- render 'ra-icon' icon: 'account', width: '50px', height: '50px' -%}
+        {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px' -%}
       </div>
       <div>
-        <p class="mt-10 mb-8">custom color <br><span class="text-xs">#C4952B</span>
+        <p class="mt-10 mb-8">
+          custom color <br>
+          <span class="text-xs">#C4952B</span>
         </p>
-        {%- render 'ra-icon' icon: 'account', width: '50px', height: '50px' color: '#C4952B' -%}
+        {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px', color: '#C4952B' -%}
       </div>
       <div>
-        <p class="mt-10 mb-8">custom color <br><span class="text-xs">var(--color-primary-900)</span>
+        <p class="mt-10 mb-8">
+          custom color <br>
+          <span class="text-xs">var(--color-primary-900)</span>
         </p>
-        {%- render 'ra-icon' icon: 'account', width: '50px', height: '50px' color: 'var(--color-primary-900)' -%}
+        {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px', color: 'var(--color-primary-900)' -%}
       </div>
     </div>
 
     <hr class="border my-20">
     {%- comment -%}
-    Accordions
+      Accordions
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Accordions</h4>
     <p class="mt-8 text-h5">no icon</p>
     <div class="grid gap-6">
-      {% render 'ra-accordion'
+      {% render 'ra-accordion',
         item1_title: 'Heading 1',
         item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
-        item2_title: 'Heading 2'
+        item2_title: 'Heading 2',
         item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
       %}
 
       <p class="mt-8 text-h5">with icon</p>
-      {% render 'ra-accordion'
+      {% render 'ra-accordion',
         show_icon: true,
         item1_title: 'Heading 1',
         item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
@@ -921,7 +800,7 @@
       %}
 
       <p class="mt-8 text-h5">allow multiple items open</p>
-      {% render 'ra-accordion'
+      {% render 'ra-accordion',
         show_icon: true,
         multiple_open: true,
         item1_title: 'Heading 1',
@@ -931,7 +810,7 @@
       %}
 
       <p class="mt-8 text-h5">first item open</p>
-      {% render 'ra-accordion'
+      {% render 'ra-accordion',
         show_icon: true,
         first_item_open: true,
         item1_title: 'Heading 1',
@@ -943,14 +822,14 @@
 
     <hr class="border my-20">
     {%- comment -%}
-    Breadcrumbs
+      Breadcrumbs
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
     {% render 'ra-breadcrumbs', divider: 'slash' %}
 
     <hr class="border my-20">
     {%- comment -%}
-    Scrollable
+      Scrollable
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Scrollable</h4>
     {% capture scrollable_content %}
@@ -969,70 +848,57 @@
 
     <hr class="border my-20">
     {%- comment -%}
-    Badge
+      Badge
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Badges</h4>
     <div class="mb-5">
-      {% render 'ra-badge'
-        label: 'Primary',
-        size: 'md'
-        style: 'primary'
-      %}
+      {% render 'ra-badge', label: 'Primary', size: 'md', style: 'primary' %}
     </div>
     <div class="mb-5">
-      {% render 'ra-badge'
-        label: 'Secondary sm',
-        size: 'sm'
-        style: 'secondary'
-      %}
+      {% render 'ra-badge', label: 'Secondary sm', size: 'sm', style: 'secondary' %}
     </div>
     <div class="mb-5">
-      {% render 'ra-badge'
-        label: 'Tertiary Notification Lg',
-        size: 'lg'
-        style: 'tertiary'
-        rounded: true
-      %}
+      {% render 'ra-badge', label: 'Tertiary Notification Lg', size: 'lg', style: 'tertiary', rounded: true %}
     </div>
 
     <hr class="border my-20">
     {%- comment -%}
-    Icon Tile
+      Icon Tile
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Icon Tile</h4>
-    {% assign img_src = section.settings.featured_product.featured_image.src | img_url: '300x' %}
+    {% assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300 %}
     {% assign img_alt = section.settings.featured_product.featured_image.alt %}
     {% assign link_url = section.settings.featured_product.url %}
     <div class="grid gap-6 grid-cols-2 mb-5">
       {% render 'ra-icon-tile',
         imgSrc: img_src,
         imgAlt: img_alt,
-        title: "This is a Title",
-        description: "I'm not thinking about anything when I'm climbing."
+        title: 'This is a Title',
+        description: "I'm not thinking about anything when I'm climbing.",
         detailsLocation: 'after',
         stacked: true,
         linkUrl: link_url,
-        linkText: "Default"
+        linkText: 'Default',
         horizontalAlign: 'right'
       %}
       {% render 'ra-icon-tile',
         imgSrc: img_src,
         imgAlt: img_alt,
         imgWidth: 200,
-        title: "This is a Title",
+        title: 'This is a Title',
         description: "I'm not thinking about anything when I'm climbing.",
         stacked: false,
         linkUrl: link_url,
-        linkText: "Default",
-        horizontalAlign: "left",
-        horizontalAlignMD: "center"
+        linkText: 'Default',
+        horizontalAlign: 'left',
+        horizontalAlignMD: 'center',
         verticalAlign: 'bottom'
       %}
     </div>
 
     <hr class="border my-20">
     {%- comment -%}
-    Notification
+      Notification
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Notification</h4>
     {%- render 'ra-notification',
@@ -1056,12 +922,12 @@
         </div>
       </form>
     {% endcapture %}
-    {% render 'ra-modal' id: 'modal-1', title: 'Modal Title', content: content %}
-    {% render 'ra-button' type: 'ra-button', style: 'primary', label: 'open modal', id: 'modal-1' %}
+    {% render 'ra-modal', id: 'modal-1', title: 'Modal Title', content: content %}
+    {% render 'ra-button', type: 'ra-button', style: 'primary', label: 'open modal', id: 'modal-1' %}
 
     <hr class="border my-20">
     {%- comment -%}
-    Tabs
+      Tabs
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Tabs</h4>
     {% capture tabs %}
@@ -1086,20 +952,20 @@
     {% render 'ra-tabs', tabs: tabs, tabContent: tabContent %}
     <hr class="border my-20">
     {%- comment -%}
-    Content Tiles
+      Content Tiles
     {%- endcomment -%}
     {% assign videoUrl = section.settings.video_url %}
     <h4 class="text-h4 mt-10 mb-5">Content Tiles</h4>
     <div style="max-width: 22rem;">
-      {% render 'ra-content-tile'
+      {% render 'ra-content-tile',
         src: img_src,
         alt: img_alt,
         title: 'This is a title',
         description: "I'm not thinking about anything when I'm climbing.",
         link_url_1: link_url,
-        link_text_1: "Default",
+        link_text_1: 'Default',
         link_url_2: link_url,
-        link_text_2: "Secondary",
+        link_text_2: 'Secondary',
         width: 400,
         height: 300
       %}
@@ -1107,15 +973,15 @@
     <hr class="border my-20">
     <h4 class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
     <div style="max-width: 22rem;">
-      {% render 'ra-content-tile'
+      {% render 'ra-content-tile',
         src: img_src,
         alt: img_alt,
         title: 'This is a title',
         description: "I'm not thinking about anything when I'm climbing.",
         link_url_1: link_url,
-        link_text_1: "Default",
+        link_text_1: 'Default',
         link_url_2: link_url,
-        link_text_2: "Secondary",
+        link_text_2: 'Secondary',
         width: 400,
         height: 300,
         video: videoUrl
@@ -1126,19 +992,19 @@
 </section>
 
 {%- schema -%}
-  {
-    "name": "UI-Kit Settings",
-    "settings": [
-      {
-        "type": "product",
-        "id": "featured_product",
-        "label": "Featured Product"
-      },
-      {
-        "type": "text",
-        "id": "video_url",
-        "label": "A Shopify-hosted video"
-      }
-    ]
-  }
+{
+  "name": "UI-Kit Settings",
+  "settings": [
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured Product"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "A Shopify-hosted video"
+    }
+  ]
+}
 {%- endschema -%}

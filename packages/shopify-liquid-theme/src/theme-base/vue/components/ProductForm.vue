@@ -59,7 +59,7 @@ const cartStore = useCartStore();
 const dropdownOptions = [];
 const swatchOptions = ["Color"];
 
-const itemsPerRow = "3";
+const itemsPerRow = "4";
 
 function getOptionVariant(optionName) {
   if (dropdownOptions.includes(optionName)) {

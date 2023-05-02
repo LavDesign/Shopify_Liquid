@@ -29,7 +29,7 @@
 %}
 
 <div class="w-full">
-	<article class="ra-hero set--details-overlay{% if video_source == 'file' %} set--aspect-ratio-main {% endif %}{% if section.settings.stack_mobile %} ra-hero--stack-mobile{% endif %}">
+  <article class="ra-hero set--details-overlay{% if video_source == 'file' %} set--aspect-ratio-main {% endif %}{% if section.settings.stack_mobile %} ra-hero--stack-mobile{% endif %}">
     <div class="ra-hero__details component-details--set-order">
       <div class="ra-hero__copy {{ section.settings.text_alignment }}">
         {% if section.settings.eyebrow_text != blank %}
@@ -37,7 +37,10 @@
         {% endif %}
 
         {% if section.settings.title != blank %}
-          <{{ section.settings.title_style }} class="ra-title ra-hero__title" style="--title-font-size:var(--font-size-{{ section.settings.title_style }});">
+          <{{ section.settings.title_style }}
+            class="ra-title ra-hero__title"
+            style="--title-font-size:var(--font-size-{{ section.settings.title_style }});"
+          >
             {{ section.settings.title }}
           </{{ section.settings.title_style }}>
         {% endif %}
@@ -51,22 +54,22 @@
         {% if section.settings.cta_1_url != blank or section.settings.cta_2_url != blank %}
           <div class="ra-link-list ra-hero__link-list">
             {% if section.settings.cta_1_label != blank and section.settings.cta_1_url != blank %}
-              {% render 'ra-button'
+              {% render 'ra-button',
                 type: 'a',
                 style: section.settings.cta_1_style,
                 label: section.settings.cta_1_label,
                 url: section.settings.cta_1_url,
-                class: "min-w-[175px]"
+                class: 'min-w-[175px]'
               %}
             {% endif %}
 
             {% if section.settings.cta_2_label != blank and section.settings.cta_2_url != blank %}
-              {% render 'ra-button'
+              {% render 'ra-button',
                 type: 'a',
                 style: section.settings.cta_2_style,
                 label: section.settings.cta_2_label,
                 url: section.settings.cta_2_url,
-                class: "min-w-[175px]"
+                class: 'min-w-[175px]'
               %}
             {% endif %}
           </div>
@@ -83,11 +86,11 @@
     {% else %}
       <div class="ra-hero__media component-media">
         <div class="embed {{ section.settings.video_aspect_ratio }}">
-          <iframe src="{{ video_background_url }}">
+          <iframe src="{{ video_background_url }}"></iframe>
         </div>
       </div>
     {% endif %}
-	</article>
+  </article>
 </div>
 
 {% schema %}

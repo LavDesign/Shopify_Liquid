@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+import { itemList, selectedOptions } from "./utilities";
+console.log("test");
+=======
 import { itemList, featuredVariantImage } from "./utilities";
+>>>>>>> 4d8dba3332bc1bb33af181c7d72759e702c1b657
 
 export function dataViewItem(product, variant) {
   dataLayer.push({ ecommerce: null });

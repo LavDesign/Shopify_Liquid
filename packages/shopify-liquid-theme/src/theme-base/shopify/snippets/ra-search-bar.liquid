@@ -6,11 +6,13 @@
       method="get"
       role="search"
       class="search w-full bg-white relative"
-      data-search-form>
+      data-search-form
+    >
       <input
         type="hidden"
         name="type"
-        value="product">
+        value="product"
+      >
       {% render 'ra-input', type: 'text', name: 'q', size: 'lg', placeholder: 'Search...' %}
       <button type="submit" class="absolute right-[13px] top-[13px]">
         {% render 'ra-icon' with 'search', width: '20px', height: '20px', color: 'black' %}

@@ -56,9 +56,9 @@
                 mobile menu - accordion
               {%- endcomment -%}
               <div class="md:hidden w-full">
-              <ra-accordion>
-                {% for link in block.settings.menu.links %}
-                  {% capture link_content %}
+                <ra-accordion>
+                  {% for link in block.settings.menu.links %}
+                    {% capture link_content %}
                     {% if link.links.size > 0 %}
                       <ul role="list" tabindex="-1">
                         {% for child in link.links %}
@@ -69,10 +69,14 @@
                       </ul>
                     {% endif %}
                   {% endcapture %}
-                  {% render 'ra-accordion-item', title: link.title, content: link_content, show_icon: true, class: "py-6" %}
-                {% endfor %}
-              </ra-accordion>
-
+                    {% render 'ra-accordion-item',
+                      title: link.title,
+                      content: link_content,
+                      show_icon: true,
+                      class: 'py-6'
+                    %}
+                  {% endfor %}
+                </ra-accordion>
               </div>
             </ul>
 

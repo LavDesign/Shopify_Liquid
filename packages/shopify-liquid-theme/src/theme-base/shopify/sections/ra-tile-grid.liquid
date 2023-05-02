@@ -33,7 +33,7 @@
                   <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
                     <img
                       loading="lazy"
-                      src="{{ block.settings.image | img_url: '500x' }}"
+                      src="{{ block.settings.image | image_url: width: 500 }}"
                       alt="{{ block.settings.image.alt }}"
                       class="ra-image__media"
                     >
@@ -69,7 +69,7 @@
                     <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
                       <img
                         loading="lazy"
-                        src="{{ block.settings.image_2 | img_url: '500x' }}"
+                        src="{{ block.settings.image_2 | image_url: width: 500 }}"
                         alt="{{ block.settings.image.alt }}"
                         class="ra-image__media"
                       >
@@ -108,7 +108,7 @@
               <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
                 <img
                   loading="lazy"
-                  src="{{ block.settings.image | img_url: '500x' }}"
+                  src="{{ block.settings.image | image_url: width: 500 }}"
                   alt="{{ block.settings.image.alt }}"
                   class="ra-image__media"
                 >
