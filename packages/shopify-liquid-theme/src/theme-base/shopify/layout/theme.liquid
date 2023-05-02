@@ -2,15 +2,11 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
     {%- render 'head-meta' -%}
-
-    {%- comment -%}
-      GTM-Datalayer
-    {%- endcomment -%}
-    {% render 'gtm-datalayer', action_step: 'init' %}
+    {%- render 'gtm-datalayer', action_step: 'init' -%}
 
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
 
-    {% render 'vendor-scripts' %}
+    {%- render 'vendor-scripts' -%}
 
     {%- comment -%}
       Palomino & Bedrock UI
