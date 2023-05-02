@@ -45,6 +45,6 @@ export function dataViewCart(cart) {
       currency: Shopify.currency.active,
       value: cart.value.total_price / 100,
       items: items,
-    }
+    },
   });
 }

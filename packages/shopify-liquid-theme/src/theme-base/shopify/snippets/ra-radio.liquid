@@ -1,18 +1,18 @@
 {% comment %}
-Props:
-id:       string unique ID - (required)
-label:    string radio label - (required)
-class:    string add custom CSS class - (optional)
-message:  string info message - (optional)
-checked:  boolean - (optional)
-required: boolean - (optional)
-disabled: boolean - (optional)
+  Props:
+  id:       string unique ID - (required)
+  label:    string radio label - (required)
+  class:    string add custom CSS class - (optional)
+  message:  string info message - (optional)
+  checked:  boolean - (optional)
+  required: boolean - (optional)
+  disabled: boolean - (optional)
 
-Example radio:
-{%- render 'ra-radio' id: 'default_radio', label: 'default' -%}
+  Example radio:
+  {%- render 'ra-radio' id: 'default_radio', label: 'default' -%}
 
-Example radio + message:
-{%- render 'ra-radio' id: 'message_radio', label: 'message', message: 'This is an info message' -%}
+  Example radio + message:
+  {%- render 'ra-radio' id: 'message_radio', label: 'message', message: 'This is an info message' -%}
 {% endcomment %}
 
 {% if id != blank and label != blank %}
@@ -46,7 +46,8 @@ Example radio + message:
       id="{{ input_id }}"
       type="radio"
       class="ra-choice__input"
-      {{ attributes }}>
+      {{ attributes }}
+    >
     <label for="{{ input_id }}" class="ra-choice__label-container ra-choice__container set--sibling-deep-focus">
       <div class="ra-choice__checkmark set--inherit-focus">
         <span class="ra-choice__checkmark-icon"></span>

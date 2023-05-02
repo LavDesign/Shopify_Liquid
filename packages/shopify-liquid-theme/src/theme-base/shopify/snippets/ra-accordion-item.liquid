@@ -1,16 +1,16 @@
 {% comment %}
-Props:
-title:       string item title - (required)
-content:     string item content - (required)
-show_icon:   boolean - (optional)
-is_open:     boolean - (optional)
-class:       string - (optional)
+  Props:
+  title:       string item title - (required)
+  content:     string item content - (required)
+  show_icon:   boolean - (optional)
+  is_open:     boolean - (optional)
+  class:       string - (optional)
 
-Example accordion item:
-{%- render 'ra-accordion-item', title: 'title', content: 'some content as raw or <strong>HTML</strong>.' -%}
+  Example accordion item:
+  {%- render 'ra-accordion-item', title: 'title', content: 'some content as raw or <strong>HTML</strong>.' -%}
 
-Example accordion item + icon:
-{%- render 'ra-accordion-item', title: 'title', content: 'some content as raw or <strong>HTML</strong>.', show_icon: true -%}
+  Example accordion item + icon:
+  {%- render 'ra-accordion-item', title: 'title', content: 'some content as raw or <strong>HTML</strong>.', show_icon: true -%}
 {% endcomment %}
 
 {% assign contents = content | strip %}

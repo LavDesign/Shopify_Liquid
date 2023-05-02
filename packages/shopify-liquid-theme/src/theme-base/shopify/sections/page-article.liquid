@@ -1,20 +1,22 @@
 {%- comment -%}
-Header
+  Header
 {%- endcomment -%}
 <div class="py-6 md:py-20 bg-grey-100">
   <div class="container">
-    {% render 'featured-article'
-     , article: article,
-     aspect_ratio: section.settings.aspect_ratio,
-     show_tags: true,
-     show_date: true,
-     show_excerpt: true %}
+    {% render 'featured-article',
+      article: article,
+      aspect_ratio: section.settings.aspect_ratio,
+      show_tags: true,
+      show_date: true,
+      show_excerpt: true
+    %}
   </div>
 </div>
 
 {%- comment -%}
-Content
-{%- endcomment -%}<div class="container">
+  Content
+{%- endcomment -%}
+<div class="container">
   <div class="flex py-6 md:py-20">
     <div class="w-full md:w-[650px] m-auto">
       <div class="ra-wysiwyg">
@@ -25,8 +27,9 @@ Content
 </div>
 
 {%- comment -%}
-Related Articles
-{%- endcomment -%}{% liquid
+  Related Articles
+{%- endcomment -%}
+{% liquid
   assign related_articles_found = 0
   for tag in article.tags
     assign skip_articles = article.handle | split: '.....'
@@ -60,12 +63,13 @@ Related Articles
               {% assign temp = related_article.handle | split: '.....' %}
               {% assign skip_articles = skip_articles | concat: temp %}
 
-              {% render 'ra-article-tile'
-               , article: related_article,
-               aspect_ratio: section.settings.aspect_ratio,
-               show_tags: section.settings.show_tags,
-               show_date: section.settings.show_date,
-               show_excerpt: section.settings.show_excerpt %}
+              {% render 'ra-article-tile',
+                article: related_article,
+                aspect_ratio: section.settings.aspect_ratio,
+                show_tags: section.settings.show_tags,
+                show_date: section.settings.show_date,
+                show_excerpt: section.settings.show_excerpt
+              %}
             {% endunless %}
           {% endif %}
         {% endfor %}
@@ -77,51 +81,54 @@ Related Articles
 {% render 'structured-data-article', article: article %}
 
 {% schema %}
-  {
-    "name": "Article",
-    "tag": "section",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Related Articles"
-      },
-      {
-        "type": "select",
-        "id": "aspect_ratio",
-        "label": "Image Aspect Ratio",
-        "options": [
-          {
-            "value": "square",
-            "label": "Square"
-          }, {
-            "value": "video",
-            "label": "Horizontal"
-          }
-        ],
-        "default": "video"
-      },
-      {
-        "type": "text",
-        "id": "related_articles_title",
-        "label": "Related Articles Title",
-        "default": "Keep Reading"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_excerpt",
-        "label": "Show Excerpt",
-        "default": true
-      }, {
-        "type": "checkbox",
-        "id": "show_tags",
-        "label": "Show Tags",
-        "default": true
-      }, {
-        "type": "checkbox",
-        "id": "show_date",
-        "label": "Show Date",
-        "default": true
-      }
-    ]
-  }
+{
+  "name": "Article",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Related Articles"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "video",
+          "label": "Horizontal"
+        }
+      ],
+      "default": "video"
+    },
+    {
+      "type": "text",
+      "id": "related_articles_title",
+      "label": "Related Articles Title",
+      "default": "Keep Reading"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show Excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show Tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show Date",
+      "default": true
+    }
+  ]
+}
 {% endschema %}

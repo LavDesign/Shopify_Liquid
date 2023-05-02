@@ -256,6 +256,11 @@
   </ra-account-auth>
 {% endcapture %}
 
-{% unless customer or request.path contains "/account/" %}
-  {% render 'ra-modal', id: 'modal-login', content: modal_content, classes: 'auth-modal bg-tertiary-500', overlay: true %}
+{% unless customer or request.path contains '/account/' %}
+  {% render 'ra-modal',
+    id: 'modal-login',
+    content: modal_content,
+    classes: 'auth-modal bg-tertiary-500',
+    overlay: true
+  %}
 {% endunless %}
