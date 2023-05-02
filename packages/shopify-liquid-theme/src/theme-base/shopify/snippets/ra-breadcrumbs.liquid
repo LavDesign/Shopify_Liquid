@@ -1,13 +1,13 @@
 {% comment %}
-Props:
-type:          String [a, div] - (option) * default is <nav>
-breadcrumbs:   Array for list of link objects - (required)
-classes:       String add custom CSS class - (optional)
-disable_last:  Boolean to toggle if last item / current page should be disabled - (optional) [default = disabled]
-divider:       String [slash, minus] choose divider style - (optional) default is (slash)
+  Props:
+  type:          String [a, div] - (option) * default is <nav>
+  breadcrumbs:   Array for list of link objects - (required)
+  classes:       String add custom CSS class - (optional)
+  disable_last:  Boolean to toggle if last item / current page should be disabled - (optional) [default = disabled]
+  divider:       String [slash, minus] choose divider style - (optional) default is (slash)
 
-Example Breadcrumb:
-{% render 'breadcrumb' %}
+  Example Breadcrumb:
+  {% render 'breadcrumb' %}
 {% endcomment %}
 
 {% capture divider %}
@@ -29,8 +29,9 @@ Example Breadcrumb:
 <nav
   class="ra-breadcrumbs ra-breadcrumbs--wrap {{ classes }}"
   {% if type != blank %}
-  as="{{- type -}}"
-  {% endif %}>
+    as="{{- type -}}"
+  {% endif %}
+>
   <ol class="ra-breadcrumbs__list">
     <li class="ra-breadcrumbs__list-item">
       <a class="ra-link ra-link--no-underline ra-breadcrumbs__breadcrumb" href="/">
@@ -39,11 +40,11 @@ Example Breadcrumb:
 
       {% comment %}checks here for separator{% endcomment %}
       {% if template contains 'collection'
- or template contains 'page'
- or template contains 'product'
- or template contains 'blog'
- or template contains 'article'
- %}
+        or template contains 'page'
+        or template contains 'product'
+        or template contains 'blog'
+        or template contains 'article'
+      %}
         {{ divider }}
       {% endif %}
     </li>
@@ -52,8 +53,9 @@ Example Breadcrumb:
         <a
           class="ra-breadcrumbs__breadcrumb ra-breadcrumbs__breadcrumb--current"
           {% if last_type == 'a' %}
-          href="{{ page.url }}"
-          {% endif %}>
+            href="{{ page.url }}"
+          {% endif %}
+        >
           {{ page.title }}
         </a>
       </li>
@@ -75,8 +77,9 @@ Example Breadcrumb:
         <a
           class="ra-breadcrumbs__breadcrumb ra-breadcrumbs__breadcrumb--current"
           {% if last_type == 'a' %}
-          href="{{ product.url }}"
-          {% endif %}>
+            href="{{ product.url }}"
+          {% endif %}
+        >
           {{- product.title -}}
         </a>
       </li>
@@ -89,8 +92,9 @@ Example Breadcrumb:
           <a
             class="ra-link ra-link--no-underline ra-breadcrumbs__breadcrumb ra-breadcrumbs__breadcrumb--current"
             {% if last_type == 'a' %}
-            href="{{ url }}"
-            {% endif %}>
+              href="{{ url }}"
+            {% endif %}
+          >
             {{- current_tags | join: ' + ' -}}
           </a>
         </li>
@@ -99,8 +103,9 @@ Example Breadcrumb:
           <a
             class="ra-link ra-link--no-underline ra-breadcrumbs__breadcrumb ra-breadcrumbs__breadcrumb--current"
             {% if last_type == 'a' %}
-            href="{{ url }}"
-            {% endif %}>
+              href="{{ url }}"
+            {% endif %}
+          >
             {{- collection.title -}}
           </a>
         </li>
@@ -126,8 +131,9 @@ Example Breadcrumb:
         <a
           class="ra-breadcrumbs__breadcrumb ra-breadcrumbs__breadcrumb--current"
           {% if last_type == 'a' %}
-          href="{{ article.url }}"
-          {% endif %}>
+            href="{{ article.url }}"
+          {% endif %}
+        >
           {{ article.title }}
         </a>
       </li>

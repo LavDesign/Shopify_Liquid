@@ -15,7 +15,7 @@
   --modal-width: 70.25rem;
 
   &.closing {
-    transform: translate(50%,50%);
+    transform: translate(50%, 50%);
     animation-name: center-to-bottom;
     animation-duration: 1s;
   }
@@ -31,7 +31,6 @@
     opacity: 0;
   }
 }
-
 
 .address-book-edit-modal .ra-modal__header {
   justify-content: flex-end;

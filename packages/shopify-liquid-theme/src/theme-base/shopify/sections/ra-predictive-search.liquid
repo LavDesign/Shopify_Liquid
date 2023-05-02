@@ -74,7 +74,7 @@
           <div class="text-center">
             <p class="h6 mb-5">{{ 'templates.search.no_product_results' | t: terms: predictive_search.terms }}</p>
             {% render 'ra-button',
-              label: settings.empty_search_cta_text,
+              label: settings.empty_search_cta_label,
               style: settings.empty_search_cta_style,
               type: 'a',
               url: settings.empty_search_cta_url
@@ -84,7 +84,7 @@
           <div class="text-center">
             <p class="h6 mb-5">{{ 'templates.search.no_results' | t: terms: predictive_search.terms }}</p>
             {% render 'ra-button',
-              label: settings.empty_search_cta_text,
+              label: settings.empty_search_cta_label,
               style: settings.empty_search_cta_style,
               type: 'a',
               url: settings.empty_search_cta_url

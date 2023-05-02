@@ -1,25 +1,25 @@
 {% comment %}
-Props:
-type:        string input types [text, email, password, search, tel, hidden] - (required)
-size:        string [md, lg, xl] - (required)
-name:        string name attr - (optional)
-label:       string input label - (optional)
-id:          string add id attribute used for JS - (optional)
-class:       string add custom CSS class - (optional)
-message:     string info message - (optional)
-placeholder: string placeholder text - (optional)
-required:    boolean - (optional)
-disabled:    boolean - (optional)
-value:       string - (optional) default value for hidden inputs
+  Props:
+  type:        string input types [text, email, password, search, tel, hidden] - (required)
+  size:        string [md, lg, xl] - (required)
+  name:        string name attr - (optional)
+  label:       string input label - (optional)
+  id:          string add id attribute used for JS - (optional)
+  class:       string add custom CSS class - (optional)
+  message:     string info message - (optional)
+  placeholder: string placeholder text - (optional)
+  required:    boolean - (optional)
+  disabled:    boolean - (optional)
+  value:       string - (optional) default value for hidden inputs
 
-Example input:
-{%- render 'ra-input' type: 'text', size: 'md', placeholder: 'enter name' -%}
+  Example input:
+  {%- render 'ra-input' type: 'text', size: 'md', placeholder: 'enter name' -%}
 
-Example input + label:
-{%- render 'ra-input' type: 'text', size: 'md', label: 'name', placeholder: 'enter name' -%}
+  Example input + label:
+  {%- render 'ra-input' type: 'text', size: 'md', label: 'name', placeholder: 'enter name' -%}
 
-Example input + message:
-{%- render 'ra-input' type: 'text', size: 'md', message: 'This is a custom message' -%}
+  Example input + message:
+  {%- render 'ra-input' type: 'text', size: 'md', message: 'This is a custom message' -%}
 {% endcomment %}
 
 {% if type != blank %}
@@ -69,7 +69,8 @@ Example input + message:
       <input
         type="{{ type }}"
         class="ra-input__control ra-input__control--text"
-        {{ attributes }}>
+        {{ attributes }}
+      >
     </div>
     {% if message != blank %}
       <p class="ra-input__message">{{ message }}</p>

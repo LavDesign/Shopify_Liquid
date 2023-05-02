@@ -1,6 +1,8 @@
 .ra-tab__button-container {
   @apply flex text-grey-500 text-left text-lg flex-nowrap overflow-x-scroll pb-4 gap-6;
-  &::-webkit-scrollbar { display: none; }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .ra-tab__button {
   @apply py-2 text-left whitespace-nowrap text-grey-900;

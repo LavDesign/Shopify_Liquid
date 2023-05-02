@@ -1,13 +1,13 @@
 {% comment %}
-Props:
-product: Shopify Product Object
-platform: String, [yotpo, stamped, bazaarvoice] - (Optional) - Fallback will pull from theme settings
+  Props:
+  product: Shopify Product Object
+  platform: String, [yotpo, stamped, bazaarvoice] - (Optional) - Fallback will pull from theme settings
 
-Example default review star ratings using Yotpo:
-{%- render 'ra-review-stars',
-product: product,
-platform: 'yotpo'
--%}
+  Example default review star ratings using Yotpo:
+  {%- render 'ra-review-stars',
+  product: product,
+  platform: 'yotpo'
+  -%}
 {% endcomment %}
 
 {% if platform == blank %}
@@ -17,22 +17,24 @@ platform: 'yotpo'
 <div class="product-star-rating">
   {% case platform %}
     {% when 'yotpo' %}
-    <div class="yotpo bottomLine" data-product-id="{{ product.id }}"></div>
+      <div class="yotpo bottomLine" data-product-id="{{ product.id }}"></div>
     {% when 'stamped' %}
-    <span
-      class="stamped-product-reviews-badge stamped-main-badge"
-      data-id="{{ product.id }}"
-      data-product-sku="{{ product.handle }}"
-      data-product-title="{{ product.title }}"
-      data-product-type="{{ product.type }}"
-      style="display: block;">
-      {{ product.metafields.stamped.badge }}
-    </span>
+      <span
+        class="stamped-product-reviews-badge stamped-main-badge"
+        data-id="{{ product.id }}"
+        data-product-sku="{{ product.handle }}"
+        data-product-title="{{ product.title }}"
+        data-product-type="{{ product.type }}"
+        style="display: block;"
+      >
+        {{ product.metafields.stamped.badge }}
+      </span>
     {% when 'bazaarvoice' %}
-    {% assign id = product.metafields.bazaarvoice.handle | default: product.handle %}
-    <div
-      data-bv-show="inline_rating"
-      data-bv-product-id="{{ id }}"
-      data-bv-seo="false"></div>
+      {% assign id = product.metafields.bazaarvoice.handle | default: product.handle %}
+      <div
+        data-bv-show="inline_rating"
+        data-bv-product-id="{{ id }}"
+        data-bv-seo="false"
+      ></div>
   {% endcase %}
 </div>

@@ -1,12 +1,12 @@
 {% comment %}
-This modal is only used on the PDP product gallery.
-If you're developing modal for purposes other than that, use the modal.liquid snippet.
+  This modal is only used on the PDP product gallery.
+  If you're developing modal for purposes other than that, use the modal.liquid snippet.
 
-Props:
-id:       string unique ID, should start with 'modal-' - (required)
-title:    string modal title - (optional)
-content:  string/html/markup modal content - (required)
-classes:  string extra class names - (optional)
+  Props:
+  id:       string unique ID, should start with 'modal-' - (required)
+  title:    string modal title - (optional)
+  content:  string/html/markup modal content - (required)
+  classes:  string extra class names - (optional)
 {% endcomment %}
 
 {% if id != blank %}
@@ -25,14 +25,15 @@ classes:  string extra class names - (optional)
       {% endif %}
     </div>
     <form method="dialog" class="close-modal absolute top-0 right-0 z-10">
-      {% render 'ra-icon-button'
-       , type: 'ra-button',
-       value: 'close',
-       style: 'tertiary',
-       size: 'md',
-       label: 'close modal',
-       icon: 'close',
-       rounded: false %}
+      {% render 'ra-icon-button',
+        type: 'ra-button',
+        value: 'close',
+        style: 'tertiary',
+        size: 'md',
+        label: 'close modal',
+        icon: 'close',
+        rounded: false
+      %}
     </form>
   </dialog>
 {% endif %}
