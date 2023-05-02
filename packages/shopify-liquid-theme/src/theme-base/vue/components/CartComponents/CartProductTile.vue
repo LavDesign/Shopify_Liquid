@@ -111,7 +111,7 @@ const updateQuantity = (qty) => {
     quantity: qty.toString(),
     properties: props.product.properties,
   };
-  if (qty == 0) dataRemoveFromCart(props.product);
+  if (qty < props.product.quantity) dataRemoveFromCart(props.product);
   cartStore.updateItem(productObj);
 };
 

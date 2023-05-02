@@ -18,7 +18,7 @@ export function dataAddToCart(product, variant, qty) {
           shopify_handle: product.handle,
           shopify_compare_price: variant.value.compare_at_price,
           item_name: product.title,
-          affiliation: Shopify.shop,
+          affiliation: window.shop_name,
           currency: Shopify.currency.active,
           item_brand: product.vendor,
           item_category: product.type,
