@@ -8,6 +8,12 @@ export function itemList(product = {}, variant = {}, collection = {}) {
   } else if (pageType === "collections") {
     item_list_id = `${product?.id}_${collection?.id}`;
     item_list_name = "product_collection";
+  } else if (pageType === "cart") {
+    item_list_id = "cart1";
+    item_list_name = "cart_quickshop";
+  } else {
+    item_list_id = pageType;
+    item_list_name = "";
   }
 
   return {
