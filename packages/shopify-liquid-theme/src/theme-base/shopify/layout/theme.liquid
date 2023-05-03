@@ -3,15 +3,19 @@
   <head>
     {%- render 'head-meta' -%}
     {%- render 'gtm-datalayer', action_step: 'init' -%}
-
-    {% render 'script-tags' %}
-
+    {%- render 'script-tags' -%}
     {%- render 'vendor-scripts' -%}
+
+    {%- comment -%}
+      Fonts
+    {%- endcomment -%}
+
+    <link rel="stylesheet" href="https://use.typekit.net/uuq0jfz.css">
 
     {%- comment -%}
       Palomino & Bedrock UI
     {%- endcomment -%}
-    <link rel="stylesheet" href="https://use.typekit.net/uuq0jfz.css">
+
     {{ 'main.css' | asset_url | stylesheet_tag }}
     {%- render 'css-variables' -%}
     {%- render 'icon-store' -%}
