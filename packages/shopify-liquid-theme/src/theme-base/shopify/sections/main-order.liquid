@@ -110,7 +110,7 @@
                   <a href="{{ line_item.url }}">
                     <div class="ra-image ra-image--use-aspect-ratio" style="--media-width:1; --media-height:1.25;">
                       {{
-                        line_item.product.feature_image
+                        line_item.product.featured_image
                         | image_url: width: 200
                         | image_tag: loading: 'lazy', class: 'ra-image__media', width: '1', height: '1.25'
                       }}
