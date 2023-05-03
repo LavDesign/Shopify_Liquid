@@ -22,6 +22,10 @@
   {% render 'ra-product-tile' product: product %}
 {% endcomment %}
 
+{% unless pre_title %}
+  {% assign pre_title = product.type %}
+{% endunless %}
+
 {% assign wishlistStyle = wishlist_style | default: 'danger' %}
 
 <div data-aos="fade-up" data-aos-delay="{{ '50' | times: index }}" class="ra-product-tile ra-product-tile--default">
