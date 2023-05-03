@@ -3,23 +3,23 @@
   assign bg_color = section.settings.bg_color
 %}
 
-{% capture gridStyle %}
+{% capture grid_style %}
   --grid-columns:1; --grid-columns-md:2; --grid-columns-lg:3; --grid-gap:{{ grid_gap }}rem;
 {% endcapture %}
 
-{% capture bgStyle %}
-  {% if bg_color != 'rgba(0,0,0,0)' %}
+{% capture bg_style %}
+  {% if bg_color != blank %}
     background: {{ bg_color }}
   {% endif %}
 {% endcapture %}
 
-<div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid" style="{{ gridStyle }} {{ bgStyle }}">
+<div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid" style="{{ grid_style }} {{ bg_style }}">
   {% for block in section.blocks %}
     {% if block.settings.two_grid_items %}
-      {% capture gridItemStyle %}
+      {% capture grid_item_style %}
         --grid-column:1; --grid-column-md:2; --grid-column-lg:1;
       {% endcapture %}
-      <div data-column="-sm,-md,-lg" class="ra-grid-item" style="{{ gridItemStyle }}">
+      <div data-column="-sm,-md,-lg" class="ra-grid-item" style="{{ grid_item_style }}">
         <div
           data-gap="-sm"
           data-columns="-sm,-md,-lg"
@@ -27,120 +27,57 @@
           style="--grid-columns:2; --grid-columns-md:2; --grid-columns-lg:1;"
         >
           <div class="ra-grid-item">
-            <article class="ra-content-tile set--details-overlay set--aspect-ratio-fill-space">
-              {% if block.settings.image %}
-                <div class="ra-content-tile__media component-media">
-                  <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
-                    <img
-                      loading="lazy"
-                      src="{{ block.settings.image | image_url: width: 500 }}"
-                      alt="{{ block.settings.image.alt }}"
-                      class="ra-image__media"
-                    >
-                  </div>
-                </div>
-              {% endif %}
-              <div class="ra-content-tile__details component-details">
-                <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
-                  {% if block.settings.eyebrow_text != blank %}
-                    <div class="ra-content-tile__subtitle">
-                      {{- block.settings.eyebrow_text -}}
-                    </div>
-                  {% endif %}
-                  {% if block.settings.title != blank %}
-                    <h2 class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-h6);">
-                      <div>{{- block.settings.title -}}</div>
-                    </h2>
-                  {% endif %}
-                  {% if block.settings.description != blank %}
-                    <div class="ra-content-tile__description rte">
-                      {{- block.settings.description -}}
-                    </div>
-                  {% endif %}
-                </div>
-              </div>
-            </article>
+            {%
+              render 'ra-content-tile',
+              classes: 'ra-content-tile set--details-overlay set--aspect-ratio-fill-space',
+              image: block.settings.image,
+              subtitle: block.settings.eyebrow_text,
+              title: block.settings.title,
+              header_level: 'h2',
+              description: block.settings.description,
+              horizontal_align: 'center',
+              vertical_align: 'middle',
+            %}
           </div>
           {% if block.settings.image_2 != blank %}
             <div class="ra-grid-item">
-              <article class="ra-content-tile set--details-overlay set--aspect-ratio-fill-space">
-                {% if block.settings.image_2 %}
-                  <div class="ra-content-tile__media component-media">
-                    <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
-                      <img
-                        loading="lazy"
-                        src="{{ block.settings.image_2 | image_url: width: 500 }}"
-                        alt="{{ block.settings.image.alt }}"
-                        class="ra-image__media"
-                      >
-                    </div>
-                  </div>
-                {% endif %}
-                <div class="ra-content-tile__details component-details">
-                  <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
-                    {% if block.settings.eyebrow_text_2 != blank %}
-                      <div class="ra-content-tile__subtitle">
-                        {{- block.settings.eyebrow_text_2 -}}
-                      </div>
-                    {% endif %}
-                    {% if block.settings.title_2 != blank %}
-                      <h2 class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-h6);">
-                        <div>{{- block.settings.title_2 -}}</div>
-                      </h2>
-                    {% endif %}
-                    {% if block.settings.description_2 != blank %}
-                      <div class="ra-content-tile__description">
-                        {{- block.settings.description_2 -}}
-                      </div>
-                    {% endif %}
-                  </div>
-                </div>
-              </article>
+              {%
+                render 'ra-content-tile',
+                classes: 'ra-content-tile set--details-overlay set--aspect-ratio-fill-space',
+                image: block.settings.image_2,
+                subtitle: block.settings.eyebrow_text_2,
+                title: block.settings.title_2,
+                header_level: 'h2',
+                description: block.settings.description_2,
+                horizontal_align: 'center',
+                vertical_align: 'middle',
+              %}
             </div>
           {% endif %}
         </div>
       </div>
     {% else %}
-      <div class="ra-grid-item" style="{{ gridItemStyle }}">
-        <article class="ra-content-tile set--details-overlay set--aspect-ratio-fill-space">
-          {% if block.settings.image %}
-            <div class="ra-content-tile__media component-media">
-              <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio">
-                <img
-                  loading="lazy"
-                  src="{{ block.settings.image | image_url: width: 500 }}"
-                  alt="{{ block.settings.image.alt }}"
-                  class="ra-image__media"
-                >
-              </div>
-            </div>
-          {% endif %}
-          <div class="ra-content-tile__details component-details">
-            <div class="ra-content-tile__copy set--v-align-middle set--h-align-center">
-              {% if block.settings.eyebrow_text != blank %}
-                <div class="ra-content-tile__subtitle">
-                  {{- block.settings.eyebrow_text -}}
-                </div>
-              {% endif %}
-              {% if block.settings.title != blank %}
-                <h2 class="ra-title ra-content-tile__title" style="--title-font-size:var(--font-size-h6);">
-                  <div>{{- block.settings.title -}}</div>
-                </h2>
-              {% endif %}
-              {% if block.settings.description != blank %}
-                <div class="ra-content-tile__description">
-                  {{- block.settings.description -}}
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        </article>
+      {% capture grid_item_style %}
+        --grid-column: 2; --grid-column-md: 2; --grid-column-lg: 2;
+      {% endcapture %}
+      <div class="ra-grid-item" style="{{ grid_item_style }}">
+        {%
+          render 'ra-content-tile',
+          classes: 'ra-content-tile set--details-overlay set--aspect-ratio-fill-space',
+          image: block.settings.image,
+          subtitle: block.settings.eyebrow_text,
+          title: block.settings.title,
+          header_level: 'h2',
+          description: block.settings.description,
+          horizontal_align: 'center',
+          vertical_align: 'middle',
+        %}
       </div>
     {% endif %}
   {% endfor %}
 </div>
 
-{%- schema -%}
+{% schema %}
 {
   "name": "Content Tile Grid",
   "settings": [
@@ -227,4 +164,4 @@
     }
   ]
 }
-{%- endschema -%}
+{% endschema %}

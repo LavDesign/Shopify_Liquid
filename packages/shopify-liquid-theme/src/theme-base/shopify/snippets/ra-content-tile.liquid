@@ -1,8 +1,8 @@
 {% comment %}
   Props:
   classes:       String - (Optional) custom classes on the img element
-  src:           String - (Required) img src that will be used
-  srcset:        String - (Optional) srcset attribute for loading assets at different viewport sizes
+  image:         Shopify Image Object - (Required) image to be displayed on the content tile
+  image_src:     String - (Optional) img src that will be used
   alt:
   width:         Int - (Optional) Image width
   height:        Int - (Optional) Image height
@@ -70,7 +70,7 @@
   {% endif %}
 {% endcapture %}
 
-{% capture imageStyle %}
+{% capture image_style %}
   {% case aspect_ratio %}
     {% when 'square' %}
     --media-width: 1; --media-height: 1;
@@ -97,24 +97,19 @@
           <source src="{{ video }}" type="video/mp4">
         </video>
       </div>
-    {% elsif src != blank %}
-      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio" style="{{ imageStyle }}">
-        <img
-          loading="lazy"
-          src="{{ src }}"
-          {% if srcset != blank %}
-            srcset="{{ srcset }}"
-          {% endif %}
-          width="{{ width | default: '400px' }}"
-          height="{{ height | default: '480px'  }}"
-          alt="{{ alt | default: 'A content tile image' }}"
-          class="ra-image__media"
-        >
+    {% elsif image != blank %}
+      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio" style="{{ image_style }}">
+        {% assign alt = alt | default: image.alt %}
+        {{
+          image
+          | image_url: width: 450
+          | image_tag: width: 450, height: 480, class: 'ra-image__media', alt: alt, loading: 'lazy'
+        }}
       </div>
-    {% elsif src == blank %}
+    {% else %}
       <div
         class="ra-image ra-content-tile__image ra-image--use-aspect-ratio bg-grey-100"
-        style="{{ imageStyle }}"
+        style="{{ image_style }}"
       ></div>
     {% endif %}
   </div>
@@ -125,6 +120,11 @@
   </a>
   <div class="ra-content-tile__details component-details">
     <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }}">
+      {% if subtitle %}
+        <div class="ra-content-tile__subtitle">
+          {{- subtitle -}}
+        </div>
+      {% endif %}
       {% if title != blank %}
         <{{ header_level }}
           class="ra-title ra-content-tile__title"

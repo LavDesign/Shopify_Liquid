@@ -45,11 +45,12 @@
           title="{{ shop.name }} logo"
           aria-label="{{ shop.name }} logo"
         >
-          <img
-            class="header__logo-image w-full block"
-            src="{{ section.settings.logo | image_url: width: "500x" }}"
-            alt="{{ shop.name }} logo"
-          >
+          {% assign logo_alt = shop.name | append: ' Logo' %}
+          {{
+            section.settings.logo
+            | image_url: width: 500
+            | image_tag: alt: logo_alt, class: 'header__logo-image w-full block'
+          }}
         </a>
       {% else %}
         <a href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">

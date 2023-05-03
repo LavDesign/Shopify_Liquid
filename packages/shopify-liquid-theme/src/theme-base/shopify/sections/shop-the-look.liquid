@@ -83,7 +83,7 @@
 
                       {%- if product.featured_media -%}
                         <a class="flex" href="{{ product.url }}" title="{{ product.title }}">
-                          <img class="w-full" src="{{ product.featured_media | image_url: width: 450 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
+                          {{ product.featured_image | image_url: width: 450 | image_tag: loading: 'lazy', class: 'w-full' }}
                         </a>
                       {%- endif -%}
 
@@ -190,7 +190,7 @@
 
               {%- if product.featured_media -%}
                 <a class="flex mr-3" href="{{ product.url }}" title="{{ product.title }}">
-                  <img class="w-28" src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
+                  {{ product.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'w-27' }}
                 </a>
               {%- endif -%}
 

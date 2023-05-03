@@ -47,7 +47,7 @@
     effect="{{ section.settings.effect | json }}"
     navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
     navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
-    pagination-el=".swiper-pagination"
+    pagination-el=".swiper-pagination-{{ section.id }}"
     pagination-clickable="true"
     slides-per-view="1"
     space-between="0"
@@ -124,7 +124,7 @@
   </swiper-container>
 
   {% if section.settings.show_pagination and section.blocks.size > 1 %}
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination swiper-pagination-{{ section.id }}"></div>
   {% endif %}
 
   {% if section.settings.show_arrows and section.blocks.size > 1 %}

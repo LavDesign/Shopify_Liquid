@@ -17,9 +17,8 @@
               class="ra-grid ra-grid--inherit-gap"
             >
               {%- for collection in collections -%}
-                {% assign featured_image = collection.feature_image | image_url: width: '400px' %}
                 {% render 'ra-content-tile',
-                  src: featured_image,
+                  image: collection.featured_image,
                   title: collection.title,
                   link_url_1: collection.url,
                   link_title_1: 'View Collection'

@@ -107,10 +107,9 @@
     >
       <!-- prettier-ignore-end -->
       {%- for block in section.blocks -%}
-        {% assign src = block.settings.slide_img | image_url: width: 400 %}
         <swiper-slide>
           {% render 'ra-content-tile',
-            src: src,
+            image: block.settings.slide_img,
             alt: block.settings.slide_img.alt,
             title: block.settings.title,
             description: block.settings.slide_description,

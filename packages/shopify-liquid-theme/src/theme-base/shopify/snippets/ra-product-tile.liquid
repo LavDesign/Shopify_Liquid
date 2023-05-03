@@ -32,16 +32,11 @@
           class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
           style="--media-width:1; --media-height:1.2;"
         >
-          <img
-            loading="lazy"
-            src="{{ product.featured_image.src | image_url: width: 450 }}"
-            srcset=""
-            sizes=""
-            width="1"
-            height="1.2"
-            alt="{{ product.featured_image.alt }}"
-            class="ra-image__media"
-          >
+          {{
+            product.featured_image
+            | image_url: width: 450
+            | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy'
+          }}
         </div>
         <!-- ra hover-image -->
         {% if hover_img != blank %}
@@ -49,16 +44,11 @@
             class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
             style="--media-width:1; --media-height:1.2;"
           >
-            <img
-              loading="lazy"
-              src="{{ hover_img | image_url: width: 450 }}"
-              srcset=""
-              sizes=""
-              width="1"
-              height="1.2"
-              alt="{{ hover_img_alt | default: product.title }}"
-              class="ra-image__media"
-            >
+            {{
+              hover_img
+              | image_url: width: 450
+              | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy'
+            }}
           </div>
         {% endif %}
       </a>
