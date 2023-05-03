@@ -8,7 +8,7 @@
   atc_style:   String, [primary, secondary, tertiary] - optional
   index:       Number
   badge_text:  String, Add custom badge text
-  badge_style: String, [primary, secondary, warning, danger, info, success] - (required if badge text)
+  badge_style: String, [primary, secondary, warning, danger, info, success] - (optional) [default=false]
   wishlist:    Boolean, toggle add wishlist button on hover - (optional) [default=false]
   wishlist_style: String, [primary, secondary, warning, danger, info, success] - optional
 
@@ -22,11 +22,20 @@
   {% render 'ra-product-tile' product: product %}
 {% endcomment %}
 
-{% unless pre_title %}
-  {% assign pre_title = product.type %}
-{% endunless %}
-
-{% assign wishlistStyle = wishlist_style | default: 'danger' %}
+{% liquid
+  unless pre_title
+    assign pre_title = product.type
+  endunless
+  unless badge_style
+    assign badge_style = 'primary'
+  endunless
+  if product.selected_or_first_available_variant.metafields.badge.label
+    assign badge_text = product.selected_or_first_available_variant.metafields.badge.label
+  else
+    assign badge_text = product.metafields.badge.label
+  endif
+  assign wishlistStyle = wishlist_style | default: 'danger'
+%}
 
 <div data-aos="fade-up" data-aos-delay="{{ '50' | times: index }}" class="ra-product-tile ra-product-tile--default">
   <div class="ra-product-tile__media">
