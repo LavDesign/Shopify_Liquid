@@ -37,16 +37,16 @@
       {% endif %}
     </div>
   {% endif %}
-  <div class="ra-disruptor-tile__content flex justify-end flex-col items-baseline gap-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+  <div class="ra-disruptor-tile__content flex justify-end flex-col items-baseline gap-2">
     {% if disruptor.title %}
       <h4>{{ disruptor.title }}</h4>
     {% endif %}
     {% if disruptor.body_text %}
       <div>{{ disruptor.body_text | metafield_tag }}</div>
     {% endif %}
-    {% if disruptor.cta_text and disruptor.cta_url and disruptor.cta_style %}
+    {% if disruptor.cta_label and disruptor.cta_url and disruptor.cta_style %}
       <a class="ra-button ra-button--{{ disruptor.cta_style }} ra-button--md mt-2" href="{{ disruptor.cta_url }}">
-        {{ disruptor.cta_text }}
+        {{ disruptor.cta_label }}
       </a>
     {% endif %}
   </div>
