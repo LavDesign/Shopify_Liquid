@@ -342,7 +342,7 @@
         "id": "primary_font",
         "label": "Primary font",
         "options": <%- uikit.fonts -%>,
-        "default": "'gibson', sans-serif"
+        "default": "'canada-type-gibson', sans-serif"
       },
       {
         "type": "select",
