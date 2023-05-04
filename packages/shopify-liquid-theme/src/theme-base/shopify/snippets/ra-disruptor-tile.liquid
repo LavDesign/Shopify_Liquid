@@ -33,7 +33,10 @@
       {% endunless %}
     >
       {% if media_text contains 'video' %}
-        {% render 'ra-video', metaobject_video: disruptor.media, class: 'max-h-[none] max-w-none w-full' %}
+        {% render 'ra-video',
+          metaobject_video: disruptor.media,
+          class: 'max-h-[none] max-w-none w-full h-full object-cover'
+        %}
       {% endif %}
     </div>
   {% endif %}
