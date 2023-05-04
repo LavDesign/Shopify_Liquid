@@ -63,7 +63,7 @@
               {% assign temp = related_article.handle | split: '.....' %}
               {% assign skip_articles = skip_articles | concat: temp %}
 
-              {% render 'article-tile',
+              {% render 'ra-article-tile',
                 article: related_article,
                 aspect_ratio: section.settings.aspect_ratio,
                 show_tags: section.settings.show_tags,

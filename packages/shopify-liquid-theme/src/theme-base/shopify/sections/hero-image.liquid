@@ -47,7 +47,7 @@
     effect="{{ section.settings.effect | json }}"
     navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
     navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
-    pagination-el=".swiper-pagination"
+    pagination-el=".swiper-pagination-{{ section.id }}"
     pagination-clickable="true"
     slides-per-view="1"
     space-between="0"
@@ -59,12 +59,14 @@
         <div class="ra-hero__media component-media relative">
           {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
             <div class="ra-hero__image ra-image ra-image--use-as-background">
-              {% render 'image' with block.settings.desktop_bg_image,
+              {% render 'ra-image',
+                image: block.settings.desktop_bg_image,
                 classes: 'ra-image__media ra-image__media--desktop hidden md:block',
                 width: 2000,
                 lazyload: true
               %}
-              {% render 'image' with block.settings.mobile_bg_image,
+              {% render 'ra-image',
+                image: block.settings.mobile_bg_image,
                 classes: 'ra-image__media ra-image__media--mobile md:hidden',
                 width: 800,
                 lazyload: true
@@ -95,7 +97,7 @@
             {% if block.settings.cta_1_url != blank or block.settings.cta_2_url != blank %}
               <div class="ra-link-list ra-hero__link-list">
                 {% if block.settings.cta_1_label != blank and block.settings.cta_1_url != blank %}
-                  {% render 'button',
+                  {% render 'ra-button',
                     type: 'a',
                     style: block.settings.cta_1_style,
                     label: block.settings.cta_1_label,
@@ -105,7 +107,7 @@
                 {% endif %}
 
                 {% if block.settings.cta_2_label != blank and block.settings.cta_2_url != blank %}
-                  {% render 'button',
+                  {% render 'ra-button',
                     type: 'a',
                     style: block.settings.cta_2_style,
                     label: block.settings.cta_2_label,
@@ -122,15 +124,15 @@
   </swiper-container>
 
   {% if section.settings.show_pagination and section.blocks.size > 1 %}
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination swiper-pagination-{{ section.id }}"></div>
   {% endif %}
 
   {% if section.settings.show_arrows and section.blocks.size > 1 %}
     <div class="{{ section.id }} swiper-button-prev">
-      {% render 'icon', icon: 'chevron-left', color: arrow_color %}
+      {% render 'ra-icon', icon: 'chevron-left', color: arrow_color %}
     </div>
     <div class="{{ section.id }} swiper-button-next">
-      {% render 'icon', icon: 'chevron-right', color: arrow_color %}
+      {% render 'ra-icon', icon: 'chevron-right', color: arrow_color %}
     </div>
   {% endif %}
 </div>
@@ -228,7 +230,7 @@
         },
         {
           "type": "header",
-          "content": "CTA 1"
+          "content": "Block CTA's"
         },
         {
           "type": "text",
@@ -247,10 +249,6 @@
           "label": "CTA 1 Style",
           "options": <%- uikit.buttonStyles -%>,
           "default": "primary"
-        },
-        {
-          "type": "header",
-          "content": "CTA 2"
         },
         {
           "type": "text",

@@ -59,7 +59,7 @@
 
         {% if cta_url != blank and cta_label %}
           <div class="mb-4">
-            {% render 'button' type: 'a', style: cta_style, url: cta_url, label: cta_label %}
+            {% render 'ra-button' type: 'a', style: cta_style, url: cta_url, label: cta_label %}
           </div>
         {% endif %}
       </div>
@@ -83,7 +83,7 @@
 
                       {%- if product.featured_media -%}
                         <a class="flex" href="{{ product.url }}" title="{{ product.title }}">
-                          <img class="w-full" src="{{ product.featured_media | image_url: width: 450 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
+                          {{ product.featured_image | image_url: width: 450 | image_tag: loading: 'lazy', class: 'w-full' }}
                         </a>
                       {%- endif -%}
 
@@ -105,10 +105,10 @@
             {% endfor %}
           </swiper-container>
           <div class="{{ section.id }} swiper-button-prev">
-            {% render 'icon' with "chevron-left", width: '18px', height: '18px', color: arrow_color %}
+            {% render 'ra-icon' with "chevron-left", width: '18px', height: '18px', color: arrow_color %}
           </div>
           <div class="{{ section.id }} swiper-button-next">
-            {% render 'icon' with "chevron-right", width: '18px', height: '18px', color: arrow_color %}
+            {% render 'ra-icon' with "chevron-right", width: '18px', height: '18px', color: arrow_color %}
           </div>
         </div>
       {% endif %}
@@ -133,17 +133,17 @@
 
       {% if mobile_image == blank %}
         <div class="hidden md:block">
-          {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+          {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
         <div class="block md:hidden">
-          {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+          {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
       {% else %}
         <div class="hidden md:block">
-          {% render 'image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
+          {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
         <div class="block md:hidden">
-          {% render 'image', alt: mobile_image.alt, src: mobile_image | image_url: width: 800, srcset: mobile_srcset, sizes: "100vw", classes: 'w-full' %}
+          {% render 'ra-image', alt: mobile_image.alt, src: mobile_image | image_url: width: 800, srcset: mobile_srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
       {% endif %}
 
@@ -184,13 +184,13 @@
             <div class="ra-shop-the-look__product absolute z-20 flex p-3 pr-8 {% if block.settings.horizontal_position > 60 or block.settings.horizontal_position_mobile > 60 %}ra-shop-the-look__product--left{% endif %}"
               id="product-{{ block.id }}">
               <button class="absolute flex w-3.5 h-3.5 top-2.5 right-2.5" data-popover="product-{{ block.id }}">
-                {% render 'icon' icon: 'close', width: '14px', height: '14px' %}
+                {% render 'ra-icon' icon: 'close', width: '14px', height: '14px' %}
                 <span class="sr-only">{{ 'sections.shop-the-look.product-hide' | t }} {{ product.title }}</span>
               </button>
 
               {%- if product.featured_media -%}
                 <a class="flex mr-3" href="{{ product.url }}" title="{{ product.title }}">
-                  <img class="w-28" src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.featured_media.alt }}" loading="lazy">
+                  {{ product.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'w-27' }}
                 </a>
               {%- endif -%}
 
@@ -279,7 +279,7 @@
     },
     {
       "type": "header",
-      "content": "CTA"
+      "content": "Section CTA"
     },
     {
       "type": "text",

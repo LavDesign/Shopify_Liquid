@@ -6,8 +6,11 @@
       </div>
       <div class="basis-full md:basis-3/4">
         <div class="items-center flex flex-wrap relative pb-4 md:pb-10 border-b border-grey-500">
-          <a href="{{ routes.account_url }}" class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded">
-            {% render 'icon', icon: 'left-arrow', width: '24px', height: '24px' %}
+          <a
+            href="{{ routes.account_url }}"
+            class="ra-button ra-icon-button ra-icon-button--ghost ra-icon-button--rounded"
+          >
+            {% render 'ra-icon', icon: 'left-arrow', width: '24px', height: '24px' %}
           </a>
 
           <h3 class="h3 color-grey-900 !font-light">
@@ -62,12 +65,11 @@
               <p>{{ order.billing_address.city }}</p>
             </div>
             <div class="font-light">
-              <p class="font-secondary mb-2 font-bold text-grey-800">
-                Shipping Method
-              </p>
+              <p class="font-secondary mb-2 font-bold text-grey-800">Shipping Method</p>
               <p>
                 {% if shipping_method %}
-                  {{ shipping_method.price | money }}<br/>
+                  {{ shipping_method.price | money -}}
+                  <br>
                   {{ shipping_method.title }}
                 {% else %}
                   no shipping method
@@ -75,12 +77,11 @@
               </p>
             </div>
             <div class="font-light">
-              <p class="font-secondary mb-2 font-bold text-grey-800">
-                Billing Method
-              </p>
+              <p class="font-secondary mb-2 font-bold text-grey-800">Billing Method</p>
               <p>
                 {% if billing_method %}
-                  {{ billing_method.price | money }}<br/>
+                  {{ billing_method.price | money -}}
+                  <br>
                   {{ billing_method.title }}
                 {% else %}
                   no billing method
@@ -91,29 +92,28 @@
         </div>
 
         <div class="mt-10 flex">
-          {% render 'button'
-           , type: 'a',
-           style: 'primary',
-           url: order.order_status_url,
-           size: 'md',
-           label: 'Track Package',
-           class: 'inline-flex max-md:w-full md:ml-auto' %}
+          {% render 'ra-button',
+            type: 'a',
+            style: 'primary',
+            url: order.order_status_url,
+            size: 'md',
+            label: 'Track Package',
+            class: 'inline-flex max-md:w-full md:ml-auto'
+          %}
         </div>
 
         <ul class="mt-10 md:mt-20 md:mb-12 md:first:pt-8 ra-list list-none">
           {% for line_item in order.line_items %}
             <li class="max-md:mb-4 max-md:pb-4 max-md:first:pt-4 first:border-t border-b ra-list__item">
-              <div class="py-4 md:py-8 ra-grid gap-4 md:gap-5 lg:gap-10 grid-cols-3 md:grid-cols-5 lg:grid-cols-6">
+              <div class="py-4 md:py-8 ra-grid gap-4 md:gap-5 lg:gap-10 grid-cols-4 md:grid-cols-6 lg:grid-cols-7">
                 <div>
                   <a href="{{ line_item.url }}">
                     <div class="ra-image ra-image--use-aspect-ratio" style="--media-width:1; --media-height:1.25;">
-                      <img
-                        loading="lazy"
-                        class="ra-image__media"
-                        width="1"
-                        height="1.25"
-                        alt="{{- line_item.product.featured_image.alt -}}"
-                        src="{{ line_item.product.featured_image | image_url:    width: 200 }}">
+                      {{
+                        line_item.product.featured_image
+                        | image_url: width: 200
+                        | image_tag: loading: 'lazy', class: 'ra-image__media', width: '1', height: '1.25'
+                      }}
                     </div>
                   </a>
                 </div>
@@ -132,29 +132,29 @@
                       {%- endfor %}
                     </ul>
                   {% endunless %}
-                  <span class="text-sm md:text-lg absolute top-0 right-0 font-light">
-                    {%- if line_item.variant.compare_at_price != line_item.variant.price -%}
-                      {% liquid
-                        assign compare_at_price = line_item.variant.compare_at_price | plus: 0 | times: line_item.quantity
-                      %}
-                      <dl class="flex flex-row-reverse gap-1">
-                        <dt>
-                          <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
-                        </dt>
-                        <dd class="regular-price">
-                          <s class="text-grey-500">{{ compare_at_price | money }}</s>
-                        </dd>
-                        <dt>
-                          <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
-                        </dt>
-                        <dd>
-                          <span class="text-red">{{ line_item.final_line_price | money }}</span>
-                        </dd>
-                      </dl>
-                    {%- else -%}
-                      {{ line_item.original_line_price | money }}
-                    {%- endif -%}
-                  </span>
+                </div>
+                <div class="text-sm md:text-lg font-light text-right col-span-1">
+                  {%- if line_item.variant.compare_at_price != line_item.variant.price -%}
+                    {% liquid
+                      assign compare_at_price = line_item.variant.compare_at_price | plus: 0 | times: line_item.quantity
+                    %}
+                    <dl class="flex flex-col-reverse md:flex-row-reverse gap-1/2 md:gap-1">
+                      <dt>
+                        <span class="sr-only">{{ 'products.product.price.regular_price' | t }}</span>
+                      </dt>
+                      <dd class="regular-price">
+                        <s class="text-grey-500">{{ compare_at_price | money }}</s>
+                      </dd>
+                      <dt>
+                        <span class="sr-only">{{ 'products.product.price.sale_price' | t }}</span>
+                      </dt>
+                      <dd>
+                        <span class="text-red">{{ line_item.final_line_price | money }}</span>
+                      </dd>
+                    </dl>
+                  {%- else -%}
+                    {{ line_item.original_line_price | money }}
+                  {%- endif -%}
                 </div>
               </div>
             </li>

@@ -5,7 +5,9 @@
       <div class="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2">
         <div class="ra-grid-item">
           <div class="ra-input">
-            <label class="ra-input__label" for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
+            <label class="ra-input__label" for="AddressFirstName_{{ form.id }}">
+              {{- 'customer.addresses.first_name' | t -}}
+            </label>
             <div class="ra-input__wrapper">
               <input
                 type="text"
@@ -15,15 +17,20 @@
                 value="{{ form.first_name }}"
                 autocomplete="given-name"
                 data-required
-                placeholder="{{ 'customer.addresses.first_name' | t }}">
-              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a first name.</span>
+                placeholder="{{ 'customer.addresses.first_name' | t }}"
+              >
+              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">
+                Please enter a first name.
+              <span>
               <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
             </div>
           </div>
         </div>
         <div class="ra-grid-item">
           <div class="ra-input">
-            <label class="ra-input__label" for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
+            <label class="ra-input__label" for="AddressLastName_{{ form.id }}">
+              {{- 'customer.addresses.last_name' | t -}}
+            </label>
             <div class="ra-input__wrapper">
               <input
                 type="text"
@@ -33,15 +40,20 @@
                 value="{{ form.last_name }}"
                 autocomplete="family-name"
                 data-required
-                placeholder="{{ 'customer.addresses.last_name' | t }}">
-              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a last name.</span>
+                placeholder="{{ 'customer.addresses.last_name' | t }}"
+              >
+              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">
+                Please enter a last name.
+              </span>
               <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
             </div>
           </div>
         </div>
         <div class="col-span-1 md:col-span-2">
           <div class="ra-input">
-            <label class="ra-input__label" for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
+            <label class="ra-input__label" for="AddressAddress1_{{ form.id }}">
+              {{- 'customer.addresses.address1' | t -}}
+            </label>
             <div class="ra-input__wrapper">
               <input
                 type="text"
@@ -51,15 +63,20 @@
                 value="{{ form.address1 }}"
                 autocomplete="address-line1"
                 data-required
-                placeholder="{{ 'customer.addresses.address1' | t }}">
-              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter an address.</span>
+                placeholder="{{ 'customer.addresses.address1' | t }}"
+              >
+              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">
+                Please enter an address.
+              </span>
               <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
             </div>
           </div>
         </div>
         <div class="ra-grid-item">
           <div class="ra-input">
-            <label class="ra-input__label" for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
+            <label class="ra-input__label" for="AddressAddress2_{{ form.id }}">
+              {{- 'customer.addresses.address2' | t -}}
+            </label>
             <div class="ra-input__wrapper">
               <input
                 type="text"
@@ -68,13 +85,16 @@
                 name="address[address2]"
                 value="{{ form.address2 }}"
                 autocomplete="address-line2"
-                placeholder="{{ 'customer.addresses.address2' | t }}">
+                placeholder="{{ 'customer.addresses.address2' | t }}"
+              >
             </div>
           </div>
         </div>
         <div class="ra-grid-item">
           <div class="ra-input">
-            <label class="ra-input__label" for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
+            <label class="ra-input__label" for="AddressCompany_{{ form.id }}">
+              {{- 'customer.addresses.company' | t -}}
+            </label>
             <div class="ra-input__wrapper">
               <input
                 type="text"
@@ -83,7 +103,8 @@
                 name="address[company]"
                 value="{{ form.company }}"
                 autocomplete="organization"
-                placeholder="{{ 'customer.addresses.company' | t }}">
+                placeholder="{{ 'customer.addresses.company' | t }}"
+              >
             </div>
           </div>
         </div>
@@ -99,7 +120,8 @@
                 value="{{ form.city }}"
                 autocomplete="address-level2"
                 data-required
-                placeholder="{{ 'customer.addresses.city' | t }}">
+                placeholder="{{ 'customer.addresses.city' | t }}"
+              >
               <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a city.</span>
               <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
             </div>
@@ -118,11 +140,12 @@
                 data-address-country-select
                 data-default="{{ form.country }}"
                 data-form-id="{{ form.id }}"
-                autocomplete="country">
+                autocomplete="country"
+              >
                 {{ all_country_option_tags }}
               </select>
               <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
-                {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
+                {% render 'ra-icon', icon: 'caret-down', width: '24px', height: '24px' %}
               </span>
             </div>
           </div>
@@ -131,7 +154,8 @@
         <div
           id="AddressProvinceContainer_{{ form.id }}"
           class="ra-grid-item"
-          style="display:none;">
+          style="display:none;"
+        >
           <div class="ra-input ra-select">
             <label class="ra-input__label" for="AddressProvince_{{ form.id }}">
               {{ 'customer.addresses.province' | t }}
@@ -142,9 +166,10 @@
                 id="AddressProvince_{{ form.id }}"
                 name="address[province]"
                 data-default="{{ form.province }}"
-                autocomplete="address-level1"></select>
+                autocomplete="address-level1"
+              ></select>
               <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
-                {% render 'icon', icon: 'caret-down', width: '24px', height: '24px' %}
+                {% render 'ra-icon', icon: 'caret-down', width: '24px', height: '24px' %}
               </span>
             </div>
             <div class="font-light text-grey-500 text-xs mt-1">Required</div>
@@ -163,8 +188,11 @@
                 autocapitalize="characters"
                 autocomplete="postal-code"
                 data-required
-                placeholder="{{ 'customer.addresses.zip' | t }}">
-              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">Please enter a zipcode.</span>
+                placeholder="{{ 'customer.addresses.zip' | t }}"
+              >
+              <span class="hidden text-sm font-light text-red mt-1 peer-[.border-red]:flex">
+                Please enter a zipcode.
+              </span>
               <span class="flex text-sm font-light text-grey-500 mt-1 peer-[.border-red]:hidden">Required</span>
             </div>
           </div>
@@ -180,7 +208,8 @@
                 name="address[phone]"
                 value="{{ form.phone }}"
                 autocomplete="tel"
-                placeholder="{{ 'customer.addresses.phone' | t }}">
+                placeholder="{{ 'customer.addresses.phone' | t }}"
+              >
             </div>
           </div>
         </div>
@@ -191,7 +220,8 @@
               id="address_address_{{ form.id }}"
               class="ra-choice__input"
               name="address[default]"
-              value="1">
+              value="1"
+            >
             <label class="ra-choice__label-container ra-choice__container" for="address_address_{{ form.id }}">
               <div data-focus="" class="ra-choice__checkmark"></div>
               <span class="ra-choice__label font-secondary text-sm">
@@ -203,7 +233,9 @@
         <div class="ra-grid-item mt-4 md:mt-12">
           <div class="ra-grid gap-4 grid-cols-1 md:grid-cols-2">
             <div class="ra-grid-item max-md:row-start-2">
-              <button type="reset" class="ra-button ra-button--full-width ra-button--tertiary">{{ 'customer.addresses.cancel' | t }}</button>
+              <button type="reset" class="ra-button ra-button--full-width ra-button--tertiary">
+                {{ 'customer.addresses.cancel' | t }}
+              </button>
             </div>
             <div class="ra-grid-item max-md:row-start-1">
               <button class="ra-button ra-button--full-width">{{ 'customer.addresses.update' | t }}</button>

@@ -1,52 +1,23 @@
-.ra-tabs--default,
-.ra-tabs--stack {
-  --tabs-content-border-width: 1px;
-  --tabs-content-border-color: var(--link-color);
-  --tabs-title-border-color: var(--link-color);
-  --tabs-title-color: var(--link-color);
-
-  .ra-tab__content {
-    height: 0;
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
-    padding: 0;
-    overflow: hidden;
-
-    &.ra-tab__content--open {
-      opacity: 1;
-      height: auto;
-    }
-
-    .ra-tab__content-inner {
-      padding: 20px;
-    }
-  }
-
-  .ra-tab__toggle {
-    padding: 0 20px;
-  }
-
-  .ra-tab__toggle svg,
-  .ra-tab__toggle .ra-icon {
-    transition: all 0.3s ease-in-out;
-  }
-
-  .ra-tab__toggle.ra-tab__toggle--open svg {
-    transform: rotate(-180deg);
-  }
-}
-
-.ra-tabs--stack .ra-tab {
-  &:not(:last-child) {
-    .ra-tab__content {
-      border-bottom: 0 !important;
-    }
-  }
-}
-
-.ra-tabs--default {
-  .ra-tab__toggle svg,
-  .ra-tab__toggle .ra-icon {
+.ra-tab__button-container {
+  @apply flex text-grey-500 text-left text-lg flex-nowrap overflow-x-scroll pb-4 gap-6;
+  &::-webkit-scrollbar {
     display: none;
+  }
+}
+.ra-tab__button {
+  @apply py-2 text-left whitespace-nowrap text-grey-900;
+  &.active {
+    @apply border-b-2 border-primary-900;
+  }
+}
+
+.ra-tab__container {
+  @apply p-4 border border-grey-500 overflow-hidden transition-all h-full text-base font-light;
+}
+
+.ra-tab__panel {
+  @apply overflow-hidden h-0 transition-all ease-in-out duration-500;
+  &.active {
+    @apply h-auto;
   }
 }
