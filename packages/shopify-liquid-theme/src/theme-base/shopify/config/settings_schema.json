@@ -357,6 +357,24 @@
       },
       {
         "type": "range",
+        "id": "display_desktop_size",
+        "label": "Display size (desktop)",
+        "min": 12,
+        "max": 100,
+        "unit": "px",
+        "default": 89
+      },
+      {
+        "type": "range",
+        "id": "display_mobile_size",
+        "label": "Display size (mobile)",
+        "min": 12,
+        "max": 100,
+        "unit": "px",
+        "default": 38
+      },
+      {
+        "type": "range",
         "id": "h1_desktop_size",
         "label": "H1 size (desktop)",
         "min": 12,
