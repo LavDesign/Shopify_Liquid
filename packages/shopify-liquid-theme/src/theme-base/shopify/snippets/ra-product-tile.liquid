@@ -29,6 +29,10 @@
   unless badge_style
     assign badge_style = 'primary'
   endunless
+  unless hover_img
+    assign hover_img = product.images.last.src
+    assign hover_img_alt = product.images.last.alt
+  endunless
   if product.selected_or_first_available_variant.metafields.badge.label
     assign badge_text = product.selected_or_first_available_variant.metafields.badge.label
   else
