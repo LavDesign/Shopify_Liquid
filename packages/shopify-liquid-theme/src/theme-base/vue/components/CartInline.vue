@@ -90,6 +90,8 @@ import {
   CartSubtotal,
 } from "./CartComponents";
 
+import { dataViewCart } from "./datalayer/";
+
 const cartStore = useCartStore();
 
 const { cart } = storeToRefs(cartStore);
@@ -128,10 +130,11 @@ const cartCount = computed(() => {
 
 const cartOpen = ref(false);
 
-const toggleCart = () => {
+const toggleCart = (e) => {
   const body = document.getElementsByTagName("body");
   cartOpen.value = !cartOpen.value;
   if (cartOpen.value) {
+    if (e.detail.track) dataViewCart(cart);
     body[0].classList.add("modal-open");
   } else body[0].classList.remove("modal-open");
 };

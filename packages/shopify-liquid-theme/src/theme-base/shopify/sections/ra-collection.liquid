@@ -22,7 +22,7 @@
       >
         <div class="lg:hidden grid grid-cols-5 h-14 text-white items-center bg-tertiary-900">
           <div class="col-start-2 col-span-3 text-center text-[18px]">Item</div>
-          <button class="col-span-1" data-action-close-filters>{% render 'icon', icon: 'close' %}</button>
+          <button class="col-span-1" data-action-close-filters>{% render 'ra-icon', icon: 'close' %}</button>
         </div>
         <aside class="collection__filters facets-wrapper px-20 lg:px-5 pt-4" id="main-collection-filters">
           {% render 'ra-collection-filters', collection: collection %}
@@ -33,10 +33,10 @@
           <h1 class="h2 text-grey-700 text-center md:text-left">{{ collection.title }}</h1>
           <div class="flex justify-between mt-6 md:mt-0">
             <div class="collection__toggle-filters lg:hidden">
-              {% render 'button',
+              {% render 'ra-button',
                 label: 'Filter',
                 style: 'tertiary',
-                type: 'button',
+                type: 'ra-button',
                 icon: 'hamburger',
                 class: 'h-11 min-h-0',
                 data: 'data-action-toggle-mobile-filters'
@@ -63,7 +63,10 @@
                       </option>
                     {%- endfor -%}
                   </select>
-                  {% render 'icon' with 'chevron-down', width: '12px', class: 'absolute right-3 -mt-3 top-1/2 -z-1' %}
+                  {% render 'ra-icon' with 'chevron-down',
+                    width: '12px',
+                    class: 'absolute right-3 -mt-3 top-1/2 -z-1'
+                  %}
                 </div>
               </form>
             </ra-collection-sort>
@@ -97,7 +100,7 @@
                   {% if disruptor_indexes contains disruptor_index %}
                     {% for disruptor in disruptor_metafields %}
                       {% if disruptor.position == disruptor_index and disruptor.enabled %}
-                        {% render 'disruptor-tile', disruptor: disruptor %}
+                        {% render 'ra-disruptor-tile', disruptor: disruptor %}
                       {% endif %}
                     {% endfor %}
                   {% endif %}
@@ -106,7 +109,7 @@
               {%- endfor -%}
             </div>
             <div class="flex justify-center">
-              {% render 'pagination', paginate: paginate, anchor: '#collectionMain', hasArrows: true %}
+              {% render 'ra-pagination', paginate: paginate, anchor: '#collectionMain', hasArrows: true %}
             </div>
           {%- endpaginate -%}
         </div>

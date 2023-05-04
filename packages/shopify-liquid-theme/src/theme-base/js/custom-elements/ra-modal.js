@@ -1,3 +1,5 @@
+import dialogPolyfill from "dialog-polyfill";
+
 export default class RaModal extends HTMLElement {
   constructor() {
     super();
@@ -8,6 +10,8 @@ export default class RaModal extends HTMLElement {
   }
 
   connectedCallback() {
+    dialogPolyfill.registerDialog(this.dialog);
+
     if (this.modalToggleButtons?.length) {
       this.modalToggleButtons.forEach((modalToggleBtn) => {
         modalToggleBtn.addEventListener("click", () => {

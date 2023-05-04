@@ -90,11 +90,13 @@ class CustomerAddresses {
   };
 
   _handleCancelButtonClick = ({ currentTarget }) => {
-    currentTarget.closest(".address-book-edit-modal").classList.add("closing")
+    currentTarget.closest(".address-book-edit-modal").classList.add("closing");
     setTimeout(() => {
-      currentTarget.closest(".address-book-edit-modal").close()
-      currentTarget.closest(".address-book-edit-modal").classList.remove("closing")
-    }, 500)
+      currentTarget.closest(".address-book-edit-modal").close();
+      currentTarget
+        .closest(".address-book-edit-modal")
+        .classList.remove("closing");
+    }, 500);
   };
 
   _handleDeleteButtonClick = ({ currentTarget }) => {

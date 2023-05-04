@@ -21,13 +21,13 @@
         title="toggle menu"
         aria-label="toggle menu"
       >
-        {% render 'icon',
+        {% render 'ra-icon',
           icon: 'hamburger',
           width: '24px',
           height: '24px',
           class: 'hamburger-icon flex group-[.active]:hidden transition-all delay-300'
         %}
-        {% render 'icon',
+        {% render 'ra-icon',
           icon: 'close',
           width: '18px',
           height: '18px',
@@ -45,11 +45,12 @@
           title="{{ shop.name }} logo"
           aria-label="{{ shop.name }} logo"
         >
-          <img
-            class="header__logo-image w-full block"
-            src="{{ section.settings.logo | image_url: width: "500x" }}"
-            alt="{{ shop.name }} logo"
-          >
+          {% assign logo_alt = shop.name | append: ' Logo' %}
+          {{
+            section.settings.logo
+            | image_url: width: 500
+            | image_tag: alt: logo_alt, class: 'header__logo-image w-full block'
+          }}
         </a>
       {% else %}
         <a href="{{ shop.url }}" title="{{ shop.name }} logo" aria-label="{{ shop.name }} logo">
@@ -89,13 +90,13 @@
             <div class="header__mobile-navigation-util p-4 pb-8">
               {% if section.settings.show_account %}
                 <li class="mb-4 border-0">
-                  <a class="flex items-center"
-                  {% if customer %}
+                  <a
+                    class="flex items-center"
                     href="/account"
-                  {% else %}
-                    href="#" id="modal-login"
-                  {% endif %} title="account" aria-label="account">
-                    {% render 'icon',
+                    title="account"
+                    aria-label="account"
+                  >
+                    {% render 'ra-icon',
                       icon: section.settings.account_icon,
                       width: '14px',
                       height: '14px',

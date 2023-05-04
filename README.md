@@ -28,6 +28,7 @@ Ensure the following are installed on your machine (follow the links for install
 ### Setup
 
 #### Verifying Shopify CLI Version
+
 This repository was built for use with Shopify CLI v3.x.x and is not compatible with earlier versions. To avoid version specific issues with commands in other codebases, this repo uses the `shopify3` command for all Shopify CLI commands.
 
 Configuring the `shopify3` command is different depending on the currently install CLI version on your machine. Check which version your machine is running with `shopify version`
@@ -52,13 +53,11 @@ shopify3 version
 
 If your machine is already running Shopify CLI v3.x, you still have the option to install using the instructions above. If you'd prefer to use a single installation of the Shopify CLI, you can create a symlink to the existing install using the instructions below.
 
-
 ```
 # Make a symlink for 'shopify3' assuming shopify-cli was installed using Homebrew
 
 ln -s $(which shopify) /opt/homebrew/bin/shopify3
 ```
-
 
 #### Setup local NPM config, `.npmrc`
 

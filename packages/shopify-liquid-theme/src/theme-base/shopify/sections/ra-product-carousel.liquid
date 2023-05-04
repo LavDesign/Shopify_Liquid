@@ -136,8 +136,8 @@
       </swiper-container>
       {% if show_navigation %}
         <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
-          {% render 'icon-button',
-            type: 'button',
+          {% render 'ra-icon-button',
+            type: 'ra-button',
             style: 'tertiary',
             size: 'sm',
             rounded: true,
@@ -145,8 +145,8 @@
             icon: 'left-arrow',
             class: 'ra-carousel__nav-cta ra-carousel__nav-cta--prev !pointer-events-auto'
           %}
-          {% render 'icon-button',
-            type: 'button',
+          {% render 'ra-icon-button',
+            type: 'ra-button',
             style: 'tertiary',
             size: 'sm',
             rounded: true,
@@ -355,9 +355,9 @@
         },
         {
           "type": "text",
-          "id": "cta_text",
-          "label": "CTA Text",
-          "info": "Set CTA text for individual product",
+          "id": "cta_label",
+          "label": "CTA Label",
+          "info": "Set CTA label for individual product",
           "default": "Add To Cart"
         },
         {

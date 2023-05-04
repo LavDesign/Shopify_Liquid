@@ -1,25 +1,32 @@
 {% liquid
   assign paginate_count = 12
 %}
-<div id="ra-list-collections" class="ra-list-collections" data-section-id="{{ section.id }}">
+<div
+  id="ra-list-collections"
+  class="ra-list-collections"
+  data-section-id="{{ section.id }}"
+>
   <div class="flex justify-center">
     <div class="flex w-full md:max-w-screen-2xl py-8 md:pt-20 px-4 md:px-10" id="listCollectionsMain">
       <div class="list-collection__main w-full">
         <div class="list-collection__collection-grid">
           {%- paginate collections by paginate_count -%}
-            <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
+            <div
+              data-gap="-sm"
+              data-columns="-sm,-md,-lg"
+              class="ra-grid ra-grid--inherit-gap"
+            >
               {%- for collection in collections -%}
-                {% assign featured_image = collection.feature_image | image_url: width: "400px" %}
                 {% render 'ra-content-tile',
-                  src: featured_image,
+                  image: collection.featured_image,
                   title: collection.title,
                   link_url_1: collection.url,
-                  link_title_1: "View Collection"
+                  link_title_1: 'View Collection'
                 %}
               {%- endfor -%}
             </div>
             <div class="flex justify-center">
-              {% render 'pagination', paginate: paginate, anchor: '#listCollectionsMain', hasArrows: true %}
+              {% render 'ra-pagination', paginate: paginate, anchor: '#listCollectionsMain', hasArrows: true %}
             </div>
           {%- endpaginate -%}
         </div>

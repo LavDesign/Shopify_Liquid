@@ -1,0 +1,55 @@
+{% comment %}
+  Props:
+  id:       string unique ID, should start with 'modal-' - (required)
+  title:    string modal title - (optional)
+  content:  string/html/markup modal content - (required)
+  classes:  string extra class names - (optional)
+  overlay:  boolean, toggle modal overlay - (optional)
+
+  Example:
+  {% capture content %}
+  <form action="">
+  <div class="flex flex-col">
+  {%- render 'ra-input' type: 'text', size: 'md', placeholder: 'first name', label: 'first name', class: 'mb-3' -%}
+  {%- render 'ra-input' type: 'text', size: 'md', placeholder: 'last name', label: 'last name', class: 'mb-3' -%}
+  {%- render 'ra-button' type: 'ra-button', style: 'primary', size: 'sm', label: 'Send' -%}
+  </div>
+  </form>
+  {% endcapture %}
+
+  {% render 'ra-modal' id: 'modal-1', title: 'Modal Title', content: content %}
+  {% render 'ra-button' type: 'ra-button', style: 'primary', label: 'open modal', id: 'modal-1' %}
+{% endcomment %}
+
+{% if id != blank %}
+  <ra-modal dialog-id="{{id}}">
+    <dialog
+      data-dialog-id="{{ id }}"
+      data-modal-hide-overflow="true"
+      class="{{ classes }}"
+      closed
+    >
+      {% if overlay %}
+        <div class="ra-overlay"></div>
+      {% endif %}
+      <div class="ra-modal__content max-w-full">
+        <div class="absolute top-2.5 md:top-4 right-2.5 md:right-4">
+          <form method="dialog" class="close-modal">
+            {% render 'ra-icon-button',
+              type: 'ra-button',
+              value: 'close',
+              style: 'tertiary',
+              size: 'sm',
+              label: 'close modal',
+              icon: 'close',
+              rounded: true
+            %}
+          </form>
+        </div>
+        {% if content != blank %}
+          {{ content }}
+        {% endif %}
+      </div>
+    </dialog>
+  </ra-modal>
+{% endif %}
