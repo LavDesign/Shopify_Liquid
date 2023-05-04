@@ -8,7 +8,7 @@ export function dataViewItem(product, variant) {
       new Date().getTime() + "." + Math.random().toString(36).substring(5),
     ecommerce: {
       currency: Shopify.currency.active,
-      value: (variant.value.price / 100).toFixed(2),
+      value: variant.value.price / 100,
       items: [
         {
           item_id: variant.value.id,
@@ -26,7 +26,7 @@ export function dataViewItem(product, variant) {
           item_variant: product.has_only_default_variant
             ? product.title
             : variant.value.title,
-          price: (variant.value.price / 100).toFixed(2),
+          price: variant.value.price / 100,
           option_one: variant.value.option1,
           option_two: variant.value.option2,
           option_three: variant.value.option3,
