@@ -8,7 +8,7 @@ export function dataRemoveFromCart(line_item) {
       new Date().getTime() + "." + Math.random().toString(36).substring(5),
     ecommerce: {
       currency: Shopify.currency.active,
-      value: (line_item.price / 100).toFixed(2),
+      value: line_item.price / 100,
       items: [
         {
           item_id: line_item.id,
@@ -27,7 +27,7 @@ export function dataRemoveFromCart(line_item) {
           option_one: line_item.variant_options[0],
           option_two: line_item.variant_options[1],
           option_three: line_item.variant_options[2],
-          price: (line_item.price / 100).toFixed(2),
+          price: line_item.price / 100,
           quantity: 0,
           ...itemList(line_item),
         },
