@@ -105,10 +105,10 @@
             {% endfor %}
           </swiper-container>
           <div class="{{ section.id }} swiper-button-prev">
-            {% render 'ra-icon' with "chevron-left", width: '18px', height: '18px', color: arrow_color %}
+            {% render 'ra-icon', icon: "chevron-left", width: '18px', height: '18px', color: arrow_color %}
           </div>
           <div class="{{ section.id }} swiper-button-next">
-            {% render 'ra-icon' with "chevron-right", width: '18px', height: '18px', color: arrow_color %}
+            {% render 'ra-icon', icon: "chevron-right", width: '18px', height: '18px', color: arrow_color %}
           </div>
         </div>
       {% endif %}
@@ -184,7 +184,7 @@
             <div class="ra-shop-the-look__product absolute z-20 flex p-3 pr-8 {% if block.settings.horizontal_position > 60 or block.settings.horizontal_position_mobile > 60 %}ra-shop-the-look__product--left{% endif %}"
               id="product-{{ block.id }}">
               <button class="absolute flex w-3.5 h-3.5 top-2.5 right-2.5" data-popover="product-{{ block.id }}">
-                {% render 'ra-icon' icon: 'close', width: '14px', height: '14px' %}
+                {% render 'ra-icon', icon: 'close', width: '14px', height: '14px' %}
                 <span class="sr-only">{{ 'sections.shop-the-look.product-hide' | t }} {{ product.title }}</span>
               </button>
 
