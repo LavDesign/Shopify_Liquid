@@ -1,7 +1,12 @@
 <template>
   <RaOptionPicker
     v-bind="$attrs"
-    class="product-form__option-picker mb-[16px]"
+    class="product-form__option-picker mb-6"
+    :class="
+      asHorizontal
+        ? 'product-form__option-picker--horizontal'
+        : 'product-form__option-picker--square'
+    "
     :style="asHorizontal ? horizontalStyles : defaultStyles"
   />
 </template>
@@ -16,6 +21,6 @@ defineProps({
 const defaultStyles = {};
 
 const horizontalStyles = {
-  "--picker-option-height": "3rem",
+  "--picker-option-height": "var(--option-picker-horizontal-height)",
 };
 </script>

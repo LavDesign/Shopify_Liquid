@@ -1,0 +1,28 @@
+// Disabled Swatch Styles
+.product-form__option-picker--square {
+  .ra-option {
+    &.ra-option--disabled:after {
+      @apply -rotate-45;
+      border-radius: 0;
+      border-bottom: 1px solid var(--color-grey-400);
+      padding: 0;
+      width: 57px;
+      top: 50%;
+      left: -17%;
+    }
+  }
+}
+
+.product-form__option-picker--horizontal {
+  .ra-option {
+    &.ra-option--disabled:after {
+      @apply -rotate-[18deg];
+      border-radius: 0;
+      border-bottom: 1px solid var(--color-grey-400);
+      padding: 0;
+      width: 150px;
+      top: 49%;
+      left: -2%;
+    }
+  }
+}

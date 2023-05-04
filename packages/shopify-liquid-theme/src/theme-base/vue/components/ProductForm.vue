@@ -1,6 +1,6 @@
 <template>
   <div class="ra-product-form">
-    <template v-if="!product.has_only_default_variant">
+    <div v-if="!product.has_only_default_variant" class="mb-16">
       <template
         :key="optionKey"
         v-for="(options, optionKey) in formattedOptions"
@@ -30,7 +30,7 @@
           "
         />
       </template>
-    </template>
+    </div>
 
     <RaAddToCart
       v-bind="{ buttonLabel, qty }"
