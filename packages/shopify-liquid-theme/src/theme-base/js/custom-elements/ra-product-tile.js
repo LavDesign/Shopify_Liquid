@@ -5,15 +5,14 @@ export default class RaProductTile extends HTMLElement {
     this.featuredImage = this.querySelector("[data-featured-image]");
     this.altImage = this.querySelector("[data-alt-image]");
     this.variants = this.product.variants;
-    this.currentVariant;
+    this.currentVariant = this.product.variants.find(
+      (variant) => variant.id == this.getAttribute("data-current-variant")
+    );
     this.productOptions = this.querySelectorAll("[data-option-value]");
     this.productUrl = this.querySelector("[data-product-link]");
   }
 
   connectedCallback() {
-    this.currentVariant = this.product.variants.find(
-      (variant) => variant.id == this.getAttribute("data-current-variant")
-    );
     this.productOptions.forEach((option) => {
       option.addEventListener("click", this.swatchClick.bind(this));
     });
@@ -39,7 +38,7 @@ export default class RaProductTile extends HTMLElement {
     this.currentVariant = variant;
     let productUrl = `/products/${this.product.handle}`;
     if (this.currentVariant?.id) {
-      productUrl += `?variant=${this.currentVariant}`;
+      productUrl += `?variant=${this.currentVariant.id}`;
     }
     this.productUrl.setAttribute("href", productUrl);
   }
