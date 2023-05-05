@@ -930,10 +930,10 @@
   resolved "https://registry.yarnpkg.com/@bva/stickie/-/stickie-0.1.3.tgz#bb62b50eae1fd4ad6dadd3960ff14b5b88321714"
   integrity sha512-8meSq/NpNSJJy3xvVcHRDu7Ldq/yEbRK83xTd7465oDZGPFNrK3HFybZkYrkhy99R8qqO2AkWFCpSpYSaSLQ5w==
 
-"@bva/ui-shared@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.6.tgz#4a1b0005f589350078095f20da9d01ebb20c6b37"
-  integrity sha512-0wThPJcfcK84U9jslSTvdL7XjvI98bD15kBRFPMM9FhY6JkOGRHYsrdd8GQ5EJn1TRdWCMXnAPwTyAY5HMSjcA==
+"@bva/ui-shared@1.4.10":
+  version "1.4.10"
+  resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.10.tgz#b781228b3ae0ddfd5ccae3f6d8c5fc436500f6fa"
+  integrity sha512-EQVWpp6RgFwBWUSF19D9nZCcokkos7vSWns/XepHLPX4EF4NiwYPx4UfxQ+sXzUytn48CwPb9ASPxE0gihoFeA==
   dependencies:
     lilconfig "^2.0.6"
     postcss-import "^15.0.0"
@@ -952,12 +952,12 @@
     postcss-simple-vars "^6.0.3"
     postcss-value-parser "^4.2.0"
 
-"@bva/ui-vue@^1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@bva/ui-vue/-/ui-vue-1.4.6.tgz#c23d6372408cd9803aca62775631df747a6adbf5"
-  integrity sha512-FnZDMRH+KIZHLczS/5/jYiq3FCT8GArearaFAQb7nuAu3m8Cux/etdtUX9ZhOTbgHePXq17zfY/UHn5eDOhwxA==
+"@bva/ui-vue@^1.4.10":
+  version "1.4.10"
+  resolved "https://registry.yarnpkg.com/@bva/ui-vue/-/ui-vue-1.4.10.tgz#a335ae430eec10ddbdcd84f0775136db456b4b71"
+  integrity sha512-WmIyGPRjKxLn+5Qa/j06VRHyJ9ikaJu9u0/lLtZX9y6zUa2UOyBOVRKjRClE986Pl1sIbN6XTYiRKYvCO2lwuQ==
   dependencies:
-    "@bva/ui-shared" "1.4.6"
+    "@bva/ui-shared" "1.4.10"
     "@bva/vue-sticky-directive" "^0.1.6"
     "@vueuse/core" "^7.5.3"
     "@vueuse/motion" "^2.0.0-beta.9"

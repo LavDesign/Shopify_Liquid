@@ -1,0 +1,11 @@
+// Disabled Swatch Styles
+
+.ra-swatch {
+  &.ra-swatch--disabled:before {
+    position: relative;
+    border-radius: 0;
+    border-bottom: 1px solid var(--color-grey-400);
+    padding: 0;
+    @apply -rotate-45;
+  }
+}

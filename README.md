@@ -67,6 +67,14 @@ cp .npmrc.example .npmrc
 
 - Replace the `<TOKEN>` value in the line `//registry.npmjs.org/:_authToken=<TOKEN>` with your a read-only or publish token issued from the `bvaadmin` NPM account. If you need a token, request it from the tech lead.
 
+#### Setup local Yarn config, `.yarnrc.yml`
+
+```bash
+cp .yarnrc.yml.example .yarnrc.yml
+```
+
+- After `npmAuthToken:` add the same token you added to the `.npmrc`
+
 #### Install Node Packages
 
 ```bash

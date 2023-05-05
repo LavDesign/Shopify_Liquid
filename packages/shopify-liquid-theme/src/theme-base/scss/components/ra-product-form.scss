@@ -1,6 +1,16 @@
 .ra-product-form {
   --picker-label-font-size: 16px;
-  --picker-option-height: 50%;
+  --picker-option-border-color: var(--color-grey-400);
+
+  --picker-option-selected-background: var(--color-util-white);
+  --picker-option-selected-color: var(--color-grey-900);
+  --picker-option-selected-background: var(--color-util-white);
+  --picker-option-selected-border-color: var(--color-grey-900);
+
+  --picker-option-interact-color: var(--color-util-white);
+  --picker-option-interact-background: var(--color-primary-900);
 
   --qty-selector-input-height: 2.75rem;
+
+  --option-picker-horizontal-height: 3rem;
 }

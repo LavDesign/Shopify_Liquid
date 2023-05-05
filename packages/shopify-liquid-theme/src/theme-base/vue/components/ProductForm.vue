@@ -1,12 +1,12 @@
 <template>
   <div class="ra-product-form">
-    <template v-if="!product.has_only_default_variant">
+    <div v-if="!product.has_only_default_variant" class="mb-16">
       <template
         :key="optionKey"
         v-for="(options, optionKey) in formattedOptions"
       >
         <SwatchPicker
-          v-if="swatchOptions.includes(optionKey)"
+          v-if="optionsAsSwatches.includes(optionKey)"
           :label="optionKey"
           :options="options"
           :selected="selectedOptions[optionKey]"
@@ -22,14 +22,15 @@
           :options="options"
           :selected="selectedOptions[optionKey]"
           :variant="getOptionVariant(optionKey)"
-          :itemsPerRow="itemsPerRow"
+          :itemsPerRow="getItemsPerRow(optionKey)"
+          :asHorizontal="isHorizontalOption(optionKey)"
           @change:option="
             (selected, option) =>
               handleOptionSelect(optionKey, selected, option)
           "
         />
       </template>
-    </template>
+    </div>
 
     <RaAddToCart
       v-bind="{ buttonLabel, qty }"
@@ -56,16 +57,24 @@ const props = defineProps({
 const cartStore = useCartStore();
 
 // ToDo: Add these values as a prop to pull from customizer
-const dropdownOptions = [];
-const swatchOptions = ["Color"];
+const optionsAsDropdowns = [];
+const optionsAsSwatches = ["Color"];
+const optionsAsSmall = ["Size"];
+const optionsAsHorizontal = ["Material"];
 
-const itemsPerRow = "4";
+const itemsPerRow = 4;
+const itemsPerRowSmall = 12;
+
+function getItemsPerRow(optionName) {
+  return optionsAsSmall.includes(optionName) ? itemsPerRowSmall : itemsPerRow;
+}
+
+function isHorizontalOption(optionName) {
+  return optionsAsHorizontal.includes(optionName);
+}
 
 function getOptionVariant(optionName) {
-  if (dropdownOptions.includes(optionName)) {
-    return "dropdown";
-  }
-  return "grid";
+  return optionsAsDropdowns.includes(optionName) ? "dropdown" : "grid";
 }
 
 const optionsWithValues = reactive(props.product.options_with_values);
