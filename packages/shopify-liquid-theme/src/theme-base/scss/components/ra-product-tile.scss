@@ -1,0 +1,17 @@
+.swatch-square {
+  @apply border border-grey-900
+}
+
+.swatch-circle {
+  @apply rounded-full
+}
+
+.ra-product-tile__options::-webkit-scrollbar {
+  @apply hidden
+}
+
+.ra-product-tile__option {
+  &.active {
+    @apply border-red
+  }
+}

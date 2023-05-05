@@ -58,10 +58,17 @@
   assign wishlistStyle = wishlist_style | default: 'danger'
 %}
 
-<div data-aos="fade-up" data-aos-delay="{{ '50' | times: index }}" class="ra-product-tile ra-product-tile--default">
+<!-- prettier-ignore -->
+<ra-product-tile
+  data-product='{{ product | json }}'
+  data-current-variant="{{ current_variant.id }}"
+  class="ra-product-tile ra-product-tile--default"
+  data-aos="fade-up"
+  data-aos-delay="{{ '50' | times: index }}"
+>
   <div class="ra-product-tile__media">
     {% if product.featured_image %}
-      <a href="{{ product.url }}" class="ra-product-tile__media-link">
+      <a href="{{ product.url }}" class="ra-product-tile__media-link" data-product-link>
         <!-- ra-image -->
         <div
           class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
@@ -70,7 +77,7 @@
           {{
             product.featured_image
             | image_url: width: 450
-            | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy'
+            | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy', data-featured-image: ''
           }}
         </div>
         <!-- ra hover-image -->
@@ -82,7 +89,7 @@
             {{
               hover_img
               | image_url: width: 450
-              | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy'
+              | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy', data-alt-image: ''
             }}
           </div>
         {% endif %}
@@ -148,5 +155,31 @@
     >
       {% render 'ra-review-stars', platform: settings.review_platform, product: product %}
     </div>
+    {% if product.variants.size > 1 %}
+      {% for option in product.options_with_values %}
+        {% liquid
+          assign option_name = option.name | downcase
+          if forloop.index0 == 1
+            break
+          endif
+          if option_name == 'size'
+            assign option_type = 'square'
+          else
+            assign option_type = 'circle'
+          endif
+        %}
+        <div class="ra-product-tile__options flex flex-row gap-3 overflow-x-scroll">
+          {% for value in option.values %}
+            <div
+              class="ra-product-tile__option swatch-{{ option_type }} w-[30px] h-[30px] flex justify-center items-center cursor-pointer{% if value == option.selected_value %} active{% endif %}"
+              data-option-position="{{option.position}}"
+              data-option-value="{{value}}"
+            >
+              {{ value }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
-</div>
+</ra-product-tile>
