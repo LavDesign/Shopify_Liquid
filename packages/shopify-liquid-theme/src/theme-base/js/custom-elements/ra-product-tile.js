@@ -36,6 +36,29 @@ export default class RaProductTile extends HTMLElement {
 
   setCurrentVariant(variant) {
     this.currentVariant = variant;
+    this.updateProductUrl();
+    this.updateImages();
+  }
+
+  updateImages() {
+    const currentSku = this.currentVariant.sku;
+    const featuredImage = this.currentVariant.featured_media;
+    const productImages = this.product.media;
+    let mainImage =
+      featuredImage ||
+      productImages.find((img) => img.alt?.includes(currentSku));
+    let hoverImage = productImages.find((img) => {
+      return img.alt?.includes(currentSku) && img !== mainImage;
+    });
+    if (!mainImage) mainImage = productImages[0];
+    if (!hoverImage) hoverImage = productImages[1];
+    this.featuredImage.setAttribute("srcset", "");
+    this.featuredImage.setAttribute("src", mainImage?.preview_image.src);
+    this.altImage.setAttribute("srcset", "");
+    this.altImage.setAttribute("src", hoverImage?.preview_image.src);
+  }
+
+  updateProductUrl() {
     let productUrl = `/products/${this.product.handle}`;
     if (this.currentVariant?.id) {
       productUrl += `?variant=${this.currentVariant.id}`;
