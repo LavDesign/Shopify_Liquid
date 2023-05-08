@@ -122,15 +122,34 @@ const formattedOptions = computed(() => {
 
   props.product.options.forEach((option, optionIndex) => {
     formattedOptions[option] = [];
+    // Todo - Find a more elegant way of passing separate data for swatches
 
-    optionsWithValues[option].forEach((value) => {
-      const optionIsAvailable = optionHasInStockVariant(value, optionIndex);
-      formattedOptions[option].push({
-        label: value,
-        value,
-        disabled: !optionIsAvailable,
+    // Currently the liquid templates don't have insight into which option keys are set to use
+    // color swatches, so there's some necessary config duplication until
+    // we switch to the storefront API
+    if (optionsAsSwatches.includes(option)) {
+      optionsWithValues[option].forEach((optionValue) => {
+        const optionIsAvailable = optionHasInStockVariant(
+          optionValue.value,
+          optionIndex
+        );
+        formattedOptions[option].push({
+          label: optionValue.value,
+          value: optionValue.value,
+          image: optionValue.url,
+          disabled: !optionIsAvailable,
+        });
       });
-    });
+    } else {
+      optionsWithValues[option].forEach((value) => {
+        const optionIsAvailable = optionHasInStockVariant(value, optionIndex);
+        formattedOptions[option].push({
+          label: value,
+          value,
+          disabled: !optionIsAvailable,
+        });
+      });
+    }
   });
 
   return formattedOptions;
