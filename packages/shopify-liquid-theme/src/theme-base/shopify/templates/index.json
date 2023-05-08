@@ -1,4 +1,389 @@
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "70470917-0d14-4248-a6ea-ab488472117a": {
+      "type": "hero-image",
+      "blocks": {
+        "9cc19ed1-ae39-4a1b-8996-235afbe1d4e2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow_text": "drink up",
+            "title": "Life Happens on FUNDAYS",
+            "title_level": "h1",
+            "title_style": "h1",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
+            "desktop_bg_image": "shopify:\/\/shop_images\/Mask_group_1.png",
+            "mobile_bg_image": "shopify:\/\/shop_images\/Mask_group_2.png",
+            "text_color_desktop": "--color-util-white",
+            "text_color_mobile": "--color-grey-900",
+            "bg_color": "--color-util-white",
+            "cta_1_label": "Shop Seltzers",
+            "cta_1_url": "shopify:\/\/collections\/example-collection-1",
+            "cta_1_style": "primary",
+            "cta_2_label": "Shop Merch",
+            "cta_2_url": "shopify:\/\/products\/fundays-shirt",
+            "cta_2_style": "secondary"
+          }
+        },
+        "b8e8ef5e-ad07-43b9-86ed-182d3032dd8a": {
+          "type": "slide",
+          "settings": {
+            "eyebrow_text": "SUMMER 2023",
+            "title": "LIFE HAPPENS ON FUNDAYS!",
+            "title_level": "h1",
+            "title_style": "h1",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
+            "desktop_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
+            "mobile_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
+            "text_color_desktop": "--color-grey-900",
+            "text_color_mobile": "--color-grey-900",
+            "bg_color": "--color-util-white",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "\/",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "\/",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "9cc19ed1-ae39-4a1b-8996-235afbe1d4e2",
+        "b8e8ef5e-ad07-43b9-86ed-182d3032dd8a"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": true,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": false,
+        "show_pagination": true,
+        "arrow_color": "--color-util-white",
+        "pagination_color": "--color-util-white",
+        "effect": "slide"
+      }
+    },
+    "0ba28d04-edbe-46b1-b398-33f4b64ce4e0": {
+      "type": "ra-text-only",
+      "settings": {
+        "eyebrow_text": "",
+        "title": "Hey, we're fundays...",
+        "title_level": "h1",
+        "title_style": "h2",
+        "description": "<p>We’re here for relaxing, good times, and pink flamingo floaties🦩. <\/p><p>No neckties, formal handshakes, or artificial ingredients. So grab an ice bucket, <\/p><p>throw out the lawn chairs, and crack the top. <\/p><h4>They say every day ends with y. Ours end with <em><strong>why not<\/strong><\/em>.<\/h4>",
+        "description_copy_size": "text-lg",
+        "cta_1_text": "Default",
+        "cta_1_url": "",
+        "cta_1_style": "primary",
+        "cta_2_text": "Secondary",
+        "cta_2_url": "",
+        "cta_2_style": "secondary",
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "large",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "367c09ed-72b9-40bd-9098-182341a241cb": {
+      "type": "ra-product-carousel",
+      "blocks": {
+        "807f8350-a421-480f-9c09-9727e236ec26": {
+          "type": "product-slide",
+          "settings": {
+            "product": "variety-pack",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "a5ebaf48-af82-420f-b1bc-dc6887bf14ae": {
+          "type": "product-slide",
+          "settings": {
+            "product": "garden-party",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "0a7d201e-7033-429c-b8cd-96fd86af4e99": {
+          "type": "product-slide",
+          "settings": {
+            "product": "yard-games",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "bce10c40-63a2-4896-9a00-10d29d7de55d": {
+          "type": "product-slide",
+          "settings": {
+            "product": "skinny-dip",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "99b25146-73f5-43e0-8818-e51f2d928615": {
+          "type": "product-slide",
+          "settings": {
+            "product": "fresh-picked",
+            "cta_text": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "807f8350-a421-480f-9c09-9727e236ec26",
+        "a5ebaf48-af82-420f-b1bc-dc6887bf14ae",
+        "0a7d201e-7033-429c-b8cd-96fd86af4e99",
+        "bce10c40-63a2-4896-9a00-10d29d7de55d",
+        "99b25146-73f5-43e0-8818-e51f2d928615"
+      ],
+      "settings": {
+        "title": "Featured Flavors",
+        "description": "<p>Body copy will go here. Body copy can be formatted with rich text editor to have <strong>BOLD TEXT <\/strong><em>ITALIC TEXT<\/em> or <a href=\"https:\/\/google.com\" target=\"_blank\" title=\"https:\/\/google.com\">linked text<\/a>.<\/p>",
+        "title_level": "h1",
+        "title_style": "h3",
+        "bg_color": "--color-util-yellow",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "auto",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "4",
+        "desktop_slides_view": "3.75",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 3,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 2.5,
+        "mobile_margin": 1,
+        "desktop_margin": 1
+      }
+    },
+    "6e1c958e-0014-470f-8542-267a33e1b7c2": {
+      "type": "split-section",
+      "settings": {
+        "eyebrow_text": "Yum!",
+        "title": "Wear Your Funday Best",
+        "description": "<p>Vivamus vehicula odio non elit egestas, id eleifend nisl mattis. Nullam mattis augue sit amet tortor imperdiet hendrerit. Integer dictum dui sit amet mauris vestibulum sollicitudin. Nulla quis rhoncus eros, id consequat tortor.<\/p>",
+        "description_copy_size": "text-base",
+        "title_level": "h3",
+        "title_style": "h4",
+        "image": "shopify:\/\/shop_images\/Hero_Image_-_Mobile.png",
+        "aspect_ratio": "square",
+        "section_split": "50-50",
+        "details_location_md": "after",
+        "details_location": "after",
+        "horizontal_align_md": "left",
+        "horizontal_align": "left",
+        "vertical_align_md": "middle",
+        "vertical_align": "top",
+        "cta_1_text": "Look At Our Style!",
+        "cta_1_url": "\/",
+        "cta_1_style": "secondary",
+        "cta_2_text": "Secondary",
+        "cta_2_url": "",
+        "cta_2_style": "secondary",
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900"
+      }
+    },
+    "650a81ef-e9bf-473c-9ec2-107491e86ca3": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "efdad21c-7663-44e8-97e6-050789d74356": {
+          "type": "content-slide",
+          "settings": {
+            "title": "FRESHLY PICKED",
+            "slide_img": "shopify:\/\/shop_images\/Group_4.png",
+            "slide_description": "<p>raspberry + lemon + blackberry<\/p>",
+            "slide_image_width": "",
+            "slide_image_height": "500",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "Read More",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "d414a43c-257e-451b-a916-6d21fa37f5c2": {
+          "type": "content-slide",
+          "settings": {
+            "title": "YARD GAMES",
+            "slide_img": "shopify:\/\/shop_images\/Group_3.png",
+            "slide_description": "<p>lemon + lime + pomello<\/p>",
+            "slide_image_width": "",
+            "slide_image_height": "",
+            "details_location": "overlay",
+            "slide_url": "shopify:\/\/blogs\/blog\/blog-post-2-title",
+            "slide_cta_1_title": "Read More",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "2e76cdb1-b63e-4f2a-8913-018a8c050fae": {
+          "type": "content-slide",
+          "settings": {
+            "title": "GARDEN PARTY",
+            "slide_img": "shopify:\/\/shop_images\/Group_6.png",
+            "slide_description": "<p>honeysuckle + orange + blackberry<\/p>",
+            "slide_image_width": "",
+            "slide_image_height": "",
+            "details_location": "overlay",
+            "slide_url": "shopify:\/\/blogs\/blog\/blog-post-3-title",
+            "slide_cta_1_title": "Read more",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "2bc277f7-36c8-4112-bf31-d50e153fcced": {
+          "type": "content-slide",
+          "settings": {
+            "title": "SKINNY DIP",
+            "slide_img": "shopify:\/\/shop_images\/Group_5.png",
+            "slide_description": "<p>passion fruit + guava + dragon fruit<\/p>",
+            "slide_image_width": "",
+            "slide_image_height": "",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "efdad21c-7663-44e8-97e6-050789d74356",
+        "d414a43c-257e-451b-a916-6d21fa37f5c2",
+        "2e76cdb1-b63e-4f2a-8913-018a8c050fae",
+        "2bc277f7-36c8-4112-bf31-d50e153fcced"
+      ],
+      "settings": {
+        "title": "",
+        "description": "",
+        "title_level": "h1",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": false,
+        "show_pagination": false,
+        "carousel_nav_location": "auto",
+        "aspect_ratio": "square",
+        "mobile_slides_view": "2.5",
+        "tablet_slides_view": "3.75",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1.5,
+        "mobile_padding_horizontal": 2.5,
+        "desktop_padding": 2,
+        "mobile_margin": 1,
+        "desktop_margin": 1
+      }
+    },
+    "708c2130-3496-4631-8512-4e9eda09a31e": {
+      "type": "split-section",
+      "settings": {
+        "eyebrow_text": "",
+        "title": "our mixtape is 🔥🔥🔥",
+        "description": "<p>Can’t decide? Don’t. Our Mixtape variety pack gives you the best of everything, all in one box. So whether you’re filling the cooler, mixing friend groups, or just looking for something different, Mixtape has a hard seltzer for everyone.<\/p>",
+        "description_copy_size": "text-base",
+        "title_level": "h2",
+        "title_style": "h3",
+        "image": "shopify:\/\/shop_images\/can_box.f23feb4289f60fd0ac0489b5c24ae294.jpg",
+        "aspect_ratio": "square",
+        "section_split": "50-50",
+        "details_location_md": "before",
+        "details_location": "after",
+        "horizontal_align_md": "left",
+        "horizontal_align": "left",
+        "vertical_align_md": "middle",
+        "vertical_align": "top",
+        "cta_1_text": "Check It Out",
+        "cta_1_url": "\/",
+        "cta_1_style": "primary",
+        "cta_2_text": "Secondary",
+        "cta_2_url": "",
+        "cta_2_style": "secondary",
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900"
+      }
+    },
+    "1250bbd6-bd0c-4547-af5d-0c6719093920": {
+      "type": "shop-the-look",
+      "blocks": {
+        "e20a5e48-643e-4c12-a9a5-8bb1f681a118": {
+          "type": "look",
+          "settings": {
+            "product": "yard-games",
+            "horizontal_position": 45,
+            "vertical_position": 25,
+            "horizontal_position_mobile": 40,
+            "vertical_position_mobile": 26
+          }
+        },
+        "9052c940-f678-4672-b1c0-7ff76521fc42": {
+          "type": "look",
+          "settings": {
+            "product": "fresh-picked",
+            "horizontal_position": 75,
+            "vertical_position": 24,
+            "horizontal_position_mobile": 69,
+            "vertical_position_mobile": 22
+          }
+        },
+        "852fdbed-0772-4d0f-910b-f9d8314dde8b": {
+          "type": "look",
+          "settings": {
+            "product": "variety-pack",
+            "horizontal_position": 59,
+            "vertical_position": 69,
+            "horizontal_position_mobile": 57,
+            "vertical_position_mobile": 67
+          }
+        }
+      },
+      "block_order": [
+        "e20a5e48-643e-4c12-a9a5-8bb1f681a118",
+        "9052c940-f678-4672-b1c0-7ff76521fc42",
+        "852fdbed-0772-4d0f-910b-f9d8314dde8b"
+      ],
+      "settings": {
+        "layout": "fifty-fifty",
+        "desktop_bg_image": "shopify:\/\/shop_images\/resized_fundays8.jpg",
+        "mobile_bg_image": "shopify:\/\/shop_images\/resized_fundays8.jpg",
+        "title": "Let's Be Taste Buds",
+        "title_level": "h2",
+        "title_style": "h3",
+        "description": "",
+        "cta_label": "Learn More",
+        "cta_url": "",
+        "cta_style": "primary",
+        "text_color": "--color-grey-900",
+        "bg_color": "--color-util-white",
+        "look_dot_color": "--color-util-white",
+        "look_bg_color": "--color-util-white",
+        "look_text_color": "--color-grey-900"
+      }
+    }
+  },
+  "order": [
+    "70470917-0d14-4248-a6ea-ab488472117a",
+    "0ba28d04-edbe-46b1-b398-33f4b64ce4e0",
+    "367c09ed-72b9-40bd-9098-182341a241cb",
+    "6e1c958e-0014-470f-8542-267a33e1b7c2",
+    "650a81ef-e9bf-473c-9ec2-107491e86ca3",
+    "708c2130-3496-4631-8512-4e9eda09a31e",
+    "1250bbd6-bd0c-4547-af5d-0c6719093920"
+  ]
 }

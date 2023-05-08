@@ -1,8 +1,32 @@
 {
   "sections": {
     "main": {
-      "type": "page-blog"
+      "type": "page-blog",
+      "blocks": {
+        "7f2225d7-16db-4fc3-9a00-b21941ae1d10": {
+          "type": "featured",
+          "settings": {
+            "featured_article": "blog\/blog-post-7-title",
+            "aspect_ratio": "square",
+            "show_excerpt": true,
+            "show_tags": true,
+            "show_date": true
+          }
+        }
+      },
+      "block_order": [
+        "7f2225d7-16db-4fc3-9a00-b21941ae1d10"
+      ],
+      "settings": {
+        "per_page": 12,
+        "aspect_ratio": "square",
+        "show_excerpt": true,
+        "show_tags": true,
+        "show_date": true
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
