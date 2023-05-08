@@ -99,10 +99,10 @@
         </swiper-container>
         {% if show_thumbnail_navigation %}
           <div class="swiper-thumbs-prev justify-center absolute -top-6 hidden md:flex">
-            {% render 'ra-icon' with 'chevron-up', class: 'swiper-thumbs-prev' %}
+            {% render 'ra-icon', icon: 'chevron-up', class: 'swiper-thumbs-prev' %}
           </div>
           <div class="swiper-thumbs-next justify-center absolute bottom-0 hidden md:flex">
-            {% render 'ra-icon' with 'chevron-down', class: 'swiper-thumbs-next' %}
+            {% render 'ra-icon', icon: 'chevron-down', class: 'swiper-thumbs-next' %}
           </div>
         {% endif %}
       </div>
@@ -184,11 +184,11 @@
             </swiper-slide>
           {%- endfor -%}
         </swiper-container>
-        {% render 'ra-icon' with 'chevron-left',
+        {% render 'ra-icon', icon: 'chevron-left',
           color: 'white',
           class: 'swiper-primary-prev absolute left-0 top-1/2 z-10 -mt-3'
         %}
-        {% render 'ra-icon' with 'chevron-right',
+        {% render 'ra-icon', icon: 'chevron-right',
           color: 'white',
           class: 'swiper-primary-next absolute right-0 top-1/2 z-10 -mt-3'
         %}
@@ -289,8 +289,8 @@
             </swiper-slide>
           {%- endfor -%}
         </swiper-container>
-        {% render 'ra-icon' with 'chevron-left', color: 'white', class: 'swiper-lightbox-prev absolute left-0 top-1/2 z-10 -mt-3' %}
-        {% render 'ra-icon' with 'chevron-right', color: 'white', class: 'swiper-lightbox-next absolute right-0 top-1/2 z-10 -mt-3' %}
+        {% render 'ra-icon', icon: 'chevron-left', color: 'white', class: 'swiper-lightbox-prev absolute left-0 top-1/2 z-10 -mt-3' %}
+        {% render 'ra-icon', icon: 'chevron-right', color: 'white', class: 'swiper-lightbox-next absolute right-0 top-1/2 z-10 -mt-3' %}
       {% else %}
         {% case first_media.media_type %}
           {% when 'image' %}
@@ -306,7 +306,7 @@
           {% when 'video' %}
           {% render 'ra-video', media: first_media %}
           {% when 'external_video' %}
-          {% render 'ra-video', media: first_media, autoplay: false, width: 1200, muted: false, class: "max-w-full" %}
+          {% render 'ra-video', media: first_media, autoplay: false, width: 1200, muted: false, class: 'max-w-full' %}
         {% endcase %}
       {% endif %}
     </div>

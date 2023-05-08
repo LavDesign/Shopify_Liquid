@@ -12,9 +12,9 @@
 
 {% capture divider %}
   {% if divider == 'minus' %}
-    {% render 'ra-icon' with 'divider-minus', class: "ra-icon ra-icon--sm ra-breadcrumbs__divider" %}
+    {% render 'ra-icon', icon: 'divider-minus', class: 'ra-icon ra-icon--sm ra-breadcrumbs__divider' %}
   {% else %}
-    {% render 'ra-icon' with 'divider-slash', class: "ra-icon ra-icon--sm ra-breadcrumbs__divider" %}
+    {% render 'ra-icon', icon: 'divider-slash', class: 'ra-icon ra-icon--sm ra-breadcrumbs__divider' %}
   {% endif %}
 {% endcapture %}
 

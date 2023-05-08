@@ -930,10 +930,10 @@
   resolved "https://registry.yarnpkg.com/@bva/stickie/-/stickie-0.1.3.tgz#bb62b50eae1fd4ad6dadd3960ff14b5b88321714"
   integrity sha512-8meSq/NpNSJJy3xvVcHRDu7Ldq/yEbRK83xTd7465oDZGPFNrK3HFybZkYrkhy99R8qqO2AkWFCpSpYSaSLQ5w==
 
-"@bva/ui-shared@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.6.tgz#4a1b0005f589350078095f20da9d01ebb20c6b37"
-  integrity sha512-0wThPJcfcK84U9jslSTvdL7XjvI98bD15kBRFPMM9FhY6JkOGRHYsrdd8GQ5EJn1TRdWCMXnAPwTyAY5HMSjcA==
+"@bva/ui-shared@1.4.11", "@bva/ui-shared@^1.4.11":
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.11.tgz#ec0547aac70587b19601b72c0bcc1b00ce8c99da"
+  integrity sha512-HGkN1StPClVeNrqzxrPP9a22kA6n4L4SlCGF43jQNbKqmJ/G7GyHAG+XkrV2Yi8792qO9foROpPVCwgNApMjGw==
   dependencies:
     lilconfig "^2.0.6"
     postcss-import "^15.0.0"
@@ -941,23 +941,12 @@
     postcss-simple-vars "^6.0.3"
     postcss-value-parser "^4.2.0"
 
-"@bva/ui-shared@^1.4.9":
-  version "1.4.9"
-  resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.9.tgz#949f0ffa4bc0a39f7a5a661e459e2b7a9b42df7f"
-  integrity sha512-44tACRqNoZHe7th+Z6vx9o9p3kShy57tHhLOKt6fSjwgKQKVEPQqb9a2vZstb7gRft1zbjx7burTN7UyaLPtKw==
+"@bva/ui-vue@^1.4.11":
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/@bva/ui-vue/-/ui-vue-1.4.11.tgz#76afa3afd9ce5a391d8aefc6cfd8dc89db53d493"
+  integrity sha512-wipTmXRDP6iItYJHkEhzCvlaCmggZxAPR1qn5ygZDpcKkRTou4HQCGDgx2MczE2t62WEdHU/Ce8tEGcR9q4Zfg==
   dependencies:
-    lilconfig "^2.0.6"
-    postcss-import "^15.0.0"
-    postcss-nested "^6.0.0"
-    postcss-simple-vars "^6.0.3"
-    postcss-value-parser "^4.2.0"
-
-"@bva/ui-vue@^1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@bva/ui-vue/-/ui-vue-1.4.6.tgz#c23d6372408cd9803aca62775631df747a6adbf5"
-  integrity sha512-FnZDMRH+KIZHLczS/5/jYiq3FCT8GArearaFAQb7nuAu3m8Cux/etdtUX9ZhOTbgHePXq17zfY/UHn5eDOhwxA==
-  dependencies:
-    "@bva/ui-shared" "1.4.6"
+    "@bva/ui-shared" "1.4.11"
     "@bva/vue-sticky-directive" "^0.1.6"
     "@vueuse/core" "^7.5.3"
     "@vueuse/motion" "^2.0.0-beta.9"

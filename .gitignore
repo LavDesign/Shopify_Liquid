@@ -2,6 +2,7 @@
 
 # Local npm config
 .npmrc
+.yarnrc.yml
 
 # Local test package
 packages/test-package
