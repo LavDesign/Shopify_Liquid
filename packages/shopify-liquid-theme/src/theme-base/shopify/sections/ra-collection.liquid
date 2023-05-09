@@ -101,12 +101,12 @@
                   {% if disruptor_indexes contains disruptor_index %}
                     {% for disruptor in disruptor_metafields %}
                       {% if disruptor.position == disruptor_index and disruptor.enabled %}
-                        {% render 'ra-disruptor-tile', disruptor: disruptor %}
+                        {% render 'ra-disruptor-tile', disruptor: disruptor, index: disruptor_index %}
                       {% endif %}
                     {% endfor %}
                   {% endif %}
                 {% endif %}
-                {% render 'ra-product-tile', product: product %}
+                {% render 'ra-product-tile', product: product, index: forloop.index %}
               {%- endfor -%}
             </div>
             <div class="flex justify-center">

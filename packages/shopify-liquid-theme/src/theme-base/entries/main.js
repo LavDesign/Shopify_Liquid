@@ -17,6 +17,9 @@ import "@bva/ui-shared/styles/reset.css";
 import "@bva/ui-shared/styles/required.css";
 import "@bva/ui-shared/styles/components.css";
 import "tailwindcss/utilities.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import "../scss/main.scss";
 
 const isDesignMode = window.Shopify.designMode || window.Shopify.inspectMode;
@@ -90,6 +93,7 @@ window.addEventListener("load", () => {
   register();
   renderVueApps();
   initSwipers();
+  AOS.init();
 });
 
 /**
