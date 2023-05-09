@@ -98,6 +98,11 @@
     <a href="{{ product.url }}" class="ra-product-tile__name">
       {{ product.title }}
     </a>
+    {% if product.selected_or_first_available_variant.title != 'Default Title' %}
+    <p class="ra-product-tile__attribute">
+      {{ product.selected_or_first_available_variant.title }}
+    </p>
+    {% endif %}
     <!-- Product Price -->
     {% render 'ra-price', product: product, class: 'ra-product-tile__price' %}
     <!-- Rating -->

@@ -1,8 +1,17 @@
 {
   "sections": {
     "main": {
-      "type": "page-article"
+      "type": "page-article",
+      "settings": {
+        "aspect_ratio": "video",
+        "related_articles_title": "Keep Reading",
+        "show_excerpt": true,
+        "show_tags": true,
+        "show_date": true
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

@@ -59,7 +59,7 @@
       {% if filter.active_values contains value %}
         {% assign checked = true %}
       {% endif %}
-      <li class="mb-3">
+      <li class="mb-3 ml-[2px]">
         {%- render 'ra-checkbox',
           name: value.param_name,
           class: 'ra-filter-input',
