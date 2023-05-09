@@ -74,11 +74,7 @@
           class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
           style="--media-width:1; --media-height:1.2;"
         >
-          {{
-            product.featured_image
-            | image_url: width: 450
-            | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy', data-featured-image: ''
-          }}
+          <img src="{{ product.featured_image | image_url: width: 450 }}" alt="{{ product.title }}" class="ra-image__media" data-featured-image width="1" height="1.2" loading="lazy"/>
         </div>
         <!-- ra hover-image -->
         {% if hover_img != blank %}
@@ -86,11 +82,7 @@
             class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
             style="--media-width:1; --media-height:1.2;"
           >
-            {{
-              hover_img
-              | image_url: width: 450
-              | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy', data-alt-image: ''
-            }}
+            <img src="{{ hover_img | image_url: width: 450 }}" alt="{{ product.title }}" class="ra-image__media" data-alt-image width="1" height="1.2" loading="lazy"/>
           </div>
         {% endif %}
       </a>
@@ -147,14 +139,6 @@
     {% endif %}
     <!-- Product Price -->
     {% render 'ra-price', product: product, class: 'ra-product-tile__price' %}
-    <!-- Rating -->
-    <div
-      raw
-      link
-      class="ra-product-tile__rating ra-rating"
-    >
-      {% render 'ra-review-stars', platform: settings.review_platform, product: product %}
-    </div>
     {% if product.variants.size > 1 %}
       {% for option in product.options_with_values %}
         {% liquid
@@ -168,11 +152,10 @@
             assign option_type = 'circle'
           endif
         %}
-        <div class="ra-product-tile__options flex flex-row gap-3 overflow-x-scroll">
+        <div class="ra-product-tile__options flex flex-row gap-3 overflow-x-scroll py-2" data-variant-options>
           {% for value in option.values %}
             <div
-              class="ra-product-tile__option swatch-{{ option_type }} w-[30px] h-[30px] flex justify-center items-center cursor-pointer{% if value == option.selected_value %} active{% endif %}"
-              data-option-position="{{option.position}}"
+              class="ra-product-tile__option swatch-{{ option_type }} min-w-[30px] min-h-[30px] flex justify-center items-center cursor-pointer{% if value == option.selected_value %} active{% endif %}"
               data-option-value="{{value}}"
             >
               {{ value }}
@@ -181,5 +164,13 @@
         </div>
       {% endfor %}
     {% endif %}
+    <!-- Rating -->
+    <div
+      raw
+      link
+      class="ra-product-tile__rating ra-rating"
+    >
+      {% render 'ra-review-stars', platform: settings.review_platform, product: product %}
+    </div>
   </div>
 </ra-product-tile>
