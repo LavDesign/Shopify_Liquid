@@ -63,7 +63,10 @@ const optionsAsSmall = ["Size"];
 const optionsAsHorizontal = ["Material"];
 
 const itemsPerRow = 4;
-const itemsPerRowSmall = 12;
+const itemsPerRowSmall = {
+  sm: 6,
+  lg: 8,
+};
 
 function getItemsPerRow(optionName) {
   return optionsAsSmall.includes(optionName) ? itemsPerRowSmall : itemsPerRow;

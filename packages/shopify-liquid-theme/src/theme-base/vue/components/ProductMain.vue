@@ -1,7 +1,7 @@
 <template>
   <Transition name="fade" appear>
     <div class="ra-product-main__inner">
-      <div class="flex flex-row justify-between mb-3">
+      <div class="flex flex-row justify-between mb-3 md:flex-col lg:flex-row">
         <h1 class="h4" v-text="title"></h1>
         <div class="h4" v-if="currentVariant">
           <template v-if="showComparePrice">
