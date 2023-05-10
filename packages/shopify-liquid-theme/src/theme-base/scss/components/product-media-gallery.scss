@@ -1,7 +1,12 @@
 .product-media-gallery {
-  --thumbnails-width: 5rem;
+  --thumbnails-width: 0px;
   --thumbnails-horizontal-gap: 0.75rem;
   --modal-width: 1200px;
+
+  @breakpoint lg {
+    --thumbnails-width: 5rem;
+  }
+
 
   dialog {
     background-color: transparent;

@@ -24,19 +24,19 @@ As such it is not included within components.scss
   }
 }
 
-.product-form__option-picker--horizontal {
-  .ra-option {
-    &.ra-option--disabled::after {
-      @apply -rotate-[18deg];
-      content: "";
-      display: block;
-      border-radius: 0;
-      border-bottom: 1px solid var(--color-grey-400);
-      padding: 0;
-      position: absolute;
-      width: 150px;
-      top: 49%;
-      left: -2%;
-    }
-  }
-}
+// .product-form__option-picker--horizontal {
+//   .ra-option {
+//     &.ra-option--disabled::after {
+//       @apply -rotate-[18deg];
+//       content: "";
+//       display: block;
+//       border-radius: 0;
+//       border-bottom: 1px solid var(--color-grey-400);
+//       padding: 0;
+//       position: absolute;
+//       width: 150px;
+//       top: 49%;
+//       left: -2%;
+//     }
+//   }
+// }

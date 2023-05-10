@@ -6,6 +6,7 @@
     shape="rounded"
     :style="defaultStyles"
     :fillSpace="false"
+    gap="16px"
     variant="grid"
   />
 </template>

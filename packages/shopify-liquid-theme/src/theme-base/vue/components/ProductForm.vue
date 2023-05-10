@@ -23,7 +23,8 @@
           :selected="selectedOptions[optionKey]"
           :variant="getOptionVariant(optionKey)"
           :itemsPerRow="getItemsPerRow(optionKey)"
-          :asHorizontal="isHorizontalOption(optionKey)"
+          :size="getOptionSizes(optionKey)"
+          :fillSpace="false"
           @change:option="
             (selected, option) =>
               handleOptionSelect(optionKey, selected, option)
@@ -62,7 +63,11 @@ const optionsAsSwatches = ["Color"];
 const optionsAsSmall = ["Size"];
 const optionsAsHorizontal = ["Material"];
 
-const itemsPerRow = 4;
+const itemsPerRow = {
+  xs: 2,
+  sm: 4,
+};
+
 const itemsPerRowSmall = {
   sm: 6,
   lg: 8,
@@ -78,6 +83,20 @@ function isHorizontalOption(optionName) {
 
 function getOptionVariant(optionName) {
   return optionsAsDropdowns.includes(optionName) ? "dropdown" : "grid";
+}
+
+function getOptionSizes(optionName) {
+  if (isHorizontalOption(optionName)) {
+    return {
+      height: "var(--option-picker-horizontal-height)",
+      width: "120px",
+    };
+  } else {
+    return {
+      width: "var(--option-picker-square-height)",
+      height: "var(--option-picker-square-height)",
+    };
+  }
 }
 
 const optionsWithValues = reactive(props.product.options_with_values);

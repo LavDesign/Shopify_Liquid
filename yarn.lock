@@ -930,9 +930,9 @@
   resolved "https://registry.npmjs.org/@bva/stickie/-/stickie-0.1.3.tgz"
   integrity sha512-8meSq/NpNSJJy3xvVcHRDu7Ldq/yEbRK83xTd7465oDZGPFNrK3HFybZkYrkhy99R8qqO2AkWFCpSpYSaSLQ5w==
 
-"@bva/ui-shared@^1.4.11", "@bva/ui-shared@1.4.12":
+"@bva/ui-shared@1.4.12":
   version "1.4.12"
-  resolved "https://registry.npmjs.org/@bva/ui-shared/-/ui-shared-1.4.12.tgz"
+  resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.12.tgz#89aa7f575e634e5ed38b57951b6d0ce626503d1b"
   integrity sha512-g8vD+Phi1UBgJE0r46phJcD5n+s3cfHTMeOAwhkRisVGiGhyh3wX+72f1UDyioTXAiGaw1neZuqzJRyZveouYQ==
   dependencies:
     lilconfig "^2.0.6"
@@ -941,9 +941,20 @@
     postcss-simple-vars "^6.0.3"
     postcss-value-parser "^4.2.0"
 
-"@bva/ui-vue@^1.4.11":
+"@bva/ui-shared@^1.4.11":
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/@bva/ui-shared/-/ui-shared-1.4.11.tgz#ec0547aac70587b19601b72c0bcc1b00ce8c99da"
+  integrity sha512-HGkN1StPClVeNrqzxrPP9a22kA6n4L4SlCGF43jQNbKqmJ/G7GyHAG+XkrV2Yi8792qO9foROpPVCwgNApMjGw==
+  dependencies:
+    lilconfig "^2.0.6"
+    postcss-import "^15.0.0"
+    postcss-nested "^6.0.0"
+    postcss-simple-vars "^6.0.3"
+    postcss-value-parser "^4.2.0"
+
+"@bva/ui-vue@^1.4.13":
   version "1.4.13"
-  resolved "https://registry.npmjs.org/@bva/ui-vue/-/ui-vue-1.4.13.tgz"
+  resolved "https://registry.yarnpkg.com/@bva/ui-vue/-/ui-vue-1.4.13.tgz#87f49e83b48a2bd28f1572960f3d4c824552f190"
   integrity sha512-RnK2sehAMnPYjim1/PDN6RZxjHQgGGxMVK+7suQpdnbq8GYOOY02Iu4b9tdzcwfUoIiPt9g3k96HFpk0iBJ/aA==
   dependencies:
     "@bva/ui-shared" "1.4.12"
