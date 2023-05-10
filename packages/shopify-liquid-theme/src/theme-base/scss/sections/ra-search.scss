@@ -22,6 +22,5 @@
 }
 
 .search__toggle-filters .ra-icon {
-  margin-left: 6px;
-  top: 1px;
+  @apply ml-[6px] top-px;
 }
