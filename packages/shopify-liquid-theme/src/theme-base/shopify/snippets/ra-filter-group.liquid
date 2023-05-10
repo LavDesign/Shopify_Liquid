@@ -32,13 +32,44 @@
       >
     </ra-range-slider>
   </div>
+{% elsif display_as_swatches %}
+  <div class="ra-option-picker ra-option-picker--grid">
+    <div class="ra-option-picker__items flex flex-wrap gap-2">
+      {%- for value in filter.values -%}
+        {% assign checked = false %}
+        {% assign disabled = true %}
+        {% assign count = value.count %}
+        {% if filter.active_values contains value %}
+          {% assign checked = true %}
+        {% endif %}
+        {% if count > 0 %}
+          {% assign disabled = false %}
+        {% endif %}
+        {%- render 'ra-swatch-button',
+          name: value.param_name,
+          class: 'ra-filter-input',
+          id: value.param_name,
+          checked: checked,
+          value: value.value,
+          label: value.label,
+          style: 'classic',
+          disabled: disabled
+        -%}
+      {%- endfor -%}
+    </div>
+  </div>
 {% elsif display_as_buttons %}
   <div class="ra-option-picker ra-option-picker--grid">
     <div class="ra-option-picker__items flex flex-wrap gap-2">
       {%- for value in filter.values -%}
         {% assign checked = false %}
+        {% assign disabled = true %}
+        {% assign count = value.count %}
         {% if filter.active_values contains value %}
           {% assign checked = true %}
+        {% endif %}
+        {% if count > 0 %}
+          {% assign disabled = false %}
         {% endif %}
         {%- render 'ra-filter-button',
           name: value.param_name,
@@ -47,7 +78,8 @@
           checked: checked,
           value: value.value,
           label: value.label,
-          style: 'classic'
+          style: 'classic',
+          disabled: disabled
         -%}
       {%- endfor -%}
     </div>

@@ -6,6 +6,7 @@
   atc_button:  Boolean, toggle ATC button - (optional) [default=false]
   atc_label:   String, add custom ATC button text - (optional)
   atc_style:   String, [primary, secondary, tertiary] - optional
+  index:       Number
   badge_text:  String, Add custom badge text
   badge_style: String, [primary, secondary, warning, danger, info, success] - (required if badge text)
   wishlist:    Boolean, toggle add wishlist button on hover - (optional) [default=false]
@@ -23,7 +24,7 @@
 
 {% assign wishlistStyle = wishlist_style | default: 'danger' %}
 
-<div class="ra-product-tile ra-product-tile--default">
+<div data-aos="fade-up" data-aos-delay="{{ '50' | times: index }}" class="ra-product-tile ra-product-tile--default">
   <div class="ra-product-tile__media">
     {% if product.featured_image %}
       <a href="{{ product.url }}" class="ra-product-tile__media-link">
