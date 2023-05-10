@@ -45,7 +45,7 @@
       type="checkbox"
       {{ attributes }}
     >
-    <label class="ra-choice__container set--sibling-deep-focus border border-grey-400 p-3 font-secondary" for="{{ input_id }}">
+    <label class="ra-choice__container set--sibling-deep-focus border border-grey-400 p-3 font-secondary {% if disabled %}disabled{% endif %}" for="{{ input_id }}">
       <span class="ra-choice__label">{{ label }}</span>
     </label>
   </div>

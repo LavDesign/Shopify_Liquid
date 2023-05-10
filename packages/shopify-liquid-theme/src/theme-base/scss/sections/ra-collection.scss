@@ -28,6 +28,19 @@
     color: var(--c-white);
   }
 
+  .ra-choice__container.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,939292+49,000000+100&0+0,0+48,1+49,0+50,0+100 */
+    background: linear-gradient(132deg,  rgba(30,87,153,0) 0%,rgba(145,145,146,0) 48%,rgba(147,146,146,1) 50%,rgba(144,143,143,0) 52%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#00000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    img {
+      opacity: 0.6;
+    }
+  }
+
   &.ra-swatch-filter {
     .ra-choice__container {
       border: 1.5px inset var(--color-grey-400);
