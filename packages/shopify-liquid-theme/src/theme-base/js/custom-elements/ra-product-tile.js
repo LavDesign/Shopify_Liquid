@@ -17,9 +17,8 @@ export default class RaProductTile extends HTMLElement {
     this.productTitle = this.querySelector("[data-variant-title]");
     // Swatch Properties
     this.swatchOverflowStyle = "scroll";
-    this.productOptions = this.querySelectorAll("[data-option-value]");
-    this.variantOptions = this.querySelector("[data-variant-options]");
     this.optionContainer = this.querySelector("[data-option-container]");
+    this.variantOptions = this.querySelector("[data-variant-options]");
     // Determine what the maximum scrollable value is to determine
     // whether or not to display the arrows
     this.maxScrollLeft =
@@ -30,9 +29,9 @@ export default class RaProductTile extends HTMLElement {
   }
 
   connectedCallback() {
-    if (this.productOptions.length > 0) {
+    if (this.variantOptions?.children?.length > 0) {
       this.swatchOverflow();
-      this.productOptions.forEach((option) => {
+      Array.from(this.variantOptions.children).forEach((option) => {
         option.addEventListener("click", this.swatchClick.bind(this));
       });
       window.addEventListener("resize", this.handleResize.bind(this));
@@ -76,7 +75,7 @@ export default class RaProductTile extends HTMLElement {
     // used to set up swatch overflow style
     if (
       this.swatchOverflowStyle == "scroll" &&
-      this.productOptions.length > 1
+      this.variantOptions.children.length > 1
     ) {
       this.buildArrows();
       // This adds drag capability
@@ -99,7 +98,7 @@ export default class RaProductTile extends HTMLElement {
       this.optionContainer.classList.add("px-4");
     } else if (
       this.swatchOverflowStyle == "expand" &&
-      this.productOptions.length > 3
+      this.variantOptions.children.length > 3
     ) {
       const viewMore = document.createElement("div");
       viewMore.textContent = "+X more";
@@ -111,7 +110,6 @@ export default class RaProductTile extends HTMLElement {
       this.optionContainer.append(viewMore);
     }
   }
-
 
   normalizeScroll(scrollValue) {
     const newScrollValue = Math.max(
@@ -143,6 +141,7 @@ export default class RaProductTile extends HTMLElement {
     arrowHandles.forEach((handle) => {
       const arrow = document.createElement("div");
       arrow.classList.add(`product-tile__arrow--${handle}`);
+      arrow.setAttribute("data-scroll-button", "");
       arrow.setAttribute(`data-scroll-${handle}`, "");
       arrow.addEventListener("click", () => {
         let newScrollLeft = this.variantOptions.scrollLeft;
@@ -168,17 +167,12 @@ export default class RaProductTile extends HTMLElement {
     const start = this.variantOptions.scrollLeft;
     var startTime = performance.now();
 
-    function easeInOutQuad(t) {
-      return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    }
-
     function scrollStep() {
       var now = performance.now();
       var progress = (now - startTime) / duration;
       if (progress > 1) progress = 1;
 
-      var easedProgress = easeInOutQuad(progress);
-      element.scrollLeft = start + (end - start) * easedProgress;
+      element.scrollLeft = start + (end - start) * progress;
 
       if (progress < 1) {
         requestAnimationFrame(scrollStep);
