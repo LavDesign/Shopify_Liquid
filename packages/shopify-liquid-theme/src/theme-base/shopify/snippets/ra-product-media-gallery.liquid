@@ -34,11 +34,11 @@
   class="ra-gallery product-media-gallery"
   style="--vertical-carousel-height: {{ thumbnail_carousel_height | append: "px" }}"
 >
-  <div class="ra-gallery-carousel ra-gallery-carousel--has-thumbnails">
+  <div class="ra-gallery-carousel ra-gallery-carousel--has-thumbnails ">
     {% if slides_length > 1 %}
-      <div class="ra-carousel-outer ra-gallery-carousel__thumbnails display--small-up flex justify-center">
+      <div class="ra-carousel-outer ra-gallery-carousel__thumbnails flex justify-center">
         <swiper-container
-          class="product-media-gallery__thumbnails w-20 hidden md:block mb-6"
+          class="product-media-gallery__thumbnails w-20 hidden lg:block mb-6"
           navigation-prev-el=".swiper-thumbs-prev"
           navigation-next-el=".swiper-thumbs-next"
           slides-per-view="{{ thumbnails_per_view }}"
@@ -98,10 +98,10 @@
           {%- endif -%}
         </swiper-container>
         {% if show_thumbnail_navigation %}
-          <div class="swiper-thumbs-prev justify-center absolute -top-6 hidden md:flex">
+          <div class="swiper-thumbs-prev justify-center absolute -top-6 hidden lg:flex">
             {% render 'ra-icon', icon: 'chevron-up', class: 'swiper-thumbs-prev' %}
           </div>
-          <div class="swiper-thumbs-next justify-center absolute bottom-0 hidden md:flex">
+          <div class="swiper-thumbs-next justify-center absolute bottom-0 hidden lg:flex">
             {% render 'ra-icon', icon: 'chevron-down', class: 'swiper-thumbs-next' %}
           </div>
         {% endif %}
@@ -112,7 +112,7 @@
       Primary Slider
     {% endcomment %}
     {% if enable_primary_carousel %}
-      <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative">
+      <div class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative max-w-full">
         <swiper-container
           auto-height="false"
           class="w-full product-media-gallery__primary"
@@ -184,11 +184,13 @@
             </swiper-slide>
           {%- endfor -%}
         </swiper-container>
-        {% render 'ra-icon', icon: 'chevron-left',
+        {% render 'ra-icon',
+          icon: 'chevron-left',
           color: 'white',
           class: 'swiper-primary-prev absolute left-0 top-1/2 z-10 -mt-3'
         %}
-        {% render 'ra-icon', icon: 'chevron-right',
+        {% render 'ra-icon',
+          icon: 'chevron-right',
           color: 'white',
           class: 'swiper-primary-next absolute right-0 top-1/2 z-10 -mt-3'
         %}
