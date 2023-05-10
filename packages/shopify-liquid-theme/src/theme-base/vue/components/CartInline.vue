@@ -18,14 +18,7 @@
           <div class="px-4 py-3 bg-tertiary-900 flex flex-row justify-between">
             <span class="text-lg text-white text-bold" v-text="cartCount" />
             <button @click="toggleCart" class="flex items-center">
-              <RaIcon
-                :size="{
-                  width: '20px',
-                  height: '20px',
-                }"
-                class="cursor-pointer"
-                color="white"
-              >
+              <RaIcon size="20px" class="cursor-pointer" color="white">
                 <svg>
                   <use xlink:href="#close"></use>
                 </svg>
