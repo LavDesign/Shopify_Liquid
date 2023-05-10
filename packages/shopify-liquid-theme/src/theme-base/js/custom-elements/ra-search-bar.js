@@ -1,4 +1,5 @@
 import { debounce } from "../utils/helpers";
+import { refreshReviewWidgets } from "../utils/vendors";
 import axios from "axios";
 export default class RaSearchBar extends HTMLElement {
   constructor() {
@@ -68,16 +69,21 @@ export default class RaSearchBar extends HTMLElement {
       },
     };
 
-    axios.get(url, { params }).then((res) => {
-      const responseDOM = new DOMParser().parseFromString(
-        res.data,
-        "text/html"
-      );
+    axios
+      .get(url, { params })
+      .then((res) => {
+        const responseDOM = new DOMParser().parseFromString(
+          res.data,
+          "text/html"
+        );
 
-      this.searchResponse.innerHTML = responseDOM.querySelector(
-        "#shopify-section-ra-predictive-search"
-      ).innerHTML;
-    });
+        this.searchResponse.innerHTML = responseDOM.querySelector(
+          "#shopify-section-ra-predictive-search"
+        ).innerHTML;
+      })
+      .then(() => {
+        refreshReviewWidgets();
+      });
   }
 
   clearSearchResults() {
