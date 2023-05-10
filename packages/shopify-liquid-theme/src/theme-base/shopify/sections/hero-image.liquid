@@ -38,7 +38,7 @@
   var({{ section.settings.arrow_color }})
 {% endcapture %}
 
-<div class="relative">
+<div class="relative" data-aos="fade">
   <swiper-container
     class="ra-hero overflow-hidden set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}set--details-after-sm set--details-overlay-md{% else %}set--details-overlay{% endif %}"
     {% if section.settings.autoplay %}
@@ -139,7 +139,7 @@
 
 {% schema %}
 {
-  "name": "Hero - Image",
+  "name": "Hero - Carousel",
   "tag": "section",
   "blocks": [
     {
@@ -377,7 +377,7 @@
   ],
   "presets": [
     {
-      "name": "Hero - Image"
+      "name": "Hero - Carousel"
     }
   ]
 }

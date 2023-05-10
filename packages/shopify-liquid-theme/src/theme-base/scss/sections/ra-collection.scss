@@ -27,4 +27,38 @@
     background-color: var(--color-primary-900);
     color: var(--c-white);
   }
+
+  .ra-choice__container.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+
+    background: linear-gradient(132deg,  rgba(30,87,153,0) 0%,rgba(145,145,146,0) 48%,rgba(147,146,146,1) 50%,rgba(144,143,143,0) 52%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#00000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    img {
+      opacity: 0.6;
+    }
+  }
+
+  &.ra-swatch-filter {
+    .ra-choice__container {
+      border: 1.5px inset var(--color-grey-400);
+      transition: 0.3s all ease-in-out;
+    }
+    .ra-choice__container:hover {
+      background-color: var(--color-white);
+      box-shadow: 0px 0px 2px var(--color-grey-400);
+      border: 1.5px inset var(--color-util-green);
+    }
+  
+    .ra-choice__input:checked ~ * {
+      background-color: var(--color-white);
+      border: 1.5px inset var(--color-util-green);
+    }  
+  }
+}
+
+.collection__toggle-filters .ra-icon {
+  margin-left: 6px;
+  top: 1px;
 }
