@@ -19,9 +19,206 @@
         "padding_bottom": 12
       }
     },
+    "88707756-d043-44e5-9069-70162abef566": {
+      "type": "ra-product-carousel",
+      "blocks": {
+        "140413fd-c5a4-440f-ad22-1c4d08a942ac": {
+          "type": "product-slide",
+          "settings": {
+            "product": "fresh-picked",
+            "cta_label": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "090c0c1b-a1b4-46cc-ac9e-ec6a117ae9ca": {
+          "type": "product-slide",
+          "settings": {
+            "product": "garden-party",
+            "cta_label": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "278d2660-3aa6-424c-949f-1ee8b22c74de": {
+          "type": "product-slide",
+          "settings": {
+            "product": "skinny-dip",
+            "cta_label": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "4e03ea38-9ad0-4dc7-aa9d-78a04fbf50d5": {
+          "type": "product-slide",
+          "settings": {
+            "product": "yard-games",
+            "cta_label": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "140413fd-c5a4-440f-ad22-1c4d08a942ac",
+        "090c0c1b-a1b4-46cc-ac9e-ec6a117ae9ca",
+        "278d2660-3aa6-424c-949f-1ee8b22c74de",
+        "4e03ea38-9ad0-4dc7-aa9d-78a04fbf50d5"
+      ],
+      "settings": {
+        "title": "You Might Also Like",
+        "description": "",
+        "title_level": "h3",
+        "title_style": "h4",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "3",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 1
+      }
+    },
+    "1a4418a6-a390-48cc-9c1e-99cf1d6396ec": {
+      "type": "shop-the-look",
+      "blocks": {
+        "35844ad3-5b22-4cf2-b1bd-a108f1927671": {
+          "type": "look",
+          "settings": {
+            "product": "fresh-picked",
+            "horizontal_position": 47,
+            "vertical_position": 30,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30
+          }
+        },
+        "4d5c220e-7fbe-4412-ac96-a379a0793e19": {
+          "type": "look",
+          "settings": {
+            "product": "skinny-dip",
+            "horizontal_position": 53,
+            "vertical_position": 49,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30
+          }
+        },
+        "1f1d9a2d-011a-4173-a037-c52e79242fa4": {
+          "type": "look",
+          "settings": {
+            "product": "yard-games",
+            "horizontal_position": 58,
+            "vertical_position": 67,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30
+          }
+        }
+      },
+      "block_order": [
+        "35844ad3-5b22-4cf2-b1bd-a108f1927671",
+        "4d5c220e-7fbe-4412-ac96-a379a0793e19",
+        "1f1d9a2d-011a-4173-a037-c52e79242fa4"
+      ],
+      "settings": {
+        "layout": "fifty-fifty",
+        "desktop_bg_image": "shopify:\/\/shop_images\/can_box.f23feb4289f60fd0ac0489b5c24ae294.jpg",
+        "mobile_bg_image": "shopify:\/\/shop_images\/can_box.f23feb4289f60fd0ac0489b5c24ae294.jpg",
+        "title": "Check out each flavor!",
+        "title_level": "h2",
+        "title_style": "h3",
+        "description": "",
+        "cta_label": "Learn More",
+        "cta_url": "",
+        "cta_style": "primary",
+        "text_color": "--color-secondary-900",
+        "bg_color": "--color-util-white",
+        "look_dot_color": "--color-util-white",
+        "look_bg_color": "--color-util-white",
+        "look_text_color": "--color-secondary-900"
+      }
+    },
+    "9c1b3b08-0b30-4532-9a41-ef07e1297a45": {
+      "type": "hero-image",
+      "blocks": {
+        "dcf8a71c-6a85-4100-bba0-b8d918f5f660": {
+          "type": "slide",
+          "settings": {
+            "eyebrow_text": "Eyebrow Text",
+            "title": "This is a title",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-left",
+            "description": "",
+            "desktop_bg_image": "shopify:\/\/shop_images\/New_Project_1_232686b6-f259-4241-8abd-726dd62ac638.jpg",
+            "text_color_desktop": "--color-grey-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "dcf8a71c-6a85-4100-bba0-b8d918f5f660"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
     "product-reviews": {
       "type": "product-reviews"
+    },
+    "aa015eb1-9983-4fff-8f45-a198ca8bebab": {
+      "type": "split-section",
+      "settings": {
+        "eyebrow_text": "Eyebrow Text",
+        "title": "Title",
+        "description": "<p>desription here<\/p>",
+        "description_copy_size": "text-base",
+        "title_level": "h2",
+        "title_style": "h3",
+        "image": "shopify:\/\/shop_images\/resized_fundays_hero_desktop.jpg",
+        "aspect_ratio": "wide",
+        "section_split": "50-50",
+        "details_location_md": "before",
+        "details_location": "after",
+        "horizontal_align_md": "left",
+        "horizontal_align": "left",
+        "vertical_align_md": "middle",
+        "vertical_align": "top",
+        "cta_1_text": "Default",
+        "cta_1_url": "",
+        "cta_1_style": "primary",
+        "cta_2_text": "Secondary",
+        "cta_2_url": "",
+        "cta_2_style": "secondary",
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900"
+      }
     }
   },
-  "order": ["main", "product-reviews"]
+  "order": [
+    "main",
+    "88707756-d043-44e5-9069-70162abef566",
+    "1a4418a6-a390-48cc-9c1e-99cf1d6396ec",
+    "9c1b3b08-0b30-4532-9a41-ef07e1297a45",
+    "product-reviews",
+    "aa015eb1-9983-4fff-8f45-a198ca8bebab"
+  ]
 }
