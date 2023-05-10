@@ -133,7 +133,7 @@
       {{ product.title }}
     </a>
     {% if product.selected_or_first_available_variant.title != 'Default Title' %}
-    <p class="ra-product-tile__attribute">
+    <p class="ra-product-tile__attribute" data-variant-title>
       {{ product.selected_or_first_available_variant.title }}
     </p>
     {% endif %}
@@ -152,15 +152,18 @@
             assign option_type = 'circle'
           endif
         %}
-        <div class="ra-product-tile__options flex flex-row gap-3 overflow-x-scroll py-2" data-variant-options>
+        <div class="relative" data-option-container>
+          <div class="ra-product-tile__options py-2 flex flex-row gap-3 overflow-x-scroll" data-variant-options>
           {% for value in option.values %}
             <div
               class="ra-product-tile__option swatch-{{ option_type }} min-w-[30px] min-h-[30px] flex justify-center items-center cursor-pointer{% if value == option.selected_value %} active{% endif %}"
               data-option-value="{{value}}"
+              data-option-position="{{ option.position }}"
             >
               {{ value }}
             </div>
           {% endfor %}
+          </div>
         </div>
       {% endfor %}
     {% endif %}

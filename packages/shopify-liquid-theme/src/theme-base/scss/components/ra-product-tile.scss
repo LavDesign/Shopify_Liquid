@@ -6,12 +6,34 @@
   @apply rounded-full
 }
 
-// .ra-product-tile__options::-webkit-scrollbar {
-//   @apply hidden
-// }
+.ra-product-tile__options--expanded {
+  @apply flex-wrap
+}
+
+.ra-product-tile__options::-webkit-scrollbar {
+  @apply hidden
+}
 
 .ra-product-tile__option {
   &.active {
     @apply border-red
   }
+}
+
+.product-tile__arrow--left,
+.product-tile__arrow--right,
+.product-tile__view-more {
+  @apply absolute top-1/2 -translate-y-1/2 bg-red h-[30px] w-[30px]
+}
+
+.product-tile__arrow--left {
+  @apply left-0
+}
+
+.product-tile__arrow--right {
+  @apply right-0
+}
+
+.product-tile__view-more {
+  @apply right-0 h-full bg-white flex items-center pl-2
 }
