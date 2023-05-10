@@ -12,7 +12,7 @@
   <div class="flex justify-center mt-1">
     <div class="flex w-full md:max-w-screen-2xl pt-8 md:pt-20 px-4 md:px-10" id="searchMain">
       <div
-        class="search__sidebar hidden fixed bg-white z-[500] lg:z-10 top-0 left-0 right-0 bottom-0 pt-4 overflow-y-scroll lg:overflow-y-visible lg:relative lg:block lg:w-1/4 lg:pr-20"
+        class="search__sidebar hidden fixed bg-white z-[500] lg:z-10 top-0 md:top-12 md:mt-16 md:h-fit left-0 right-0 bottom-0 pt-4 overflow-y-scroll lg:overflow-y-visible lg:block lg:w-1/4 lg:pr-20 md:sticky"
         data-search-sidebar
       >
         <div class="lg:hidden grid grid-cols-5 h-14 text-white items-center bg-tertiary-900">
@@ -24,7 +24,7 @@
         </aside>
       </div>
       <div class="search__main w-full lg:w-3/4">
-        <div class="search__header mb-10 flex justify-between flex-col lg:flex-row items-center">
+        <div class="search__header mb-6 md:mb-10 flex justify-between flex-col lg:flex-row items-center">
           <div class="h6 text-center lg:text-left" data-results-count>
             {%- if search.results_count -%}
               {{ 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
@@ -43,7 +43,7 @@
                 label: 'Filter',
                 style: 'tertiary',
                 type: 'ra-button',
-                icon: 'hamburger',
+                icon: 'filter',
                 class: 'h-11 min-h-0',
                 data: 'data-action-toggle-mobile-filters'
               %}
@@ -54,7 +54,7 @@
                   {%- assign sort_by = search.sort_by | default: search.default_sort_by -%}
                   <select
                     name="sort_by"
-                    class="appearance-none border-2 border-black px-3 pr-6 z-1 bg-transparent h-11"
+                    class="appearance-none border-[1px] border-black px-3 pr-6 z-1 bg-transparent h-11 font-secondary"
                     id="SortBy"
                     aria-describedby="a11y-refresh-page-message"
                   >
@@ -85,11 +85,11 @@
             </div>
           {%- else -%}
             {%- paginate search.results by paginate_count -%}
-              <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid ra-grid--inherit-gap">
+              <div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid gap-4 md:gap-8 ra-grid--inherit-gap">
                 {%- for item in search.results -%}
                   {%- case item.object_type -%}
                     {%- when 'product' -%}
-                      {% render 'ra-product-tile', product: item %}
+                      {% render 'ra-product-tile', product: item, index: forloop.index %}
                     {%- when 'article' -%}
                       {% render 'ra-article-tile', article: item %}
                     {%- when 'page' -%}
