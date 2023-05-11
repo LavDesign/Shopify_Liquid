@@ -9,6 +9,12 @@ export default class RaAccordion extends HTMLElement {
   connectedCallback() {
     this.items.forEach((btn) => {
       this.toggleHeight(btn);
+      if (btn.classList.contains("open") && window.innerWidth < 768) {
+        const accordionContent = btn.querySelector(
+          ".ra-accordion-item__content"
+        );
+        accordionContent.style.height = `auto`;
+      }
       btn.addEventListener("click", () => this.toggleAccordion(btn));
     });
   }
