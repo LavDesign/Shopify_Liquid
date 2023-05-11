@@ -226,16 +226,19 @@ const addToCart = async () => {
   isAddingToCart.value = false;
 };
 
-const productStore = useProductPageStore();
-
-watch(currentVariant, (variant) => {
-  productStore.setCurrentVariant(variant);
-
+const updateVariantURL = () => {
   const searchParamString = new URLSearchParams({
     variant: currentVariant.value.id,
   }).toString();
 
   searchParamString && updateURL(searchParamString);
+};
+
+const productStore = useProductPageStore();
+
+watch(currentVariant, (variant) => {
+  productStore.setCurrentVariant(variant);
+  updateVariantURL();
 });
 
 onMounted(() => {

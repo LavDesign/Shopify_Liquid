@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import { updateURL } from "../../js/utils/search-params";
 
 export const useProductPageStore = defineStore("productPage", () => {
   const currentVariant = ref();
