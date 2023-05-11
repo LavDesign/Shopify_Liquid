@@ -56,7 +56,7 @@
       type="checkbox"
       {{ attributes }}
     >
-    <label class="ra-choice__container set--sibling-deep-focus" for="{{ input_id }}">
+    <label class="ra-choice__container set--sibling-deep-focus {% if disabled %}disabled{% endif %}" for="{{ input_id }}">
       <div class="ra-choice__checkmark set--inherit-focus">
         <span aria-hidden="true" class="ra-choice__checkmark-icon ra-icon ra-icon--sm">
           <svg class="ra-icon ra-icon--xs">
