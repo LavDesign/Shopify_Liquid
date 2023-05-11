@@ -4,6 +4,7 @@ import { createPinia } from "pinia";
 import { getSizedImageFromUrl } from "../vue/filters/image.js";
 import { ucfirst, upcase, unhandleize } from "../vue/filters/string.js";
 import { money, moneyWithoutDecimals } from "../vue/filters/money.js";
+import "@bva/ui-shared/helpers";
 
 import { register } from "swiper/element/bundle";
 import "swiper/css/bundle";

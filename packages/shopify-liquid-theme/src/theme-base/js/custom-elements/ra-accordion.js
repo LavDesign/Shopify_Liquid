@@ -1,3 +1,4 @@
+import { getToken } from "@bva/ui-shared/helpers";
 export default class RaAccordion extends HTMLElement {
   constructor() {
     super();
@@ -7,9 +8,10 @@ export default class RaAccordion extends HTMLElement {
   }
 
   connectedCallback() {
+    const breakpointMd = getToken("breakpoints.px.md"); // 768px
     this.items.forEach((btn) => {
       this.toggleHeight(btn);
-      if (btn.classList.contains("open") && window.innerWidth < 768) {
+      if (btn.classList.contains("open") && window.innerWidth < breakpointMd) {
         const accordionContent = btn.querySelector(
           ".ra-accordion-item__content"
         );
