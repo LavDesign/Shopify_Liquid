@@ -234,11 +234,27 @@ const updateVariantURL = () => {
   searchParamString && updateURL(searchParamString);
 };
 
+const primarySwiperInstance = document.querySelector(
+  ".product-media-gallery__primary"
+)?.swiper;
+
+const slideToCurrentVariantImage = () => {
+  const currentVariantSlide = primarySwiperInstance.slides.find(
+    (slide) =>
+      parseInt(slide.getAttribute("data-media-id")) ===
+      currentVariant.value.media.id
+  );
+
+  const index = currentVariantSlide?.getAttribute("data-slide-index");
+  index && primarySwiperInstance.slideTo(index);
+};
+
 const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
   updateVariantURL();
+  slideToCurrentVariantImage();
 });
 
 onMounted(() => {
