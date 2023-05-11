@@ -46,6 +46,7 @@
 import { computed, ref, reactive, onMounted, watch } from "vue";
 import { useCartStore } from "../stores/cart";
 import { useProductPageStore } from "../stores/productPage";
+import { updateURL } from "../../js/utils/search-params";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
@@ -225,10 +226,35 @@ const addToCart = async () => {
   isAddingToCart.value = false;
 };
 
+const updateVariantURL = () => {
+  const searchParamString = new URLSearchParams({
+    variant: currentVariant.value.id,
+  }).toString();
+
+  searchParamString && updateURL(searchParamString);
+};
+
+const primarySwiperInstance = document.querySelector(
+  ".product-media-gallery__primary"
+)?.swiper;
+
+const slideToCurrentVariantImage = () => {
+  const currentVariantSlide = primarySwiperInstance.slides.find(
+    (slide) =>
+      parseInt(slide.getAttribute("data-media-id")) ===
+      currentVariant.value.media.id
+  );
+
+  const index = currentVariantSlide?.getAttribute("data-slide-index");
+  index && primarySwiperInstance.slideTo(index);
+};
+
 const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
+  updateVariantURL();
+  slideToCurrentVariantImage();
 });
 
 onMounted(() => {
