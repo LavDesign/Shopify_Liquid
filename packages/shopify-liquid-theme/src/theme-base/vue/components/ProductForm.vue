@@ -46,6 +46,7 @@
 import { computed, ref, reactive, onMounted, watch } from "vue";
 import { useCartStore } from "../stores/cart";
 import { useProductPageStore } from "../stores/productPage";
+import { updateURL } from "../../js/utils/search-params";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
@@ -229,6 +230,12 @@ const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
+
+  const searchParamString = new URLSearchParams({
+    variant: currentVariant.value.id,
+  }).toString();
+
+  searchParamString && updateURL(searchParamString);
 });
 
 onMounted(() => {
