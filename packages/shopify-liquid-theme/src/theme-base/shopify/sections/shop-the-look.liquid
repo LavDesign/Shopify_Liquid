@@ -41,7 +41,7 @@
     Section header + Slider
   {%- endcomment -%}
   {% if layout == 'fifty-fifty' %}
-    <div class="md:grid md:grid-cols-2 items-center">
+    <div class="md:grid grid-cols-1 md:grid-cols-2 items-center">
   {% endif %}
 
   {% if title != blank or section.settings.description != blank or cta_url != blank %}
@@ -116,7 +116,7 @@
   {% endif %}
 
   {% if section.blocks.size > 0 %}
-    <div class="order-1 flex items-center relative" data-aos="fade-up">
+    <div class="order-1 flex items-center relative" data-aos="fade-up"> 
 
       {%- comment -%}
         Background - images
@@ -135,14 +135,14 @@
         <div class="hidden md:block">
           {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
-        <div class="block md:hidden">
+        <div class="block md:hidden w-full">
           {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
       {% else %}
         <div class="hidden md:block">
           {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
-        <div class="block md:hidden">
+        <div class="block md:hidden w-full">
           {% render 'ra-image', alt: mobile_image.alt, src: mobile_image | image_url: width: 800, srcset: mobile_srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
       {% endif %}
