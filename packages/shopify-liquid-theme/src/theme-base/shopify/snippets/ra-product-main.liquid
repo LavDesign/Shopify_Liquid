@@ -2,7 +2,7 @@
   <product-main :product="{{ product_data | escape | strip }}">
     {% render 'product-details-skeleton' %}
     <template #review-stars>
-      {% render 'ra-review-stars', platform: settings.review_platform, product: product %}
+      {% render 'ra-review-stars', platform: settings.review_platform, product: product, on_pdp: true %}
     </template>
   </product-main>
 </div>
