@@ -2,6 +2,7 @@
   Props:
   product: Shopify Product Object
   platform: String, [yotpo, stamped, bazaarvoice] - (Optional) - Fallback will pull from theme settings
+  on_pdp: Boolean - (Default: false) Used to determine if clicking stars should scroll to the review widget (for BV only)
 
   Example default review star ratings using Yotpo:
   {%- render 'ra-review-stars',
@@ -31,10 +32,16 @@
       </span>
     {% when 'bazaarvoice' %}
       {% assign id = product.metafields.bazaarvoice.handle | default: product.handle %}
-      <div
-        data-bv-show="inline_rating"
-        data-bv-product-id="{{ id }}"
-        data-bv-seo="false"
-      ></div>
+      {% if on_pdp %}
+        <a href="#ra-product-reviews">
+      {% endif %}
+        <div
+          data-bv-show="inline_rating"
+          data-bv-product-id="{{ id }}"
+          data-bv-seo="false"
+        ></div>
+      {% if on_pdp %}
+        </a>
+      {% endif %}
   {% endcase %}
 </div>
