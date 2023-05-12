@@ -139,34 +139,6 @@
     {% endif %}
     <!-- Product Price -->
     {% render 'ra-price', product: product, class: 'ra-product-tile__price' %}
-    {% if product.variants.size > 1 %}
-      {% for option in product.options_with_values %}
-        {% liquid
-          assign option_name = option.name | downcase
-          if forloop.index0 == 1
-            break
-          endif
-          if option_name == 'size'
-            assign option_type = 'square'
-          else
-            assign option_type = 'circle'
-          endif
-        %}
-        <div class="relative" data-option-container>
-          <div class="ra-product-tile__options py-2 flex flex-row gap-3 overflow-x-scroll" data-variant-options>
-          {% for value in option.values %}
-            <div
-              class="ra-product-tile__option swatch-{{ option_type }} min-w-[30px] min-h-[30px] flex justify-center items-center cursor-pointer{% if value == option.selected_value %} active{% endif %}"
-              data-option-value="{{value}}"
-              data-option-position="{{ option.position }}"
-            >
-              {{ value }}
-            </div>
-          {% endfor %}
-          </div>
-        </div>
-      {% endfor %}
-    {% endif %}
     <!-- Rating -->
     <div
       raw
@@ -175,5 +147,38 @@
     >
       {% render 'ra-review-stars', platform: settings.review_platform, product: product %}
     </div>
+    {% if product.variants.size > 1 %}
+      {% for option in product.options_with_values %}
+        {% liquid
+          assign option_name = option.name | downcase
+        %}
+        {% if option_name == "color" %}
+        <div class="relative" data-option-container>
+          <div class="ra-product-tile__options flex flex-row gap-3 overflow-x-hidden" data-variant-options>
+          {% for value in option.values %}
+            {% capture data_attributes %}
+              data-option-value="{{ value }}"
+              data-option-position="{{ option.position }}"
+            {% endcapture %}
+            {% assign checked = false %}
+            {% assign disabled = true %}
+            {% if option_name == "color" %}
+              {%- render 'ra-swatch-button',
+                name: option_name,
+                class: '',
+                id: value,
+                checked: checked,
+                value: value,
+                label: value,
+                style: 'classic',
+                additional_attributes: data_attributes
+              -%}
+          {% endif %}
+        {% endfor %}
+        </div>
+        </div>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
 </ra-product-tile>

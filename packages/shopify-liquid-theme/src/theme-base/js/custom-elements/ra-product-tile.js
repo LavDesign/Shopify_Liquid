@@ -16,7 +16,7 @@ export default class RaProductTile extends HTMLElement {
     this.productUrl = this.querySelector("[data-product-link]");
     this.productTitle = this.querySelector("[data-variant-title]");
     // Swatch Properties
-    this.swatchOverflowStyle = "scroll";
+    this.swatchOverflowStyle = "scroll"; // expecting expand or scroll
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
     // Determine what the maximum scrollable value is to determine
@@ -30,8 +30,14 @@ export default class RaProductTile extends HTMLElement {
 
   connectedCallback() {
     if (this.variantOptions?.children?.length > 0) {
+      this.maxScrollLeft =
+        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
       this.swatchOverflow();
-      Array.from(this.variantOptions.children).forEach((option) => {
+      Array.from(this.variantOptions.children).forEach((option, i) => {
+        if (i == 0) {
+          const label = option.querySelector("label");
+          label.classList.add("active");
+        }
         option.addEventListener("click", this.swatchClick.bind(this));
       });
       window.addEventListener("resize", this.handleResize.bind(this));
@@ -43,7 +49,8 @@ export default class RaProductTile extends HTMLElement {
       this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
     if (this.maxScrollLeft != newMaxScrollLeft) {
       this.maxScrollLeft = newMaxScrollLeft;
-      this.displayArrows(this.variantOptions.scrollLeft);
+      if (this.swatchOverflowStyle == "scroll")
+        this.displayArrows(this.variantOptions.scrollLeft);
     }
   }
 
@@ -53,17 +60,26 @@ export default class RaProductTile extends HTMLElement {
     this.updateImages();
     this.updatePrice();
     this.updateAttribute();
+    this.updateSwatch();
+  }
+
+  updateSwatch() {
+    Array.from(this.variantOptions.children).forEach((option) => {
+      const input = option.querySelector("input");
+      const label = option.querySelector("label");
+      const { optionValue, optionPosition } = input.dataset;
+      if (this.currentVariant[`option${optionPosition}`] == optionValue) {
+        label.classList.add("active");
+      } else {
+        label.classList.remove("active");
+      }
+    });
   }
 
   swatchClick(e) {
     const activeOption = e.target;
-    if (activeOption.classList.contains("active")) return false;
     const { optionPosition, optionValue } = activeOption.dataset;
     const newOptions = Array.from(this.currentVariant.options);
-    Array.from(activeOption.parentElement.children).forEach((option) => {
-      option.classList.remove("active");
-    });
-    activeOption.classList.add("active");
     newOptions[optionPosition - 1] = optionValue;
     const newVariant = this.product.variants.find((variant) =>
       variant.options.every((value, index) => value === newOptions[index])
@@ -78,61 +94,60 @@ export default class RaProductTile extends HTMLElement {
       this.variantOptions.children.length > 1
     ) {
       this.buildArrows();
-      // This adds drag capability
-      this.optionContainer.addEventListener("mousedown", (e) => {
-        this.startClick = e.clientX;
-        this.dragAmount = this.variantOptions.scrollLeft;
-      });
-
-      this.optionContainer.addEventListener("mousemove", (e) => {
-        if (this.startClick) {
-          const draggedTo = e.clientX - this.startClick;
-          this.variantOptions.scrollLeft = this.dragAmount - draggedTo;
-        }
-      });
-
-      this.optionContainer.addEventListener("mouseup", () => {
-        this.startClick = null;
-      });
-
-      this.optionContainer.classList.add("px-4");
-    } else if (
-      this.swatchOverflowStyle == "expand" &&
-      this.variantOptions.children.length > 3
-    ) {
-      const viewMore = document.createElement("div");
-      viewMore.textContent = "+X more";
-      viewMore.classList.add("product-tile__view-more");
-      viewMore.addEventListener("click", () => {
-        this.variantOptions.classList.add("ra-product-tile__options--expanded");
-        viewMore.classList.add("!hidden");
-      });
-      this.optionContainer.append(viewMore);
+      this.displayArrows();
+    } else if (this.swatchOverflowStyle == "expand") {
+      this.buildViewMore();
     }
   }
 
-  normalizeScroll(scrollValue) {
-    const newScrollValue = Math.max(
-      0,
-      Math.min(scrollValue, this.maxScrollLeft)
-    );
-    this.displayArrows(newScrollValue);
-    return newScrollValue;
-  }
-
-  displayArrows(newScrollValue) {
+  displayArrows(newScrollValue = 0) {
     const leftScroll = this.querySelector("[data-scroll-left]");
     const rightScroll = this.querySelector("[data-scroll-right]");
-    if (newScrollValue == 0) {
+    if (this.variantOptions.clientWidth < this.variantOptions.scrollWidth) {
+      this.optionContainer.classList.add("px-4");
+      this.maxScrollLeft =
+        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
+      if (newScrollValue <= 0) {
+        leftScroll.classList.add("hidden");
+      } else {
+        leftScroll.classList.remove("hidden");
+      }
+      if (newScrollValue >= this.maxScrollLeft) {
+        rightScroll.classList.add("hidden");
+      } else {
+        rightScroll.classList.remove("hidden");
+      }
+    } else {
+      this.optionContainer.classList.remove("px-4");
+      this.maxScrollLeft =
+        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
       leftScroll.classList.add("hidden");
-    } else {
-      leftScroll.classList.remove("hidden");
-    }
-    if (newScrollValue == this.maxScrollLeft) {
       rightScroll.classList.add("hidden");
-    } else {
-      rightScroll.classList.remove("hidden");
     }
+  }
+
+  buildViewMore() {
+    const viewMore = document.createElement("div");
+    viewMore.textContent = "+X more";
+    viewMore.classList.add("product-tile__view-more");
+    viewMore.setAttribute("data-view-more", "");
+    viewMore.addEventListener("click", () => {
+      this.variantOptions.classList.add("ra-product-tile__options--expanded");
+      viewMore.classList.add("!hidden");
+    });
+    this.optionContainer.append(viewMore);
+    // The next step here is going to be figuring out which of the swatches are visible
+    // and changing the number of variants based on this value
+    const visibleWidth =
+      this.optionContainer.offsetWidth - viewMore.offsetWidth;
+    let width = 0;
+    let swatchCount = 0;
+    const visibleItems = Array.from(this.variantOptions.children).forEach((c) => {
+      if (width <= visibleWidth) {
+        width += c.offsetWidth;
+        swatchCount++
+      }
+    })
   }
 
   // This adds the scroll icons to the container
@@ -150,13 +165,18 @@ export default class RaProductTile extends HTMLElement {
         } else if (handle == "right") {
           newScrollLeft += 50;
         }
-        this.animateScroll(this.normalizeScroll(newScrollLeft), 300);
+        this.animateScroll(newScrollLeft, 300);
+        this.displayArrows(newScrollLeft);
       });
       if (
         (handle == "left" && this.variantOptions.scrollLeft == 0) ||
-        (handle == "right" && this.maxScrollLeft == 0)
+        (handle == "right" &&
+          this.maxScrollLeft == 0 &&
+          this.variantOptions.scrollLeft != 0)
       ) {
         arrow.classList.add("hidden");
+      } else {
+        arrow.classList.remove("hidden");
       }
       this.optionContainer.prepend(arrow);
     });
