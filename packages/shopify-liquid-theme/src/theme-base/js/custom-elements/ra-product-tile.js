@@ -237,10 +237,12 @@ export default class RaProductTile extends HTMLElement {
     });
     if (!mainImage) mainImage = productImages[0];
     if (!hoverImage) hoverImage = productImages[1];
-    const mainImageSrc = mainImage.preview_image.src + "&width=450";
-    const hoverImageSrc = hoverImage.preview_image.src + "&width=450";
-    this.featuredImage.setAttribute("src", mainImageSrc);
-    this.altImage.setAttribute("src", hoverImageSrc);
+    if (mainImage || hoverImage) {
+      const mainImageSrc = mainImage?.preview_image.src + "&width=450";
+      const hoverImageSrc = hoverImage?.preview_image.src + "&width=450";
+      this.featuredImage?.setAttribute("src", mainImageSrc);
+      this.altImage?.setAttribute("src", hoverImageSrc);
+    }
   }
 
   updateAttribute() {

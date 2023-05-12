@@ -60,7 +60,7 @@
 
 <!-- prettier-ignore -->
 <ra-product-tile
-  data-product='{{ product | json }}'
+  data-product='{{ product | json | escape }}'
   data-current-variant="{{ current_variant.id }}"
   class="ra-product-tile ra-product-tile--default"
   data-aos="fade-up"
@@ -160,13 +160,14 @@
               data-option-value="{{ value }}"
               data-option-position="{{ option.position }}"
             {% endcapture %}
+            {% capture variant_id %}{{value}}_{{product.id}}{% endcapture %}
             {% assign checked = false %}
             {% assign disabled = true %}
             {% if option_name == "color" %}
               {%- render 'ra-swatch-button',
                 name: option_name,
                 class: '',
-                id: value,
+                id: variant_id,
                 checked: checked,
                 value: value,
                 label: value,
