@@ -1,4 +1,4 @@
-<section>
+<section class="scroll-smooth">
   <style>
     .box {
       width: 80px;
@@ -10,13 +10,37 @@
       margin-right: 10px;
       margin-bottom: 10px;
     }
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
+
+  <div class="fixed top-[150px] right-2 flex flex-col">
+    <h5>UI Kit Navigation</h5>
+    <a class="hover:text-primary-900" href="#colors">Colors</a>
+    <a class="hover:text-primary-900" href="#typography">Typography</a>
+    <a class="hover:text-primary-900" href="#standard-buttons">Standard Buttons</a>
+    <a class="hover:text-primary-900" href="#split-buttons">Split Buttons</a>
+    <a class="hover:text-primary-900" href="#icon-buttons">Icon Buttons</a>
+    <a class="hover:text-primary-900" href="#input">Input</a>
+    <a class="hover:text-primary-900" href="#icons">Icons</a>
+    <a class="hover:text-primary-900" href="#accordions">Accordions</a>
+    <a class="hover:text-primary-900" href="#breadcrumbs">Breadcrumbs</a>
+    <a class="hover:text-primary-900" href="#scrollable">Scrollable</a>
+    <a class="hover:text-primary-900" href="#badges">Badges</a>
+    <a class="hover:text-primary-900" href="#icon-tile">Icon Tile</a>
+    <a class="hover:text-primary-900" href="#notification">Notification</a>
+    <a class="hover:text-primary-900" href="#modal">Modal</a>
+    <a class="hover:text-primary-900" href="#tabs">Tabs</a>
+    <a class="hover:text-primary-900" href="#content-tiles">Content Tiles</a>
+    <a class="hover:text-primary-900" href="#content-tiles-video">Content Tiles (video)</a>
+  </div>
 
   <div class="container py-30">
     {%- comment -%}
       Colors
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10">Colors</h4>
+    <h4 id="colors" class="text-h4 mt-10">Colors</h4>
     <h5 class="text-h5 my-4">Primary</h5>
     <div class="flex flex-wrap">
       <div class="box border bg-primary-900 text-grey-100">primary-900</div>
@@ -79,9 +103,9 @@
 
     <hr class="border my-20">
     {%- comment -%}
-      Typogrpahy
+      Typography
     {%- endcomment -%}
-    <h4 class="text-h4 my-10">Typography</h4>
+    <h4 id="typography" class="text-h4 my-10">Typography</h4>
     <div class="grid gap-6">
       <h1 class="h1 display">This is Display text</h1>
       <h1 class="h1">This is h1 text</h1>
@@ -98,7 +122,7 @@
     </div>
 
     <hr class="border my-20">
-    <h4 class="text-h4 mb-2 mt-10">Standard Buttons</h4>
+    <h4 id="standard-buttons" class="text-h4 mb-2 mt-10">Standard Buttons</h4>
     {%- comment -%}
       primary standard button
     {%- endcomment -%}
@@ -185,7 +209,7 @@
     </div>
 
     <hr class="border my-20">
-    <h4 class="text-h4 mt-10 mb-5">Split Buttons</h4>
+    <h4 id="split-buttons" class="text-h4 mt-10 mb-5">Split Buttons</h4>
     {%- comment -%}
       primary split button
     {%- endcomment -%}
@@ -256,7 +280,7 @@
     </div>
 
     <hr class="border my-20">
-    <h4 class="text-h4 mt-10 mb-5">Icon Buttons</h4>
+    <h4 id="icon-buttons" class="text-h4 mt-10 mb-5">Icon Buttons</h4>
     {%- comment -%}
       primary icon button
     {%- endcomment -%}
@@ -544,7 +568,7 @@
 
     <hr class="border my-20">
 
-    <h4 class="text-h4 mt-10 mb-5">Input</h4>
+    <h4 id="input" class="text-h4 mt-10 mb-5">Input</h4>
     {%- comment -%}
       form - input
     {%- endcomment -%}
@@ -717,7 +741,7 @@
     {%- comment -%}
       Icons
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Icons</h4>
+    <h4 id="icons" class="text-h4 mt-10 mb-5">Icons</h4>
     <p class="mb-2">
       Icons compile using Gulp. You can find all icon files in
       <code>src/THEME_FOLDER/icons/*.svg</code>. Icons are injected into
@@ -781,7 +805,7 @@
     {%- comment -%}
       Accordions
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Accordions</h4>
+    <h4 id="accordions" class="text-h4 mt-10 mb-5">Accordions</h4>
     <p class="mt-8 text-h5">no icon</p>
     <div class="grid gap-6">
       {% render 'ra-accordion',
@@ -825,14 +849,14 @@
     {%- comment -%}
       Breadcrumbs
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
+    <h4 id="breadcrumbs" class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
     {% render 'ra-breadcrumbs', divider: 'slash' %}
 
     <hr class="border my-20">
     {%- comment -%}
       Scrollable
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Scrollable</h4>
+    <h4 id="scrollable" class="text-h4 mt-10 mb-5">Scrollable</h4>
     {% capture scrollable_content %}
       <div>
         <ul>
@@ -851,7 +875,7 @@
     {%- comment -%}
       Badge
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Badges</h4>
+    <h4 id="badges" class="text-h4 mt-10 mb-5">Badges</h4>
     <div class="mb-5">
       {% render 'ra-badge', label: 'Primary', size: 'md', style: 'primary' %}
     </div>
@@ -866,7 +890,7 @@
     {%- comment -%}
       Icon Tile
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Icon Tile</h4>
+    <h4 id="icon-tile" class="text-h4 mt-10 mb-5">Icon Tile</h4>
     {% assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300 %}
     {% assign img_alt = section.settings.featured_product.featured_image.alt %}
     {% assign link_url = section.settings.featured_product.url %}
@@ -901,7 +925,7 @@
     {%- comment -%}
       Notification
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Notification</h4>
+    <h4 id="notification" class="text-h4 mt-10 mb-5">Notification</h4>
     {%- render 'ra-notification',
       icon: 'account',
       title: 'Account Notification',
@@ -913,7 +937,7 @@
     {%- comment -%}
       Modal
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Modal</h4>
+    <h4 id="modal" class="text-h4 mt-10 mb-5">Modal</h4>
     {% capture content %}
       <form action="">
         <div class="flex flex-col">
@@ -930,7 +954,7 @@
     {%- comment -%}
       Tabs
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Tabs</h4>
+    <h4 id="tabs" class="text-h4 mt-10 mb-5">Tabs</h4>
     {% capture tabs %}
         <button class="ra-tab__button" data-tab="tab1">Tab 1</button>
         <button class="ra-tab__button" data-tab="tab2">Tab 2</button>
@@ -956,7 +980,7 @@
       Content Tiles
     {%- endcomment -%}
     {% assign videoUrl = section.settings.video_url %}
-    <h4 class="text-h4 mt-10 mb-5">Content Tiles</h4>
+    <h4 id="content-tiles" class="text-h4 mt-10 mb-5">Content Tiles</h4>
     <div style="max-width: 22rem;">
       {{ section.settings.featured_product.featured_image.url }}
       {% render 'ra-content-tile',
@@ -973,7 +997,7 @@
       %}
     </div>
     <hr class="border my-20">
-    <h4 class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
+    <h4 id="content-tiles-video" class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
     <div style="max-width: 22rem;">
       {% render 'ra-content-tile',
         image: section.settings.featured_product.featured_image,
