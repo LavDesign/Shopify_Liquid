@@ -81,8 +81,8 @@ export default class RaProductTile extends HTMLElement {
           availableVariants.push(variant);
         }
       });
-      const filterer = availableVariants.filter((variant) => {
-        const test = [1, 2, 3]
+      const activeVariants = availableVariants.filter((variant) => {
+        const activeFilters = [1, 2, 3]
           .map((i) => {
             if (optionIndex[i]) {
               const option = optionIndex[i].toLowerCase();
@@ -97,11 +97,11 @@ export default class RaProductTile extends HTMLElement {
             }
           })
           .filter((el) => el !== undefined && el !== null);
-        if (test.length >= Object.keys(activeFilters).length) {
+        if (activeFilters.length >= Object.keys(activeFilters).length) {
           return variant;
         }
       });
-      return filterer;
+      return activeVariants;
     }
   }
 
