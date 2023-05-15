@@ -20,20 +20,27 @@
 {% endcapture %}
 
 <div class="{{ classes }}">
-  {% assign selected = product.selected_or_first_available_variant %}
+  {% liquid
+    assign selected = product.selected_or_first_available_variant
+    assign has_compare = false
+    if selected.compare_at_price and selected.compare_at_price > selected.price
+      assign has_compare = true
+    endif
+  %}
 
   {% if product.price_varies and show_range %}
     <span class="ra-price__regular">{{ product.price_min | money }}</span>
     <span class="px-1">&nbsp;&#8212;&nbsp;</span>
     <span class="ra-price__regular">{{ product.price_max | money }}</span>
-  {% elsif selected.compare_at_price and selected.compare_at_price > selected.price %}
-    <ins class="ra-price__special ra-price__regular">
-      {{ selected.price | money }}
-    </ins>
-    <del class="ra-price__old">
-      {{ selected.compare_at_price | money }}
-    </del>
   {% else %}
-    <span class="ra-price__regular">{{ selected.price | money }}</span>
+    <span class="ra-price__regular{% if has_compare %} ra-price__special{% endif %}" data-price="{{selected.price}}">
+      {{- selected.price | money -}}
+    </span>
+    <span
+      class="ra-price__old{% unless has_compare %} hidden{% endunless %}"
+      data-price-compare="{{selected.compare_at_price}}"
+    >
+      {{- selected.compare_at_price | money -}}
+    </span>
   {% endif %}
 </div>
