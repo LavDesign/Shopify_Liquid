@@ -867,33 +867,38 @@
       Icon Tile
     {%- endcomment -%}
     <h4 class="text-h4 mt-10 mb-5">Icon Tile</h4>
+    {% assign featured_image = section.settings.featured_product.featured_image %}
     {% assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300 %}
-    {% assign img_alt = section.settings.featured_product.featured_image.alt %}
+    {% assign img_alt = section.settings.featured_product.featured_image.alt
+      | default: section.settings.featured_product.title
+    %}
     {% assign link_url = section.settings.featured_product.url %}
     <div class="grid gap-6 grid-cols-2 mb-5">
       {% render 'ra-icon-tile',
-        imgSrc: img_src,
-        imgAlt: img_alt,
+        image: featured_image,
+        image_src: img_src,
+        image_alt: img_alt,
         title: 'This is a Title',
         description: "I'm not thinking about anything when I'm climbing.",
-        detailsLocation: 'after',
+        details_location: 'after',
         stacked: true,
-        linkUrl: link_url,
-        linkText: 'Default',
-        horizontalAlign: 'right'
+        link_url: link_url,
+        link_text: 'Default',
+        horizontal_align: 'right'
       %}
       {% render 'ra-icon-tile',
-        imgSrc: img_src,
-        imgAlt: img_alt,
-        imgWidth: 200,
+        image: featured_image,
+        image_src: img_src,
+        image_alt: img_alt,
+        image_width: 200,
         title: 'This is a Title',
         description: "I'm not thinking about anything when I'm climbing.",
         stacked: false,
-        linkUrl: link_url,
-        linkText: 'Default',
-        horizontalAlign: 'left',
-        horizontalAlignMD: 'center',
-        verticalAlign: 'bottom'
+        link_url: link_url,
+        link_text: 'Default',
+        horizontal_align: 'left',
+        horizontal_align_md: 'center',
+        vertical_align: 'bottom'
       %}
     </div>
 
@@ -955,22 +960,69 @@
     {%- comment -%}
       Content Tiles
     {%- endcomment -%}
-    {% assign videoUrl = section.settings.video_url %}
+    {% assign video_url = section.settings.video_url %}
+
     <h4 class="text-h4 mt-10 mb-5">Content Tiles</h4>
-    <div style="max-width: 22rem;">
-      {{ section.settings.featured_product.featured_image.url }}
-      {% render 'ra-content-tile',
-        image: section.settings.featured_product.featured_image,
-        alt: img_alt,
-        title: 'This is a title',
-        description: "I'm not thinking about anything when I'm climbing.",
-        link_url_1: link_url,
-        link_text_1: 'Default',
-        link_url_2: link_url,
-        link_text_2: 'Secondary',
-        width: 400,
-        height: 300
-      %}
+    <div class="flex flex-row gap-1">
+      <div class="flex-1">
+        {% render 'ra-content-tile',
+          image: section.settings.featured_product.featured_image,
+          alt: img_alt,
+          title: 'This is a title',
+          description: "I'm not thinking about anything when I'm climbing.",
+          details_location: 'before',
+          link_url_1: link_url,
+          link_text_1: 'Default',
+          link_url_2: link_url,
+          link_text_2: 'Secondary',
+          width: 400,
+          height: 300
+        %}
+      </div>
+      <div class="flex-1">
+        {% render 'ra-content-tile',
+          image: section.settings.featured_product.featured_image,
+          alt: img_alt,
+          title: 'This is a title',
+          description: "I'm not thinking about anything when I'm climbing.",
+          details_location: 'after',
+          link_url_1: link_url,
+          link_text_1: 'Default',
+          link_url_2: link_url,
+          link_text_2: 'Secondary',
+          width: 400,
+          height: 300
+        %}
+      </div>
+      <div class="flex-1">
+        {% render 'ra-content-tile',
+          image: section.settings.featured_product.featured_image,
+          alt: img_alt,
+          title: 'This is a title',
+          description: "I'm not thinking about anything when I'm climbing.",
+          details_location: 'overlay',
+          link_url_1: link_url,
+          link_text_1: 'Default',
+          link_url_2: link_url,
+          link_text_2: 'Secondary',
+          width: 400,
+          height: 300
+        %}
+      </div>
+      <div class="flex-1">
+        {% render 'ra-content-tile',
+          image: section.settings.featured_product.featured_image,
+          alt: img_alt,
+          title: 'This is a title',
+          description: "I'm not thinking about anything when I'm climbing.",
+          details_location: 'after',
+          link_url_1: link_url,
+          link_text_1: 'Default',
+          width: 400,
+          height: 300,
+          video: video_url
+        %}
+      </div>
     </div>
     <hr class="border my-20">
     <h4 class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
@@ -986,7 +1038,7 @@
         link_text_2: 'Secondary',
         width: 400,
         height: 300,
-        video: videoUrl
+        video: video_url
       %}
     </div>
     <hr class="border my-20">
