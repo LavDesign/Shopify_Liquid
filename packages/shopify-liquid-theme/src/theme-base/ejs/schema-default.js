@@ -137,7 +137,7 @@ const colorsSchemaPicker = [
   Fonts - Typography
 */
 const fonts = [
-  { label: "Gibson", value: "'gibson', sans-serif" },
+  { label: "Gibson", value: "'canada-type-gibson', sans-serif" },
   { label: "Mono", value: "'mono', monospace" },
 ];
 

@@ -13,6 +13,7 @@ import RaModal from "./ra-modal.js";
 import RaAccountAuth from "./ra-account-auth.js";
 import RaAccount from "./ra-account.js";
 import RaCartToggle from "./ra-cart-toggle.js";
+import RaProductTile from "./ra-product-tile.js";
 
 customElements.define("ra-tabs", RaTabs);
 customElements.define("ra-header", RaHeader);
@@ -29,3 +30,4 @@ customElements.define("ra-modal", RaModal);
 customElements.define("ra-account-auth", RaAccountAuth);
 customElements.define("ra-account", RaAccount);
 customElements.define("ra-cart-toggle", RaCartToggle);
+customElements.define("ra-product-tile", RaProductTile);

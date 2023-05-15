@@ -18,8 +18,9 @@
     endcase
   endcapture
 %}
-
+{% assign new_index = index | minus: 1 %}
 <div
+  data-aos="fade-up" data-aos-delay="{{ '50' | times: new_index }}"
   class="ra-disruptor-tile flex p-6 relative overflow-hidden {{ disruptor_classes }}"
   style="color: {{ disruptor.text_color }}"
 >

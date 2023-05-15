@@ -1,12 +1,12 @@
 <template>
   <div class="ra-product-form">
-    <template v-if="!product.has_only_default_variant">
+    <div v-if="!product.has_only_default_variant" class="mb-16">
       <template
         :key="optionKey"
         v-for="(options, optionKey) in formattedOptions"
       >
         <SwatchPicker
-          v-if="swatchOptions.includes(optionKey)"
+          v-if="optionsAsSwatches.includes(optionKey)"
           :label="optionKey"
           :options="options"
           :selected="selectedOptions[optionKey]"
@@ -22,14 +22,16 @@
           :options="options"
           :selected="selectedOptions[optionKey]"
           :variant="getOptionVariant(optionKey)"
-          :itemsPerRow="itemsPerRow"
+          :itemsPerRow="getItemsPerRow(optionKey)"
+          :size="getOptionSizes(optionKey)"
+          :fillSpace="false"
           @change:option="
             (selected, option) =>
               handleOptionSelect(optionKey, selected, option)
           "
         />
       </template>
-    </template>
+    </div>
 
     <RaAddToCart
       v-bind="{ buttonLabel, qty }"
@@ -44,6 +46,7 @@
 import { computed, ref, reactive, onMounted, watch } from "vue";
 import { useCartStore } from "../stores/cart";
 import { useProductPageStore } from "../stores/productPage";
+import { updateURL } from "../../js/utils/search-params";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
@@ -56,16 +59,45 @@ const props = defineProps({
 const cartStore = useCartStore();
 
 // ToDo: Add these values as a prop to pull from customizer
-const dropdownOptions = [];
-const swatchOptions = ["Color"];
+const optionsAsDropdowns = [];
+const optionsAsSwatches = ["Color"];
+const optionsAsSmall = ["Size"];
+const optionsAsHorizontal = ["Material"];
 
-const itemsPerRow = "4";
+const itemsPerRow = {
+  xs: 2,
+  sm: 4,
+};
+
+const itemsPerRowSmall = {
+  sm: 6,
+  lg: 8,
+};
+
+function getItemsPerRow(optionName) {
+  return optionsAsSmall.includes(optionName) ? itemsPerRowSmall : itemsPerRow;
+}
+
+function isHorizontalOption(optionName) {
+  return optionsAsHorizontal.includes(optionName);
+}
 
 function getOptionVariant(optionName) {
-  if (dropdownOptions.includes(optionName)) {
-    return "dropdown";
+  return optionsAsDropdowns.includes(optionName) ? "dropdown" : "grid";
+}
+
+function getOptionSizes(optionName) {
+  if (isHorizontalOption(optionName)) {
+    return {
+      height: "var(--option-picker-horizontal-height)",
+      width: "120px",
+    };
+  } else {
+    return {
+      width: "var(--option-picker-square-height)",
+      height: "var(--option-picker-square-height)",
+    };
   }
-  return "grid";
 }
 
 const optionsWithValues = reactive(props.product.options_with_values);
@@ -113,15 +145,34 @@ const formattedOptions = computed(() => {
 
   props.product.options.forEach((option, optionIndex) => {
     formattedOptions[option] = [];
+    // Todo - Find a more elegant way of passing separate data for swatches
 
-    optionsWithValues[option].forEach((value) => {
-      const optionIsAvailable = optionHasInStockVariant(value, optionIndex);
-      formattedOptions[option].push({
-        label: value,
-        value,
-        disabled: !optionIsAvailable,
+    // Currently the liquid templates don't have insight into which option keys are set to use
+    // color swatches, so there's some necessary config duplication until
+    // we switch to the storefront API
+    if (optionsAsSwatches.includes(option)) {
+      optionsWithValues[option].forEach((optionValue) => {
+        const optionIsAvailable = optionHasInStockVariant(
+          optionValue.value,
+          optionIndex
+        );
+        formattedOptions[option].push({
+          label: optionValue.value,
+          value: optionValue.value,
+          image: optionValue.url,
+          disabled: !optionIsAvailable,
+        });
       });
-    });
+    } else {
+      optionsWithValues[option].forEach((value) => {
+        const optionIsAvailable = optionHasInStockVariant(value, optionIndex);
+        formattedOptions[option].push({
+          label: value,
+          value,
+          disabled: !optionIsAvailable,
+        });
+      });
+    }
   });
 
   return formattedOptions;
@@ -175,10 +226,35 @@ const addToCart = async () => {
   isAddingToCart.value = false;
 };
 
+const updateVariantURL = () => {
+  const searchParamString = new URLSearchParams({
+    variant: currentVariant.value.id,
+  }).toString();
+
+  searchParamString && updateURL(searchParamString);
+};
+
+const primarySwiperInstance = document.querySelector(
+  ".product-media-gallery__primary"
+)?.swiper;
+
+const slideToCurrentVariantImage = () => {
+  const currentVariantSlide = primarySwiperInstance.slides.find(
+    (slide) =>
+      parseInt(slide.getAttribute("data-media-id")) ===
+      currentVariant.value.media.id
+  );
+
+  const index = currentVariantSlide?.getAttribute("data-slide-index");
+  index && primarySwiperInstance.slideTo(index);
+};
+
 const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
+  updateVariantURL();
+  slideToCurrentVariantImage();
 });
 
 onMounted(() => {

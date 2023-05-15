@@ -41,11 +41,11 @@
     Section header + Slider
   {%- endcomment -%}
   {% if layout == 'fifty-fifty' %}
-    <div class="md:grid md:grid-cols-2 items-center">
+    <div class="md:grid grid-cols-1 md:grid-cols-2 items-center">
   {% endif %}
 
   {% if title != blank or section.settings.description != blank or cta_url != blank %}
-    <div class="flex flex-col items-center justify-center px-5 py-8 md:py-15 {% if layout == 'fifty-fifty' %}order-2{% endif %}">
+    <div class="flex flex-col items-center justify-center px-5 py-8 md:py-15 {% if layout == 'fifty-fifty' %}order-2{% endif %}" data-aos="fade-up" data-aos-delay="100">
       <div class="w-full md:w-2/3 text-center">
         {% if title != blank %}
           <div class="mb-4">
@@ -105,10 +105,10 @@
             {% endfor %}
           </swiper-container>
           <div class="{{ section.id }} swiper-button-prev">
-            {% render 'ra-icon' with "chevron-left", width: '18px', height: '18px', color: arrow_color %}
+            {% render 'ra-icon', icon: "chevron-left", width: '18px', height: '18px', color: arrow_color %}
           </div>
           <div class="{{ section.id }} swiper-button-next">
-            {% render 'ra-icon' with "chevron-right", width: '18px', height: '18px', color: arrow_color %}
+            {% render 'ra-icon', icon: "chevron-right", width: '18px', height: '18px', color: arrow_color %}
           </div>
         </div>
       {% endif %}
@@ -116,7 +116,7 @@
   {% endif %}
 
   {% if section.blocks.size > 0 %}
-    <div class="order-1 flex items-center relative">
+    <div class="order-1 flex items-center relative" data-aos="fade-up"> 
 
       {%- comment -%}
         Background - images
@@ -135,14 +135,14 @@
         <div class="hidden md:block">
           {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
-        <div class="block md:hidden">
+        <div class="block md:hidden w-full">
           {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
       {% else %}
         <div class="hidden md:block">
           {% render 'ra-image', alt: desktop_image.alt, src: desktop_image | image_url: width: 1800, srcset: srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
-        <div class="block md:hidden">
+        <div class="block md:hidden w-full">
           {% render 'ra-image', alt: mobile_image.alt, src: mobile_image | image_url: width: 800, srcset: mobile_srcset, sizes: "100vw", classes: 'w-full' %}
         </div>
       {% endif %}
@@ -184,7 +184,7 @@
             <div class="ra-shop-the-look__product absolute z-20 flex p-3 pr-8 {% if block.settings.horizontal_position > 60 or block.settings.horizontal_position_mobile > 60 %}ra-shop-the-look__product--left{% endif %}"
               id="product-{{ block.id }}">
               <button class="absolute flex w-3.5 h-3.5 top-2.5 right-2.5" data-popover="product-{{ block.id }}">
-                {% render 'ra-icon' icon: 'close', width: '14px', height: '14px' %}
+                {% render 'ra-icon', icon: 'close', width: '14px', height: '14px' %}
                 <span class="sr-only">{{ 'sections.shop-the-look.product-hide' | t }} {{ product.title }}</span>
               </button>
 

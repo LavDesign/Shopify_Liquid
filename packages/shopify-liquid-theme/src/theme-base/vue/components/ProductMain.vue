@@ -1,19 +1,17 @@
 <template>
   <Transition name="fade" appear>
     <div class="ra-product-main__inner">
-      <div class="flex flex-row justify-between mb-3">
-        <h1 class="h4" v-text="title"></h1>
-        <div class="h4" v-if="currentVariant">
-          <template v-if="showComparePrice">
-            <span class="ra-price__special">{{
-              $filters.money(currentVariant.price)
-            }}</span>
-            <span class="ra-price__old">{{
-              $filters.money(currentVariant.compare_at_price)
-            }}</span>
-          </template>
-          <template v-else>{{ $filters.money(currentVariant.price) }}</template>
-        </div>
+      <h1 class="h4" v-text="title"></h1>
+      <div class="h4" v-if="currentVariant">
+        <template v-if="showComparePrice">
+          <span class="ra-price__special">{{
+            $filters.money(currentVariant.price)
+          }}</span>
+          <span class="ra-price__old">{{
+            $filters.money(currentVariant.compare_at_price)
+          }}</span>
+        </template>
+        <template v-else>{{ $filters.money(currentVariant.price) }}</template>
       </div>
       <div v-if="$slots['review-stars']" class="mb-3">
         <slot name="review-stars"></slot>

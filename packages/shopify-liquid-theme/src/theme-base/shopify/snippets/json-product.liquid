@@ -37,10 +37,23 @@
   "options_with_values": {
     {%- for option in product.options_with_values -%}
       {{ option.name | json }}: [
-      {%- for value in option.values -%}
-        {{ value | json }}
-        {%- unless forloop.last %},{% endunless -%}
-      {%- endfor -%}
+      {% if option.name == 'Color' %}
+        {%- for value in option.values -%}
+          {% assign swatch_image = shop.metaobjects.color_swatch[value].image.value %}
+          {
+            {% if swatch_image.src != blank %}
+              "url": "{{ swatch_image | image_url: width: 400 }}",
+            {% endif %}
+            "value": {{ value | json }}
+          }
+          {%- unless forloop.last %},{% endunless -%}
+        {%- endfor -%}
+      {% else%}
+        {%- for value in option.values -%}
+          {{ value | json }}
+          {%- unless forloop.last %},{% endunless -%}
+        {%- endfor -%}
+      {% endif %}
       ]
       {%- unless forloop.last %},{% endunless -%}
     {%- endfor -%}
@@ -67,7 +80,10 @@
         "barcode": {{ variant.barcode | json }},
         "compare_at_price": {{ variant.compare_at_price | json }},
         "id": {{ variant.id }},
-        "images": {
+        "media": {
+          "id": {{ variant.featured_media.id | default: '' | json }}
+        },
+        "image": {
           {%- if variant.image.id -%}
             "default": {
               "alt": {{ variant.image.alt | json }},

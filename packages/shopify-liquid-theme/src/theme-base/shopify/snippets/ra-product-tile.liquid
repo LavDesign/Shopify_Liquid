@@ -6,8 +6,9 @@
   atc_button:  Boolean, toggle ATC button - (optional) [default=false]
   atc_label:   String, add custom ATC button text - (optional)
   atc_style:   String, [primary, secondary, tertiary] - optional
+  index:       Number
   badge_text:  String, Add custom badge text
-  badge_style: String, [primary, secondary, warning, danger, info, success] - (required if badge text)
+  badge_style: String, [primary, secondary, warning, danger, info, success] - (optional) [default=false]
   wishlist:    Boolean, toggle add wishlist button on hover - (optional) [default=false]
   wishlist_style: String, [primary, secondary, warning, danger, info, success] - optional
 
@@ -21,22 +22,59 @@
   {% render 'ra-product-tile' product: product %}
 {% endcomment %}
 
-{% assign wishlistStyle = wishlist_style | default: 'danger' %}
+{% liquid
+  assign current_variant = product.selected_or_first_available_variant
+  unless pre_title
+    assign pre_title = product.type
+  endunless
+  unless badge_style
+    assign badge_style = 'primary'
+  endunless
+  unless hover_img
+    assign img_array = ''
+    assign product_alt_image = null
+    assign variant_alt_image = null
+    for image in product.images
+      unless image == product.featured_image
+        if image.alt contains current_variant.sku and variant_alt_image == null
+          assign variant_alt_image = image
+        endif
+        if product_alt_image == null
+          assign product_alt_image = image
+        endif
+      endunless
+    endfor
+    assign img_array = img_array | split: '||%%'
+    assign hover_img = product_alt_image
+    if variant_alt_image
+      assign hover_img = variant_alt_image
+    endif
+  endunless
+  if product.selected_or_first_available_variant.metafields.badge.label
+    assign badge_text = product.selected_or_first_available_variant.metafields.badge.label
+  else
+    assign badge_text = product.metafields.badge.label
+  endif
+  assign wishlistStyle = wishlist_style | default: 'danger'
+%}
 
-<div class="ra-product-tile ra-product-tile--default">
+<!-- prettier-ignore -->
+<ra-product-tile
+  data-product='{{ product | json | escape }}'
+  data-current-variant="{{ current_variant.id }}"
+  class="ra-product-tile ra-product-tile--default"
+  data-aos="fade-up"
+  data-aos-delay="{{ '50' | times: index }}"
+>
   <div class="ra-product-tile__media">
     {% if product.featured_image %}
-      <a href="{{ product.url }}" class="ra-product-tile__media-link">
+      <a href="{{ product.url }}" class="ra-product-tile__media-link" data-product-link>
         <!-- ra-image -->
         <div
           class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
           style="--media-width:1; --media-height:1.2;"
         >
-          {{
-            product.featured_image
-            | image_url: width: 450
-            | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy'
-          }}
+          <img src="{{ product.featured_image | image_url: width: 450 }}" alt="{{ product.title }}" class="ra-image__media" data-featured-image width="1" height="1.2" loading="lazy"/>
         </div>
         <!-- ra hover-image -->
         {% if hover_img != blank %}
@@ -44,11 +82,7 @@
             class="ra-image ra-image--use-aspect-ratio ra-product-tile__image"
             style="--media-width:1; --media-height:1.2;"
           >
-            {{
-              hover_img
-              | image_url: width: 450
-              | image_tag: width: '1', height: '1.2', class: 'ra-image__media', loading: 'lazy'
-            }}
+            <img src="{{ hover_img | image_url: width: 450 }}" alt="{{ product.title }}" class="ra-image__media" data-alt-image width="1" height="1.2" loading="lazy"/>
           </div>
         {% endif %}
       </a>
@@ -98,6 +132,11 @@
     <a href="{{ product.url }}" class="ra-product-tile__name">
       {{ product.title }}
     </a>
+    {% if product.selected_or_first_available_variant.title != 'Default Title' %}
+    <p class="ra-product-tile__attribute" data-variant-title>
+      {{ product.selected_or_first_available_variant.title }}
+    </p>
+    {% endif %}
     <!-- Product Price -->
     {% render 'ra-price', product: product, class: 'ra-product-tile__price' %}
     <!-- Rating -->
@@ -108,5 +147,39 @@
     >
       {% render 'ra-review-stars', platform: settings.review_platform, product: product %}
     </div>
+    {% if product.variants.size > 1 %}
+      {% for option in product.options_with_values %}
+        {% liquid
+          assign option_name = option.name | downcase
+        %}
+        {% if option_name == "color" %}
+        <div class="relative" data-option-container>
+          <div class="ra-product-tile__options flex flex-row gap-3 overflow-x-hidden" data-variant-options>
+          {% for value in option.values %}
+            {% capture data_attributes %}
+              data-option-value="{{ value }}"
+              data-option-position="{{ option.position }}"
+            {% endcapture %}
+            {% capture variant_id %}{{value}}_{{product.id}}{% endcapture %}
+            {% assign checked = false %}
+            {% assign disabled = true %}
+            {% if option_name == "color" %}
+              {%- render 'ra-swatch-button',
+                name: option_name,
+                class: '',
+                id: variant_id,
+                checked: checked,
+                value: value,
+                label: value,
+                style: 'classic',
+                additional_attributes: data_attributes
+              -%}
+          {% endif %}
+        {% endfor %}
+        </div>
+        </div>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
-</div>
+</ra-product-tile>

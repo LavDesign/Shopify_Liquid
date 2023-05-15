@@ -342,7 +342,7 @@
         "id": "primary_font",
         "label": "Primary font",
         "options": <%- uikit.fonts -%>,
-        "default": "'gibson', sans-serif"
+        "default": "'canada-type-gibson', sans-serif"
       },
       {
         "type": "select",
@@ -354,6 +354,24 @@
       {
         "type": "header",
         "content": "H1 sizes"
+      },
+      {
+        "type": "range",
+        "id": "display_desktop_size",
+        "label": "Display size (desktop)",
+        "min": 12,
+        "max": 100,
+        "unit": "px",
+        "default": 89
+      },
+      {
+        "type": "range",
+        "id": "display_mobile_size",
+        "label": "Display size (mobile)",
+        "min": 12,
+        "max": 100,
+        "unit": "px",
+        "default": 38
       },
       {
         "type": "range",

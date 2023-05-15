@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 export function itemList(product = {}, variant = {}, collection = {}) {
   const splitPath = window.location.pathname.split("/").slice(1);
   const pageType = splitPath[0];

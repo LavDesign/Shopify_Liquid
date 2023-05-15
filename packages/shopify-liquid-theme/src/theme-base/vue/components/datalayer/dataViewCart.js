@@ -26,7 +26,9 @@ export function dataViewCart(cart) {
     };
   });
 
+  // eslint-disable-next-line no-undef
   dataLayer.push({ ecommerce: null });
+  // eslint-disable-next-line no-undef
   dataLayer.push({
     event: "acn_view_cart",
     ecommerce: {

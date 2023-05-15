@@ -4,12 +4,12 @@
 <div id="ra-main-product" class="ra-main-product" data-section-id="{{ section.id }}">
   <div class="wrapper mt-4">
     <div class="w-full md:max-w-screen-2xl mt-40 px-4 md:px-10 mx-auto">
-      {% render 'ra-breadcrumbs', classes: 'my-10 hidden md:block' %}
+      {% render 'ra-breadcrumbs', classes: 'my-10 hidden md:block', divider: 'slash' %}
       <div class="flex product pt-3 flex-col md:flex-row">
         <div class="md:w-1/2 pl-0">
           {% render 'ra-product-media-gallery', product: product %}
         </div>
-        <div class="md:w-1/2 md:pl-20">
+        <div class="md:w-1/2 md:pl-10 lg:pl-20">
           <div class="sticky top-12">
             {% render 'ra-product-main', product_data: product_data %}
             <div class="product-main__special-messaging">
@@ -17,7 +17,7 @@
               {%- for block in special_messaging_blocks -%}
                 <div class="flex justify-center gap-1 items-center my-4">
                   {% if block.settings.enable_icon %}
-                    <div>{% render 'ra-icon' with block.settings.icon %}</div>
+                    <div>{% render 'ra-icon', icon: block.settings.icon %}</div>
                   {% endif %}
                   <div>{{ block.settings.content }}</div>
                 </div>

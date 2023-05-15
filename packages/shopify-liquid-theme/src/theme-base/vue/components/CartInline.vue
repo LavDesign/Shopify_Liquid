@@ -17,10 +17,12 @@
         <div class="w-full">
           <div class="px-4 py-3 bg-tertiary-900 flex flex-row justify-between">
             <span class="text-lg text-white text-bold" v-text="cartCount" />
-            <button @click="toggleCart">
-              <svg class="ra-icon text-white h-4 w-4 cursor-pointer">
-                <use xlink:href="#close"></use>
-              </svg>
+            <button @click="toggleCart" class="flex items-center">
+              <RaIcon size="20px" class="cursor-pointer" color="white">
+                <svg>
+                  <use xlink:href="#close"></use>
+                </svg>
+              </RaIcon>
             </button>
           </div>
           <div class="px-6 pt-4 pb-2 bg-white">
@@ -77,6 +79,7 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
+import { RaIcon } from "@bva/ui-vue";
 import { ref, computed, onMounted, watch, nextTick } from "vue";
 import { useCartStore } from "../stores/cart";
 import {
@@ -134,7 +137,7 @@ const toggleCart = (e) => {
   const body = document.getElementsByTagName("body");
   cartOpen.value = !cartOpen.value;
   if (cartOpen.value) {
-    if (e.detail.track) dataViewCart(cart);
+    if (e.detail?.track) dataViewCart(cart);
     body[0].classList.add("modal-open");
   } else body[0].classList.remove("modal-open");
 };
