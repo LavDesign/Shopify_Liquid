@@ -5,6 +5,7 @@ export default class RaProductTile extends HTMLElement {
     super();
     // Setting the product and current variant
     this.product = JSON.parse(this.getAttribute("data-product"));
+    this.variants = this.product.variants;
     this.currentVariant = this.product.variants.find(
       (variant) => variant.id == this.getAttribute("data-current-variant")
     );
@@ -23,25 +24,107 @@ export default class RaProductTile extends HTMLElement {
     // whether or not to display the arrows
     this.maxScrollLeft =
       this.variantOptions?.scrollWidth - this.variantOptions?.clientWidth;
-    // Testing with draggable container
-    this.startClick;
-    this.dragAmount;
+    this.activeFilters;
   }
 
   connectedCallback() {
+    this.activeFilters = this.getActiveFilters();
     if (this.variantOptions?.children?.length > 0) {
       this.maxScrollLeft =
         this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
       this.swatchOverflow();
-      Array.from(this.variantOptions.children).forEach((option, i) => {
-        if (i == 0) {
-          const label = option.querySelector("label");
-          label.classList.add("active");
-        }
-        option.addEventListener("click", this.swatchClick.bind(this));
-      });
+      this.initTile();
       window.addEventListener("resize", this.handleResize.bind(this));
     }
+  }
+
+  initTile() {
+    const variants = this.variants;
+    const activeFilters = this.activeFilters;
+    const availableVariants = [];
+    const product = this.product;
+    const optionNames = product.options;
+    const optionIndex = {};
+    optionNames.forEach((option, i) => {
+      optionIndex[i + 1] = option;
+    });
+
+    Array.from(this.variantOptions.children).forEach((option, i) => {
+      const label = option.querySelector("label");
+      const input = option.querySelector("input");
+      if (Object.keys(activeFilters).length > 0) {
+        if (activeFilters[input.name]) {
+          activeFilters[input.name].forEach((af) => {
+            if (af == input.value) {
+              const foundVariant = findVariant(input);
+              if (foundVariant) {
+                this.setCurrentVariant(foundVariant[0]);
+                // label.classList.add("active");
+              }
+            }
+          });
+        }
+      } else if (i == 0) {
+        label.classList.add("active");
+      }
+      option.addEventListener("click", this.swatchClick.bind(this));
+    });
+
+    function findVariant(input) {
+      const { name, value } = input;
+      const optionPosition = parseInt(input.dataset.optionPosition);
+      variants.forEach((variant) => {
+        if (
+          variant[`option${optionPosition}`] == value ||
+          product.options[optionPosition - 1].toLowerCase() == name
+        ) {
+          availableVariants.push(variant);
+        }
+      });
+      const filterer = availableVariants.filter((variant) => {
+        const test = [1, 2, 3]
+          .map((i) => {
+            if (optionIndex[i]) {
+              const option = optionIndex[i].toLowerCase();
+              const value = variant[`option${i}`];
+              if (activeFilters[option]?.includes(value)) {
+                return value;
+              } else {
+                return null;
+              }
+            } else {
+              return null;
+            }
+          })
+          .filter((el) => el !== undefined && el !== null);
+        if (test.length >= Object.keys(activeFilters).length) {
+          return variant;
+        }
+      });
+      return filterer;
+    }
+  }
+
+  getActiveFilters() {
+    const { search } = window.location;
+    const activeFilters = {};
+    const params = search.slice(1).split("&");
+    const cleanParams = params
+      .map((param) => {
+        if (param.includes("filter")) {
+          return param.split("filter.v.option.").pop();
+        }
+        return null;
+      })
+      .filter((el) => el !== undefined && el !== null);
+    cleanParams.forEach((param) => {
+      const [key, value] = param.split("=");
+      if (!activeFilters[key]) {
+        activeFilters[key] = [];
+      }
+      activeFilters[key].push(value);
+    });
+    return activeFilters;
   }
 
   handleResize() {
