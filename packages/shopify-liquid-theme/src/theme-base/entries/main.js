@@ -11,12 +11,15 @@ import "swiper/css/bundle";
 import components from "../vue/components/index.js";
 import "../js/custom-elements/custom-elements.js";
 import "../js/custom-elements/scrollable.js";
+import AOS from "aos";
 
 import "tailwindcss/base.css";
 import "@bva/ui-shared/styles/reset.css";
 import "@bva/ui-shared/styles/required.css";
 import "@bva/ui-shared/styles/components.css";
 import "tailwindcss/utilities.css";
+import "aos/dist/aos.css";
+
 import "../scss/main.scss";
 
 const isDesignMode = window.Shopify.designMode || window.Shopify.inspectMode;
@@ -90,6 +93,7 @@ window.addEventListener("load", () => {
   register();
   renderVueApps();
   initSwipers();
+  AOS.init();
 });
 
 /**

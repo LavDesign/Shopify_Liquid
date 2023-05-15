@@ -4,7 +4,12 @@
 
 {% assign platform = settings.review_platform %}
 
-<div class="product-reviews max-w-screen-2xl my-0 mx-auto">
+<div
+  class="product-reviews max-w-screen-2xl my-0 mx-auto"
+  data-aos="fade"
+  data-aos-offset="300"
+  id="ra-product-reviews"
+>
   {% case platform %}
     {% when 'yotpo' %}
       <div

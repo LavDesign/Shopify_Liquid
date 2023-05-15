@@ -28,6 +28,20 @@ export default class RaCollectionFilters extends HTMLElement {
           responseDOM.querySelector("[data-collection-filters]").innerHTML;
         document.querySelector("[data-active-filters]").innerHTML =
           responseDOM.querySelector("[data-active-filters]").innerHTML;
+
+        if (
+          responseDOM.querySelector(
+            "[data-active-filters] [data-action-remove-filter]"
+          )
+        ) {
+          document.querySelector("#CollectionActiveFilters").style.display =
+            "flex";
+          document.querySelector("[data-clear-filters]").style.opacity = "1";
+        } else {
+          document.querySelector("#CollectionActiveFilters").style.display =
+            "none";
+          document.querySelector("[data-clear-filters]").style.opacity = "0";
+        }
       })
       .then(() => {
         RaCollectionFilters.addActiveFilterEventListeners();
@@ -91,6 +105,9 @@ export default class RaCollectionFilters extends HTMLElement {
     const filterForm = document.getElementById("CollectionFilters");
     const changeEvent = new Event("change");
     filterForm.dispatchEvent(changeEvent);
+
+    let params = new URLSearchParams(window.location.search);
+    RaCollectionFilters.renderSectionFromFetch(params);
   }
 
   static addActiveFilterEventListeners() {
@@ -149,6 +166,9 @@ export default class RaCollectionFilters extends HTMLElement {
     });
 
     RaCollectionFilters.addActiveFilterEventListeners();
+
+    let params = new URLSearchParams(window.location.search);
+    RaCollectionFilters.renderSectionFromFetch(params);
 
     /* Ensure that navigating through the browser "Back" button properly applies filters */
     window.addEventListener("popstate", RaCollectionFilters.onBrowserPrev);

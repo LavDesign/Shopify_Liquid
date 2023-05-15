@@ -38,7 +38,7 @@
   var({{ section.settings.arrow_color }})
 {% endcapture %}
 
-<div class="relative">
+<div class="relative" data-aos="fade">
   <swiper-container
     class="ra-hero overflow-hidden set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}set--details-after-sm set--details-overlay-md{% else %}set--details-overlay{% endif %}"
     {% if section.settings.autoplay %}
@@ -65,12 +65,21 @@
                 width: 2000,
                 lazyload: true
               %}
-              {% render 'ra-image',
-                image: block.settings.mobile_bg_image,
-                classes: 'ra-image__media ra-image__media--mobile md:hidden',
-                width: 800,
-                lazyload: true
-              %}
+              {% if block.settings.mobile_bg_image != blank %}
+                {% render 'ra-image',
+                  image: block.settings.mobile_bg_image,
+                  classes: 'ra-image__media ra-image__media--mobile md:hidden',
+                  width: 800,
+                  lazyload: true
+                %}
+              {% else %}
+                {% render 'ra-image',
+                  image: block.settings.desktop_bg_image,
+                  classes: 'ra-image__media ra-image__media--mobile md:hidden',
+                  width: 800,
+                  lazyload: true
+                %}
+              {% endif %}
             </div>
           {% endif %}
         </div>
@@ -139,7 +148,7 @@
 
 {% schema %}
 {
-  "name": "Hero - Image",
+  "name": "Hero - Carousel",
   "tag": "section",
   "blocks": [
     {
@@ -377,7 +386,7 @@
   ],
   "presets": [
     {
-      "name": "Hero - Image"
+      "name": "Hero - Carousel"
     }
   ]
 }

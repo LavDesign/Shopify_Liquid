@@ -1,7 +1,9 @@
 import { itemList } from "./utilities";
 
 export function dataAddToCart(product, variant, qty) {
+  // eslint-disable-next-line no-undef
   dataLayer.push({ ecommerce: null });
+  // eslint-disable-next-line no-undef
   dataLayer.push({
     event: "acn_add_to_cart",
     event_id:

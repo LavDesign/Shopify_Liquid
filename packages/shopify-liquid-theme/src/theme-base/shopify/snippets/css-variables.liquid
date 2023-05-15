@@ -102,6 +102,8 @@
     /*
       Typography - Font sizes (reset Bedrock font sizes)
     */
+    --display-desktop-size: {{ settings.display_desktop_size | append: 'px' }};
+    --display-mobile-size: {{ settings.display_mobile_size | append: 'px' }};
     --h1-desktop-size: {{ settings.h1_desktop_size | append: 'px' }};
     --h1-mobile-size: {{ settings.h1_mobile_size | append: 'px' }};
     --h2-desktop-size: {{ settings.h2_desktop_size | append: 'px' }};

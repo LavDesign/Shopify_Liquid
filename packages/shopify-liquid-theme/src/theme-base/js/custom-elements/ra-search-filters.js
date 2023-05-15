@@ -30,6 +30,18 @@ export default class RaSearchFilters extends HTMLElement {
           responseDOM.querySelector("[data-active-filters]").innerHTML;
         document.querySelector("[data-results-count]").innerHTML =
           responseDOM.querySelector("[data-results-count]").innerHTML;
+
+        if (
+          responseDOM.querySelector(
+            "[data-active-filters] [data-action-remove-filter]"
+          )
+        ) {
+          document.querySelector("#SearchActiveFilters").style.display = "flex";
+          document.querySelector("[data-clear-filters]").style.opacity = "1";
+        } else {
+          document.querySelector("#SearchActiveFilters").style.display = "none";
+          document.querySelector("[data-clear-filters]").style.opacity = "0";
+        }
       })
       .then(() => {
         RaSearchFilters.addActiveFilterEventListeners();
@@ -163,6 +175,9 @@ export default class RaSearchFilters extends HTMLElement {
     });
 
     RaSearchFilters.addActiveFilterEventListeners();
+
+    let params = new URLSearchParams(window.location.search);
+    RaSearchFilters.renderSectionFromFetch(params);
 
     /* Ensure that navigating through the browser "Back" button properly applies filters */
     window.addEventListener("popstate", RaSearchFilters.onBrowserPrev);
