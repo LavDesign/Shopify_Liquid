@@ -5,7 +5,7 @@ export default class RaProductTile extends HTMLElement {
     super();
     // Setting the product and current variant
     this.product = JSON.parse(this.getAttribute("data-product"));
-    this.currentVariant = this.product.variants.find(
+    this.currentVariant = this.product.variants?.find(
       (variant) => variant.id == this.getAttribute("data-current-variant")
     );
     // Properties that update on Variant Switch
@@ -30,6 +30,7 @@ export default class RaProductTile extends HTMLElement {
     this.activeFilters = this.getActiveFilters();
     this.setCurrentVariant(this.currentVariant);
     if (this.variantOptions?.children?.length > 0) {
+      this.updateCurrentVariant();
       this.initializeSwatches();
     }
   }
@@ -74,6 +75,9 @@ export default class RaProductTile extends HTMLElement {
 
   setCurrentVariant(variant) {
     this.currentVariant = variant;
+  }
+
+  updateCurrentVariant() {
     this.updateProductUrl();
     this.updateImages();
     this.updatePrice();
@@ -99,10 +103,11 @@ export default class RaProductTile extends HTMLElement {
     const { optionPosition, optionValue } = activeOption.dataset;
     const newOptions = Array.from(this.currentVariant.options);
     newOptions[optionPosition - 1] = optionValue;
-    const newVariant = this.product.variants.find((variant) =>
+    const newVariant = this.product.variants?.find((variant) =>
       variant.options.every((value, index) => value === newOptions[index])
     );
     this.setCurrentVariant(newVariant);
+    this.updateCurrentVariant();
   }
 
   swatchOverflow() {
@@ -165,9 +170,9 @@ export default class RaProductTile extends HTMLElement {
       }, []);
       this.querySelector("[data-count]").textContent =
         children.length - visibleChildren.length;
-      viewMore.classList.remove("!hidden");
+      viewMore?.classList.remove("!hidden");
     } else {
-      viewMore.classList.add("!hidden");
+      viewMore?.classList.add("!hidden");
     }
   }
 
@@ -248,21 +253,21 @@ export default class RaProductTile extends HTMLElement {
 
   updateImages() {
     const currentSku = this.currentVariant.sku;
-    const featuredImage = this.currentVariant.featured_media;
-    const productImages = this.product.media;
+    const featuredImage = this.currentVariant?.image?.default;
+    const productImages = this.product?.images?.default;
     let mainImage =
       featuredImage ||
       productImages.find((img) => img.alt?.includes(currentSku));
-    let hoverImage = productImages.find((img) => {
+    let hoverImage = productImages?.find((img) => {
       return img.alt?.includes(currentSku) && img !== mainImage;
     });
-    if (!mainImage) mainImage = productImages[0];
-    if (!hoverImage) hoverImage = productImages[1];
+    if (productImages?.length > 0) {
+      if (!mainImage) mainImage = productImages[0];
+      if (!hoverImage && productImages?.[1]) hoverImage = productImages[1];
+    }
     if (mainImage || hoverImage) {
-      const mainImageSrc = mainImage?.preview_image.src + "&width=450";
-      const hoverImageSrc = hoverImage?.preview_image.src + "&width=450";
-      this.featuredImage?.setAttribute("src", mainImageSrc);
-      this.altImage?.setAttribute("src", hoverImageSrc);
+      this.featuredImage?.setAttribute("src", mainImage.sizes.sm);
+      this.altImage?.setAttribute("src", hoverImage.sizes.sm);
     }
   }
 
