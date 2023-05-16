@@ -5,7 +5,6 @@ export default class RaProductTile extends HTMLElement {
     super();
     // Setting the product and current variant
     this.product = JSON.parse(this.getAttribute("data-product"));
-    this.variants = this.product.variants;
     this.currentVariant = this.product.variants.find(
       (variant) => variant.id == this.getAttribute("data-current-variant")
     );
@@ -29,88 +28,23 @@ export default class RaProductTile extends HTMLElement {
 
   connectedCallback() {
     this.activeFilters = this.getActiveFilters();
+    this.setCurrentVariant(this.currentVariant);
     if (this.variantOptions?.children?.length > 0) {
-      this.maxScrollLeft =
-        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-      this.swatchOverflow();
-      this.initializeProductTile();
-      window.addEventListener("resize", this.handleResize.bind(this));
+      this.initializeSwatches();
     }
   }
 
-  initializeProductTile() {
-    const variants = this.variants;
-    const activeFilters = this.activeFilters;
-    const availableVariants = [];
-    const product = this.product;
-    const optionIndex = {};
-    product.options.forEach((option, i) => {
-      optionIndex[i + 1] = option;
-    });
-
-    Array.from(this.variantOptions.children).forEach((option, i) => {
-      const label = option.querySelector("label");
-      const input = option.querySelector("input");
-      if (Object.keys(activeFilters).length > 0) {
-        if (activeFilters[input.name]) {
-          activeFilters[input.name].forEach((af) => {
-            if (af == input.value) {
-              const foundVariant = findVariant(input);
-              if (foundVariant) {
-                this.setCurrentVariant(foundVariant[0]);
-              }
-            }
-          });
-        }
-      } else if (i == 0) {
-        label.classList.add("active");
-      }
+  initializeSwatches() {
+    this.maxScrollLeft =
+      this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
+    this.swatchOverflow();
+    Array.from(this.variantOptions.children).forEach((option) => {
       option.addEventListener("click", this.swatchClick.bind(this));
     });
-
-    function findVariant(input) {
-      const { name, value } = input;
-      const optionPosition = parseInt(input.dataset.optionPosition);
-      const activeVariants = variants.filter((variant) => {
-        const optionName = product.options[optionPosition - 1].toLowerCase();
-        const variantValue = variant[`option${optionPosition}`];
-        const optionFilters =
-          activeFilters?.[optionIndex[optionPosition]?.toLowerCase()];
-        if (variantValue === value || optionName === name) {
-          availableVariants.push(variant);
-        }
-        return (
-          optionFilters?.includes(variantValue) &&
-          Object.keys(activeFilters).length >= Object.keys(optionFilters).length
-        );
-      });
-      return activeVariants;
-    }
+    window.addEventListener("resize", this.handleResize.bind(this));
   }
 
   getActiveFilters() {
-    const { search } = window.location;
-    const activeFilters = {};
-    const params = search.slice(1).split("&");
-    const cleanParams = params
-      .map((param) => {
-        if (param.includes("filter")) {
-          return param.split("filter.v.option.").pop();
-        }
-        return null;
-      })
-      .filter((el) => el !== undefined && el !== null);
-    cleanParams.forEach((param) => {
-      const [key, value] = param.split("=");
-      if (!activeFilters[key]) {
-        activeFilters[key] = [];
-      }
-      activeFilters[key].push(value);
-    });
-    return activeFilters;
-  }
-
-  newActiveFilters() {
     const { search } = window.location;
     const activeFilters = {};
     const params = search.slice(1).split("&");
@@ -118,7 +52,7 @@ export default class RaProductTile extends HTMLElement {
       if (param.includes("filter.v.option.")) {
         const [key, value] = param.split("filter.v.option.")[1].split("=");
         activeFilters[key] = activeFilters[key] || [];
-        activeFilters[key] = value;
+        activeFilters[key].push(value);
       }
     });
 
@@ -173,10 +107,7 @@ export default class RaProductTile extends HTMLElement {
 
   swatchOverflow() {
     // used to set up swatch overflow style
-    if (
-      this.swatchOverflowStyle == "scroll" &&
-      this.variantOptions.children.length > 1
-    ) {
+    if (this.swatchOverflowStyle == "scroll") {
       this.buildArrows();
       this.displayArrows();
     } else if (this.swatchOverflowStyle == "expand") {
@@ -188,39 +119,24 @@ export default class RaProductTile extends HTMLElement {
   displayArrows(newScrollValue = 0) {
     const leftScroll = this.querySelector("[data-scroll-left]");
     const rightScroll = this.querySelector("[data-scroll-right]");
-    if (this.variantOptions.clientWidth < this.variantOptions.scrollWidth) {
-      this.optionContainer.classList.add("px-4");
-      this.maxScrollLeft =
-        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-      if (newScrollValue <= 0) {
-        leftScroll.classList.add("hidden");
-      } else {
-        leftScroll.classList.remove("hidden");
-      }
-      if (newScrollValue >= this.maxScrollLeft) {
-        rightScroll.classList.add("hidden");
-      } else {
-        rightScroll.classList.remove("hidden");
-      }
-    } else {
-      this.optionContainer.classList.remove("px-4");
-      this.maxScrollLeft =
-        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-      leftScroll.classList.add("hidden");
-      rightScroll.classList.add("hidden");
-    }
+    const hasOverflow =
+      this.variantOptions.clientWidth < this.variantOptions.scrollWidth;
+
+    this.optionContainer.classList.toggle("px-4", hasOverflow);
+    this.maxScrollLeft = hasOverflow
+      ? this.variantOptions.scrollWidth - this.variantOptions.clientWidth
+      : 0;
+    leftScroll.classList.toggle("hidden", newScrollValue <= 0);
+    rightScroll.classList.toggle(
+      "hidden",
+      newScrollValue >= this.maxScrollLeft
+    );
   }
 
   buildViewMore() {
     const viewMore = document.createElement("div");
-    const viewMoreCount = document.createElement("span");
-    viewMoreCount.setAttribute("data-count", 0);
-    viewMoreCount.textContent = "0";
-    const plusText = document.createTextNode("+");
-    const moreText = document.createTextNode("\u00A0more");
-    viewMore.appendChild(plusText);
-    viewMore.appendChild(viewMoreCount);
-    viewMore.appendChild(moreText);
+    viewMore.innerHTML = `
+    <span data-count="0"></span>+${"\u00A0"}more`;
     viewMore.classList.add("product-tile__view-more");
     viewMore.setAttribute("data-view-more", "");
     viewMore.addEventListener("click", () => {
@@ -232,18 +148,13 @@ export default class RaProductTile extends HTMLElement {
 
   displayViewMore() {
     const viewMore = this.querySelector("[data-view-more]");
-
-    function calculateGap(children) {
-      const first_pos = children[0].offsetLeft + children[0].offsetWidth;
-      const second_pos = children[1].offsetLeft;
-      return second_pos - first_pos;
-    }
-
+    const children = Array.from(this.variantOptions.children);
     if (this.variantOptions.scrollWidth > this.variantOptions.clientWidth) {
       const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
+      const gridGap =
+        children[1].offsetLeft -
+        (children[0].offsetLeft + children[0].offsetWidth);
       let currentOffset = 0;
-      const children = Array.from(this.variantOptions.children);
-      const gridGap = calculateGap(children);
       const visibleChildren = children.reduce((acc, child) => {
         if (currentOffset + child.offsetWidth < maxWidth) {
           currentOffset += child.offsetWidth + gridGap;
