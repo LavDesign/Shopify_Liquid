@@ -119,7 +119,7 @@
     {% endif %}
   </a>
   <div class="ra-content-tile__details component-details">
-    <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }}">
+    <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }} min-w-full">
       {% if subtitle %}
         <div class="ra-content-tile__subtitle">
           {{- subtitle -}}
@@ -142,7 +142,7 @@
         {% if link_url_1 != blank and link_text_1 != blank %}
           <a
             href="{{ link_url_1 }}"
-            class="ra-link-list__cta ra-button ra-button--primary"
+            class="ra-link-list__cta ra-button ra-button--primary px-0 md:px-7"
             tabindex="-1"
             label="{{ link_text_1 }}"
             title="Click Me"
