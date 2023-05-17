@@ -1,4 +1,13 @@
 <section class="scroll-smooth">
+  {% liquid
+    assign product = section.settings.featured_product
+    assign product_2 = section.settings.featured_product_2
+    assign featured_image = section.settings.featured_product.featured_image
+    assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300
+    assign img_alt = section.settings.featured_product.featured_image.alt | default: section.settings.featured_product.title
+    assign link_url = section.settings.featured_product.url
+  %}
+
   <style>
     .box {
       width: 80px;
@@ -100,7 +109,6 @@
       <div class="box border bg-yellow">yellow</div>
       <div class="box border bg-white">white</div>
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Typography
@@ -146,9 +154,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      secondary standard button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -169,9 +174,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      tertiary standard button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -207,7 +209,6 @@
         {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'full width', full_width: true -%}
       </div>
     </div>
-
     <hr class="border my-20">
     <h4 id="split-buttons" class="text-h4 mt-10 mb-5">Split Buttons</h4>
     {%- comment -%}
@@ -233,9 +234,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      secondary split button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -256,9 +254,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      tertiary split button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -278,7 +273,6 @@
         {%- render 'ra-split-button', size: 'xs', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
       </div>
     </div>
-
     <hr class="border my-20">
     <h4 id="icon-buttons" class="text-h4 mt-10 mb-5">Icon Buttons</h4>
     {%- comment -%}
@@ -318,7 +312,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">primary circle - large</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -340,7 +333,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">primary circle - medium</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -362,7 +354,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">primary circle - small</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -375,10 +366,6 @@
         -%}
       </div>
     </div>
-
-    {%- comment -%}
-      secondary icon button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -470,10 +457,6 @@
         -%}
       </div>
     </div>
-
-    {%- comment -%}
-      tertiary icon button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -552,7 +535,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">tertiary circle - small</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -565,7 +547,6 @@
         -%}
       </div>
     </div>
-
     <hr class="border my-20">
 
     <h4 id="input" class="text-h4 mt-10 mb-5">Input</h4>
@@ -621,10 +602,6 @@
         -%}
       </div>
     </div>
-
-    {%- comment -%}
-      form - quantity selectors
-    {%- endcomment -%}
     <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">QTY - Selector</p>
@@ -690,10 +667,6 @@
         </div>
       </div>
     </div>
-
-    {%- comment -%}
-      form - checkbox & toggle
-    {%- endcomment -%}
     <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">Checkbox</p>
@@ -736,7 +709,6 @@
         {%- render 'ra-radio', label: 'message', id: 'message_radio', message: 'This is info message.' -%}
       </div>
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Icons
@@ -800,7 +772,6 @@
         {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px', color: 'var(--color-primary-900)' -%}
       </div>
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Accordions
@@ -844,14 +815,12 @@
         item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
       %}
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Breadcrumbs
     {%- endcomment -%}
     <h4 id="breadcrumbs" class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
     {% render 'ra-breadcrumbs', divider: 'slash' %}
-
     <hr class="border my-20">
     {%- comment -%}
       Scrollable
@@ -870,7 +839,6 @@
       </div>
     {% endcapture %}
     {% render 'ra-scrollable', expandLabel: 'EXPAND', content: scrollable_content, maxHeight: '4rem' %}
-
     <hr class="border my-20">
     {%- comment -%}
       Badge
@@ -885,7 +853,6 @@
     <div class="mb-5">
       {% render 'ra-badge', label: 'Tertiary Notification Lg', size: 'lg', style: 'tertiary', rounded: true %}
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Icon Tile
@@ -896,31 +863,32 @@
     {% assign link_url = section.settings.featured_product.url %}
     <div class="grid gap-6 grid-cols-2 mb-5">
       {% render 'ra-icon-tile',
-        imgSrc: img_src,
-        imgAlt: img_alt,
+        image: featured_image,
+        image_src: img_src,
+        image_alt: img_alt,
         title: 'This is a Title',
         description: "I'm not thinking about anything when I'm climbing.",
-        detailsLocation: 'after',
+        details_location: 'after',
         stacked: true,
-        linkUrl: link_url,
-        linkText: 'Default',
-        horizontalAlign: 'right'
+        link_url: link_url,
+        link_text: 'Default',
+        horizontal_align: 'right'
       %}
       {% render 'ra-icon-tile',
-        imgSrc: img_src,
-        imgAlt: img_alt,
-        imgWidth: 200,
+        image: featured_image,
+        image_src: img_src,
+        image_alt: img_alt,
+        image_width: 200,
         title: 'This is a Title',
         description: "I'm not thinking about anything when I'm climbing.",
         stacked: false,
-        linkUrl: link_url,
-        linkText: 'Default',
-        horizontalAlign: 'left',
-        horizontalAlignMD: 'center',
-        verticalAlign: 'bottom'
+        link_url: link_url,
+        link_text: 'Default',
+        horizontal_align: 'left',
+        horizontal_align_md: 'center',
+        vertical_align: 'bottom'
       %}
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Notification
@@ -932,7 +900,6 @@
       message: 'My account notification.',
       class: 'ra-notification__icon'
     -%}
-
     <hr class="border my-20">
     {%- comment -%}
       Modal
@@ -1025,6 +992,11 @@
       "type": "product",
       "id": "featured_product",
       "label": "Featured Product"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_2",
+      "label": "Featured Product 2"
     },
     {
       "type": "text",
