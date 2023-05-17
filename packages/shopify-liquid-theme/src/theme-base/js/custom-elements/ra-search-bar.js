@@ -1,5 +1,6 @@
 import { debounce } from "../utils/helpers";
 import { refreshReviewWidgets } from "../utils/vendors";
+import { getToken } from "@bva/ui-shared/helpers";
 import axios from "axios";
 export default class RaSearchBar extends HTMLElement {
   constructor() {
@@ -15,6 +16,7 @@ export default class RaSearchBar extends HTMLElement {
   }
 
   setupEventListeners() {
+    console.log("SETUP EVENT LISTENERS");
     this.toggleEl.addEventListener("click", this.toggleSearch.bind(this));
     this.closeEls.forEach((el) => {
       el.addEventListener("click", this.hideSearch.bind(this));
@@ -35,11 +37,16 @@ export default class RaSearchBar extends HTMLElement {
   }
 
   showSearch() {
+    console.log("Showing search");
     this.classList.remove("hidden");
     this.classList.add("grid");
     this.isVisible = true;
     this.headerInner.classList.add("hidden");
     this.headerInner.classList.remove("flex");
+    const breakpointMd = getToken("breakpoints.px.md"); // 768px
+    if (window.innerWidth < breakpointMd) {
+      document.querySelector("body").classList.add("overflow-hidden");
+    }
   }
 
   hideSearch() {
@@ -49,6 +56,7 @@ export default class RaSearchBar extends HTMLElement {
     this.headerInner.classList.remove("hidden");
     this.headerInner.classList.add("flex");
     this.clearSearchResults();
+    document.querySelector("body").classList.remove("overflow-hidden");
   }
 
   toggleSearch() {
