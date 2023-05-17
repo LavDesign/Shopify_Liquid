@@ -224,13 +224,17 @@ export default class RaProductTile extends HTMLElement {
     const visibleWidth =
       this.optionContainer.offsetWidth - viewMore.offsetWidth;
     let width = 0;
+    // eslint-disable-next-line
     let swatchCount = 0;
-    const visibleItems = Array.from(this.variantOptions.children).forEach((c) => {
-      if (width <= visibleWidth) {
-        width += c.offsetWidth;
-        swatchCount++
+    // eslint-disable-next-line
+    const visibleItems = Array.from(this.variantOptions.children).forEach(
+      (c) => {
+        if (width <= visibleWidth) {
+          width += c.offsetWidth;
+          swatchCount++;
+        }
       }
-    })
+    );
   }
 
   // This adds the scroll icons to the container

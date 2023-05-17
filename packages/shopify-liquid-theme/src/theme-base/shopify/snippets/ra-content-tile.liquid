@@ -5,6 +5,7 @@
   image_src:     String - (Optional) img src that will be used
   alt:
   width:         Int - (Optional) Image width
+  index:         Int - (Optional) index of tile if in a carousel
   height:        Int - (Optional) Image height
   aspect_ratio:  String - (Optional) determines the sizing of the image [square, tall, wide, respect-media, fill-space]
 
@@ -83,7 +84,7 @@
   {% endcase %}
 {% endcapture %}
 
-<article class="{{ classes }}">
+<article class="{{ classes }}" data-aos="fade-up" data-aos-delay="{{ 50 | times: index }}">
   <div class="ra-content-tile__media component-media">
     {% if video != blank %}
       <div class="ra-video ra-content-tile__video ra-video--use-aspect-ratio">

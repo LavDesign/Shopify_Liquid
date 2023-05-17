@@ -34,23 +34,23 @@
   <div class="ra-text-only-banner__details max-width--{{ section.settings.max_width }}">
     <div class="ra-text-only-banner__copy set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
       {% if section.settings.eyebrow_text != blank %}
-        <div class="ra-text-only-banner__subtitle">{{- section.settings.eyebrow_text -}}</div>
+        <div class="ra-text-only-banner__subtitle" data-aos="fade-up">{{- section.settings.eyebrow_text -}}</div>
       {% endif %}
 
       {% if section.settings.title != blank %}
-        <{{ title_level }} class="ra-title ra-text-only-banner__title {{ section.settings.title_style }}">
+        <{{ title_level }} class="ra-title ra-text-only-banner__title {{ section.settings.title_style }}" data-aos="fade-up" data-aos-delay="100">
           {{ section.settings.title }}
         </{{ title_level }}>
       {% endif %}
 
       {% if section.settings.description != blank %}
-        <div class="ra-text-only-banner__description {{ section.settings.description_copy_size }} rte">
+        <div class="ra-text-only-banner__description {{ section.settings.description_copy_size }} rte" data-aos="fade-up" data-aos-delay="200">
           {{- section.settings.description -}}
         </div>
       {% endif %}
 
       {% if enable_cta_1 or enable_cta_2 %}
-        <div class="ra-link-list ra-text-only-banner__link-list">
+        <div class="ra-link-list ra-text-only-banner__link-list" data-aos="fade-up" data-aos-delay="300">
           {% if enable_cta_1 %}
             {% render 'ra-button',
               type: 'a',
