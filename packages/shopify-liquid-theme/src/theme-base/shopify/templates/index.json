@@ -98,7 +98,15 @@
           "type": "product-slide",
           "settings": {
             "product": "variety-pack",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "46271188-6aab-4cb9-96cb-6856404db476": {
+          "type": "product-slide",
+          "settings": {
+            "product": "fundays-shirt",
+            "cta_label": "Add To Cartt",
             "cta_style": "tertiary"
           }
         },
@@ -106,7 +114,7 @@
           "type": "product-slide",
           "settings": {
             "product": "garden-party",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         },
@@ -114,7 +122,7 @@
           "type": "product-slide",
           "settings": {
             "product": "yard-games",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         },
@@ -122,7 +130,7 @@
           "type": "product-slide",
           "settings": {
             "product": "skinny-dip",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         },
@@ -130,13 +138,14 @@
           "type": "product-slide",
           "settings": {
             "product": "fresh-picked",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         }
       },
       "block_order": [
         "807f8350-a421-480f-9c09-9727e236ec26",
+        "46271188-6aab-4cb9-96cb-6856404db476",
         "a5ebaf48-af82-420f-b1bc-dc6887bf14ae",
         "0a7d201e-7033-429c-b8cd-96fd86af4e99",
         "bce10c40-63a2-4896-9a00-10d29d7de55d",
