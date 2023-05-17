@@ -122,9 +122,10 @@
       </div>
     {% else %}
       <div
-        class="ra-image ra-content-tile__image ra-image--use-aspect-ratio bg-grey-100"
+        class="ra-image ra-content-tile__image ra-image--use-aspect-ratio border-grey-100 border-[1px] bg-white"
         style="{{ image_style }}"
-      ></div>
+      >
+        {{ 'collection-1' | placeholder_svg_tag }}
     {% endif %}
   </div>
   <a href="{{ overlay_link }}" class="ra-component-anchor-overlay">
