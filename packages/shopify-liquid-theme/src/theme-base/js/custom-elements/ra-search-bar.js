@@ -16,7 +16,6 @@ export default class RaSearchBar extends HTMLElement {
   }
 
   setupEventListeners() {
-    console.log("SETUP EVENT LISTENERS");
     this.toggleEl.addEventListener("click", this.toggleSearch.bind(this));
     this.closeEls.forEach((el) => {
       el.addEventListener("click", this.hideSearch.bind(this));
@@ -37,7 +36,6 @@ export default class RaSearchBar extends HTMLElement {
   }
 
   showSearch() {
-    console.log("Showing search");
     this.classList.remove("hidden");
     this.classList.add("grid");
     this.isVisible = true;
