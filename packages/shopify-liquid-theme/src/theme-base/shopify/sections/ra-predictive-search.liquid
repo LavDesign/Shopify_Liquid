@@ -1,6 +1,11 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 {%- if predictive_search.performed -%}
   {% assign show_sidebar = false %}
+  {%- style -%}
+    #predictive-search-results {
+      color: var({{- settings.predictive_text_color -}});
+    }
+  {%- endstyle -%}
 
   {% capture sidebar_content %}
     <div class="w-full md:w-1/6">
@@ -52,7 +57,10 @@
   {% endcapture %}
 
   <div class="predictive-search__overlay absolute left-0 right-0 top-full h-screen opacity-50 bg-primary-900"></div>
-  <div id="predictive-search-results" class="absolute bg-white left-0 right-0 top-full p-10 justify-center flex">
+  <div
+    id="predictive-search-results"
+    class="absolute bg-white left-0 right-0 top-full p-10 justify-center flex max-md:overflow-scroll max-md:h-screen"
+  >
     <div class="w-full md:max-w-screen-2xl flex flex-col md:flex-row">
       {% if show_sidebar %}
         {{ sidebar_content }}
