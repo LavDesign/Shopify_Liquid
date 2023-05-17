@@ -118,24 +118,26 @@
 {% capture text_content %}
   <div class="ra-split-section__copy set--v-align-{{ section.settings.vertical_align }}-sm set--v-align-{{ section.settings.vertical_align_md }}-md set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
     {% if section.settings.eyebrow_text != blank %}
-      <div class="ra-split-section__subtitle">
+      <div class="ra-split-section__subtitle" data-aos="fade-up">
         {{- section.settings.eyebrow_text -}}
       </div>
     {% endif %}
     {% if section.settings.title != blank %}
       <{{ title_level }}
         class="ra-title ra-split-section__title {{ section.settings.title_style }}"
+        data-aos="fade-up"
+        data-aos-delay="50"
       >
         <div>{{- section.settings.title -}}</div>
       </{{ title_level }}>
     {% endif %}
     {% if section.settings.description != blank %}
-      <div class="ra-split-section__description {{ section.settings.description_copy_size }} rte">
+      <div class="ra-split-section__description {{ section.settings.description_copy_size }} rte" data-aos="fade-up" data-aos-delay="100">
         {{- section.settings.description -}}
       </div>
     {% endif %}
     {% if enable_cta_1 or enable_cta_2 %}
-      <div class="ra-link-list ra-text-only-banner__link-list">
+      <div class="ra-link-list ra-text-only-banner__link-list" data-aos="fade-up" data-aos-delay="150">
         {% if enable_cta_1 %}
           {% render 'ra-button',
             type: 'a',
