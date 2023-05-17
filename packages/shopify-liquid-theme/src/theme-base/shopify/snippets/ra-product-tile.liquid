@@ -53,7 +53,9 @@
     endif
   endunless
 
-  if product.selected_or_first_available_variant.metafields.badge.label
+  if badge_text != blank
+    assign badge_text = badge_text
+  elsif product.selected_or_first_available_variant.metafields.badge.label
     assign badge_text = product.selected_or_first_available_variant.metafields.badge.label
   else
     assign badge_text = product.metafields.badge.label
