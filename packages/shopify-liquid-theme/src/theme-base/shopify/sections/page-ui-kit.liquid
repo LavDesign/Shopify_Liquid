@@ -1,6 +1,7 @@
 <section>
   {% liquid
     assign product = section.settings.featured_product
+    assign product_2 = section.settings.featured_product_2
     assign featured_image = section.settings.featured_product.featured_image
     assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300
     assign img_alt = section.settings.featured_product.featured_image.alt | default: section.settings.featured_product.title
@@ -917,7 +918,7 @@
         {% render 'ra-content-tile',
           image: section.settings.featured_product.featured_image,
           alt: img_alt,
-          title: 'This is a title',
+          title: 'Product Image',
           description: "I'm not thinking about anything when I'm climbing.",
           details_location: 'before',
           link_url_1: link_url,
@@ -962,7 +963,7 @@
         {% render 'ra-content-tile',
           image: section.settings.featured_product.featured_image,
           alt: img_alt,
-          title: 'This is a title',
+          title: 'Video Tile',
           description: "I'm not thinking about anything when I'm climbing.",
           details_location: 'after',
           link_url_1: link_url,
@@ -977,18 +978,28 @@
     <h4 class="text-h4 mt-10 mb-5">Product Tiles</h4>
     <div class="flex flex-row gap-1">
       <div class="flex-1">
+        {% render 'ra-product-tile', product: product, atc_button: true %}
+      </div>
+      <div class="flex-1">
+        {% render 'ra-product-tile', product: product_2, atc_button: true, atc_style: 'secondary' %}
+      </div>
+      <div class="flex-1">
         {% render 'ra-product-tile',
           product: product,
-          alt: img_alt,
-          title: 'This is a title',
-          description: "I'm not thinking about anything when I'm climbing.",
-          details_location: 'after',
-          link_url_1: link_url,
-          link_text_1: 'Default',
-          link_url_2: link_url,
-          link_text_2: 'Secondary',
-          width: 400,
-          height: 300
+          atc_button: true,
+          font_color: 'purple',
+          atc_style: 'tertiary',
+          pre_title: 'Pre title'
+        %}
+      </div>
+      <div class="flex-1">
+        {% render 'ra-product-tile',
+          product: product_2,
+          atc_button: true,
+          wishlist: true,
+          wishlist_style: 'primary',
+          pre_title: 'Product with Wishlist',
+          badge_text: 'New'
         %}
       </div>
     </div>
@@ -1004,6 +1015,11 @@
       "type": "product",
       "id": "featured_product",
       "label": "Featured Product"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_2",
+      "label": "Featured Product 2"
     },
     {
       "type": "text",

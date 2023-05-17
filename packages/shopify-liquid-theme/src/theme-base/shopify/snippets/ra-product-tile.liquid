@@ -27,9 +27,11 @@
   unless pre_title
     assign pre_title = product.type
   endunless
+
   unless badge_style
     assign badge_style = 'primary'
   endunless
+
   unless hover_img
     assign img_array = ''
     assign product_alt_image = null
@@ -50,11 +52,13 @@
       assign hover_img = variant_alt_image
     endif
   endunless
+
   if product.selected_or_first_available_variant.metafields.badge.label
     assign badge_text = product.selected_or_first_available_variant.metafields.badge.label
   else
     assign badge_text = product.metafields.badge.label
   endif
+
   assign wishlistStyle = wishlist_style | default: 'danger'
 %}
 
@@ -121,7 +125,7 @@
   <div
     class="ra-product-tile__details"
     {% if font_color %}
-      style="color: var({{ font_color }})"
+      style="color: {{ font_color }}"
     {% endif %}
   >
     {% if pre_title != blank %}
