@@ -98,7 +98,7 @@
       </a>
     {% endif %}
     {% if badge_text and badge_style != blank %}
-      {% render 'ra-badge', class: 'ra-product-tile__badge', label: badge_text, style: badge_style %}
+      {% render 'ra-badge', class: 'ra-product-tile__badge', label: badge_text, style: badge_style, attributes: "data-product-badge" %}
     {% endif %}
     {% if wishlist %}
       {%

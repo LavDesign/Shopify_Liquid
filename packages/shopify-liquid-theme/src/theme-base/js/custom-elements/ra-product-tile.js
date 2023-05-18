@@ -15,6 +15,7 @@ export default class RaProductTile extends HTMLElement {
     this.priceCompare = this.querySelector("[data-price-compare]");
     this.productUrl = this.querySelector("[data-product-link]");
     this.productTitle = this.querySelector("[data-variant-title]");
+    this.productBadge = this.querySelector("[data-product-badge]");
     // Swatch Properties
     this.swatchOverflowStyle = "expand"; // expecting expand or scroll
     this.optionContainer = this.querySelector("[data-option-container]");
@@ -83,6 +84,17 @@ export default class RaProductTile extends HTMLElement {
     this.updatePrice();
     this.updateAttribute();
     this.updateSwatch();
+    this.updateBadge();
+  }
+
+  updateBadge() {
+    const updatedBadge = this.currentVariant?.badge || this.product?.badge;
+    if (updatedBadge && this.productBadge?.textContent != updatedBadge) {
+      this.productBadge.textContent = updatedBadge;
+      this.productBadge?.classList.remove("hidden");
+    } else if (!updatedBadge) {
+      this.productBadge?.classList.add("hidden");
+    }
   }
 
   updateSwatch() {
