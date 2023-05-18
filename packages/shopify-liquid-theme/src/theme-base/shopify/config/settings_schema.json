@@ -759,6 +759,35 @@
         "content": "Bazaarvoice"
       },
       {
+        "type": "select",
+        "id": "implementation_type",
+        "label": "Implementation Type",
+        "info": "You must enter production and staging API keys if the api option is selected.",
+        "options": [
+          {
+            "value": "api",
+            "label": "API"
+          },
+          {
+            "value": "widget",
+            "label": "Widget"
+          }
+        ],
+        "default": "api"
+      },
+      {
+        "type": "text",
+        "id": "bazaarvoice_staging_api",
+        "label": "Bazaarvoice | Staging API Key",
+        "default": "cacXRm016MhHC7WQEyW2gkDlgZyLP9jztXq3vF9NLBDns"
+      },
+      {
+        "type": "text",
+        "id": "bazaarvoice_production_api",
+        "label": "Bazaarvoice | Production API Key",
+        "default": "cajEln9nqYjktvh9nAq1bb4nLRk444tHLrmoi5pdDNKFE"
+      },
+      {
         "type": "text",
         "id": "bazaarvoice_client",
         "label": "Bazaarvoice Script - Client Name"
@@ -781,7 +810,8 @@
             "value": "production",
             "label": "Production"
           }
-        ]
+        ],
+        "default": "staging"
       }
     ]
   },
