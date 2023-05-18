@@ -63,13 +63,15 @@
   endif
 
   assign wishlistStyle = wishlist_style | default: 'danger'
+
+  assign index = index | default: 1
 %}
 {% capture product_json %}{%- render 'json-product', product: product -%}{% endcapture %}
 <!-- prettier-ignore -->
 <ra-product-tile
   data-product="{{ product_json | escape | strip }}"
   data-current-variant="{{ current_variant.id }}"
-  class="ra-product-tile ra-product-tile--default"
+  class="ra-product-tile"
   {% unless disable_animation %}
     data-aos="fade-up"
     data-aos-duration="500"

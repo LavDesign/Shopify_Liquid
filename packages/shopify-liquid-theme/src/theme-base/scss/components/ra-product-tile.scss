@@ -1,11 +1,3 @@
-.swatch-square {
-  @apply border border-grey-900
-}
-
-.swatch-circle {
-  @apply rounded-full
-}
-
 .ra-product-tile__options--expanded {
   @apply flex-wrap
 }
@@ -21,6 +13,13 @@
 }
 
 .ra-product-tile {
+  .ra-image:hover {
+    --product-tile-image-opacity: 1;
+    --product-tile-image-even-opacity: 1;
+    --product-tile-wishlist-opacity: 1;
+    --product-tile-atc-opacity: 1;
+    --product-tile-z-index: var(--z-index-base);
+  }
   .ra-choice {
     @apply h-[30px]
   }
