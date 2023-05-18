@@ -58,66 +58,9 @@
       <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
         <div class="ra-hero__media component-media relative">
           {% if block.type == 'slide' %}
-            {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
-              <div class="ra-hero__image ra-image ra-image--use-as-background">
-                {% render 'ra-image',
-                  image: block.settings.desktop_bg_image,
-                  classes: 'ra-image__media ra-image__media--desktop hidden md:block',
-                  width: 2000,
-                  lazyload: true
-                %}
-                {% if block.settings.mobile_bg_image != blank %}
-                  {% render 'ra-image',
-                    image: block.settings.mobile_bg_image,
-                    classes: 'ra-image__media ra-image__media--mobile md:hidden',
-                    width: 800,
-                    lazyload: true
-                  %}
-                {% else %}
-                  {% render 'ra-image',
-                    image: block.settings.desktop_bg_image,
-                    classes: 'ra-image__media ra-image__media--mobile md:hidden',
-                    width: 800,
-                    lazyload: true
-                  %}
-                {% endif %}
-              </div>
-            {% endif %}
+            {% render 'hero-image', block: block %}
           {% elsif block.type == 'video' %}
-            {% if block.settings.background_video_embed == blank and block.settings.background_video_file != blank %}
-              {% liquid
-                assign video_source = 'embed'
-                assign video_background_url = ''
-
-                if block.settings.background_video_embed != blank
-                  if block.settings.background_video_embed.type == 'youtube'
-                    assign video_background_url = 'https://www.youtube.com/embed/' | append: block.settings.background_video_embed.id
-                  else
-                    assign video_background_url = 'https://player.vimeo.com/video/' | append: block.settings.background_video_embed.id
-                  endif
-
-                elsif block.settings.background_video_file != blank
-                  assign video_source = 'file'
-
-                  for resource in block.settings.background_video_file.sources
-                    if resource.format == 'mp4'
-                      assign video_background_url = resource.url
-                    endif
-                  endfor
-                endif
-              %}
-              <div class="ra-hero__media component-media">
-                <video autoplay loop muted playsinline class="ra-video__media ra-video__media--loaded">
-                  <source src="{{ video_background_url }}" type="video/mp4">
-                </video>
-              </div>
-            {% else %}
-              <div class="ra-hero__media component-media">
-                <div class="embed {{ block.settings.video_aspect_ratio }}">
-                  <iframe src="{{ video_background_url }}"></iframe>
-                </div>
-              </div>
-            {% endif %}
+            {% render 'hero-video', block: block %}
           {% endif %}
         </div>
         <div class="ra-hero__details component-details--set-order h-auto {% if section.settings.stack_mobile %}!relative md:!absolute{% endif %}">
@@ -185,7 +128,7 @@
 
 {% schema %}
 {
-  "name": "Hero - Image",
+  "name": "Hero - Carousel",
   "tag": "section",
   "blocks": [
     {
@@ -586,7 +529,7 @@
   ],
   "presets": [
     {
-      "name": "Hero - Image"
+      "name": "Hero - Carousel"
     }
   ]
 }

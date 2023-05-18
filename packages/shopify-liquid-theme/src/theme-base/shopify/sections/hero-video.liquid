@@ -1,8 +1,8 @@
 <style>
-  #shopify-section-{{ section.id }} {
-    --background-color: var({{ section.settings.bg_color }});
-    --text-color-mobile: var({{ section.settings.text_color_mobile }});
-    --text-color-desktop: var({{ section.settings.text_color_desktop }});
+  #shopify-section-{{ block.id }} {
+    --background-color: var({{ block.settings.bg_color }});
+    --text-color-mobile: var({{ block.settings.text_color_mobile }});
+    --text-color-desktop: var({{ block.settings.text_color_desktop }});
   }
 </style>
 
@@ -10,17 +10,17 @@
   assign video_source = 'embed'
   assign video_background_url = ''
 
-  if section.settings.background_video_embed != blank
-    if section.settings.background_video_embed.type == 'youtube'
-      assign video_background_url = 'https://www.youtube.com/embed/' | append: section.settings.background_video_embed.id
+  if block.settings.background_video_embed != blank
+    if block.settings.background_video_embed.type == 'youtube'
+      assign video_background_url = 'https://www.youtube.com/embed/' | append: block.settings.background_video_embed.id
     else
-      assign video_background_url = 'https://player.vimeo.com/video/' | append: section.settings.background_video_embed.id
+      assign video_background_url = 'https://player.vimeo.com/video/' | append: block.settings.background_video_embed.id
     endif
 
-  elsif section.settings.background_video_file != blank
+  elsif block.settings.background_video_file != blank
     assign video_source = 'file'
 
-    for resource in section.settings.background_video_file.sources
+    for resource in block.settings.background_video_file.sources
       if resource.format == 'mp4'
         assign video_background_url = resource.url
       endif
@@ -29,46 +29,46 @@
 %}
 
 <div class="w-full">
-  <article class="ra-hero set--details-overlay{% if video_source == 'file' %} set--aspect-ratio-main {% endif %}{% if section.settings.stack_mobile %} ra-hero--stack-mobile{% endif %}">
+  <article class="ra-hero set--details-overlay{% if video_source == 'file' %} set--aspect-ratio-main {% endif %}{% if block.settings.stack_mobile %} ra-hero--stack-mobile{% endif %}">
     <div class="ra-hero__details component-details--set-order">
-      <div class="ra-hero__copy {{ section.settings.text_alignment }}">
-        {% if section.settings.eyebrow_text != blank %}
-          <div class="ra-hero__subtitle">{{ section.settings.eyebrow_text }}</div>
+      <div class="ra-hero__copy {{ block.settings.text_alignment }}">
+        {% if block.settings.eyebrow_text != blank %}
+          <div class="ra-hero__subtitle">{{ block.settings.eyebrow_text }}</div>
         {% endif %}
 
-        {% if section.settings.title != blank %}
-          <{{ section.settings.title_style }}
+        {% if block.settings.title != blank %}
+          <{{ block.settings.title_style }}
             class="ra-title ra-hero__title"
-            style="--title-font-size:var(--font-size-{{ section.settings.title_style }});"
+            style="--title-font-size:var(--font-size-{{ block.settings.title_style }});"
           >
-            {{ section.settings.title }}
-          </{{ section.settings.title_style }}>
+            {{ block.settings.title }}
+          </{{ block.settings.title_style }}>
         {% endif %}
 
-        {% if section.settings.description != blank %}
+        {% if block.settings.description != blank %}
           <div class="ra-hero__description rte">
-            {{ section.settings.description }}
+            {{ block.settings.description }}
           </div>
         {% endif %}
 
-        {% if section.settings.cta_1_url != blank or section.settings.cta_2_url != blank %}
+        {% if block.settings.cta_1_url != blank or block.settings.cta_2_url != blank %}
           <div class="ra-link-list ra-hero__link-list">
-            {% if section.settings.cta_1_label != blank and section.settings.cta_1_url != blank %}
+            {% if block.settings.cta_1_label != blank and block.settings.cta_1_url != blank %}
               {% render 'ra-button',
                 type: 'a',
-                style: section.settings.cta_1_style,
-                label: section.settings.cta_1_label,
-                url: section.settings.cta_1_url,
+                style: block.settings.cta_1_style,
+                label: block.settings.cta_1_label,
+                url: block.settings.cta_1_url,
                 class: 'min-w-[175px]'
               %}
             {% endif %}
 
-            {% if section.settings.cta_2_label != blank and section.settings.cta_2_url != blank %}
+            {% if block.settings.cta_2_label != blank and block.settings.cta_2_url != blank %}
               {% render 'ra-button',
                 type: 'a',
-                style: section.settings.cta_2_style,
-                label: section.settings.cta_2_label,
-                url: section.settings.cta_2_url,
+                style: block.settings.cta_2_style,
+                label: block.settings.cta_2_label,
+                url: block.settings.cta_2_url,
                 class: 'min-w-[175px]'
               %}
             {% endif %}
@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    {% if section.settings.background_video_embed == blank and section.settings.background_video_file != blank %}
+    {% if block.settings.background_video_embed == blank and block.settings.background_video_file != blank %}
       <div class="ra-hero__media component-media">
         <video autoplay loop muted playsinline class="ra-video__media ra-video__media--loaded">
           <source src="{{ video_background_url }}" type="video/mp4">
@@ -85,7 +85,7 @@
       </div>
     {% else %}
       <div class="ra-hero__media component-media">
-        <div class="embed {{ section.settings.video_aspect_ratio }}">
+        <div class="embed {{ block.settings.video_aspect_ratio }}">
           <iframe src="{{ video_background_url }}"></iframe>
         </div>
       </div>

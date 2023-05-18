@@ -1,0 +1,34 @@
+{% if block.settings.background_video_embed == blank and block.settings.background_video_file != blank %}
+  {% liquid
+    assign video_source = 'embed'
+    assign video_background_url = ''
+
+    if block.settings.background_video_embed != blank
+      if block.settings.background_video_embed.type == 'youtube'
+        assign video_background_url = 'https://www.youtube.com/embed/' | append: block.settings.background_video_embed.id
+      else
+        assign video_background_url = 'https://player.vimeo.com/video/' | append: block.settings.background_video_embed.id
+      endif
+
+    elsif block.settings.background_video_file != blank
+      assign video_source = 'file'
+
+      for resource in block.settings.background_video_file.sources
+        if resource.format == 'mp4'
+          assign video_background_url = resource.url
+        endif
+      endfor
+    endif
+  %}
+  <div class="ra-hero__media component-media">
+    <video autoplay loop muted playsinline class="ra-video__media ra-video__media--loaded">
+      <source src="{{ video_background_url }}" type="video/mp4">
+    </video>
+  </div>
+{% else %}
+  <div class="ra-hero__media component-media">
+    <div class="embed {{ section.settings.video_aspect_ratio }}">
+      <iframe src="{{ video_background_url }}"></iframe>
+    </div>
+  </div>
+{% endif %}
