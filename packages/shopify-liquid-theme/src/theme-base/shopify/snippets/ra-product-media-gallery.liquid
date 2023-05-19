@@ -14,11 +14,9 @@
   assign thumbnails_gap = 8
   assign show_thumbnail_navigation = false
 
+  assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
   if slides_length > thumbnails_per_view
-    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
     assign show_thumbnail_navigation = true
-  else
-    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
   endif
 
   # Primary Carousel
