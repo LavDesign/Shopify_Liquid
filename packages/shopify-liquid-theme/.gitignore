@@ -10,7 +10,7 @@ package-lock.json
 # See README.md for more information about ignored merchandising files.
 
 # Theme Base
-src/theme-base/shopify/config/settings_data.json
+# src/theme-base/shopify/config/settings_data.json
 # src/theme-base/shopify/templates/**/*.json
 # src/theme-base/shopify/config/settings_schema.json
 # src/theme-base/shopify/locales/*.json
