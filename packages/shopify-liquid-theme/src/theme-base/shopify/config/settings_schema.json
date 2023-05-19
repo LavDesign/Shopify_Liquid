@@ -778,14 +778,12 @@
       {
         "type": "text",
         "id": "bazaarvoice_staging_api",
-        "label": "Bazaarvoice | Staging API Key",
-        "default": "cacXRm016MhHC7WQEyW2gkDlgZyLP9jztXq3vF9NLBDns"
+        "label": "Bazaarvoice | Staging API Key"
       },
       {
         "type": "text",
         "id": "bazaarvoice_production_api",
-        "label": "Bazaarvoice | Production API Key",
-        "default": "cajEln9nqYjktvh9nAq1bb4nLRk444tHLrmoi5pdDNKFE"
+        "label": "Bazaarvoice | Production API Key"
       },
       {
         "type": "text",

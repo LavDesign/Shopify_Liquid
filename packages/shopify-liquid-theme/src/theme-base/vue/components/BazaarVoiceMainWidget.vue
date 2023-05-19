@@ -76,18 +76,14 @@
             placeholder="Search Reviews"
           />
           <RaIcon
-            size="18px"
+            size="20px"
             class="ml-[2px] top-3 -left-[30px]"
             color="primary"
+            icon="search"
           >
-            <svg>
-              <use xlink:href="#search"></use>
-            </svg>
           </RaIcon>
           <button class="absolute right-0 bottom-[13px] md:bottom-5 hidden">
-            <svg class="" width="18" height="9">
-              <use xlink:href="#form-submit" fill="black" stroke="black"></use>
-            </svg>
+            submit
           </button>
         </div>
       </div>
@@ -148,12 +144,13 @@
             </RaIcon>
           </span>
         </div>
-        <a
-          class="ra-button ra-button--sm ra-button--tertiary leading-none min-h-[40px]"
+        <RaButton
+          variant="tertiary"
+          class="leading-none min-h-[40px]"
           @click="resetFilters"
         >
           clear all
-        </a>
+        </RaButton>
       </div>
     </div>
     <!-- Active Filters Component End -->
@@ -171,46 +168,25 @@
             class="ra-quantity-selector--dropdown md:w-full mr-e7 md:mr-6"
           >
             <label class="ra-input__label hidden">Rating</label>
-            <div
-              class="ra-input ra-select ra-quantity-selector__dropdown is-selected"
+            <RaSelect
+              :value="ratingValue"
+              id="rating"
+              name="rating"
+              class="review-dropdown"
+              @input="(label, value) => ratingInput(label, value)"
             >
-              <div class="ra-input__wrapper">
-                <select
-                  id="rating"
-                  name="rating"
-                  @change="updateResults"
-                  v-model="ratingValue"
-                  class="ra-input__control ra-select__control"
-                >
-                  <option tabindex="0" class="ra-select__option" value="any">
-                    Rating
-                  </option>
-                  <option tabindex="0" class="ra-select__option" value="1">
-                    ★☆☆☆☆
-                  </option>
-                  <option tabindex="0" class="ra-select__option" value="2">
-                    ★★☆☆☆
-                  </option>
-                  <option tabindex="0" class="ra-select__option" value="3">
-                    ★★★☆☆
-                  </option>
-                  <option tabindex="0" class="ra-select__option" value="4">
-                    ★★★★☆
-                  </option>
-                  <option tabindex="0" class="ra-select__option" value="5">
-                    ★★★★★
-                  </option>
-                </select>
-                <RaIcon
-                  size="12px"
-                  class="ra-select__arrow ra-icon ra-icon--md"
-                >
-                  <svg>
-                    <use xlink:href="#chevron-down"></use>
-                  </svg>
-                </RaIcon>
-              </div>
-            </div>
+              <RaSelectOption value="any">Rating</RaSelectOption>
+              <RaSelectOption value="1">★☆☆☆☆</RaSelectOption>
+              <RaSelectOption value="2">★★☆☆☆</RaSelectOption>
+              <RaSelectOption value="3">★★★☆☆</RaSelectOption>
+              <RaSelectOption value="4">★★★★☆</RaSelectOption>
+              <RaSelectOption value="5">★★★★★</RaSelectOption>
+            </RaSelect>
+            <RaIcon size="18px" class="ra-select__arrow ra-icon ra-icon--md">
+              <svg>
+                <use xlink:href="#chevron-down"></use>
+              </svg>
+            </RaIcon>
           </div>
 
           <div
@@ -218,35 +194,22 @@
             class="ra-quantity-selector--dropdown md:w-full md:mr-6"
           >
             <label class="ra-input__label hidden">Media</label>
-            <div class="ra-input ra-select ra-quantity-selector__dropdown">
-              <div class="ra-input__wrapper">
-                <select
-                  id="media"
-                  name="media"
-                  @change="updateResults"
-                  v-model="imageVideoValue"
-                  class="ra-input__control ra-select__control"
-                >
-                  <option tabindex="0" class="ra-select__option" value="any">
-                    Images or Videos
-                  </option>
-                  <option tabindex="0" class="ra-select__option" value="images">
-                    Images
-                  </option>
-                  <option tabindex="0" class="ra-select__option" value="videos">
-                    Videos
-                  </option>
-                </select>
-                <RaIcon
-                  size="12px"
-                  class="ra-select__arrow ra-icon ra-icon--md"
-                >
-                  <svg>
-                    <use xlink:href="#chevron-down"></use>
-                  </svg>
-                </RaIcon>
-              </div>
-            </div>
+            <RaSelect
+              :value="ratingValue"
+              id="media"
+              name="media"
+              class="review-dropdown"
+              @input="(label, value) => mediaInput(label, value)"
+            >
+              <RaSelectOption value="any">Images or Videos</RaSelectOption>
+              <RaSelectOption value="images">Images</RaSelectOption>
+              <RaSelectOption value="videos">Videos</RaSelectOption>
+            </RaSelect>
+            <RaIcon size="18px" class="ra-select__arrow ra-icon ra-icon--md">
+              <svg>
+                <use xlink:href="#chevron-down"></use>
+              </svg>
+            </RaIcon>
           </div>
         </div>
       </div>
@@ -256,40 +219,30 @@
           class="ra-quantity-selector ra-quantity-selector--dropdown"
         >
           <label class="ra-input__label hidden">sort by</label>
-          <div
-            class="ra-input ra-select ra-quantity-selector__dropdown is-selected"
+          <RaSelect
+            :value="sortValue"
+            id="sort"
+            name="sort"
+            class="review-dropdown"
+            @input="(label, value) => sortInput(label, value)"
           >
-            <div class="ra-input__wrapper">
-              <select
-                id="sort"
-                name="sort"
-                @change="updateResults"
-                v-model="sortValue"
-                class="ra-input__control ra-select__control max-w-e250"
-              >
-                <option class="ra-select__option" value="Rating:desc">
-                  Sort By
-                </option>
-                <option class="ra-select__option" value="Helpfulness:desc">
-                  Helpfulness
-                </option>
-                <option class="ra-select__option" value="Rating:desc">
-                  Rating (high to low)
-                </option>
-                <option class="ra-select__option" value="Rating:asc">
-                  Rating (low to high)
-                </option>
-                <option class="ra-select__option" value="SubmissionTime:desc">
-                  Newest
-                </option>
-              </select>
-              <RaIcon size="12px" class="ra-select__arrow ra-icon ra-icon--md">
-                <svg>
-                  <use xlink:href="#chevron-down"></use>
-                </svg>
-              </RaIcon>
-            </div>
-          </div>
+            <RaSelectOption value="Rating:desc">Sort By</RaSelectOption>
+            <RaSelectOption value="Helpfulness:desc">
+              Helpfulness
+            </RaSelectOption>
+            <RaSelectOption value="Rating:desc">
+              Rating (high to low)
+            </RaSelectOption>
+            <RaSelectOption value="Rating:asc">
+              Rating (low to high)
+            </RaSelectOption>
+            <RaSelectOption value="SubmissionTime:desc">Newest</RaSelectOption>
+          </RaSelect>
+          <RaIcon size="18px" class="ra-select__arrow ra-icon ra-icon--md">
+            <svg>
+              <use xlink:href="#chevron-down"></use>
+            </svg>
+          </RaIcon>
         </div>
       </div>
     </div>
@@ -348,7 +301,7 @@
           </div>
           <p
             class="font-primary text-sm mt-0 w-full md:w-auto"
-            v-text="convertDate(review.SubmissionTime)"
+            v-text="datePass(review.SubmissionTime)"
           ></p>
           <div
             v-if="review.Badges?.verifiedPurchaser"
@@ -444,7 +397,7 @@
                 response from {{ response.SourceClientName }} (
                 <span
                   class="font-secondary"
-                  v-text="convertDate(response.Date)"
+                  v-text="datePass(response.Date)"
                 ></span>
                 )
               </p>
@@ -508,7 +461,7 @@
     <!-- Image Modal Component Start -->
     <Transition name="fade">
       <div
-        class="drawer__overlay fixed inset-0 transition-opacity"
+        class="review-modal drawer__overlay fixed inset-0 transition-opacity"
         v-show="modalOpen"
         @click="modalOpen = false"
       >
@@ -533,12 +486,16 @@
 <script>
 import axios from "axios";
 import { defineComponent } from "vue";
-import { RaIcon } from "@bva/ui-vue";
+import { RaIcon, RaSelect, RaSelectOption, RaButton } from "@bva/ui-vue";
+import { convertDate } from "../../js/utils/date";
 
 export default defineComponent({
   name: "BazaarVoiceMainWidget",
   components: {
     RaIcon,
+    RaSelect,
+    RaSelectOption,
+    RaButton,
   },
   props: {
     id: {
@@ -604,6 +561,9 @@ export default defineComponent({
     },
   },
   methods: {
+    datePass(date) {
+      return convertDate(date);
+    },
     bvTrackFilters() {
       // It is expected that every project will need to update this section based on the filters that exist on a given site.
       // It is assumed that we will track filters, sort and search values
@@ -627,6 +587,21 @@ export default defineComponent({
     bvTrackImpression(data) {
       // eslint-disable-next-line no-undef
       BV.pixel.trackImpression(data);
+    },
+    // eslint-disable-next-line no-unused-vars
+    ratingInput(label, value) {
+      this.ratingValue = label;
+      this.updateResults();
+    },
+    // eslint-disable-next-line no-unused-vars
+    mediaInput(label, value) {
+      this.imageVideoValue = label;
+      this.updateResults();
+    },
+    // eslint-disable-next-line no-unused-vars
+    sortInput(label, value) {
+      this.sortValue = label;
+      this.updateResults();
     },
     showMore() {
       this.reviewsToShow += 6;
@@ -652,12 +627,6 @@ export default defineComponent({
       this.imageVideoValue = "any";
       this.sortValue = "SubmissionTime:desc";
       this.getReviews(this.id, false, false);
-    },
-    convertDate(date) {
-      let newDate = new Date(date);
-      return `${
-        newDate.getMonth() + 1
-      }/${newDate.getDate()}/${newDate.getFullYear()}`;
     },
     getDateKey(date) {
       const dateObj = new Date(date);
@@ -782,8 +751,6 @@ export default defineComponent({
       submissionUrl += `&Limit=${this.reviewsToShow}`;
       submissionUrl += `&Sort=${this.sortValue}`;
 
-      console.log(submissionUrl);
-
       const resp = await axios.get(submissionUrl, {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         redirect: "follow",
@@ -853,71 +820,4 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss" scoped>
-.product__rating-widget {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  .ra-quantity-selector--dropdown {
-    @breakpoint md-max {
-      width: calc(50% - 5px);
-      margin-bottom: 7px;
-    }
-  }
-}
-
-.bv__search {
-  .ra-input:first-child {
-    @breakpoint sm-max {
-      width: 100% !important;
-
-      .bv__write-review {
-        @apply min-w-[72px];
-      }
-    }
-  }
-  .ra-input__control--text,
-  .ra-input__control--text::placeholder {
-    width: 100% !important;
-    background-color: transparent;
-
-    @breakpoint md {
-      max-width: 429px;
-      width: 40vw !important;
-    }
-  }
-
-  .ra-input__control--text::placeholder {
-    position: relative;
-    top: 0;
-  }
-}
-
-.bv__filters-title {
-  @apply font-secondary font-semibold md:font-normal text-xs uppercase mb-[10px];
-}
-
-.drawer__overlay {
-  background: rgba(32, 32, 32, 0.3);
-  z-index: 999;
-  height: 100vh;
-  position: sticky;
-}
-.modal__content {
-  @apply bg-white w-3/5 absolute;
-  width: 600px;
-  height: 600px;
-  top: 50%;
-  left: 50%;
-  margin-left: -300px;
-  margin-top: -300px;
-
-  @breakpoint md-max {
-    width: 100%;
-    height: 300px;
-    margin-left: -50%;
-    margin-top: -150px;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
