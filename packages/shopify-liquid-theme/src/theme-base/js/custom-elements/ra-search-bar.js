@@ -87,14 +87,18 @@ export default class RaSearchBar extends HTMLElement {
           "#shopify-section-ra-predictive-search"
         ).innerHTML;
 
-        const predictive_search = this.searchResponse.querySelector("#predictive-search-results");
+        const predictive_search = this.searchResponse.querySelector(
+          "#predictive-search-results"
+        );
         let content_position_top = getComputedStyle(
           document.querySelector("body")
         ).getPropertyValue("--content-position-top");
         content_position_top = parseInt(
           content_position_top.split("px").shift()
         );
-        predictive_search.style.height = `calc(100vh - ${content_position_top}px)`;
+        predictive_search.style.height = `${
+          window.innerHeight - content_position_top
+        }px`;
       })
       .then(() => {
         refreshReviewWidgets();
