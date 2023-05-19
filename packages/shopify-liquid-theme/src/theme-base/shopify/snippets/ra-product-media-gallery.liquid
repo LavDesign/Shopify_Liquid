@@ -18,7 +18,7 @@
     assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
     assign show_thumbnail_navigation = true
   else
-    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: slides_length
+    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
   endif
 
   # Primary Carousel
@@ -47,7 +47,7 @@
           space-between="{{ thumbnails_gap }}"
         >
           {%- if product.selected_or_first_available_variant.featured_media != null -%}
-            <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0" data-aos="fade">
+            <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0">
               {{
                 product.selected_or_first_available_variant.featured_media.preview_image
                 | image_url: width: 80, height: 100, crop: 'center'
@@ -67,8 +67,6 @@
                 <swiper-slide
                   class="h-[100px] cursor-pointer"
                   data-slide-index="{{ forloop.index0 }}"
-                  data-aos="fade"
-                  data-aos-delay="{{ 50 | times: forloop.index }}"
                 >
                   {{
                     media.preview_image
@@ -86,19 +84,21 @@
             {%- endfor -%}
           {%- else -%}
             {%- for media in product.media -%}
-              <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
-                {{
-                  media.preview_image
-                  | image_url: width: 80, height: 100, crop: 'center'
-                  | image_tag:
-                    width: 80,
-                    height: 100,
-                    widths: '54, 74, 104, 162, 208, 324, 416',
-                    loading: 'lazy',
-                    alt: media.alt
-                  | escape
-                }}
-              </swiper-slide>
+              {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
+                <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
+                  {{
+                    media.preview_image
+                    | image_url: width: 80, height: 100, crop: 'center'
+                    | image_tag:
+                      width: 80,
+                      height: 100,
+                      widths: '54, 74, 104, 162, 208, 324, 416',
+                      loading: 'lazy',
+                      alt: media.alt
+                    | escape
+                  }}
+                </swiper-slide>
+              {%- endunless -%}
             {%- endfor -%}
           {%- endif -%}
         </swiper-container>
@@ -131,6 +131,21 @@
           loop="true"
           thumbs-swiper=".product-media-gallery__thumbnails"
         >
+          {%- if product.selected_or_first_available_variant.featured_media != null -%}
+            <swiper-slide
+              data-slide-index="{{ forloop.index0 }}"
+              data-media-id="{{ media.id }}"
+              class="ra-carousel-slide {% if forloop.index != 1 %}hidden{% endif %}"
+              data-aos="fade"
+            >
+              {{
+                product.selected_or_first_available_variant.featured_media
+                | image_url: width: 800
+                | image_tag: class: 'w-full', loading: 'lazy', width: 800, widths: '600, 800, 1200', alt: media.alt
+                | escape
+              }}
+            </swiper-slide>
+          {%- endif -%}
           {%- for media in product.media -%}
             <swiper-slide
               data-slide-index="{{ forloop.index0 }}"
