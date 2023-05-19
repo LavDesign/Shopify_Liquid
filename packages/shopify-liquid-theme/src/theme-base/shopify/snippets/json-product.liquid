@@ -1,6 +1,7 @@
 {
   "id": {{ product.id }},
   "available": {{ product.available | json }},
+  "badge": {{ product.metafields.badge.label | json }},
   "description": {{ product.description | json }},
   "title": {{ product.title | json }},
   "handle": {{ product.handle | json }},
@@ -78,6 +79,7 @@
       {
         "available": {{ variant.available | json }},
         "barcode": {{ variant.barcode | json }},
+        "badge": {{ variant.metafields.badge.label | json }},
         "compare_at_price": {{ variant.compare_at_price | json }},
         "id": {{ variant.id }},
         "media": {
