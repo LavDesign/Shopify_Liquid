@@ -264,12 +264,6 @@
       "name": "Video",
       "settings": [
         {
-          "type": "checkbox",
-          "id": "stack_mobile",
-          "label": "Stack On Mobile",
-          "default": true
-        },
-        {
           "type": "header",
           "content": "Video",
           "info": "Choose between embed or file upload to import video"
@@ -288,6 +282,27 @@
           "type": "video",
           "id": "background_video_file",
           "label": "Video Upload (file upload)",
+          "info": "Upload as MP4"
+        },
+        {
+          "type": "header",
+          "content": "Video (Mobile)",
+          "info": "Choose between embed or file upload to import video"
+        },
+        {
+          "type": "video_url",
+          "id": "background_video_embed_mobile",
+          "label": "Mobile Video Upload (embed option)",
+          "info": "Paste link for Youtube or Vimeo",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "video",
+          "id": "background_video_file_mobile",
+          "label": "Mobile Video Upload (file upload)",
           "info": "Upload as MP4"
         },
         {

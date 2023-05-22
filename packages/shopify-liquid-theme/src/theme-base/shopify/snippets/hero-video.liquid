@@ -1,34 +1,48 @@
-{% if block.settings.background_video_embed == blank and block.settings.background_video_file != blank %}
-  {% liquid
-    assign video_source = 'embed'
-    assign video_background_url = ''
+{% liquid
+  assign views = 'mobile,desktop'
+  assign views = views | split: ','
+  assign has_mobile_video = false
+  if block.settings.background_video_embed_mobile or block.settings.background_video_file_mobile
+    assign has_mobile_video = true
+  endif
+%}
 
-    if block.settings.background_video_embed != blank
-      if block.settings.background_video_embed.type == 'youtube'
-        assign video_background_url = 'https://www.youtube.com/embed/' | append: block.settings.background_video_embed.id
-      else
-        assign video_background_url = 'https://player.vimeo.com/video/' | append: block.settings.background_video_embed.id
+{% for view in views %}
+  <div class="{% if has_mobile_video and view == 'desktop' %}hidden md:flex{% elsif view == 'mobile' %}flex md:hidden h-full{% endif %}">
+    {% liquid
+      assign video_embed_handle = 'background_video_embed'
+      assign video_file_handle = 'background_video_file'
+      if view == 'mobile'
+        assign video_embed_handle = video_embed_handle | append: '_mobile'
+        assign video_file_handle = video_file_handle | append: '_mobile'
       endif
-
-    elsif block.settings.background_video_file != blank
-      assign video_source = 'file'
-
-      for resource in block.settings.background_video_file.sources
-        if resource.format == 'mp4'
-          assign video_background_url = resource.url
+    %}
+    {% if block.settings[video_embed_handle] == blank and block.settings[video_file_handle] != blank %}
+      {% liquid
+        assign video_source = 'embed'
+        assign video_background_url = ''
+        if block.settings[video_embed_handle] != blank
+          if block.settings[video_embed_handle].type == 'youtube'
+            assign video_background_url = 'https://www.youtube.com/embed/' | append: block.settings[video_embed_handle].id
+          else
+            assign video_background_url = 'https://player.vimeo.com/video/' | append: block.settings[video_embed_handle].id
+          endif
+        elsif block.settings[video_file_handle] != blank
+          assign video_source = 'file'
+          for resource in block.settings[video_file_handle].sources
+            if resource.format == 'mp4'
+              assign video_background_url = resource.url
+            endif
+          endfor
         endif
-      endfor
-    endif
-  %}
-  <div class="ra-hero__media component-media">
-    <video autoplay loop muted playsinline class="ra-video__media ra-video__media--loaded">
-      <source src="{{ video_background_url }}" type="video/mp4">
-    </video>
+      %}
+      <video autoplay loop muted playsinline class="ra-video__media ra-video__media--loaded">
+        <source src="{{ video_background_url }}" type="video/mp4">
+      </video>
+    {% else %}
+      <div class="embed {{ section.settings.video_aspect_ratio }}">
+        <iframe src="{{ video_background_url }}"></iframe>
+      </div>
+    {% endif %}
   </div>
-{% else %}
-  <div class="ra-hero__media component-media">
-    <div class="embed {{ section.settings.video_aspect_ratio }}">
-      <iframe src="{{ video_background_url }}"></iframe>
-    </div>
-  </div>
-{% endif %}
+{% endfor %}
