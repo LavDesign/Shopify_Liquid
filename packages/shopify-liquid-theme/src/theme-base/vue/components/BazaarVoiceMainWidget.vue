@@ -64,7 +64,7 @@
     <!-- Filtering Component Start -->
     <div
       v-if="totalReviews > 0"
-      class="bv__search flex w-full justify-start mt-12 mb-6 max-w-[1124px] px-3 md:px-0 md:mx-auto border-t border-primary-900 pt-7"
+      class="bv__search flex w-full justify-start mt-12 mb-6 max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-primary-900 pt-7"
     >
       <div v-if="reviews?.length > 0" class="ra-input w-full md:w-auto">
         <h5 class="h5 mb-5">Filter Reviews</h5>
@@ -92,7 +92,7 @@
     <!-- Active Filters Component -->
     <div
       v-if="searchTerm != '' || activeFilters > 0"
-      class="bv-active-filters w-full max-w-[1124px] px-3 md:px-0 md:mx-auto"
+      class="bv-active-filters w-full max-w-[1124px] px-3 lg:px-0 md:mx-auto"
     >
       <div class="filter-holder mb-6 flex items-center">
         <div
@@ -157,7 +157,7 @@
     <!-- Filtering Results Start -->
     <div
       v-if="reviews?.length > 0"
-      class="bv__filters flex flex-wrap md:flex-nowrap w-full justify-start max-w-[1124px] px-3 md:px-0 md:mx-auto"
+      class="bv__filters flex flex-wrap md:flex-nowrap w-full justify-start max-w-[1124px] px-3 lg:px-0 md:mx-auto"
     >
       <div class="bv__filter-container w-full md:w-3/4">
         <div
@@ -201,7 +201,7 @@
               class="review-dropdown"
               @input="(label, value) => mediaInput(label, value)"
             >
-              <RaSelectOption value="any">Images or Videos</RaSelectOption>
+              <RaSelectOption value="any">Media</RaSelectOption>
               <RaSelectOption value="images">Images</RaSelectOption>
               <RaSelectOption value="videos">Videos</RaSelectOption>
             </RaSelect>
@@ -216,7 +216,7 @@
       <div class="bv__sort-container w-full md:w-1/4">
         <div
           aria-label="sort by"
-          class="ra-quantity-selector ra-quantity-selector--dropdown"
+          class="ra-quantity-selector--dropdown md:w-full"
         >
           <label class="ra-input__label hidden">sort by</label>
           <RaSelect
@@ -250,7 +250,7 @@
     <!-- Reviews Cards Start -->
     <div
       v-if="reviews?.length > 0"
-      class="bv__results w-full max-w-[1124px] px-3 md:px-0 md:mx-auto border-t border-b-gray-400 mt-10"
+      class="bv__results w-full max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-b-gray-400 mt-10"
     >
       <div
         v-for="review in reviewData.Results"
@@ -341,7 +341,7 @@
               <RaIcon
                 @click="submitFeedBack('helpfulness', 'positive', review.Id)"
                 size="16px"
-                class="mr-1"
+                class="mr-1 cursor-pointer"
               >
                 <svg>
                   <use xlink:href="#thumb-up"></use>
@@ -354,7 +354,7 @@
               <RaIcon
                 @click="submitFeedBack('helpfulness', 'negative', review.Id)"
                 size="16px"
-                class="mr-1"
+                class="mr-1 cursor-pointer"
               >
                 <svg>
                   <use xlink:href="#thumb-down"></use>
@@ -366,7 +366,7 @@
               ></span>
               <span
                 @click="submitFeedBack('inappropriate', null, review.Id)"
-                class="font-primary text-sm border-b text-gray-400 border-b-gray-400 ml-3 cursor-pointer tracking-normal"
+                class="font-primary text-sm border-b text-gray-400 border-b-gray-400 ml-3 cursor-pointer tracking-normal whitespace-nowrap"
               >
                 Report this review
               </span>
@@ -421,6 +421,7 @@
         class="flex flex-col items-center"
       >
         <button
+          v-if="reviewsToShow < reviewData?.TotalResults"
           @click="showMore"
           class="ra-button ra-button--tertiary ra-button--sm mt-6 mx-auto"
         >
@@ -645,7 +646,7 @@ export default defineComponent({
     },
     openReviewModal() {
       // eslint-disable-next-line no-undef
-      $BV.ui("rr', 'submit_review", {
+      $BV.ui("rr", "submit_review", {
         productId: this.id.toString(),
         campaignId: "ProductPage",
       });
