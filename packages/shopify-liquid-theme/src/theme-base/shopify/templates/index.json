@@ -1,7 +1,7 @@
 {
   "sections": {
     "70470917-0d14-4248-a6ea-ab488472117a": {
-      "type": "hero-image",
+      "type": "hero-carousel",
       "blocks": {
         "9cc19ed1-ae39-4a1b-8996-235afbe1d4e2": {
           "type": "slide",
