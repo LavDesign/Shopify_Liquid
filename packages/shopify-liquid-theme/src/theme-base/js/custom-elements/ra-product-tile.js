@@ -101,6 +101,7 @@ export default class RaProductTile extends HTMLElement {
     Array.from(this.variantOptions.children).forEach((option) => {
       const input = option.querySelector("input");
       const label = option.querySelector("label");
+      if (!input) return false;
       const { optionValue, optionPosition } = input.dataset;
       if (this.currentVariant[`option${optionPosition}`] == optionValue) {
         label.classList.add("active");
@@ -157,10 +158,29 @@ export default class RaProductTile extends HTMLElement {
     viewMore.classList.add("product-tile__view-more");
     viewMore.setAttribute("data-view-more", "");
     viewMore.addEventListener("click", () => {
+      console.log(this.variantOptions);
       this.variantOptions.classList.add("ra-product-tile__options--expanded");
       viewMore.classList.add("!hidden");
+      viewLess.classList.remove("!hidden");
+      Array.from(this.variantOptions.children).forEach((option) => {
+        option.style.opacity = 1;
+        console.log(option);
+      });
+    });
+    const viewLess = document.createElement("span");
+    viewLess.innerText = "View Less";
+    viewLess.classList.add("!hidden");
+    viewLess.setAttribute("data-view-less", "");
+    viewLess.addEventListener("click", () => {
+      this.variantOptions.classList.remove(
+        "ra-product-tile__options--expanded"
+      );
+      viewMore.classList.remove("!hidden");
+      viewLess.classList.add("!hidden");
+      this.displayViewMore();
     });
     this.optionContainer.append(viewMore);
+    this.optionContainer.append(viewLess);
   }
 
   displayViewMore() {
@@ -172,19 +192,34 @@ export default class RaProductTile extends HTMLElement {
         children[1].offsetLeft -
         (children[0].offsetLeft + children[0].offsetWidth);
       let currentOffset = 0;
+      const hiddenChildren = [];
       const visibleChildren = children.reduce((acc, child) => {
         if (currentOffset + child.offsetWidth < maxWidth) {
+          child.style.opacity = 1;
           currentOffset += child.offsetWidth + gridGap;
           return [...acc, child];
+        } else if (currentOffset + child.offsetWidth / 2 < maxWidth) {
+          child.style.opacity = 1;
+          console.log("WE HAVE A MATCHY");
+          return acc;
         } else {
+          child.style.opacity = 0;
+          hiddenChildren.push(child);
           return acc;
         }
       }, []);
+      console.log("VisibleChildren");
+      console.log(visibleChildren);
+      console.log("Hidden Children");
+      console.log(hiddenChildren);
+      // hiddenChildren.forEach((child) => (child.style.opacity = 0));
+      // visibleChildren.forEach((child) => (child.style.opacity = 1));
       this.querySelector("[data-count]").textContent =
         children.length - visibleChildren.length;
       viewMore?.classList.remove("!hidden");
     } else {
       viewMore?.classList.add("!hidden");
+      children.forEach((child) => (child.style.opacity = 1));
     }
   }
 
