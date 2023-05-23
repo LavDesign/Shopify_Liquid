@@ -15,29 +15,13 @@
       assign video_embed_handle = video_embed_handle | append: '_mobile'
       assign video_file_handle = video_file_handle | append: '_mobile'
     endif
-    assign video_source = 'embed'
-    assign video_background_url = ''
-    if block.settings[video_embed_handle] != blank
-      if block.settings[video_embed_handle].type == 'youtube'
-        assign video_background_url = 'https://www.youtube.com/embed/' | append: block.settings[video_embed_handle].id
-      else
-        assign video_background_url = 'https://player.vimeo.com/video/' | append: block.settings[video_embed_handle].id
-      endif
-    elsif block.settings[video_file_handle] != blank
-      assign video_source = 'file'
-      for resource in block.settings[video_file_handle].sources
-        if resource.format == 'mp4'
-          assign video_background_url = resource.url
-        endif
-      endfor
-    endif
   %}
   {% if has_mobile_video == false and view == 'mobile' %}{% continue %}{% endif %}
   <div class="hero-video{% if has_mobile_video and view == 'desktop' %} hidden md:flex{% elsif view == 'mobile' %} flex md:hidden h-full{% endif %}">
     {% if block.settings[video_embed_handle] == blank and block.settings[video_file_handle] != blank %}
       {% render 'ra-video', video: block.settings[video_file_handle] %}
     {% else %}
-      <div class="embed {{ block.settings.video_aspect_ratio }}">
+      <div class="embed {% if view == 'mobile' %}{{ block.settings.video_aspect_ratio_mobile }}{% else %}{{ block.settings.video_aspect_ratio }}{% endif %}">
         {% render 'ra-video',
           video_url: block.settings[video_embed_handle],
           muted: true,
