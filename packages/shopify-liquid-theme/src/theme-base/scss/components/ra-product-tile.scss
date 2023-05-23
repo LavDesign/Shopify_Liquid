@@ -13,16 +13,18 @@
 }
 
 .ra-product-tile {
-  .ra-image:hover {
+  &:hover {
     --product-tile-image-opacity: 1;
     --product-tile-image-even-opacity: 1;
     --product-tile-wishlist-opacity: 1;
     --product-tile-atc-opacity: 1;
     --product-tile-z-index: var(--z-index-base);
   }
+
   .ra-choice {
     @apply h-[30px]
   }
+
   .ra-choice__container {
     @apply w-[30px] h-[30px] rounded-full;
     border: none !important;
