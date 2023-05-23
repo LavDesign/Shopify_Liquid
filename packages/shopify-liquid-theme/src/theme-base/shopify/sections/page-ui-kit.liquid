@@ -6,6 +6,7 @@
     assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300
     assign img_alt = section.settings.featured_product.featured_image.alt | default: section.settings.featured_product.title
     assign link_url = section.settings.featured_product.url
+    assign video_url = section.settings.video_url
   %}
 
   <style>
@@ -858,9 +859,11 @@
       Icon Tile
     {%- endcomment -%}
     <h4 id="icon-tile" class="text-h4 mt-10 mb-5">Icon Tile</h4>
+
     {% assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300 %}
     {% assign img_alt = section.settings.featured_product.featured_image.alt %}
     {% assign link_url = section.settings.featured_product.url %}
+
     <div class="grid gap-6 grid-cols-2 mb-5">
       {% render 'ra-icon-tile',
         image: featured_image,
@@ -945,39 +948,93 @@
     <hr class="border my-20">
     {%- comment -%}
       Content Tiles
+
+      content tile text before
+      content tile text after
+      content tile text overlay
+      with CTAs
     {%- endcomment -%}
-    {% assign videoUrl = section.settings.video_url %}
+
     <h4 id="content-tiles" class="text-h4 mt-10 mb-5">Content Tiles</h4>
-    <div style="max-width: 22rem;">
-      {{ section.settings.featured_product.featured_image.url }}
+    <div class="max-w-screen-2xl grid grid-cols-4 gap-2">
       {% render 'ra-content-tile',
         image: section.settings.featured_product.featured_image,
         alt: img_alt,
-        title: 'This is a title',
+        title: 'Content Tile Overlay',
         description: "I'm not thinking about anything when I'm climbing.",
         link_url_1: link_url,
-        link_text_1: 'Default',
-        link_url_2: link_url,
-        link_text_2: 'Secondary',
+        link_text_1: 'Primary',
+        details_location: 'overlay',
         width: 400,
         height: 300
       %}
-    </div>
-    <hr class="border my-20">
-    <h4 id="content-tiles-video" class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
-    <div style="max-width: 22rem;">
       {% render 'ra-content-tile',
         image: section.settings.featured_product.featured_image,
         alt: img_alt,
-        title: 'This is a title',
+        title: 'Content Tile Text After',
         description: "I'm not thinking about anything when I'm climbing.",
         link_url_1: link_url,
-        link_text_1: 'Default',
+        link_text_1: 'Primary',
         link_url_2: link_url,
         link_text_2: 'Secondary',
+        details_location: 'after',
+        width: 400,
+        height: 300
+      %}
+      {% render 'ra-content-tile',
+        image: section.settings.featured_product.featured_image,
+        alt: img_alt,
+        title: 'Content Tile Text Before',
+        description: "Two CTA's",
+        link_url_1: link_url,
+        link_text_1: 'Primary',
+        link_url_2: link_url,
+        link_text_2: 'Secondary',
+        details_location: 'before',
+        width: 400,
+        height: 300
+      %}
+      {%
+        render 'ra-content-tile',
+        video: video_url,
+        alt: img_alt,
+        title: 'Content Tile w/ Video',
+        description: "Options for 1, 2 or no CTA's",
         width: 400,
         height: 300,
-        video: videoUrl
+        details_location: 'after',
+      %}
+    </div>
+    <hr class="border my-20">
+    <h4 id="content-tiles-video" class="text-h4 mt-10 mb-5">Product Tiles</h4>
+    <div class="max-w-screen-2xl grid grid-cols-4 gap-2">
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'primary',
+        wishlist: true
+      %}
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'secondary'
+      %}
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'primary',
+        wishlist: true,
+        wishlist_style: 'secondary',
+        font_color: 'purple'
+      %}
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'secondary'
       %}
     </div>
     <hr class="border my-20">
