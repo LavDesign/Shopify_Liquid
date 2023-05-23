@@ -33,14 +33,17 @@
     endif
   %}
   {% if has_mobile_video == false and view == 'mobile' %}{% continue %}{% endif %}
-  <div class="{% if has_mobile_video and view == 'desktop' %}hidden md:flex{% elsif view == 'mobile' %}flex md:hidden h-full{% endif %}">
+  <div class="hero-video{% if has_mobile_video and view == 'desktop' %} hidden md:flex{% elsif view == 'mobile' %} flex md:hidden h-full{% endif %}">
     {% if block.settings[video_embed_handle] == blank and block.settings[video_file_handle] != blank %}
-      <video autoplay loop muted playsinline class="ra-video__media ra-video__media--loaded">
-        <source src="{{ video_background_url }}" type="video/mp4">
-      </video>
+      {% render 'ra-video', video: block.settings[video_file_handle] %}
     {% else %}
       <div class="embed {{ block.settings.video_aspect_ratio }}">
-        <iframe src="{{ video_background_url }}"></iframe>
+        {% render 'ra-video',
+          video_url: block.settings[video_embed_handle],
+          muted: true,
+          controls: false,
+          autoplay: true
+        %}
       </div>
     {% endif %}
   </div>
