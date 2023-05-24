@@ -61,7 +61,7 @@
 }
 
 .product-tile__view-less {
-  @apply text-base underline cursor-pointer;
+  @apply text-base underline cursor-pointer bottom-0 text-right;
 }
 
 .product-tile__view-more {

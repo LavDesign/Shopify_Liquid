@@ -40,7 +40,7 @@ export default class RaProductTile extends HTMLElement {
     this.maxScrollLeft =
       this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
     this.swatchOverflow();
-    Array.from(this.variantOptions.children).forEach((option) => {
+    [...this.variantOptions.children].forEach((option) => {
       option.addEventListener("click", this.swatchClick.bind(this));
     });
     window.addEventListener("resize", this.handleResize.bind(this));
@@ -64,13 +64,14 @@ export default class RaProductTile extends HTMLElement {
   handleResize() {
     const newMaxScrollLeft =
       this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-    if (this.maxScrollLeft != newMaxScrollLeft) {
-      this.maxScrollLeft = newMaxScrollLeft;
-      if (this.swatchOverflowStyle == "scroll") {
-        this.displayArrows(this.variantOptions.scrollLeft);
-      } else if (this.swatchOverflowStyle == "expand") {
-        this.displayViewMore();
-      }
+    if (this.swatchOverflowStyle === "expand") {
+      this.displayViewMore();
+      this.displayViewLess();
+    } else if (
+      this.swatchOverflowStyle == "scroll" &&
+      this.maxScrollLeft != newMaxScrollLeft
+    ) {
+      this.displayArrows(this.variantOptions.scrollLeft);
     }
   }
 
@@ -98,7 +99,7 @@ export default class RaProductTile extends HTMLElement {
   }
 
   updateSwatch() {
-    Array.from(this.variantOptions.children).forEach((option) => {
+    [...this.variantOptions.children].forEach((option) => {
       const input = option.querySelector("input");
       const label = option.querySelector("label");
       if (!input) return false;
@@ -114,7 +115,7 @@ export default class RaProductTile extends HTMLElement {
   swatchClick(e) {
     const activeOption = e.target;
     const { optionPosition, optionValue } = activeOption.dataset;
-    const newOptions = Array.from(this.currentVariant.options);
+    const newOptions = [...this.currentVariant.options];
     newOptions[optionPosition - 1] = optionValue;
     const newVariant = this.product.variants?.find((variant) =>
       variant.options.every((value, index) => value === newOptions[index])
@@ -131,6 +132,7 @@ export default class RaProductTile extends HTMLElement {
     } else if (this.swatchOverflowStyle == "expand") {
       this.buildViewMore();
       this.displayViewMore();
+      this.displayViewLess();
     }
   }
 
@@ -158,11 +160,11 @@ export default class RaProductTile extends HTMLElement {
     viewMore.classList.add("product-tile__view-more");
     viewMore.setAttribute("data-view-more", "");
     viewMore.addEventListener("click", () => {
-      console.log(this.variantOptions);
       this.variantOptions.classList.add("ra-product-tile__options--expanded");
       viewMore.classList.add("!hidden");
       viewLess.classList.remove("!hidden");
-      Array.from(this.variantOptions.children).forEach((option) => {
+      this.displayViewLess();
+      [...this.variantOptions.children].forEach((option) => {
         option.style.opacity = 1;
       });
     });
@@ -182,14 +184,20 @@ export default class RaProductTile extends HTMLElement {
     this.optionContainer.append(viewLess);
   }
 
+  calculateGridGap() {
+    const children = [...this.variantOptions.children];
+    return (
+      children[1].offsetLeft -
+      (children[0].offsetLeft + children[0].offsetWidth)
+    );
+  }
+
   displayViewMore() {
     const viewMore = this.querySelector("[data-view-more]");
-    const children = Array.from(this.variantOptions.children);
+    const children = [...this.variantOptions.children];
     if (this.variantOptions.scrollWidth > this.variantOptions.clientWidth) {
       const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
-      const gridGap =
-        children[1].offsetLeft -
-        (children[0].offsetLeft + children[0].offsetWidth);
+      const gridGap = this.calculateGridGap();
       let currentOffset = 0;
       const hiddenChildren = [];
       const visibleChildren = children.reduce((acc, child) => {
@@ -212,6 +220,37 @@ export default class RaProductTile extends HTMLElement {
     } else {
       viewMore?.classList.add("!hidden");
       children.forEach((child) => (child.style.opacity = 1));
+    }
+  }
+
+  displayViewLess() {
+    const viewLess = this.querySelector("[data-view-less]");
+    const children = [...this.variantOptions.children];
+    const gridGap = this.calculateGridGap();
+    const lastChild = children[children.length - 1];
+    const lastChildEndPosition = lastChild.offsetLeft + lastChild.offsetWidth;
+    const viewLessStartPosition = lastChildEndPosition + gridGap;
+    if (
+      viewLessStartPosition + viewLess.offsetWidth <
+      this.variantOptions.clientWidth
+    ) {
+      if (!viewLess.classList.contains("absolute")) {
+        viewLess.classList.add("absolute");
+      }
+      viewLess.style.left = viewLessStartPosition + "px";
+    } else {
+      viewLess.classList.remove("absolute");
+      viewLess.style.left = "auto";
+    }
+    if (
+      !(
+        this.variantOptions.scrollWidth >= this.variantOptions.clientWidth &&
+        this.variantOptions.offsetHeight != lastChild.offsetHeight
+      )
+    ) {
+      viewLess.classList.add("!hidden");
+    } else {
+      viewLess.classList.remove("!hidden");
     }
   }
 
