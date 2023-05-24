@@ -164,12 +164,11 @@ export default class RaProductTile extends HTMLElement {
       viewLess.classList.remove("!hidden");
       Array.from(this.variantOptions.children).forEach((option) => {
         option.style.opacity = 1;
-        console.log(option);
       });
     });
     const viewLess = document.createElement("span");
     viewLess.innerText = "View Less";
-    viewLess.classList.add("!hidden");
+    viewLess.classList.add("!hidden", "product-tile__view-less");
     viewLess.setAttribute("data-view-less", "");
     viewLess.addEventListener("click", () => {
       this.variantOptions.classList.remove(
@@ -198,9 +197,8 @@ export default class RaProductTile extends HTMLElement {
           child.style.opacity = 1;
           currentOffset += child.offsetWidth + gridGap;
           return [...acc, child];
-        } else if (currentOffset + child.offsetWidth / 2 < maxWidth) {
+        } else if (currentOffset + child.offsetWidth / 4 < maxWidth) {
           child.style.opacity = 1;
-          console.log("WE HAVE A MATCHY");
           return acc;
         } else {
           child.style.opacity = 0;
@@ -208,12 +206,6 @@ export default class RaProductTile extends HTMLElement {
           return acc;
         }
       }, []);
-      console.log("VisibleChildren");
-      console.log(visibleChildren);
-      console.log("Hidden Children");
-      console.log(hiddenChildren);
-      // hiddenChildren.forEach((child) => (child.style.opacity = 0));
-      // visibleChildren.forEach((child) => (child.style.opacity = 1));
       this.querySelector("[data-count]").textContent =
         children.length - visibleChildren.length;
       viewMore?.classList.remove("!hidden");
