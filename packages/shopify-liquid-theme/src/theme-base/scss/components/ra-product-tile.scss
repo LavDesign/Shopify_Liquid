@@ -22,7 +22,7 @@
   }
 
   .ra-choice {
-    @apply h-[30px]
+    @apply h-[30px] transition-opacity duration-200;
   }
 
   .ra-choice__container {

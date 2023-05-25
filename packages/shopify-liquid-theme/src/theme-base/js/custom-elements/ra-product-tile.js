@@ -18,7 +18,7 @@ export default class RaProductTile extends HTMLElement {
     this.productBadge = this.querySelector("[data-product-badge]");
 
     // Swatch Properties
-    this.swatchOverflowStyle = "scroll"; // expecting expand or scroll
+    this.swatchOverflowStyle = "expand"; // expecting expand or scroll
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
     this.variantSwatches = [...(this.variantOptions?.children || [])];
