@@ -84,6 +84,10 @@
   {% endcase %}
 {% endcapture %}
 
+{% if width == blank %}
+  {% assign width = 400 %}
+{% endif %}
+
 <article class="{{ classes }}" data-aos="fade-up" data-aos-delay="{{ 50 | times: index }}">
   <div class="ra-content-tile__media component-media">
     {% if video != blank %}
