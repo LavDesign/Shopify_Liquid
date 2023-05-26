@@ -79,6 +79,9 @@
     {%- for variant in product.variants -%}
       {
         "available": {{ variant.available | json }},
+        {%- if variant.metafields.custom.back_in_stock -%}
+          "back_in_stock": "{{ variant.metafields.custom.back_in_stock }}",
+        {%- endif -%}
         "barcode": {{ variant.barcode | json }},
         "badge": {{ variant.metafields.badge.label | json }},
         "badge_override": {{ variant.metafields.badge.override | default: false }},
