@@ -249,6 +249,31 @@ const slideToCurrentVariantImage = () => {
   index && primarySwiperInstance.slideTo(index);
 };
 
+const updateBadgeText = () => {
+  let badgeText;
+  let badgeOverride = false;
+  if (currentVariant.value.badge) {
+    badgeText = currentVariant.value.badge;
+    badgeOverride = true;
+  } else if (props.product.badge) {
+    badgeText = props.product.badge;
+    badgeOverride = true;
+  }
+  if (!badgeOverride) {
+    if (
+      currentVariant.value.available &&
+      currentVariant.value.inventory_quantity === 0
+    ) {
+      badgeText = "Sold Out";
+    } else if (
+      currentVariant.value.price < currentVariant.value.compare_at_price
+    ) {
+      badgeText = "On Sale";
+    }
+  }
+  if (badgeText) productBadge.textContent = badgeText;
+};
+
 const productBadge = document.querySelector("[data-pdp-badge]");
 
 const productStore = useProductPageStore();
@@ -257,13 +282,7 @@ watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
   updateVariantURL();
   slideToCurrentVariantImage();
-  let badgeText = variant.badge || props.product.badge;
-  if (variant.available && variant.inventory_quantity === 0) {
-    badgeText = "Sold Out";
-  } else if (variant.price < variant.compare_at_price) {
-    badgeText = "On Sale";
-  }
-  if (badgeText) productBadge.textContent = badgeText;
+  updateBadgeText();
 });
 
 onMounted(() => {
