@@ -252,7 +252,7 @@ const slideToCurrentVariantImage = () => {
 const updateBadgeText = () => {
   let badgeText;
   let badgeOverride = false;
-  let timeDifference = 16;
+  let timeDifference;
   const { back_in_stock } = currentVariant.value;
   if (currentVariant.value.badge) {
     badgeText = currentVariant.value.badge;
