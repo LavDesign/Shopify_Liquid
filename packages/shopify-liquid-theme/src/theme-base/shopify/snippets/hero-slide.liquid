@@ -6,23 +6,20 @@
   if block.settings.background_video_embed_mobile != blank or block.settings.background_video_file_mobile != blank
     assign has_mobile_video = true
   endif
-  if block.settings.mobile_bg_image != blank
+  if block.settings.bg_image_mobile != blank
     assign has_mobile_image = true
   endif
-  if block.settings.background_video_embed != blank or block.settings.background_video_file != blank
+  if block.settings.background_video_embed_desktop != blank or block.settings.background_video_file_desktop != blank
     assign has_desktop_video = true
   endif
 %}
 {% for view in views %}
   {% liquid
-    assign video_embed_handle = 'background_video_embed'
-    assign video_file_handle = 'background_video_file'
-    assign image_handle = 'bg_image'
+    assign video_embed_handle = 'background_video_embed_' | append: view
+    assign video_file_handle = 'background_video_file_' | append: view
+    assign image_handle = 'bg_image_' | append: view
     assign image_width = 2000
     if view == 'mobile'
-      assign video_embed_handle = video_embed_handle | append: '_mobile'
-      assign video_file_handle = video_file_handle | append: '_mobile'
-      assign image_handle = image_handle | append: '_mobile'
       assign image_width = 800
     endif
   %}
@@ -31,7 +28,7 @@
       {% render 'ra-video', video: block.settings[video_file_handle] %}
     </div>
   {% elsif block.settings[video_embed_handle] != blank and block.settings[video_file_handle] == blank %}
-    <div class="embed {% if view == 'mobile' %}{{ block.settings.video_aspect_ratio_mobile }}{% else %}{{ block.settings.video_aspect_ratio }}{% endif %}">
+    <div class="embed {% if view == 'mobile' %}{{ block.settings.video_aspect_ratio_mobile }}{% else %}{{ block.settings.video_aspect_ratio_desktop }}{% endif %}">
       {% render 'ra-video',
         video_url: block.settings[video_embed_handle],
         muted: true,
