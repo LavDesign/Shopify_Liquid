@@ -26,6 +26,12 @@
   if slides_length > 1
     assign enable_primary_carousel = true
   endif
+
+  if product.selected_or_first_available_variant.metafields.badge.label
+    assign badge_text = product.selected_or_first_available_variant.metafields.badge.label
+  else
+    assign badge_text = product.metafields.badge.label | default: ''
+  endif
 %}
 
 <ra-media-gallery
@@ -119,6 +125,9 @@
         class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative max-w-full"
         data-aos="fade"
       >
+        {% if badge_text %}
+          {% render 'ra-badge', class: 'ra-product-tile__badge z-50', label: badge_text, attributes: 'data-pdp-badge' %}
+        {% endif %}
         <swiper-container
           auto-height="false"
           class="w-full product-media-gallery__primary"

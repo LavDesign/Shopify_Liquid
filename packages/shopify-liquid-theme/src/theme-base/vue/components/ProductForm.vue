@@ -249,12 +249,21 @@ const slideToCurrentVariantImage = () => {
   index && primarySwiperInstance.slideTo(index);
 };
 
+const productBadge = document.querySelector("[data-pdp-badge]");
+
 const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
   updateVariantURL();
   slideToCurrentVariantImage();
+  let badgeText = variant.badge || props.product.badge;
+  if (variant.available && variant.inventory_quantity === 0) {
+    badgeText = "Sold Out";
+  } else if (variant.price < variant.compare_at_price) {
+    badgeText = "On Sale";
+  }
+  if (badgeText) productBadge.textContent = badgeText;
 });
 
 onMounted(() => {
