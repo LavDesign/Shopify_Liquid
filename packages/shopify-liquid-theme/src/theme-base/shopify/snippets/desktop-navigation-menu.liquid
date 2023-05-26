@@ -74,11 +74,11 @@
 
           {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
             <li class="relative w-full h-auto aspect-{{ aspect_ratio }}">
-              {{ featured.setting.image | image_url: width: 600 | image_tag: class: 'absolute top-0 left-0 z-1 object-cover w-full h-full' }}
+              {{ featured.settings.image | image_url: width: 600 | image_tag: class: 'absolute top-0 left-0 z-1 object-cover w-full h-full' }}
 
               <div class="p-6 flex flex-col justify-end absolute top-0 left-0 z-2 w-full h-full">
                 {% if featured.settings.title != blank %}
-                  <h4	class="text-[24px] color-grey-900">{{ featured.ysettings.title }}</h4>
+                  <h4	class="text-[24px] color-grey-900">{{ featured.settings.title }}</h4>
                 {% endif %}
 
                 {% if featured.settings.link_label != blank and featured.settings.link_url != blank %}
