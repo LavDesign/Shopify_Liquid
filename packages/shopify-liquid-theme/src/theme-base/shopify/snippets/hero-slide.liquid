@@ -1,0 +1,53 @@
+{% liquid
+  assign views = 'mobile,desktop'
+  assign views = views | split: ','
+  assign has_desktop_video = false
+  assign has_mobile_video = false
+  if block.settings.background_video_embed_mobile != blank or block.settings.background_video_file_mobile != blank
+    assign has_mobile_video = true
+  endif
+  if block.settings.bg_image_mobile != blank
+    assign has_mobile_image = true
+  endif
+  if block.settings.background_video_embed_desktop != blank or block.settings.background_video_file_desktop != blank
+    assign has_desktop_video = true
+  endif
+%}
+{% for view in views %}
+  {% liquid
+    assign video_embed_handle = 'background_video_embed_' | append: view
+    assign video_file_handle = 'background_video_file_' | append: view
+    assign image_handle = 'bg_image_' | append: view
+    assign image_width = 2000
+    if view == 'mobile'
+      assign image_width = 800
+    endif
+  %}
+  {% if block.settings[video_embed_handle] == blank and block.settings[video_file_handle] != blank %}
+    <div class="hero-video{% if view == 'desktop' %}{% if has_mobile_video or has_mobile_image %} hidden md:flex {% else %} max-md:h-full{% endif %}{% elsif view == 'mobile' %} flex md:hidden h-full{% endif %}">
+      {% render 'ra-video', video: block.settings[video_file_handle] %}
+    </div>
+  {% elsif block.settings[video_embed_handle] != blank and block.settings[video_file_handle] == blank %}
+    <div class="embed {% if view == 'mobile' %}{{ block.settings.video_aspect_ratio_mobile }}{% else %}{{ block.settings.video_aspect_ratio_desktop }}{% endif %}">
+      {% render 'ra-video',
+        video_url: block.settings[video_embed_handle],
+        muted: true,
+        controls: false,
+        autoplay: true
+      %}
+    </div>
+  {% elsif block.settings[image_handle] != blank %}
+    {% assign image_class = 'ra-image__media ra-image__media--mobile ' %}
+    {% assign responsive_class = 'hidden md:block' %}
+    {% if view == 'mobile' %}
+      {% assign responsive_class = 'md:hidden' %}
+    {% endif %}
+    {% assign image_class = image_class | append: responsive_class %}
+    {% render 'ra-image',
+      image: block.settings[image_handle],
+      classes: image_class,
+      width: image_width,
+      lazyload: true
+    %}
+  {% endif %}
+{% endfor %}

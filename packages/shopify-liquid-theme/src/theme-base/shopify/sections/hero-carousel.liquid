@@ -58,9 +58,7 @@
       <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
         <div class="ra-hero__media component-media relative">
           {% if block.type == 'slide' %}
-            {% render 'hero-image', block: block %}
-          {% elsif block.type == 'video' %}
-            {% render 'hero-video', block: block %}
+            {% render 'hero-slide', block: block %}
           {% endif %}
         </div>
         <div class="ra-hero__details component-details--set-order h-auto {% if section.settings.stack_mobile %}!relative md:!absolute{% endif %}">
@@ -177,19 +175,105 @@
         },
         {
           "type": "header",
-          "content": "Media"
+          "content": "Media (Desktop)",
+          "info": "Choose between an image or video to set as your background element on desktop"
         },
         {
           "type": "image_picker",
-          "id": "desktop_bg_image",
+          "id": "bg_image_desktop",
           "label": "Background Image (desktop)",
           "info": "Recommended Size: 1800x1800"
         },
         {
+          "type": "video",
+          "id": "background_video_file_desktop",
+          "label": "Video Upload (file upload)",
+          "info": "Upload as MP4"
+        },
+        {
+          "type": "video_url",
+          "id": "background_video_embed_desktop",
+          "label": "Video Upload (embed option)",
+          "info": "Paste link for Youtube or Vimeo",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "select",
+          "id": "video_aspect_ratio_desktop",
+          "label": "Video Aspect Ratio",
+          "options": [
+            {
+              "value": "embed--21x9",
+              "label": "21x9"
+            },
+            {
+              "value": "embed--16x9",
+              "label": "16x9"
+            },
+            {
+              "value": "embed--4x3",
+              "label": "4x3"
+            },
+            {
+              "value": "embed--1x1",
+              "label": "1x1"
+            }
+          ],
+          "default": "embed--16x9"
+        },
+        {
+          "type": "header",
+          "content": "Media (Mobile)",
+          "info": "Choose between an image or video to set as your background element on mobile. If no mobile media is chosen, will default to desktop."
+        },
+        {
           "type": "image_picker",
-          "id": "mobile_bg_image",
+          "id": "bg_image_mobile",
           "label": "Background Image (mobile)",
           "info": "Recommended Size: 800x800"
+        },
+        {
+          "type": "video_url",
+          "id": "background_video_embed_mobile",
+          "label": "Mobile Video Upload (embed option)",
+          "info": "Paste link for Youtube or Vimeo",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "video",
+          "id": "background_video_file_mobile",
+          "label": "Mobile Video Upload (file upload)",
+          "info": "Upload as MP4"
+        },
+        {
+          "type": "select",
+          "id": "video_aspect_ratio_mobile",
+          "label": "Video Aspect Ratio (Mobile)",
+          "options": [
+            {
+              "value": "embed--21x9",
+              "label": "21x9"
+            },
+            {
+              "value": "embed--16x9",
+              "label": "16x9"
+            },
+            {
+              "value": "embed--4x3",
+              "label": "4x3"
+            },
+            {
+              "value": "embed--1x1",
+              "label": "1x1"
+            }
+          ],
+          "default": "embed--16x9"
         },
         {
           "type": "header",
@@ -220,208 +304,6 @@
         {
           "type": "header",
           "content": "Block CTA's"
-        },
-        {
-          "type": "text",
-          "id": "cta_1_label",
-          "label": "CTA 1 Text",
-          "default": "Learn More"
-        },
-        {
-          "type": "url",
-          "id": "cta_1_url",
-          "label": "CTA 1 URL"
-        },
-        {
-          "type": "select",
-          "id": "cta_1_style",
-          "label": "CTA 1 Style",
-          "options": <%- uikit.buttonStyles -%>,
-          "default": "primary"
-        },
-        {
-          "type": "text",
-          "id": "cta_2_label",
-          "label": "CTA 2 Text",
-          "default": "Learn More"
-        },
-        {
-          "type": "url",
-          "id": "cta_2_url",
-          "label": "CTA 2 URL"
-        },
-        {
-          "type": "select",
-          "id": "cta_2_style",
-          "label": "CTA 2 Style",
-          "options": <%- uikit.buttonStyles -%>,
-          "default": "secondary"
-        }
-      ]
-    },
-    {
-      "type": "video",
-      "name": "Video",
-      "settings": [
-        {
-          "type": "header",
-          "content": "Video",
-          "info": "Choose between embed or file upload to import video"
-        },
-        {
-          "type": "video_url",
-          "id": "background_video_embed",
-          "label": "Video Upload (embed option)",
-          "info": "Paste link for Youtube or Vimeo",
-          "accept": [
-            "youtube",
-            "vimeo"
-          ]
-        },
-        {
-          "type": "video",
-          "id": "background_video_file",
-          "label": "Video Upload (file upload)",
-          "info": "Upload as MP4"
-        },
-        {
-          "type": "header",
-          "content": "Video (Mobile)",
-          "info": "Choose between embed or file upload to import video"
-        },
-        {
-          "type": "video_url",
-          "id": "background_video_embed_mobile",
-          "label": "Mobile Video Upload (embed option)",
-          "info": "Paste link for Youtube or Vimeo",
-          "accept": [
-            "youtube",
-            "vimeo"
-          ]
-        },
-        {
-          "type": "video",
-          "id": "background_video_file_mobile",
-          "label": "Mobile Video Upload (file upload)",
-          "info": "Upload as MP4"
-        },
-        {
-          "type": "select",
-          "id": "video_aspect_ratio",
-          "label": "Video Aspect Ratio",
-          "options": [
-            {
-              "value": "embed--21x9",
-              "label": "21x9"
-            },
-            {
-              "value": "embed--16x9",
-              "label": "16x9"
-            },
-            {
-              "value": "embed--4x3",
-              "label": "4x3"
-            },
-            {
-              "value": "embed--1x1",
-              "label": "1x1"
-            }
-          ],
-          "default": "embed--16x9"
-        },
-        {
-          "type": "select",
-          "id": "video_aspect_ratio_mobile",
-          "label": "Video Aspect Ratio (Mobile)",
-          "options": [
-            {
-              "value": "embed--21x9",
-              "label": "21x9"
-            },
-            {
-              "value": "embed--16x9",
-              "label": "16x9"
-            },
-            {
-              "value": "embed--4x3",
-              "label": "4x3"
-            },
-            {
-              "value": "embed--1x1",
-              "label": "1x1"
-            }
-          ],
-          "default": "embed--16x9"
-        },
-        {
-          "type": "text",
-          "id": "eyebrow_text",
-          "label": "Eyebrow Text",
-          "default": "Eyebrow Text"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Title"
-        },
-        {
-          "type": "select",
-          "id": "title_level",
-          "label": "Title Level",
-          "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
-          "options": <%- uikit.headingStyles -%>,
-          "default": "h2"
-        },
-        {
-          "type": "select",
-          "id": "title_style",
-          "label": "Title Style",
-          "info": "Choose the styling of the header",
-          "options": <%- uikit.headingStyles -%>,
-          "default": "h3"
-        },
-        {
-          "type": "select",
-          "id": "text_alignment",
-          "label": "Text Alignment",
-          "options": <%- uikit.textAligments -%>,
-          "default": "set--v-align-middle set--h-align-center"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description",
-          "default": "<p>I'm not thinking about anything when I'm climbing, which is part of the appeal. I'm focused on executing what's in front of me.</p>"
-        },
-        {
-          "type": "header",
-          "content": "Color Settings"
-        },
-        {
-          "type": "select",
-          "id": "text_color_desktop",
-          "label": "Text Color (desktop)",
-          "options": <%- uikit.colorsSchemaPicker -%>,
-          "default": "--color-primary-900"
-        },
-        {
-          "type": "select",
-          "id": "text_color_mobile",
-          "label": "Text Color (mobile)",
-          "options": <%- uikit.colorsSchemaPicker -%>,
-          "default": "--color-primary-900"
-        },
-        {
-          "type": "select",
-          "id": "bg_color",
-          "label": "Background Color",
-          "options": <%- uikit.colorsSchemaPicker -%>,
-          "default": "--color-primary-900"
-        },
-        {
-          "type": "header",
-          "content": "Section CTA's"
         },
         {
           "type": "text",
