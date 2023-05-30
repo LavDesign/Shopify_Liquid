@@ -78,7 +78,7 @@ autoplay: true
   video (Video Object):
   Used when a video object is passed in from theme or section schema settings
   {% endcomment %}
-  {{- video | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url -}}
+  {{- video | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url, loading: lazyload -}}
 {%- elsif metaobject_video -%}
   {% comment %}
   metaobject_video comes from Metaobjects that contain media objects. They need to be handled separately.
