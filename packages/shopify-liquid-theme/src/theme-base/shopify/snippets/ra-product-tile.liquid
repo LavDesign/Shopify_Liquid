@@ -66,6 +66,29 @@
 
   assign index = index | default: 1
 %}
+{%- liquid
+  assign variant_colors = ''
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name == 'color'
+      assign option_index = option.position
+    endif
+  endfor
+  if option_index != blank
+    for variant in product.variants
+      assign variant_option = 'option' | append: option_index
+      assign variant_color = variant[variant_option] | downcase
+      if variant_color
+        if variant.inventory_quantity > 0 or variant.inventory_policy == 'continue'
+          unless variant_colors contains variant_color
+            assign variant_colors = variant_colors | append: variant_color | downcase | append: '%%%%'
+          endunless
+        endif
+      endif
+    endfor
+    assign variant_colors = variant_colors | split: '%%%%'
+  endif
+-%}
 {% capture product_json %}{%- render 'json-product', product: product -%}{% endcapture %}
 <!-- prettier-ignore -->
 <ra-product-tile
@@ -173,8 +196,15 @@
               data-option-position="{{ option.position }}"
             {% endcapture %}
             {% capture variant_id %}{{value}}_{{product.id}}{% endcapture %}
-            {% assign checked = false %}
-            {% assign disabled = true %}
+
+              {%- liquid
+              assign checked = false
+              assign disabled = false
+              assign downcase_value = value | downcase
+              unless variant_colors contains downcase_value
+                assign disabled = true
+              endunless
+              -%}
             {% if option_name == "color" %}
               {%- render 'ra-swatch-button',
                 name: option_name,
@@ -184,7 +214,8 @@
                 value: value,
                 label: value,
                 style: 'classic',
-                additional_attributes: data_attributes
+                additional_attributes: data_attributes,
+                disabled: disabled
               -%}
           {% endif %}
         {% endfor %}
