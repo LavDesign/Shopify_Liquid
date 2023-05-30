@@ -2,6 +2,7 @@
   "id": {{ product.id }},
   "available": {{ product.available | json }},
   "badge": {{ product.metafields.badge.label | json }},
+  "badge_override": {{ product.metafields.badge.override | default: false }},
   "description": {{ product.description | json }},
   "title": {{ product.title | json }},
   "handle": {{ product.handle | json }},
@@ -78,8 +79,12 @@
     {%- for variant in product.variants -%}
       {
         "available": {{ variant.available | json }},
+        {%- if variant.metafields.custom.back_in_stock -%}
+          "back_in_stock": "{{ variant.metafields.custom.back_in_stock }}",
+        {%- endif -%}
         "barcode": {{ variant.barcode | json }},
         "badge": {{ variant.metafields.badge.label | json }},
+        "badge_override": {{ variant.metafields.badge.override | default: false }},
         "compare_at_price": {{ variant.compare_at_price | json }},
         "id": {{ variant.id }},
         "media": {

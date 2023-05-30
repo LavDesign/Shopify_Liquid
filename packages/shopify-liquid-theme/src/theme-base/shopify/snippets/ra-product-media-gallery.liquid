@@ -26,6 +26,38 @@
   if slides_length > 1
     assign enable_primary_carousel = true
   endif
+
+  assign current_variant = product.selected_or_first_available_variant
+
+  assign badge_text = ''
+  assign badge_override = false
+
+  assign back_in_stock = current_variant.metafields.custom.back_in_stock
+
+  if current_variant.metafields.badge.label
+    assign badge_text = current_variant.metafields.badge.label
+    assign badge_override = current_variant.metafields.badge.override
+  else
+    if product.metafields.badge.label
+      assign badge_text = product.metafields.badge.label
+      assign badge_override = product.metafields.badge.override
+    endif
+  endif
+
+  unless badge_override
+    if current_variant.inventory_quantity == 0 and current_variant.inventory_policy == 'deny'
+      assign badge_text = 'Sold Out'
+    elsif back_in_stock
+      assign back_in_stock_seconds = back_in_stock | date: '%Y-%m-%d' | date: '%s'
+      assign today_seconds = 'now' | date: '%Y-%m-%d' | date: '%s'
+      assign days_difference = back_in_stock_seconds | minus: today_seconds | divided_by: 86400
+      if days_difference < 14
+        assign badge_text = 'Back in Stock'
+      endif
+    elsif current_variant.price < current_variant.compare_at_price
+      assign badge_text = 'On Sale'
+    endif
+  endunless
 %}
 
 <ra-media-gallery
@@ -119,6 +151,12 @@
         class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative max-w-full"
         data-aos="fade"
       >
+        {% render 'ra-badge',
+          class: 'ra-product-tile__badge z-50',
+          label: badge_text,
+          attributes: 'data-pdp-badge',
+          placeholder: true
+        %}
         <swiper-container
           auto-height="false"
           class="w-full product-media-gallery__primary"
