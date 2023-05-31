@@ -26,6 +26,13 @@
         </div>
         <aside class="collection__filters facets-wrapper px-20 lg:px-5 pt-4" id="main-collection-filters">
           {% render 'ra-collection-filters', collection: collection %}
+          {% render 'ra-button',
+            label: 'Apply Filters',
+            style: 'secondary',
+            type: 'ra-button',
+            class: 'col-span-1 mt-5 w-full md:hidden',
+            data: 'data-action-close-filters'
+          %}
         </aside>
       </div>
       <div class="collection__main w-full lg:w-3/4">

@@ -1,6 +1,12 @@
 .hero-video {
   position: relative;
 
+  @breakpoint md-max {
+    video {
+      object-fit: cover;
+    }
+  }
+
   .ra-hero__details {
     z-index: 2;
   }

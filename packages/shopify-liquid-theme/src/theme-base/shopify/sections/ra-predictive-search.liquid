@@ -1,6 +1,11 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 {%- if predictive_search.performed -%}
   {% assign show_sidebar = false %}
+  {%- style -%}
+    #predictive-search-results {
+      color: var({{- settings.predictive_text_color -}});
+    }
+  {%- endstyle -%}
 
   {% capture sidebar_content %}
     <div class="w-full md:w-1/6">
@@ -52,17 +57,20 @@
   {% endcapture %}
 
   <div class="predictive-search__overlay absolute left-0 right-0 top-full h-screen opacity-50 bg-primary-900"></div>
-  <div id="predictive-search-results" class="absolute bg-white left-0 right-0 top-full p-10 justify-center flex">
+  <div
+    id="predictive-search-results"
+    class="absolute bg-white left-0 right-0 top-full p-10 justify-center flex max-md:overflow-scroll"
+  >
     <div class="w-full md:max-w-screen-2xl flex flex-col md:flex-row">
       {% if show_sidebar %}
         {{ sidebar_content }}
       {% endif %}
-      <div class="{% if show_sidebar %}md:w-5/6{% endif%} w-full">
+      <div class="{% if show_sidebar %}md:w-5/6{% endif%} w-full max-md:pb-8">
         {%- if predictive_search.resources.products.size > 0 -%}
           <ul id="predictive-search-results-list" class="grid grid-cols-2 md:grid-cols-4 md:gap-11 gap-5">
             {%- for product in predictive_search.resources.products -%}
               <li id="predictive-search-option-{{ forloop.index }}" class="predictive-search__list-item list-none mb-2">
-                {% render 'ra-product-tile', product: product %}
+                {% render 'ra-product-tile', product: product, disable_animation: true %}
               </li>
             {%- endfor -%}
           </ul>
