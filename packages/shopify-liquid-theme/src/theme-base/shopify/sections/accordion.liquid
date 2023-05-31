@@ -1,0 +1,42 @@
+<div class="container">
+  <ra-accordion class="ra-accordion" data-multi-open="false">
+    {%- for block in section.blocks -%}
+      {% render 'ra-accordion-item',
+        title: block.settings.item_title,
+        content: block.settings.item_content,
+        show_icon: true
+      %}
+    {%- endfor -%}
+  </ra-accordion>
+</div>
+{% schema %}
+{
+  "name": "accordion",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "accordion-item",
+      "name": "Accordion Item",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "item_content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordion"
+    }
+  ]
+}
+{% endschema %}
