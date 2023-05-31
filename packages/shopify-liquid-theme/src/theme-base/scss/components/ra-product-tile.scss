@@ -36,7 +36,7 @@
     }
 
     &.active {
-      @apply p-0.5;
+      @apply p-[3px];
       border: 1px solid #4D4C4B !important;
     }
   }
