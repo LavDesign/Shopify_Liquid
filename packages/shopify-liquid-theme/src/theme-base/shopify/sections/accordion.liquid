@@ -1,11 +1,18 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    background-color: var({{- section.settings.bg_color -}});
+    color: var({{- section.settings.text_color -}});
+  }
+{%- endstyle -%}
 <div class="container">
   <ra-accordion class="ra-accordion" data-multi-open="false">
     {%- for block in section.blocks -%}
-      {% render 'ra-accordion-item',
-        title: block.settings.item_title,
-        content: block.settings.item_content,
-        show_icon: true
-      %}
+      {% capture accordion_title %}
+        <{{ section.settings.title_level }}>
+        {{ block.settings.item_title }}
+        </{{ section.settings.title_level }}>
+      {% endcapture %}
+      {% render 'ra-accordion-item', title: accordion_title, content: block.settings.item_content, show_icon: true %}
     {%- endfor -%}
   </ra-accordion>
 </div>
@@ -13,7 +20,31 @@
 {
   "name": "accordion",
   "class": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "title_level",
+      "label": "Title Level",
+      "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h5"
+    },
+    {
+      "type": "select",
+      "id": "bg_color",
+      "label": "Background Color",
+      "info": "Set the background color for all screen sizes",
+      "options": <%- uikit.colorsSchemaPicker -%>,
+      "default": "--color-util-white"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Text Color",
+      "options": <%- uikit.colorsAll -%>,
+      "default": "--color-util-red"
+    }
+  ],
   "blocks": [
     {
       "type": "accordion-item",
