@@ -256,7 +256,7 @@ const updateBadgeText = () => {
   const { back_in_stock } = currentVariant.value;
   if (currentVariant.value.badge) {
     badgeText = currentVariant.value.badge;
-    badgeOverride = props.product.badge_override;
+    badgeOverride = currentVariant.value.badge_override;
   } else if (props.product.badge) {
     badgeText = props.product.badge;
     badgeOverride = props.product.badge_override;

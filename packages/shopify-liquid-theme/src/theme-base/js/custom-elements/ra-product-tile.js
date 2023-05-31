@@ -107,7 +107,7 @@ export default class RaProductTile extends HTMLElement {
       });
     });
     const viewLess = document.createElement("span");
-    viewLess.innerText = "View Less";
+    viewLess.innerText = "See Less";
     viewLess.classList.add("!hidden", "product-tile__view-less");
     viewLess.setAttribute("data-view-less", "");
     viewLess.addEventListener("click", () => {

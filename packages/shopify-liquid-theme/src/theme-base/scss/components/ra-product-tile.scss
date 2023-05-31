@@ -12,7 +12,7 @@
   }
 }
 
-.ra-product-tile {
+.ra-product-tile__media {
   &:hover {
     --product-tile-image-opacity: 1;
     --product-tile-image-even-opacity: 1;
@@ -20,6 +20,9 @@
     --product-tile-atc-opacity: 1;
     --product-tile-z-index: var(--z-index-base);
   }
+}
+
+.ra-product-tile {
 
   .ra-choice {
     @apply h-[30px] transition-opacity duration-200;
@@ -33,7 +36,7 @@
     }
 
     &.active {
-      @apply p-0.5;
+      @apply p-[3px];
       border: 1px solid #4D4C4B !important;
     }
   }
