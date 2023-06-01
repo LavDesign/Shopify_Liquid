@@ -12,8 +12,10 @@
             "title_style": "h1",
             "text_alignment": "set--v-align-middle set--h-align-center",
             "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
-            "desktop_bg_image": "shopify:\/\/shop_images\/Mask_group_1.png",
-            "mobile_bg_image": "shopify:\/\/shop_images\/Mask_group_2.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
             "text_color_desktop": "--color-util-white",
             "text_color_mobile": "--color-grey-900",
             "bg_color": "--color-util-white",
@@ -34,8 +36,10 @@
             "title_style": "h1",
             "text_alignment": "set--v-align-middle set--h-align-center",
             "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
-            "desktop_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
-            "mobile_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
             "text_color_desktop": "--color-grey-900",
             "text_color_mobile": "--color-grey-900",
             "bg_color": "--color-util-white",
@@ -86,6 +90,68 @@
         "spacing_top": "large",
         "spacing_bottom": "large",
         "spacing_edge": "large",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "e4cb94bc-8735-4269-aff4-a4f55006553a": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "fa6613b1-31f7-41c1-89ae-9056120df8d3": {
+          "type": "title",
+          "settings": {
+            "title": "Title",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "0ec46168-67d7-412a-876f-02a0bce92950": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Eyebrow Text"
+          }
+        },
+        "15db2bfe-78e8-4c11-b8fe-cff8325792ad": {
+          "type": "body_copy",
+          "settings": {
+            "description": "",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "6c36486d-77f3-4f64-9e8b-16341d829726": {
+          "type": "block_quote",
+          "settings": {
+            "block_quote": "Block quote text Block quote text Block quote text Block quote text Block quote text Block quote text Block quote text Block quote text Block quote text Block quote text"
+          }
+        },
+        "aa3c1bf3-9a1f-4d86-9f06-ee1cd857ffc8": {
+          "type": "ctas",
+          "settings": {
+            "cta_1_text": "Default",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_text": "Secondary",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "fa6613b1-31f7-41c1-89ae-9056120df8d3",
+        "0ec46168-67d7-412a-876f-02a0bce92950",
+        "15db2bfe-78e8-4c11-b8fe-cff8325792ad",
+        "6c36486d-77f3-4f64-9e8b-16341d829726",
+        "aa3c1bf3-9a1f-4d86-9f06-ee1cd857ffc8"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
         "max_width": "medium",
         "horizontal_align": "center",
         "horizontal_align_md": "center"
@@ -485,6 +551,7 @@
   "order": [
     "70470917-0d14-4248-a6ea-ab488472117a",
     "0ba28d04-edbe-46b1-b398-33f4b64ce4e0",
+    "e4cb94bc-8735-4269-aff4-a4f55006553a",
     "367c09ed-72b9-40bd-9098-182341a241cb",
     "6e1c958e-0014-470f-8542-267a33e1b7c2",
     "650a81ef-e9bf-473c-9ec2-107491e86ca3",
