@@ -5,6 +5,7 @@
     {%- render 'gtm-datalayer', action_step: 'init' -%}
     {%- render 'script-tags' -%}
     {%- render 'vendor-scripts' -%}
+    {% render 'ra-language' %}
 
     {%- comment -%}
       Fonts
@@ -56,5 +57,6 @@
         />
       </div>
     {% endunless %}
+
   </body>
 </html>
