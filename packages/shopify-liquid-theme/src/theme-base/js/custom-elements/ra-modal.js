@@ -7,11 +7,11 @@ export default class RaModal extends HTMLElement {
       `[id*='${this.getAttribute("dialog-id")}']`
     );
     this.dialog = this.querySelector("dialog");
+    this.modalCloseButton = this.querySelector("[data-modal-close]");
   }
 
   connectedCallback() {
     dialogPolyfill.registerDialog(this.dialog);
-
     if (this.modalToggleButtons?.length) {
       this.modalToggleButtons.forEach((modalToggleBtn) => {
         modalToggleBtn.addEventListener("click", () => {
@@ -19,6 +19,11 @@ export default class RaModal extends HTMLElement {
           if (!buttonId) return;
           this.toggleModal();
         });
+      });
+    }
+    if (this.modalCloseButton) {
+      this.modalCloseButton.addEventListener("click", () => {
+        this.dialog.close();
       });
     }
   }

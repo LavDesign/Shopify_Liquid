@@ -814,6 +814,16 @@
     ]
   },
   {
+    "name": "Internationalization",
+    "settings": [
+      {
+        "type": "checkbox",
+        "label": "Enable Internationalization",
+        "id": "intl_on"
+      }
+    ]
+  },
+  {
     "name": "Cart",
     "settings": [
       {
