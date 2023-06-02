@@ -1,6 +1,6 @@
 <script>
-  (function(global) {
-    global.language.reviews = {
+  (function(language) {
+    language.reviews = {
       write_a_review: {{ 'products.reviews.write_a_review' | t | json }},
       reviews: {{ 'products.reviews.reviews' | t | json }},
       filter_reviews: {{ 'products.reviews.filter_reviews' | t | json }},
@@ -28,5 +28,5 @@
       showing: {{ 'products.reviews.showing' | t | json }},
       was_review_helpful: {{ 'products.reviews.was_review_helpful' | t | json }},
     };
-  })(window.global = window.global || {});
+  })(window.language = window.language || {});
 </script>
