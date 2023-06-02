@@ -527,7 +527,7 @@ export default defineComponent({
   data() {
     return {
       reviewData: null,
-      language: window.global.language,
+      language: window.global.language.reviews,
       reviews: [],
       averageRating: null,
       submissionHistory: [],
