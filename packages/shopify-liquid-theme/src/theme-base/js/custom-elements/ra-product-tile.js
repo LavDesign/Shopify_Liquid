@@ -280,7 +280,12 @@ export default class RaProductTile extends HTMLElement {
   }
 
   updateProductUrl() {
-    let productUrl = `/products/${this.product.handle}`;
+    let productUrl;
+    if (Shopify.country !== "US") {
+      productUrl = `${window.shopify_locale_root}/products/${this.product.handle}`;
+    } else {
+      productUrl = `/products/${this.product.handle}`;
+    }
     if (this.currentVariant?.id) {
       productUrl += `?variant=${this.currentVariant.id}`;
     }

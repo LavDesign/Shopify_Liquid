@@ -1,3 +1,9 @@
+{% liquid
+  assign link_root = request.locale.root_url
+  if link_root == '/'
+    assign link_root = ''
+  endif
+%}
 <ul class="flex justify-center items-center h-full">
   {% if section.settings.show_search %}
     <li class="header__action-item flex justify-center items-center h-full mr-4 last:mr-0">
@@ -15,7 +21,7 @@
     <li class="header__action-item hidden md:flex justify-center items-center h-full mr-4 last:mr-0">
       <a
         class="header__action-link"
-        href="/account"
+        href="{{ link_root }}/account"
         title="account"
         aria-label="account"
       >
@@ -39,7 +45,7 @@
     <ra-cart-toggle>
       <a
         class="header__action-link"
-        href="/cart"
+        href="{{ link_root }}/cart"
         title="cart"
         aria-label="cart"
         data-toggle-cart

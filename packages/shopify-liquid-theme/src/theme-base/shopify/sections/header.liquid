@@ -1,3 +1,9 @@
+{% liquid
+  assign link_root = request.locale.root_url
+  if link_root == '/'
+    assign link_root = ''
+  endif
+%}
 <style>
   #shopify-section-{{ section.id }} {
     --background-color: var({{ section.settings.bg_color }});
@@ -92,7 +98,7 @@
                 <li class="mb-4 border-0">
                   <a
                     class="flex items-center"
-                    href="/account"
+                    href="{{ link_root }}/account"
                     title="account"
                     aria-label="account"
                   >

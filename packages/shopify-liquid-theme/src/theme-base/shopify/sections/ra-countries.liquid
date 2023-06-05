@@ -1,0 +1,65 @@
+<script>
+  window.shopify_locale_root = '{{ request.locale.root_url }}';
+</script>
+{% capture country_content %}
+  <div class="flex flex-col gap-2 max-h-[600px] flex-wrap h-full">
+    {%- liquid
+      assign root_url = request.locale.root_url
+      assign root_split = root_url | split: "/" | last
+      assign path = request.path | split: root_split | last
+    -%}
+    {% for block in section.blocks %}
+      {% liquid
+        assign country_code = block.settings.country_code | default: ""
+        assign language_code = block.settings.language_code | default: ""
+        assign display_name = block.settings.display_name | default: ""
+        assign active_country_list = localization.available_countries | where: 'name', display_name | default: ""
+        assign country_flag = active_country_list | first
+        assign country_flag = country_flag | image_url: width: 32 | image_tag
+        capture country_url
+          echo shop.url
+          if country_code != blank and language_code != blank
+            echo "/"
+            echo country_code
+            echo "-"
+            echo language_code
+          endif
+          echo path
+        endcapture
+      %}
+      <a href="{{ country_url }}" class="ra-link flex flex-row gap-2">{{ country_flag }} {{ display_name }}</a>
+    {% endfor %}
+  </div>
+{% endcapture %}
+
+{% render 'ra-modal', id: 'intl-modal', title: 'Modal Title', content: country_content, classes: 'gap-4 max-h-full' %}
+
+{% schema %}
+{
+  "name": "Countries",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "country",
+      "name": "Country",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Display Name",
+          "id": "display_name"
+        },
+        {
+          "type": "text",
+          "label": "Country Code",
+          "id": "country_code"
+        },
+        {
+          "type": "text",
+          "label": "Language Code",
+          "id": "language_code"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

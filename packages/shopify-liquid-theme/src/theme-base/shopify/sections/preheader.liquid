@@ -45,42 +45,6 @@
         </div>
       </div>
       {% render 'ra-header-util' %}
-      {% if settings.intl_on %}
-        {% capture country_content %}
-        <div class="flex flex-col gap-2 max-h-[600px] flex-wrap h-full">
-          {% for country in localization.available_countries -%}
-            {% liquid
-              assign country_code = country.iso_code
-              capture country_url
-                echo shop.url
-                if country_code != "US"
-                  assign country_code = country_code | downcase
-                  assign path_test = "/" | append: country_code | append: "/"
-                  unless request.path contains path_test
-                    echo "/"
-                    echo country_code
-                  endunless
-                endif
-                echo request.path
-              endcapture
-            %}
-            {% if country_url %}
-              {% capture country_label %}
-                {{ country | image_url: width: 32, width: 32 | image_tag: class: "rounded-full" }} {{ country.name }}
-              {% endcapture %}
-              <a href="{{country_url}}" class="ra-link flex flex-row gap-2">{{ country_label }} {{ request.locale.root_url }}</a>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% endcapture %}
-
-        {% render 'ra-modal',
-          id: 'intl-modal',
-          title: 'Modal Title',
-          content: country_content,
-          classes: 'gap-4 max-h-full'
-        %}
-      {% endif %}
     </div>
   </div>
 {% endif %}
