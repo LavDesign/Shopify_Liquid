@@ -1,9 +1,3 @@
-{% liquid
-  assign link_root = request.locale.root_url
-  if link_root == '/'
-    assign link_root = ''
-  endif
-%}
 <div class="account-navigation">
   <div class="mb-4 md:mb-10 flex justify-between">
     <h5 class="color-grey-900 capitalize font-light">Hello, {{ customer.first_name }}</h5>
@@ -13,7 +7,7 @@
   <ul class="flex flex-row md:flex-col flex-nowrap overflow-auto whitespace-nowrap max-md:mb-8 list-none">
     <li class="max-md:mr-4 md:mb-5 leading-[1.3]">
       <a
-        href="{{ link_root }}/account"
+        href="{%- render 'locale-root' -%}/account"
         class="text-sm tracking-wide md:text-lg font-semibold {% if request.path == "/account" or request.path contains "/account/orders" %}underline text-grey-900{% else %}no-underline max-md:text-grey-600{% endif %}"
       >
         Order History
@@ -21,7 +15,7 @@
     </li>
     <li class="max-md:mr-4 md:mb-5 leading-[1.3]">
       <a
-        href="{{ link_root }}/{{ routes.account_addresses_url }}"
+        href="{%- render 'locale-root' -%}/{{ routes.account_addresses_url }}"
         class="text-sm tracking-wide md:text-lg font-semibold {% if request.path == "/account/addresses" %}underline text-grey-900{% else %}no-underline max-md:text-grey-600{% endif %}"
       >
         Address Book
