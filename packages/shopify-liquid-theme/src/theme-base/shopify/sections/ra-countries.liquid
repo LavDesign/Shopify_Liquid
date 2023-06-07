@@ -1,29 +1,63 @@
+{%- liquid
+  comment
+    set variables related to localization
+  endcomment
+  assign current_country_code = localization.country.iso_code
+  assign current_language_code = localization.language.iso_code
+  assign primary_locale = ''
+  for l in localization.available_languages
+    if l.primary == true
+      assign primary_locale = l.iso_code
+    endif
+  endfor
+  assign default_country_code = section.settings.default_country_code
+  assign default_locale_code = '/' | append: primary_locale
+  if default_country_code != blank
+    assign default_locale_code = default_locale_code | append: '-' | append: default_country_code
+  endif
+  assign default_locale_code = default_locale_code | downcase
+
+  assign current_locale_code = '/' | append: current_language_code
+  if current_country_code != blank
+    assign current_locale_code = current_locale_code | append: '-' | append: current_country_code
+  endif
+  assign current_locale_code = current_locale_code | downcase
+
+  comment
+    set variables related to the request
+  endcomment
+  assign path = request.path
+  if path contains current_locale_code
+    assign path = path | split: current_locale_code | last
+  endif
+-%}
 <script>
   window.shopify_locale_root = '{{ request.locale.root_url }}';
 </script>
 {% capture country_content %}
   <div class="flex flex-col gap-2 max-h-[600px] flex-wrap h-full">
-    {%- liquid
-      assign root_url = request.locale.root_url
-      assign root_split = root_url | split: "/" | last
-      assign path = request.path | split: root_split | last
-    -%}
     {% for block in section.blocks %}
       {% liquid
         assign country_code = block.settings.country_code | default: ""
         assign language_code = block.settings.language_code | default: ""
         assign display_name = block.settings.display_name | default: ""
-        assign iso_code = country_code | upcase
-        assign active_country_list = localization.available_countries | where: 'iso_code', iso_code | default: ""
-        assign country_flag = active_country_list | first
-        assign country_flag = country_flag | image_url: width: 32 | image_tag
+        assign country_flag = ""
+        if country_code != blank
+          assign active_country_list = localization.available_countries | where: 'iso_code', country_code | default: ""
+          assign country_object = active_country_list | first
+          assign country_flag = country_object | image_url: width: 32 | image_tag | default: ""
+        endif
         capture country_url
           echo shop.url
-          if country_code != section.settings.default_country_code
-            echo "/"
-            echo country_code
-            echo "-"
-            echo language_code
+          if language_code != blank
+            assign locale_code = "/" | append: language_code
+            if country_code != blank
+              assign locale_code = locale_code | append: "-" | append: country_code
+            endif
+          endif
+          assign locale_code = locale_code | downcase
+          if locale_code != default_locale_code
+            echo locale_code
           endif
           echo path
         endcapture
