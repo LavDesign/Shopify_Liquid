@@ -819,7 +819,7 @@
       {
         "type": "checkbox",
         "label": "Enable Internationalization",
-        "id": "intl_on"
+        "id": "enable_internationalization"
       }
     ]
   },

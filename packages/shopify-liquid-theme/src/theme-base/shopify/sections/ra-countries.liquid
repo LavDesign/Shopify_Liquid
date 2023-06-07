@@ -13,12 +13,13 @@
         assign country_code = block.settings.country_code | default: ""
         assign language_code = block.settings.language_code | default: ""
         assign display_name = block.settings.display_name | default: ""
-        assign active_country_list = localization.available_countries | where: 'name', display_name | default: ""
+        assign iso_code = country_code | upcase
+        assign active_country_list = localization.available_countries | where: 'iso_code', iso_code | default: ""
         assign country_flag = active_country_list | first
         assign country_flag = country_flag | image_url: width: 32 | image_tag
         capture country_url
           echo shop.url
-          if country_code != blank and language_code != blank
+          if country_code != section.settings.default_country_code
             echo "/"
             echo country_code
             echo "-"
@@ -37,7 +38,14 @@
 {% schema %}
 {
   "name": "Countries",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "label": "Default Country Code",
+      "id": "default_country_code",
+      "info": "The ISO code of the Default country in ISO 3166-1 (alpha 2) format (e.g: US, CA, GB)"
+    }
+  ],
   "blocks": [
     {
       "type": "country",
@@ -51,12 +59,14 @@
         {
           "type": "text",
           "label": "Country Code",
-          "id": "country_code"
+          "id": "country_code",
+          "info": "The ISO code of the country in ISO 3166-1 (alpha 2) format (e.g: US, CA, GB)"
         },
         {
           "type": "text",
           "label": "Language Code",
-          "id": "language_code"
+          "id": "language_code",
+          "info": "The ISO code of the locale in IETF language tag format (i.e. en for English, es for Spanish) "
         }
       ]
     }

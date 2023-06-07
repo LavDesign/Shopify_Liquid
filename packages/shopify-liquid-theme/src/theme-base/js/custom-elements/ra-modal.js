@@ -21,6 +21,11 @@ export default class RaModal extends HTMLElement {
         });
       });
     }
+    this.dialog.addEventListener("click", (e) => {
+      if (e.target.tagName.toLowerCase() == "dialog") {
+        this.dialog.close();
+      }
+    });
     if (this.modalCloseButton) {
       this.modalCloseButton.addEventListener("click", () => {
         this.dialog.close();

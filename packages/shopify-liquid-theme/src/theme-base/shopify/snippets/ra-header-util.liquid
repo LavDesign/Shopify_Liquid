@@ -1,7 +1,7 @@
 {% if settings.util_link_1_url != blank
   or settings.util_link_2_url != blank
   or settings.util_link_3_url != blank
-  or settings.intl_on
+  or settings.enable_internationalization
 %}
   <ul class="ra-header-util !static flex flex-col list-none md:!absolute md:top-1/2 md:right-0 md:-translate-y-1/2 md:flex-row max-md:transform-none {% unless is_mobile %}hidden md:flex{% endunless %}">
     {% if settings.util_link_1_url != blank and settings.util_link_1_label != blank %}
@@ -28,7 +28,7 @@
         </a>
       </li>
     {% endif %}
-    {% if settings.intl_on %}
+    {% if settings.enable_internationalization %}
       <div class="w-4 h-4">
         <button class="w-full h-full" id="intl-modal" label="open modal">
           {{ localization.country | image_url: width: 32, width: 32 | image_tag: class: 'rounded-full' }}
