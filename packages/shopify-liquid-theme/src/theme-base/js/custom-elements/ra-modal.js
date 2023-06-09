@@ -8,6 +8,7 @@ export default class RaModal extends HTMLElement {
     );
     this.dialog = this.querySelector("dialog");
     this.modalCloseButton = this.querySelector("[data-modal-close]");
+    this.modalCloseButtons = this.querySelectorAll("[data-modal-close]");
   }
 
   connectedCallback() {
@@ -21,14 +22,18 @@ export default class RaModal extends HTMLElement {
         });
       });
     }
+
     this.dialog.addEventListener("click", (e) => {
       if (e.target.tagName.toLowerCase() == "dialog") {
         this.dialog.close();
       }
     });
-    if (this.modalCloseButton) {
-      this.modalCloseButton.addEventListener("click", () => {
-        this.dialog.close();
+
+    if (this.modalCloseButtons.length > 0) {
+      this.modalCloseButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          this.dialog.close();
+        });
       });
     }
   }

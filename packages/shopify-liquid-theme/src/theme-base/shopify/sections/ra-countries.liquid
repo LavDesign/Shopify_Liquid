@@ -2,7 +2,8 @@
   comment
     set variables related to localization
   endcomment
-  assign current_country_code = localization.country.iso_code
+  assign current_country = localization.country
+  assign current_country_code = current_country.iso_code
   assign current_language_code = localization.language.iso_code
   assign primary_locale = ''
   for l in localization.available_languages
@@ -41,11 +42,12 @@
         assign country_code = block.settings.country_code | default: ""
         assign language_code = block.settings.language_code | default: ""
         assign display_name = block.settings.display_name | default: ""
+        assign iso_code = country_code | upcase
         assign country_flag = ""
         if country_code != blank
-          assign active_country_list = localization.available_countries | where: 'iso_code', country_code | default: ""
+          assign active_country_list = localization.available_countries | where: 'iso_code', iso_code | default: ""
           assign country_object = active_country_list | first
-          assign country_flag = country_object | image_url: width: 32 | image_tag | default: ""
+          assign country_flag = country_object | image_url: width: 32 | image_tag
         endif
         capture country_url
           echo shop.url
@@ -67,7 +69,29 @@
   </div>
 {% endcapture %}
 
-{% render 'ra-modal', id: 'intl-modal', title: 'Modal Title', content: country_content, classes: 'gap-4 max-h-full' %}
+{% capture country_checker_content %}
+  <div class="max-w-[500px] w-full rounded p-2 flex items-start flex-col">
+    <div class="w-full" data-tab-container="init_country">
+      {{ current_country | image_url: width: 64 | image_tag: class: 'block mx-auto mb-4' | default: "" }}
+      <h5>Your location is set to {{ current_country.name }}</h5>
+      <ul class="list-disc pl-4 mb-6">
+        <li>Shop in {{ current_country.currency.name }} ({{ current_country.currency.symbol }})</li>
+        <li>Get shipping options for {{ current_country.name }}</li>
+      </ul>
+      <button class="ra-button ra-button--primary ra-button--small w-full" data-modal-close>Continue</button>
+      <span data-toggle-country class="text-center underline block mx-auto cursor-pointer mt-4">Change Country</span>
+    </div>
+    <div class="hidden w-full" data-tab-container="select_country">
+      {{ country_content }}
+      <span data-toggle-country class="text-center underline block mx-auto cursor-pointer mt-4">Go Back</span>
+    </div>
+  </div>
+{% endcapture %}
+
+<ra-countries data-default-locale="{{ default_locale_code }}" data-current-locale="{{ current_locale_code }}">
+  {% render 'ra-modal', id: 'intl-modal', title: 'Modal Title', content: country_content, classes: 'gap-4 max-h-full' %}
+  {% render 'ra-modal', id: 'country-checker-modal', content: country_checker_content, title: 'Modal Title' %}
+</ra-countries>
 
 {% schema %}
 {
