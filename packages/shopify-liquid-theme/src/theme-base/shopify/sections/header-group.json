@@ -8,31 +8,73 @@
         "preheader-0": {
           "type": "message",
           "settings": {
-            "text": "<p>Welcome to our store.</p>"
+            "text": "<p>Welcome to our store.<\/p>"
           }
         },
         "preheader-1": {
           "type": "message",
           "settings": {
-            "text": "<p>Welcome to our store.</p>"
+            "text": "<p>Welcome to our store.<\/p>"
           }
         },
         "preheader-2": {
           "type": "message",
           "settings": {
-            "text": "<p>Welcome to our store.</p>"
+            "text": "<p>Welcome to our store.<\/p>"
           }
         }
       },
-      "block_order": ["preheader-0", "preheader-1", "preheader-2"],
+      "block_order": [
+        "preheader-0",
+        "preheader-1",
+        "preheader-2"
+      ],
       "settings": {
         "bg_color": "--color-secondary-500",
-        "text_color": "--color-util-red"
+        "text_color": "--color-util-red",
+        "alignment": "center",
+        "autoplay": false,
+        "delay": 5
       }
     },
     "header": {
-      "type": "header"
+      "type": "header",
+      "blocks": {
+        "cc05d441-9561-459c-8871-d12e5f68dbfc": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "shop",
+            "promo_alignment": "left",
+            "image": "shopify:\/\/shop_images\/ProductImage_44.png",
+            "title": "Featured productt",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "cc05d441-9561-459c-8871-d12e5f68dbfc"
+      ],
+      "settings": {
+        "bg_color": "--color-primary-900",
+        "link_color": "--color-util-white",
+        "link_hover_color": "--color-util-yellow",
+        "logo_size_desktop": 140,
+        "logo_size_mobile": 100,
+        "menu": "main-menu",
+        "aspect_ratio": "portrait",
+        "show_search": true,
+        "search_icon": "search",
+        "show_account": true,
+        "account_icon": "account",
+        "show_wishlist": true,
+        "wishlist_icon": "heart"
+      }
     }
   },
-  "order": ["preheader", "header"]
+  "order": [
+    "preheader",
+    "header"
+  ]
 }
