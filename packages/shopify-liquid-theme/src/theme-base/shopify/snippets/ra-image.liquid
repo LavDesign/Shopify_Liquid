@@ -87,5 +87,8 @@
   {% if height %}
     height="{{ height }}"
   {% endif %}
+  {% if image.presentation.focal_point %}
+    style="object-position:{{ image.presentation.focal_point }};"
+  {% endif %}
   loading="{{ lazy }}"
 >
