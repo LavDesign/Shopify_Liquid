@@ -244,7 +244,6 @@ const slideToCurrentVariantImage = () => {
       parseInt(slide.getAttribute("data-media-id")) ===
       currentVariant.value.media.id
   );
-
   const index = currentVariantSlide?.getAttribute("data-slide-index");
   index && primarySwiperInstance.slideTo(index);
 };
@@ -306,5 +305,7 @@ onMounted(() => {
   productStore.setCurrentVariant(
     currentVariant.value || props.product.first_available_variant
   );
+  slideToCurrentVariantImage();
+  updateBadgeText();
 });
 </script>
