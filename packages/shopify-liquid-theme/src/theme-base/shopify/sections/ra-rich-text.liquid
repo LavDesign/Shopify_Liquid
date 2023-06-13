@@ -32,11 +32,23 @@
             {% endif %}
           {% when 'block_quote' %}
             {% if block.settings.block_quote != blank %}
-              <div class="font-secondary text-[100px] float-left mb-[-90px] ml-[-82%]" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">"</div>
               <div class="ra-text-only-banner__description rte w-4/5" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">
+                {% if block.settings.enable_quotes %}
+                  {% if block.settings.opening_quote_image != blank %}
+                    <img class="float-left relative top-[-8px]" src="{{ block.settings.opening_quote_image | image_url: width: 20 }}" />
+                  {% else %}
+                    {% render 'ra-icon', icon: 'quote-open', size: 'md' width: '16px', height: '16px', color: 'inherit', class: 'top-[-6px]' %}
+                  {% endif %}
+                {% endif %}
                 {{- block.settings.block_quote -}}
+                {% if block.settings.enable_quotes %}
+                  {% if block.settings.closing_quote_image != blank %}
+                    <img class="float-right relative bottom-[-18px]" src="{{ block.settings.closing_quote_image | image_url: width: 20 }}" />
+                  {% else %}
+                    {% render 'ra-icon', icon: 'quote-close', size: 'md' width: '16px', height: '16px', color: 'inherit', class: 'bottom-[-6px]' %}
+                  {% endif %}
+                {% endif %}
               </div>
-              <div class="font-secondary text-[100px] float-right -mt-10 mr-[-82%] mb-[-100px]" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">"</div>
             {% endif %}
           {% when 'ctas' %}
             {% liquid
@@ -172,6 +184,22 @@
       "type": "block_quote",
       "name": "Block Quote",
       "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_quotes",
+          "label": "Enable Quote Icons",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "opening_quote_image",
+          "label": "Opening Quote Image Override"
+        },
+        {
+          "type": "image_picker",
+          "id": "closing_quote_image",
+          "label": "Closing Quote Image Override"
+        },
         {
           "type": "text",
           "id": "block_quote",
