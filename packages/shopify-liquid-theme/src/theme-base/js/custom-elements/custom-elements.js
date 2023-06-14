@@ -14,7 +14,7 @@ import RaAccountAuth from "./ra-account-auth.js";
 import RaAccount from "./ra-account.js";
 import RaCartToggle from "./ra-cart-toggle.js";
 import RaProductTile from "./ra-product-tile.js";
-import RaCountries from "./ra-countries.js"
+import RaCountries from "./ra-countries.js";
 
 customElements.define("ra-tabs", RaTabs);
 customElements.define("ra-header", RaHeader);
