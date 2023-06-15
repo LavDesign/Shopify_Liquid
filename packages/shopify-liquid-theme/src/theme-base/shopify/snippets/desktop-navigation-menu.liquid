@@ -73,7 +73,10 @@
           {% assign link_label_handleize = link.title | handleize %}
 
           {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
-            <li class="relative w-full h-auto aspect-{{ aspect_ratio }}">
+            {% if featured.settings.promo_alignment == 'left' %}
+              {% assign promo_class = 'order-[-1]' %}
+            {% endif %}
+            <li class="relative w-full h-auto aspect-{{ aspect_ratio }} {{ promo_class }}">
               {{ featured.settings.image | image_url: width: 600 | image_tag: class: 'absolute top-0 left-0 z-1 object-cover w-full h-full' }}
 
               <div class="p-6 flex flex-col justify-end absolute top-0 left-0 z-2 w-full h-full">
