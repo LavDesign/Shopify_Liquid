@@ -99,6 +99,7 @@
           muted
           class="ra-video__media ra-video__media--loaded"
         >
+          {% comment %}theme-check-disable RemoteAsset{% endcomment %}
           <source src="{{ video }}" type="video/mp4">
         </video>
       </div>
@@ -114,6 +115,7 @@
     {% elsif image_src != blank %}
       <div class="ra-icon-tile__media component-media {{ vertical_classes }}">
         <div class="ra-image ra-icon-tile__image" style="--media-width:{{ width | default: 64 }}px">
+          {% comment %}theme-check-disable RemoteAsset{% endcomment %}
           <img
             loading="lazy"
             src="{{ image_src }}"

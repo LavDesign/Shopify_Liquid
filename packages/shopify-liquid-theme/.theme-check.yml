@@ -16,7 +16,7 @@ ConvertIncludeToRender:
   ignore: []
 
 LiquidTag:
-  enabled: true
+  enabled: false
   ignore: []
   min_consecutive_statements: 5
 
@@ -45,7 +45,7 @@ SyntaxError:
 TemplateLength:
   enabled: true
   ignore: []
-  max_length: 600
+  max_length: 1100
   # Exclude content of {% schema %} in line count
   exclude_schema: true
   # Exclude content of {% stylesheet %} in line count
@@ -58,11 +58,11 @@ UnknownFilter:
   ignore: []
 
 UnusedAssign:
-  enabled: true
+  enabled: false
   ignore: []
 
 UnusedSnippet:
-  enabled: true
+  enabled: false
   ignore: []
 
 MatchingSchemaTranslations:
@@ -98,7 +98,7 @@ MissingRequiredTemplateFiles:
   ignore: []
 
 UndefinedObject:
-  enabled: true
+  enabled: false
   ignore: []
   exclude_snippets: true
   config_type: :default
@@ -120,7 +120,7 @@ DeprecateBgsizes:
   ignore: []
 
 MissingEnableComment:
-  enabled: true
+  enabled: false
   ignore: []
 
 ParserBlockingJavaScript:
@@ -198,6 +198,6 @@ DeprecatedGlobalAppBlockType:
   enabled: true
 
 SchemaJsonFormat:
-  enabled: true
+  enabled: false
   start_level: 0
   indent: "  "

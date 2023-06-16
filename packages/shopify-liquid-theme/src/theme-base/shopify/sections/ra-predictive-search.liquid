@@ -9,7 +9,7 @@
 
   {% capture sidebar_content %}
     <div class="w-full md:w-1/6">
-      {% if settings.predictive_show_collections and predictive_search.resources.collections.size > 0  %}
+      {% if settings.predictive_show_collections and predictive_search.resources.collections.size > 0 %}
         {% assign show_sidebar = true %}
         <div class="h6 mb-2">Collections</div>
         <ul class="ml-2 mb-3">
@@ -65,7 +65,7 @@
       {% if show_sidebar %}
         {{ sidebar_content }}
       {% endif %}
-      <div class="{% if show_sidebar %}md:w-5/6{% endif%} w-full max-md:pb-8">
+      <div class="{% if show_sidebar %}md:w-5/6{% endif %} w-full max-md:pb-8">
         {%- if predictive_search.resources.products.size > 0 -%}
           <ul id="predictive-search-results-list" class="grid grid-cols-2 md:grid-cols-4 md:gap-11 gap-5">
             {%- for product in predictive_search.resources.products -%}

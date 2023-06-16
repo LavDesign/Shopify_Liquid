@@ -51,10 +51,62 @@
             "link_url": "",
             "link_style": "primary"
           }
+        },
+        "38945a3d-8f82-4105-87ae-b071dc1ca6b2": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "blog",
+            "promo_alignment": "left",
+            "image": "shopify:\/\/shop_images\/ProductImage_44.png",
+            "title": "Featured product",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
+        },
+        "81436111-8366-43d1-8f07-eeb8f14db9d2": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "blog",
+            "promo_alignment": "left",
+            "image": "shopify:\/\/shop_images\/ProductImage_40.png",
+            "title": "Featured product",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
+        },
+        "3175a89e-35e0-4a98-a991-32eb1aad2137": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "blog",
+            "promo_alignment": "left",
+            "image": "shopify:\/\/shop_images\/ProductImage_18.png",
+            "title": "Featured product",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
+        },
+        "2c9f4ecc-d618-4106-a448-8c9c3e015640": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "blog",
+            "promo_alignment": "left",
+            "image": "shopify:\/\/shop_images\/ProductImage_35.png",
+            "title": "Featured product",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
         }
       },
       "block_order": [
-        "cc05d441-9561-459c-8871-d12e5f68dbfc"
+        "cc05d441-9561-459c-8871-d12e5f68dbfc",
+        "38945a3d-8f82-4105-87ae-b071dc1ca6b2",
+        "81436111-8366-43d1-8f07-eeb8f14db9d2",
+        "3175a89e-35e0-4a98-a991-32eb1aad2137",
+        "2c9f4ecc-d618-4106-a448-8c9c3e015640"
       ],
       "settings": {
         "bg_color": "--color-primary-900",

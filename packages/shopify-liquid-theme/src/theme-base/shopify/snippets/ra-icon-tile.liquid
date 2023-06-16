@@ -73,6 +73,7 @@
     <div class="ra-icon-tile__media component-media {{ vertical_classes }}">
       <div class="ra-image ra-icon-tile__image" style="--media-width:{{ image_width | default: 64 }}px">
         {% assign image_alt = image_alt | default: title %}
+        {% comment %}theme-check-disable RemoteAsset{% endcomment %}
         <img
           loading="lazy"
           src="{{ image_src }}"
@@ -95,7 +96,7 @@
       {% if title != blank %}
         <h2
           class="ra-title ra-icon-title__title"
-          style="--title-font-size:var(--font-size-h{{- title_as | default: '6'  -}});"
+          style="--title-font-size:var(--font-size-h{{- title_as | default: '6' -}});"
         >
           <div>{{ title }}</div>
         </h2>

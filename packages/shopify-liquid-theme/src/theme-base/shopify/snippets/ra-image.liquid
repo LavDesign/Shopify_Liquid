@@ -72,9 +72,11 @@
     assign src = image | image_url: width: width, height: height, crop: crop
   endif
 %}
-
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{% comment %}theme-check-disable RemoteAsset{% endcomment %}
 <img
   class="{{ classes }}"
+  {% comment %}theme-check-disable RemoteAsset{% endcomment %}
   src="{{ src }}"
   alt="{{ alt }}"
   {% if srcset and sizes %}

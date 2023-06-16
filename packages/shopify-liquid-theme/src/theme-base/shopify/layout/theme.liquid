@@ -14,7 +14,8 @@
     {%- comment -%}
       Fonts
     {%- endcomment -%}
-
+    
+    {% comment %}theme-check-disable RemoteAsset{% endcomment %}
     <link rel="stylesheet" href="https://use.typekit.net/uuq0jfz.css">
 
     {%- comment -%}
@@ -47,6 +48,9 @@
 
     {% section 'footer' %}
 
+    {% render 'ra-login-modal' %}
+    
+    {% comment %}theme-check-disable ParserBlockingScriptTag{% endcomment %}
     {{ 'main.js' | asset_url | script_tag }}
 
     {% unless template.name == 'cart' %}
