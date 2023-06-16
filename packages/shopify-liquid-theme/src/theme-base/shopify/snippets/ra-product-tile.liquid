@@ -195,7 +195,9 @@
               data-option-value="{{ value }}"
               data-option-position="{{ option.position }}"
             {% endcapture %}
-            {% capture variant_id %}{{value}}_{{product.id}}{% if index %}_{{ index }}{% endif %}{% endcapture %}
+            {% capture variant_id %}
+              {{ value }}_{{ product.id }}{% if index %}_{{ index }}{% endif %}
+            {% endcapture %}
 
               {%- liquid
               assign checked = false

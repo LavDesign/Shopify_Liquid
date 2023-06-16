@@ -94,6 +94,7 @@ autoplay: true
 
   {% if media_type and media_text %}
     <video autoplay="{{ autoplay }}" width="{{ width }}" loop="{{ loop }}" playsinline muted="{{ muted }}" class="{{ class }}">
+      {% comment %}theme-check-disable RemoteAsset{% endcomment %}
       <source src="https://{{ media_text }}" type="{{ media_type }}"></source>
     </video>
   {% endif %}

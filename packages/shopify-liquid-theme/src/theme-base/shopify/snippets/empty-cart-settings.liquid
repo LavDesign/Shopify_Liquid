@@ -12,8 +12,8 @@
     links: [
     {%- for link in settings.empty_cart_link_list.links -%}
       {
-        "title": {{ link.title |json }},
-        "url": {{ link.url | json}}
+        "title": {{ link.title | json }},
+        "url": {{ link.url | json }}
       },
     {%- endfor -%}
     ]

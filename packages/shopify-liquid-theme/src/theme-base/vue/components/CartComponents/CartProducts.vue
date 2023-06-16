@@ -1,7 +1,9 @@
 <template>
-  <template v-for="(product, i) in cart.items" :key="product.handle + '-' + i">
-    <CartProductTile :product="product" />
-  </template>
+  <span>
+    <div v-for="(product, i) in cart.items" :key="product.handle + '-' + i">
+      <CartProductTile :product="product" />
+    </div>
+  </span>
 </template>
 
 <script setup>
