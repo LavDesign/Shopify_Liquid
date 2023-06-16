@@ -1,5 +1,6 @@
 import { debounce } from "../utils/helpers";
 import { refreshReviewWidgets } from "../utils/vendors";
+import { getToken } from "@bva/ui-shared/helpers";
 import axios from "axios";
 export default class RaSearchBar extends HTMLElement {
   constructor() {
@@ -40,6 +41,10 @@ export default class RaSearchBar extends HTMLElement {
     this.isVisible = true;
     this.headerInner.classList.add("hidden");
     this.headerInner.classList.remove("flex");
+    const breakpointMd = getToken("breakpoints.px.md"); // 768px
+    if (window.innerWidth < breakpointMd) {
+      document.querySelector("body").classList.add("overflow-hidden");
+    }
   }
 
   hideSearch() {
@@ -49,6 +54,7 @@ export default class RaSearchBar extends HTMLElement {
     this.headerInner.classList.remove("hidden");
     this.headerInner.classList.add("flex");
     this.clearSearchResults();
+    document.querySelector("body").classList.remove("overflow-hidden");
   }
 
   toggleSearch() {
@@ -80,6 +86,19 @@ export default class RaSearchBar extends HTMLElement {
         this.searchResponse.innerHTML = responseDOM.querySelector(
           "#shopify-section-ra-predictive-search"
         ).innerHTML;
+
+        const predictive_search = this.searchResponse.querySelector(
+          "#predictive-search-results"
+        );
+        let content_position_top = getComputedStyle(
+          document.querySelector("body")
+        ).getPropertyValue("--content-position-top");
+        content_position_top = parseInt(
+          content_position_top.split("px").shift()
+        );
+        predictive_search.style.height = `${
+          window.innerHeight - content_position_top
+        }px`;
       })
       .then(() => {
         refreshReviewWidgets();

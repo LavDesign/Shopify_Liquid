@@ -5,6 +5,8 @@
     rounded:         Boolean, changes style of badge to rounded - (optional)
     class:           String add custom CSS class - (optional)
     style:           String, [primary, secondary, tertiary, success, warning, danger] - (optional) [default is 'primary']
+    attributes:      String, add custom attributes
+    placeholder:     Boolean, if set true, Badge will render with the hidden class - optional
 
     Example Badge:
     {% render 'ra-badge', label: 'Out of Stock', size: 'md', style: 'danger' %}
@@ -28,11 +30,14 @@
   {% if size %}
     ra-badge--{{ size }}
   {% endif %}
+  {% if placeholder == true and label == blank %}
+    hidden
+  {% endif %}
   {{class}}
 {% endcapture %}
 
-{% if label != blank %}
-  <div class="{{ classes }}" label="{{ label }}">
+{% if label != blank or placeholder == true %}
+  <div class="{{ classes }}" label="{{ label }}" {{ attributes }}>
     {{ label }}
   </div>
 {% endif %}

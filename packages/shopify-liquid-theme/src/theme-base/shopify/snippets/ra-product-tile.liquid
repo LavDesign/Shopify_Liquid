@@ -7,6 +7,7 @@
   atc_label:   String, add custom ATC button text - (optional)
   atc_style:   String, [primary, secondary, tertiary] - optional
   index:       Number
+  disable_animation:  Boolean, set true to turn off loading animation
   badge_text:  String, Add custom badge text
   badge_style: String, [primary, secondary, warning, danger, info, success] - (optional) [default=false]
   wishlist:    Boolean, toggle add wishlist button on hover - (optional) [default=false]
@@ -27,9 +28,11 @@
   unless pre_title
     assign pre_title = product.type
   endunless
+
   unless badge_style
     assign badge_style = 'primary'
   endunless
+
   unless hover_img
     assign img_array = ''
     assign product_alt_image = null
@@ -50,21 +53,53 @@
       assign hover_img = variant_alt_image
     endif
   endunless
-  if product.selected_or_first_available_variant.metafields.badge.label
+
+  if badge_text != blank
+    assign badge_text = badge_text
+  elsif product.selected_or_first_available_variant.metafields.badge.label
     assign badge_text = product.selected_or_first_available_variant.metafields.badge.label
   else
     assign badge_text = product.metafields.badge.label
   endif
-  assign wishlistStyle = wishlist_style | default: 'danger'
-%}
 
+  assign wishlistStyle = wishlist_style | default: 'danger'
+
+  assign index = index | default: 1
+%}
+{%- liquid
+  assign variant_colors = ''
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name == 'color'
+      assign option_index = option.position
+    endif
+  endfor
+  if option_index != blank
+    for variant in product.variants
+      assign variant_option = 'option' | append: option_index
+      assign variant_color = variant[variant_option] | downcase
+      if variant_color
+        if variant.inventory_quantity > 0 or variant.inventory_policy == 'continue'
+          unless variant_colors contains variant_color
+            assign variant_colors = variant_colors | append: variant_color | downcase | append: '%%%%'
+          endunless
+        endif
+      endif
+    endfor
+    assign variant_colors = variant_colors | split: '%%%%'
+  endif
+-%}
+{% capture product_json %}{%- render 'json-product', product: product -%}{% endcapture %}
 <!-- prettier-ignore -->
 <ra-product-tile
-  data-product='{{ product | json | escape }}'
+  data-product="{{ product_json | escape | strip }}"
   data-current-variant="{{ current_variant.id }}"
-  class="ra-product-tile ra-product-tile--default"
-  data-aos="fade-up"
-  data-aos-delay="{{ '50' | times: index }}"
+  class="ra-product-tile"
+  {% unless disable_animation %}
+    data-aos="fade-up"
+    data-aos-duration="500"
+    data-aos-delay="{{ '50' | times: index }}"
+  {% endunless %}
 >
   <div class="ra-product-tile__media">
     {% if product.featured_image %}
@@ -88,7 +123,7 @@
       </a>
     {% endif %}
     {% if badge_text and badge_style != blank %}
-      {% render 'ra-badge', class: 'ra-product-tile__badge', label: badge_text, style: badge_style %}
+      {% render 'ra-badge', class: 'ra-product-tile__badge', label: badge_text, style: badge_style, attributes: "data-product-badge" %}
     {% endif %}
     {% if wishlist %}
       {%
@@ -121,7 +156,7 @@
   <div
     class="ra-product-tile__details"
     {% if font_color %}
-      style="color: var({{ font_color }})"
+      style="color: {{ font_color }}"
     {% endif %}
   >
     {% if pre_title != blank %}
@@ -154,15 +189,22 @@
         %}
         {% if option_name == "color" %}
         <div class="relative" data-option-container>
-          <div class="ra-product-tile__options flex flex-row gap-3 overflow-x-hidden" data-variant-options>
+          <div class="ra-product-tile__options flex flex-row gap-3 overflow-hidden" data-variant-options>
           {% for value in option.values %}
             {% capture data_attributes %}
               data-option-value="{{ value }}"
               data-option-position="{{ option.position }}"
             {% endcapture %}
             {% capture variant_id %}{{value}}_{{product.id}}{% endcapture %}
-            {% assign checked = false %}
-            {% assign disabled = true %}
+
+              {%- liquid
+              assign checked = false
+              assign disabled = false
+              assign downcase_value = value | downcase
+              unless variant_colors contains downcase_value
+                assign disabled = true
+              endunless
+              -%}
             {% if option_name == "color" %}
               {%- render 'ra-swatch-button',
                 name: option_name,
@@ -172,7 +214,8 @@
                 value: value,
                 label: value,
                 style: 'classic',
-                additional_attributes: data_attributes
+                additional_attributes: data_attributes,
+                disabled: disabled
               -%}
           {% endif %}
         {% endfor %}

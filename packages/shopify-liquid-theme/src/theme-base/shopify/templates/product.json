@@ -140,7 +140,7 @@
       }
     },
     "9c1b3b08-0b30-4532-9a41-ef07e1297a45": {
-      "type": "hero-image",
+      "type": "hero-carousel",
       "blocks": {
         "dcf8a71c-6a85-4100-bba0-b8d918f5f660": {
           "type": "slide",

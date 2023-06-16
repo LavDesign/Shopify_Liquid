@@ -249,12 +249,57 @@ const slideToCurrentVariantImage = () => {
   index && primarySwiperInstance.slideTo(index);
 };
 
+const updateBadgeText = () => {
+  let badgeText;
+  let badgeOverride = false;
+  let timeDifference;
+  const { back_in_stock } = currentVariant.value;
+  if (currentVariant.value.badge) {
+    badgeText = currentVariant.value.badge;
+    badgeOverride = currentVariant.value.badge_override;
+  } else if (props.product.badge) {
+    badgeText = props.product.badge;
+    badgeOverride = props.product.badge_override;
+  }
+  if (!badgeOverride) {
+    if (
+      currentVariant.value.inventory_quantity === 0 &&
+      currentVariant.value.inventory_policy === "deny"
+    ) {
+      badgeText = "Sold Out";
+    } else if (back_in_stock) {
+      const year = back_in_stock.split("-")[0];
+      const month = back_in_stock.split("-")[1];
+      const day = back_in_stock.split("-")[2];
+      const bisDate = new Date(`${month}/${day}/${year}`);
+      const currentDate = Date.now();
+      timeDifference = (currentDate - bisDate) / (1000 * 3600 * 24);
+      if (timeDifference < 14) {
+        badgeText = "Back in Stock";
+      }
+    } else if (
+      currentVariant.value.price < currentVariant.value.compare_at_price
+    ) {
+      badgeText = "On Sale";
+    }
+  }
+  if (badgeText) {
+    productBadge.textContent = badgeText;
+    productBadge.classList.remove("hidden");
+  } else {
+    productBadge.classList.add("hidden");
+  }
+};
+
+const productBadge = document.querySelector("[data-pdp-badge]");
+
 const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
   updateVariantURL();
   slideToCurrentVariantImage();
+  updateBadgeText();
 });
 
 onMounted(() => {

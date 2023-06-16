@@ -57,30 +57,8 @@
     {% for block in section.blocks %}
       <swiper-slide id="block-{{ section.id }}-{{ block.id }}">
         <div class="ra-hero__media component-media relative">
-          {% if block.settings.desktop_bg_image != blank or block.settings.mobile_bg_image != blank %}
-            <div class="ra-hero__image ra-image ra-image--use-as-background">
-              {% render 'ra-image',
-                image: block.settings.desktop_bg_image,
-                classes: 'ra-image__media ra-image__media--desktop hidden md:block',
-                width: 2000,
-                lazyload: true
-              %}
-              {% if block.settings.mobile_bg_image != blank %}
-                {% render 'ra-image',
-                  image: block.settings.mobile_bg_image,
-                  classes: 'ra-image__media ra-image__media--mobile md:hidden',
-                  width: 800,
-                  lazyload: true
-                %}
-              {% else %}
-                {% render 'ra-image',
-                  image: block.settings.desktop_bg_image,
-                  classes: 'ra-image__media ra-image__media--mobile md:hidden',
-                  width: 800,
-                  lazyload: true
-                %}
-              {% endif %}
-            </div>
+          {% if block.type == 'slide' %}
+            {% render 'hero-slide', block: block %}
           {% endif %}
         </div>
         <div class="ra-hero__details component-details--set-order h-auto {% if section.settings.stack_mobile %}!relative md:!absolute{% endif %}">
@@ -197,19 +175,105 @@
         },
         {
           "type": "header",
-          "content": "Media"
+          "content": "Media (Desktop)",
+          "info": "Choose between an image or video to set as your background element on desktop"
         },
         {
           "type": "image_picker",
-          "id": "desktop_bg_image",
+          "id": "bg_image_desktop",
           "label": "Background Image (desktop)",
           "info": "Recommended Size: 1800x1800"
         },
         {
+          "type": "video",
+          "id": "background_video_file_desktop",
+          "label": "Video Upload (file upload)",
+          "info": "Upload as MP4"
+        },
+        {
+          "type": "video_url",
+          "id": "background_video_embed_desktop",
+          "label": "Video Upload (embed option)",
+          "info": "Paste link for Youtube or Vimeo",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "select",
+          "id": "video_aspect_ratio_desktop",
+          "label": "Video Aspect Ratio",
+          "options": [
+            {
+              "value": "embed--21x9",
+              "label": "21x9"
+            },
+            {
+              "value": "embed--16x9",
+              "label": "16x9"
+            },
+            {
+              "value": "embed--4x3",
+              "label": "4x3"
+            },
+            {
+              "value": "embed--1x1",
+              "label": "1x1"
+            }
+          ],
+          "default": "embed--16x9"
+        },
+        {
+          "type": "header",
+          "content": "Media (Mobile)",
+          "info": "Choose between an image or video to set as your background element on mobile. If no mobile media is chosen, will default to desktop."
+        },
+        {
           "type": "image_picker",
-          "id": "mobile_bg_image",
+          "id": "bg_image_mobile",
           "label": "Background Image (mobile)",
           "info": "Recommended Size: 800x800"
+        },
+        {
+          "type": "video_url",
+          "id": "background_video_embed_mobile",
+          "label": "Mobile Video Upload (embed option)",
+          "info": "Paste link for Youtube or Vimeo",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "video",
+          "id": "background_video_file_mobile",
+          "label": "Mobile Video Upload (file upload)",
+          "info": "Upload as MP4"
+        },
+        {
+          "type": "select",
+          "id": "video_aspect_ratio_mobile",
+          "label": "Video Aspect Ratio (Mobile)",
+          "options": [
+            {
+              "value": "embed--21x9",
+              "label": "21x9"
+            },
+            {
+              "value": "embed--16x9",
+              "label": "16x9"
+            },
+            {
+              "value": "embed--4x3",
+              "label": "4x3"
+            },
+            {
+              "value": "embed--1x1",
+              "label": "1x1"
+            }
+          ],
+          "default": "embed--16x9"
         },
         {
           "type": "header",
