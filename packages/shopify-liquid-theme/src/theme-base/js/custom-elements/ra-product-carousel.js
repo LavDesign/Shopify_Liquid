@@ -1,5 +1,3 @@
-// const productRecommendationsSection = document.querySelector('.product-recommendations');
-
 const productRecommendationsSection = document.querySelector(
   ".product-recommendations"
 );
@@ -26,7 +24,6 @@ const handleIntersection = (entries, observer) => {
     });
 };
 
-// const productRecommendationsSection = document.querySelector('.product-recommendations');
 if (productRecommendationsSection) {
   const observer = new IntersectionObserver(handleIntersection, {
     rootMargin: "0px 0px 200px 0px",
