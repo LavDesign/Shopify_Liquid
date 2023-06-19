@@ -147,7 +147,7 @@
             {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
               <li class="max-w-[calc(100%-32px)] mt-4 left-4 relative flex aspect-[3.8/2] last:mb-4">
                 {{
-                  feature.settings.image
+                  featured.settings.image
                   | image_url: width: 600
                   | image_tag: class: 'w-full h-full absolute top-0 z-1 object-cover'
                 }}
