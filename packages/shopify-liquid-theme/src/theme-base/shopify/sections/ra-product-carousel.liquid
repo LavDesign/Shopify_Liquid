@@ -21,6 +21,13 @@
   else
     assign recommendation_product_id = product.id
   endif
+
+  assign has_collection = false
+  if section.settings.selected_collection != blank
+    assign selected_collection = section.settings.selected_collection
+    assign has_collection = true
+  endif
+
 %}
 
 {% capture swiper_init_params %}
@@ -99,18 +106,18 @@
       <swiper-container
         class="swiper--{{ section.id }} mt-16 product-recommendations w-full"
         {% if section.settings.use_recommendations_api %}
-        data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent=related"
+          data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent={{ section.settings.recommendations_intent }}"
         {% endif %}
         init="false"
         space-between="15"
         {% if show_navigation %}
-        navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
-        navigation-prev-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+          navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
+          navigation-prev-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
         {% endif %}
         {% if show_pagination %}
-        pagination="true"
-        pagination-clickable="true"
-        pagination-el=".product-carousel--{{ section.id }} .ra-carousel__pagination"
+          pagination="true"
+          pagination-clickable="true"
+          pagination-el=".product-carousel--{{ section.id }} .ra-carousel__pagination"
         {% endif %}
         speed="300"
         draggable="true"
@@ -123,42 +130,57 @@
         data-init-params='{{ swiper_init_params }}'
       >
         {% if section.settings.use_recommendations_api %}
-            {%- if recommendations.performed? and recommendations.products_count > 0 -%}
-              {%- for recommended_product in recommendations.products -%}
-                <swiper-slide>
-                  {% render 'ra-product-tile',
-                    product: recommended_product,
-                    atc_label: section.settings.cta_label,
-                    atc_style: section.settings.cta_style,
-                    font_color: text_color,
-                    index: forloop.index
-                  %}
-                </swiper-slide>
-              {% endfor %}
-            {% endif %}
-          
+          {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+            {%- for recommended_product in recommendations.products -%}
+              <swiper-slide>
+                {% render 'ra-product-tile',
+                  product: recommended_product,
+                  atc_label: section.settings.cta_label,
+                  atc_style: section.settings.cta_style,
+                  font_color: text_color,
+                  index: forloop.index
+                %}
+              </swiper-slide>
+            {% endfor %}
+          {% endif %}
         {% else %}
           <!-- prettier-ignore-end -->
-          {% for block in section.blocks %}
-            {% liquid
-              assign _product = block.settings.product
-              assign cta_label = block.settings.cta_label
-              assign cta_style = block.settings.cta_style
-            %}
-          {% endfor %}
 
-          {%- for block in section.blocks -%}
-            {% assign src = block.settings.slide_img | image_url: width: 400 %}
-            <swiper-slide>
-              {% render 'ra-product-tile',
-                product: block.settings.product,
-                atc_label: block.settings.cta_label,
-                atc_style: block.settings.cta_style,
-                font_color: text_color,
-                index: forloop.index
+          {% if section.settings.selected_collection != blank %}
+            {%- for collection_product in selected_collection.products -%}
+              <swiper-slide>
+                {% render 'ra-product-tile',
+                  product: collection_product,
+                  atc_label: section.settings.cta_label,
+                  atc_style: section.settings.cta_style,
+                  font_color: text_color,
+                  index: forloop.index
+                %}
+              </swiper-slide>
+            {% endfor %}
+          {% else  %}
+            {% for block in section.blocks %}
+              {% liquid
+                assign _product = block.settings.product
+                assign cta_label = block.settings.cta_label
+                assign cta_style = block.settings.cta_style
               %}
-            </swiper-slide>
-          {% endfor %}
+            {% endfor %}
+
+            {%- for block in section.blocks -%}
+              {% assign src = block.settings.slide_img | image_url: width: 400 %}
+              <swiper-slide>
+                {% render 'ra-product-tile',
+                  product: block.settings.product,
+                  atc_label: block.settings.cta_label,
+                  atc_style: block.settings.cta_style,
+                  font_color: text_color,
+                  index: forloop.index
+                %}
+              </swiper-slide>
+            {% endfor %}
+          {% endif  %}
+
         {% endif %}
 
       </swiper-container>
@@ -286,16 +308,48 @@
       "default": false
     },
     {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "collection",
+      "id": "selected_collection",
+      "label": "Selected Collection",
+      "info": "Choosing a collection will override any products selected for this component."
+    },
+    {
+      "type": "header",
+      "content": "Recommendations API Settings"
+    },
+    {
       "type": "checkbox",
       "id": "use_recommendations_api",
       "label": "Use Recommendations API",
+      "info": "By checking this box, you will be choosing to override any products or collections have selected for this component.",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "recommendations_intent",
+      "label": "Recommendation Intent",
+      "info": "Select your recommendations intent [Learn more about intent](https://shopify.dev/docs/themes/product-merchandising/recommendations#recommendation-intents)",
+      "options": [
+        {
+          "value": "related",
+          "label": "Related (You May Also Like)"
+        },
+        {
+          "value": "complementary",
+          "label": "Complementary (Pair it With)"
+        }
+      ],
+      "default": "related"
     },
     {
       "type": "product",
       "id": "recommendations_product",
       "label": "Recommendations Product",
-      "info": "will default to product object"
+      "info": "If no product is selected and you are on a PDP, this will default to that product."
     },
     {
       "type": "select",
