@@ -14,6 +14,16 @@
       endif
     endfor
   endfor
+
+  for featured in featured_contents
+    assign featured_item_handleize = featured.settings.menu_item | handleize
+    assign link_label_handleize = link.title | handleize
+    if featured_item_handleize == link_label_handleize
+      assign has_mega_menu = true
+      assign has_child = true
+      assign has_sub_child = true
+    endif
+  endfor
 %}
 
 <li class="header__mobile-navigation-item border-b flex justify-between items-center">

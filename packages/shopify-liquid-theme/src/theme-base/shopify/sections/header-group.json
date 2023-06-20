@@ -99,6 +99,42 @@
             "link_url": "",
             "link_style": "primary"
           }
+        },
+        "2f88088d-8b3a-42f7-a0e3-98128271dd69": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "Bedrock UI",
+            "promo_alignment": "right",
+            "image": "shopify:\/\/shop_images\/Group64.png",
+            "title": "Bedrock UI",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
+        },
+        "42043f59-1f97-4de4-89a0-d83e8fa483fa": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "Blog",
+            "promo_alignment": "right",
+            "image": "shopify:\/\/shop_images\/Group62.png",
+            "title": "Test Right Blog",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
+        },
+        "fcf3efbe-8fec-47c1-822e-5bcd194c85a3": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "Test",
+            "promo_alignment": "right",
+            "image": "shopify:\/\/shop_images\/Group60.png",
+            "title": "Test Link",
+            "link_label": "Learn more",
+            "link_url": "",
+            "link_style": "primary"
+          }
         }
       },
       "block_order": [
@@ -106,7 +142,10 @@
         "38945a3d-8f82-4105-87ae-b071dc1ca6b2",
         "81436111-8366-43d1-8f07-eeb8f14db9d2",
         "3175a89e-35e0-4a98-a991-32eb1aad2137",
-        "2c9f4ecc-d618-4106-a448-8c9c3e015640"
+        "2c9f4ecc-d618-4106-a448-8c9c3e015640",
+        "2f88088d-8b3a-42f7-a0e3-98128271dd69",
+        "42043f59-1f97-4de4-89a0-d83e8fa483fa",
+        "fcf3efbe-8fec-47c1-822e-5bcd194c85a3"
       ],
       "settings": {
         "bg_color": "--color-primary-900",
