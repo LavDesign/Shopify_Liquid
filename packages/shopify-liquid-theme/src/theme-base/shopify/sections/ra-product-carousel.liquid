@@ -172,8 +172,8 @@
               <swiper-slide>
                 {% render 'ra-product-tile',
                   product: block.settings.product,
-                  atc_label: block.settings.cta_label,
-                  atc_style: block.settings.cta_style,
+                  atc_label: section.settings.cta_label,
+                  atc_style: section.settings.cta_style,
                   font_color: text_color,
                   index: forloop.index
                 %}
@@ -267,14 +267,13 @@
       "type": "text",
       "id": "cta_label",
       "label": "CTA Label",
-      "info": "Set CTA label product (when using Recommendations API)",
-      "default": "Add To Cart"
+      "info": "Set CTA label product (will only appear if filled in)"
     },
     {
       "type": "select",
       "id": "cta_style",
       "label": "CTA Style",
-      "info": "Choose a button style for CTA (when using Recommendations API)",
+      "info": "Choose a button style for CTA",
       "options": [
         {
           "value": "primary",
@@ -292,20 +291,8 @@
       "default": "tertiary"
     },
     {
-      "type": "header",
-      "content": "Slider Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_navigation",
-      "label": "Show Navigation",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_pagination",
-      "label": "Show Pagination",
-      "default": false
+      "type": "paragraph",
+      "content": "Recommendations API Settings"
     },
     {
       "type": "header",
@@ -325,7 +312,7 @@
       "type": "checkbox",
       "id": "use_recommendations_api",
       "label": "Use Recommendations API",
-      "info": "By checking this box, you will be choosing to override any products or collections have selected for this component.",
+      "info": "By checking this box, you will be choosing to override any products or collections you have selected for this component.",
       "default": true
     },
     {
@@ -349,7 +336,23 @@
       "type": "product",
       "id": "recommendations_product",
       "label": "Recommendations Product",
-      "info": "If no product is selected and you are on a PDP, this will default to that product."
+      "info": "If no product is selected and you are placing this component on a PDP, this will default to that product."
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show Navigation",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show Pagination",
+      "default": false
     },
     {
       "type": "select",
@@ -474,34 +477,6 @@
           "type": "product",
           "id": "product",
           "label": "Product"
-        },
-        {
-          "type": "text",
-          "id": "cta_label",
-          "label": "CTA Label",
-          "info": "Set CTA label for individual product",
-          "default": "Add To Cart"
-        },
-        {
-          "type": "select",
-          "id": "cta_style",
-          "label": "CTA Style",
-          "info": "Choose a button style for CTA",
-          "options": [
-            {
-              "value": "primary",
-              "label": "Primary"
-            },
-            {
-              "value": "secondary",
-              "label": "Secondary"
-            },
-            {
-              "value": "tertiary",
-              "label": "Tertiary"
-            }
-          ],
-          "default": "tertiary"
         }
       ]
     }
