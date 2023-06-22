@@ -142,6 +142,7 @@
         <button
           type="button"
           aria-label="Add to Cart {{ product.title }}"
+          onclick="document.location = '{{ product.url }}'"
           class="ra-product-tile__atc ra-button ra-button--{{ atc_style | default: 'tertiary' }} ra-button--sm"
         >
           {% if atc_label != blank %}
