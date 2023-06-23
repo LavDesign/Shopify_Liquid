@@ -25,12 +25,10 @@
           </div>
         </div>
         <div class="gap-2 flex flex-col" v-if="hasVariants">
-          <template
-            :key="optionKey"
-            v-for="(options, optionKey) in formattedOptions"
-          >
+          <template v-for="(options, optionKey) in formattedOptions">
             <CartSwatchPicker
               v-if="swatchOptions.includes(optionKey)"
+              :key="`swatch_${optionKey}`"
               label=""
               :options="options"
               :selected="selectedOptions[optionKey]"
@@ -43,6 +41,7 @@
             <CartOptionPicker
               v-else
               label=""
+              :key="`${optionKey}`"
               :options="options"
               :selected="selectedOptions[optionKey]"
               variant="dropdown"

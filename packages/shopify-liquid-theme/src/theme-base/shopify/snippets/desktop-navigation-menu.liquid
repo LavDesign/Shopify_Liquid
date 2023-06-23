@@ -14,6 +14,15 @@
       endif
     endfor
   endfor
+
+  for featured in featured_contents
+    assign featured_item_handleize = featured.settings.menu_item | handleize
+    assign link_label_handleize = link.title | handleize
+    if featured_item_handleize == link_label_handleize
+      assign has_mega_menu = true
+      assign has_child = true
+    endif
+  endfor
 %}
 
 <li class="header__navigation-item flex h-full justify-center items-center leading-[100%] cursor-pointer group {% if has_child %} relative header__navigation-item--has-child{% endif %}{% if has_mega_menu %} relative header__navigation-item--has-mega-menu{% endif %}">
@@ -73,7 +82,10 @@
           {% assign link_label_handleize = link.title | handleize %}
 
           {% if featured_item_handleize == link_label_handleize and featured.settings.image != blank %}
-            <li class="relative w-full h-auto aspect-{{ aspect_ratio }}">
+            {% if featured.settings.promo_alignment == 'left' %}
+              {% assign promo_class = 'order-[-1]' %}
+            {% endif %}
+            <li class="relative w-full h-auto aspect-{{ aspect_ratio }} {{ promo_class }}">
               {{ featured.settings.image | image_url: width: 600 | image_tag: class: 'absolute top-0 left-0 z-1 object-cover w-full h-full' }}
 
               <div class="p-6 flex flex-col justify-end absolute top-0 left-0 z-2 w-full h-full">

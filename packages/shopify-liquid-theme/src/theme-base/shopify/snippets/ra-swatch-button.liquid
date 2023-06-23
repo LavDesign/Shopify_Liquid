@@ -53,7 +53,8 @@
       class="ra-choice__container w-11 h-11 set--sibling-deep-focus border border-grey-400 p-0 {% if disabled %}disabled{% endif %}"
       for="{{ input_id }}"
     >
-      <img alt="{{ label }}" src="{{ label | downcase | append: '_swatch.png' | file_url }}">
+      {% comment %}theme-check-disable ImgWidthAndHeight{% endcomment %}
+      <img alt="{{ label }}" src="{{ label | downcase | append: '_swatch.png' | file_url }}" loading="eager">
     </label>
   </div>
 {% endif %}

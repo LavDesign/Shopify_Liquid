@@ -60,23 +60,23 @@
         {% assign shipping = checkout.shipping_address %}
         'billingAddressHash': {
           'firstName': {{ billing.first_name | sha256 | json | default: '' }},
-          'lastName': {{ billing.last_name | sha256 | json | default: ''  }},
-          'street': {{ billing.street | sha256 | json | default: ''  }},
-          'phone': {{ billing.phone | sha256 | json | default: ''  }},
-          'zip': {{ billing.zip | sha256 | json | default: ''  }},
-          'city': {{ billing.city | sha256 | json | default: ''  }},
-          'province': {{ billing.province | sha256 | json | default: ''  }},
-          'country': {{ billing.country | sha256 | json | default: ''  }}
+          'lastName': {{ billing.last_name | sha256 | json | default: '' }},
+          'street': {{ billing.street | sha256 | json | default: '' }},
+          'phone': {{ billing.phone | sha256 | json | default: '' }},
+          'zip': {{ billing.zip | sha256 | json | default: '' }},
+          'city': {{ billing.city | sha256 | json | default: '' }},
+          'province': {{ billing.province | sha256 | json | default: '' }},
+          'country': {{ billing.country | sha256 | json | default: '' }}
         },
         'shippingAddressHash': {
-          'firstName': {{ shipping.first_name | sha256 | json | default: ''  }},
-          'lastName': {{ shipping.last_name | sha256 | json | default: ''  }},
-          'street': {{ shipping.street | sha256 | json | default: ''  }},
-          'phone': {{ shipping.phone | sha256 | json | default: ''  }},
-          'zip': {{ shipping.zip | sha256 | json | default: ''  }},
-          'city': {{ shipping.city | sha256 | json | default: ''  }},
-          'province': {{ shipping.province | sha256 | json | default: ''  }},
-          'country': {{ shipping.country | sha256 | json | default: ''  }}
+          'firstName': {{ shipping.first_name | sha256 | json | default: '' }},
+          'lastName': {{ shipping.last_name | sha256 | json | default: '' }},
+          'street': {{ shipping.street | sha256 | json | default: '' }},
+          'phone': {{ shipping.phone | sha256 | json | default: '' }},
+          'zip': {{ shipping.zip | sha256 | json | default: '' }},
+          'city': {{ shipping.city | sha256 | json | default: '' }},
+          'province': {{ shipping.province | sha256 | json | default: '' }},
+          'country': {{ shipping.country | sha256 | json | default: '' }}
         }
       },
   {% endif %}
