@@ -1,12 +1,10 @@
 <template>
   <div class="ra-product-form">
     <div v-if="!product.has_only_default_variant" class="mb-16">
-      <template
-        :key="optionKey"
-        v-for="(options, optionKey) in formattedOptions"
-      >
+      <template v-for="(options, optionKey) in formattedOptions">
         <SwatchPicker
           v-if="optionsAsSwatches.includes(optionKey)"
+          :key="`swatch_${optionKey}`"
           :label="optionKey"
           :options="options"
           :selected="selectedOptions[optionKey]"
@@ -18,6 +16,7 @@
 
         <OptionPicker
           v-else
+          :key="`option_${optionKey}`"
           :label="optionKey"
           :options="options"
           :selected="selectedOptions[optionKey]"
@@ -239,12 +238,11 @@ const primarySwiperInstance = document.querySelector(
 )?.swiper;
 
 const slideToCurrentVariantImage = () => {
-  const currentVariantSlide = primarySwiperInstance.slides.find(
+  const currentVariantSlide = primarySwiperInstance?.slides.find(
     (slide) =>
       parseInt(slide.getAttribute("data-media-id")) ===
       currentVariant.value.media.id
   );
-
   const index = currentVariantSlide?.getAttribute("data-slide-index");
   index && primarySwiperInstance.slideTo(index);
 };
@@ -283,11 +281,11 @@ const updateBadgeText = () => {
       badgeText = "On Sale";
     }
   }
-  if (badgeText) {
+  if (badgeText && productBadge) {
     productBadge.textContent = badgeText;
     productBadge.classList.remove("hidden");
   } else {
-    productBadge.classList.add("hidden");
+    productBadge?.classList.add("hidden");
   }
 };
 
@@ -306,5 +304,7 @@ onMounted(() => {
   productStore.setCurrentVariant(
     currentVariant.value || props.product.first_available_variant
   );
+  slideToCurrentVariantImage();
+  updateBadgeText();
 });
 </script>

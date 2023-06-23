@@ -92,7 +92,7 @@
                 <li class="mb-4 border-0">
                   <a
                     class="flex items-center"
-                    href="/account"
+                    href="{%- render 'locale-root' -%}/account"
                     title="account"
                     aria-label="account"
                   >
@@ -273,6 +273,23 @@
           "label": "Menu Item",
           "info": "Enter menu item to apply a Featured Content",
           "default": "catalog"
+        },
+        {
+          "type": "select",
+          "id": "promo_alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "right",
+          "label": "Promo Alignment",
+          "info": "Which side should the promo populate from"
         },
         {
           "type": "image_picker",

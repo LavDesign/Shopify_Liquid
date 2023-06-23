@@ -38,7 +38,7 @@
 {%- assign item_titles = item_titles | split: '|' -%}
 {%- assign item_contents = item_contents | split: '|' -%}
 
-<ra-accordion class="ra-accordion {{ classes }}" data-multi-open="{{ multiple_open | default: 'false'  }}">
+<ra-accordion class="ra-accordion {{ classes }}" data-multi-open="{{ multiple_open | default: 'false' }}">
   {%- liquid
     if content
       echo content

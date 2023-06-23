@@ -7,7 +7,7 @@
   <ul class="flex flex-row md:flex-col flex-nowrap overflow-auto whitespace-nowrap max-md:mb-8 list-none">
     <li class="max-md:mr-4 md:mb-5 leading-[1.3]">
       <a
-        href="/account"
+        href="{%- render 'locale-root' -%}/account"
         class="text-sm tracking-wide md:text-lg font-semibold {% if request.path == "/account" or request.path contains "/account/orders" %}underline text-grey-900{% else %}no-underline max-md:text-grey-600{% endif %}"
       >
         Order History
@@ -15,7 +15,7 @@
     </li>
     <li class="max-md:mr-4 md:mb-5 leading-[1.3]">
       <a
-        href="{{ routes.account_addresses_url }}"
+        href="{%- render 'locale-root' -%}/{{ routes.account_addresses_url }}"
         class="text-sm tracking-wide md:text-lg font-semibold {% if request.path == "/account/addresses" %}underline text-grey-900{% else %}no-underline max-md:text-grey-600{% endif %}"
       >
         Address Book

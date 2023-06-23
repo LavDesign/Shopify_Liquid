@@ -15,6 +15,19 @@
   if section.settings.show_navigation and section.blocks.size > mobile_slide_count
     assign show_navigation = true
   endif
+
+  if section.settings.recommendations_product != blank
+    assign recommendation_product_id = section.settings.recommendations_product.id
+  else
+    assign recommendation_product_id = product.id
+  endif
+
+  assign has_collection = false
+  if section.settings.selected_collection != blank
+    assign selected_collection = section.settings.selected_collection
+    assign has_collection = true
+  endif
+
 %}
 
 {% capture swiper_init_params %}
@@ -91,17 +104,20 @@
     <div class="ra-carousel {% if show_navigation %}ra-carousel--has-nav{% endif %}">
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
-        class="swiper--{{ section.id }} mt-16"
+        class="swiper--{{ section.id }} mt-16 product-recommendations w-full"
+        {% if section.settings.use_recommendations_api %}
+          data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent={{ section.settings.recommendations_intent }}"
+        {% endif %}
         init="false"
         space-between="15"
         {% if show_navigation %}
-        navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
-        navigation-prev-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+          navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
+          navigation-prev-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
         {% endif %}
         {% if show_pagination %}
-        pagination="true"
-        pagination-clickable="true"
-        pagination-el=".product-carousel--{{ section.id }} .ra-carousel__pagination"
+          pagination="true"
+          pagination-clickable="true"
+          pagination-el=".product-carousel--{{ section.id }} .ra-carousel__pagination"
         {% endif %}
         speed="300"
         draggable="true"
@@ -113,27 +129,60 @@
         slides-per-view="{{ section.settings.mobile_slides_view | at_most: 3 }}"
         data-init-params='{{ swiper_init_params }}'
       >
-        <!-- prettier-ignore-end -->
-        {% for block in section.blocks %}
-          {% liquid
-            assign _product = block.settings.product
-            assign cta_label = block.settings.cta_label
-            assign cta_style = block.settings.cta_style
-          %}
-        {% endfor %}
+        {% if section.settings.use_recommendations_api %}
+          {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+            {%- for recommended_product in recommendations.products -%}
+              <swiper-slide>
+                {% render 'ra-product-tile',
+                  product: recommended_product,
+                  atc_label: section.settings.cta_label,
+                  atc_style: section.settings.cta_style,
+                  font_color: text_color,
+                  index: forloop.index
+                %}
+              </swiper-slide>
+            {% endfor %}
+          {% endif %}
+        {% else %}
+          <!-- prettier-ignore-end -->
 
-        {%- for block in section.blocks -%}
-          {% assign src = block.settings.slide_img | image_url: width: 400 %}
-          <swiper-slide>
-            {% render 'ra-product-tile',
-              product: block.settings.product,
-              atc_label: block.settings.cta_label,
-              atc_style: block.settings.cta_style,
-              font_color: text_color,
-              index: forloop.index
-            %}
-          </swiper-slide>
-        {% endfor %}
+          {% if section.settings.selected_collection != blank %}
+            {%- for collection_product in selected_collection.products -%}
+              <swiper-slide>
+                {% render 'ra-product-tile',
+                  product: collection_product,
+                  atc_label: section.settings.cta_label,
+                  atc_style: section.settings.cta_style,
+                  font_color: text_color,
+                  index: forloop.index
+                %}
+              </swiper-slide>
+            {% endfor %}
+          {% else  %}
+            {% for block in section.blocks %}
+              {% liquid
+                assign _product = block.settings.product
+                assign cta_label = block.settings.cta_label
+                assign cta_style = block.settings.cta_style
+              %}
+            {% endfor %}
+
+            {%- for block in section.blocks -%}
+              {% assign src = block.settings.slide_img | image_url: width: 400 %}
+              <swiper-slide>
+                {% render 'ra-product-tile',
+                  product: block.settings.product,
+                  atc_label: section.settings.cta_label,
+                  atc_style: section.settings.cta_style,
+                  font_color: text_color,
+                  index: forloop.index
+                %}
+              </swiper-slide>
+            {% endfor %}
+          {% endif  %}
+
+        {% endif %}
+
       </swiper-container>
       {% if show_navigation %}
         <div class="ra-carousel__nav ra-carousel__nav--{{ section.settings.carousel_nav_location }}">
@@ -213,6 +262,85 @@
       "info": "Set the text color for all screen sizes",
       "options": <%- uikit.colorsSchemaPicker -%>,
       "default": "--color-primary-900"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Label",
+      "info": "Set CTA label product (will only appear if filled in)"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "info": "Choose a button style for CTA",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "tertiary",
+          "label": "Tertiary"
+        }
+      ],
+      "default": "tertiary"
+    },
+    {
+      "type": "header",
+      "content": "Data Sources"
+    },
+    {
+      "type": "paragraph",
+      "content": "There are 3 different ways to decide which product data will be used for this carousel, listed in order of priority. 1) Recommendations API (either intent), 2) A selected collection, 3) Individually selected products"
+    },
+    {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "collection",
+      "id": "selected_collection",
+      "label": "Selected Collection",
+      "info": "Choosing a collection will override any products selected for this component."
+    },
+    {
+      "type": "header",
+      "content": "Recommendations API Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_recommendations_api",
+      "label": "Use Recommendations API",
+      "info": "By checking this box, you will be choosing to override any products or collections you have selected for this component.",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "recommendations_intent",
+      "label": "Recommendation Intent",
+      "info": "Select your recommendations intent [Learn more about intent](https://shopify.dev/docs/themes/product-merchandising/recommendations#recommendation-intents)",
+      "options": [
+        {
+          "value": "related",
+          "label": "Related (You May Also Like)"
+        },
+        {
+          "value": "complementary",
+          "label": "Complementary (Pair it With)"
+        }
+      ],
+      "default": "related"
+    },
+    {
+      "type": "product",
+      "id": "recommendations_product",
+      "label": "Recommendations Product",
+      "info": "If no product is selected and you are placing this component on a PDP, this will default to that product."
     },
     {
       "type": "header",
@@ -353,34 +481,6 @@
           "type": "product",
           "id": "product",
           "label": "Product"
-        },
-        {
-          "type": "text",
-          "id": "cta_label",
-          "label": "CTA Label",
-          "info": "Set CTA label for individual product",
-          "default": "Add To Cart"
-        },
-        {
-          "type": "select",
-          "id": "cta_style",
-          "label": "CTA Style",
-          "info": "Choose a button style for CTA",
-          "options": [
-            {
-              "value": "primary",
-              "label": "Primary"
-            },
-            {
-              "value": "secondary",
-              "label": "Secondary"
-            },
-            {
-              "value": "tertiary",
-              "label": "Tertiary"
-            }
-          ],
-          "default": "tertiary"
         }
       ]
     }

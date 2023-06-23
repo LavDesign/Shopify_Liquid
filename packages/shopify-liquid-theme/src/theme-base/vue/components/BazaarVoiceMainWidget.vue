@@ -51,13 +51,13 @@
       <div
         v-if="reviews?.length > 0"
         class="bv__total-reviews font-primary"
-        v-text="`${totalReviews} reviews`"
+        v-text="`${totalReviews} ${language.reviews}`"
       ></div>
       <a
         class="bv__write-review ra-button mt-8 md:mt-10"
         @click="openReviewModal"
       >
-        Write A Review
+        {{ language.write_a_review }}
       </a>
     </div>
     <!-- Header Component End -->
@@ -67,13 +67,13 @@
       class="bv__search flex w-full justify-start mt-12 mb-6 max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-primary-900 pt-7"
     >
       <div v-if="reviews?.length > 0" class="ra-input w-full md:w-auto">
-        <h5 class="h5 mb-5">Filter Reviews</h5>
+        <h5 class="h5 mb-5">{{ language.filter_reviews }}</h5>
         <div class="ra-input__wrapper flex relative pb-0">
           <input
             v-model="searchTerm"
             type="text"
             class="ra-input__control ra-input__control--text"
-            placeholder="Search Reviews"
+            :placeholder="language.search_reviews"
           />
           <RaIcon
             size="20px"
@@ -83,7 +83,7 @@
           >
           </RaIcon>
           <button class="absolute right-0 bottom-[13px] md:bottom-5 hidden">
-            submit
+            {{ language.submit }}
           </button>
         </div>
       </div>
@@ -112,7 +112,7 @@
           class="bg-grey-200 font-primary font-light text-base p-2 mr-2"
           v-if="ratingValue != 'any'"
         >
-          rating: {{ ratingValue }}
+          {{ language.rating }}: {{ ratingValue }}
           <span
             @click="
               ratingValue = 'any';
@@ -130,7 +130,7 @@
           class="bg-grey-200 font-primary font-light text-base p-2 mr-2"
           v-if="imageVideoValue != 'any' && imageVideoValue != ''"
         >
-          images/videos: {{ imageVideoValue }}
+          {{ language.images_videos }}: {{ imageVideoValue }}
           <span
             @click="
               imageVideoValue = 'any';
@@ -149,7 +149,7 @@
           class="leading-none min-h-[40px]"
           @click="resetFilters"
         >
-          clear all
+          {{ language.clear_all }}
         </RaButton>
       </div>
     </div>
@@ -167,7 +167,7 @@
             aria-label="rating"
             class="ra-quantity-selector--dropdown md:w-full mr-e7 md:mr-6"
           >
-            <label class="ra-input__label hidden">Rating</label>
+            <label class="ra-input__label hidden">{{ language.rating }}</label>
             <RaSelect
               :value="ratingValue"
               id="rating"
@@ -175,7 +175,7 @@
               class="review-dropdown"
               @input="(label, value) => ratingInput(label, value)"
             >
-              <RaSelectOption value="any">Rating</RaSelectOption>
+              <RaSelectOption value="any">{{ language.rating }}</RaSelectOption>
               <RaSelectOption value="1">★☆☆☆☆</RaSelectOption>
               <RaSelectOption value="2">★★☆☆☆</RaSelectOption>
               <RaSelectOption value="3">★★★☆☆</RaSelectOption>
@@ -193,7 +193,7 @@
             aria-label="has images"
             class="ra-quantity-selector--dropdown md:w-full md:mr-6"
           >
-            <label class="ra-input__label hidden">Media</label>
+            <label class="ra-input__label hidden">{{ language.media }}</label>
             <RaSelect
               :value="ratingValue"
               id="media"
@@ -201,9 +201,13 @@
               class="review-dropdown"
               @input="(label, value) => mediaInput(label, value)"
             >
-              <RaSelectOption value="any">Media</RaSelectOption>
-              <RaSelectOption value="images">Images</RaSelectOption>
-              <RaSelectOption value="videos">Videos</RaSelectOption>
+              <RaSelectOption value="any">{{ language.media }}</RaSelectOption>
+              <RaSelectOption value="images">
+                {{ language.images }}
+              </RaSelectOption>
+              <RaSelectOption value="videos">
+                {{ language.videos }}
+              </RaSelectOption>
             </RaSelect>
             <RaIcon size="18px" class="ra-select__arrow ra-icon ra-icon--md">
               <svg>
@@ -218,7 +222,7 @@
           aria-label="sort by"
           class="ra-quantity-selector--dropdown md:w-full"
         >
-          <label class="ra-input__label hidden">sort by</label>
+          <label class="ra-input__label hidden">{{ language.sort_by }}</label>
           <RaSelect
             :value="sortValue"
             id="sort"
@@ -226,17 +230,21 @@
             class="review-dropdown"
             @input="(label, value) => sortInput(label, value)"
           >
-            <RaSelectOption value="Rating:desc">Sort By</RaSelectOption>
+            <RaSelectOption value="Rating:desc">
+              {{ language.sort_by }}
+            </RaSelectOption>
             <RaSelectOption value="Helpfulness:desc">
-              Helpfulness
+              {{ language.helpfulness }}
             </RaSelectOption>
             <RaSelectOption value="Rating:desc">
-              Rating (high to low)
+              {{ language.rating_high_low }}
             </RaSelectOption>
             <RaSelectOption value="Rating:asc">
-              Rating (low to high)
+              {{ language.rating_low_high }}
             </RaSelectOption>
-            <RaSelectOption value="SubmissionTime:desc">Newest</RaSelectOption>
+            <RaSelectOption value="SubmissionTime:desc">
+              {{ language.newest }}
+            </RaSelectOption>
           </RaSelect>
           <RaIcon size="18px" class="ra-select__arrow ra-icon ra-icon--md">
             <svg>
@@ -312,7 +320,7 @@
                 <use xlink:href="#circle-check"></use>
               </svg>
             </RaIcon>
-            Verified Buyer
+            {{ language.verified_buyer }}
           </div>
         </div>
         <div class="review__right-column w-full md:w-4/5">
@@ -331,7 +339,7 @@
                   <use xlink:href="#circle-check"></use>
                 </svg>
               </RaIcon>
-              this user recommends this product
+              {{ language.user_recommends }}
             </div>
             <div class="review_pro-con flex items-center">
               <span
@@ -368,7 +376,7 @@
                 @click="submitFeedBack('inappropriate', null, review.Id)"
                 class="font-primary text-sm border-b text-gray-400 border-b-gray-400 ml-3 cursor-pointer tracking-normal whitespace-nowrap"
               >
-                Report this review
+                {{ language.report_this_review }}
               </span>
             </div>
           </div>
@@ -394,7 +402,7 @@
               class="review__response"
             >
               <p class="bv__title font-primary text-base mb-3 text-grey-400">
-                response from {{ response.SourceClientName }} (
+                {{ language.response_from }} {{ response.SourceClientName }} (
                 <span
                   class="font-secondary"
                   v-text="datePass(response.Date)"
@@ -425,7 +433,7 @@
           @click="showMore"
           class="ra-button ra-button--tertiary ra-button--sm mt-6 mx-auto"
         >
-          Show More
+          {{ language.show_more }}
         </button>
         <p
           class="font-primary text-sm tracking-widest mt-4 mx-auto text-center uppercase"
@@ -436,13 +444,13 @@
         <p
           class="font-primary text-base md:text-xl leading-e20 md:leading-e24 tracking-normal mt-10 md:mt-[72px] mx-auto text-center"
         >
-          Sorry, there are no reviews that match your criteria.
+          {{ language.sorry_no_reviews }}
         </p>
         <button
           @click="resetFilters"
           class="ra-button ra-button--tertiary ra-button--sm mt-6 mx-auto"
         >
-          Reset Filters
+          {{ language.reset_filters }}
         </button>
       </div>
     </div>
@@ -452,10 +460,10 @@
       <p
         class="font-primary text-base md:text-xl leading-e20 md:leading-e24 tracking-normal mt-4 mx-auto text-center"
       >
-        No Reviews Available
+        {{ language.no_reviews_available }}
       </p>
       <button @click="openReviewModal" class="btn btn--black mt-4 mx-auto">
-        Write A Review
+        {{ language.write_a_review }}
       </button>
     </template>
     <!-- No Results End -->
@@ -519,6 +527,7 @@ export default defineComponent({
   data() {
     return {
       reviewData: null,
+      language: window.language?.reviews,
       reviews: [],
       averageRating: null,
       submissionHistory: [],
@@ -558,7 +567,7 @@ export default defineComponent({
 
   computed: {
     showMoreText() {
-      return `showing ${this.reviewsToShow}/${this.reviewData?.TotalResults} reviews`;
+      return `${this.language.showing} ${this.reviewsToShow}/${this.reviewData?.TotalResults} ${this.language.reviews}`;
     },
   },
   methods: {
@@ -583,11 +592,11 @@ export default defineComponent({
     },
     bvTrackPageView(data) {
       // eslint-disable-next-line no-undef
-      BV.pixel.trackPageView(data);
+      BV?.pixel?.trackPageView(data);
     },
     bvTrackImpression(data) {
       // eslint-disable-next-line no-undef
-      BV.pixel.trackImpression(data);
+      BV?.pixel?.trackImpression(data);
     },
     // eslint-disable-next-line no-unused-vars
     ratingInput(label, value) {
@@ -655,7 +664,7 @@ export default defineComponent({
       if (this.submissionHistory.includes(resultId)) {
         return "vote submitted";
       }
-      return "was this review helpful?";
+      return this.language.was_review_helpful;
     },
     updateReviewHistory() {
       if (localStorage.getItem("reviewSubmission")) {

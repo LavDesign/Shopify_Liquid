@@ -12,8 +12,11 @@
             "title_style": "h1",
             "text_alignment": "set--v-align-middle set--h-align-center",
             "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
-            "desktop_bg_image": "shopify:\/\/shop_images\/Mask_group_1.png",
-            "mobile_bg_image": "shopify:\/\/shop_images\/Mask_group_2.png",
+            "bg_image_desktop": "shopify:\/\/shop_images\/ProductImage_32.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
             "text_color_desktop": "--color-util-white",
             "text_color_mobile": "--color-grey-900",
             "bg_color": "--color-util-white",
@@ -34,8 +37,11 @@
             "title_style": "h1",
             "text_alignment": "set--v-align-middle set--h-align-center",
             "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
-            "desktop_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
-            "mobile_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
+            "bg_image_desktop": "shopify:\/\/shop_images\/ProductImage_30.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
             "text_color_desktop": "--color-grey-900",
             "text_color_mobile": "--color-grey-900",
             "bg_color": "--color-util-white",
@@ -480,6 +486,56 @@
         "look_bg_color": "--color-util-white",
         "look_text_color": "--color-grey-900"
       }
+    },
+    "2c1f4310-6d3c-400d-945e-9a3321666ffd": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "0c0f9fb8-0ee6-4c6e-9495-86c7619d7d4a": {
+          "type": "title",
+          "settings": {
+            "title": "Title",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "efa49804-c200-49e0-a3b5-ff678140b188": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Eyebrow Text"
+          }
+        },
+        "e33f4f8b-20c2-4e04-9ef7-84241e24cf9c": {
+          "type": "body_copy",
+          "settings": {
+            "description": "",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "54733556-d6da-46ef-b71d-f11a54ddb5d6": {
+          "type": "block_quote",
+          "settings": {
+            "block_quote": "Block quote text"
+          }
+        }
+      },
+      "block_order": [
+        "0c0f9fb8-0ee6-4c6e-9495-86c7619d7d4a",
+        "efa49804-c200-49e0-a3b5-ff678140b188",
+        "e33f4f8b-20c2-4e04-9ef7-84241e24cf9c",
+        "54733556-d6da-46ef-b71d-f11a54ddb5d6"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
     }
   },
   "order": [
@@ -490,6 +546,7 @@
     "650a81ef-e9bf-473c-9ec2-107491e86ca3",
     "708c2130-3496-4631-8512-4e9eda09a31e",
     "650a81ef-e9bf-473c-9ec2-107491e86ca4",
-    "1250bbd6-bd0c-4547-af5d-0c6719093920"
+    "1250bbd6-bd0c-4547-af5d-0c6719093920",
+    "2c1f4310-6d3c-400d-945e-9a3321666ffd"
   ]
 }

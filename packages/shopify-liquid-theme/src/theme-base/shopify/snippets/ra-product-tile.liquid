@@ -137,11 +137,12 @@
         icon: 'heart'
       %}
     {% endif %}
-    {% if atc_button == true %}
+    {% if atc_label != blank %}
       <div>
         <button
           type="button"
           aria-label="Add to Cart {{ product.title }}"
+          onclick="document.location = '{{ product.url }}'"
           class="ra-product-tile__atc ra-button ra-button--{{ atc_style | default: 'tertiary' }} ra-button--sm"
         >
           {% if atc_label != blank %}
@@ -195,7 +196,9 @@
               data-option-value="{{ value }}"
               data-option-position="{{ option.position }}"
             {% endcapture %}
-            {% capture variant_id %}{{value}}_{{product.id}}{% endcapture %}
+            {% capture variant_id %}
+              {{ value }}_{{ product.id }}{% if index %}_{{ index }}{% endif %}
+            {% endcapture %}
 
               {%- liquid
               assign checked = false

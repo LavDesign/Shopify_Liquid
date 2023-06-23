@@ -34,13 +34,13 @@
     {% if id != blank %}
       {{ id | strip }}
     {% elsif label != blank %}
-      {{ label | handelize }}
+      {{ label | handleize }}
     {% endif %}
   {% endcapture %}
 
   {% capture attributes %}
     {% if name != blank %}
-      name="{{ name | handelize }}"
+      name="{{ name | handleize }}"
     {% endif %}
     {% if value != blank %}
       value="{{ value }}"

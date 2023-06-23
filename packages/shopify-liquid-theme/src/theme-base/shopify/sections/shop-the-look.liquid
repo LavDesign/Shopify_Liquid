@@ -1,3 +1,4 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
 {% liquid
   assign layout = section.settings.layout
   assign title = section.settings.title
@@ -33,7 +34,7 @@
 {% endstyle %}
 
 {% capture arrow_color %}
-  var({{section.settings.text_color}})
+  var({{ section.settings.text_color }})
 {% endcapture %}
 
 <ra-shop-the-look class="ra-shop-the-look">
