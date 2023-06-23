@@ -168,7 +168,8 @@
     },
     "reviews": {
       "write_a_review": "Write A Review",
-      "reviews": "reviews",
+      "reviews": "Reviews",
+      "questions": "Questions",
       "filter_reviews": "Filter Reviews",
       "search_reviews": "Search Reviews",
       "submit": "submit",

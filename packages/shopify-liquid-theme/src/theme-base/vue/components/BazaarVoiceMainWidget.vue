@@ -51,7 +51,13 @@
       <div
         v-if="reviews?.length > 0"
         class="bv__total-reviews font-primary"
-        v-text="`${totalReviews} ${language.reviews}`"
+        v-text="
+          `
+          ${totalReviews} ${language.reviews}${
+            totalQuestions > 0 ? ',' : ''
+          } ${totalQuestions} ${language.questions}
+          `
+        "
       ></div>
       <a
         class="bv__write-review ra-button mt-8 md:mt-10"
@@ -59,12 +65,32 @@
       >
         {{ language.write_a_review }}
       </a>
+      <div
+        v-if="totalReviews > 0 && totalQuestions > 0"
+        class="flex w-full justify-start max-w-[1124px] mx-auto mt-16"
+      >
+        <button
+          class="reviews-tab font-secondary font-medium text-lg tracking-wide mr-6 border-b-2 border-transparent"
+          :class="activeTab == 'reviews' ? 'active' : ''"
+          @click="activeTab = 'reviews'"
+        >
+          {{ language.reviews }}
+        </button>
+        <button
+          class="reviews-tab font-secondary font-medium text-lg tracking-wide border-b-2 border-b-transparent"
+          :class="activeTab == 'questions' ? 'active' : ''"
+          @click="activeTab = 'questions'"
+        >
+          {{ language.questions }}
+        </button>
+      </div>
     </div>
     <!-- Header Component End -->
     <!-- Filtering Component Start -->
     <div
-      v-if="totalReviews > 0"
-      class="bv__search flex w-full justify-start mt-12 mb-6 max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-primary-900 pt-7"
+      v-if="totalReviews > 0 && activeTab == 'reviews'"
+      :class="totalReviews > 0 && totalQuestions > 0 ? 'mt-6' : 'mt-12'"
+      class="bv__search flex w-full justify-start mb-6 max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-primary-900 pt-7"
     >
       <div v-if="reviews?.length > 0" class="ra-input w-full md:w-auto">
         <h5 class="h5 mb-5">{{ language.filter_reviews }}</h5>
@@ -91,7 +117,7 @@
     <!-- Filtering Component End -->
     <!-- Active Filters Component -->
     <div
-      v-if="searchTerm != '' || activeFilters > 0"
+      v-if="searchTerm != '' || (activeFilters > 0 && activeTab == 'reviews')"
       class="bv-active-filters w-full max-w-[1124px] px-3 lg:px-0 md:mx-auto"
     >
       <div class="filter-holder mb-6 flex items-center">
@@ -156,7 +182,7 @@
     <!-- Active Filters Component End -->
     <!-- Filtering Results Start -->
     <div
-      v-if="reviews?.length > 0"
+      v-if="reviews?.length > 0 && activeTab == 'reviews'"
       class="bv__filters flex flex-wrap md:flex-nowrap w-full justify-start max-w-[1124px] px-3 lg:px-0 md:mx-auto"
     >
       <div class="bv__filter-container w-full md:w-3/4">
@@ -257,7 +283,7 @@
     <!-- Filtering Results End -->
     <!-- Reviews Cards Start -->
     <div
-      v-if="reviews?.length > 0"
+      v-if="reviews?.length > 0 && activeTab == 'reviews'"
       class="bv__results w-full max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-b-gray-400 mt-10"
     >
       <div
@@ -456,7 +482,7 @@
     </div>
     <!-- Review Cards End -->
     <!-- No Results Start -->
-    <template v-if="totalReviews === 0">
+    <template v-if="totalReviews === 0 && activeTab == 'reviews'">
       <p
         class="font-primary text-base md:text-xl leading-e20 md:leading-e24 tracking-normal mt-4 mx-auto text-center"
       >
@@ -527,15 +553,21 @@ export default defineComponent({
   data() {
     return {
       reviewData: null,
+      questionData: null,
       language: window.language?.reviews,
       reviews: [],
       averageRating: null,
       submissionHistory: [],
       firstTime: true,
+      questionFirstTime: true,
       totalReviews: 0,
+      totalQuestions: 0,
+      activeTab: "reviews",
       searchTerm: "",
+      questionSearchTerm: "",
       searchTyped: false,
       sortValue: "SubmissionTime:desc",
+      questionSortValue: "SubmissionTime:desc",
       ratingValue: "any",
       imageVideoValue: "any",
       bvPassKey: "cacXRm016MhHC7WQEyW2gkDlgZyLP9jztXq3vF9NLBDns",
@@ -543,6 +575,7 @@ export default defineComponent({
       modalContentType: "image",
       modalContentUrl: null,
       reviewsToShow: 6,
+      questionsToShow: 10,
       activeFilters: 0,
     };
   },
@@ -562,6 +595,10 @@ export default defineComponent({
   },
   async mounted() {
     await this.getReviews(this.id, false, false);
+    await this.getQuestionsAnswers(this.id, false);
+    if (this.totalReviews === 0 && this.totalQuestions > 0) {
+      this.activeTab = "questions";
+    }
     this.updateReviewHistory();
   },
 
@@ -741,7 +778,7 @@ export default defineComponent({
       let bvPassKey = this.stagingApi;
       let submissionUrl = `https://stg.api.bazaarvoice.com/data/reviews.json`;
       if (this.environment === "production") {
-        submissionUrl = `https://api.bazaarvoice.com/data/submitfeedback.json`;
+        submissionUrl = `https://api.bazaarvoice.com/data/reviews.json`;
         bvPassKey = this.productionApi;
       }
       submissionUrl += `?passKey=${bvPassKey}&apiVersion=5.4`;
@@ -825,6 +862,70 @@ export default defineComponent({
         // this.reviewsToShow = 6;
       } else if (this?.reviewData) {
         this.reviewsToShow = this.reviewData.TotalResults;
+      }
+    },
+    async getQuestionsAnswers(productHandle, showMore) {
+      // &Filter=ProductId:product1&Include=Products&Stats=Reviews&Limit=6&Sort=SubmissionTime:desc
+      let filteringString = `ProductId:${productHandle}`;
+      if (!showMore) {
+        this.questionsToShow = 10;
+      }
+
+      let bvPassKey = this.stagingApi;
+      let submissionUrl = `https://stg.api.bazaarvoice.com/data/questions.json`;
+      if (this.environment === "production") {
+        submissionUrl = `https://api.bazaarvoice.com/data/submitfeedback.json`;
+        bvPassKey = this.productionApi;
+      }
+      submissionUrl += `?passKey=${bvPassKey}&apiVersion=5.4`;
+      submissionUrl += `&Filter=${filteringString}&Include=Products`;
+      if (this.questionSearchTerm != "") {
+        this.activeFilters++;
+        submissionUrl += `&Search=${this.searchTerm}`;
+      }
+
+      submissionUrl += `&Include=Answers`;
+      submissionUrl += `&Limit=${this.questionsToShow}`;
+      submissionUrl += `&Sort=${this.questionSortValue}`;
+
+      const resp = await axios.get(submissionUrl, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        redirect: "follow",
+      });
+
+      const data = resp.data;
+      this.questionData = data;
+      if (this.questionFirstTime && this.id) {
+        this.totalQuestions = this.questionData?.TotalResults;
+        this.questionFirstTime = false;
+
+        for (let i = 0; i < this.questionData.Results.length; i++) {
+          // let impressionData = {
+          //   contentId: this.reviewData.Results[i].Id,
+          //   productId: this.id,
+          //   categoryId: this.reviewData.Includes.Products[this.id].CategoryId,
+          //   contentType: "review",
+          //   bvProduct: "RatingsAndReviews",
+          //   brand: this.reviewData.Includes.Products[this.id].Brand.Name,
+          // };
+          // this.bvTrackImpression(impressionData);
+        }
+      }
+      if (data?.TotalResults > 0) {
+        // const ProductFullInfo = data.Includes.Products[`${productHandle}`];
+        // this.reviews.push({
+        //   productHandle,
+        //   TotalResults: data.TotalResults,
+        //   Results: data.Results,
+        //   AverageOverallRating:
+        //     ProductFullInfo.ReviewStatistics.AverageOverallRating,
+        //   ProductFullInfo,
+        // });
+      }
+      if (this.questionData && this?.questionData.TotalResults > 10) {
+        // this.reviewsToShow = 6;
+      } else if (this.questionData) {
+        this.questionsToShow = this.questionData.TotalResults;
       }
     },
   },
