@@ -2,6 +2,7 @@
   comment
     set variables related to localization
   endcomment
+  assign current_country_display_name = ''
   assign current_country = localization.country
   assign current_country_code = current_country.iso_code
   assign current_language_code = localization.language.iso_code
@@ -24,14 +25,6 @@
     assign current_locale_code = current_locale_code | append: '-' | append: current_country_code
   endif
   assign current_locale_code = current_locale_code
-
-  comment
-    set variables related to the request
-  endcomment
-  assign path = request.path
-  if path contains request.locale.root_url
-    assign path = path | split: request.locale.root_url | last
-  endif
 -%}
 <script>
   window.shopify_locale_root = '{{ request.locale.root_url }}';
@@ -52,6 +45,9 @@
         if country_code != blank
           assign active_country_list = localization.available_countries | where: 'iso_code', iso_code | default: ""
           assign country_object = active_country_list | first
+          if iso_code == current_country_code
+            assign current_country_display_name = display_name
+          endif
         endif
       %}
       <a href="#" class="ra-link flex flex-row gap-2" data-country data-language-code="{{ language_code }}" data-country-code="{{ iso_code }}">{{ country_object | image_url: width: 32 | image_tag }} {{ display_name }}</a>
@@ -76,16 +72,16 @@
 {% capture country_checker_content %}
   <div class="max-w-[500px] w-full rounded p-2 flex items-start flex-col">
     <div class="w-full">
-      {{ current_country | image_url: width: 64 | image_tag: class: 'block mx-auto mb-4', data-country-image: '' | default: "" }}
-      <h5>Your location is set to {{ current_country.name }}</h5><br />
-      <p>But it looks like you are visiting from <span data-country-name></span>.</p><br />
-      <p>Update your location to: </p>
+      {{ current_country | image_url: width: 64 | image_tag: class: 'block mx-auto mb-4', data-country-image: '', alt: current_country_display_name | default: "" }}
+      <h5>{{ 'localize_modal.current_location' | t }} {{ current_country_display_name }}</h5><br />
+      <p>{{ 'localize_modal.detected_location' | t }} <span data-country-name></span>.</p><br />
+      <p>{{ 'localize_modal.update_location' | t }} </p>
       <ul class="list-disc pl-4 mb-6">
-        <li>Shop in <span data-currency-name>{{ current_country.currency.name }}</span> (<span data-currency-symbol>{{ current_country.currency.symbol }}</span>)</li>
-        <li>Get shipping options for <span data-country-name>{{ current_country.name }}</span></li>
+        <li>{{ 'localize_modal.currency_options' | t }}<span data-currency-name></span> (<span data-currency-symbol></span>)</li>
+        <li>{{ 'localize_modal.shipping_options' | t }} <span data-country-name>{{ current_country.name }}</span></li>
       </ul>
-      <a href="#" class="ra-button ra-button--primary ra-button--small w-full" data-set-country>Update Your Country</a>
-      <span id="intl-modal" class="text-center underline block mx-auto cursor-pointer mt-4" data-modal-close>Choose Country from list</span>
+      <a href="#" class="ra-button ra-button--primary ra-button--small w-full" data-set-country>{{ 'localize_modal.update_location_cta' | t }}</a>
+      <span id="intl-modal" class="text-center underline block mx-auto cursor-pointer mt-4" data-modal-close>{{ 'localize_modal.change_location_cta' | t }}</span>
     </div>
   </div>
 {% endcapture %}

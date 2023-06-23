@@ -84,6 +84,7 @@ export default class RaCountries extends HTMLElement {
     const currency_symbol = modal.querySelector("[data-currency-symbol]");
     const submit_button = modal.querySelector("[data-set-country]");
     country_image.src = detectedCountry.flag_image;
+    country_image.alt = detectedCountry.country_name;
     country_names.forEach((country_name) => {
       country_name.innerText = detectedCountry.country_name;
     });
