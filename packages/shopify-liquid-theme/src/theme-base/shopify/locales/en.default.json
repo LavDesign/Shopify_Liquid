@@ -172,6 +172,8 @@
       "questions": "Questions",
       "filter_reviews": "Filter Reviews",
       "search_reviews": "Search Reviews",
+      "filter_questions": "Filter Questions",
+      "search_questions": "Search Questions",
       "submit": "submit",
       "rating": "Rating",
       "images_videos": "Images/Videos",
@@ -184,16 +186,20 @@
       "rating_high_low": "Rating (high to low)",
       "rating_low_high": "Rating (low to high)",
       "newest": "Newest",
+      "oldest": "Oldest",
       "verified_buyer": "Verified Buyer",
       "user_recommends": "this user recommends this product",
       "report_this_review": "Report this review",
+      "report_this_answer": "Report this answer",
       "response_from": "Response from",
       "show_more": "Show More",
-      "sorry_no_reviews": "Sorry, there are no reviews that match your criteria.",
+      "sorry_no_reviews": "Sorry, there are no results that match your criteria.",
+      "no_answers": "No answers yet, be the first respond",
       "reset_filters": "Reset Filters",
       "no_reviews_available": "No Reviews Available",
       "showing": "showing",
-      "was_review_helpful": "was this review helpful?"
+      "was_review_helpful": "was this review helpful?",
+      "was_answer_helpful": "was this answer helpful?"
     },
     "modal": {
       "label": "Media gallery"

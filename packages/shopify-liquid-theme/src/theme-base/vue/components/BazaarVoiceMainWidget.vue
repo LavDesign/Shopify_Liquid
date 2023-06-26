@@ -67,7 +67,7 @@
       </a>
       <div
         v-if="totalReviews > 0 && totalQuestions > 0"
-        class="flex w-full justify-start max-w-[1124px] mx-auto mt-16"
+        class="flex w-full justify-start md:max-w-[1124px] px-3 md:px-0 mx-auto mt-16"
       >
         <button
           class="reviews-tab font-secondary font-medium text-lg tracking-wide mr-6 border-b-2 border-transparent"
@@ -89,7 +89,7 @@
     <!-- Filtering Component Start -->
     <div
       v-if="totalReviews > 0 && activeTab == 'reviews'"
-      :class="totalReviews > 0 && totalQuestions > 0 ? 'mt-6' : 'mt-12'"
+      :class="totalReviews > 0 || totalQuestions > 0 ? 'mt-6' : 'mt-12'"
       class="bv__search flex w-full justify-start mb-6 max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-primary-900 pt-7"
     >
       <div v-if="reviews?.length > 0" class="ra-input w-full md:w-auto">
@@ -111,6 +111,64 @@
           <button class="absolute right-0 bottom-[13px] md:bottom-5 hidden">
             {{ language.submit }}
           </button>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="totalQuestions > 0 && activeTab == 'questions'"
+      :class="totalReviews > 0 || totalQuestions > 0 ? 'mt-6' : 'mt-12'"
+      class="bv__search flex w-full justify-between items-end mb-6 max-w-[1124px] px-3 lg:px-0 md:mx-auto border-t border-primary-900 pt-7 flex-wrap md:flex-nowrap"
+    >
+      <div
+        v-if="totalQuestions > 0"
+        class="ra-input w-full md:w-auto mb-4 md:mb-0"
+      >
+        <h5 class="h5 mb-5">{{ language.filter_questions }}</h5>
+        <div class="ra-input__wrapper flex relative pb-0">
+          <input
+            v-model="questionSearchTerm"
+            type="text"
+            class="ra-input__control ra-input__control--text"
+            :placeholder="language.search_questions"
+          />
+          <RaIcon
+            size="20px"
+            class="ml-[2px] top-3 -left-[30px]"
+            color="primary"
+            icon="search"
+          >
+          </RaIcon>
+          <button class="absolute right-0 bottom-[13px] md:bottom-5 hidden">
+            {{ language.submit }}
+          </button>
+        </div>
+      </div>
+
+      <div class="bv__sort-container w-full md:w-1/4">
+        <div
+          aria-label="sort by"
+          class="ra-quantity-selector--dropdown w-full mb-0"
+        >
+          <label class="ra-input__label hidden">{{ language.sort_by }}</label>
+          <RaSelect
+            :value="questionSortValue"
+            id="sort"
+            name="sort"
+            class="review-dropdown"
+            @input="(label, value) => questionSortInput(label, value)"
+          >
+            <RaSelectOption value="SubmissionTime:desc">
+              {{ language.newest }}
+            </RaSelectOption>
+            <RaSelectOption value="SubmissionTime:asc">
+              {{ language.oldest }}
+            </RaSelectOption>
+          </RaSelect>
+          <RaIcon size="18px" class="ra-select__arrow ra-icon ra-icon--md">
+            <svg>
+              <use xlink:href="#chevron-down"></use>
+            </svg>
+          </RaIcon>
         </div>
       </div>
     </div>
@@ -373,7 +431,9 @@
                 v-text="feedbackText(review.Id)"
               ></span>
               <RaIcon
-                @click="submitFeedBack('helpfulness', 'positive', review.Id)"
+                @click="
+                  submitFeedBack('helpfulness', 'positive', review.Id, 'review')
+                "
                 size="16px"
                 class="mr-1 cursor-pointer"
               >
@@ -386,7 +446,9 @@
                 v-text="`(${review.TotalPositiveFeedbackCount})`"
               ></span>
               <RaIcon
-                @click="submitFeedBack('helpfulness', 'negative', review.Id)"
+                @click="
+                  submitFeedBack('helpfulness', 'negative', review.Id, 'review')
+                "
                 size="16px"
                 class="mr-1 cursor-pointer"
               >
@@ -399,7 +461,9 @@
                 v-text="`(${review.TotalNegativeFeedbackCount})`"
               ></span>
               <span
-                @click="submitFeedBack('inappropriate', null, review.Id)"
+                @click="
+                  submitFeedBack('inappropriate', null, review.Id, 'review')
+                "
                 class="font-primary text-sm border-b text-gray-400 border-b-gray-400 ml-3 cursor-pointer tracking-normal whitespace-nowrap"
               >
                 {{ language.report_this_review }}
@@ -480,6 +544,164 @@
         </button>
       </div>
     </div>
+    <div
+      v-if="totalQuestions > 0 && activeTab == 'questions'"
+      class="bv__results w-full max-w-[1124px] px-0 md:px-3 lg:px-0 md:mx-auto border-t border-b-gray-400 mt-4 md:mt-10"
+    >
+      <RaAccordion>
+        <RaAccordionItem
+          v-for="question in questionData.Results"
+          class="bv__review-card flex flex-col py-10 border-b border-b-gray-400 transition-all duration-300"
+          :key="question.Id"
+          :title="question.QuestionSummary"
+          :columns="[1]"
+          :open="questionAccordion == question.Id"
+          @click="questionAccordion = question.Id"
+        >
+          <p class="text-base leading-6 mb-2 px-2">
+            {{ datePass(question.SubmissionTime) }}
+          </p>
+          <p class="text-base leading-6 mb-2 px-2">
+            Q: {{ question.QuestionDetails }}
+          </p>
+          <div
+            @click="answerToggle(question.Id)"
+            v-if="question.AnswerIds.length > 0"
+            class="flex items-center px-2 cursor-pointer"
+          >
+            <RaIcon size="14px" class="mr-1">
+              <svg>
+                <use xlink:href="#comment"></use>
+              </svg>
+            </RaIcon>
+            Answers ({{ question.AnswerIds.length }})
+          </div>
+          <div v-else class="flex items-center px-2 cursor-pointer">
+            <RaIcon size="14px" class="mr-1">
+              <svg>
+                <use xlink:href="#comment"></use>
+              </svg>
+            </RaIcon>
+            <p class="underline" @click="submitAnswer(question.Id)">
+              {{ language.no_answers }}
+            </p>
+          </div>
+
+          <div
+            v-show="activeAnswersToggle == question.Id"
+            v-for="answerId in question.AnswerIds"
+            :key="answerId"
+          >
+            <div
+              v-if="questionData.Includes.Answers[answerId]"
+              class="border-b border-grey-200 mx-8 pb-4"
+              :class="
+                questionData.Includes.Answers[answerId].IsBrandAnswer || answerId === '1863549'
+                  ? 'bg-grey-100 p-3'
+                  : ''
+              "
+            >
+              <p
+                v-if="questionData.Includes.Answers[answerId].IsBrandAnswer || answerId === '1863549'"
+                class="text-base leading-6 mt-2 mb-2"
+                v-html="
+                  `
+                  ${datePass(
+                    questionData.Includes.Answers[answerId].SubmissionTime
+                  )} - Brand Team
+                  `
+                "
+              ></p>
+              <p
+                v-else
+                class="text-base leading-6 mt-2 mb-2"
+                v-html="
+                  `
+                  ${datePass(
+                    questionData.Includes.Answers[answerId].SubmissionTime
+                  )} - ${questionData.Includes.Answers[answerId].UserNickname}
+                     | <span class='italic'>
+                    ${questionData.Includes.Answers[answerId].UserLocation}
+                    </span>
+                  `
+                "
+              ></p>
+              <p class="text-base leading-6 mb-2">
+                {{ questionData.Includes.Answers[answerId].AnswerText }}
+              </p>
+              <div class="review_pro-con flex items-center">
+                <span
+                  class="font-primary text-sm mr-4"
+                  v-text="feedbackText(answerId)"
+                ></span>
+                <RaIcon
+                  @click="submitFeedBack('helpfulness', 'positive', answerId, 'answer')"
+                  size="16px"
+                  class="mr-1 cursor-pointer"
+                >
+                  <svg>
+                    <use xlink:href="#thumb-up"></use>
+                  </svg>
+                </RaIcon>
+                <span
+                  class="mr-1 font-secondary text-sm"
+                  v-text="`(${questionData.Includes.Answers[answerId].TotalPositiveFeedbackCount})`"
+                ></span>
+                <RaIcon
+                  @click="submitFeedBack('helpfulness', 'negative', answerId, 'answer')"
+                  size="16px"
+                  class="mr-1 cursor-pointer"
+                >
+                  <svg>
+                    <use xlink:href="#thumb-down"></use>
+                  </svg>
+                </RaIcon>
+                <span
+                  class="mr-1 font-secondary text-sm"
+                  v-text="`(${questionData.Includes.Answers[answerId].TotalNegativeFeedbackCount})`"
+                ></span>
+                <span
+                  @click="submitFeedBack('inappropriate', null, answerId, 'answer')"
+                  class="font-primary text-sm border-b text-gray-400 border-b-gray-400 ml-3 cursor-pointer tracking-normal whitespace-nowrap"
+                >
+                  {{ language.report_this_answer }}
+                </span>
+              </div>
+              
+            </div>
+          </div>
+        </RaAccordionItem>
+      </RaAccordion>
+      <div
+        v-if="questionData?.Results?.length > 0"
+        class="flex flex-col items-center"
+      >
+        <button
+          v-if="questionsToShow < questionData?.TotalResults"
+          @click="showMoreQuestions"
+          class="ra-button ra-button--tertiary ra-button--sm mt-6 mx-auto"
+        >
+          {{ language.show_more }}
+        </button>
+        <p
+          class="font-primary text-sm tracking-widest mt-4 mx-auto text-center uppercase"
+          v-text="showMoreQuestionsText"
+        ></p>
+      </div>
+      <div v-else class="flex flex-col items-center">
+        <p
+          class="font-primary text-base md:text-xl leading-e20 md:leading-e24 tracking-normal mt-10 md:mt-[72px] mx-auto text-center"
+        >
+          {{ language.sorry_no_reviews }}
+        </p>
+        <button
+          @click="resetFilters"
+          class="ra-button ra-button--tertiary ra-button--sm mt-6 mx-auto"
+        >
+          {{ language.reset_filters }}
+        </button>
+      </div>
+    </div>
     <!-- Review Cards End -->
     <!-- No Results Start -->
     <template v-if="totalReviews === 0 && activeTab == 'reviews'">
@@ -521,7 +743,7 @@
 <script>
 import axios from "axios";
 import { defineComponent } from "vue";
-import { RaIcon, RaSelect, RaSelectOption, RaButton } from "@bva/ui-vue";
+import { RaIcon, RaSelect, RaSelectOption, RaButton, RaAccordion, RaAccordionItem } from "@bva/ui-vue";
 import { convertDate } from "../../js/utils/date";
 
 export default defineComponent({
@@ -531,6 +753,8 @@ export default defineComponent({
     RaSelect,
     RaSelectOption,
     RaButton,
+    RaAccordion,
+    RaAccordionItem,
   },
   props: {
     id: {
@@ -563,9 +787,12 @@ export default defineComponent({
       totalReviews: 0,
       totalQuestions: 0,
       activeTab: "reviews",
+      activeAnswersToggle: null,
       searchTerm: "",
+      questionAccordion: null,
       questionSearchTerm: "",
       searchTyped: false,
+      questionTyped: false,
       sortValue: "SubmissionTime:desc",
       questionSortValue: "SubmissionTime:desc",
       ratingValue: "any",
@@ -592,6 +819,18 @@ export default defineComponent({
         this.getReviews(this.id, true, false);
       }
     },
+    questionSearchTerm() {
+      const scopedThis = this;
+      this.questionTyped = true;
+      window.setTimeout(() => {
+        scopedThis.questionTyped = false;
+      }, 500);
+    },
+    questionTyped() {
+      if (!this.questionTyped) {
+        this.getQuestionsAnswers(this.id, false);
+      }
+    },
   },
   async mounted() {
     await this.getReviews(this.id, false, false);
@@ -605,6 +844,9 @@ export default defineComponent({
   computed: {
     showMoreText() {
       return `${this.language.showing} ${this.reviewsToShow}/${this.reviewData?.TotalResults} ${this.language.reviews}`;
+    },
+    showMoreQuestionsText() {
+      return `${this.language.showing} ${this.questionsToShow}/${this.questionData?.TotalResults} ${this.language.questions}`;
     },
   },
   methods: {
@@ -650,6 +892,17 @@ export default defineComponent({
       this.sortValue = label;
       this.updateResults();
     },
+    questionSortInput(label, value) {
+      this.questionSortValue = label;
+      this.updateQuestionResults();
+    },
+    answerToggle(questionId) {
+      if (this.activeAnswersToggle === null) {
+        this.activeAnswersToggle = questionId;
+      } else {
+        this.activeAnswersToggle = null;
+      }
+    },
     showMore() {
       this.reviewsToShow += 6;
       if (
@@ -662,6 +915,19 @@ export default defineComponent({
         this.reviewsToShow = 100;
       }
       this.getReviews(this.id, true, true);
+    },
+    showMoreQuestions() {
+      this.questionsToShow += 10;
+      if (
+        this?.questionData &&
+        this.questionsToShow > this.questionData.TotalResults
+      ) {
+        this.questionsToShow = this.questionData.TotalResults;
+      }
+      if (this?.questionData && this.questionsToShow > 100) {
+        this.questionsToShow = 100;
+      }
+      this.getQuestionsAnswers(this.id, true);
     },
     setReviewModal(url, type) {
       this.modalContentType = type;
@@ -690,6 +956,14 @@ export default defineComponent({
       this.getReviews(this.id, true, false);
       this.bvTrackFilters();
     },
+    updateQuestionResults() {
+      if (this.questionData?.TotalResults > 10) {
+        this.reviewsToShow = 10;
+      } else if (this.questionData?.TotalResults) {
+        this.questionsToShow = this.questionData.TotalResults;
+      }
+      this.getQuestionsAnswers(this.id, false);
+    },
     openReviewModal() {
       // eslint-disable-next-line no-undef
       $BV.ui("rr", "submit_review", {
@@ -697,9 +971,18 @@ export default defineComponent({
         campaignId: "ProductPage",
       });
     },
+    submitAnswer(questionId) {
+      // eslint-disable-next-line no-undef
+      $BV.ui("qa", "submit_answer", {
+        questionId: questionId.toString(),
+      });
+    },
     feedbackText(resultId) {
       if (this.submissionHistory.includes(resultId)) {
         return "vote submitted";
+      }
+      if (this.activeTab === "questions") {
+        return this.language.was_answer_helpful;
       }
       return this.language.was_review_helpful;
     },
@@ -711,8 +994,8 @@ export default defineComponent({
         this.submissionHistory = reviewSubmissionArray;
       }
     },
-    async submitFeedBack(feedbackType, feedbackNature, reviewId) {
-      if (!this.submissionHistory.includes(reviewId)) {
+    async submitFeedBack(feedbackType, feedbackNature, contentId, contentType) {
+      if (!this.submissionHistory.includes(contentId)) {
         let bvPassKey = this.stagingApi;
         let submissionUrl = `https://stg.api.bazaarvoice.com/data/submitfeedback.json`;
         if (this.environment === "production") {
@@ -720,7 +1003,7 @@ export default defineComponent({
           bvPassKey = this.productionApi;
         }
         submissionUrl += `?passKey=${bvPassKey}&apiVersion=5.4`;
-        submissionUrl += `&ContentType=review&ContentId=${reviewId}`;
+        submissionUrl += `&ContentType=${contentType}&ContentId=${contentId}`;
         submissionUrl += `&FeedbackType=${feedbackType}`;
         if (feedbackNature) {
           submissionUrl += `&Vote=${feedbackNature}`;
@@ -732,7 +1015,7 @@ export default defineComponent({
         });
         this.trackFeedbackSubmission(
           !!resp && resp.data ? resp.data : null,
-          reviewId
+          contentId
         );
       }
     },
@@ -880,8 +1163,7 @@ export default defineComponent({
       submissionUrl += `?passKey=${bvPassKey}&apiVersion=5.4`;
       submissionUrl += `&Filter=${filteringString}&Include=Products`;
       if (this.questionSearchTerm != "") {
-        this.activeFilters++;
-        submissionUrl += `&Search=${this.searchTerm}`;
+        submissionUrl += `&Search=${this.questionSearchTerm}`;
       }
 
       submissionUrl += `&Include=Answers`;
