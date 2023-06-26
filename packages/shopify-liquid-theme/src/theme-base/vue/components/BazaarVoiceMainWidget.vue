@@ -59,12 +59,20 @@
           `
         "
       ></div>
-      <a
-        class="bv__write-review ra-button mt-8 md:mt-10"
-        @click="openReviewModal"
-      >
-        {{ language.write_a_review }}
-      </a>
+      <div>
+        <a
+          class="bv__write-review ra-button mt-8 md:mt-10"
+          @click="openReviewModal"
+        >
+          {{ language.write_a_review }}
+        </a>
+        <a
+          class="bv__write-review ra-button ra-button--secondary mt-8 md:mt-10 ml-2 md:ml-4"
+          @click="openQuestionModal"
+        >
+          {{ language.ask_a_question }}
+        </a>
+      </div>
       <div
         v-if="totalReviews > 0 && totalQuestions > 0"
         class="flex w-full justify-start md:max-w-[1124px] px-3 md:px-0 mx-auto mt-16"
@@ -969,6 +977,12 @@ export default defineComponent({
       $BV.ui("rr", "submit_review", {
         productId: this.id.toString(),
         campaignId: "ProductPage",
+      });
+    },
+    openQuestionModal() {
+      // eslint-disable-next-line no-undef
+      $BV.ui("qa", "submit_question", {
+        productId: this.id.toString(),
       });
     },
     submitAnswer(questionId) {
