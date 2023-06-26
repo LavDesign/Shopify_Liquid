@@ -604,13 +604,13 @@
               v-if="questionData.Includes.Answers[answerId]"
               class="border-b border-grey-200 mx-8 pb-4"
               :class="
-                questionData.Includes.Answers[answerId].IsBrandAnswer || answerId === '1863549'
+                questionData.Includes.Answers[answerId].IsBrandAnswer
                   ? 'bg-grey-100 p-3'
                   : ''
               "
             >
               <p
-                v-if="questionData.Includes.Answers[answerId].IsBrandAnswer || answerId === '1863549'"
+                v-if="questionData.Includes.Answers[answerId].IsBrandAnswer"
                 class="text-base leading-6 mt-2 mb-2"
                 v-html="
                   `
@@ -643,7 +643,14 @@
                   v-text="feedbackText(answerId)"
                 ></span>
                 <RaIcon
-                  @click="submitFeedBack('helpfulness', 'positive', answerId, 'answer')"
+                  @click="
+                    submitFeedBack(
+                      'helpfulness',
+                      'positive',
+                      answerId,
+                      'answer'
+                    )
+                  "
                   size="16px"
                   class="mr-1 cursor-pointer"
                 >
@@ -653,10 +660,19 @@
                 </RaIcon>
                 <span
                   class="mr-1 font-secondary text-sm"
-                  v-text="`(${questionData.Includes.Answers[answerId].TotalPositiveFeedbackCount})`"
+                  v-text="
+                    `(${questionData.Includes.Answers[answerId].TotalPositiveFeedbackCount})`
+                  "
                 ></span>
                 <RaIcon
-                  @click="submitFeedBack('helpfulness', 'negative', answerId, 'answer')"
+                  @click="
+                    submitFeedBack(
+                      'helpfulness',
+                      'negative',
+                      answerId,
+                      'answer'
+                    )
+                  "
                   size="16px"
                   class="mr-1 cursor-pointer"
                 >
@@ -666,16 +682,19 @@
                 </RaIcon>
                 <span
                   class="mr-1 font-secondary text-sm"
-                  v-text="`(${questionData.Includes.Answers[answerId].TotalNegativeFeedbackCount})`"
+                  v-text="
+                    `(${questionData.Includes.Answers[answerId].TotalNegativeFeedbackCount})`
+                  "
                 ></span>
                 <span
-                  @click="submitFeedBack('inappropriate', null, answerId, 'answer')"
+                  @click="
+                    submitFeedBack('inappropriate', null, answerId, 'answer')
+                  "
                   class="font-primary text-sm border-b text-gray-400 border-b-gray-400 ml-3 cursor-pointer tracking-normal whitespace-nowrap"
                 >
                   {{ language.report_this_answer }}
                 </span>
               </div>
-              
             </div>
           </div>
         </RaAccordionItem>
@@ -751,7 +770,14 @@
 <script>
 import axios from "axios";
 import { defineComponent } from "vue";
-import { RaIcon, RaSelect, RaSelectOption, RaButton, RaAccordion, RaAccordionItem } from "@bva/ui-vue";
+import {
+  RaIcon,
+  RaSelect,
+  RaSelectOption,
+  RaButton,
+  RaAccordion,
+  RaAccordionItem,
+} from "@bva/ui-vue";
 import { convertDate } from "../../js/utils/date";
 
 export default defineComponent({
@@ -900,6 +926,7 @@ export default defineComponent({
       this.sortValue = label;
       this.updateResults();
     },
+    // eslint-disable-next-line no-unused-vars
     questionSortInput(label, value) {
       this.questionSortValue = label;
       this.updateQuestionResults();
@@ -1162,7 +1189,6 @@ export default defineComponent({
       }
     },
     async getQuestionsAnswers(productHandle, showMore) {
-      // &Filter=ProductId:product1&Include=Products&Stats=Reviews&Limit=6&Sort=SubmissionTime:desc
       let filteringString = `ProductId:${productHandle}`;
       if (!showMore) {
         this.questionsToShow = 10;
@@ -1196,30 +1222,17 @@ export default defineComponent({
         this.questionFirstTime = false;
 
         for (let i = 0; i < this.questionData.Results.length; i++) {
-          // let impressionData = {
-          //   contentId: this.reviewData.Results[i].Id,
-          //   productId: this.id,
-          //   categoryId: this.reviewData.Includes.Products[this.id].CategoryId,
-          //   contentType: "review",
-          //   bvProduct: "RatingsAndReviews",
-          //   brand: this.reviewData.Includes.Products[this.id].Brand.Name,
-          // };
-          // this.bvTrackImpression(impressionData);
+          let impressionData = {
+            contentId: this.questionData.Results[i].Id,
+            productId: this.id,
+            contentType: "question",
+            bvProduct: "AskandAnswer",
+          };
+          this.bvTrackImpression(impressionData);
         }
       }
-      if (data?.TotalResults > 0) {
-        // const ProductFullInfo = data.Includes.Products[`${productHandle}`];
-        // this.reviews.push({
-        //   productHandle,
-        //   TotalResults: data.TotalResults,
-        //   Results: data.Results,
-        //   AverageOverallRating:
-        //     ProductFullInfo.ReviewStatistics.AverageOverallRating,
-        //   ProductFullInfo,
-        // });
-      }
       if (this.questionData && this?.questionData.TotalResults > 10) {
-        // this.reviewsToShow = 6;
+        // this.reviewsToShow = 10;
       } else if (this.questionData) {
         this.questionsToShow = this.questionData.TotalResults;
       }
