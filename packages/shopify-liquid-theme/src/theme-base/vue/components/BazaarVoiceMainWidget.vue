@@ -172,11 +172,6 @@
               {{ language.oldest }}
             </RaSelectOption>
           </RaSelect>
-          <RaIcon size="18px" class="ra-select__arrow ra-icon ra-icon--md">
-            <svg>
-              <use xlink:href="#chevron-down"></use>
-            </svg>
-          </RaIcon>
         </div>
       </div>
     </div>
