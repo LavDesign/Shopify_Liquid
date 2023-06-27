@@ -235,3 +235,7 @@
     margin-top: -150px;
   }
 }
+
+.reviews-tab.active {
+  @apply border-grey-800;
+}

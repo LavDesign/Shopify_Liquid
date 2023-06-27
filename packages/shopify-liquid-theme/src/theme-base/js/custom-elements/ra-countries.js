@@ -8,7 +8,9 @@ export default class RaCountries extends HTMLElement {
       country_input: this.querySelector("input[name='country_code']"),
       language_input: this.querySelector("input[name='language_code']"),
     };
-    this.querySelectorAll('a[data-country]').forEach(item => item.addEventListener("click", this.countryClick.bind(this)))
+    this.querySelectorAll("a[data-country]").forEach((item) =>
+      item.addEventListener("click", this.countryClick.bind(this))
+    );
   }
 
   connectedCallback() {
