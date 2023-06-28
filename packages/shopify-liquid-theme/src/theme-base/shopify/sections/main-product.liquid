@@ -30,6 +30,8 @@
                   {% render 'ra-accordion-item',
                     title: block.settings.title,
                     content: block.settings.content,
+                    image: block.settings.image,
+                    image_width: block.settings.image_full,
                     show_icon: true
                   %}
                 {%- endfor -%}
@@ -67,6 +69,17 @@
           "id": "title",
           "default": "Accordion Title",
           "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Accordion Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "image_full",
+          "label": "Make Image Full Width",
+          "default": false
         },
         {
           "type": "richtext",
