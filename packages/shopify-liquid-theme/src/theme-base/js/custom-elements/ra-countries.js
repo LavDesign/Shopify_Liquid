@@ -47,10 +47,10 @@ export default class RaCountries extends HTMLElement {
       const detected_country = this.countryData.detected_values.country;
       const detected_country_object = window.shopify_available_countries.find(
         (x) =>
-          x.iso_code?.toLowerCase() == detected_country.handle?.toLowerCase()
+          x.iso_code?.toLowerCase() === detected_country.handle?.toLowerCase()
       );
       if (
-        window.shopify_country_default !=
+        window.shopify_country_default !==
         this.countryData?.detected_values.country.handle.toLowerCase()
       ) {
         const country_checker_modal = this.querySelector(
@@ -95,7 +95,7 @@ export default class RaCountries extends HTMLElement {
       this.setCountry(detectedCountry.iso_code, detectedCountry.language_code);
     });
     if (
-      local_country_code.toLowerCase() != window.Shopify.country.toLowerCase()
+      local_country_code.toLowerCase() !== window.Shopify.country.toLowerCase()
     ) {
       modal?.showModal();
     }
