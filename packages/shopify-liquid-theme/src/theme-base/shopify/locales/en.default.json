@@ -357,6 +357,15 @@
     "update_language": "Update language",
     "update_country": "Update country/region"
   },
+  "localize_modal": {
+    "current_location": "Your location is set to ",
+    "detected_location": "But it looks like you are visiting from ",
+    "update_location": "Update your location to:",
+    "currency_options": "Shop in ",
+    "shipping_options": "Get shipping options for ",
+    "update_location_cta": "Update Your Country",
+    "change_location_cta": "Choose Country from list"
+  },
   "customer": {
     "account": {
       "title": "Account",
