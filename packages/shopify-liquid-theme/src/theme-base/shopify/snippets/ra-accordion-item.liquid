@@ -2,6 +2,8 @@
   Props:
   title:       string item title - (required)
   content:     string item content - (required)
+  image:       image item content - (option)
+  image_width: image size string - (option)
   show_icon:   boolean - (optional)
   is_open:     boolean - (optional)
   class:       string - (optional)
@@ -27,6 +29,9 @@
     </div>
     <div class="ra-accordion-item__content">
       <div class="ra-tab__content-inner rte">
+        {% if image != blank  %}
+          <img {% if image_width %}class="w-full mb-3"{%  else %}class="mb-3"{% endif  %} src="{{ image.src | image_url: width: 800 }}" />
+        {% endif %}
         {{- content -}}
       </div>
     </div>
