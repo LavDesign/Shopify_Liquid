@@ -37,7 +37,7 @@
 {% if type != blank and style != blank and label != blank %}
   <{{ type }} class="{{ classes }}" {{ attributes }}>
     {% if icon != blank %}
-      <svg class="ra-icon ra-icon--{{size}}">
+      <svg class="ra-icon ra-icon--{{ size }}">
         <use xlink:href="#{{ icon }}"></use>
       </svg>
     {% endif %}

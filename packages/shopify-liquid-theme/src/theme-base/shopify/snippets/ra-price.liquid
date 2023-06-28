@@ -33,12 +33,12 @@
     <span class="px-1">&nbsp;&#8212;&nbsp;</span>
     <span class="ra-price__regular">{{ product.price_max | money }}</span>
   {% else %}
-    <span class="ra-price__regular{% if has_compare %} ra-price__special{% endif %}" data-price="{{selected.price}}">
+    <span class="ra-price__regular {% if has_compare %} ra-price__special {% endif %}" data-price="{{ selected.price }}">
       {{- selected.price | money -}}
     </span>
     <span
-      class="ra-price__old{% unless has_compare %} hidden{% endunless %}"
-      data-price-compare="{{selected.compare_at_price}}"
+      class="ra-price__old {% unless has_compare %} hidden {% endunless %}"
+      data-price-compare="{{ selected.compare_at_price }}"
     >
       {{- selected.compare_at_price | money -}}
     </span>

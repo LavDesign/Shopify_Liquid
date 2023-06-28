@@ -5,6 +5,7 @@
   image_src:     String - (Optional) img src that will be used
   alt:
   width:         Int - (Optional) Image width
+  index:         Int - (Optional) index of tile if in a carousel
   height:        Int - (Optional) Image height
   aspect_ratio:  String - (Optional) determines the sizing of the image [square, tall, wide, respect-media, fill-space]
 
@@ -56,14 +57,14 @@
   {% endif %}
 {% endcapture %}
 
-{% capture horizontalClasses %}
+{% capture horizontal_classes %}
   set--h-align-{{ horizontal_align | default: 'left' }}{% if horizontal_align_md != blank %}-sm{% endif %}
   {% if horizontal_align_md != blank %}
     set--h-align-{{ horizontal_align_md }}-md
   {% endif %}
 {% endcapture %}
 
-{% capture verticalClasses %}
+{% capture vertical_classes %}
   set--v-align-{{ vertical_align | default: 'bottom' }}{% if vertical_align_md != blank %}-sm{% endif %}
   {% if vertical_align_md != blank %}
     set--v-align-{{ vertical_align_md }}-md
@@ -83,7 +84,11 @@
   {% endcase %}
 {% endcapture %}
 
-<article class="{{ classes }}">
+{% if width == blank %}
+  {% assign width = 400 %}
+{% endif %}
+
+<article class="{{ classes }}" data-aos="fade-up" data-aos-delay="{{ 50 | times: index }}">
   <div class="ra-content-tile__media component-media">
     {% if video != blank %}
       <div class="ra-video ra-content-tile__video ra-video--use-aspect-ratio">
@@ -94,6 +99,7 @@
           muted
           class="ra-video__media ra-video__media--loaded"
         >
+          {% comment %}theme-check-disable RemoteAsset{% endcomment %}
           <source src="{{ video }}" type="video/mp4">
         </video>
       </div>
@@ -102,15 +108,31 @@
         {% assign alt = alt | default: image.alt %}
         {{
           image
-          | image_url: width: 450
-          | image_tag: width: 450, height: 480, class: 'ra-image__media', alt: alt, loading: 'lazy'
+          | image_url: width: width
+          | image_tag: width: width, height: height, class: 'ra-image__media', alt: alt, loading: 'lazy'
         }}
+      </div>
+    {% elsif image_src != blank %}
+      <div class="ra-icon-tile__media component-media {{ vertical_classes }}">
+        <div class="ra-image ra-icon-tile__image" style="--media-width:{{ width | default: 64 }}px">
+          {% comment %}theme-check-disable RemoteAsset{% endcomment %}
+          <img
+            loading="lazy"
+            src="{{ image_src }}"
+            width="{{ width | default: 64 }}"
+            height="auto"
+            alt="{{ image_alt }}"
+            src="ra-image__media"
+            class="ra-image__media"
+          >
+        </div>
       </div>
     {% else %}
       <div
-        class="ra-image ra-content-tile__image ra-image--use-aspect-ratio bg-grey-100"
+        class="ra-image ra-content-tile__image ra-image--use-aspect-ratio border-grey-100 border-[1px] bg-white"
         style="{{ image_style }}"
-      ></div>
+      >
+        {{ 'collection-1' | placeholder_svg_tag }}
     {% endif %}
   </div>
   <a href="{{ overlay_link }}" class="ra-component-anchor-overlay">
@@ -119,7 +141,7 @@
     {% endif %}
   </a>
   <div class="ra-content-tile__details component-details">
-    <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }}">
+    <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }} min-w-full overflow-hidden">
       {% if subtitle %}
         <div class="ra-content-tile__subtitle">
           {{- subtitle -}}
@@ -142,7 +164,7 @@
         {% if link_url_1 != blank and link_text_1 != blank %}
           <a
             href="{{ link_url_1 }}"
-            class="ra-link-list__cta ra-button ra-button--primary"
+            class="ra-link-list__cta ra-button ra-button--primary px-0 md:px-7"
             tabindex="-1"
             label="{{ link_text_1 }}"
             title="Click Me"

@@ -5,8 +5,7 @@ export default class RaProductTile extends HTMLElement {
     super();
     // Setting the product and current variant
     this.product = JSON.parse(this.getAttribute("data-product"));
-    this.variants = this.product.variants;
-    this.currentVariant = this.product.variants.find(
+    this.currentVariant = this.product.variants?.find(
       (variant) => variant.id == this.getAttribute("data-current-variant")
     );
     // Properties that update on Variant Switch
@@ -16,253 +15,201 @@ export default class RaProductTile extends HTMLElement {
     this.priceCompare = this.querySelector("[data-price-compare]");
     this.productUrl = this.querySelector("[data-product-link]");
     this.productTitle = this.querySelector("[data-variant-title]");
+    this.productBadge = this.querySelector("[data-product-badge]");
+
     // Swatch Properties
-    this.swatchOverflowStyle = "scroll"; // expecting expand or scroll
+    this.swatchOverflowStyle = "expand"; // expecting expand or scroll
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
-    // Determine what the maximum scrollable value is to determine
-    // whether or not to display the arrows
-    this.maxScrollLeft =
-      this.variantOptions?.scrollWidth - this.variantOptions?.clientWidth;
-    this.activeFilters;
+    this.variantSwatches = [...(this.variantOptions?.children || [])];
   }
 
   connectedCallback() {
-    this.activeFilters = this.getActiveFilters();
-    if (this.variantOptions?.children?.length > 0) {
-      this.maxScrollLeft =
-        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-      this.swatchOverflow();
-      this.initTile();
-      window.addEventListener("resize", this.handleResize.bind(this));
+    this.setCurrentVariant(this.currentVariant);
+    if (this.variantSwatches.length > 1) {
+      this.updateCurrentVariant();
+      this.initializeSwatches();
     }
   }
 
-  initTile() {
-    const variants = this.variants;
-    const activeFilters = this.activeFilters;
-    const availableVariants = [];
-    const product = this.product;
-    const optionNames = product.options;
-    const optionIndex = {};
-    optionNames.forEach((option, i) => {
-      optionIndex[i + 1] = option;
-    });
-
-    Array.from(this.variantOptions.children).forEach((option, i) => {
-      const label = option.querySelector("label");
-      const input = option.querySelector("input");
-      if (Object.keys(activeFilters).length > 0) {
-        if (activeFilters[input.name]) {
-          activeFilters[input.name].forEach((af) => {
-            if (af == input.value) {
-              const foundVariant = findVariant(input);
-              if (foundVariant) {
-                this.setCurrentVariant(foundVariant[0]);
-                // label.classList.add("active");
-              }
-            }
-          });
-        }
-      } else if (i == 0) {
-        label.classList.add("active");
-      }
+  initializeSwatches() {
+    this.swatchOverflow();
+    this.variantSwatches.forEach((option) => {
       option.addEventListener("click", this.swatchClick.bind(this));
     });
-
-    function findVariant(input) {
-      const { name, value } = input;
-      const optionPosition = parseInt(input.dataset.optionPosition);
-      variants.forEach((variant) => {
-        if (
-          variant[`option${optionPosition}`] == value ||
-          product.options[optionPosition - 1].toLowerCase() == name
-        ) {
-          availableVariants.push(variant);
-        }
-      });
-      const activeVariants = availableVariants.filter((variant) => {
-        const activeFilters = [1, 2, 3]
-          .map((i) => {
-            if (optionIndex[i]) {
-              const option = optionIndex[i].toLowerCase();
-              const value = variant[`option${i}`];
-              if (activeFilters[option]?.includes(value)) {
-                return value;
-              } else {
-                return null;
-              }
-            } else {
-              return null;
-            }
-          })
-          .filter((el) => el !== undefined && el !== null);
-        if (activeFilters.length >= Object.keys(activeFilters).length) {
-          return variant;
-        }
-      });
-      return activeVariants;
-    }
-  }
-
-  getActiveFilters() {
-    const { search } = window.location;
-    const activeFilters = {};
-    const params = search.slice(1).split("&");
-    const cleanParams = params
-      .map((param) => {
-        if (param.includes("filter")) {
-          return param.split("filter.v.option.").pop();
-        }
-        return null;
-      })
-      .filter((el) => el !== undefined && el !== null);
-    cleanParams.forEach((param) => {
-      const [key, value] = param.split("=");
-      if (!activeFilters[key]) {
-        activeFilters[key] = [];
-      }
-      activeFilters[key].push(value);
-    });
-    return activeFilters;
+    window.addEventListener("resize", this.handleResize.bind(this));
   }
 
   handleResize() {
-    const newMaxScrollLeft =
-      this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-    if (this.maxScrollLeft != newMaxScrollLeft) {
-      this.maxScrollLeft = newMaxScrollLeft;
-      if (this.swatchOverflowStyle == "scroll")
-        this.displayArrows(this.variantOptions.scrollLeft);
+    if (this.swatchOverflowStyle === "expand") {
+      this.displayViewMore();
+      this.displayViewLess();
+    } else if (this.swatchOverflowStyle == "scroll") {
+      this.displayArrows();
     }
   }
 
   setCurrentVariant(variant) {
     this.currentVariant = variant;
+  }
+
+  updateCurrentVariant() {
     this.updateProductUrl();
     this.updateImages();
     this.updatePrice();
     this.updateAttribute();
     this.updateSwatch();
-  }
-
-  updateSwatch() {
-    Array.from(this.variantOptions.children).forEach((option) => {
-      const input = option.querySelector("input");
-      const label = option.querySelector("label");
-      const { optionValue, optionPosition } = input.dataset;
-      if (this.currentVariant[`option${optionPosition}`] == optionValue) {
-        label.classList.add("active");
-      } else {
-        label.classList.remove("active");
-      }
-    });
+    this.updateBadge();
   }
 
   swatchClick(e) {
-    const activeOption = e.target;
-    const { optionPosition, optionValue } = activeOption.dataset;
-    const newOptions = Array.from(this.currentVariant.options);
+    const { optionPosition, optionValue } = e.target.dataset;
+    const newOptions = [...this.currentVariant.options];
     newOptions[optionPosition - 1] = optionValue;
-    const newVariant = this.product.variants.find((variant) =>
+    const newVariant = this.product.variants?.find((variant) =>
       variant.options.every((value, index) => value === newOptions[index])
     );
     this.setCurrentVariant(newVariant);
+    this.updateCurrentVariant();
   }
 
   swatchOverflow() {
     // used to set up swatch overflow style
-    if (
-      this.swatchOverflowStyle == "scroll" &&
-      this.variantOptions.children.length > 1
-    ) {
+    if (this.swatchOverflowStyle == "scroll") {
       this.buildArrows();
       this.displayArrows();
     } else if (this.swatchOverflowStyle == "expand") {
       this.buildViewMore();
+      this.displayViewMore();
+      this.displayViewLess();
     }
   }
 
-  displayArrows(newScrollValue = 0) {
-    const leftScroll = this.querySelector("[data-scroll-left]");
+  displayArrows() {
     const rightScroll = this.querySelector("[data-scroll-right]");
-    if (this.variantOptions.clientWidth < this.variantOptions.scrollWidth) {
-      this.optionContainer.classList.add("px-4");
-      this.maxScrollLeft =
-        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-      if (newScrollValue <= 0) {
-        leftScroll.classList.add("hidden");
-      } else {
-        leftScroll.classList.remove("hidden");
-      }
-      if (newScrollValue >= this.maxScrollLeft) {
-        rightScroll.classList.add("hidden");
-      } else {
-        rightScroll.classList.remove("hidden");
-      }
-    } else {
-      this.optionContainer.classList.remove("px-4");
-      this.maxScrollLeft =
-        this.variantOptions.scrollWidth - this.variantOptions.clientWidth;
-      leftScroll.classList.add("hidden");
-      rightScroll.classList.add("hidden");
-    }
+    this.optionContainer.classList.toggle("pr-4", this.hasOverflow());
+    rightScroll?.classList.toggle("hidden", !this.hasOverflow());
   }
 
   buildViewMore() {
     const viewMore = document.createElement("div");
-    viewMore.textContent = "+X more";
+    viewMore.innerHTML = `
+    <span data-count="0"></span>+${"\u00A0"}more`;
     viewMore.classList.add("product-tile__view-more");
     viewMore.setAttribute("data-view-more", "");
     viewMore.addEventListener("click", () => {
       this.variantOptions.classList.add("ra-product-tile__options--expanded");
       viewMore.classList.add("!hidden");
+      viewLess.classList.remove("!hidden");
+      this.displayViewLess();
+      this.variantSwatches.forEach((option) => {
+        option.style.opacity = 1;
+      });
+    });
+    const viewLess = document.createElement("span");
+    viewLess.innerText = "See Less";
+    viewLess.classList.add("!hidden", "product-tile__view-less");
+    viewLess.setAttribute("data-view-less", "");
+    viewLess.addEventListener("click", () => {
+      this.variantOptions.classList.remove(
+        "ra-product-tile__options--expanded"
+      );
+      viewMore.classList.remove("!hidden");
+      viewLess.classList.add("!hidden");
+      this.displayViewMore();
     });
     this.optionContainer.append(viewMore);
-    // The next step here is going to be figuring out which of the swatches are visible
-    // and changing the number of variants based on this value
-    const visibleWidth =
-      this.optionContainer.offsetWidth - viewMore.offsetWidth;
-    let width = 0;
-    let swatchCount = 0;
-    const visibleItems = Array.from(this.variantOptions.children).forEach((c) => {
-      if (width <= visibleWidth) {
-        width += c.offsetWidth;
-        swatchCount++
+    this.optionContainer.append(viewLess);
+  }
+
+  calculateGridGap() {
+    return (
+      this.variantSwatches[1].offsetLeft -
+      (this.variantSwatches[0].offsetLeft + this.variantSwatches[0].offsetWidth)
+    );
+  }
+
+  hasOverflow() {
+    return this.variantOptions.scrollWidth > this.variantOptions.clientWidth;
+  }
+
+  displayViewMore() {
+    const viewMore = this.querySelector("[data-view-more]");
+    if (this.hasOverflow()) {
+      const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
+      const gridGap = this.calculateGridGap();
+      let currentOffset = 0;
+      const visibleChildren = this.variantSwatches.reduce((acc, child) => {
+        if (currentOffset + child.offsetWidth < maxWidth) {
+          child.style.opacity = 1;
+          currentOffset += child.offsetWidth + gridGap;
+          return [...acc, child];
+        } else if (currentOffset + child.offsetWidth / 4 < maxWidth) {
+          child.style.opacity = 1;
+          return acc;
+        } else {
+          child.style.opacity = 0;
+          return acc;
+        }
+      }, []);
+      this.querySelector("[data-count]").textContent =
+        this.variantSwatches.length - visibleChildren.length;
+      viewMore?.classList.remove("!hidden");
+    } else {
+      viewMore?.classList.add("!hidden");
+      this.variantSwatches.forEach((child) => (child.style.opacity = 1));
+    }
+  }
+
+  displayViewLess() {
+    const viewLess = this.querySelector("[data-view-less]");
+    const gridGap = this.calculateGridGap();
+    const lastChild = this.variantSwatches[this.variantSwatches.length - 1];
+    const lastChildEndPosition = lastChild.offsetLeft + lastChild.offsetWidth;
+    const viewLessStartPosition = lastChildEndPosition + gridGap;
+    if (
+      viewLessStartPosition + viewLess.offsetWidth <
+      this.variantOptions.clientWidth
+    ) {
+      if (!viewLess.classList.contains("absolute")) {
+        viewLess.classList.add("absolute");
       }
-    })
+      viewLess.style.left = viewLessStartPosition + "px";
+    } else {
+      viewLess.classList.remove("absolute");
+      viewLess.style.left = "auto";
+    }
+    if (
+      !(
+        !this.hasOverflow() &&
+        this.variantOptions.offsetHeight != lastChild.offsetHeight
+      )
+    ) {
+      viewLess.classList.add("!hidden");
+    } else {
+      viewLess.classList.remove("!hidden");
+    }
+  }
+
+  scrollSwatches() {
+    const scrollWidth =
+      this.variantSwatches[0].offsetWidth + this.calculateGridGap();
+    this.animateScroll(scrollWidth, 300);
+    this.displayArrows(scrollWidth);
   }
 
   // This adds the scroll icons to the container
   buildArrows() {
-    const arrowHandles = ["left", "right"];
-    arrowHandles.forEach((handle) => {
-      const arrow = document.createElement("div");
-      arrow.classList.add(`product-tile__arrow--${handle}`);
-      arrow.setAttribute("data-scroll-button", "");
-      arrow.setAttribute(`data-scroll-${handle}`, "");
-      arrow.addEventListener("click", () => {
-        let newScrollLeft = this.variantOptions.scrollLeft;
-        if (handle == "left") {
-          newScrollLeft -= 50;
-        } else if (handle == "right") {
-          newScrollLeft += 50;
-        }
-        this.animateScroll(newScrollLeft, 300);
-        this.displayArrows(newScrollLeft);
-      });
-      if (
-        (handle == "left" && this.variantOptions.scrollLeft == 0) ||
-        (handle == "right" &&
-          this.maxScrollLeft == 0 &&
-          this.variantOptions.scrollLeft != 0)
-      ) {
-        arrow.classList.add("hidden");
-      } else {
-        arrow.classList.remove("hidden");
-      }
-      this.optionContainer.prepend(arrow);
-    });
+    const arrow = document.createElement("div");
+    arrow.classList.add(`product-tile__arrow--right`);
+    arrow.setAttribute(`data-scroll-right`, "");
+    arrow.addEventListener("click", this.scrollSwatches.bind(this));
+    if (!this.hasOverflow()) {
+      arrow.classList.add("hidden");
+    } else {
+      arrow.classList.remove("hidden");
+    }
+    this.optionContainer.prepend(arrow);
   }
 
   animateScroll(end, duration) {
@@ -310,21 +257,21 @@ export default class RaProductTile extends HTMLElement {
 
   updateImages() {
     const currentSku = this.currentVariant.sku;
-    const featuredImage = this.currentVariant.featured_media;
-    const productImages = this.product.media;
+    const featuredImage = this.currentVariant?.image?.default;
+    const productImages = this.product?.images?.default;
     let mainImage =
       featuredImage ||
       productImages.find((img) => img.alt?.includes(currentSku));
-    let hoverImage = productImages.find((img) => {
+    let hoverImage = productImages?.find((img) => {
       return img.alt?.includes(currentSku) && img !== mainImage;
     });
-    if (!mainImage) mainImage = productImages[0];
-    if (!hoverImage) hoverImage = productImages[1];
+    if (productImages?.length > 0) {
+      if (!mainImage) mainImage = productImages[0];
+      if (!hoverImage && productImages?.[1]) hoverImage = productImages[1];
+    }
     if (mainImage || hoverImage) {
-      const mainImageSrc = mainImage?.preview_image.src + "&width=450";
-      const hoverImageSrc = hoverImage?.preview_image.src + "&width=450";
-      this.featuredImage?.setAttribute("src", mainImageSrc);
-      this.altImage?.setAttribute("src", hoverImageSrc);
+      this.featuredImage?.setAttribute("src", mainImage.sizes.sm);
+      this.altImage?.setAttribute("src", hoverImage.sizes.sm);
     }
   }
 
@@ -333,10 +280,42 @@ export default class RaProductTile extends HTMLElement {
   }
 
   updateProductUrl() {
-    let productUrl = `/products/${this.product.handle}`;
+    let productUrl;
+    if (
+      Shopify.country.toLowerCase() !==
+      window.shopify_country_default.toLowerCase()
+    ) {
+      productUrl = `${window.shopify_locale_root}/products/${this.product.handle}`;
+    } else {
+      productUrl = `/products/${this.product.handle}`;
+    }
     if (this.currentVariant?.id) {
       productUrl += `?variant=${this.currentVariant.id}`;
     }
     this.productUrl.setAttribute("href", productUrl);
+  }
+
+  updateBadge() {
+    const updatedBadge = this.currentVariant?.badge || this.product?.badge;
+    if (updatedBadge && this.productBadge?.textContent != updatedBadge) {
+      this.productBadge.textContent = updatedBadge;
+      this.productBadge?.classList.remove("hidden");
+    } else if (!updatedBadge) {
+      this.productBadge?.classList.add("hidden");
+    }
+  }
+
+  updateSwatch() {
+    this.variantSwatches.forEach((option) => {
+      const input = option.querySelector("input");
+      const label = option.querySelector("label");
+      if (!input) return false;
+      const { optionValue, optionPosition } = input.dataset;
+      if (this.currentVariant[`option${optionPosition}`] == optionValue) {
+        label.classList.add("active");
+      } else {
+        label.classList.remove("active");
+      }
+    });
   }
 }

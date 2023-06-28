@@ -14,11 +14,9 @@
   assign thumbnails_gap = 8
   assign show_thumbnail_navigation = false
 
+  assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
   if slides_length > thumbnails_per_view
-    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: thumbnails_per_view
     assign show_thumbnail_navigation = true
-  else
-    assign thumbnail_carousel_height = thumbnails_gap | plus: 100 | times: slides_length
   endif
 
   # Primary Carousel
@@ -28,6 +26,38 @@
   if slides_length > 1
     assign enable_primary_carousel = true
   endif
+
+  assign current_variant = product.selected_or_first_available_variant
+
+  assign badge_text = ''
+  assign badge_override = false
+
+  assign back_in_stock = current_variant.metafields.custom.back_in_stock
+
+  if current_variant.metafields.badge.label
+    assign badge_text = current_variant.metafields.badge.label
+    assign badge_override = current_variant.metafields.badge.override
+  else
+    if product.metafields.badge.label
+      assign badge_text = product.metafields.badge.label
+      assign badge_override = product.metafields.badge.override
+    endif
+  endif
+
+  unless badge_override
+    if current_variant.inventory_quantity == 0 and current_variant.inventory_policy == 'deny'
+      assign badge_text = 'Sold Out'
+    elsif back_in_stock
+      assign back_in_stock_seconds = back_in_stock | date: '%Y-%m-%d' | date: '%s'
+      assign today_seconds = 'now' | date: '%Y-%m-%d' | date: '%s'
+      assign days_difference = back_in_stock_seconds | minus: today_seconds | divided_by: 86400
+      if days_difference < 14
+        assign badge_text = 'Back in Stock'
+      endif
+    elsif current_variant.price < current_variant.compare_at_price
+      assign badge_text = 'On Sale'
+    endif
+  endunless
 %}
 
 <ra-media-gallery
@@ -46,61 +76,21 @@
           direction="vertical"
           space-between="{{ thumbnails_gap }}"
         >
-          {%- if product.selected_or_first_available_variant.featured_media != null -%}
-            <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="0" data-aos="fade">
+          {%- for media in product.media -%}
+            <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
               {{
-                product.selected_or_first_available_variant.featured_media.preview_image
+                media.preview_image
                 | image_url: width: 80, height: 100, crop: 'center'
                 | image_tag:
                   width: 80,
                   height: 100,
                   widths: '54, 74, 104, 162, 208, 324, 416',
                   loading: 'lazy',
-                  alt: product.selected_or_first_available_variant.featured_media.alt
+                  alt: media.alt
                 | escape
               }}
             </swiper-slide>
-          {%- endif -%}
-          {%- if product.selected_or_first_available_variant.featured_media != null -%}
-            {%- for media in product.media -%}
-              {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
-                <swiper-slide
-                  class="h-[100px] cursor-pointer"
-                  data-slide-index="{{ forloop.index0 }}"
-                  data-aos="fade"
-                  data-aos-delay="{{ 50 | times: forloop.index }}"
-                >
-                  {{
-                    media.preview_image
-                    | image_url: width: 80, height: 100, crop: 'center'
-                    | image_tag:
-                      width: 80,
-                      height: 100,
-                      widths: '54, 74, 104, 162, 208, 324, 416',
-                      loading: 'lazy',
-                      alt: media.alt
-                    | escape
-                  }}
-                </swiper-slide>
-              {% endunless %}
-            {%- endfor -%}
-          {%- else -%}
-            {%- for media in product.media -%}
-              <swiper-slide class="h-[100px] cursor-pointer" data-slide-index="{{ forloop.index0 }}">
-                {{
-                  media.preview_image
-                  | image_url: width: 80, height: 100, crop: 'center'
-                  | image_tag:
-                    width: 80,
-                    height: 100,
-                    widths: '54, 74, 104, 162, 208, 324, 416',
-                    loading: 'lazy',
-                    alt: media.alt
-                  | escape
-                }}
-              </swiper-slide>
-            {%- endfor -%}
-          {%- endif -%}
+          {%- endfor -%}
         </swiper-container>
         {% if show_thumbnail_navigation %}
           <div class="swiper-thumbs-prev justify-center absolute -top-6 hidden lg:flex">
@@ -121,6 +111,12 @@
         class="ra-carousel-outer ra-gallery-carousel__main ra-carousel--has-arrows relative max-w-full"
         data-aos="fade"
       >
+        {% render 'ra-badge',
+          class: 'ra-product-tile__badge z-50',
+          label: badge_text,
+          attributes: 'data-pdp-badge',
+          placeholder: true
+        %}
         <swiper-container
           auto-height="false"
           class="w-full product-media-gallery__primary"
@@ -135,7 +131,7 @@
             <swiper-slide
               data-slide-index="{{ forloop.index0 }}"
               data-media-id="{{ media.id }}"
-              class="ra-carousel-slide {% if forloop.index != 1 %}hidden{% endif %}"
+              class="ra-carousel-slide {% if forloop.index0 != 1 %}hidden{% endif %}"
             >
               {% case media.media_type %}
                 {% when 'image' %}

@@ -1,4 +1,14 @@
-<section>
+<section class="scroll-smooth">
+  {% liquid
+    assign product = section.settings.featured_product
+    assign product_2 = section.settings.featured_product_2
+    assign featured_image = section.settings.featured_product.featured_image
+    assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300
+    assign img_alt = section.settings.featured_product.featured_image.alt | default: section.settings.featured_product.title
+    assign link_url = section.settings.featured_product.url
+    assign video_url = section.settings.video_url
+  %}
+
   <style>
     .box {
       width: 80px;
@@ -10,13 +20,37 @@
       margin-right: 10px;
       margin-bottom: 10px;
     }
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
+
+  <div class="fixed top-[150px] right-2 flex flex-col">
+    <h5>UI Kit Navigation</h5>
+    <a class="hover:text-primary-900" href="#colors">Colors</a>
+    <a class="hover:text-primary-900" href="#typography">Typography</a>
+    <a class="hover:text-primary-900" href="#standard-buttons">Standard Buttons</a>
+    <a class="hover:text-primary-900" href="#split-buttons">Split Buttons</a>
+    <a class="hover:text-primary-900" href="#icon-buttons">Icon Buttons</a>
+    <a class="hover:text-primary-900" href="#input">Input</a>
+    <a class="hover:text-primary-900" href="#icons">Icons</a>
+    <a class="hover:text-primary-900" href="#accordions">Accordions</a>
+    <a class="hover:text-primary-900" href="#breadcrumbs">Breadcrumbs</a>
+    <a class="hover:text-primary-900" href="#scrollable">Scrollable</a>
+    <a class="hover:text-primary-900" href="#badges">Badges</a>
+    <a class="hover:text-primary-900" href="#icon-tile">Icon Tile</a>
+    <a class="hover:text-primary-900" href="#notification">Notification</a>
+    <a class="hover:text-primary-900" href="#modal">Modal</a>
+    <a class="hover:text-primary-900" href="#tabs">Tabs</a>
+    <a class="hover:text-primary-900" href="#content-tiles">Content Tiles</a>
+    <a class="hover:text-primary-900" href="#content-tiles-video">Content Tiles (video)</a>
+  </div>
 
   <div class="container py-30">
     {%- comment -%}
       Colors
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10">Colors</h4>
+    <h4 id="colors" class="text-h4 mt-10">Colors</h4>
     <h5 class="text-h5 my-4">Primary</h5>
     <div class="flex flex-wrap">
       <div class="box border bg-primary-900 text-grey-100">primary-900</div>
@@ -76,12 +110,11 @@
       <div class="box border bg-yellow">yellow</div>
       <div class="box border bg-white">white</div>
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
-      Typogrpahy
+      Typography
     {%- endcomment -%}
-    <h4 class="text-h4 my-10">Typography</h4>
+    <h4 id="typography" class="text-h4 my-10">Typography</h4>
     <div class="grid gap-6">
       <h1 class="h1 display">This is Display text</h1>
       <h1 class="h1">This is h1 text</h1>
@@ -98,7 +131,7 @@
     </div>
 
     <hr class="border my-20">
-    <h4 class="text-h4 mb-2 mt-10">Standard Buttons</h4>
+    <h4 id="standard-buttons" class="text-h4 mb-2 mt-10">Standard Buttons</h4>
     {%- comment -%}
       primary standard button
     {%- endcomment -%}
@@ -122,9 +155,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      secondary standard button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -145,9 +175,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      tertiary standard button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -183,9 +210,8 @@
         {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'full width', full_width: true -%}
       </div>
     </div>
-
     <hr class="border my-20">
-    <h4 class="text-h4 mt-10 mb-5">Split Buttons</h4>
+    <h4 id="split-buttons" class="text-h4 mt-10 mb-5">Split Buttons</h4>
     {%- comment -%}
       primary split button
     {%- endcomment -%}
@@ -209,9 +235,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      secondary split button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -232,9 +255,6 @@
       </div>
     </div>
 
-    {%- comment -%}
-      tertiary split button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -254,9 +274,8 @@
         {%- render 'ra-split-button', size: 'xs', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
       </div>
     </div>
-
     <hr class="border my-20">
-    <h4 class="text-h4 mt-10 mb-5">Icon Buttons</h4>
+    <h4 id="icon-buttons" class="text-h4 mt-10 mb-5">Icon Buttons</h4>
     {%- comment -%}
       primary icon button
     {%- endcomment -%}
@@ -294,7 +313,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">primary circle - large</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -316,7 +334,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">primary circle - medium</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -338,7 +355,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">primary circle - small</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -351,10 +367,6 @@
         -%}
       </div>
     </div>
-
-    {%- comment -%}
-      secondary icon button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Secondary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -446,10 +458,6 @@
         -%}
       </div>
     </div>
-
-    {%- comment -%}
-      tertiary icon button
-    {%- endcomment -%}
     <h5 class="text-h5 mt-10">Tertiary</h5>
     <div class="grid gap-6 grid-cols-4">
       <div>
@@ -528,7 +536,6 @@
           label: 'read more',
           icon: 'plus'
         -%}
-
         <p class="mb-2 mt-5">tertiary circle - small</p>
         {%- render 'ra-icon-button',
           type: 'a',
@@ -541,10 +548,9 @@
         -%}
       </div>
     </div>
-
     <hr class="border my-20">
 
-    <h4 class="text-h4 mt-10 mb-5">Input</h4>
+    <h4 id="input" class="text-h4 mt-10 mb-5">Input</h4>
     {%- comment -%}
       form - input
     {%- endcomment -%}
@@ -597,10 +603,6 @@
         -%}
       </div>
     </div>
-
-    {%- comment -%}
-      form - quantity selectors
-    {%- endcomment -%}
     <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">QTY - Selector</p>
@@ -666,10 +668,6 @@
         </div>
       </div>
     </div>
-
-    {%- comment -%}
-      form - checkbox & toggle
-    {%- endcomment -%}
     <div class="grid gap-6 grid-cols-3">
       <div>
         <p class="text-h5 mt-10 mb-5">Checkbox</p>
@@ -712,12 +710,11 @@
         {%- render 'ra-radio', label: 'message', id: 'message_radio', message: 'This is info message.' -%}
       </div>
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Icons
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Icons</h4>
+    <h4 id="icons" class="text-h4 mt-10 mb-5">Icons</h4>
     <p class="mb-2">
       Icons compile using Gulp. You can find all icon files in
       <code>src/THEME_FOLDER/icons/*.svg</code>. Icons are injected into
@@ -776,12 +773,11 @@
         {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px', color: 'var(--color-primary-900)' -%}
       </div>
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Accordions
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Accordions</h4>
+    <h4 id="accordions" class="text-h4 mt-10 mb-5">Accordions</h4>
     <p class="mt-8 text-h5">no icon</p>
     <div class="grid gap-6">
       {% render 'ra-accordion',
@@ -820,19 +816,17 @@
         item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
       %}
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Breadcrumbs
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
+    <h4 id="breadcrumbs" class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
     {% render 'ra-breadcrumbs', divider: 'slash' %}
-
     <hr class="border my-20">
     {%- comment -%}
       Scrollable
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Scrollable</h4>
+    <h4 id="scrollable" class="text-h4 mt-10 mb-5">Scrollable</h4>
     {% capture scrollable_content %}
       <div>
         <ul>
@@ -846,12 +840,11 @@
       </div>
     {% endcapture %}
     {% render 'ra-scrollable', expandLabel: 'EXPAND', content: scrollable_content, maxHeight: '4rem' %}
-
     <hr class="border my-20">
     {%- comment -%}
       Badge
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Badges</h4>
+    <h4 id="badges" class="text-h4 mt-10 mb-5">Badges</h4>
     <div class="mb-5">
       {% render 'ra-badge', label: 'Primary', size: 'md', style: 'primary' %}
     </div>
@@ -861,59 +854,60 @@
     <div class="mb-5">
       {% render 'ra-badge', label: 'Tertiary Notification Lg', size: 'lg', style: 'tertiary', rounded: true %}
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Icon Tile
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Icon Tile</h4>
+    <h4 id="icon-tile" class="text-h4 mt-10 mb-5">Icon Tile</h4>
+
     {% assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300 %}
     {% assign img_alt = section.settings.featured_product.featured_image.alt %}
     {% assign link_url = section.settings.featured_product.url %}
+
     <div class="grid gap-6 grid-cols-2 mb-5">
       {% render 'ra-icon-tile',
-        imgSrc: img_src,
-        imgAlt: img_alt,
+        image: featured_image,
+        image_src: img_src,
+        image_alt: img_alt,
         title: 'This is a Title',
         description: "I'm not thinking about anything when I'm climbing.",
-        detailsLocation: 'after',
+        details_location: 'after',
         stacked: true,
-        linkUrl: link_url,
-        linkText: 'Default',
-        horizontalAlign: 'right'
+        link_url: link_url,
+        link_text: 'Default',
+        horizontal_align: 'right'
       %}
       {% render 'ra-icon-tile',
-        imgSrc: img_src,
-        imgAlt: img_alt,
-        imgWidth: 200,
+        image: featured_image,
+        image_src: img_src,
+        image_alt: img_alt,
+        image_width: 200,
         title: 'This is a Title',
         description: "I'm not thinking about anything when I'm climbing.",
         stacked: false,
-        linkUrl: link_url,
-        linkText: 'Default',
-        horizontalAlign: 'left',
-        horizontalAlignMD: 'center',
-        verticalAlign: 'bottom'
+        link_url: link_url,
+        link_text: 'Default',
+        horizontal_align: 'left',
+        horizontal_align_md: 'center',
+        vertical_align: 'bottom'
       %}
     </div>
-
     <hr class="border my-20">
     {%- comment -%}
       Notification
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Notification</h4>
+    <h4 id="notification" class="text-h4 mt-10 mb-5">Notification</h4>
     {%- render 'ra-notification',
       icon: 'account',
       title: 'Account Notification',
       message: 'My account notification.',
       class: 'ra-notification__icon'
     -%}
-
     <hr class="border my-20">
     {%- comment -%}
       Modal
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Modal</h4>
+    <h4 id="modal" class="text-h4 mt-10 mb-5">Modal</h4>
     {% capture content %}
       <form action="">
         <div class="flex flex-col">
@@ -930,7 +924,7 @@
     {%- comment -%}
       Tabs
     {%- endcomment -%}
-    <h4 class="text-h4 mt-10 mb-5">Tabs</h4>
+    <h4 id="tabs" class="text-h4 mt-10 mb-5">Tabs</h4>
     {% capture tabs %}
         <button class="ra-tab__button" data-tab="tab1">Tab 1</button>
         <button class="ra-tab__button" data-tab="tab2">Tab 2</button>
@@ -954,39 +948,97 @@
     <hr class="border my-20">
     {%- comment -%}
       Content Tiles
+
+      content tile text before
+      content tile text after
+      content tile text overlay
+      with CTAs
     {%- endcomment -%}
-    {% assign videoUrl = section.settings.video_url %}
-    <h4 class="text-h4 mt-10 mb-5">Content Tiles</h4>
-    <div style="max-width: 22rem;">
-      {{ section.settings.featured_product.featured_image.url }}
+
+    <h4 id="content-tiles" class="text-h4 mt-10 mb-5">Content Tiles</h4>
+    <div class="max-w-screen-2xl grid grid-cols-4 gap-2">
       {% render 'ra-content-tile',
         image: section.settings.featured_product.featured_image,
         alt: img_alt,
-        title: 'This is a title',
+        title: 'Content Tile Overlay',
         description: "I'm not thinking about anything when I'm climbing.",
         link_url_1: link_url,
-        link_text_1: 'Default',
-        link_url_2: link_url,
-        link_text_2: 'Secondary',
+        link_text_1: 'Primary',
+        details_location: 'overlay',
         width: 400,
         height: 300
       %}
-    </div>
-    <hr class="border my-20">
-    <h4 class="text-h4 mt-10 mb-5">Content Tiles (video)</h4>
-    <div style="max-width: 22rem;">
       {% render 'ra-content-tile',
         image: section.settings.featured_product.featured_image,
         alt: img_alt,
-        title: 'This is a title',
+        title: 'Content Tile Text After',
         description: "I'm not thinking about anything when I'm climbing.",
         link_url_1: link_url,
-        link_text_1: 'Default',
+        link_text_1: 'Primary',
         link_url_2: link_url,
         link_text_2: 'Secondary',
+        details_location: 'after',
+        width: 400,
+        height: 300
+      %}
+      {% render 'ra-content-tile',
+        image: section.settings.featured_product.featured_image,
+        alt: img_alt,
+        title: 'Content Tile Text Before',
+        description: "Two CTA's",
+        link_url_1: link_url,
+        link_text_1: 'Primary',
+        link_url_2: link_url,
+        link_text_2: 'Secondary',
+        details_location: 'before',
+        width: 400,
+        height: 300
+      %}
+      {%
+        render 'ra-content-tile',
+        video: video_url,
+        alt: img_alt,
+        title: 'Content Tile w/ Video',
+        description: "Options for 1, 2 or no CTA's",
         width: 400,
         height: 300,
-        video: videoUrl
+        details_location: 'after',
+      %}
+    </div>
+    <hr class="border my-20">
+    <h4 id="content-tiles-video" class="text-h4 mt-10 mb-5">Product Tiles</h4>
+    <div class="max-w-screen-2xl grid grid-cols-4 gap-2">
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'primary',
+        wishlist: true,
+        index: 0
+      %}
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'secondary',
+        index: 1
+      %}
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'primary',
+        wishlist: true,
+        wishlist_style: 'secondary',
+        font_color: 'purple',
+        index: 2
+      %}
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'secondary',
+        index: 3
       %}
     </div>
     <hr class="border my-20">
@@ -1001,6 +1053,11 @@
       "type": "product",
       "id": "featured_product",
       "label": "Featured Product"
+    },
+    {
+      "type": "product",
+      "id": "featured_product_2",
+      "label": "Featured Product 2"
     },
     {
       "type": "text",

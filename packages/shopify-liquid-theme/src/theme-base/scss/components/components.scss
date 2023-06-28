@@ -2,24 +2,25 @@
  * Include global components sass files
  *  See: https://cssguidelin.es/#table-of-contents
  */
-@import "ra-preheader";
-@import "ra-header";
-@import "ra-header-util";
-@import "ra-range-slider";
-@import "ra-accordion";
-@import "ra-button";
-@import "ra-input";
-@import "embed";
-@import "ra-icon";
-@import "footer";
-@import "ra-scrollable";
-@import "swiper";
-@import "ra-tabs";
-@import "ra-product-form";
-@import "product-media-gallery";
-@import "ra-dialog";
-@import "ra-hero-video";
-@import "ra-review-stars";
-@import "ra-wysiwyg";
-@import "ra-modal";
-@import "ra-product-tile";
+@import "ra-preheader.scss";
+@import "ra-header.scss";
+@import "ra-header-util.scss";
+@import "ra-range-slider.scss";
+@import "ra-accordion.scss";
+@import "ra-button.scss";
+@import "ra-input.scss";
+@import "embed.scss";
+@import "ra-icon.scss";
+@import "footer.scss";
+@import "ra-scrollable.scss";
+@import "swiper.scss";
+@import "ra-tabs.scss";
+@import "ra-product-form.scss";
+@import "product-media-gallery.scss";
+@import "ra-dialog.scss";
+@import "ra-hero-video.scss";
+@import "ra-review-stars.scss";
+@import "product-reviews.scss";
+@import "ra-wysiwyg.scss";
+@import "ra-modal.scss";
+@import "ra-product-tile.scss";

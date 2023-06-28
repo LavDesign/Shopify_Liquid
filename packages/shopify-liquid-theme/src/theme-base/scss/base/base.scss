@@ -3,8 +3,8 @@
  *  See: https://cssguidelin.es/#table-of-contents
  */
 
-@import "variables";
-@import "typography";
+@import "variables.scss";
+@import "typography.scss";
 
 body {
   font-size: var(--font-size);

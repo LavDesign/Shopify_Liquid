@@ -1,7 +1,7 @@
 {
   "sections": {
     "70470917-0d14-4248-a6ea-ab488472117a": {
-      "type": "hero-image",
+      "type": "hero-carousel",
       "blocks": {
         "9cc19ed1-ae39-4a1b-8996-235afbe1d4e2": {
           "type": "slide",
@@ -12,8 +12,11 @@
             "title_style": "h1",
             "text_alignment": "set--v-align-middle set--h-align-center",
             "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
-            "desktop_bg_image": "shopify:\/\/shop_images\/Mask_group_1.png",
-            "mobile_bg_image": "shopify:\/\/shop_images\/Mask_group_2.png",
+            "bg_image_desktop": "shopify:\/\/shop_images\/ProductImage_32.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
             "text_color_desktop": "--color-util-white",
             "text_color_mobile": "--color-grey-900",
             "bg_color": "--color-util-white",
@@ -34,8 +37,11 @@
             "title_style": "h1",
             "text_alignment": "set--v-align-middle set--h-align-center",
             "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
-            "desktop_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
-            "mobile_bg_image": "shopify:\/\/shop_images\/Fundays_Landing-MainImage.fab54b47948cf3af83ffc2db38995c5c-1.jpg",
+            "bg_image_desktop": "shopify:\/\/shop_images\/ProductImage_30.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
             "text_color_desktop": "--color-grey-900",
             "text_color_mobile": "--color-grey-900",
             "bg_color": "--color-util-white",
@@ -98,7 +104,15 @@
           "type": "product-slide",
           "settings": {
             "product": "variety-pack",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
+            "cta_style": "tertiary"
+          }
+        },
+        "46271188-6aab-4cb9-96cb-6856404db476": {
+          "type": "product-slide",
+          "settings": {
+            "product": "fundays-shirt",
+            "cta_label": "Add To Cartt",
             "cta_style": "tertiary"
           }
         },
@@ -106,7 +120,7 @@
           "type": "product-slide",
           "settings": {
             "product": "garden-party",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         },
@@ -114,7 +128,7 @@
           "type": "product-slide",
           "settings": {
             "product": "yard-games",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         },
@@ -122,7 +136,7 @@
           "type": "product-slide",
           "settings": {
             "product": "skinny-dip",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         },
@@ -130,13 +144,14 @@
           "type": "product-slide",
           "settings": {
             "product": "fresh-picked",
-            "cta_text": "Add To Cart",
+            "cta_label": "Add To Cart",
             "cta_style": "tertiary"
           }
         }
       },
       "block_order": [
         "807f8350-a421-480f-9c09-9727e236ec26",
+        "46271188-6aab-4cb9-96cb-6856404db476",
         "a5ebaf48-af82-420f-b1bc-dc6887bf14ae",
         "0a7d201e-7033-429c-b8cd-96fd86af4e99",
         "bce10c40-63a2-4896-9a00-10d29d7de55d",
@@ -319,6 +334,102 @@
         "text_color_desktop": "--color-grey-900"
       }
     },
+    "650a81ef-e9bf-473c-9ec2-107491e86ca4": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "efdad21c-7663-44e8-97e6-050789d74356": {
+          "type": "content-slide",
+          "settings": {
+            "title": "",
+            "slide_img": "shopify:\/\/shop_images\/mobile_hero.jpg",
+            "slide_description": "<p>Slot 1 description copy<\/p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "before",
+            "slide_url": "\/",
+            "slide_cta_1_title": "Read More",
+            "slide_cta_1_url": "shopify:\/\/blogs\/blog\/blog-post-1-title",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "d414a43c-257e-451b-a916-6d21fa37f5c2": {
+          "type": "content-slide",
+          "settings": {
+            "title": "",
+            "slide_img": "shopify:\/\/shop_images\/resized_fundays1.jpg",
+            "slide_description": "<p>Slot 2  description copy<\/p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "\/",
+            "slide_cta_1_title": "Read More",
+            "slide_cta_1_url": "shopify:\/\/blogs\/blog\/blog-post-2-title",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "2e76cdb1-b63e-4f2a-8913-018a8c050fae": {
+          "type": "content-slide",
+          "settings": {
+            "title": "",
+            "slide_img": "shopify:\/\/shop_images\/resized_fundays2.jpg",
+            "slide_description": "<p>Slot 3 description copy<\/p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "\/",
+            "slide_cta_1_title": "Read more",
+            "slide_cta_1_url": "shopify:\/\/blogs\/blog\/blog-post-3-title",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "33d7ccaf-688e-4a2e-8cc6-bb90701d35e9": {
+          "type": "content-slide",
+          "settings": {
+            "title": "",
+            "slide_img": "shopify:\/\/shop_images\/New_Project_2.jpg",
+            "slide_description": "<p>Test<\/p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "overlay",
+            "slide_url": "\/",
+            "slide_cta_1_title": "te",
+            "slide_cta_1_url": "shopify:\/\/blogs\/blog",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "efdad21c-7663-44e8-97e6-050789d74356",
+        "d414a43c-257e-451b-a916-6d21fa37f5c2",
+        "2e76cdb1-b63e-4f2a-8913-018a8c050fae",
+        "33d7ccaf-688e-4a2e-8cc6-bb90701d35e9"
+      ],
+      "settings": {
+        "title": "On the Blog",
+        "description": "",
+        "title_level": "h1",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-primary-900",
+        "show_navigation": false,
+        "show_pagination": false,
+        "carousel_nav_location": "auto",
+        "aspect_ratio": "wide",
+        "mobile_slides_view": "2.5",
+        "tablet_slides_view": "3.75",
+        "desktop_slides_view": "3",
+        "scroll_interaction": "free",
+        "mobile_padding_vertical": 1.5,
+        "mobile_padding_horizontal": 2.5,
+        "desktop_padding": 2,
+        "mobile_margin": 6,
+        "desktop_margin": 2
+      }
+    },
     "1250bbd6-bd0c-4547-af5d-0c6719093920": {
       "type": "shop-the-look",
       "blocks": {
@@ -375,6 +486,56 @@
         "look_bg_color": "--color-util-white",
         "look_text_color": "--color-grey-900"
       }
+    },
+    "2c1f4310-6d3c-400d-945e-9a3321666ffd": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "0c0f9fb8-0ee6-4c6e-9495-86c7619d7d4a": {
+          "type": "title",
+          "settings": {
+            "title": "Title",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "efa49804-c200-49e0-a3b5-ff678140b188": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Eyebrow Text"
+          }
+        },
+        "e33f4f8b-20c2-4e04-9ef7-84241e24cf9c": {
+          "type": "body_copy",
+          "settings": {
+            "description": "",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "54733556-d6da-46ef-b71d-f11a54ddb5d6": {
+          "type": "block_quote",
+          "settings": {
+            "block_quote": "Block quote text"
+          }
+        }
+      },
+      "block_order": [
+        "0c0f9fb8-0ee6-4c6e-9495-86c7619d7d4a",
+        "efa49804-c200-49e0-a3b5-ff678140b188",
+        "e33f4f8b-20c2-4e04-9ef7-84241e24cf9c",
+        "54733556-d6da-46ef-b71d-f11a54ddb5d6"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
     }
   },
   "order": [
@@ -384,6 +545,8 @@
     "6e1c958e-0014-470f-8542-267a33e1b7c2",
     "650a81ef-e9bf-473c-9ec2-107491e86ca3",
     "708c2130-3496-4631-8512-4e9eda09a31e",
-    "1250bbd6-bd0c-4547-af5d-0c6719093920"
+    "650a81ef-e9bf-473c-9ec2-107491e86ca4",
+    "1250bbd6-bd0c-4547-af5d-0c6719093920",
+    "2c1f4310-6d3c-400d-945e-9a3321666ffd"
   ]
 }

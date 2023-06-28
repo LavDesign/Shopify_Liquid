@@ -22,7 +22,7 @@ module.exports = {
     "vue/setup-compiler-macros": true,
   },
   /**
-   * Define globals to solve '[GLOBAL]' is not define – no undef
+   * Define globals to solve '[GLOBAL]' is not define–no undef
    */
   globals: {
     Shopify: "readonly",
