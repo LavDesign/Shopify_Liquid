@@ -103,49 +103,37 @@
         "807f8350-a421-480f-9c09-9727e236ec26": {
           "type": "product-slide",
           "settings": {
-            "product": "variety-pack",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "variety-pack"
           }
         },
         "46271188-6aab-4cb9-96cb-6856404db476": {
           "type": "product-slide",
           "settings": {
-            "product": "fundays-shirt",
-            "cta_label": "Add To Cartt",
-            "cta_style": "tertiary"
+            "product": "fundays-shirt"
           }
         },
         "a5ebaf48-af82-420f-b1bc-dc6887bf14ae": {
           "type": "product-slide",
           "settings": {
-            "product": "garden-party",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "garden-party"
           }
         },
         "0a7d201e-7033-429c-b8cd-96fd86af4e99": {
           "type": "product-slide",
           "settings": {
-            "product": "yard-games",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "yard-games"
           }
         },
         "bce10c40-63a2-4896-9a00-10d29d7de55d": {
           "type": "product-slide",
           "settings": {
-            "product": "skinny-dip",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "skinny-dip"
           }
         },
         "99b25146-73f5-43e0-8818-e51f2d928615": {
           "type": "product-slide",
           "settings": {
-            "product": "fresh-picked",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "fresh-picked"
           }
         }
       },
@@ -164,6 +152,12 @@
         "title_style": "h3",
         "bg_color": "--color-util-yellow",
         "text_color": "--color-grey-900",
+        "cta_label": "",
+        "cta_style": "tertiary",
+        "selected_collection": "",
+        "use_recommendations_api": true,
+        "recommendations_intent": "related",
+        "recommendations_product": "",
         "show_navigation": true,
         "show_pagination": false,
         "carousel_nav_location": "auto",
@@ -187,6 +181,7 @@
         "description_copy_size": "text-base",
         "title_level": "h3",
         "title_style": "h4",
+        "external_video": "https:\/\/vimeo.com\/85667443",
         "image": "shopify:\/\/shop_images\/Hero_Image_-_Mobile.png",
         "aspect_ratio": "square",
         "section_split": "50-50",
@@ -313,6 +308,7 @@
         "description_copy_size": "text-base",
         "title_level": "h2",
         "title_style": "h3",
+        "external_video": "",
         "image": "shopify:\/\/shop_images\/can_box.f23feb4289f60fd0ac0489b5c24ae294.jpg",
         "aspect_ratio": "square",
         "section_split": "50-50",
@@ -514,6 +510,7 @@
         "54733556-d6da-46ef-b71d-f11a54ddb5d6": {
           "type": "block_quote",
           "settings": {
+            "enable_quotes": true,
             "block_quote": "Block quote text"
           }
         }
