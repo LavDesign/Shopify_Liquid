@@ -1,4 +1,4 @@
-import { itemList } from "./utilities";
+import { itemList } from "./utilities.js";
 
 export function dataAddToCart(product, variant, qty) {
   // eslint-disable-next-line no-undef

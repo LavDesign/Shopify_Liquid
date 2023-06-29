@@ -1,4 +1,4 @@
-import { validateForm } from "../utils/account-utils";
+import { validateForm } from "../utils/account-utils.js";
 
 export default class RaAccountAuth extends HTMLElement {
   constructor() {

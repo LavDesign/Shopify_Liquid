@@ -496,7 +496,7 @@
 import axios from "axios";
 import { defineComponent } from "vue";
 import { RaIcon, RaSelect, RaSelectOption, RaButton } from "@bva/ui-vue";
-import { convertDate } from "../../js/utils/date";
+import { convertDate } from "../../js/utils/date.js";
 
 export default defineComponent({
   name: "BazaarVoiceMainWidget",

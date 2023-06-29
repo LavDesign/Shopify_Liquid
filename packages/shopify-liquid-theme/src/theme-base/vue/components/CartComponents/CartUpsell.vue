@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { useCartStore } from "../../stores/cart";
+import { useCartStore } from "../../stores/cart.js";
 import { computed } from "vue";
 import { CartUpsellTile } from "./";
 

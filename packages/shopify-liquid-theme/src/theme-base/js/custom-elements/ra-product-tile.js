@@ -1,4 +1,4 @@
-import { money } from "../utils/money";
+import { money } from "../utils/money.js";
 
 export default class RaProductTile extends HTMLElement {
   constructor() {
