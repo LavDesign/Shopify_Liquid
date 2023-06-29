@@ -76,15 +76,9 @@ module.exports = {
        *   - Handles resolving relative imports for files listed in `fileExtension`
        *   - NOTE: Reltaive imports in files must specify an extension
        */
-      new ThemeResolver(
-        [
-          themePaths.themeOverride,
-          themePaths.themeBase,
-        ],
-        {
-          fileExtension: [".js", ".css", ".scss", ".vue"],
-        }
-      ),
+      new ThemeResolver([themePaths.themeOverride, themePaths.themeBase], {
+        fileExtension: [".js", ".css", ".vue"],
+      }),
     ],
   },
   module: {
