@@ -61,7 +61,7 @@ Contains all files that get built to the `dist/` directory.
   - [/entries](./src/theme-base/entries): Webpack entry files
   - [/icons](./src/theme-base/icons): Icon SVG(s), see: [Build / Update Icons](#build--update-icons)
   - [/js](./src/theme-base/js): [Vanilla] Javascript file(s)
-  - [/scss](./src/theme-base/scss): Base Theme
+  - [/css](./src/theme-base/css): Base Theme
   - [/shopify](./src/theme-base/shopify): Shopify theme files
   - [/vue](./src/theme-base/vue): Vue file(s)
 - [theme-override](./src/theme-override): Overrides for the base theme

@@ -1,4 +1,4 @@
-// Account Auth Modal
+/* Account Auth Modal */
 
 .auth-modal {
   --modal-width: 34.75rem;
@@ -9,7 +9,7 @@
   }
 }
 
-// Address book
+/* Address book */
 
 .address-book-edit-modal {
   --modal-width: 70.25rem;
@@ -43,13 +43,13 @@
   }
 }
 
-// Ra Table Styles
+/* Ra Table Styles */
 .ra-table__heading {
   background-color: var(--table-heading-background);
   font-family: var(--font-family-secondary);
 }
 
-// Order Line Items
+/* Order Line Items */
 
 .order-details__summary {
   --divider-color: var(--c-gray-300);

@@ -50,9 +50,7 @@
   }
 }
 
-//
-// Quantity Selector
-//
+/* Quantity Selector */
 .ra-quantity-selector,
 .ra-select__arrow {
   display: grid;
@@ -69,9 +67,7 @@
   }
 }
 
-//
-// Choices
-//
+/* Choices */
 .ra-choice {
   --choice-background: var(--color-util-white);
   --choice-border-color: var(--input-border-color-hover);
