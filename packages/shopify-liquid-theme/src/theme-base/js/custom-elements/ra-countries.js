@@ -106,9 +106,10 @@ export default class RaCountries extends HTMLElement {
       });
     }
     if (
-      (local_country_code?.toLowerCase() !== window.Shopify.country?.toLowerCase()) ||
-      (window.shopify_detected_country?.toLowerCase() !==
-      window.shopify_country_default?.toLowerCase())
+      local_country_code?.toLowerCase() !==
+        window.Shopify.country?.toLowerCase() ||
+      window.shopify_detected_country?.toLowerCase() !==
+        window.shopify_country_default?.toLowerCase()
     ) {
       modal?.showModal();
     }
