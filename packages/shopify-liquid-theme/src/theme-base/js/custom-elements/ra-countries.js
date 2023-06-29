@@ -45,6 +45,7 @@ export default class RaCountries extends HTMLElement {
     }
     if (this.countryData) {
       const detected_country = this.countryData.detected_values.country;
+      window.shopify_detected_country = detected_country.handle;
       const detected_country_object = window.shopify_available_countries.find(
         (x) =>
           x.iso_code?.toLowerCase() === detected_country.handle?.toLowerCase()
@@ -83,19 +84,31 @@ export default class RaCountries extends HTMLElement {
     const currency_name = modal.querySelector("[data-currency-name]");
     const currency_symbol = modal.querySelector("[data-currency-symbol]");
     const submit_button = modal.querySelector("[data-set-country]");
-    country_image.src = detectedCountry.flag_image;
-    country_image.alt = detectedCountry.country_name;
-    country_names.forEach((country_name) => {
-      country_name.innerText = detectedCountry.country_name;
-    });
-    currency_name.innerText = detectedCountry.currency_name;
-    currency_symbol.innerText = detectedCountry.currency_symbol;
-    submit_button.addEventListener("click", (e) => {
-      e.preventDefault();
-      this.setCountry(detectedCountry.iso_code, detectedCountry.language_code);
-    });
+    if (country_image) {
+      country_image.src = detectedCountry.flag_image;
+      country_image.alt = detectedCountry.country_name;
+    }
+    if (country_names) {
+      country_names.forEach((country_name) => {
+        country_name.innerText = detectedCountry.country_name;
+      });
+    }
+    if (currency_name) currency_name.innerText = detectedCountry.currency_name;
+    if (currency_symbol)
+      currency_symbol.innerText = detectedCountry.currency_symbol;
+    if (submit_button) {
+      submit_button.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.setCountry(
+          detectedCountry.iso_code,
+          detectedCountry.language_code
+        );
+      });
+    }
     if (
-      local_country_code.toLowerCase() !== window.Shopify.country.toLowerCase()
+      (local_country_code?.toLowerCase() !== window.Shopify.country?.toLowerCase()) ||
+      (window.shopify_detected_country?.toLowerCase() !==
+      window.shopify_country_default?.toLowerCase())
     ) {
       modal?.showModal();
     }
