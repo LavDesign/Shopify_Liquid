@@ -33,11 +33,11 @@
               v-else
               size="16px"
               class="mr-[2px]"
-              color="secondary"
+              color="primary"
               :key="`${index}-empty`"
             >
               <svg>
-                <use xlink:href="#star-filled"></use>
+                <use xlink:href="#star-border"></use>
               </svg>
             </RaIcon>
           </template>
@@ -67,7 +67,7 @@
           {{ language.write_a_review }}
         </a>
         <a
-          class="bv__write-review ra-button ra-button--secondary mt-8 md:mt-10 ml-2 md:ml-4"
+          class="bv__write-review ra-button ra-button--secondary px-4 sm:px-8 mt-8 md:mt-10 ml-2 md:ml-4"
           @click="openQuestionModal"
         >
           {{ language.ask_a_question }}
@@ -75,7 +75,7 @@
       </div>
       <div
         v-if="totalReviews > 0 && totalQuestions > 0"
-        class="flex w-full justify-start md:max-w-[1124px] px-3 md:px-0 mx-auto mt-16"
+        class="flex w-full justify-start md:max-w-[1124px] px-3 lg:px-0 mx-auto mt-16"
       >
         <button
           class="reviews-tab font-secondary font-medium text-lg tracking-wide mr-6 border-b-2 border-transparent"
@@ -132,23 +132,47 @@
         class="ra-input w-full md:w-auto mb-4 md:mb-0"
       >
         <h5 class="h5 mb-5">{{ language.filter_questions }}</h5>
-        <div class="ra-input__wrapper flex relative pb-0">
-          <input
-            v-model="questionSearchTerm"
-            type="text"
-            class="ra-input__control ra-input__control--text"
-            :placeholder="language.search_questions"
-          />
-          <RaIcon
-            size="20px"
-            class="ml-[2px] top-3 -left-[30px]"
-            color="primary"
-            icon="search"
+        <div class="flex">
+          <div class="ra-input__wrapper flex relative pb-0">
+            <input
+              v-model="questionSearchTerm"
+              type="text"
+              class="ra-input__control ra-input__control--text"
+              :placeholder="language.search_questions"
+            />
+            <RaIcon
+              size="20px"
+              class="ml-[2px] top-3 -left-[30px]"
+              color="primary"
+              icon="search"
+            >
+            </RaIcon>
+            <button class="absolute right-0 bottom-[13px] md:bottom-5 hidden">
+              {{ language.submit }}
+            </button>
+          </div>
+
+          <div
+            aria-label="rating"
+            class="ra-quantity-selector--dropdown md:w-full mr-e7 md:mr-6"
           >
-          </RaIcon>
-          <button class="absolute right-0 bottom-[13px] md:bottom-5 hidden">
-            {{ language.submit }}
-          </button>
+            <label class="ra-input__label hidden">
+              {{ language.has_answers }}
+            </label>
+            <RaSelect
+              :value="hasAnswersValue"
+              :id="language.has_ratings"
+              :name="language.has_ratings"
+              class="review-dropdown"
+              @input="(label, value) => hasAnswersInput(label, value)"
+            >
+              <RaSelectOption value="any">
+                {{ language.has_answers }}
+              </RaSelectOption>
+              <RaSelectOption value="true">yes</RaSelectOption>
+              <RaSelectOption value="false">no</RaSelectOption>
+            </RaSelect>
+          </div>
         </div>
       </div>
 
@@ -360,7 +384,7 @@
               <template v-for="(star, index) in 5">
                 <RaIcon
                   v-if="review.Rating - index > 0.5"
-                  size="14px"
+                  size="16px"
                   class="mr-[2px]"
                   color="primary"
                   :key="index"
@@ -371,13 +395,13 @@
                 </RaIcon>
                 <RaIcon
                   v-else
-                  size="14px"
+                  size="16px"
                   class="mr-[2px]"
-                  color="secondary"
+                  color="primary"
                   :key="`${index}-empty`"
                 >
                   <svg>
-                    <use xlink:href="#star-filled"></use>
+                    <use xlink:href="#star-border"></use>
                   </svg>
                 </RaIcon>
               </template>
@@ -549,12 +573,12 @@
     </div>
     <div
       v-if="totalQuestions > 0 && activeTab == 'questions'"
-      class="bv__results w-full max-w-[1124px] px-0 md:px-3 lg:px-0 md:mx-auto border-t border-b-gray-400 mt-4 md:mt-10"
+      class="bv__results w-full max-w-[1124px] px-0 md:px-3 lg:px-0 md:mx-auto border-b-gray-400 mt-4 md:mt-10"
     >
       <RaAccordion>
         <RaAccordionItem
           v-for="question in questionData.Results"
-          class="bv__review-card flex flex-col py-10 border-b border-b-gray-400 transition-all duration-300"
+          class="bv__review-card flex flex-col py-10 transition-all duration-300"
           :key="question.Id"
           :title="question.QuestionSummary"
           :columns="[1]"
@@ -825,6 +849,7 @@ export default defineComponent({
       sortValue: "SubmissionTime:desc",
       questionSortValue: "SubmissionTime:desc",
       ratingValue: "any",
+      hasAnswersValue: "any",
       imageVideoValue: "any",
       bvPassKey: "cacXRm016MhHC7WQEyW2gkDlgZyLP9jztXq3vF9NLBDns",
       modalOpen: false,
@@ -920,6 +945,11 @@ export default defineComponent({
     sortInput(label, value) {
       this.sortValue = label;
       this.updateResults();
+    },
+    // eslint-disable-next-line no-unused-vars
+    hasAnswersInput(label, value) {
+      this.hasAnswersValue = label;
+      this.updateQuestionResults();
     },
     // eslint-disable-next-line no-unused-vars
     questionSortInput(label, value) {
@@ -1199,6 +1229,9 @@ export default defineComponent({
       submissionUrl += `&Filter=${filteringString}&Include=Products`;
       if (this.questionSearchTerm != "") {
         submissionUrl += `&Search=${this.questionSearchTerm}`;
+      }
+      if (this.hasAnswersValue != "any") {
+        submissionUrl += `&Filter=HasAnswers:eq:${this.hasAnswersValue}`;
       }
 
       submissionUrl += `&Include=Answers`;
