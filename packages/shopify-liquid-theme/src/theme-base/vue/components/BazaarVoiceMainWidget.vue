@@ -589,7 +589,7 @@
             {{ datePass(question.SubmissionTime) }}
           </p>
           <p class="text-base leading-6 mb-2 px-2">
-            Q: {{ question.QuestionDetails }}
+            Q: {{ question.QuestionSummary }}
           </p>
           <div
             @click="answerToggle(question.Id)"
