@@ -239,3 +239,9 @@
 .reviews-tab.active {
   @apply border-grey-800;
 }
+
+.bv__results .ra-accordion-item__toggle {
+  @breakpoint md-max {
+    @apply text-left;
+  }
+}
