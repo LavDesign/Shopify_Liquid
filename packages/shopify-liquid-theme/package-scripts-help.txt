@@ -1,0 +1,45 @@
+
+Package.json Script Commands
+
+Notes:
+- Commands that start with a double underscore `__` are private and should not be run on their own
+
+Syntax:
+yarn <command>
+yarn run <command>
+npm run <command>
+
+Example:
+yarn dev
+yarn run dev
+npm run dev
+
+Commands:
+dev                     Run local development
+dev-prod                Run local development in production mode
+__stub-dist             [Private] Stops Shopify CLI from complaining when ./dist is empty
+__theme-dev-delayed     [Private] Adds a delay before running the theme-dev command
+theme-dev               Runs the Shopify CLI theme dev process
+push-theme              Push local theme files to an existing Shopify theme
+push-theme-unpublished  Push local theme files to a new Shopify theme
+pull-merch              Pull merchandising config, templates, and locales from a Shopify theme
+pull-merch:config       Pull merchandising config files from a Shopify theme
+pull-merch:templates    Pull merchandising templates files from a Shopify theme
+pull-merch:locales      Pull merchandising locales files from a Shopify theme
+clean-merch             Remove all local merchandising config, templates, and locales files
+clean-merch:config      Remove all local merchandising config files
+clean-merch:templates   Remove all local merchandising templates files
+clean-merch:locales     Remove all local merchandising locales files
+lint-js                 Run eslint
+lint-css                Run stylelint
+lint-theme              Run theme check
+fix-js                  Run eslint auto fixes (use with caution)
+fix-css                 Run stylelint auto fixes (use with caution)
+fix-theme               Run theme check auto fixes (use with caution)
+watch-dev               Run the Webpack watch process in development mode
+watch-prod              Run the Webpack watch process in production mode
+build-dev               Run the Webpack build process in development mode
+build-prod              Run the Webpack build process in production mode
+build-icons             Run the Gulp icon build process
+help                    Prints this help string.
+                        When using yarn it must be run as `yarn run help`.
