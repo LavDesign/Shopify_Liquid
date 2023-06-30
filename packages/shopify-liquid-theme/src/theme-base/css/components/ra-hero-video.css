@@ -1,7 +1,7 @@
 .hero-video {
   position: relative;
 
-  @breakpoint md-max {
+  @media breakpoint(md-max) {
     video {
       object-fit: cover;
     }
@@ -17,7 +17,7 @@
 
   .ra-hero__details {
     color: var(--text-color-desktop);
-    @breakpoint md-max {
+    @media breakpoint(md-max) {
       color: var(--text-color-mobile);
       aspect-ratio: 0 !important;
     }
@@ -25,7 +25,7 @@
 
   /* Stack on mobile */
   .ra-hero.ra-hero--stack-mobile {
-    @breakpoint md-max {
+    @media breakpoint(md-max) {
       display: flex;
       flex-direction: column;
 

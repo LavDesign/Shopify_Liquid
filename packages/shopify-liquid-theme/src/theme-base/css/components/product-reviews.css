@@ -59,7 +59,7 @@
   .yotpo-nav-primary {
     padding-top: 40px !important;
 
-    @breakpoint md-max {
+    @media breakpoint(md-max) {
       margin: 40px 12px 0 12px !important;
     }
 
@@ -84,7 +84,7 @@
     margin: 0 !important;
     padding: 12px 100px !important;
 
-    @breakpoint md-max {
+    @media breakpoint(md-max) {
       padding: 12px !important;
     }
     .yotpo-main {
@@ -100,7 +100,7 @@
     }
     .yotpo-icon {
       color: var(--color-primary-900) !important;
-    }  
+    }
     .yotpo-icon-profile {
       display: none !important;
     }
@@ -175,7 +175,7 @@
   width: 100%;
 
   .ra-quantity-selector--dropdown {
-    @breakpoint md-max {
+    @media breakpoint(md-max) {
       width: calc(50% - 5px);
       margin-bottom: 7px;
     }
@@ -184,7 +184,7 @@
 
 .bv__search {
   .ra-input:first-child {
-    @breakpoint sm-max {
+    @media breakpoint(sm-max) {
       width: 100% !important;
 
       .bv__write-review {
@@ -197,7 +197,7 @@
     width: 100% !important;
     background-color: transparent;
 
-    @breakpoint md {
+    @media breakpoint(md) {
       max-width: 429px;
       width: 40vw !important;
     }
@@ -228,7 +228,7 @@
   margin-left: -300px;
   margin-top: -300px;
 
-  @breakpoint md-max {
+  @media breakpoint(md-max) {
     width: 100%;
     height: 300px;
     margin-left: -50%;
@@ -241,7 +241,7 @@
 }
 
 .bv__results .ra-accordion-item__toggle {
-  @breakpoint md-max {
+  @media breakpoint(md-max) {
     @apply text-left;
   }
 }

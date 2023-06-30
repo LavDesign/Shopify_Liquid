@@ -3,7 +3,7 @@
   --thumbnails-horizontal-gap: 0.75rem;
   --modal-width: 1200px;
 
-  @breakpoint lg {
+  @media breakpoint(lg) {
     --thumbnails-width: 5rem;
   }
 

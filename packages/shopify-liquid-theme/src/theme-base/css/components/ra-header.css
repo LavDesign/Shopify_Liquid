@@ -18,7 +18,7 @@
   .header__logo {
     max-width: var(--logo-width-mobile);
 
-    @breakpoint md {
+    @media breakpoint(md) {
       max-width: var(--logo-width-desktop);
     }
   }

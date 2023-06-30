@@ -16,7 +16,7 @@
   .ra-preheader__slider {
     &.ra-preheader__slider--left swiper-container,
     &.ra-preheader__slider--left .swiper {
-      @breakpoint md {
+      @media breakpoint(md) {
         margin-left: 0;
       }
     }

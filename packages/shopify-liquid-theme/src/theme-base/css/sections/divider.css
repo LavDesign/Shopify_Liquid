@@ -3,7 +3,7 @@
   padding-top: var(--section-divider-mobile-padding-top);
   padding-bottom: var(--section-divider-mobile-padding-bottom);
 
-  @breakpoint sm {
+  @media breakpoint(sm) {
     padding-top: var(--section-divider-desktop-padding-top);
     padding-bottom: var(--section-divider-desktop-padding-bottom);
   }
