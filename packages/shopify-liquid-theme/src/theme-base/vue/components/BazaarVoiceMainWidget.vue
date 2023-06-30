@@ -202,7 +202,7 @@
     <!-- Filtering Component End -->
     <!-- Active Filters Component -->
     <div
-      v-if="searchTerm != '' || (activeFilters > 0 && activeTab == 'reviews')"
+      v-if="(searchTerm != '' || activeFilters > 0) && activeTab == 'reviews'"
       class="bv-active-filters w-full max-w-[1124px] px-3 lg:px-0 md:mx-auto"
     >
       <div class="filter-holder mb-6 flex items-center">
