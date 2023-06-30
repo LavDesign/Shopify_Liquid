@@ -16,7 +16,7 @@
     box-shadow: 0 0 0 8px var(--look-dot-color) inset,
       0 1px 5px rgba(0, 0, 0, 0.15);
 
-    @breakpoint md {
+    @media breakpoint(md) {
       top: var(--vertical-position);
       left: var(--horizontal-position);
     }
@@ -43,7 +43,7 @@
     }
 
     /* mobile position + animation */
-    @breakpoint md-max {
+    @media breakpoint(md-max) {
       width: 100%;
       bottom: -50%;
       left: 0;
@@ -58,7 +58,7 @@
     }
 
     /* desktop position + animation */
-    @breakpoint md {
+    @media breakpoint(md) {
       width: max-content;
       transform: scale(0.8);
       top: calc(var(--vertical-position) - 16px);

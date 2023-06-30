@@ -20,7 +20,7 @@ dialog:not([open]) {
 }
 
 dialog[open] {
-  @breakpoint md-max {
+  @media breakpoint(md-max) {
     width: 90%;
     --modal-width: 100%;
   }
