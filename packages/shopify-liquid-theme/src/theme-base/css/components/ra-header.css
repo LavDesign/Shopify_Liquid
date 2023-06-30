@@ -5,7 +5,7 @@
   --icon-color: var(--link-color);
   border-color: var(--link-color);
 
-  // reset
+  /* reset */
   .header__inner a:link,
   .header__inner a:visited {
     &:hover,
@@ -15,7 +15,6 @@
     }
   }
 
-  // logo
   .header__logo {
     max-width: var(--logo-width-mobile);
 
@@ -24,7 +23,7 @@
     }
   }
 
-  // menu - desktop
+  /* menu - desktop */
   .header__navigation {
     .header__navigation-item.header__navigation-item--has-child,
     .header__navigation-item.header__navigation-item--has-mega-menu {
@@ -33,7 +32,7 @@
       }
     }
 
-    // mega menu - 2+ level links
+    /* mega menu - 2+ level links */
     .header__navigation-item.header__navigation-item--has-mega-menu {
       .header__navigation-dropdown {
         top: var(--dropdown-position-top);
@@ -41,18 +40,18 @@
     }
   }
 
-  // menu - mobile
+  /* menu - mobile */
   .header__mobile-navigation {
     top: var(--content-position-top);
     height: calc(100vh - var(--content-position-top));
     background-color: var(--background-color);
 
-    // drawer - 2nd level menu
+    /* drawer - 2nd level menu */
     .header__mobile-navigation-drawer {
       top: -var(--content-position-top);
       background-color: var(--background-color);
 
-      // drawer header
+      /* drawer header */
       .header__mobile-navigation-drawer-header {
         background-color: var(--background-color);
       }
@@ -60,7 +59,7 @@
         color: var(--link-color);
       }
 
-      // dropdown - 3rd level menu
+      /* dropdown - 3rd level menu */
       .header__mobile-navigation-dropdown {
         &.active {
           min-height: var(--dropdown-height);

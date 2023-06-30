@@ -797,7 +797,7 @@ import {
   RaAccordion,
   RaAccordionItem,
 } from "@bva/ui-vue";
-import { convertDate } from "../../js/utils/date";
+import { convertDate } from "../../js/utils/date.js";
 
 export default defineComponent({
   name: "BazaarVoiceMainWidget",

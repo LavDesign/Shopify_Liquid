@@ -23,7 +23,7 @@
     }
   }
 
-  // Stack on mobile
+  /* Stack on mobile */
   .ra-hero.ra-hero--stack-mobile {
     @breakpoint md-max {
       display: flex;

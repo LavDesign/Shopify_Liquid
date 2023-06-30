@@ -1,4 +1,4 @@
-import { itemList } from "./utilities";
+import { itemList } from "./utilities.js";
 
 export function dataViewCart(cart) {
   if (!cart.value.items) return false;

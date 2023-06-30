@@ -81,7 +81,7 @@
 import { storeToRefs } from "pinia";
 import { RaIcon } from "@bva/ui-vue";
 import { ref, computed, onMounted, watch, nextTick } from "vue";
-import { useCartStore } from "../stores/cart";
+import { useCartStore } from "../stores/cart.js";
 import {
   CartProducts,
   EmptyCart,

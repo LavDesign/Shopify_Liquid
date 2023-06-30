@@ -9,7 +9,7 @@
     color: var(--text-color);
   }
 
-  // dot
+  /* dot */
   .ra-shop-the-look__dot {
     top: var(--vertical-position-mobile);
     left: var(--horizontal-position-mobile);
@@ -26,7 +26,7 @@
     animation: pulseAnimation 1.5s ease-in-out infinite;
   }
 
-  // product tile
+  /* product tile */
   .ra-shop-the-look__slider-product {
     &,
     * {
@@ -42,7 +42,7 @@
       color: var(--look-text-color);
     }
 
-    // mobile position + animation
+    /* mobile position + animation */
     @breakpoint md-max {
       width: 100%;
       bottom: -50%;
@@ -57,7 +57,7 @@
       }
     }
 
-    // desktop position + animation
+    /* desktop position + animation */
     @breakpoint md {
       width: max-content;
       transform: scale(0.8);
@@ -67,7 +67,7 @@
         transform 0.4s cubic-bezier(0.75, 0, 0.175, 1);
       will-change: transform;
 
-      // caret icon
+      /* caret icon */
       &:after {
         content: "";
         position: absolute;
@@ -83,7 +83,7 @@
         transform-origin: top left;
         left: calc(var(--horizontal-position) + 40px);
 
-        // left caret icon
+        /* left caret icon */
         &:after {
           right: 100%;
         }
@@ -95,14 +95,14 @@
         transform: scale(1);
       }
 
-      // left align product if horizonal postion > 60%
+      /* left align product if horizonal postion > 60% */
       &.ra-shop-the-look__product--left {
         transform-origin: top right;
         left: calc(
           var(--horizontal-position) - calc(var(--product-width) + 20px)
         );
 
-        // right caret icon
+        /* right caret icon */
         &:after {
           border-color: transparent transparent transparent var(--look-bg-color);
           left: 100%;

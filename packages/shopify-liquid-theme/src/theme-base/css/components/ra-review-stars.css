@@ -4,7 +4,7 @@
   }
 
   .yotpo .yotpo-bottomline a {
-    color: var(--color-grey-700) !important; // Override Yotpo Styles
+    color: var(--color-grey-700) !important;
     font-size: var(--font-size-sm);
     line-height: 1.4;
   }

@@ -1,11 +1,3 @@
-/*
- * Include CSS resets, font settings
- *  See: https://cssguidelin.es/#table-of-contents
- */
-
-@import "variables.scss";
-@import "typography.scss";
-
 body {
   font-size: var(--font-size);
   color: var(--color-grey-900);
