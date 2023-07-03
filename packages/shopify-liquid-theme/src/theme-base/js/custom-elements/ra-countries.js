@@ -84,6 +84,7 @@ export default class RaCountries extends HTMLElement {
     const currency_name = modal.querySelector("[data-currency-name]");
     const currency_symbol = modal.querySelector("[data-currency-symbol]");
     const submit_button = modal.querySelector("[data-set-country]");
+    const close_button = modal.querySelector("[data-modal-close]");
     if (country_image) {
       country_image.src = detectedCountry.flag_image;
       country_image.alt = detectedCountry.country_name;
@@ -105,11 +106,18 @@ export default class RaCountries extends HTMLElement {
         );
       });
     }
+    if (close_button) {
+      close_button.addEventListener("click", () => {
+        localStorage.setItem("shopify_country_code", window.Shopify.country);
+        localStorage.setItem("shopify_language_code", window.Shopify.locale);
+      });
+    }
     if (
-      local_country_code?.toLowerCase() !==
-        window.Shopify.country?.toLowerCase() ||
-      window.shopify_detected_country?.toLowerCase() !==
-        window.shopify_country_default?.toLowerCase()
+      window.shopify_country_default !== "" &&
+      (local_country_code?.toLowerCase() !==
+        window.shopify_detected_country?.toLowerCase() ||
+        window.shopify_country_default?.toLowerCase() !==
+          window.shopify_detected_country?.toLowerCase())
     ) {
       modal?.showModal();
     }
