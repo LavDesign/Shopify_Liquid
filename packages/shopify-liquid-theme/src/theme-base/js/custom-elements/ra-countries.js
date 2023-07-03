@@ -45,7 +45,6 @@ export default class RaCountries extends HTMLElement {
     }
     if (this.countryData) {
       const detected_country = this.countryData.detected_values.country;
-      console.log(this.countryData);
       window.shopify_detected_country = detected_country.handle;
       const detected_country_object = window.shopify_available_countries.find(
         (x) =>
