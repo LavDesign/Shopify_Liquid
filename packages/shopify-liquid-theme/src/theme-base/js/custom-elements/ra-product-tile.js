@@ -18,10 +18,11 @@ export default class RaProductTile extends HTMLElement {
     this.productBadge = this.querySelector("[data-product-badge]");
 
     // Swatch Properties
-    this.swatchOverflowStyle = "expand"; // expecting expand or scroll
+    this.swatchOverflowStyle = "scroll"; // expecting expand or scroll
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
-    this.variantSwatches = [...(this.variantOptions?.children || [])];
+    this.variantCarousel = this.querySelector("swiper-container");
+    this.variantSwatches = [...(this.variantCarousel?.children || [])];
   }
 
   connectedCallback() {
@@ -89,6 +90,19 @@ export default class RaProductTile extends HTMLElement {
     const rightScroll = this.querySelector("[data-scroll-right]");
     this.optionContainer.classList.toggle("pr-4", this.hasOverflow());
     rightScroll?.classList.toggle("hidden", !this.hasOverflow());
+
+    const maxWidth = this.variantOptions.clientWidth;
+    let testOffset = 0;
+    const testChildren = this.variantSwatches.reduce((acc, child) => {
+      const swatch_label = child.querySelector("label");
+      this.variantCarousel.init = true;
+      if (testOffset + swatch_label.offsetWidth <= maxWidth) {
+        testOffset += swatch_label.offsetWidth;
+        return [...acc, child];
+      } else {
+        return acc;
+      }
+    }, [])
   }
 
   buildViewMore() {
@@ -203,7 +217,6 @@ export default class RaProductTile extends HTMLElement {
     const arrow = document.createElement("div");
     arrow.classList.add(`product-tile__arrow--right`);
     arrow.setAttribute(`data-scroll-right`, "");
-    arrow.addEventListener("click", this.scrollSwatches.bind(this));
     if (!this.hasOverflow()) {
       arrow.classList.add("hidden");
     } else {
