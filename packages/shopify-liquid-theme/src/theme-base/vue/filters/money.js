@@ -10,7 +10,7 @@ export const money = (val) => {
     }).format(val);
     return val;
   } else {
-    let str = String(parseFloat(val) / 100);
+    let str = String(val);
     str += str.indexOf(".") < 0 ? ".00" : "00";
     return `$${str.substring(0, str.indexOf(".") + 3)}`;
   }
