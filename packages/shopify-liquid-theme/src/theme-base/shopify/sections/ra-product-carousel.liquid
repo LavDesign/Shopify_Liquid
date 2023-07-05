@@ -105,6 +105,7 @@
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
         class="swiper--{{ section.id }} mt-16 product-recommendations w-full"
+        data-section="{{ section.id }}"
         {% if section.settings.use_recommendations_api %}
           data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent={{ section.settings.recommendations_intent }}"
         {% endif %}
