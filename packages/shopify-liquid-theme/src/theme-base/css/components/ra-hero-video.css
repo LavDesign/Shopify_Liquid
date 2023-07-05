@@ -46,3 +46,19 @@
     }
   }
 }
+
+.ra-hero__description {
+  li {
+    list-style: circle;
+    width: fit-content;
+  }
+}
+
+.ra-hero__copy.set--h-align-center {
+  .ra-hero__description {
+    li {
+      width: fit-content;
+      margin: auto;
+    }
+  }  
+}
