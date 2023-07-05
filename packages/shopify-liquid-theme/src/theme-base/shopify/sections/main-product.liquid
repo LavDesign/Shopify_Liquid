@@ -1,6 +1,11 @@
 {%- capture product_data -%}
   {%- render 'json-product', product: product -%}
 {%- endcapture -%}
+
+{% capture size_guide_content %}
+  {{ section.settings.size_guide_page.content }}
+{% endcapture %}
+
 <div id="ra-main-product" class="ra-main-product" data-section-id="{{ section.id }}">
   <div class="wrapper mt-4">
     <div class="w-full md:max-w-screen-2xl mt-40 px-4 md:px-10 mx-auto">
@@ -9,9 +14,9 @@
         <div class="md:w-1/2 pl-0">
           {% render 'ra-product-media-gallery', product: product %}
         </div>
-        <div class="md:w-1/2 md:pl-10 lg:pl-20">
+        <div class="md:w-1/2 md:pl-10 lg:pl-20 z-10">
           <div class="sticky top-12">
-            {% render 'ra-product-main', product_data: product_data %}
+            {% render 'ra-product-main', product_data: product_data, size_guide_content: size_guide_content %}
             <div class="product-main__special-messaging">
               {% assign special_messaging_blocks = section.blocks | where: 'type', 'special_messaging' -%}
               {%- for block in special_messaging_blocks -%}
@@ -51,11 +56,25 @@
     </div>
   </div>
 </div>
+
 {% schema %}
 {
   "name": "Main Product",
   "tag": "section",
   "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_size_guide",
+      "label": "Enable Size Guide",
+      "default": false
+    },
+    {
+      "type": "page",
+      "id": "size_guide_page",
+      "label": "Size Guide Page"
+    }
+  ],
   "blocks": [
     {
       "type": "@app"
