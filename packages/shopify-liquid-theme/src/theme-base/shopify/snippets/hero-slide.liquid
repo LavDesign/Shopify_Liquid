@@ -25,7 +25,7 @@
   %}
   {% if block.settings[video_embed_handle] == blank and block.settings[video_file_handle] != blank %}
     <div class="hero-video{% if view == 'desktop' %}{% if has_mobile_video or has_mobile_image %} hidden md:flex {% else %} max-md:h-full{% endif %}{% elsif view == 'mobile' %} flex md:hidden h-full{% endif %}">
-      {% render 'ra-video', video: block.settings[video_file_handle], lazyload: true %}
+      {% render 'ra-video', video: block.settings[video_file_handle], lazyload: true, autoplay: true, muted: true, controls: false %}
     </div>
   {% elsif block.settings[video_embed_handle] != blank and block.settings[video_file_handle] == blank %}
     <div class="embed {% if view == 'mobile' %}{{ block.settings.video_aspect_ratio_mobile }}{% else %}{{ block.settings.video_aspect_ratio_desktop }}{% endif %}">
