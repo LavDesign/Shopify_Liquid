@@ -77,7 +77,6 @@ const hideSizeGuide = () => {
 const slots = useSlots();
 
 onMounted(() => {
-  console.log(slots["review-stars"]().length);
   if (slots["review-stars"]().length) {
     refreshReviewWidgets();
   }
