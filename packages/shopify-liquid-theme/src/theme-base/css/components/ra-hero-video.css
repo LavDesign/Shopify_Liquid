@@ -48,8 +48,12 @@
 }
 
 .ra-hero__description {
-  li {
+  ul li {
     list-style: circle;
+    width: fit-content;
+  }
+  ol li {
+    list-style-type: decimal;
     width: fit-content;
   }
 }
