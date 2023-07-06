@@ -31,8 +31,7 @@
   </Transition>
   <template v-if="$slots['size-guide']().length">
     <RaModal
-      v-if="isSizeGuideActive"
-      visible
+      :visible="isSizeGuideActive"
       title="Size Guide"
       closeButtonIconSize="sm"
       @close:modal="hideSizeGuide"
