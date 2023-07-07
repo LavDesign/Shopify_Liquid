@@ -8,6 +8,7 @@ export default class RaProductTile extends HTMLElement {
     this.currentVariant = this.product.variants?.find(
       (variant) => variant.id == this.getAttribute("data-current-variant")
     );
+
     // Properties that update on Variant Switch
     this.featuredImage = this.querySelector("[data-featured-image]");
     this.altImage = this.querySelector("[data-alt-image]");
@@ -44,9 +45,6 @@ export default class RaProductTile extends HTMLElement {
   handleResize() {
     if (this.swatchOverflowStyle === "expand") {
       this.displayViewMore();
-      this.displayViewLess();
-    } else if (this.swatchOverflowStyle == "scroll") {
-      this.displayArrows();
     }
   }
 
@@ -75,174 +73,109 @@ export default class RaProductTile extends HTMLElement {
   }
 
   swatchOverflow() {
-    // used to set up swatch overflow style
     if (this.swatchOverflowStyle == "scroll") {
       this.buildArrows();
-      this.displayArrows();
     } else if (this.swatchOverflowStyle == "expand") {
       this.buildViewMore();
       this.displayViewMore();
-      this.displayViewLess();
     }
   }
 
-  displayArrows() {
-    const rightScroll = this.querySelector("[data-scroll-right]");
-    this.optionContainer.classList.toggle("pr-4", this.hasOverflow());
-    rightScroll?.classList.toggle("hidden", !this.hasOverflow());
+  toggleViewMore(viewMore) {
+    this.variantCarousel.swiper.draggable = true;
+    this.variantCarousel.swiper.allowTouchMove = true;
+    const sibling = this.querySelector(`
+      [data-view-less]
+    `);
+    viewMore.classList.add("hidden");
+    sibling.classList.toggle("hidden");
+  }
 
-    const maxWidth = this.variantOptions.clientWidth;
-    let testOffset = 0;
-    const testChildren = this.variantSwatches.reduce((acc, child) => {
-      const swatch_label = child.querySelector("label");
-      this.variantCarousel.init = true;
-      if (testOffset + swatch_label.offsetWidth <= maxWidth) {
-        testOffset += swatch_label.offsetWidth;
-        return [...acc, child];
-      } else {
-        return acc;
-      }
-    }, [])
+  toggleViewLess(viewLess) {
+    this.variantCarousel.swiper.draggable = false;
+    this.variantCarousel.swiper.allowTouchMove = false;
+    const sibling = this.querySelector(`
+      [data-view-more]
+    `);
+    sibling.classList.remove("hidden");
+    viewLess.classList.add("hidden");
   }
 
   buildViewMore() {
     const viewMore = document.createElement("div");
     viewMore.innerHTML = `
-    <span data-count="0"></span>+${"\u00A0"}more`;
+    <span data-count></span>+${"\u00A0"}more`;
     viewMore.classList.add("product-tile__view-more");
     viewMore.setAttribute("data-view-more", "");
-    viewMore.addEventListener("click", () => {
-      this.variantOptions.classList.add("ra-product-tile__options--expanded");
-      viewMore.classList.add("!hidden");
-      viewLess.classList.remove("!hidden");
-      this.displayViewLess();
-      this.variantSwatches.forEach((option) => {
-        option.style.opacity = 1;
-      });
-    });
+    viewMore.addEventListener("click", () => this.toggleViewMore(viewMore));
     const viewLess = document.createElement("span");
     viewLess.innerText = "See Less";
-    viewLess.classList.add("!hidden", "product-tile__view-less");
+    viewLess.classList.add("hidden", "product-tile__view-less");
     viewLess.setAttribute("data-view-less", "");
-    viewLess.addEventListener("click", () => {
-      this.variantOptions.classList.remove(
-        "ra-product-tile__options--expanded"
-      );
-      viewMore.classList.remove("!hidden");
-      viewLess.classList.add("!hidden");
-      this.displayViewMore();
-    });
+    viewLess.addEventListener("click", () => this.toggleViewLess(viewLess));
     this.optionContainer.append(viewMore);
     this.optionContainer.append(viewLess);
   }
 
-  calculateGridGap() {
-    return (
-      this.variantSwatches[1].offsetLeft -
-      (this.variantSwatches[0].offsetLeft + this.variantSwatches[0].offsetWidth)
-    );
-  }
-
-  hasOverflow() {
-    return this.variantOptions.scrollWidth > this.variantOptions.clientWidth;
-  }
-
   displayViewMore() {
-    const viewMore = this.querySelector("[data-view-more]");
+    const viewMore = this.querySelector(`
+    [data-view-more]
+  `);
     if (this.hasOverflow()) {
+      this.variantCarousel.draggable = false;
+      this.variantCarousel.allowTouchMove = false;
       const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
-      const gridGap = this.calculateGridGap();
+      const gridGap = 8;
       let currentOffset = 0;
       const visibleChildren = this.variantSwatches.reduce((acc, child) => {
         if (currentOffset + child.offsetWidth < maxWidth) {
           child.style.opacity = 1;
           currentOffset += child.offsetWidth + gridGap;
           return [...acc, child];
-        } else if (currentOffset + child.offsetWidth / 4 < maxWidth) {
-          child.style.opacity = 1;
-          return acc;
         } else {
-          child.style.opacity = 0;
           return acc;
         }
       }, []);
       this.querySelector("[data-count]").textContent =
-        this.variantSwatches.length - visibleChildren.length;
-      viewMore?.classList.remove("!hidden");
+        this.variantSwatches?.length - visibleChildren?.length;
+      viewMore.classList.remove("hidden");
     } else {
-      viewMore?.classList.add("!hidden");
-      this.variantSwatches.forEach((child) => (child.style.opacity = 1));
+      viewMore.classList.add("hidden");
     }
   }
 
   displayViewLess() {
-    const viewLess = this.querySelector("[data-view-less]");
-    const gridGap = this.calculateGridGap();
-    const lastChild = this.variantSwatches[this.variantSwatches.length - 1];
-    const lastChildEndPosition = lastChild.offsetLeft + lastChild.offsetWidth;
-    const viewLessStartPosition = lastChildEndPosition + gridGap;
-    if (
-      viewLessStartPosition + viewLess.offsetWidth <
-      this.variantOptions.clientWidth
-    ) {
-      if (!viewLess.classList.contains("absolute")) {
-        viewLess.classList.add("absolute");
-      }
-      viewLess.style.left = viewLessStartPosition + "px";
-    } else {
-      viewLess.classList.remove("absolute");
-      viewLess.style.left = "auto";
-    }
-    if (
-      !(
-        !this.hasOverflow() &&
-        this.variantOptions.offsetHeight != lastChild.offsetHeight
-      )
-    ) {
-      viewLess.classList.add("!hidden");
-    } else {
-      viewLess.classList.remove("!hidden");
-    }
+    const viewLess = this.querySelector(`[data-view-less]`);
+    viewLess.classList.remove("hidden");
+    viewLess.style.left = "auto";
   }
 
-  scrollSwatches() {
-    const scrollWidth =
-      this.variantSwatches[0].offsetWidth + this.calculateGridGap();
-    this.animateScroll(scrollWidth, 300);
-    this.displayArrows(scrollWidth);
-  }
-
-  // This adds the scroll icons to the container
   buildArrows() {
-    const arrow = document.createElement("div");
-    arrow.classList.add(`product-tile__arrow--right`);
-    arrow.setAttribute(`data-scroll-right`, "");
-    if (!this.hasOverflow()) {
-      arrow.classList.add("hidden");
-    } else {
-      arrow.classList.remove("hidden");
-    }
-    this.optionContainer.prepend(arrow);
-  }
-
-  animateScroll(end, duration) {
-    const element = this.variantOptions;
-    const start = this.variantOptions.scrollLeft;
-    var startTime = performance.now();
-
-    function scrollStep() {
-      var now = performance.now();
-      var progress = (now - startTime) / duration;
-      if (progress > 1) progress = 1;
-
-      element.scrollLeft = start + (end - start) * progress;
-
-      if (progress < 1) {
-        requestAnimationFrame(scrollStep);
+    const arrowHandles = ["left", "right"];
+    arrowHandles.forEach((handle) => {
+      const arrow = document.createElement("div");
+      const arrow_background = document.createElement("span");
+      arrow.prepend(arrow_background);
+      arrow.classList.add(`product-tile__arrow--${handle}`);
+      arrow.setAttribute("data-scroll-button", "");
+      arrow.setAttribute(`data-scroll-${handle}`, "");
+      if (handle === "left") {
+        this.variantCarousel?.addEventListener("reachbeginning", () => {
+          arrow.classList.add("hidden");
+        })
+      } else if (handle === "right") {
+        this.variantCarousel?.addEventListener("reachend", () => {
+          arrow.classList.add("hidden");
+        })
       }
-    }
-
-    requestAnimationFrame(scrollStep);
+      this.variantCarousel?.addEventListener("fromedge", () => {
+        arrow.classList.remove("hidden");
+      });
+      if (handle == "left") {
+        arrow.classList.add("hidden");
+      }
+      this.optionContainer.prepend(arrow);
+    });
   }
 
   updatePrice() {
@@ -330,5 +263,16 @@ export default class RaProductTile extends HTMLElement {
         label.classList.remove("active");
       }
     });
+  }
+
+  calculateGridGap() {
+    return (
+      this.variantSwatches[1].offsetLeft -
+      (this.variantSwatches[0].offsetLeft + this.variantSwatches[0].offsetWidth)
+    );
+  }
+
+  hasOverflow() {
+    return this.variantOptions.scrollWidth > this.variantOptions.clientWidth;
   }
 }

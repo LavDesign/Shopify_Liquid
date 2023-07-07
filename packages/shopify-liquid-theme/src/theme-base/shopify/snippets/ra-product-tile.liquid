@@ -95,6 +95,7 @@
   data-product="{{ product_json | escape | strip }}"
   data-current-variant="{{ current_variant.id }}"
   class="ra-product-tile"
+  data-index="{{ index }}"
   {% unless disable_animation %}
     data-aos="fade-up"
     data-aos-duration="500"
@@ -189,8 +190,17 @@
           assign option_name = option.name | downcase
         %}
         {% if option_name == "color" %}
-        <div class="relative" data-option-container>
-            <swiper-container class="ra-product-tile__options flex flex-row gap-3 overflow-hidden"  data-variant-options slides-per-view="auto">
+        {% assign swatch_index = product.id | append: "-" | append: forloop.index %}
+        <div class="relative" data-option-container data-swatches-id="{{ swatch_index }}">
+          <swiper-container class="ra-product-tile__options flex flex-row overflow-hidden gap-2"
+            data-variant-options
+            slides-per-view="auto"
+            loop="false"
+            navigation-next-el="[data-swatches-id='{{ swatch_index }}'] [data-scroll-right]"
+            navigation-prev-el="[data-swatches-id='{{ swatch_index }}'] [data-scroll-left]"
+            space-between="8"
+            slides-per-group="2"
+          >
               {% for value in option.values %}
                 {% capture data_attributes %}
                   data-option-value="{{ value }}"
@@ -209,7 +219,7 @@
                   endunless
                   -%}
                 {% if option_name == "color" %}
-                <swiper-slide class="w-10 h-10">
+                <swiper-slide class="w-[30px] h-[30px]">
                   {%- render 'ra-swatch-button',
                     name: option_name,
                     class: '',
