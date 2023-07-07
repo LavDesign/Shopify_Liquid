@@ -4,6 +4,9 @@
     assign product_2 = section.settings.featured_product_2
     assign featured_image = section.settings.featured_product.featured_image
     assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300
+    assign content_image_1 = section.settings.content_tile_image_1 | image_url: width: 300
+    assign content_image_2 = section.settings.content_tile_image_2 | image_url: width: 300
+    assign content_image_3 = section.settings.content_tile_image_3 | image_url: width: 300
     assign img_alt = section.settings.featured_product.featured_image.alt | default: section.settings.featured_product.title
     assign link_url = section.settings.featured_product.url
     assign video_url = section.settings.video_url
@@ -3582,40 +3585,64 @@
 
     <h4 id="content-tiles" class="text-h4 mt-10 mb-5">Content Tiles</h4>
     <div class="max-w-screen-2xl grid grid-cols-4 gap-2">
-      {% render 'ra-content-tile'
-       , image: section.settings.featured_product.featured_image,
-       alt: img_alt,
-       title: 'Content Tile Overlay',
-       description: "I'm not thinking about anything when I'm climbing.",
-       link_url_1: link_url,
-       link_text_1: 'Primary',
-       details_location: 'overlay',
-       width: 400,
-       height: 300 %}
-      {% render 'ra-content-tile'
-       , image: section.settings.featured_product.featured_image,
-       alt: img_alt,
-       title: 'Content Tile Text After',
-       description: "I'm not thinking about anything when I'm climbing.",
-       link_url_1: link_url,
-       link_text_1: 'Primary',
-       link_url_2: link_url,
-       link_text_2: 'Secondary',
-       details_location: 'after',
-       width: 400,
-       height: 300 %}
-      {% render 'ra-content-tile'
-       , image: section.settings.featured_product.featured_image,
-       alt: img_alt,
-       title: 'Content Tile Text Before',
-       description: "Two CTA's",
-       link_url_1: link_url,
-       link_text_1: 'Primary',
-       link_url_2: link_url,
-       link_text_2: 'Secondary',
-       details_location: 'before',
-       width: 400,
-       height: 300 %}
+
+      {% if content_image_1 != blank %}
+        {% assign content_tile_slot_1 = content_image_1 %}
+      {% else %}
+        {% assign content_tile_slot_1 = section.settings.featured_product.featured_image %}
+      {% endif %}
+      {% render 'ra-content-tile',
+        image: content_tile_slot_1,
+        alt: img_alt,
+        title: 'Content Tile Overlay',
+        description: "I'm not thinking about anything when I'm climbing.",
+        link_url_1: link_url,
+        link_text_1: 'Primary',
+        details_location: 'overlay',
+        width: 400,
+        height: 300
+      %}
+
+      {% if content_image_2 != blank %}
+        {% assign content_tile_slot_2 = content_image_2 %}
+      {% else %}
+        {% assign content_tile_slot_2 = section.settings.featured_product.featured_image %}
+      {% endif %}
+
+      {% render 'ra-content-tile', 
+        image: content_image_2,
+        alt: img_alt,
+        title: 'Content Tile Text After',
+        description: "I'm not thinking about anything when I'm climbing.",
+        link_url_1: link_url,
+        link_text_1: 'Primary',
+        link_url_2: link_url,
+        link_text_2: 'Secondary',
+        details_location: 'after',
+        width: 400,
+        height: 300 
+      %}
+
+      {% if content_image_3 != blank %}
+        {% assign content_tile_slot_3 = content_image_3 %}
+      {% else %}
+        {% assign content_tile_slot_3 = section.settings.featured_product.featured_image %}
+      {% endif %}
+
+      {% render 'ra-content-tile',
+        image: content_tile_slot_3,
+        alt: img_alt,
+        title: 'Content Tile Text Before',
+        description: "Two CTA's",
+        link_url_1: link_url,
+        link_text_1: 'Primary',
+        link_url_2: link_url,
+        link_text_2: 'Secondary',
+        details_location: 'before',
+        width: 400,
+        height: 300
+      %}
+
       {%
          render 'ra-content-tile',
        video: video_url,
@@ -3629,34 +3656,21 @@
     <hr class="border my-20">
     <h4 id="content-tiles-video" class="text-h4 mt-10 mb-5">Product Tiles</h4>
     <div class="max-w-screen-2xl grid grid-cols-4 gap-2">
-      {% render 'ra-product-tile'
-       , product: product,
-       atc_button: true,
-       atc_label: 'Add to Cart',
-       atc_style: 'primary',
-       wishlist: true,
-       index: 0 %}
-      {% render 'ra-product-tile'
-       , product: product,
-       atc_button: true,
-       atc_label: 'Add to Cart',
-       atc_style: 'secondary',
-       index: 1 %}
-      {% render 'ra-product-tile'
-       , product: product,
-       atc_button: true,
-       atc_label: 'Add to Cart',
-       atc_style: 'primary',
-       wishlist: true,
-       wishlist_style: 'secondary',
-       font_color: 'purple',
-       index: 2 %}
-      {% render 'ra-product-tile'
-       , product: product,
-       atc_button: true,
-       atc_label: 'Add to Cart',
-       atc_style: 'secondary',
-       index: 3 %}
+      {% render 'ra-product-tile',
+        product: product,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'primary',
+        wishlist: true,
+        index: 0
+      %}
+      {% render 'ra-product-tile',
+        product: product_2,
+        atc_button: true,
+        atc_label: 'Add to Cart',
+        atc_style: 'secondary',
+        index: 1
+      %}
     </div>
     <hr class="border my-20">
   </div>
@@ -3666,15 +3680,34 @@
   {
     "name": "UI-Kit Settings",
     "settings": [
+      { "type": "header", "content": "Content Tiles Images" },
+      {
+        "type": "image_picker",
+        "id": "content_tile_image_1",
+        "label": "Content Tile Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "content_tile_image_2",
+        "label": "Content Tile Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "content_tile_image_3",
+        "label": "Content Tile Image 3"
+      },
+      { "type": "header", "content": "Product Tiles" },
       {
         "type": "product",
         "id": "featured_product",
         "label": "Featured Product"
-      }, {
+      },
+      {
         "type": "product",
         "id": "featured_product_2",
         "label": "Featured Product 2"
-      }, {
+      },
+      {
         "type": "text",
         "id": "video_url",
         "label": "A Shopify-hosted video"

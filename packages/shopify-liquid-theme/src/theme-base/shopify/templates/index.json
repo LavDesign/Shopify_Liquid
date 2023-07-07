@@ -70,33 +70,6 @@
         "effect": "slide"
       }
     },
-    "0ba28d04-edbe-46b1-b398-33f4b64ce4e0": {
-      "type": "ra-text-only",
-      "settings": {
-        "eyebrow_text": "",
-        "title": "Hey, we're fundays...",
-        "title_level": "h1",
-        "title_style": "h2",
-        "description": "<p>We’re here for relaxing, good times, and pink flamingo floaties🦩. <\/p><p>No neckties, formal handshakes, or artificial ingredients. So grab an ice bucket, <\/p><p>throw out the lawn chairs, and crack the top. <\/p><h4>They say every day ends with y. Ours end with <em><strong>why not<\/strong><\/em>.<\/h4>",
-        "description_copy_size": "text-lg",
-        "cta_1_text": "Default",
-        "cta_1_url": "",
-        "cta_1_style": "primary",
-        "cta_2_text": "Secondary",
-        "cta_2_url": "",
-        "cta_2_style": "secondary",
-        "bg_color": "--color-util-white",
-        "bg_color_md": "--color-util-white",
-        "text_color_mobile": "--color-grey-900",
-        "text_color_desktop": "--color-grey-900",
-        "spacing_top": "large",
-        "spacing_bottom": "large",
-        "spacing_edge": "large",
-        "max_width": "medium",
-        "horizontal_align": "center",
-        "horizontal_align_md": "center"
-      }
-    },
     "367c09ed-72b9-40bd-9098-182341a241cb": {
       "type": "ra-product-carousel",
       "blocks": {
@@ -537,7 +510,6 @@
   },
   "order": [
     "70470917-0d14-4248-a6ea-ab488472117a",
-    "0ba28d04-edbe-46b1-b398-33f4b64ce4e0",
     "367c09ed-72b9-40bd-9098-182341a241cb",
     "6e1c958e-0014-470f-8542-267a33e1b7c2",
     "650a81ef-e9bf-473c-9ec2-107491e86ca3",
