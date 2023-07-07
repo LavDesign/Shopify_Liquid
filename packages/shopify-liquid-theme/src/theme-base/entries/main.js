@@ -21,7 +21,13 @@ import "@bva/ui-shared/styles/components.css";
 import "tailwindcss/utilities.css";
 import "aos/dist/aos.css";
 
-import "../scss/main.scss";
+import "../css/settings/settings.css";
+import "../css/tools/tools.css";
+import "../css/base/base.css";
+import "../css/objects/objects.css";
+import "../css/components/components.css";
+import "../css/sections/sections.css";
+import "../css/trumps/trumps.css";
 
 const isDesignMode = window.Shopify.designMode || window.Shopify.inspectMode;
 const pinia = createPinia();

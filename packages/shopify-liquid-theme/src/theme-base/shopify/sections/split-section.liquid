@@ -161,8 +161,38 @@
   </div>
 {% endcapture %}
 
-{% capture image_content %}
-  {% if section.settings.image != blank %}
+{% capture media_content %}
+  {% if section.settings.internal_video != blank %}
+    <div class="ra-split-section__media">
+      <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
+        {% render 'ra-video', 
+          video: section.settings.internal_video, 
+          lazyload: true, 
+          controls: true, 
+          autoplay: false, 
+          loop: false, 
+          width: width, 
+          class: "ra-image__media w-full",
+          video_class: "h-full object-cover"
+        %}
+      </div>
+    </div>
+  {% elsif section.settings.external_video != blank %}
+    <div class="ra-split-section__media">
+      <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
+        {% render 'ra-video', 
+          video_url: section.settings.external_video, 
+          lazyload: true, 
+          controls: false, 
+          autoplay: false, 
+          loop: false, 
+          width: width, 
+          class: "ra-image__media w-full",
+          video_class: "h-full object-cover"
+        %}
+      </div>
+    </div>
+  {% elsif section.settings.image != blank %}
     <div class="ra-split-section__media">
       <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
         {% render 'ra-image', image: section.settings.image, width: width, height: height, classes: "ra-image__media w-full", lazyload: true %}
@@ -183,7 +213,7 @@
         {% endif %}
       >
         {% if details_location == 'after' %}
-          {{ image_content }}
+          {{ media_content }}
         {% else %}
           {{ text_content }}
         {% endif %}
@@ -199,7 +229,7 @@
         {% if details_location == 'after' %}
           {{ text_content }}
         {% else %}
-          {{ image_content }}
+          {{ media_content }}
         {% endif %}
       </div>
     </div>
@@ -276,6 +306,25 @@
       "content": "Section Media"
     },
     {
+      "type": "paragraph",
+      "content": "This section will look for a video file, then an external video, and then an uploaded image"
+    },
+    {
+      "type": "video",
+      "id": "internal_video",
+      "label": "A Shopify-hosted video"
+    },
+    {
+      "type": "video_url",
+      "id": "external_video",
+      "label": "An external video",
+      "info": "Accepts Youtube or Vimeo",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
@@ -341,11 +390,11 @@
       "options": [
         {
           "value": "before",
-          "label": "Text left, Imagery right"
+          "label": "Text left, Media right"
         },
         {
           "value": "after",
-          "label": "Imagery left, Text right"
+          "label": "Media left, Text right"
         },
         {
           "value": "overlay",
@@ -362,11 +411,11 @@
       "options": [
         {
           "value": "after",
-          "label": "Image Top, Text Bottom"
+          "label": "Media Top, Text Bottom"
         },
         {
           "value": "before",
-          "label": "Text Top, Imagery Bottom"
+          "label": "Text Top, Media Bottom"
         },
         {
           "value": "overlay",

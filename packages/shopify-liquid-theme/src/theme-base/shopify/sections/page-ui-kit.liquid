@@ -4,6 +4,9 @@
     assign product_2 = section.settings.featured_product_2
     assign featured_image = section.settings.featured_product.featured_image
     assign img_src = section.settings.featured_product.featured_image.src | image_url: width: 300
+    assign content_image_1 = section.settings.content_tile_image_1 | image_url: width: 300
+    assign content_image_2 = section.settings.content_tile_image_2 | image_url: width: 300
+    assign content_image_3 = section.settings.content_tile_image_3 | image_url: width: 300
     assign img_alt = section.settings.featured_product.featured_image.alt | default: section.settings.featured_product.title
     assign link_url = section.settings.featured_product.url
     assign video_url = section.settings.video_url
@@ -11,33 +14,34 @@
 
   <style>
     .box {
-      width: 80px;
-      height: 40px;
-      font-size: 11px;
+      width: 74px;
+      height: 210px;
+      font-size: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 4px;
     }
     html {
       scroll-behavior: smooth;
     }
   </style>
 
-  <div class="fixed top-[150px] right-2 flex flex-col">
+  <div class="fixed top-[150px] right-2 flex flex-col bg-grey-100 z-10 p-2 opacity-80">
     <h5>UI Kit Navigation</h5>
     <a class="hover:text-primary-900" href="#colors">Colors</a>
     <a class="hover:text-primary-900" href="#typography">Typography</a>
     <a class="hover:text-primary-900" href="#standard-buttons">Standard Buttons</a>
     <a class="hover:text-primary-900" href="#split-buttons">Split Buttons</a>
     <a class="hover:text-primary-900" href="#icon-buttons">Icon Buttons</a>
-    <a class="hover:text-primary-900" href="#input">Input</a>
-    <a class="hover:text-primary-900" href="#icons">Icons</a>
-    <a class="hover:text-primary-900" href="#accordions">Accordions</a>
+    <a class="hover:text-primary-900" href="#link-buttons">Link Buttons</a>
+    <a class="hover:text-primary-900" href="#arrow-buttons">Arrow Buttons</a>
+    <a class="hover:text-primary-900" href="#input">Form Inputs</a>
+    <a class="hover:text-primary-900" href="#selection-controls">Selection Controls</a>
     <a class="hover:text-primary-900" href="#breadcrumbs">Breadcrumbs</a>
-    <a class="hover:text-primary-900" href="#scrollable">Scrollable</a>
     <a class="hover:text-primary-900" href="#badges">Badges</a>
+    <a class="hover:text-primary-900" href="#dividers">Dividers</a>
+    <a class="hover:text-primary-900" href="#icons">Icons</a>
     <a class="hover:text-primary-900" href="#icon-tile">Icon Tile</a>
     <a class="hover:text-primary-900" href="#notification">Notification</a>
     <a class="hover:text-primary-900" href="#modal">Modal</a>
@@ -50,779 +54,3419 @@
     {%- comment -%}
       Colors
     {%- endcomment -%}
-    <h4 id="colors" class="text-h4 mt-10">Colors</h4>
-    <h5 class="text-h5 my-4">Primary</h5>
-    <div class="flex flex-wrap">
-      <div class="box border bg-primary-900 text-grey-100">primary-900</div>
-      <div class="box border bg-primary-800 text-grey-100">primary-800</div>
-      <div class="box border bg-primary-700">primary-700</div>
-      <div class="box border bg-primary-600">primary-600</div>
-      <div class="box border bg-primary-500">primary-500</div>
-      <div class="box border bg-primary-400">primary-400</div>
-      <div class="box border bg-primary-300">primary-300</div>
-      <div class="box border bg-primary-200">primary-200</div>
-      <div class="box border bg-primary-100">primary-100</div>
+    <div id="colors" class="text-e20"></div>
+    <div class="font-secondary text-[25px] font-semibold uppercase pt-12 mb-4">Primary</div>
+    <div class="flex flex-wrap gap-x-8">
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-900</p>
+        <div class="box bg-primary-900 text-grey-100">primary-900</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11">
+          <%- uikit.colorsPrimary[0].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-800</p>
+        <div class="box bg-primary-800 text-grey-100">primary-800</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[1].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-700</p>
+        <div class="box bg-primary-700">primary-700</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[2].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-600</p>
+        <div class="box bg-primary-600">primary-600</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[3].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-500</p>
+        <div class="box bg-primary-500">primary-500</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[4].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-400</p>
+        <div class="box bg-primary-400">primary-400</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[5].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-300</p>
+        <div class="box bg-primary-300">primary-300</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[6].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-200</p>
+        <div class="box bg-primary-200">primary-200</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[7].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Primary-100</p>
+        <div class="box bg-primary-100">primary-100</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsPrimary[8].value -%></p>
+      </div>
     </div>
 
-    <h5 class="text-h5 my-4">Secondary</h5>
-    <div class="flex flex-wrap">
-      <div class="box border bg-secondary-900">secondary-900</div>
-      <div class="box border bg-secondary-800">secondary-800</div>
-      <div class="box border bg-secondary-700">secondary-700</div>
-      <div class="box border bg-secondary-600">secondary-600</div>
-      <div class="box border bg-secondary-500">secondary-500</div>
-      <div class="box border bg-secondary-400">secondary-400</div>
-      <div class="box border bg-secondary-300">secondary-300</div>
-      <div class="box border bg-secondary-200">secondary-200</div>
-      <div class="box border bg-secondary-100">secondary-100</div>
+    <div class="font-secondary text-[25px] font-semibold uppercase my-4">Secondary</div>
+    <div class="flex flex-wrap gap-x-8">
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-900</p>
+        <div class="box bg-secondary-900">secondary-900</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[0].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-800</p>
+        <div class="box bg-secondary-800">secondary-800</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[1].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-700</p>
+        <div class="box bg-secondary-700">secondary-700</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[2].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-600</p>
+        <div class="box bg-secondary-600">secondary-600</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[3].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-500</p>
+        <div class="box bg-secondary-500">secondary-500</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[4].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-400</p>
+        <div class="box bg-secondary-400">secondary-400</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[5].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-300</p>
+        <div class="box bg-secondary-300">secondary-300</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[6].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-200</p>
+        <div class="box border border-grey-300 bg-secondary-200">secondary-200</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[7].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Secondary-100</p>
+        <div class="box border border-grey-300 bg-secondary-100">secondary-100</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsSecondary[8].value -%></p>
+      </div>
     </div>
 
-    <h5 class="text-h5 my-4">Tertiary</h5>
-    <div class="flex flex-wrap">
-      <div class="box border bg-tertiary-900 text-grey-100">tertiary-900</div>
-      <div class="box border bg-tertiary-800 text-grey-100">tertiary-800</div>
-      <div class="box border bg-tertiary-700">tertiary-700</div>
-      <div class="box border bg-tertiary-600">tertiary-600</div>
-      <div class="box border bg-tertiary-500">tertiary-500</div>
-      <div class="box border bg-tertiary-400">tertiary-400</div>
-      <div class="box border bg-tertiary-300">tertiary-300</div>
-      <div class="box border bg-tertiary-200">tertiary-200</div>
-      <div class="box border bg-tertiary-100">tertiary-100</div>
+    <div class="font-secondary text-[25px] font-semibold uppercase my-4">Tertiary</div>
+    <div class="flex flex-wrap gap-x-8">
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-900</p>
+        <div class="box bg-tertiary-900 text-grey-100">tertiary-900</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[0].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-800</p>
+        <div class="box bg-tertiary-800 text-grey-100">tertiary-800</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[1].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-700</p>
+        <div class="box bg-tertiary-700">tertiary-700</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[2].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-600</p>
+        <div class="box border border-grey-300 bg-tertiary-600">tertiary-600</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[3].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-500</p>
+        <div class="box border border-grey-300  bg-tertiary-500">tertiary-500</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[4].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-400</p>
+        <div class="box bg-tertiary-400">tertiary-400</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[5].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-300</p>
+        <div class="box bg-tertiary-300">tertiary-300</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[6].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-200</p>
+        <div class="box bg-tertiary-200">tertiary-200</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[7].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Tertiary-100</p>
+        <div class="box bg-tertiary-100">tertiary-100</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsTertiary[8].value -%></p>
+      </div>
     </div>
 
-    <h5 class="text-h5 my-4">Greyscale</h5>
-    <div class="flex flex-wrap">
-      <div class="box border bg-grey-900 text-grey-100">grey-900</div>
-      <div class="box border bg-grey-800 text-grey-100">grey-800</div>
-      <div class="box border bg-grey-700 text-grey-100">grey-700</div>
-      <div class="box border bg-grey-600">grey-600</div>
-      <div class="box border bg-grey-500">grey-500</div>
-      <div class="box border bg-grey-400">grey-400</div>
-      <div class="box border bg-grey-300">grey-300</div>
-      <div class="box border bg-grey-200">grey-200</div>
-      <div class="box border bg-grey-100">grey-100</div>
+    <div class="font-secondary text-[25px] font-semibold uppercase my-4">Greyscale</div>
+    <div class="flex flex-wrap gap-x-8">
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-900</p>
+        <div class="box bg-grey-900 text-grey-100">grey-900</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[0].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-800</p>
+        <div class="box bg-grey-800 text-grey-100">grey-800</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[1].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-700</p>
+        <div class="box bg-grey-700 text-grey-100">grey-700</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[2].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-600</p>
+        <div class="box bg-grey-600 text-grey-100">grey-600</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[3].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-500</p>
+        <div class="box bg-grey-500 text-grey-100">grey-500</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[4].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-400</p>
+        <div class="box bg-grey-400">grey-400</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[5].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-300</p>
+        <div class="box bg-grey-300">grey-300</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[6].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-200</p>
+        <div class="box bg-grey-200">grey-200</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[7].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Greyscale-100</p>
+        <div class="box bg-grey-100">grey-100</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsGreyScale[8].value -%></p>
+      </div>
     </div>
 
-    <h5 class="text-h5 my-4">Utils</h5>
-    <div class="flex flex-wrap">
-      <div class="box border bg-red">red</div>
-      <div class="box border bg-green">green</div>
-      <div class="box border bg-yellow">yellow</div>
-      <div class="box border bg-white">white</div>
+    <div class="font-secondary text-[25px] font-semibold uppercase my-4">Utils</div>
+    <div class="flex flex-wrap gap-x-8">
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Utility-Red-900</p>
+        <div class="box bg-red">util-red</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsUtil[0].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Utility-Green-900</p>
+        <div class="box bg-green text-grey-100">util-green</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsUtil[1].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Utility-Yellow-900</p>
+        <div class="box bg-yellow">util-yellow</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsUtil[2].value -%></p>
+      </div>
+      <div>
+        <p class="font-secondary text-grey-900 text-[10px] leading-e10 mb-2">Utility-White-900</p>
+        <div class="box border border-grey-300 bg-white">util-white</div>
+        <p class="font-tertiary text-grey-900 text-[9px] leading-e11"><%- uikit.colorsUtil[3].value -%></p>
+      </div>
     </div>
+
     <hr class="border my-20">
+
     {%- comment -%}
       Typography
     {%- endcomment -%}
     <h4 id="typography" class="text-h4 my-10">Typography</h4>
-    <div class="grid gap-6">
-      <h1 class="h1 display">This is Display text</h1>
-      <h1 class="h1">This is h1 text</h1>
-      <h2 class="h2">This is h2 text</h2>
-      <h3 class="h3">This is h3 text</h3>
-      <h4 class="h4">This is h4 text</h4>
-      <h5 class="h5">This is h5 text</h5>
-      <h6 class="h6">This is h6 text</h6>
-      <br>
-      <p class="text-lg">font large</p>
-      <p class="text-base">font base</p>
-      <p class="text-sm">font small</p>
-      <p class="text-xs">font x-small</p>
+    <div class="flex">
+      <div class="pr-4 border-r border-grey-200">
+        <div class="font-secondary text-[25px] font-semibold uppercase mb-4">Desktop</div>
+        <div class="font-secondary text-e15 mb-2">Displays / Headlines</div>
+        <div class="grid gap-6">
+          <h1 class="h1 display">This Is Display</h1>
+          <h1 class="h1">This Is Text H1</h1>
+          <h2 class="h2">This Is Text H2</h2>
+          <h3 class="h3">This Is Text H3</h3>
+          <h4 class="h4">This Is Text H4</h4>
+          <h5 class="h5">This Is Text H5</h5>
+          <h6 class="h6">This Is Text H6</h6>
+          <div class="h7 !text-[13px] leading-e120">This Is Text H7</div>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 mt-10">Body Copy</div>
+          <p class="text-lg leading-e140">Body (Large)</p>
+          <p class="text-lg leading-e140 font-medium">Body (Large)</p>
+          <p class="text-base">Body (Base)</p>
+          <p class="text-base font-medium">Body (Base)</p>
+          <p class="text-sm">Body (Small)</p>
+          <p class="text-sm font-medium">Body (Small)</p>
+          <p class="text-xs leading-e120">Body (X-Small)</p>
+          <p class="text-xs leading-e120 font-medium">Body (X-Small)</p>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 uppercase mt-10">Link Styles</div>
+          <div class="rte"><p class="text-lg leading-e120"><a href="#">Large Text Link</a></p></div>
+          <div class="rte"><p class="text-e18 leading-e120"><a href="#">Default Text Link</a></p></div>
+          <div class="rte"><p class="text-base leading-e120"><a href="#">Small Text Link</a></p></div>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 uppercase mt-10">Button Text</div>
+          <p class="text-e14 leading-[10px] tracking-ep14 font-semibold uppercase">Button Text</p>
+          <p class="text-xs leading-[9px] tracking-ep14 font-semibold uppercase">Button Text</p>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 uppercase mt-10">Main Navigation</div>
+          <div class="text-base leading-4 font-semibold">Link List Header</div>
+          <div class="text-e14 leading-[21px]">Link List Item</div>
+        </div>    
+      </div>
+      <div class="pl-4">
+        <div class="font-secondary text-[25px] font-semibold uppercase mb-4">Mobile</div>
+        <div class="font-secondary text-e15 mb-2">Displays / Headlines</div>
+        <div class="grid gap-6">
+          <h1 class="h1 display !text-[38px]">This Is Display</h1>
+          <h1 class="h1 !text-[34px]">This Is Text H1</h1>
+          <h2 class="h2 !text-[28px]">This Is Text H2</h2>
+          <h3 class="h3 !text-[25px]">This Is Text H3</h3>
+          <h4 class="h4 !text-[23px]">This Is Text H4</h4>
+          <h5 class="h5 !text-[19px]">This Is Text H5</h5>
+          <h6 class="h6 !text-[14px]">This Is Text H6</h6>
+          <div class="h7 !text-[13px]">This Is Text H7</div>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 uppercase mt-10">Body Copy</div>
+          <p class="text-base">Body (Large)</p>
+          <p class="text-base font-medium">Body (Large)</p>
+          <p class="text-e14">Body (Base)</p>
+          <p class="text-e14 font-medium">Body (Base)</p>
+          <p class="text-xs">Body (Small)</p>
+          <p class="text-xs font-medium">Body (Small)</p>
+          <p class="text-e11">Body (X-Small)</p>
+          <p class="text-e11 font-medium">Body (X-Small)</p>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 uppercase mt-10">Link Styles</div>
+          <div class="rte"><p class="text-base leading-4"><a href="#">Large Text Link</a></p></div>
+          <div class="rte"><p class="text-e14 leading-4"><a href="#">Default Text Link</a></p></div>
+          <div class="rte"><p class="text-e11 leading-4"><a href="#">Small Text Link</a></p></div>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 uppercase mt-10">Button Text</div>
+          <p class="text-e14 leading-[10px] tracking-ep14 font-semibold uppercase">Button Text</p>
+          <p class="text-xs leading-[9px] tracking-ep14 font-semibold uppercase">Button Text</p>
+        </div>
+        <div class="grid gap-6">
+          <div class="font-secondary text-e15 uppercase mt-10">Main Navigation</div>
+          <div class="text-e14 leading-[14px] font-semibold">Mobile Link List Item</div>
+          <div class="text-base leading-6">Mobile Link List Item</div>
+        </div>    
+      </div>
     </div>
 
     <hr class="border my-20">
     <h4 id="standard-buttons" class="text-h4 mb-2 mt-10">Standard Buttons</h4>
+
     {%- comment -%}
       primary standard button
     {%- endcomment -%}
-    <h5 class="text-h5 my-4">Primary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">State Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large - Primary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium - Primary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small - Primary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small - Primary</p></div>
+    </div>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
       <div>
-        <p class="mb-2 mt-5">primary - large</p>
         {%- render 'ra-button', type: 'a', size: 'lg', style: 'primary', url: '#', label: 'large' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">primary - medium</p>
         {%- render 'ra-button', type: 'a', size: 'md', style: 'primary', url: '#', label: 'medium' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">primary - small</p>
         {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', url: '#', label: 'small' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">primary - x-small</p>
         {%- render 'ra-button', type: 'a', size: 'xs', style: 'primary', url: '#', label: 'x-small' -%}
       </div>
     </div>
 
-    <h5 class="text-h5 mt-10">Secondary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
       <div>
-        <p class="mb-2 mt-5">secondary - large</p>
+        <a class="ra-button ra-button ra-button--primary ra-button--lg hover" href="#" title="large">large</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--md hover" href="#" title="medium">medium</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--sm hover" href="#" title="small">small</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--xs hover" href="#" title="x-small">x-small</a>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--lg" href="#" title="large" disabled>large</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--md" href="#" title="medium" disabled>medium</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--sm" href="#" title="small" disabled>small</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--xs" href="#" title="x-small" disabled>x-small</a>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--lg focus" href="#" title="large">large</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--md focus" href="#" title="medium">medium</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--sm focus" href="#" title="small">small</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--primary ra-button--xs focus" href="#" title="x-small">x-small</a>
+      </div>
+    </div>
+
+    {%- comment -%}
+      secondary standard button
+    {%- endcomment -%}
+    <div class="grid gap-6 grid-cols-5 mt-20 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">State Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large - Secondary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium - Secondary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small - Secondary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small - Secondary</p></div>
+    </div>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+      <div>
         {%- render 'ra-button', type: 'a', size: 'lg', style: 'secondary', url: '#', label: 'large' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">secondary - medium</p>
         {%- render 'ra-button', type: 'a', size: 'md', style: 'secondary', url: '#', label: 'medium' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">secondary - small</p>
         {%- render 'ra-button', type: 'a', size: 'sm', style: 'secondary', url: '#', label: 'small' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">secondary - x-small</p>
         {%- render 'ra-button', type: 'a', size: 'xs', style: 'secondary', url: '#', label: 'x-small' -%}
       </div>
     </div>
 
-    <h5 class="text-h5 mt-10">Tertiary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
       <div>
-        <p class="mb-2 mt-5">tertiary - large</p>
+        <a class="ra-button ra-button ra-button--secondary ra-button--lg hover" href="#" title="large">large</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--secondary ra-button--md hover" href="#" title="medium">medium</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--secondary ra-button--sm hover" href="#" title="small">small</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--secondary ra-button--xs hover" href="#" title="x-small">x-small</a>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div>
+        <a class="ra-button ra-button ra-button--secondary ra-button--lg" href="#" title="large" disabled>large</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--secondary ra-button--md" href="#" title="medium" disabled>medium</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--secondary ra-button--sm" href="#" title="small" disabled>small</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--secondary ra-button--xs" href="#" title="x-small" disabled>x-small</a>
+      </div>
+    </div>
+
+    {%- comment -%}
+      tertiary standard button
+    {%- endcomment -%}
+    <div class="grid gap-6 grid-cols-5 mt-20 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">State Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large - Tertiary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium - Tertiary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small - Tertiary</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small - Tertiary</p></div>
+    </div>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+      <div>
         {%- render 'ra-button', type: 'a', size: 'lg', style: 'tertiary', url: '#', label: 'large' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">tertiary - medium</p>
         {%- render 'ra-button', type: 'a', size: 'md', style: 'tertiary', url: '#', label: 'medium' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">tertiary - small</p>
         {%- render 'ra-button', type: 'a', size: 'sm', style: 'tertiary', url: '#', label: 'small' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">tertiary - x-small</p>
         {%- render 'ra-button', type: 'a', size: 'xs', style: 'tertiary', url: '#', label: 'x-small' -%}
       </div>
     </div>
 
-    <h5 class="text-h5 mt-10 mb-8">Misc</h5>
-    <div class="grid gap-6 grid--col-1">
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
       <div>
-        {%- render 'ra-button', type: 'a', size: 'sm', label: 'disabled', disabled: true -%}
+        <a class="ra-button ra-button ra-button--tertiary ra-button--lg hover" href="#" title="large">large</a>
       </div>
       <div>
-        {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'As Text', as_text: true -%}
+        <a class="ra-button ra-button ra-button--tertiary ra-button--md hover" href="#" title="medium">medium</a>
       </div>
       <div>
-        {%- render 'ra-button', type: 'a', size: 'sm', label: 'Ghost', ghost: true -%}
+        <a class="ra-button ra-button ra-button--tertiary ra-button--sm hover" href="#" title="small">small</a>
       </div>
       <div>
-        {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'full width', full_width: true -%}
+        <a class="ra-button ra-button ra-button--tertiary ra-button--xs hover" href="#" title="x-small">x-small</a>
       </div>
     </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div>
+        <a class="ra-button ra-button ra-button--tertiary ra-button--lg" href="#" title="large" disabled>large</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--tertiary ra-button--md" href="#" title="medium" disabled>medium</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--tertiary ra-button--sm" href="#" title="small" disabled>small</a>
+      </div>
+      <div>
+        <a class="ra-button ra-button ra-button--tertiary ra-button--xs" href="#" title="x-small" disabled>x-small</a>
+      </div>
+    </div>
+
+
+
     <hr class="border my-20">
     <h4 id="split-buttons" class="text-h4 mt-10 mb-5">Split Buttons</h4>
     {%- comment -%}
       primary split button
     {%- endcomment -%}
-    <h5 class="text-h5 mt-4">Primary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    <div class="grid gap-6 grid-cols-5 mt-20 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+    </div>
+    <div class="grid gap-6 grid-cols-5">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Primary</div>
       <div>
-        <p class="mb-2 mt-5">primary - large</p>
-        {%- render 'ra-split-button', size: 'lg', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'lg', style: 'primary', label: 'Large', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">primary - medium</p>
-        {%- render 'ra-split-button', size: 'md', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'md', style: 'primary', label: 'Medium', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">primary - small</p>
-        {%- render 'ra-split-button', size: 'sm', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'sm', style: 'primary', label: 'Small', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">primary - x-small</p>
-        {%- render 'ra-split-button', size: 'xs', style: 'primary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'xs', style: 'primary', label: 'X-Small', icon: 'chevron-down' -%}
       </div>
     </div>
 
-    <h5 class="text-h5 mt-10">Secondary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    {%- comment -%}
+      secondary split button
+    {%- endcomment -%}
+    <div class="grid gap-6 grid-cols-5  mt-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Secondary</div>
       <div>
-        <p class="mb-2 mt-5">secondary - large</p>
-        {%- render 'ra-split-button', size: 'lg', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'lg', style: 'secondary', label: 'Large', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">secondary - medium</p>
-        {%- render 'ra-split-button', size: 'md', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'md', style: 'secondary', label: 'Medium', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">secondary - small</p>
-        {%- render 'ra-split-button', size: 'sm', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'sm', style: 'secondary', label: 'Small', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">secondary - x-small</p>
-        {%- render 'ra-split-button', size: 'xs', style: 'secondary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'xs', style: 'secondary', label: 'X-Small', icon: 'chevron-down' -%}
       </div>
     </div>
 
-    <h5 class="text-h5 mt-10">Tertiary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    {%- comment -%}
+      tertiary split button
+    {%- endcomment -%}
+    <div class="grid gap-6 grid-cols-5 mt-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Tertiary</div>
       <div>
-        <p class="mb-2 mt-5">tertiary - large</p>
-        {%- render 'ra-split-button', size: 'lg', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'lg', style: 'tertiary', label: 'Large', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">tertiary - medium</p>
-        {%- render 'ra-split-button', size: 'md', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'md', style: 'tertiary', label: 'Medium', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">tertiary - small</p>
-        {%- render 'ra-split-button', size: 'sm', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'sm', style: 'tertiary', label: 'Small', icon: 'chevron-down' -%}
       </div>
       <div>
-        <p class="mb-2 mt-5">tertiary - x-small</p>
-        {%- render 'ra-split-button', size: 'xs', style: 'tertiary', label: 'read more', icon: 'chevron-down' -%}
+        {%- render 'ra-split-button', size: 'xs', style: 'tertiary', label: 'X-Small', icon: 'chevron-down' -%}
       </div>
     </div>
+
+
+
     <hr class="border my-20">
     <h4 id="icon-buttons" class="text-h4 mt-10 mb-5">Icon Buttons</h4>
+
+
     {%- comment -%}
       primary icon button
     {%- endcomment -%}
-    <h5 class="text-h5 mt-4">Primary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    <div class="flex gap-6 mb-20">
       <div>
-        <p class="mb-2 mt-5">primary - x-large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'xl',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
+        <h5 class="text-h5 mb-10">Square - Primary</h5>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+        </div>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'lg',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'md',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'sm',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'xs',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+        </div>
 
-        <p class="mb-2 mt-5">primary circle - x-large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'xl',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--lg hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--md hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--sm hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--xs hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--lg hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--md hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--sm hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--xs hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--lg" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--md" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--sm" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--xs" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
       <div>
-        <p class="mb-2 mt-5">primary - large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'lg',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
-        <p class="mb-2 mt-5">primary circle - large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'lg',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
-      </div>
-      <div>
-        <p class="mb-2 mt-5">primary - medium</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'md',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
-        <p class="mb-2 mt-5">primary circle - medium</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'md',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
-      </div>
-      <div>
-        <p class="mb-2 mt-5">primary - small</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'sm',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
-        <p class="mb-2 mt-5">primary circle - small</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'sm',
-          style: 'primary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
+        <h5 class="text-h5 mb-10">Circle - Primary</h5>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+        </div>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'lg',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'md',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'sm',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'xs',
+              style: 'primary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--lg ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--md ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--sm ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--xs ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--lg ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--md ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--sm ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--xs ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--lg ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--md ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--sm ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--primary ra-icon-button--xs ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    <h5 class="text-h5 mt-10">Secondary</h5>
-    <div class="grid gap-6 grid-cols-4">
-      <div>
-        <p class="mb-2 mt-5">secondary - x-large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'xl',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
 
-        <p class="mb-2 mt-5">secondary circle - x-large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'xl',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
+    {%- comment -%}
+      secondary icon button
+    {%- endcomment -%}
+    <div class="flex gap-6 mb-20">
+      <div>
+        <h5 class="text-h5 mb-10">Square - Secondary</h5>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+        </div>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'lg',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'md',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'sm',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'xs',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--lg hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--md hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--sm hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--xs hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--lg hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--md hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--sm hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--xs hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--lg" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--md" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--sm" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--xs" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
       <div>
-        <p class="mb-2 mt-5">secondary - large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'lg',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
+        <h5 class="text-h5 mb-10">Circle - Secondary</h5>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+        </div>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center">Default</div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'lg',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'md',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'sm',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'xs',
+              style: 'secondary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+        </div>
 
-        <p class="mb-2 mt-5">secondary circle - large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'lg',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
-      </div>
-      <div>
-        <p class="mb-2 mt-5">secondary - medium</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'md',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--lg ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--md ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--sm ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--xs ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-        <p class="mb-2 mt-5">secondary circle - medium</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'md',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
-      </div>
-      <div>
-        <p class="mb-2 mt-5">secondary - small</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'sm',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--lg ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--md ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--sm ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--xs ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-        <p class="mb-2 mt-5">secondary circle - small</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'sm',
-          style: 'secondary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
+        <div class="grid gap-6 grid-cols-5">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--lg ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--md ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--sm ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--secondary ra-icon-button--xs ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    <h5 class="text-h5 mt-10">Tertiary</h5>
-    <div class="grid gap-6 grid-cols-4">
+    
+    {%- comment -%}
+      tertiary icon button
+    {%- endcomment -%}
+    <div class="flex gap-6 mb-20">
       <div>
-        <p class="mb-2 mt-5">tertiary - x-large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'xl',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
+        <h5 class="text-h5 mb-10">Square - Tertiary</h5>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+        </div>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'lg',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'md',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'sm',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'xs',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus'
+            -%}
+          </div>
+        </div>
 
-        <p class="mb-2 mt-5">tertiary circle - x-large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'xl',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--lg hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--xs hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--lg hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--xs hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--lg" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--xs" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
       <div>
-        <p class="mb-2 mt-5">tertiary - large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'lg',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
+        <h5 class="text-h5 mb-10">Circle - Tertiary</h5>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+          <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+        </div>
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'lg',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'md',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'sm',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+          <div>
+            {%- render 'ra-icon-button',
+              type: 'a',
+              size: 'xs',
+              style: 'tertiary',
+              url: '#',
+              label: 'read more',
+              icon: 'plus',
+              rounded: true
+            -%}
+          </div>
+        </div>
 
-        <p class="mb-2 mt-5">tertiary circle - large</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'lg',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
-      </div>
-      <div>
-        <p class="mb-2 mt-5">tertiary - medium</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'md',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--lg ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--xs ra-icon-button--rounded hover" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-        <p class="mb-2 mt-5">tertiary circle - medium</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'md',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
-      </div>
-      <div>
-        <p class="mb-2 mt-5">tertiary - small</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'sm',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus'
-        -%}
-        <p class="mb-2 mt-5">tertiary circle - small</p>
-        {%- render 'ra-icon-button',
-          type: 'a',
-          size: 'sm',
-          style: 'tertiary',
-          url: '#',
-          label: 'read more',
-          icon: 'plus',
-          rounded: true
-        -%}
+        <div class="grid gap-6 grid-cols-5 mb-10">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--lg ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--md ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--xs ra-icon-button--rounded hover focus" href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid gap-6 grid-cols-5">
+          <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--lg ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--lg">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-linkbutton ra-icon-button ra-button--tertiary ra-icon-button--md ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--md">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--sm ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--sm">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <a class="ra-button ra-icon-button ra-button--tertiary ra-icon-button--xs ra-icon-button--rounded" disabled href="#" title="read more">
+              <svg class="ra-icon ra-icon--xs">
+                <use xlink:href="#plus"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <hr class="border my-20">
 
-    <h4 id="input" class="text-h4 mt-10 mb-5">Input</h4>
+    {%- comment -%}
+      Link Buttons
+    {%- endcomment -%}
+    <div id="link-buttons" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Link Buttons</div>
+    <h5 class="text-h5 mb-10">Link - Primary</h5>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+    </div>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'lg', style: 'primary', label: 'Large Text Link', as_text: true -%}
+      </div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'md', style: 'primary', label: 'Medium Text Link', as_text: true -%}
+      </div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'Small Text Link', as_text: true -%}
+      </div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'xs', style: 'primary', label: 'X-Small Text Link', as_text: true -%}
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--lg hover">Large Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--md hover">Medium Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--sm hover">Small Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--xs hover">X-Small Text Link</a>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--lg focus">Large Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--md focus">Medium Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--sm focus">Small Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--xs focus">X-Small  Text Link</a>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--lg" disabled>Large Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--md" disabled>Medium Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--sm" disabled>Small Text Link</a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--xs" disabled>X-Small Text Link</a>
+      </div>
+    </div>
+
+    <h5 class="text-h5 mb-10">Link - Secondary</h5>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+    </div>
+    <div class="grid grid-cols-5">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+      <div class="bg-grey-200 p-4 rounded-tl-sm">
+        {%- render 'ra-button', type: 'a', size: 'lg', style: 'secondary', label: 'Large Text Link', as_text: true -%}
+      </div>
+      <div class="bg-grey-200 p-4">
+        {%- render 'ra-button', type: 'a', size: 'md', style: 'secondary', label: 'Medium Text Link', as_text: true -%}
+      </div>
+      <div class="bg-grey-200 p-4">
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'secondary', label: 'Small Text Link', as_text: true -%}
+      </div>
+      <div class="bg-grey-200 p-4 rounded-tr-sm">
+        {%- render 'ra-button', type: 'a', size: 'xs', style: 'secondary', label: 'X-Small Text Link', as_text: true -%}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--lg hover">Large Text Link</a>
+      </div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--md hover">Medium Text Link</a>
+      </div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--sm hover">Small Text Link</a>
+      </div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--xs hover">X-Small Text Link</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--lg focus">Large Text Link</a>
+      </div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--md focus">Medium Text Link</a>
+      </div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--sm focus">Small Text Link</a>
+      </div>
+      <div class="bg-grey-200 p-4">
+        <a class="ra-link ra-button--secondary ra-button--xs focus">X-Small  Text Link</a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5 mb-10">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div class="bg-grey-500 p-4 rounded-bl-sm">
+        <a class="ra-link ra-button--secondary ra-button--lg" disabled>Large Text Link</a>
+      </div>
+      <div class="bg-grey-500 p-4">
+        <a class="ra-link ra-button--secondary ra-button--md" disabled>Medium Text Link</a>
+      </div>
+      <div class="bg-grey-500 p-4">
+        <a class="ra-link ra-button--secondary ra-button--sm" disabled>Small Text Link</a>
+      </div>
+      <div class="bg-grey-500 p-4 rounded-br-sm">
+        <a class="ra-link ra-button--secondary ra-button--xs" disabled>X-Small Text Link</a>
+      </div>
+    </div>
+    <hr class="border my-20">
+
+    {%- comment -%}
+      Arrow Buttons
+    {%- endcomment -%}
+    <div id="arrow-buttons" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Arrow Buttons</div>
+    <h5 class="text-h5 mb-10">Arrow Link Primary</h5>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+    </div>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'lg', style: 'primary', label: 'Large Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'md', style: 'primary', label: 'Medium Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'primary', label: 'Small Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+      <div>
+        {%- render 'ra-button', type: 'a', size: 'xs', style: 'primary', label: 'X-Small Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--lg ra-link--arrow hover">
+          Large Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--md ra-link--arrow hover">
+          Medium Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--sm ra-link--arrow hover">
+          Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--xs ra-link--arrow hover">
+          X-Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--lg ra-link--arrow focus">
+          Large Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--md ra-link--arrow focus">
+          Medium Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--sm ra-link--arrow focus">
+          Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--xs ra-link--arrow focus">
+          X-Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--lg ra-link--arrow" disabled>
+          Large Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--md ra-link--arrow" disabled>
+          Medium Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--sm ra-link--arrow" disabled>
+          Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div>
+        <a class="ra-link ra-button--primary ra-button--xs ra-link--arrow" disabled>
+          X-Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <h5 class="text-h5 mb-10">Arrow Link Secondary</h5>
+    <div class="grid gap-6 grid-cols-5 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">Class Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Medium</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">X-Small</p></div>
+    </div>
+    <div class="grid grid-cols-5">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
+      <div class="bg-tertiary-800 p-4 rounded-tl-sm">
+        {%- render 'ra-button', type: 'a', size: 'lg', style: 'secondary', label: 'Large Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        {%- render 'ra-button', type: 'a', size: 'md', style: 'secondary', label: 'Medium Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        {%- render 'ra-button', type: 'a', size: 'sm', style: 'secondary', label: 'Small Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+      <div class="bg-tertiary-800 p-4 rounded-tr-sm">
+        {%- render 'ra-button', type: 'a', size: 'xs', style: 'secondary', label: 'X-Small Text Link', as_text: true, icon: 'chevron-right', class: 'ra-link--arrow' -%}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--lg ra-link--arrow hover">
+          Large Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--md ra-link--arrow hover">
+          Medium Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--sm ra-link--arrow hover">
+          Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--xs ra-link--arrow hover">
+          X-Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--lg ra-link--arrow focus">
+          Large Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--md ra-link--arrow focus">
+          Medium Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--sm ra-link--arrow focus">
+          Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--xs ra-link--arrow focus">
+          X-Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5 mb-10">
+      <div class="flex items-center mr-6 font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div class="bg-tertiary-800 p-4 rounded-bl-sm">
+        <a class="ra-link ra-button--secondary ra-button--lg ra-link--arrow" disabled>
+          Large Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--md ra-link--arrow" disabled>
+          Medium Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4">
+        <a class="ra-link ra-button--secondary ra-button--sm ra-link--arrow" disabled>
+          Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="bg-tertiary-800 p-4 rounded-br-sm">
+        <a class="ra-link ra-button--secondary ra-button--xs ra-link--arrow" disabled>
+          X-Small Text Link
+          <span class="ra-icon" style="--icon-width: 14px;--icon-height: 14px;" aria-hidden="true">
+            <svg>
+              <use xlink:href="#chevron-right"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+    <hr class="border my-20">
+
+    <div id="input" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Simple Form Inputs</div>
     {%- comment -%}
       form - input
     {%- endcomment -%}
-    <div class="grid gap-6 grid-cols-3">
+    <div class="grid gap-6 grid-cols-3 mb-10">
+      <div><p class="font-secondary text-e11 text-grey-700 font-semibold uppercase">State Descriptors</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Small - 44px Height</p></div>
+      <div><p class="font-secondary text-e15 text-grey-700 font-semibold uppercase">Large - 48px Height</p></div>
+    </div>
+    <div class="grid gap-6 grid-cols-3 mb-4">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Default</div>
       <div>
-        {%- render 'ra-input',
-          type: 'text',
-          size: 'md',
-          label: 'medium',
-          placeholder: 'enter name',
-          message: 'This is a custom message'
+        {%- render 'ra-input', type: 'text', size: 'md', label: 'Default Label', placeholder: 'Small Size Placeholder Text'
         -%}
       </div>
       <div>
-        {%- render 'ra-input',
-          type: 'text',
-          size: 'lg',
-          label: 'large',
-          placeholder: 'enter name',
-          message: 'This is a custom message'
-        -%}
-      </div>
-      <div>
-        {%- render 'ra-input', type: 'text', size: 'xl', label: 'x-large', message: 'This is a custom message' -%}
-      </div>
-      <div>
-        {%- render 'ra-input', type: 'text', size: 'md', label: 'disabled - medium', disabled: true -%}
-      </div>
-      <div>
-        {%- render 'ra-input', type: 'text', size: 'lg', label: 'disabled - large', disabled: true -%}
-      </div>
-      <div>
-        {%- render 'ra-input', type: 'text', size: 'xl', label: 'disabled - x-large', disabled: true -%}
-      </div>
-      <div>
-        {%- render 'ra-textarea',
-          rows: 4,
-          label: 'Your message',
-          message: 'This is a custom message',
-          placeholder: 'Enter your message'
-        -%}
-      </div>
-      <div>
-        {%- render 'ra-textarea',
-          rows: 4,
-          label: 'Your message (disabled)',
-          message: 'This is a custom message',
-          placeholder: 'Enter your message',
-          disabled: true
+        {%- render 'ra-input', type: 'text', size: 'lg', label: 'Default Label', placeholder: 'Base Size Placeholder Text'
         -%}
       </div>
     </div>
-    <div class="grid gap-6 grid-cols-3">
+
+    <div class="grid gap-6 grid-cols-3 mb-4">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Hover</div>
       <div>
-        <p class="text-h5 mt-10 mb-5">QTY - Selector</p>
-        <p class="mb-2">Primary - <code>style:'primary'</code></p>
-        {%- render 'ra-quantity-selector', value: 1, style: 'primary' -%}
-
-        <br>
-        <p class="mb-2">Secondary - <code>style:'secondary'</code></p>
-        {%- render 'ra-quantity-selector', value: 1, style: 'secondary' -%}
-
-        <br>
-        <p class="mb-2">Tertiary - <code>style:'tertiary'</code></p>
-        {%- render 'ra-quantity-selector', value: 1, style: 'tertiary' -%}
-
-        <br>
-        <p class="mb-2">Defalut - <code>value:5</code></p>
-        {%- render 'ra-quantity-selector', value: 5, style: 'tertiary' -%}
-
-        <br>
-        <p class="mb-2">Max - <code>max:10</code></p>
-        {%- render 'ra-quantity-selector', value: 1, max: 10, style: 'tertiary' -%}
+        <div class="ra-input ra-input--md">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text hover" id="Default Label" placeholder="Small Size Placeholder Text">
+          </div>
+        </div>
       </div>
       <div>
-        <p class="text-h5 mt-10 mb-5">QTY - Selector</p>
-        <p class="mb-2">dropdown</p>
-        <div aria-label="Quantity" class="ra-quantity-selector ra-quantity-selector--dropdown">
-          <div class="ra-input ra-select ra-quantity-selector__dropdown is-selected">
-            <div class="ra-input__wrapper">
-              <select
-                id=""
-                name=""
-                class="ra-input__control ra-select__control"
-              >
-                <option
-                  tabindex="0"
-                  class="ra-select__option"
-                  value="1"
-                >
-                  1
-                </option>
-                <option
-                  tabindex="0"
-                  class="ra-select__option"
-                  value="2"
-                >
-                  2
-                </option>
-                <option
-                  tabindex="0"
-                  class="ra-select__option"
-                  value="3"
-                >
-                  3
-                </option>
-              </select>
-              <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
-                <svg viewBox="0 0 24 24" class="ra-icon-path">
-                  <path d="m15.924 16-4.59-4.58L6.744 16l-1.41-1.41 6-6 6 6-1.41 1.41Z" fill=""></path>
+        <div class="ra-input ra-input--lg">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text hover" id="Default Label" placeholder="Base Size Placeholder Text">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-3 mb-4">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Active</div>
+      <div>
+        <div class="ra-input ra-input--md">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text active" id="Default Label" placeholder="Small Size Placeholder Text" value="Typin">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ra-input ra-input--lg">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text active" id="Default Label" placeholder="Base Size Placeholder Text" value="Typin">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-3 mb-4">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Disabled</div>
+      <div>
+        {%- render 'ra-input', type: 'text', size: 'md', label: 'Default Label', placeholder: 'Small Size Placeholder Text', disabled: true
+        -%}
+      </div>
+      <div>
+        {%- render 'ra-input', type: 'text', size: 'lg', label: 'Default Label', placeholder: 'Base Size Placeholder Text', disabled: true
+        -%}
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-3 mb-4">
+      <div class="flex items-center font-secondary text-e11 text-grey-700 font-semibold uppercase">Focus</div>
+      <div>
+        <div class="ra-input ra-input--md">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text focus" id="Default Label" placeholder="Small Size Placeholder Text">
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ra-input ra-input--lg">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text focus" id="Default Label" placeholder="Base Size Placeholder Text">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-3 mb-4">
+      <div class="flex items-center"></div>
+      <div>
+        <div class="ra-input ra-input--md">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text peer border-red" id="Default Label" placeholder="Small Size Placeholder Text" required>
+          </div>
+          <span class="text-e11 font-light text-red mt-1 peer-[.border-red]:flex">Fix Error *</span>
+        </div>
+      </div>
+      <div>
+        <div class="ra-input ra-input--lg">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text peer border-red" id="Default Label" placeholder="Base Size Placeholder Text" required>
+          </div>
+          <span class="text-e11 font-light text-red mt-1 peer-[.border-red]:flex">Fix Error *</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-6 grid-cols-3">
+      <div class="flex items-center"></div>
+      <div>
+        <div class="ra-input ra-input--md">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text peer border-tertiary-800" id="Default Label" placeholder="Small Size Placeholder Text" required>
+          </div>
+          <span class="text-e11 font-light text-green mt-1 peer-[.border-tertiary-800]:flex">Success</span>
+        </div>
+      </div>
+      <div>
+        <div class="ra-input ra-input--lg">
+          <label class="ra-input__label" for="Default Label">Default Label</label>
+          <div class="ra-input__wrapper">
+            <input type="text" class="ra-input__control ra-input__control--text peer border-tertiary-800" id="Default Label" placeholder="Base Size Placeholder Text" required>
+          </div>
+          <span class="text-e11 font-light text-green mt-1 peer-[.border-tertiary-800]:flex">Success</span>
+        </div>
+      </div>
+    </div>
+    <hr class="border my-20">
+
+    {%- comment -%}
+      form - checkbox, radio, toggle, quantity selectors
+    {%- endcomment -%}
+    <div id="selection-controls" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Selection controls</div>
+    <div class="grid gap-6 grid-cols-5">
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mt-10 mb-5">Checkbox</p>
+        {%- render 'ra-checkbox', id: 'checkobx_1', style: 'classic', label: 'Title' -%}
+        <p class="font-secondary text-[10px]">Default</p>
+        <br>
+        <div class="ra-choice ra-choice ra-choice--checkbox ra-choice--classic ra-choice--checkbox-classic">
+          <input class="ra-choice__input" name="" value="" id="checkobx_2_title" type="checkbox">
+          <label class="ra-choice__container set--sibling-deep-focus " for="checkobx_2_title">
+            <div class="ra-choice__checkmark set--inherit-focus hover">
+              <span aria-hidden="true" class="ra-choice__checkmark-icon ra-icon ra-icon--sm">
+                <svg class="ra-icon ra-icon--xs">
+                  <use xlink:href="#check"></use>
                 </svg>
               </span>
+            </div>
+            <span class="ra-choice__label">Title</span>
+          </label>  
+        </div>
+        <p class="font-secondary text-[10px]">Hover</p>
+        <br>
+        {%- render 'ra-checkbox', id: 'checkobx_2', style: 'classic', label: 'Title', checked: true -%}
+        <p class="font-secondary text-[10px]">Selected</p>
+        <br>
+        <div class="ra-choice ra-choice ra-choice--checkbox ra-choice--classic ra-choice--checkbox-classic">
+          <input class="ra-choice__input" name="" value="" id="checkobx_3_title" type="checkbox">
+          <label class="ra-choice__container set--sibling-deep-focus " for="checkobx_3_title">
+            <div class="ra-choice__checkmark set--inherit-focus focus">
+              <span aria-hidden="true" class="ra-choice__checkmark-icon ra-icon ra-icon--sm">
+                <svg class="ra-icon ra-icon--xs">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+            </div>
+            <span class="ra-choice__label">Title</span>
+          </label>  
+        </div>
+        <p class="font-secondary text-[10px]">Focused</p>
+        <br />
+        {%- render 'ra-checkbox', id: 'checkobx_2', style: 'classic', label: 'Title', disabled: true -%}
+        <p class="font-secondary text-[10px]">Disabled</p>
+      </div>
+
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mt-10 mb-5">Radio</p>
+        {%- render 'ra-radio', label: 'Title', id: 'default_radio' -%}
+        <p class="font-secondary text-[10px]">Default</p>
+        <br>
+        <div class="ra-choice ra-choice--radio ra-choice--classic ra-choice--radio-classic">
+          <input id="default_radio_default" type="radio" class="ra-choice__input">
+          <label for="default_radio_default" class="ra-choice__label-container ra-choice__container set--sibling-deep-focus">
+            <div class="ra-choice__checkmark set--inherit-focus hover">
+              <span class="ra-choice__checkmark-icon"></span>
+            </div>
+            <span class="ra-choice__label">Title</span>
+          </label>
+        </div>
+        <p class="font-secondary text-[10px]">Hover</p>
+        <br>
+        {%- render 'ra-radio', label: 'Title', id: 'checked_radio', checked: true -%}
+        <p class="font-secondary text-[10px]">Selected</p>
+        <br>
+        {%- render 'ra-radio', label: 'Title', id: 'disabled_radio', disabled: true -%}
+        <p class="font-secondary text-[10px]">Disabled</p>
+        <br>
+        <div class="ra-choice ra-choice--radio ra-choice--classic ra-choice--radio-classic">
+          <input id="default_radio_default" type="radio" class="ra-choice__input">
+          <label for="default_radio_default" class="ra-choice__label-container ra-choice__container set--sibling-deep-focus">
+            <div class="ra-choice__checkmark set--inherit-focus focus">
+              <span class="ra-choice__checkmark-icon"></span>
+            </div>
+            <span class="ra-choice__label">Title</span>
+          </label>
+        </div>
+        <p class="font-secondary text-[10px]">Focus</p>
+      </div>
+
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mt-10 mb-5">Toggle</p>
+        {%- render 'ra-checkbox', id: 'toggle_1', style: 'toggle', label: 'Title' -%}
+        <p class="font-secondary text-[10px]">Default</p>
+        <br>
+        <div class="ra-choice ra-choice ra-choice--checkbox ra-choice--toggle ra-choice--checkbox-toggle">
+          <input class="ra-choice__input" name="" value="" id="toggle_1_default" type="checkbox">
+          <label class="ra-choice__container set--sibling-deep-focus " for="toggle_1_default">
+            <div class="ra-choice__checkmark set--inherit-focus hover">
+              <span aria-hidden="true" class="ra-choice__checkmark-icon ra-icon ra-icon--sm">
+                <svg class="ra-icon ra-icon--xs">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+            </div>
+            <span class="ra-choice__label">Title</span>
+          </label>
+        </div>
+        <p class="font-secondary text-[10px]">Hover</p>
+        <br>
+        {%- render 'ra-checkbox', id: 'toggle_2', style: 'toggle', label: 'Title', checked: true -%}
+        <p class="font-secondary text-[10px]">Selected</p>
+        <br>
+        <div class="ra-choice ra-choice ra-choice--checkbox ra-choice--toggle ra-choice--checkbox-toggle">
+          <input class="ra-choice__input" name="" value="" id="toggle_1_default" type="checkbox">
+          <label class="ra-choice__container set--sibling-deep-focus " for="toggle_1_default">
+            <div class="ra-choice__checkmark set--inherit-focus focus">
+              <span aria-hidden="true" class="ra-choice__checkmark-icon ra-icon ra-icon--sm">
+                <svg class="ra-icon ra-icon--xs">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+            </div>
+            <span class="ra-choice__label">Title</span>
+          </label>
+        </div>
+        <p class="font-secondary text-[10px]">Focused</p>
+        <br>
+        {%- render 'ra-checkbox', id: 'toggle_2', style: 'toggle', label: 'Title', disabled: true -%}
+        <p class="font-secondary text-[10px]">Disabled</p>
+      </div>
+
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mt-10 mb-5">QTY Selector</p>
+        {%- render 'ra-quantity-selector', value: 1, style: 'primary' -%}
+
+      </div>
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mt-10 mb-5">QTY Dropdown</p>
+        <div class="w-[56px]">
+          <div aria-label="Quantity" class="ra-quantity-selector ra-quantity-selector--dropdown">
+            <div class="ra-input ra-select ra-quantity-selector__dropdown is-selected">
+              <div class="ra-input__wrapper">
+                <select
+                  id=""
+                  name=""
+                  class="ra-input__control ra-select__control"
+                >
+                  <option
+                    tabindex="0"
+                    class="ra-select__option"
+                    value="1"
+                  >
+                    1
+                  </option>
+                  <option
+                    tabindex="0"
+                    class="ra-select__option"
+                    value="2"
+                  >
+                    2
+                  </option>
+                  <option
+                    tabindex="0"
+                    class="ra-select__option"
+                    value="3"
+                  >
+                    3
+                  </option>
+                </select>
+                <span aria-hidden="true" class="ra-select__arrow ra-icon ra-icon--md">
+                  <svg viewBox="0 0 20 13" class="ra-icon-path">
+                    <g fill="none">
+                      <path d="M17.65.316 10 7.95 2.35.316 0 2.666l10 10 10-10-2.35-2.35Z" fill="currentColor"></path>
+                    </g>
+                  </svg>
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <hr class="border my-20">
+    {%- comment -%}
+      Breadcrumbs
+    {%- endcomment -%}
+    <div id="breadcrumbs" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Breadcrumbs</div>
+    <div class="mb-4">
+      <nav class="ra-breadcrumbs ra-breadcrumbs--wrap">
+        <ol class="ra-breadcrumbs__list">
+          <li class="ra-breadcrumbs__list-item" aria-current="page">
+            <a class="ra-breadcrumbs__breadcrumb">
+              Default Breadcrumb
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+    
+    <div>
+      <nav class="ra-breadcrumbs ra-breadcrumbs--wrap">
+        <ol class="ra-breadcrumbs__list">
+          <li class="ra-breadcrumbs__list-item ra-breadcrumbs__list-item--current" aria-current="page">
+            <a class="ra-breadcrumbs__breadcrumb ra-breadcrumbs__breadcrumb--current">
+              Active Breadcrumb
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <hr class="border my-20">
+    {%- comment -%}
+      Badge
+    {%- endcomment -%}
+    <div id="badges" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Base Badges</div>
     <div class="grid gap-6 grid-cols-3">
       <div>
-        <p class="text-h5 mt-10 mb-5">Checkbox</p>
-        {%- render 'ra-checkbox', id: 'checkobx_1', style: 'classic', label: 'default' -%}
-        <br>
-        {%- render 'ra-checkbox', id: 'checkobx_2', style: 'classic', label: 'checked', checked: true -%}
-        <br>
-        {%- render 'ra-checkbox', id: 'checkobx_2', style: 'classic', label: 'disabled', disabled: true -%}
-        <br>
-        {%- render 'ra-checkbox',
-          id: 'checkobx_2',
-          style: 'classic',
-          label: 'message',
-          message: 'This is info message.'
-        -%}
+        <div class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-5">Base</div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Sale', size: 'md', style: 'primary' %}
+          <p class="font-secondary text-[10px]">Primary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'New', size: 'md', style: 'secondary' %}
+          <p class="font-secondary text-[10px]">Secondary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Out Of Stock', size: 'md', style: 'tertiary' %}
+          <p class="font-secondary text-[10px]">Tertiary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Best Seller', size: 'md', style: 'success' %}
+          <p class="font-secondary text-[10px]">Success</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Bundle', size: 'md', style: 'warning' %}
+          <p class="font-secondary text-[10px]">Warning</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Bundle', size: 'md', style: 'danger' %}
+          <p class="font-secondary text-[10px]">Danger</p>
+        </div>
       </div>
+
       <div>
-        <p class="text-h5 mt-10 mb-5">Toggle</p>
-        {%- render 'ra-checkbox', id: 'toggle_1', style: 'toggle', label: 'default' -%}
-        <br>
-        {%- render 'ra-checkbox', id: 'toggle_2', style: 'toggle', label: 'checked', checked: true -%}
-        <br>
-        {%- render 'ra-checkbox', id: 'toggle_2', style: 'toggle', label: 'disabled', disabled: true -%}
-        <br>
-        {%- render 'ra-checkbox',
-          id: 'toggle_2',
-          style: 'toggle',
-          label: 'message',
-          message: 'This is info message.'
-        -%}
+        <div class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-5">Leading Icon</div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Sale', size: 'md', style: 'primary', icon: 'circle-check', icon_pos: 'left' %}
+          <p class="font-secondary text-[10px]">Primary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'New', size: 'md', style: 'secondary', icon: 'circle-check', icon_pos: 'left' %}
+          <p class="font-secondary text-[10px]">Secondary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Out Of Stock', size: 'md', style: 'tertiary', icon: 'circle-check', icon_pos: 'left' %}
+          <p class="font-secondary text-[10px]">Tertiary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Best Seller', size: 'md', style: 'success', icon: 'circle-check', icon_pos: 'left' %}
+          <p class="font-secondary text-[10px]">Success</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Bundle', size: 'md', style: 'warning', icon: 'circle-check', icon_pos: 'left' %}
+          <p class="font-secondary text-[10px]">Warning</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Bundle', size: 'md', style: 'danger', icon: 'circle-check', icon_pos: 'left' %}
+          <p class="font-secondary text-[10px]">Danger</p>
+        </div>
       </div>
+
       <div>
-        <p class="text-h5 mt-10 mb-5">Radio</p>
-        {%- render 'ra-radio', label: 'default', id: 'default_radio' -%}
-        <br>
-        {%- render 'ra-radio', label: 'checked', id: 'checked_radio', checked: true -%}
-        <br>
-        {%- render 'ra-radio', label: 'disabled', id: 'disabled_radio', disabled: true -%}
-        <br>
-        {%- render 'ra-radio', label: 'message', id: 'message_radio', message: 'This is info message.' -%}
+        <div class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-5">Trailing Icon</div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Sale', size: 'md', style: 'primary', icon: 'circle-check', icon_pos: 'right' %}
+          <p class="font-secondary text-[10px]">Primary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'New', size: 'md', style: 'secondary', icon: 'circle-check', icon_pos: 'right' %}
+          <p class="font-secondary text-[10px]">Secondary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Out Of Stock', size: 'md', style: 'tertiary', icon: 'circle-check', icon_pos: 'right' %}
+          <p class="font-secondary text-[10px]">Tertiary</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Best Seller', size: 'md', style: 'success', icon: 'circle-check', icon_pos: 'right' %}
+          <p class="font-secondary text-[10px]">Success</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Bundle', size: 'md', style: 'warning', icon: 'circle-check', icon_pos: 'right' %}
+          <p class="font-secondary text-[10px]">Warning</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: 'Bundle', size: 'md', style: 'danger', icon: 'circle-check', icon_pos: 'right' %}
+          <p class="font-secondary text-[10px]">Danger</p>
+        </div>
       </div>
     </div>
+
+    {%- comment -%}
+      Badge
+    {%- endcomment -%}
+    <div class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Notify Badges</div>
+    <div class="flex">
+      <div class="w-1/4">
+        <div class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-5">Number - Large</div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'lg', style: 'default', rounded: true %}
+          <p class="font-secondary text-[10px]">Primary - 900</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'lg', style: 'warning', rounded: true %}
+          <p class="font-secondary text-[10px]">Secondary - 800</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'lg', style: 'danger', rounded: true %}
+          <p class="font-secondary text-[10px]">Greyscale - 900</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'lg', style: 'success', rounded: true %}
+          <p class="font-secondary text-[10px]">Tertiary - 300</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'lg', style: 'hovered', rounded: true %}
+          <p class="font-secondary text-[10px]">Tertiary - 800</p>
+        </div>
+      </div>
+      <div class="w-1/4">
+        <div class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-5">Icon - Large</div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'lg', style: 'default', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Default</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'lg', style: 'warning', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Warning </p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'lg', style: 'danger', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Danger</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'lg', style: 'success', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Success</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'lg', style: 'hovered', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Hovered</p>
+        </div>
+      </div>
+      <div class="w-1/4">
+        <div class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-5">Number - Medium</div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'md', style: 'default', rounded: true, no_padding: true %}
+          <p class="font-secondary text-[10px]">Default</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'md', style: 'warning', rounded: true, no_padding: true %}
+          <p class="font-secondary text-[10px]">Warning </p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'md', style: 'danger', rounded: true, no_padding: true %}
+          <p class="font-secondary text-[10px]">Danger</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'md', style: 'success', rounded: true, no_padding: true %}
+          <p class="font-secondary text-[10px]">Success</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', label: '2', size: 'md', style: 'hovered', rounded: true, no_padding: true %}
+          <p class="font-secondary text-[10px]">Hovered</p>
+        </div>
+      </div>
+      <div class="w-1/4">
+        <div class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-5">Icon - Medium</div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'md', style: 'default', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Default</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'md', style: 'warning', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Warning </p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'md', style: 'danger', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Danger</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'md', style: 'success', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Success</p>
+        </div>
+        <div class="mb-5">
+          {% render 'ra-badge', size: 'md', style: 'hovered', icon: 'circle-check', rounded: true %}
+          <p class="font-secondary text-[10px]">Hovered</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="border my-20">
+    {%- comment -%}
+      Dividers
+    {%- endcomment -%}
+    <div id="dividers" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Dividers</div>
+    <div class="grid gap-6 grid-cols-4">
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Dark</p>
+        <hr class="border border-x-0 border-b-0 border-tertiary-900">
+        <p class="font-secondary text-e10 mt-2">Tertiary - 900</p>
+      </div>
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Medium - Dark</p>
+        <hr class="border border-x-0 border-b-0 border-tertiary-800">
+        <p class="font-secondary text-e10 mt-2">Tertiary - 800</p>
+      </div>
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Medium - Light</p>
+        <hr class="border border-x-0 border-b-0 border-tertiary-700">
+        <p class="font-secondary text-e10 mt-2">Tertiary - 700</p>
+      </div>
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Light</p>
+        <hr class="border border-x-0 border-b-0 border-tertiary-600">
+        <p class="font-secondary text-e10 mt-2">Tertiary - 600</p>
+      </div>
+    </div>
+    {%- comment -%}
+      Borders
+    {%- endcomment -%}
+    <div class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Borders</div>
+    <div class="grid gap-6 grid-cols-4">
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Default</p>
+        <div class="border border-x-0 border-b-0 border-grey-300"></div>
+        <p class="font-secondary text-e10 mt-2">Greyscale - 300</p>
+      </div>
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Active/Hovered</p>
+        <hr class="border border-x-0 border-b-0 border-grey-900">
+        <p class="font-secondary text-e10 mt-2">Greyscale - 900</p>
+      </div>
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Disabled</p>
+        <hr class="border border-x-0 border-b-0 border-grey-700">
+        <p class="font-secondary text-e10 mt-2">Greyscale - 700</p>
+      </div>
+      <div>
+        <p class="font-secondary text-e15 text-grey-700 font-semibold uppercase mb-4">Danger</p>
+        <hr class="border border-x-0 border-b-0 border-red">
+        <p class="font-secondary text-e10 mt-2">Utility - Red</p>
+      </div>
+    </div>
+
     <hr class="border my-20">
     {%- comment -%}
       Icons
     {%- endcomment -%}
-    <h4 id="icons" class="text-h4 mt-10 mb-5">Icons</h4>
-    <p class="mb-2">
+    <div id="icons" class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Utility</div>
+    <p class="mb-6">
       Icons compile using Gulp. You can find all icon files in
       <code>src/THEME_FOLDER/icons/*.svg</code>. Icons are injected into
       <code>src/THEME_FOLDER/icon-store.liquid</code>
       which is rendered in
       <code>src/THEME_FOLDER/shopify/layout/theme.liquid</code>.
     </p>
+
     <div class="grid gap-6 grid-cols-4">
       <div>
-        <p class="mt-10 mb-8">
-          small <br>
-          <span class="text-xs">size: 'sm'</span>
-        </p>
-        {%- render 'ra-icon', icon: 'account', size: 'sm' -%}
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Circle Check</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'circle-check', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'circle-check', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'circle-check', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'circle-check', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Right Arrow</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'right-arrow', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'right-arrow', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'right-arrow', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'right-arrow', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Left Arrow</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'left-arrow', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'left-arrow', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'left-arrow', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'left-arrow', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Plus</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'plus', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'plus', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'plus', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'plus', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Minus</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'minus', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'minus', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'minus', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'minus', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">X</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'close', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'close', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'close', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'close', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Check</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'check', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'check', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'check', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'check', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Chevron Down</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-down', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-down', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-down', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-down', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Chevron Right</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-right', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-right', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-right', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-right', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Chevron Left</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-left', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-left', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-left', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-left', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div>
-        <p class="mt-10 mb-8">
-          medium <br>
-          <span class="text-xs">size: 'md'</span>
-        </p>
-        {%- render 'ra-icon', icon: 'account', size: 'md' -%}
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Chevron Up</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-up', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-up', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-up', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'chevron-up', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Search</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'search', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'search', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'search', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'search', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Account Figure</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'account', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'account', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'account', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'account', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Heart</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'heart', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'heart', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'heart', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'heart', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Shopping Bag</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'cart', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'cart', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'cart', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'cart', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Circle Question</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'circle-question', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'circle-question', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'circle-question', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'circle-question', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Community</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'community', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'community', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'community', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'community', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Tv Screen</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'tv-screen', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'tv-screen', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'tv-screen', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'tv-screen', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Box Puller</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'box-puller', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'box-puller', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'box-puller', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'box-puller', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Review Star - Border</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'star-border', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-border', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-border', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-border', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div>
-        <p class="mt-10 mb-8">
-          large <br>
-          <span class="text-xs">size: 'lg'</span>
-        </p>
-        {%- render 'ra-icon', icon: 'account', size: 'lg' -%}
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Review Star Half</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'star-half', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-half', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-half', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-half', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Review Star Full</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'star-filled', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-filled', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-filled', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'star-filled', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Backlash</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'divider-slash', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'divider-slash', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'divider-slash', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'divider-slash', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Placeholder</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'placeholder', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'placeholder', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'placeholder', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'placeholder', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Hamburger</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'hamburger', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'hamburger', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'hamburger', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'hamburger', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Filter</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'filter', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'filter', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'filter', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'filter', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Trash</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'trash', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'trash', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'trash', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'trash', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Thumbs Down</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-down', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-down', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-down', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-down', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">thumbs up</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-up', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-up', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-up', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'thumb-up', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Comment</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'comment', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'comment', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'comment', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'comment', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div>
-        <p class="mt-10 mb-8">
-          x-large <br>
-          <span class="text-xs">size: 'xl'</span>
-        </p>
-        {%- render 'ra-icon', icon: 'account', size: 'xl' -%}
-      </div>
-      <div>
-        <p class="mt-10 mb-8">
-          custom size <br>
-          <span class="text-xs">width: 50px, height: 50px</span>
-        </p>
-        {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px' -%}
-      </div>
-      <div>
-        <p class="mt-10 mb-8">
-          custom color <br>
-          <span class="text-xs">#C4952B</span>
-        </p>
-        {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px', color: '#C4952B' -%}
-      </div>
-      <div>
-        <p class="mt-10 mb-8">
-          custom color <br>
-          <span class="text-xs">var(--color-primary-900)</span>
-        </p>
-        {%- render 'ra-icon', icon: 'account', width: '50px', height: '50px', color: 'var(--color-primary-900)' -%}
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Continuous Arrows</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'loading', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'loading', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'loading', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'loading', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Tag</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'tag', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'tag', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'tag', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'tag', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Curly Opening Quote</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'quote-open', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'quote-open', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'quote-open', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'quote-open', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Curly Closing Quote</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'quote-close', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'quote-close', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'quote-close', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'quote-close', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8">
+          <p class="font-secondary text-e15 font-semibold uppercase mb-2">Lock</p>
+          <div class="flex items-baseline gap-6">
+            <div>
+              {%- render 'ra-icon', icon: 'lock', size: 'sm' -%}
+              <p class="font-tertiary text-[9px] text-center">18</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'lock', size: 'md' -%}
+              <p class="font-tertiary text-[9px] text-center">24</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'lock', size: 'lg' -%}
+              <p class="font-tertiary text-[9px] text-center">32</p>
+            </div>
+            <div>
+              {%- render 'ra-icon', icon: 'lock', size: 'xl' -%}
+              <p class="font-tertiary text-[9px] text-center">40</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <hr class="border my-20">
+
     {%- comment -%}
-      Accordions
+      Icons
     {%- endcomment -%}
-    <h4 id="accordions" class="text-h4 mt-10 mb-5">Accordions</h4>
-    <p class="mt-8 text-h5">no icon</p>
-    <div class="grid gap-6">
-      {% render 'ra-accordion',
-        item1_title: 'Heading 1',
-        item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
-        item2_title: 'Heading 2',
-        item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
-      %}
-
-      <p class="mt-8 text-h5">with icon</p>
-      {% render 'ra-accordion',
-        show_icon: true,
-        item1_title: 'Heading 1',
-        item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
-        item2_title: 'Heading 2',
-        item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
-      %}
-
-      <p class="mt-8 text-h5">allow multiple items open</p>
-      {% render 'ra-accordion',
-        show_icon: true,
-        multiple_open: true,
-        item1_title: 'Heading 1',
-        item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
-        item2_title: 'Heading 2',
-        item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
-      %}
-
-      <p class="mt-8 text-h5">first item open</p>
-      {% render 'ra-accordion',
-        show_icon: true,
-        first_item_open: true,
-        item1_title: 'Heading 1',
-        item1_content: 'Content for <strong>heading 1</strong> as <em>HTML</em>.',
-        item2_title: 'Heading 2',
-        item2_content: 'Content for <strong>heading 2</strong> as <em>HTML</em>.'
-      %}
+    <div class="font-secondary text-[25px] font-semibold uppercase mt-10 mb-5">Social</div>
+    <div class="mb-8">
+      <p class="font-secondary text-e15 font-semibold uppercase mb-2">Twitter</p>
+      <div class="flex items-baseline gap-6">
+        <div>
+          {%- render 'ra-icon', icon: 'twitter', size: 'sm' -%}
+          <p class="font-tertiary text-[9px] text-center">18</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'twitter', size: 'md' -%}
+          <p class="font-tertiary text-[9px] text-center">24</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'twitter', size: 'lg' -%}
+          <p class="font-tertiary text-[9px] text-center">32</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'twitter', size: 'xl' -%}
+          <p class="font-tertiary text-[9px] text-center">40</p>
+        </div>
+      </div>
     </div>
-    <hr class="border my-20">
-    {%- comment -%}
-      Breadcrumbs
-    {%- endcomment -%}
-    <h4 id="breadcrumbs" class="text-h4 mt-10 mb-5">Breadcrumbs</h4>
-    {% render 'ra-breadcrumbs', divider: 'slash' %}
-    <hr class="border my-20">
+    <div class="mb-8">
+      <p class="font-secondary text-e15 font-semibold uppercase mb-2">Facebook</p>
+      <div class="flex items-baseline gap-6">
+        <div>
+          {%- render 'ra-icon', icon: 'facebook', size: 'sm' -%}
+          <p class="font-tertiary text-[9px] text-center">18</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'facebook', size: 'md' -%}
+          <p class="font-tertiary text-[9px] text-center">24</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'facebook', size: 'lg' -%}
+          <p class="font-tertiary text-[9px] text-center">32</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'facebook', size: 'xl' -%}
+          <p class="font-tertiary text-[9px] text-center">40</p>
+        </div>
+      </div>
+    </div>
+    <div class="mb-8">
+      <p class="font-secondary text-e15 font-semibold uppercase mb-2">Instagram</p>
+      <div class="flex items-baseline gap-6">
+        <div>
+          {%- render 'ra-icon', icon: 'instagram', size: 'sm' -%}
+          <p class="font-tertiary text-[9px] text-center">18</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'instagram', size: 'md' -%}
+          <p class="font-tertiary text-[9px] text-center">24</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'instagram', size: 'lg' -%}
+          <p class="font-tertiary text-[9px] text-center">32</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'instagram', size: 'xl' -%}
+          <p class="font-tertiary text-[9px] text-center">40</p>
+        </div>
+      </div>
+    </div>
+    <div class="mb-8">
+      <p class="font-secondary text-e15 font-semibold uppercase mb-2">Spotify</p>
+      <div class="flex items-baseline gap-6">
+        <div>
+          {%- render 'ra-icon', icon: 'spotify', size: 'sm' -%}
+          <p class="font-tertiary text-[9px] text-center">18</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'spotify', size: 'md' -%}
+          <p class="font-tertiary text-[9px] text-center">24</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'spotify', size: 'lg' -%}
+          <p class="font-tertiary text-[9px] text-center">32</p>
+        </div>
+        <div>
+          {%- render 'ra-icon', icon: 'spotify', size: 'xl' -%}
+          <p class="font-tertiary text-[9px] text-center">40</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
     {%- comment -%}
       Scrollable
     {%- endcomment -%}
@@ -841,20 +3485,7 @@
     {% endcapture %}
     {% render 'ra-scrollable', expandLabel: 'EXPAND', content: scrollable_content, maxHeight: '4rem' %}
     <hr class="border my-20">
-    {%- comment -%}
-      Badge
-    {%- endcomment -%}
-    <h4 id="badges" class="text-h4 mt-10 mb-5">Badges</h4>
-    <div class="mb-5">
-      {% render 'ra-badge', label: 'Primary', size: 'md', style: 'primary' %}
-    </div>
-    <div class="mb-5">
-      {% render 'ra-badge', label: 'Secondary sm', size: 'sm', style: 'secondary' %}
-    </div>
-    <div class="mb-5">
-      {% render 'ra-badge', label: 'Tertiary Notification Lg', size: 'lg', style: 'tertiary', rounded: true %}
-    </div>
-    <hr class="border my-20">
+
     {%- comment -%}
       Icon Tile
     {%- endcomment -%}
@@ -865,44 +3496,41 @@
     {% assign link_url = section.settings.featured_product.url %}
 
     <div class="grid gap-6 grid-cols-2 mb-5">
-      {% render 'ra-icon-tile',
-        image: featured_image,
-        image_src: img_src,
-        image_alt: img_alt,
-        title: 'This is a Title',
-        description: "I'm not thinking about anything when I'm climbing.",
-        details_location: 'after',
-        stacked: true,
-        link_url: link_url,
-        link_text: 'Default',
-        horizontal_align: 'right'
-      %}
-      {% render 'ra-icon-tile',
-        image: featured_image,
-        image_src: img_src,
-        image_alt: img_alt,
-        image_width: 200,
-        title: 'This is a Title',
-        description: "I'm not thinking about anything when I'm climbing.",
-        stacked: false,
-        link_url: link_url,
-        link_text: 'Default',
-        horizontal_align: 'left',
-        horizontal_align_md: 'center',
-        vertical_align: 'bottom'
-      %}
+      {% render 'ra-icon-tile'
+       , image: featured_image,
+       image_src: img_src,
+       image_alt: img_alt,
+       title: 'This is a Title',
+       description: "I'm not thinking about anything when I'm climbing.",
+       details_location: 'after',
+       stacked: true,
+       link_url: link_url,
+       link_text: 'Default',
+       horizontal_align: 'right' %}
+      {% render 'ra-icon-tile'
+       , image: featured_image,
+       image_src: img_src,
+       image_alt: img_alt,
+       image_width: 200,
+       title: 'This is a Title',
+       description: "I'm not thinking about anything when I'm climbing.",
+       stacked: false,
+       link_url: link_url,
+       link_text: 'Default',
+       horizontal_align: 'left',
+       horizontal_align_md: 'center',
+       vertical_align: 'bottom' %}
     </div>
     <hr class="border my-20">
     {%- comment -%}
       Notification
     {%- endcomment -%}
     <h4 id="notification" class="text-h4 mt-10 mb-5">Notification</h4>
-    {%- render 'ra-notification',
-      icon: 'account',
+    {%- render 'ra-notification'
+      , icon: 'account',
       title: 'Account Notification',
       message: 'My account notification.',
-      class: 'ra-notification__icon'
-    -%}
+      class: 'ra-notification__icon' -%}
     <hr class="border my-20">
     {%- comment -%}
       Modal
@@ -926,9 +3554,9 @@
     {%- endcomment -%}
     <h4 id="tabs" class="text-h4 mt-10 mb-5">Tabs</h4>
     {% capture tabs %}
-        <button class="ra-tab__button" data-tab="tab1">Tab 1</button>
-        <button class="ra-tab__button" data-tab="tab2">Tab 2</button>
-        <button class="ra-tab__button" data-tab="tab3">Tab 3</button>
+      <button class="ra-tab__button" data-tab="tab1">Tab 1</button>
+      <button class="ra-tab__button" data-tab="tab2">Tab 2</button>
+      <button class="ra-tab__button" data-tab="tab3">Tab 3</button>
     {% endcapture %}
     {% capture tabContent %}
       <div class="ra-tab__panel" data-tab-target="tab1">
@@ -957,8 +3585,14 @@
 
     <h4 id="content-tiles" class="text-h4 mt-10 mb-5">Content Tiles</h4>
     <div class="max-w-screen-2xl grid grid-cols-4 gap-2">
+
+      {% if content_image_1 != blank %}
+        {% assign content_tile_slot_1 = content_image_1 %}
+      {% else %}
+        {% assign content_tile_slot_1 = section.settings.featured_product.featured_image %}
+      {% endif %}
       {% render 'ra-content-tile',
-        image: section.settings.featured_product.featured_image,
+        image: content_tile_slot_1,
         alt: img_alt,
         title: 'Content Tile Overlay',
         description: "I'm not thinking about anything when I'm climbing.",
@@ -968,8 +3602,15 @@
         width: 400,
         height: 300
       %}
-      {% render 'ra-content-tile',
-        image: section.settings.featured_product.featured_image,
+
+      {% if content_image_2 != blank %}
+        {% assign content_tile_slot_2 = content_image_2 %}
+      {% else %}
+        {% assign content_tile_slot_2 = section.settings.featured_product.featured_image %}
+      {% endif %}
+
+      {% render 'ra-content-tile', 
+        image: content_image_2,
         alt: img_alt,
         title: 'Content Tile Text After',
         description: "I'm not thinking about anything when I'm climbing.",
@@ -979,10 +3620,17 @@
         link_text_2: 'Secondary',
         details_location: 'after',
         width: 400,
-        height: 300
+        height: 300 
       %}
+
+      {% if content_image_3 != blank %}
+        {% assign content_tile_slot_3 = content_image_3 %}
+      {% else %}
+        {% assign content_tile_slot_3 = section.settings.featured_product.featured_image %}
+      {% endif %}
+
       {% render 'ra-content-tile',
-        image: section.settings.featured_product.featured_image,
+        image: content_tile_slot_3,
         alt: img_alt,
         title: 'Content Tile Text Before',
         description: "Two CTA's",
@@ -994,16 +3642,16 @@
         width: 400,
         height: 300
       %}
+
       {%
-        render 'ra-content-tile',
-        video: video_url,
-        alt: img_alt,
-        title: 'Content Tile w/ Video',
-        description: "Options for 1, 2 or no CTA's",
-        width: 400,
-        height: 300,
-        details_location: 'after',
-      %}
+         render 'ra-content-tile',
+       video: video_url,
+       alt: img_alt,
+       title: 'Content Tile w/ Video',
+       description: "Options for 1, 2 or no CTA's",
+       width: 400,
+       height: 300,
+       details_location: 'after', %}
     </div>
     <hr class="border my-20">
     <h4 id="content-tiles-video" class="text-h4 mt-10 mb-5">Product Tiles</h4>
@@ -1017,28 +3665,11 @@
         index: 0
       %}
       {% render 'ra-product-tile',
-        product: product,
+        product: product_2,
         atc_button: true,
         atc_label: 'Add to Cart',
         atc_style: 'secondary',
         index: 1
-      %}
-      {% render 'ra-product-tile',
-        product: product,
-        atc_button: true,
-        atc_label: 'Add to Cart',
-        atc_style: 'primary',
-        wishlist: true,
-        wishlist_style: 'secondary',
-        font_color: 'purple',
-        index: 2
-      %}
-      {% render 'ra-product-tile',
-        product: product,
-        atc_button: true,
-        atc_label: 'Add to Cart',
-        atc_style: 'secondary',
-        index: 3
       %}
     </div>
     <hr class="border my-20">
@@ -1046,24 +3677,41 @@
 </section>
 
 {% schema %}
-{
-  "name": "UI-Kit Settings",
-  "settings": [
-    {
-      "type": "product",
-      "id": "featured_product",
-      "label": "Featured Product"
-    },
-    {
-      "type": "product",
-      "id": "featured_product_2",
-      "label": "Featured Product 2"
-    },
-    {
-      "type": "text",
-      "id": "video_url",
-      "label": "A Shopify-hosted video"
-    }
-  ]
-}
+  {
+    "name": "UI-Kit Settings",
+    "settings": [
+      { "type": "header", "content": "Content Tiles Images" },
+      {
+        "type": "image_picker",
+        "id": "content_tile_image_1",
+        "label": "Content Tile Image 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "content_tile_image_2",
+        "label": "Content Tile Image 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "content_tile_image_3",
+        "label": "Content Tile Image 3"
+      },
+      { "type": "header", "content": "Product Tiles" },
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Featured Product"
+      },
+      {
+        "type": "product",
+        "id": "featured_product_2",
+        "label": "Featured Product 2"
+      },
+      {
+        "type": "text",
+        "id": "video_url",
+        "label": "A Shopify-hosted video"
+      }
+    ]
+  }
 {% endschema %}

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getSearchParamsFromForm, updateURL } from "../utils/search-params";
-import { refreshReviewWidgets } from "../utils/vendors";
+import { getSearchParamsFromForm, updateURL } from "../utils/search-params.js";
+import { refreshReviewWidgets } from "../utils/vendors.js";
 export default class RaCollectionSort extends HTMLElement {
   constructor() {
     super();

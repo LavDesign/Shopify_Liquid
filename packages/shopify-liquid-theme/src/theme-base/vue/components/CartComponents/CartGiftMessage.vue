@@ -38,7 +38,7 @@
 
 <script setup>
 import { ref, watch, onMounted } from "vue";
-import { useCartStore } from "../../stores/cart";
+import { useCartStore } from "../../stores/cart.js";
 
 defineProps({
   message: {

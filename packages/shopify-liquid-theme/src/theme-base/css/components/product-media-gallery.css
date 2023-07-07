@@ -1,0 +1,20 @@
+.product-media-gallery {
+  --thumbnails-width: 0px;
+  --thumbnails-horizontal-gap: 0.75rem;
+  --modal-width: 1200px;
+
+  @media breakpoint(lg) {
+    --thumbnails-width: 5rem;
+  }
+
+
+  dialog {
+    background-color: transparent;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  dialog::backdrop {
+    background: transparentize($color: #000000, $amount: 0.35);
+  }
+}

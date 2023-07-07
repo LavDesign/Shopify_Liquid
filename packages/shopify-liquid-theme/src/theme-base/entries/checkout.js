@@ -1,4 +1,4 @@
 /**
  * Imports
  */
-import "../scss/checkout.scss";
+import "../css/checkout.css";

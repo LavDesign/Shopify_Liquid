@@ -1,17 +1,19 @@
 {% comment %}
 
 Props:
-video:      Shopify video object - Video Object from theme and section schema
-video_url:  Shopify video_url - Video asset url from Shopify video_url schema setting from either youtube or vimeo
-media:      Shopify media object - (Optional) Used only when referencing product media or file_reference metafield
-poster_url: String - (Optional) image to display before playback occurs on native video elements
-controls:   Boolean - (Default: false) Enable video controls
-autoplay:   Boolean - (Default: true) Enable playback as soon as the video is loaded
-muted:      Boolean - (Default: true) Disable any audio tracks on the video. Note: This must be set to true for autoplay to work on certain browsers.
-loop:       Boolean - (Default: true) Allow automatically restarting a video after it ends
-width:      Int - (Optional) video width
-lazyload:   Boolean - (Default: false) Determines whether videos loaded within iframes are loaded lazily
-class:      String - (Optional) Classes to add to element tag
+video:        Shopify video object - Video Object from theme and section schema
+video_url:    Shopify video_url - Video asset url from Shopify video_url schema setting from either youtube or vimeo
+media:        Shopify media object - (Optional) Used only when referencing product media or file_reference metafield
+poster_url:   String - (Optional) image to display before playback occurs on native video elements
+controls:     Boolean - (Default: false) Enable video controls
+autoplay:     Boolean - (Default: true) Enable playback as soon as the video is loaded
+muted:        Boolean - (Default: true) Disable any audio tracks on the video. Note: This must be set to true for autoplay to work on certain browsers.
+loop:         Boolean - (Default: true) Allow automatically restarting a video after it ends
+width:        Int - (Optional) video width
+height:       Int - (Optional) video height
+lazyload:     Boolean - (Default: false) Determines whether videos loaded within iframes are loaded lazily
+class:        String - (Optional) Classes to add to element tag
+video_class:  String - (Optional) Classes to add to video tag
 
 Usage:
 
@@ -65,6 +67,14 @@ autoplay: true
     assign width = width | append: 'x'
   endunless
 
+  # Height
+  assign height = height | default: '400'
+
+  # combines width + height if both are entered
+  if width != blank and height != blank
+    assign width = width | append: height
+  endif
+
   # Lazyloading -  default false
   if lazyload == true
     assign lazyload = 'lazy'
@@ -78,7 +88,7 @@ autoplay: true
   video (Video Object):
   Used when a video object is passed in from theme or section schema settings
   {% endcomment %}
-  {{- video | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url, loading: lazyload -}}
+  {{- video | video_tag: image_size: width, autoplay: autoplay, loop: loop, muted: muted, controls: controls, poster: poster_url, loading: lazyload, class: video_class -}}
 {%- elsif metaobject_video -%}
   {% comment %}
   metaobject_video comes from Metaobjects that contain media objects. They need to be handled separately.
@@ -120,18 +130,19 @@ autoplay: true
       title="{{ section.settings.description | escape }}"></iframe>
   {%- elsif video_url.type == 'vimeo' -%}
     {%- capture video_params -%}
-      &autoplay={{- autoplay -}}
-      &controls={{- controls -}}
-      &loop={{- loop -}}
-      &muted={{- muted -}}
+      ?loop={%- if loop -%}1{%- else -%}0{%- endif -%}
+      {%- if controls -%}{%- else -%}&byline=0&title=0&portrait=0{%- endif -%}
+      &muted={%- if muted -%}1{%- else -%}0{%- endif -%}
+      &autoplay={%- if autoplay -%}1{%- else -%}0{%- endif -%}
     {%- endcapture -%}
-
     <iframe
       src="https://player.vimeo.com/video/{{ video_url.id }}{{- video_params -}}"
       class="{{ class }}"
-      allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media"
+      allow="{%- if autoplay -%}autoplay;{%- endif -%} encrypted-media; fullscreen"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
       allowfullscreen
-      title="{{ section.settings.description | escape }}"></iframe>
+      title="{{ section.settings.description | escape }}">
+    </iframe>
   {%- endif -%}
 
 {%- elsif media -%}

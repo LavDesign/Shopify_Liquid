@@ -1,12 +1,14 @@
-const productRecommendationsSection = document.querySelector(
-  ".product-recommendations"
-);
+const productRecommendationsSections = document.querySelectorAll(".product-recommendations");
+
 const handleIntersection = (entries, observer) => {
+  const sectionID = entries[0].target.dataset.section;
+  const productRecSection = document.querySelector(
+    `[data-section='${sectionID}']`
+  );
   if (!entries[0].isIntersecting) return;
 
-  observer.unobserve(productRecommendationsSection);
-
-  const url = productRecommendationsSection.dataset.url;
+  observer.unobserve(productRecSection);
+  const url = productRecSection.dataset.url;
 
   fetch(url)
     .then((response) => response.text())
@@ -16,7 +18,7 @@ const handleIntersection = (entries, observer) => {
       const recommendations = html.querySelector(".product-recommendations");
 
       if (recommendations && recommendations.innerHTML.trim().length) {
-        productRecommendationsSection.innerHTML = recommendations.innerHTML;
+        productRecSection.innerHTML = recommendations.innerHTML;
       }
     })
     .catch((e) => {
@@ -24,16 +26,18 @@ const handleIntersection = (entries, observer) => {
     });
 };
 
-if (productRecommendationsSection) {
-  const observer = new IntersectionObserver(handleIntersection, {
-    rootMargin: "0px 0px 200px 0px",
-  });
+productRecommendationsSections.forEach((carousel) => {
+  if (carousel) {
+    const observer = new IntersectionObserver(handleIntersection, {
+      rootMargin: "0px 0px 200px 0px",
+    });
 
-  observer.observe(productRecommendationsSection);
+    observer.observe(carousel);
 
-  fetch(
-    window.location.origin +
-      window.Shopify.routes.root +
-      productRecommendationsSection.getAttribute("data-url")
-  ).then((response) => response.text());
-}
+    fetch(
+      window.location.origin +
+        window.Shopify.routes.root +
+        carousel.getAttribute("data-url")
+    ).then((response) => response.text());
+  }
+});

@@ -80,7 +80,7 @@
 
 <script setup>
 import { computed } from "vue";
-import { useCartStore } from "../../stores/cart";
+import { useCartStore } from "../../stores/cart.js";
 import { getSizedImageFromUrl } from "../../filters/image.js";
 import QuantityAdjuster from "../QuantityAdjuster.vue";
 import { dataRemoveFromCart } from "../datalayer/";
