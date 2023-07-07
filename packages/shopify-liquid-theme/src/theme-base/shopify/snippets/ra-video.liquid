@@ -133,6 +133,7 @@ autoplay: true
       ?loop={%- if loop -%}1{%- else -%}0{%- endif -%}
       {%- if controls -%}{%- else -%}&byline=0&title=0&portrait=0{%- endif -%}
       &muted={%- if muted -%}1{%- else -%}0{%- endif -%}
+      &autoplay={%- if autoplay -%}1{%- else -%}0{%- endif -%}
     {%- endcapture -%}
     <iframe
       src="https://player.vimeo.com/video/{{ video_url.id }}{{- video_params -}}"
