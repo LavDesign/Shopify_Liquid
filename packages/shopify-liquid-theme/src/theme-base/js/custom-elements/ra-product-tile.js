@@ -1,4 +1,5 @@
 import { money } from "../utils/money.js";
+import { getToken } from '@bva/ui-shared/helpers';
 
 export default class RaProductTile extends HTMLElement {
   constructor() {
@@ -19,7 +20,10 @@ export default class RaProductTile extends HTMLElement {
     this.productBadge = this.querySelector("[data-product-badge]");
 
     // Swatch Properties
-    this.swatchOverflowStyle = "scroll"; // expecting expand or scroll
+    this.breakpointPixelMD = getToken("breakpoints.px.md");
+    this.productTileBreakpoint;
+    this.overflowStyleDesktop = "arrow"; // expecting expand, scroll, or drag
+    this.overflowStyleMobile = "arrow";
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
     this.variantCarousel = this.querySelector("swiper-container");
@@ -28,9 +32,13 @@ export default class RaProductTile extends HTMLElement {
 
   connectedCallback() {
     this.setCurrentVariant(this.currentVariant);
+    this.productTileBreakpoint =
+      window.innerWidth > this.breakpointPixelMD ? "desktop" : "mobile";
     if (this.variantSwatches.length > 1) {
       this.updateCurrentVariant();
       this.initializeSwatches();
+      this.buildArrows();
+      this.buildViewMore();
     }
   }
 
@@ -43,7 +51,40 @@ export default class RaProductTile extends HTMLElement {
   }
 
   handleResize() {
-    if (this.swatchOverflowStyle === "expand") {
+    const newBreakpoint =
+      window.innerWidth > this.breakpointPixelMD ? "desktop" : "mobile";
+    if (this.productTileBreakpoint !== newBreakpoint) {
+      this.productTileBreakpoint = newBreakpoint;
+      // THIS IS WHERE WE CHECK SWATCH STYLES FOR DEVICES
+      if (newBreakpoint === "desktop") {
+        // We need to reset the experience
+        if (this.overflowStyleDesktop === "expand") {
+          // We display the expand experience
+
+        } else if (this.overflowStyleDesktop === "arrow") {
+          // we display the arrow experience
+          this.toggleArrows();
+
+        } else if (this.overflowStyleDesktop === "drag") {
+          // we use the drag experience
+
+        }
+      } else {
+        if (this.overflowStyleMobile === "expand") {
+          // We display the expand experience
+
+        } else if (this.overflowStyleMobile === "arrow") {
+          // we display the arrow experience
+
+        } else if (this.overflowStyleMobile === "drag") {
+          // we use the drag experience
+
+        }
+      }
+
+
+    }
+    if (this.overflowStyleDesktop === "expand") {
       this.displayViewMore();
     }
   }
@@ -73,12 +114,6 @@ export default class RaProductTile extends HTMLElement {
   }
 
   swatchOverflow() {
-    if (this.swatchOverflowStyle == "scroll") {
-      this.buildArrows();
-    } else if (this.swatchOverflowStyle == "expand") {
-      this.buildViewMore();
-      this.displayViewMore();
-    }
   }
 
   toggleViewMore(viewMore) {
@@ -105,7 +140,7 @@ export default class RaProductTile extends HTMLElement {
     const viewMore = document.createElement("div");
     viewMore.innerHTML = `
     <span data-count></span>+${"\u00A0"}more`;
-    viewMore.classList.add("product-tile__view-more");
+    viewMore.classList.add("product-tile__view-more", "hidden");
     viewMore.setAttribute("data-view-more", "");
     viewMore.addEventListener("click", () => this.toggleViewMore(viewMore));
     const viewLess = document.createElement("span");
@@ -156,7 +191,7 @@ export default class RaProductTile extends HTMLElement {
       const arrow = document.createElement("div");
       const arrow_background = document.createElement("span");
       arrow.prepend(arrow_background);
-      arrow.classList.add(`product-tile__arrow--${handle}`);
+      arrow.classList.add(`product-tile__arrow--${handle}`, "hidden");
       arrow.setAttribute("data-scroll-button", "");
       arrow.setAttribute(`data-scroll-${handle}`, "");
       if (handle === "left") {
@@ -176,6 +211,12 @@ export default class RaProductTile extends HTMLElement {
       }
       this.optionContainer.prepend(arrow);
     });
+  }
+
+  toggleArrows() {
+    const arrows = this.querySelectorAll("[data-scroll-button]");
+    arrows.forEach((arrow) => {})
+
   }
 
   updatePrice() {
