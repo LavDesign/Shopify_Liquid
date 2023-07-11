@@ -1,5 +1,5 @@
 import { money } from "../utils/money.js";
-import { getToken } from '@bva/ui-shared/helpers';
+import { getToken } from "@bva/ui-shared/helpers";
 
 export default class RaProductTile extends HTMLElement {
   constructor() {
@@ -22,7 +22,7 @@ export default class RaProductTile extends HTMLElement {
     // Swatch Properties
     this.breakpointPixelMD = getToken("breakpoints.px.md");
     this.productTileBreakpoint;
-    this.overflowStyleDesktop = "arrow"; // expecting expand, scroll, or drag
+    this.overflowStyleDesktop = "expand"; // expecting expand, scroll, or drag
     this.overflowStyleMobile = "arrow";
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
@@ -42,98 +42,46 @@ export default class RaProductTile extends HTMLElement {
     }
   }
 
-  initializeSwatches() {
-    this.swatchOverflow();
-    this.variantSwatches.forEach((option) => {
-      option.addEventListener("click", this.swatchClick.bind(this));
-    });
-    window.addEventListener("resize", this.handleResize.bind(this));
-  }
-
   handleResize() {
     const newBreakpoint =
       window.innerWidth > this.breakpointPixelMD ? "desktop" : "mobile";
     if (this.productTileBreakpoint !== newBreakpoint) {
       this.productTileBreakpoint = newBreakpoint;
-      // THIS IS WHERE WE CHECK SWATCH STYLES FOR DEVICES
-      if (newBreakpoint === "desktop") {
-        // We need to reset the experience
-        if (this.overflowStyleDesktop === "expand") {
-          // We display the expand experience
-
-        } else if (this.overflowStyleDesktop === "arrow") {
-          // we display the arrow experience
-          this.toggleArrows();
-
-        } else if (this.overflowStyleDesktop === "drag") {
-          // we use the drag experience
-
-        }
-      } else {
-        if (this.overflowStyleMobile === "expand") {
-          // We display the expand experience
-
-        } else if (this.overflowStyleMobile === "arrow") {
-          // we display the arrow experience
-
-        } else if (this.overflowStyleMobile === "drag") {
-          // we use the drag experience
-
-        }
-      }
-
-
+      this.toggleArrows();
+      this.toggleExpander();
     }
-    if (this.overflowStyleDesktop === "expand") {
+    if (
+      (this.overflowStyleDesktop === "expand" && newBreakpoint === "desktop") ||
+      (this.overflowStyleMobile === "expand" && newBreakpoint === "mobile")
+    ) {
       this.displayViewMore();
     }
   }
 
-  setCurrentVariant(variant) {
-    this.currentVariant = variant;
-  }
-
-  updateCurrentVariant() {
-    this.updateProductUrl();
-    this.updateImages();
-    this.updatePrice();
-    this.updateAttribute();
-    this.updateSwatch();
-    this.updateBadge();
-  }
-
-  swatchClick(e) {
-    const { optionPosition, optionValue } = e.target.dataset;
-    const newOptions = [...this.currentVariant.options];
-    newOptions[optionPosition - 1] = optionValue;
-    const newVariant = this.product.variants?.find((variant) =>
-      variant.options.every((value, index) => value === newOptions[index])
-    );
-    this.setCurrentVariant(newVariant);
-    this.updateCurrentVariant();
-  }
-
-  swatchOverflow() {
-  }
-
-  toggleViewMore(viewMore) {
-    this.variantCarousel.swiper.draggable = true;
-    this.variantCarousel.swiper.allowTouchMove = true;
-    const sibling = this.querySelector(`
-      [data-view-less]
-    `);
-    viewMore.classList.add("hidden");
-    sibling.classList.toggle("hidden");
-  }
-
-  toggleViewLess(viewLess) {
-    this.variantCarousel.swiper.draggable = false;
-    this.variantCarousel.swiper.allowTouchMove = false;
-    const sibling = this.querySelector(`
-      [data-view-more]
-    `);
-    sibling.classList.remove("hidden");
-    viewLess.classList.add("hidden");
+  toggleExpander() {
+    const viewMore = this.querySelector("[data-view-more]");
+    const viewLess = this.querySelector("[data-view-less]");
+    let hideExpander = false;
+    if (this.productTileBreakpoint === "desktop") {
+      if (this.overflowStyleDesktop === "expand") {
+        hideExpander = true;
+      } else {
+        hideExpander = false;
+      }
+    } else if (this.productTileBreakpoint === "mobile") {
+      if (this.overflowStyleMobile === "expand") {
+        hideExpander = true;
+      } else {
+        hideExpander = false;
+      }
+    }
+    if (hideExpander) {
+      viewMore.classList.remove("hidden");
+      viewLess.classList.add("hidden");
+    } else {
+      viewMore.classList.add("hidden");
+      viewLess.classList.add("hidden");
+    }
   }
 
   buildViewMore() {
@@ -142,14 +90,28 @@ export default class RaProductTile extends HTMLElement {
     <span data-count></span>+${"\u00A0"}more`;
     viewMore.classList.add("product-tile__view-more", "hidden");
     viewMore.setAttribute("data-view-more", "");
-    viewMore.addEventListener("click", () => this.toggleViewMore(viewMore));
+    viewMore.addEventListener("click", () => toggleViewMore());
     const viewLess = document.createElement("span");
     viewLess.innerText = "See Less";
     viewLess.classList.add("hidden", "product-tile__view-less");
     viewLess.setAttribute("data-view-less", "");
-    viewLess.addEventListener("click", () => this.toggleViewLess(viewLess));
+    viewLess.addEventListener("click", () => toggleViewLess());
     this.optionContainer.append(viewMore);
     this.optionContainer.append(viewLess);
+
+    const toggleViewMore = () => {
+      this.variantCarousel.swiper.draggable = true;
+      this.variantCarousel.swiper.allowTouchMove = true;
+      viewMore.classList.add("hidden");
+      viewLess.classList.toggle("hidden");
+    };
+
+    const toggleViewLess = () => {
+      this.variantCarousel.swiper.draggable = false;
+      this.variantCarousel.swiper.allowTouchMove = false;
+      viewMore.classList.remove("hidden");
+      viewLess.classList.add("hidden");
+    };
   }
 
   displayViewMore() {
@@ -173,7 +135,6 @@ export default class RaProductTile extends HTMLElement {
       }, []);
       this.querySelector("[data-count]").textContent =
         this.variantSwatches?.length - visibleChildren?.length;
-      viewMore.classList.remove("hidden");
     } else {
       viewMore.classList.add("hidden");
     }
@@ -204,7 +165,13 @@ export default class RaProductTile extends HTMLElement {
         })
       }
       this.variantCarousel?.addEventListener("fromedge", () => {
-        arrow.classList.remove("hidden");
+        if (
+          (this.productTileBreakpoint === "desktop" &&
+            this.overflowStyleDesktop === "arrow") ||
+          (this.productTileBreakpoint === "mobile" &&
+            this.overflowStyleMobile === "arrow")) {
+          arrow.classList.remove("hidden");
+        }
       });
       if (handle == "left") {
         arrow.classList.add("hidden");
@@ -215,9 +182,73 @@ export default class RaProductTile extends HTMLElement {
 
   toggleArrows() {
     const arrows = this.querySelectorAll("[data-scroll-button]");
-    arrows.forEach((arrow) => {})
+    let hideArrows = false;
 
+    if (this.productTileBreakpoint === "desktop") {
+      if (this.overflowStyleDesktop === "arrow") {
+        hideArrows = true;
+      }
+    } else if (this.productTileBreakpoint === "mobile") {
+      if (this.overflowStyleMobile === "arrow") {
+        hideArrows = true;
+      }
+    }
+    if (hideArrows) {
+      arrows.forEach((arrow) => {
+        if (
+          arrow.hasAttribute("data-scroll-left") &&
+          this.variantCarousel?.swiper?.isBeginning === false
+        ) {
+          arrow.classList.remove("hidden");
+        } else if (
+          arrow.hasAttribute("data-scroll-right") &&
+          this.variantCarousel?.swiper?.isEnd === false
+        ) {
+          arrow.classList.remove("hidden");
+        }
+      })
+    } else {
+      arrows.forEach((arrow) => arrow.classList.add("hidden"));
+    }
   }
+
+  // SWATCH FUNCTIONS
+  initializeSwatches() {
+    this.variantSwatches.forEach((option) => {
+      option.addEventListener("click", this.swatchClick.bind(this));
+    });
+    window.addEventListener("resize", this.handleResize.bind(this));
+    this.variantCarousel?.addEventListener("afterinit", () => {
+      this.toggleArrows();
+      this.toggleExpander();
+    });
+  }
+
+  setCurrentVariant(variant) {
+    this.currentVariant = variant;
+  }
+
+  updateCurrentVariant() {
+    this.updateProductUrl();
+    this.updateImages();
+    this.updatePrice();
+    this.updateAttribute();
+    this.updateSwatch();
+    this.updateBadge();
+  }
+
+  swatchClick(e) {
+    const { optionPosition, optionValue } = e.target.dataset;
+    const newOptions = [...this.currentVariant.options];
+    newOptions[optionPosition - 1] = optionValue;
+    const newVariant = this.product.variants?.find((variant) =>
+      variant.options.every((value, index) => value === newOptions[index])
+    );
+    this.setCurrentVariant(newVariant);
+    this.updateCurrentVariant();
+  }
+
+  // VARIANT CHANGE FUNCTIONS
 
   updatePrice() {
     if (this.currentVariant.compare_at_price) {
@@ -305,6 +336,8 @@ export default class RaProductTile extends HTMLElement {
       }
     });
   }
+
+  // HELPERS
 
   calculateGridGap() {
     return (
