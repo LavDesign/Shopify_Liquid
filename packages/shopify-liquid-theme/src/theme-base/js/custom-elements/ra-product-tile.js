@@ -61,26 +61,25 @@ export default class RaProductTile extends HTMLElement {
   toggleExpander() {
     const viewMore = this.querySelector("[data-view-more]");
     const viewLess = this.querySelector("[data-view-less]");
-    let hideExpander = false;
-    if (this.productTileBreakpoint === "desktop") {
-      if (this.overflowStyleDesktop === "expand") {
-        hideExpander = true;
-      } else {
-        hideExpander = false;
-      }
-    } else if (this.productTileBreakpoint === "mobile") {
-      if (this.overflowStyleMobile === "expand") {
-        hideExpander = true;
-      } else {
-        hideExpander = false;
-      }
-    }
-    if (hideExpander) {
+    if (
+      (this.productTileBreakpoint === "desktop" &&
+        this.overflowStyleDesktop === "expand") ||
+      (this.productTileBreakpoint === "mobile" &&
+        this.overflowStyleMobile === "expand")
+    ) {
       viewMore.classList.remove("hidden");
       viewLess.classList.add("hidden");
+      if (this.variantCarousel.swiper) {
+        this.variantCarousel.swiper.draggable = false;
+        this.variantCarousel.swiper.allowTouchMove = false;
+      }
     } else {
       viewMore.classList.add("hidden");
       viewLess.classList.add("hidden");
+      if (this.variantCarousel.swiper) {
+        this.variantCarousel.swiper.draggable = true;
+        this.variantCarousel.swiper.allowTouchMove = true;
+      }
     }
   }
 
