@@ -1,4 +1,5 @@
 import { money } from "../utils/money.js";
+import { getToken } from "@bva/ui-shared/helpers";
 
 export default class RaProductTile extends HTMLElement {
   constructor() {
@@ -8,6 +9,7 @@ export default class RaProductTile extends HTMLElement {
     this.currentVariant = this.product.variants?.find(
       (variant) => variant.id == this.getAttribute("data-current-variant")
     );
+
     // Properties that update on Variant Switch
     this.featuredImage = this.querySelector("[data-featured-image]");
     this.altImage = this.querySelector("[data-alt-image]");
@@ -18,35 +20,193 @@ export default class RaProductTile extends HTMLElement {
     this.productBadge = this.querySelector("[data-product-badge]");
 
     // Swatch Properties
-    this.swatchOverflowStyle = "expand"; // expecting expand or scroll
+    this.breakpointPixelMD = getToken("breakpoints.px.md");
+    this.productTileBreakpoint;
+    this.overflowStyleDesktop = "expand"; // expecting expand, arrow, or drag
+    this.overflowStyleMobile = "arrow";
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
-    this.variantSwatches = [...(this.variantOptions?.children || [])];
+    this.variantCarousel = this.querySelector("swiper-container");
+    this.variantSwatches = [...(this.variantCarousel?.children || [])];
   }
 
   connectedCallback() {
     this.setCurrentVariant(this.currentVariant);
+    this.productTileBreakpoint =
+      window.innerWidth > this.breakpointPixelMD ? "desktop" : "mobile";
     if (this.variantSwatches.length > 1) {
       this.updateCurrentVariant();
       this.initializeSwatches();
+      this.buildArrows();
+      this.buildViewMore();
     }
   }
 
+  handleResize() {
+    const newBreakpoint =
+      window.innerWidth > this.breakpointPixelMD ? "desktop" : "mobile";
+    if (this.productTileBreakpoint !== newBreakpoint) {
+      this.productTileBreakpoint = newBreakpoint;
+      this.toggleArrows();
+      this.toggleExpander();
+    }
+    if (
+      (this.overflowStyleDesktop === "expand" && newBreakpoint === "desktop") ||
+      (this.overflowStyleMobile === "expand" && newBreakpoint === "mobile")
+    ) {
+      this.displayViewMore();
+    }
+  }
+
+  toggleExpander() {
+    const viewMore = this.querySelector("[data-view-more]");
+    const viewLess = this.querySelector("[data-view-less]");
+    if (
+      (this.productTileBreakpoint === "desktop" &&
+        this.overflowStyleDesktop === "expand") ||
+      (this.productTileBreakpoint === "mobile" &&
+        this.overflowStyleMobile === "expand")
+    ) {
+      viewMore.classList.remove("hidden");
+      viewLess.classList.add("hidden");
+      if (this.variantCarousel.swiper) {
+        this.variantCarousel.swiper.draggable = false;
+        this.variantCarousel.swiper.allowTouchMove = false;
+      }
+    } else {
+      viewMore.classList.add("hidden");
+      viewLess.classList.add("hidden");
+      if (this.variantCarousel.swiper) {
+        this.variantCarousel.swiper.draggable = true;
+        this.variantCarousel.swiper.allowTouchMove = true;
+      }
+    }
+  }
+
+  buildViewMore() {
+    const viewMore = document.createElement("div");
+    viewMore.innerHTML = `
+    <span data-count></span>+ more`;
+    viewMore.classList.add("product-tile__view-more", "hidden");
+    viewMore.setAttribute("data-view-more", "");
+    viewMore.addEventListener("click", () => toggleViewMore());
+    const viewLess = document.createElement("span");
+    viewLess.innerText = "See Less";
+    viewLess.classList.add("hidden", "product-tile__view-less");
+    viewLess.setAttribute("data-view-less", "");
+    viewLess.addEventListener("click", () => toggleViewLess());
+    this.optionContainer.append(viewMore);
+    this.optionContainer.append(viewLess);
+
+    const toggleViewMore = () => {
+      this.variantCarousel.swiper.draggable = true;
+      this.variantCarousel.swiper.allowTouchMove = true;
+      viewMore.classList.add("hidden");
+      viewLess.classList.toggle("hidden");
+    };
+
+    const toggleViewLess = () => {
+      this.variantCarousel.swiper.draggable = false;
+      this.variantCarousel.swiper.allowTouchMove = false;
+      viewMore.classList.remove("hidden");
+      viewLess.classList.add("hidden");
+    };
+  }
+
+  displayViewMore() {
+    const viewMore = this.querySelector(`
+    [data-view-more]
+  `);
+    if (this.hasOverflow()) {
+      this.variantCarousel.draggable = false;
+      this.variantCarousel.allowTouchMove = false;
+      const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
+      const gridGap = 8;
+      let currentOffset = 0;
+      const visibleChildren = this.variantSwatches.reduce((acc, child) => {
+        if (currentOffset + child.offsetWidth < maxWidth) {
+          child.style.opacity = 1;
+          currentOffset += child.offsetWidth + gridGap;
+          return [...acc, child];
+        } else {
+          return acc;
+        }
+      }, []);
+      this.querySelector("[data-count]").textContent =
+        this.variantSwatches?.length - visibleChildren?.length;
+    } else {
+      viewMore.classList.add("hidden");
+    }
+  }
+
+  buildArrows() {
+    const arrowHandles = ["left", "right"];
+    arrowHandles.forEach((handle) => {
+      const arrow = document.createElement("button");
+      const arrow_background = document.createElement("span");
+      arrow.prepend(arrow_background);
+      arrow.classList.add(`product-tile__arrow--${handle}`, "hidden");
+      arrow.setAttribute("data-scroll-button", "");
+      arrow.setAttribute(`data-scroll-${handle}`, "");
+      if (handle === "left") {
+        this.variantCarousel?.addEventListener("reachbeginning", () => {
+          arrow.classList.add("hidden");
+        });
+      } else if (handle === "right") {
+        this.variantCarousel?.addEventListener("reachend", () => {
+          arrow.classList.add("hidden");
+        });
+      }
+      this.variantCarousel?.addEventListener("fromedge", () => {
+        if (
+          (this.productTileBreakpoint === "desktop" &&
+            this.overflowStyleDesktop === "arrow") ||
+          (this.productTileBreakpoint === "mobile" &&
+            this.overflowStyleMobile === "arrow")
+        ) {
+          arrow.classList.remove("hidden");
+        }
+      });
+      if (handle == "left") {
+        arrow.classList.add("hidden");
+      }
+      this.optionContainer.prepend(arrow);
+    });
+  }
+
+  toggleArrows() {
+    const arrows = this.querySelectorAll("[data-scroll-button]");
+    if (
+      (this.productTileBreakpoint === "desktop" &&
+        this.overflowStyleDesktop === "arrow") ||
+      (this.productTileBreakpoint === "mobile" &&
+        this.overflowStyleMobile === "arrow")
+    ) {
+      arrows.forEach((arrow) => {
+        if (
+          (arrow.hasAttribute("data-scroll-left") &&
+            this.variantCarousel?.swiper?.isBeginning === false) ||
+          (arrow.hasAttribute("data-scroll-right") &&
+            this.variantCarousel?.swiper?.isEnd === false)
+        ) {
+          arrow.classList.remove("hidden");
+        }
+      });
+    } else {
+      arrows.forEach((arrow) => arrow.classList.add("hidden"));
+    }
+  }
+
+  // SWATCH FUNCTIONS
   initializeSwatches() {
-    this.swatchOverflow();
     this.variantSwatches.forEach((option) => {
       option.addEventListener("click", this.swatchClick.bind(this));
     });
     window.addEventListener("resize", this.handleResize.bind(this));
-  }
-
-  handleResize() {
-    if (this.swatchOverflowStyle === "expand") {
-      this.displayViewMore();
-      this.displayViewLess();
-    } else if (this.swatchOverflowStyle == "scroll") {
-      this.displayArrows();
-    }
+    this.variantCarousel?.addEventListener("afterinit", () => {
+      this.toggleArrows();
+      this.toggleExpander();
+    });
   }
 
   setCurrentVariant(variant) {
@@ -73,164 +233,7 @@ export default class RaProductTile extends HTMLElement {
     this.updateCurrentVariant();
   }
 
-  swatchOverflow() {
-    // used to set up swatch overflow style
-    if (this.swatchOverflowStyle == "scroll") {
-      this.buildArrows();
-      this.displayArrows();
-    } else if (this.swatchOverflowStyle == "expand") {
-      this.buildViewMore();
-      this.displayViewMore();
-      this.displayViewLess();
-    }
-  }
-
-  displayArrows() {
-    const rightScroll = this.querySelector("[data-scroll-right]");
-    this.optionContainer.classList.toggle("pr-4", this.hasOverflow());
-    rightScroll?.classList.toggle("hidden", !this.hasOverflow());
-  }
-
-  buildViewMore() {
-    const viewMore = document.createElement("div");
-    viewMore.innerHTML = `
-    <span data-count="0"></span>+${"\u00A0"}more`;
-    viewMore.classList.add("product-tile__view-more");
-    viewMore.setAttribute("data-view-more", "");
-    viewMore.addEventListener("click", () => {
-      this.variantOptions.classList.add("ra-product-tile__options--expanded");
-      viewMore.classList.add("!hidden");
-      viewLess.classList.remove("!hidden");
-      this.displayViewLess();
-      this.variantSwatches.forEach((option) => {
-        option.style.opacity = 1;
-      });
-    });
-    const viewLess = document.createElement("span");
-    viewLess.innerText = "See Less";
-    viewLess.classList.add("!hidden", "product-tile__view-less");
-    viewLess.setAttribute("data-view-less", "");
-    viewLess.addEventListener("click", () => {
-      this.variantOptions.classList.remove(
-        "ra-product-tile__options--expanded"
-      );
-      viewMore.classList.remove("!hidden");
-      viewLess.classList.add("!hidden");
-      this.displayViewMore();
-    });
-    this.optionContainer.append(viewMore);
-    this.optionContainer.append(viewLess);
-  }
-
-  calculateGridGap() {
-    return (
-      this.variantSwatches[1].offsetLeft -
-      (this.variantSwatches[0].offsetLeft + this.variantSwatches[0].offsetWidth)
-    );
-  }
-
-  hasOverflow() {
-    return this.variantOptions.scrollWidth > this.variantOptions.clientWidth;
-  }
-
-  displayViewMore() {
-    const viewMore = this.querySelector("[data-view-more]");
-    if (this.hasOverflow()) {
-      const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
-      const gridGap = this.calculateGridGap();
-      let currentOffset = 0;
-      const visibleChildren = this.variantSwatches.reduce((acc, child) => {
-        if (currentOffset + child.offsetWidth < maxWidth) {
-          child.style.opacity = 1;
-          currentOffset += child.offsetWidth + gridGap;
-          return [...acc, child];
-        } else if (currentOffset + child.offsetWidth / 4 < maxWidth) {
-          child.style.opacity = 1;
-          return acc;
-        } else {
-          child.style.opacity = 0;
-          return acc;
-        }
-      }, []);
-      this.querySelector("[data-count]").textContent =
-        this.variantSwatches.length - visibleChildren.length;
-      viewMore?.classList.remove("!hidden");
-    } else {
-      viewMore?.classList.add("!hidden");
-      this.variantSwatches.forEach((child) => (child.style.opacity = 1));
-    }
-  }
-
-  displayViewLess() {
-    const viewLess = this.querySelector("[data-view-less]");
-    const gridGap = this.calculateGridGap();
-    const lastChild = this.variantSwatches[this.variantSwatches.length - 1];
-    const lastChildEndPosition = lastChild.offsetLeft + lastChild.offsetWidth;
-    const viewLessStartPosition = lastChildEndPosition + gridGap;
-    if (
-      viewLessStartPosition + viewLess.offsetWidth <
-      this.variantOptions.clientWidth
-    ) {
-      if (!viewLess.classList.contains("absolute")) {
-        viewLess.classList.add("absolute");
-      }
-      viewLess.style.left = viewLessStartPosition + "px";
-    } else {
-      viewLess.classList.remove("absolute");
-      viewLess.style.left = "auto";
-    }
-    if (
-      !(
-        !this.hasOverflow() &&
-        this.variantOptions.offsetHeight != lastChild.offsetHeight
-      )
-    ) {
-      viewLess.classList.add("!hidden");
-    } else {
-      viewLess.classList.remove("!hidden");
-    }
-  }
-
-  scrollSwatches() {
-    const scrollWidth =
-      this.variantSwatches[0].offsetWidth + this.calculateGridGap();
-    this.animateScroll(scrollWidth, 300);
-    this.displayArrows(scrollWidth);
-  }
-
-  // This adds the scroll icons to the container
-  buildArrows() {
-    const arrow = document.createElement("div");
-    arrow.classList.add(`product-tile__arrow--right`);
-    arrow.setAttribute(`data-scroll-right`, "");
-    arrow.addEventListener("click", this.scrollSwatches.bind(this));
-    if (!this.hasOverflow()) {
-      arrow.classList.add("hidden");
-    } else {
-      arrow.classList.remove("hidden");
-    }
-    this.optionContainer.prepend(arrow);
-  }
-
-  animateScroll(end, duration) {
-    const element = this.variantOptions;
-    const start = this.variantOptions.scrollLeft;
-    var startTime = performance.now();
-
-    function scrollStep() {
-      var now = performance.now();
-      var progress = (now - startTime) / duration;
-      if (progress > 1) progress = 1;
-
-      element.scrollLeft = start + (end - start) * progress;
-
-      if (progress < 1) {
-        requestAnimationFrame(scrollStep);
-      }
-    }
-
-    requestAnimationFrame(scrollStep);
-  }
+  // VARIANT CHANGE FUNCTIONS
 
   updatePrice() {
     if (this.currentVariant.compare_at_price) {
@@ -297,7 +300,11 @@ export default class RaProductTile extends HTMLElement {
 
   updateBadge() {
     const updatedBadge = this.currentVariant?.badge || this.product?.badge;
-    if (updatedBadge && this.productBadge?.textContent != updatedBadge) {
+    if (
+      updatedBadge &&
+      this.productBadge &&
+      this.productBadge?.textContent != updatedBadge
+    ) {
       this.productBadge.textContent = updatedBadge;
       this.productBadge?.classList.remove("hidden");
     } else if (!updatedBadge) {
@@ -317,5 +324,18 @@ export default class RaProductTile extends HTMLElement {
         label.classList.remove("active");
       }
     });
+  }
+
+  // HELPERS
+
+  calculateGridGap() {
+    return (
+      this.variantSwatches[1].offsetLeft -
+      (this.variantSwatches[0].offsetLeft + this.variantSwatches[0].offsetWidth)
+    );
+  }
+
+  hasOverflow() {
+    return this.variantOptions.scrollWidth > this.variantOptions.clientWidth;
   }
 }

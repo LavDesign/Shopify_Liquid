@@ -189,40 +189,51 @@
           assign option_name = option.name | downcase
         %}
         {% if option_name == "color" %}
-        <div class="relative" data-option-container>
-          <div class="ra-product-tile__options flex flex-row gap-3 overflow-hidden" data-variant-options>
-          {% for value in option.values %}
-            {% capture data_attributes %}
-              data-option-value="{{ value }}"
-              data-option-position="{{ option.position }}"
-            {% endcapture %}
-            {% capture variant_id %}
-              {{ value }}_{{ product.id }}{% if index %}_{{ index }}{% endif %}
-            {% endcapture %}
+        {% assign swatch_index = product.id | append: "-" | append: forloop.index %}
+        <div class="relative" data-option-container data-swatches-id="{{ swatch_index }}">
+          <swiper-container class="ra-product-tile__options flex flex-row overflow-hidden gap-2"
+            data-variant-options
+            slides-per-view="auto"
+            loop="false"
+            navigation-next-el="[data-swatches-id='{{ swatch_index }}'] [data-scroll-right]"
+            navigation-prev-el="[data-swatches-id='{{ swatch_index }}'] [data-scroll-left]"
+            space-between="8"
+            slides-per-group="2"
+          >
+              {% for value in option.values %}
+                {% capture data_attributes %}
+                  data-option-value="{{ value }}"
+                  data-option-position="{{ option.position }}"
+                {% endcapture %}
+                {% capture variant_id %}
+                  {{ value }}_{{ product.id }}{% if index %}_{{ index }}{% endif %}
+                {% endcapture %}
 
-              {%- liquid
-              assign checked = false
-              assign disabled = false
-              assign downcase_value = value | downcase
-              unless variant_colors contains downcase_value
-                assign disabled = true
-              endunless
-              -%}
-            {% if option_name == "color" %}
-              {%- render 'ra-swatch-button',
-                name: option_name,
-                class: '',
-                id: variant_id,
-                checked: checked,
-                value: value,
-                label: value,
-                style: 'classic',
-                additional_attributes: data_attributes,
-                disabled: disabled
-              -%}
-          {% endif %}
-        {% endfor %}
-        </div>
+                  {%- liquid
+                  assign checked = false
+                  assign disabled = false
+                  assign downcase_value = value | downcase
+                  unless variant_colors contains downcase_value
+                    assign disabled = true
+                  endunless
+                  -%}
+                {% if option_name == "color" %}
+                <swiper-slide class="w-[30px] h-[30px]">
+                  {%- render 'ra-swatch-button',
+                    name: option_name,
+                    class: '',
+                    id: variant_id,
+                    checked: checked,
+                    value: value,
+                    label: value,
+                    style: 'classic',
+                    additional_attributes: data_attributes,
+                    disabled: disabled
+                  -%}
+                  </swiper-slide>
+              {% endif %}
+            {% endfor %}
+          </swiper-container>
         </div>
       {% endif %}
       {% endfor %}
