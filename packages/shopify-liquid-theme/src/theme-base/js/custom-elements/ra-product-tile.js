@@ -22,7 +22,7 @@ export default class RaProductTile extends HTMLElement {
     // Swatch Properties
     this.breakpointPixelMD = getToken("breakpoints.px.md");
     this.productTileBreakpoint;
-    this.overflowStyleDesktop = "expand"; // expecting expand, scroll, or drag
+    this.overflowStyleDesktop = "expand"; // expecting expand, arrow, or drag
     this.overflowStyleMobile = "arrow";
     this.optionContainer = this.querySelector("[data-option-container]");
     this.variantOptions = this.querySelector("[data-variant-options]");
