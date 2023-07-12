@@ -140,12 +140,6 @@ export default class RaProductTile extends HTMLElement {
     }
   }
 
-  displayViewLess() {
-    const viewLess = this.querySelector(`[data-view-less]`);
-    viewLess.classList.remove("hidden");
-    viewLess.style.left = "auto";
-  }
-
   buildArrows() {
     const arrowHandles = ["left", "right"];
     arrowHandles.forEach((handle) => {
@@ -158,18 +152,19 @@ export default class RaProductTile extends HTMLElement {
       if (handle === "left") {
         this.variantCarousel?.addEventListener("reachbeginning", () => {
           arrow.classList.add("hidden");
-        })
+        });
       } else if (handle === "right") {
         this.variantCarousel?.addEventListener("reachend", () => {
           arrow.classList.add("hidden");
-        })
+        });
       }
       this.variantCarousel?.addEventListener("fromedge", () => {
         if (
           (this.productTileBreakpoint === "desktop" &&
             this.overflowStyleDesktop === "arrow") ||
           (this.productTileBreakpoint === "mobile" &&
-            this.overflowStyleMobile === "arrow")) {
+            this.overflowStyleMobile === "arrow")
+        ) {
           arrow.classList.remove("hidden");
         }
       });
@@ -182,31 +177,22 @@ export default class RaProductTile extends HTMLElement {
 
   toggleArrows() {
     const arrows = this.querySelectorAll("[data-scroll-button]");
-    let hideArrows = false;
-
-    if (this.productTileBreakpoint === "desktop") {
-      if (this.overflowStyleDesktop === "arrow") {
-        hideArrows = true;
-      }
-    } else if (this.productTileBreakpoint === "mobile") {
-      if (this.overflowStyleMobile === "arrow") {
-        hideArrows = true;
-      }
-    }
-    if (hideArrows) {
+    if (
+      (this.productTileBreakpoint === "desktop" &&
+        this.overflowStyleDesktop === "arrow") ||
+      (this.productTileBreakpoint === "mobile" &&
+        this.overflowStyleMobile === "arrow")
+    ) {
       arrows.forEach((arrow) => {
         if (
-          arrow.hasAttribute("data-scroll-left") &&
-          this.variantCarousel?.swiper?.isBeginning === false
-        ) {
-          arrow.classList.remove("hidden");
-        } else if (
-          arrow.hasAttribute("data-scroll-right") &&
-          this.variantCarousel?.swiper?.isEnd === false
+          (arrow.hasAttribute("data-scroll-left") &&
+            this.variantCarousel?.swiper?.isBeginning === false) ||
+          (arrow.hasAttribute("data-scroll-right") &&
+            this.variantCarousel?.swiper?.isEnd === false)
         ) {
           arrow.classList.remove("hidden");
         }
-      })
+      });
     } else {
       arrows.forEach((arrow) => arrow.classList.add("hidden"));
     }
