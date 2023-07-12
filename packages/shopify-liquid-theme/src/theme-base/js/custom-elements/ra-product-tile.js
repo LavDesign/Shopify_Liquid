@@ -86,7 +86,7 @@ export default class RaProductTile extends HTMLElement {
   buildViewMore() {
     const viewMore = document.createElement("div");
     viewMore.innerHTML = `
-    <span data-count></span>+${"\u00A0"}more`;
+    <span data-count></span>+ more`;
     viewMore.classList.add("product-tile__view-more", "hidden");
     viewMore.setAttribute("data-view-more", "");
     viewMore.addEventListener("click", () => toggleViewMore());
@@ -142,7 +142,7 @@ export default class RaProductTile extends HTMLElement {
   buildArrows() {
     const arrowHandles = ["left", "right"];
     arrowHandles.forEach((handle) => {
-      const arrow = document.createElement("div");
+      const arrow = document.createElement("button");
       const arrow_background = document.createElement("span");
       arrow.prepend(arrow_background);
       arrow.classList.add(`product-tile__arrow--${handle}`, "hidden");
@@ -300,7 +300,11 @@ export default class RaProductTile extends HTMLElement {
 
   updateBadge() {
     const updatedBadge = this.currentVariant?.badge || this.product?.badge;
-    if (updatedBadge && this.productBadge?.textContent != updatedBadge) {
+    if (
+      updatedBadge &&
+      this.productBadge &&
+      this.productBadge?.textContent != updatedBadge
+    ) {
       this.productBadge.textContent = updatedBadge;
       this.productBadge?.classList.remove("hidden");
     } else if (!updatedBadge) {
