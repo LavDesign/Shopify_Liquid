@@ -17,15 +17,17 @@
         <slot name="review-stars"></slot>
       </div>
       <div v-html="description" class="mb-3"></div>
-      <template v-if="$slots['size-guide']().length">
+      <!-- <div class="flex justify-end" v-if="$slots['size-guide']().length"> -->
+      <div class="flex justify-end">
         <RaButton
-          class="px-0 absolute right-0"
+          class="px-0 right-0 mb-3"
+          :class="{ absolute: !product.has_only_default_variant }"
           asText
           size="xs"
           @click="showSizeGuide"
           >Size Guide</RaButton
         >
-      </template>
+      </div>
       <ProductForm v-bind="{ product }" />
     </div>
   </Transition>
