@@ -165,13 +165,13 @@
   {% if section.settings.internal_video != blank %}
     <div class="ra-split-section__media">
       <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
-        {% render 'ra-video', 
-          video: section.settings.internal_video, 
-          lazyload: true, 
-          controls: true, 
-          autoplay: false, 
-          loop: false, 
-          width: width, 
+        {% render 'ra-video',
+          video: section.settings.internal_video,
+          lazyload: true,
+          controls: true,
+          autoplay: false,
+          loop: false,
+          width: width,
           class: "ra-image__media w-full",
           video_class: "h-full object-cover"
         %}
@@ -180,13 +180,13 @@
   {% elsif section.settings.external_video != blank %}
     <div class="ra-split-section__media">
       <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
-        {% render 'ra-video', 
-          video_url: section.settings.external_video, 
-          lazyload: true, 
-          controls: false, 
-          autoplay: false, 
-          loop: false, 
-          width: width, 
+        {% render 'ra-video',
+          video_url: section.settings.external_video,
+          lazyload: true,
+          controls: false,
+          autoplay: false,
+          loop: false,
+          width: width,
           class: "ra-image__media w-full",
           video_class: "h-full object-cover"
         %}
@@ -604,7 +604,7 @@
       "label": "Text Color (mobile)",
       "info": "Set the text color for mobile screen sizes",
       "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-grey-900"
+      "default": "--color-util-black"
     },
     {
       "type": "select",
@@ -612,7 +612,7 @@
       "label": "Text Color (desktop)",
       "info": "Set the text color for larger screen sizes (if different from mobile)",
       "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-grey-900"
+      "default": "--color-util-black"
     }
   ],
   "presets": [

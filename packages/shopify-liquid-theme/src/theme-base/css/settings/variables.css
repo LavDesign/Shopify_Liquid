@@ -9,4 +9,6 @@
   --screen-lg: theme("screens.lg");
   --screen-xl: theme("screens.xl");
   --screen-xxl: theme("screens.2xl");
+
+  --color-util-black: #000000;
 }

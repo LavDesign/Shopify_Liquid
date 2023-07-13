@@ -1,4 +1,6 @@
-const productRecommendationsSections = document.querySelectorAll(".product-recommendations");
+const productRecommendationsSections = document.querySelectorAll(
+  ".product-recommendations"
+);
 
 const handleIntersection = (entries, observer) => {
   const sectionID = entries[0].target.dataset.section;
