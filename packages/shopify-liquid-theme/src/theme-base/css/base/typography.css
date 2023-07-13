@@ -85,18 +85,3 @@ h6,
     font-size: var(--display-desktop-size);
   }
 }
-
-.rte {
-  ul {
-    list-style: disc;
-    margin-left: 28px;
-  }
-  ol {
-    list-style: decimal;
-    margin-left: 24px;
-  }
-}
-
-.rte a {
-  text-decoration: underline;
-}

@@ -1,0 +1,24 @@
+.rte {
+  a {
+    text-decoration: underline;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 28px;
+  }
+
+  ol {
+    list-style: decimal;
+    margin-left: 24px;
+  }
+
+  table {
+    border: 1px solid var(--color-util-black);
+    border-collapse: collapse;
+
+    td {
+      Border: 1px solid var(--color-util-black);
+    }
+  }
+}
