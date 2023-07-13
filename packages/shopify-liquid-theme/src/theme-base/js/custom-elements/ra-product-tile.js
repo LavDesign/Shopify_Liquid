@@ -50,10 +50,7 @@ export default class RaProductTile extends HTMLElement {
       this.toggleArrows();
       this.toggleExpander();
     }
-    if (
-      (this.overflowStyleDesktop === "expand" && newBreakpoint === "desktop") ||
-      (this.overflowStyleMobile === "expand" && newBreakpoint === "mobile")
-    ) {
+    if (this.expandActive()) {
       this.displayViewMore();
     }
   }
@@ -61,26 +58,29 @@ export default class RaProductTile extends HTMLElement {
   toggleExpander() {
     const viewMore = this.querySelector("[data-view-more]");
     const viewLess = this.querySelector("[data-view-less]");
-    if (
-      (this.productTileBreakpoint === "desktop" &&
-        this.overflowStyleDesktop === "expand") ||
-      (this.productTileBreakpoint === "mobile" &&
-        this.overflowStyleMobile === "expand")
-    ) {
+    if (this.expandActive()) {
       viewMore.classList.remove("hidden");
       viewLess.classList.add("hidden");
       if (this.variantCarousel.swiper) {
-        this.variantCarousel.swiper.draggable = false;
-        this.variantCarousel.swiper.allowTouchMove = false;
+        this.variantCarousel.swiper.disable();
       }
     } else {
       viewMore.classList.add("hidden");
       viewLess.classList.add("hidden");
       if (this.variantCarousel.swiper) {
-        this.variantCarousel.swiper.draggable = true;
-        this.variantCarousel.swiper.allowTouchMove = true;
+        this.variantCarousel.swiper.enable();
+        this.variantCarousel.swiper.update();
       }
     }
+  }
+
+  expandActive() {
+    return (
+      (this.productTileBreakpoint === "desktop" &&
+        this.overflowStyleDesktop === "expand") ||
+      (this.productTileBreakpoint === "mobile" &&
+        this.overflowStyleMobile === "expand")
+    );
   }
 
   buildViewMore() {
@@ -99,17 +99,16 @@ export default class RaProductTile extends HTMLElement {
     this.optionContainer.append(viewLess);
 
     const toggleViewMore = () => {
-      this.variantCarousel.swiper.draggable = true;
-      this.variantCarousel.swiper.allowTouchMove = true;
+      this.variantCarousel.swiper.enable();
+      this.variantCarousel.swiper.update();
       viewMore.classList.add("hidden");
       viewLess.classList.toggle("hidden");
     };
 
     const toggleViewLess = () => {
-      this.variantCarousel.swiper.draggable = false;
-      this.variantCarousel.swiper.allowTouchMove = false;
       viewMore.classList.remove("hidden");
       viewLess.classList.add("hidden");
+      this.variantCarousel.swiper.disable();
     };
   }
 
@@ -118,8 +117,7 @@ export default class RaProductTile extends HTMLElement {
     [data-view-more]
   `);
     if (this.hasOverflow()) {
-      this.variantCarousel.draggable = false;
-      this.variantCarousel.allowTouchMove = false;
+      this.variantCarousel.swiper.disable();
       const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
       const gridGap = 8;
       let currentOffset = 0;
@@ -136,6 +134,10 @@ export default class RaProductTile extends HTMLElement {
         this.variantSwatches?.length - visibleChildren?.length;
     } else {
       viewMore.classList.add("hidden");
+      if (this.variantCarousel?.swiper) {
+        this.variantCarousel.swiper.enable();
+        this.variantCarousel.swiper.update();
+      }
     }
   }
 
@@ -158,30 +160,35 @@ export default class RaProductTile extends HTMLElement {
         });
       }
       this.variantCarousel?.addEventListener("fromedge", () => {
-        if (
-          (this.productTileBreakpoint === "desktop" &&
-            this.overflowStyleDesktop === "arrow") ||
-          (this.productTileBreakpoint === "mobile" &&
-            this.overflowStyleMobile === "arrow")
-        ) {
-          arrow.classList.remove("hidden");
+        if (this.arrowsActive()) {
+          if (
+            (!this.variantCarousel.swiper.isBeginning && handle === "left") ||
+            (!this.variantCarousel.swiper.isEnd && handle === "right")
+          ) {
+            arrow.classList.remove("hidden");
+          }
         }
       });
-      if (handle == "left") {
-        arrow.classList.add("hidden");
-      }
       this.optionContainer.prepend(arrow);
     });
   }
 
-  toggleArrows() {
-    const arrows = this.querySelectorAll("[data-scroll-button]");
-    if (
+  arrowsActive() {
+    return (
       (this.productTileBreakpoint === "desktop" &&
         this.overflowStyleDesktop === "arrow") ||
       (this.productTileBreakpoint === "mobile" &&
         this.overflowStyleMobile === "arrow")
-    ) {
+    );
+  }
+
+  toggleArrows() {
+    const arrows = this.querySelectorAll("[data-scroll-button]");
+    if (this.arrowsActive()) {
+      if (this.variantCarousel.swiper) {
+        this.variantCarousel.swiper.enable();
+        this.variantCarousel.swiper.update();
+      }
       arrows.forEach((arrow) => {
         if (
           (arrow.hasAttribute("data-scroll-left") &&
