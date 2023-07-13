@@ -309,7 +309,7 @@ export default class RaProductTile extends HTMLElement {
     const updatedBadge = this.currentVariant?.badge || this.product?.badge;
     if (
       updatedBadge &&
-      this.productBadge &&
+      this.productBadge?.textContent?.length >= 0 &&
       this.productBadge?.textContent != updatedBadge
     ) {
       this.productBadge.textContent = updatedBadge;
