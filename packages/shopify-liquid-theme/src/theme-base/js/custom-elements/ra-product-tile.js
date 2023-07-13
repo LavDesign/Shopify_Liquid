@@ -114,10 +114,15 @@ export default class RaProductTile extends HTMLElement {
 
   displayViewMore() {
     const viewMore = this.querySelector(`
-    [data-view-more]
-  `);
+      [data-view-more]
+    `);
+    const viewLess = this.querySelector(`
+      [data-view-less]
+    `);
     if (this.hasOverflow()) {
       this.variantCarousel.swiper.disable();
+      viewLess.classList.add("hidden");
+      viewMore.classList.remove("hidden");
       const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
       const gridGap = 8;
       let currentOffset = 0;
