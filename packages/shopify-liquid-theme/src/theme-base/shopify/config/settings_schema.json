@@ -684,7 +684,7 @@
         "id": "predictive_text_color",
         "label": "Text Color",
         "options": <%- uikit.colorsSchemaPicker -%>,
-        "default": "--color-grey-900"
+        "default": "--color-util-black"
       },
       {
         "type": "header",
