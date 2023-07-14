@@ -18,7 +18,8 @@
     border-collapse: collapse;
 
     td {
-      Border: 1px solid var(--color-util-black);
+      border: 1px solid var(--color-util-black);
+      padding: 8px;
     }
   }
 }
