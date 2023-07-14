@@ -114,10 +114,15 @@ export default class RaProductTile extends HTMLElement {
 
   displayViewMore() {
     const viewMore = this.querySelector(`
-    [data-view-more]
-  `);
+      [data-view-more]
+    `);
+    const viewLess = this.querySelector(`
+      [data-view-less]
+    `);
     if (this.hasOverflow()) {
       this.variantCarousel.swiper.disable();
+      viewLess.classList.add("hidden");
+      viewMore.classList.remove("hidden");
       const maxWidth = this.variantOptions.clientWidth - viewMore.offsetWidth;
       const gridGap = 8;
       let currentOffset = 0;
@@ -309,7 +314,7 @@ export default class RaProductTile extends HTMLElement {
     const updatedBadge = this.currentVariant?.badge || this.product?.badge;
     if (
       updatedBadge &&
-      this.productBadge &&
+      this.productBadge?.textContent?.length >= 0 &&
       this.productBadge?.textContent != updatedBadge
     ) {
       this.productBadge.textContent = updatedBadge;
