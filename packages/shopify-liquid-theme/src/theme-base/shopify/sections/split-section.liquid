@@ -113,6 +113,15 @@
         --media-height: 0.625;
     {%- endcase -%}
   }
+
+  #shopify-section-{{- section.id }} .ra-split-section__description ul li {
+    list-style: inside disc;
+  }
+
+  #shopify-section-{{- section.id }} .ra-split-section__description ol li {
+    list-style: inside decimal;
+  }
+
 {% endstyle %}
 
 {% capture text_content %}

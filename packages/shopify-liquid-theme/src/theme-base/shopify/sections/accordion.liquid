@@ -3,6 +3,15 @@
     background-color: var({{- section.settings.bg_color -}});
     color: var({{- section.settings.text_color -}});
   }
+
+  #shopify-section-{{- section.id }} .ra-accordion-item__content ul li {
+    list-style: inside disc;
+  }
+
+  #shopify-section-{{- section.id }} .ra-accordion-item__content ol li {
+    list-style: inside decimal;
+  }
+
 {%- endstyle -%}
 <div class="container">
   <{{ section.settings.section_title_level }} class="{{ section.settings.title_style }}">
