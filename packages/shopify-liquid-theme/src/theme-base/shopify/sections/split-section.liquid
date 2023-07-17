@@ -122,7 +122,7 @@
       color: var({{- section.settings.eyebrow_color -}});
     {% endcapture %}
     {% if section.settings.eyebrow_text != blank %}
-  <div class="ra-split-section__subtitle" data-aos="fade-up" {% if use_override %}style="{{ eyebrow_style }}"{% endif %}>
+      <div class="ra-split-section__subtitle" data-aos="fade-up" {% if use_override %}style="{{ eyebrow_style }}"{% endif %}>
         {{- section.settings.eyebrow_text -}}
       </div>
     {% endif %}
