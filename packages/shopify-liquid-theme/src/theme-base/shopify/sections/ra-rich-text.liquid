@@ -15,24 +15,36 @@
         {% case block.type %}
           {% when 'title' %}
             {% assign title_level = block.settings.title_level %}
+            {% capture color_style %}
+              color: var({{- block.settings.title_color -}});
+            {% endcapture %}
             {% if block.settings.title != blank %}
-              <{{ title_level }} class="ra-title ra-text-only-banner__title {{ block.settings.title_style }}" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">
+              <{{ title_level }} style="{{ color_style }}" class="ra-title ra-text-only-banner__title {{ block.settings.title_style }}" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">
                 {{ block.settings.title }}
               </{{ title_level }}>
             {% endif %}
           {% when 'subtitle' %}
+            {% capture color_style %}
+              color: var({{- block.settings.subtitle_color -}});
+            {% endcapture %}
             {% if block.settings.eyebrow_text != blank %}
-              <div class="ra-text-only-banner__subtitle" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">{{- block.settings.eyebrow_text -}}</div>
+              <div class="ra-text-only-banner__subtitle" style="{{ color_style }}" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">{{- block.settings.eyebrow_text -}}</div>
             {% endif %}
           {% when 'body_copy' %}
+            {% capture color_style %}
+              color: var({{- block.settings.body_color -}});
+            {% endcapture %}
             {% if block.settings.description != blank %}
-              <div class="ra-text-only-banner__description {{ block.settings.description_copy_size }} rte" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">
+              <div class="ra-text-only-banner__description {{ block.settings.description_copy_size }} rte" style="{{ color_style }}" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">
                 {{- block.settings.description -}}
               </div>
             {% endif %}
           {% when 'block_quote' %}
+            {% capture color_style %}
+              color: var({{- block.settings.quote_color -}});
+            {% endcapture %}
             {% if block.settings.block_quote != blank %}
-              <div class="ra-text-only-banner__description rte w-4/5" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">
+              <div class="ra-text-only-banner__description rte w-4/5" style="{{ color_style }}" data-aos="fade" data-aos-delay="{{ 100 | times: forloop.index }}">
                 {% if block.settings.enable_quotes %}
                   {% if block.settings.opening_quote_image != blank %}
                     {% comment %}theme-check-disable ImgWidthAndHeight{% endcomment %}
@@ -119,6 +131,12 @@
         },
         {
           "type": "select",
+          "id": "title_color",
+          "label": "Title Color",
+          "options": <%- uikit.colorsAll -%>
+        },
+        {
+          "type": "select",
           "id": "title_level",
           "label": "Title Level",
           "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
@@ -144,6 +162,12 @@
           "id": "eyebrow_text",
           "label": "Eyebrow Text",
           "default": "Eyebrow Text"
+        },
+        {
+          "type": "select",
+          "id": "subtitle_color",
+          "label": "Subtitle Color",
+          "options": <%- uikit.colorsAll -%>
         }
       ]
     },
@@ -155,6 +179,12 @@
           "type": "richtext",
           "id": "description",
           "label": "Description"
+        },
+        {
+          "type": "select",
+          "id": "body_color",
+          "label": "Body Color",
+          "options": <%- uikit.colorsAll -%>
         },
         {
           "type": "select",
@@ -201,6 +231,12 @@
           "type": "image_picker",
           "id": "closing_quote_image",
           "label": "Closing Quote Image Override"
+        },
+        {
+          "type": "select",
+          "id": "quote_color",
+          "label": "Quote Color",
+          "options": <%- uikit.colorsAll -%>
         },
         {
           "type": "text",
