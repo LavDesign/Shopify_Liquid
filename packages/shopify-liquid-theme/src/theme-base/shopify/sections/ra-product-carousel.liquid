@@ -58,6 +58,14 @@
     --heading-text-align: left;
   }
 
+  .product-carousel--{{ section.id }} .ra-heading__description ul li {
+    list-style: inside disc;
+  }
+
+  .product-carousel--{{ section.id }} .ra-heading__description ol li {
+    list-style: inside decimal;
+  }
+
   @media only screen and (min-width: 768px) {
     .product-carousel--{{ section.id }} {
       padding: {{ section.settings.desktop_padding }}rem 2rem;

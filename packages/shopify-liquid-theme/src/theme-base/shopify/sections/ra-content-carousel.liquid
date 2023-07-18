@@ -44,6 +44,14 @@
     --heading-text-align: left;
   }
 
+  .content-carousel--{{ section.id }} .ra-heading__description ul li {
+    list-style: inside disc;
+  }
+
+  .content-carousel--{{ section.id }} .ra-heading__description ol li {
+    list-style: inside decimal;
+  }
+
   @media only screen and (min-width: 768px) {
     .content-carousel--{{ section.id }} {
       padding: {{ section.settings.desktop_padding }}rem 2rem;
