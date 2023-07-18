@@ -506,6 +506,98 @@
         "horizontal_align": "center",
         "horizontal_align_md": "center"
       }
+    },
+    "fd785461-1f1e-49aa-a926-63886fa70a53": {
+      "type": "ra-tile-grid",
+      "blocks": {
+        "b9873d31-cf6e-4e00-8821-c8fec30a9885": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/close-up-showing-detail-of-cream-sweater.jpg",
+            "eyebrow_text": "eyebrow 1",
+            "title": "title 1",
+            "description": "<p>description 1 here<\/p>",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "bottom"
+          }
+        },
+        "ebe93683-aea1-45b6-a9b0-77fed9f385ea": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/slick-summer-men-s-fashion.jpg",
+            "eyebrow_text": "eyebrow 2",
+            "title": "title 2",
+            "description": "<p>description 2 here<\/p>",
+            "horizontal_alignment": "left",
+            "vertical_alignment": "bottom"
+          }
+        }
+      },
+      "block_order": [
+        "b9873d31-cf6e-4e00-8821-c8fec30a9885",
+        "ebe93683-aea1-45b6-a9b0-77fed9f385ea"
+      ],
+      "settings": {
+        "image_height": "large",
+        "mobile_layout": "overlay",
+        "desktop_layout": "overlay",
+        "grid_gap": 16,
+        "padding_top": 24,
+        "padding_bottom": 0,
+        "bg_color": "#ffffff"
+      }
+    },
+    "167e6414-e442-487d-95b4-a2cf2fbc35e6": {
+      "type": "ra-tile-grid",
+      "blocks": {
+        "7695780f-49e7-4fb3-b62c-740c930b0e03": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/condominium-interior-livingroom_925x_578321ab-06eb-47f6-8e4a-254068034583.jpg",
+            "eyebrow_text": "",
+            "title": "",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        },
+        "b7bb2b70-0380-4bd6-a33a-9b363d2b076a": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bedroom-bed-with-brown-throw-pillows_925x_2a72b11f-cf2c-4056-97bf-a7ee5cb38462.jpg",
+            "eyebrow_text": "",
+            "title": "",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        },
+        "5eb5559c-22aa-4950-8e22-a600ec14e0a7": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/potted-seeds_925x_c7132b5c-1f46-4a38-a283-d2e01b62d6bb.jpg",
+            "eyebrow_text": "",
+            "title": "",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "7695780f-49e7-4fb3-b62c-740c930b0e03",
+        "b7bb2b70-0380-4bd6-a33a-9b363d2b076a",
+        "5eb5559c-22aa-4950-8e22-a600ec14e0a7"
+      ],
+      "settings": {
+        "image_height": "small",
+        "mobile_layout": "overlay",
+        "desktop_layout": "overlay",
+        "grid_gap": 16,
+        "padding_top": 16,
+        "padding_bottom": 12,
+        "bg_color": ""
+      }
     }
   },
   "order": [
@@ -516,6 +608,8 @@
     "708c2130-3496-4631-8512-4e9eda09a31e",
     "650a81ef-e9bf-473c-9ec2-107491e86ca4",
     "1250bbd6-bd0c-4547-af5d-0c6719093920",
-    "2c1f4310-6d3c-400d-945e-9a3321666ffd"
+    "2c1f4310-6d3c-400d-945e-9a3321666ffd",
+    "fd785461-1f1e-49aa-a926-63886fa70a53",
+    "167e6414-e442-487d-95b4-a2cf2fbc35e6"
   ]
 }
