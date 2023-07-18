@@ -1,167 +1,212 @@
 {% liquid
   assign grid_gap = section.settings.grid_gap
   assign bg_color = section.settings.bg_color
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
 %}
 
-{% capture grid_style %}
-  --grid-columns:1; --grid-columns-md:2; --grid-columns-lg:3; --grid-gap:{{ grid_gap }}rem;
-{% endcapture %}
-
-{% capture bg_style %}
+{% capture block_style %}
   {% if bg_color != blank %}
-    background: {{ bg_color }}
+    background: var({{ bg_color }});
+  {% endif %}
+  {% if padding_top != blank %}
+    padding-top: {{ padding_top }}px;
+  {% endif %}
+  {% if padding_bottom != blank %}
+    padding-bottom: {{ padding_bottom }}px;
   {% endif %}
 {% endcapture %}
 
-<div data-gap="-sm" data-columns="-sm,-md,-lg" class="ra-grid" style="{{ grid_style }} {{ bg_style }}">
-  {% for block in section.blocks %}
-    {% if block.settings.two_grid_items %}
-      {% capture grid_item_style %}
-        --grid-column:1; --grid-column-md:2; --grid-column-lg:1;
-      {% endcapture %}
-      <div data-column="-sm,-md,-lg" class="ra-grid-item" style="{{ grid_item_style }}">
-        <div
-          data-gap="-sm"
-          data-columns="-sm,-md,-lg"
-          class="ra-grid ra-grid--inherit-gap"
-          style="--grid-columns:2; --grid-columns-md:2; --grid-columns-lg:1;"
-        >
-          <div class="ra-grid-item">
-            {%
-              render 'ra-content-tile',
-              classes: 'ra-content-tile set--details-overlay set--aspect-ratio-fill-space',
-              image: block.settings.image,
-              subtitle: block.settings.eyebrow_text,
-              title: block.settings.title,
-              header_level: 'h2',
-              description: block.settings.description,
-              horizontal_align: 'center',
-              vertical_align: 'middle',
-            %}
-          </div>
-          {% if block.settings.image_2 != blank %}
-            <div class="ra-grid-item">
-              {%
-                render 'ra-content-tile',
-                classes: 'ra-content-tile set--details-overlay set--aspect-ratio-fill-space',
-                image: block.settings.image_2,
-                subtitle: block.settings.eyebrow_text_2,
-                title: block.settings.title_2,
-                header_level: 'h2',
-                description: block.settings.description_2,
-                horizontal_align: 'center',
-                vertical_align: 'middle',
-              %}
-            </div>
-          {% endif %}
-        </div>
+{% if section.settings.image_height == 'small' %}
+  {% assign image_container_height = 300 %}
+{% else %}
+  {% assign image_container_height = 450 %}
+{% endif %}
+
+<div class="w-full" style="{{ block_style }}">
+  <div class="ra-grid flex flex-wrap md:flex-nowrap w-full max-w-screen-2xl mx-auto" style="gap: {{ grid_gap }}px;">
+    {% for block in section.blocks %}
+      <div class="ra-grid-item w-full" data-aos="fade-up" data-aos-delay="{{ 100 | times: forloop.index }}">
+        {% render 'ra-content-tile'
+         , classes: 'ra-content-tile set--details-overlay set--aspect-ratio-fill-space',
+         image: block.settings.image,
+         subtitle: block.settings.eyebrow_text,
+         title: block.settings.title,
+         description: block.settings.description,
+         text_color: section.settings.text_color,
+         width: 800,
+         image_height: image_container_height,
+         horizontal_align: block.settings.horizontal_alignment,
+         horizontal_align_md: block.settings.horizontal_alignment,
+         vertical_align: block.settings.vertical_alignment,
+         vertical_align_md: block.settings.vertical_alignment,
+         details_location: section.settings.mobile_layout,
+         details_location_md: section.settings.desktop_layout %}
       </div>
-    {% else %}
-      {% capture grid_item_style %}
-        --grid-column: 2; --grid-column-md: 2; --grid-column-lg: 2;
-      {% endcapture %}
-      <div class="ra-grid-item" style="{{ grid_item_style }}">
-        {%
-          render 'ra-content-tile',
-          classes: 'ra-content-tile set--details-overlay set--aspect-ratio-fill-space',
-          image: block.settings.image,
-          subtitle: block.settings.eyebrow_text,
-          title: block.settings.title,
-          header_level: 'h2',
-          description: block.settings.description,
-          horizontal_align: 'center',
-          vertical_align: 'middle',
-        %}
-      </div>
-    {% endif %}
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
-{
-  "name": "Content Tile Grid",
-  "settings": [
-    {
-      "type": "range",
-      "id": "grid_gap",
-      "min": 0,
-      "max": 5,
-      "step": 1,
-      "unit": "rem",
-      "label": "Grid Gap (in rem)",
-      "default": 1
-    },
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "info": "Set Background color that is visible between the gaps"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "grid-column",
-      "name": "Grid Column",
-      "limit": 3,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "eyebrow_text",
-          "label": "Eyebrow Text"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title"
-        },
-        {
-          "type": "richtext",
-          "id": "description",
-          "label": "Description"
-        },
-        {
-          "type": "checkbox",
-          "id": "two_grid_items",
-          "label": "Enable Two Column Split",
-          "info": "Enable ability to add two tiles in this column",
-          "default": false
-        },
-        {
-          "type": "header",
-          "content": "Second Grid Column Item (if applicable)"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_2",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "eyebrow_text_2",
-          "label": "Eyebrow Text"
-        },
-        {
-          "type": "text",
-          "id": "title_2",
-          "label": "Title"
-        },
-        {
-          "type": "richtext",
-          "id": "description_2",
-          "label": "Description"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Content Tile Grid"
-    }
-  ]
-}
+  {
+    "name": "Content Tile Grid",
+    "settings": [
+      {
+        "type": "select",
+        "id": "image_height",
+        "options": [
+          {
+            "value": "large",
+            "label": "Large"
+          }, {
+            "value": "small",
+            "label": "Small"
+          }
+        ],
+        "default": "small",
+        "label": "Image Height"
+      },
+      {
+        "type": "select",
+        "id": "mobile_layout",
+        "options": [
+          {
+            "value": "overlay",
+            "label": "Overlay"
+          }, {
+            "value": "after",
+            "label": "Underneath Image"
+          }
+        ],
+        "default": "overlay",
+        "label": "Mobile Layout",
+        "info": "This controls the mobile location of the text content"
+      },
+      {
+        "type": "select",
+        "id": "desktop_layout",
+        "options": [
+          {
+            "value": "overlay",
+            "label": "Overlay"
+          }, {
+            "value": "after",
+            "label": "Underneath Image"
+          }
+        ],
+        "default": "overlay",
+        "label": "Desktop Layout",
+        "info": "This controls the desktop location of the text content"
+      },
+      {
+        "type": "range",
+        "id": "grid_gap",
+        "min": 0,
+        "max": 60,
+        "step": 4,
+        "unit": "px",
+        "label": "Grid Gap (in px)",
+        "default": 16
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 12
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 120,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 12
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text Color",
+        "options": <%- uikit.colorsAll -%>
+      },
+      {
+        "type": "select",
+        "id": "bg_color",
+        "label": "Background Color",
+        "options": <%- uikit.colorsAll -%>,
+        "info": "Set Background color that is visible between the gaps"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "grid-column",
+        "name": "Tile",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "eyebrow_text",
+            "label": "Eyebrow Text"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          }, {
+            "type": "select",
+            "id": "horizontal_alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "center",
+            "label": "Horizontal Alignment"
+          }, {
+            "type": "select",
+            "id": "vertical_alignment",
+            "options": [
+              {
+                "value": "top",
+                "label": "Top"
+              }, {
+                "value": "middle",
+                "label": "Middle"
+              }, {
+                "value": "bottom",
+                "label": "Bottom"
+              }
+            ],
+            "default": "middle",
+            "label": "Vertical Alignment"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Content Tile Grid"
+      }
+    ]
+  }
 {% endschema %}
