@@ -73,9 +73,9 @@
 {% endcapture %}
 
 {% capture color_style %}
-{% if text_color != blank %}
-  color: var({{ text_color }});
-{% endif %}
+  {% if text_color != blank %}
+    color: var({{ text_color }});
+  {% endif %}
 {% endcapture %}
 
 {% capture image_style %}
