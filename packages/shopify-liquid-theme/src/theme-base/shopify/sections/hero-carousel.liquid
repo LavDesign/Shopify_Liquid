@@ -63,20 +63,36 @@
         </div>
         <div class="ra-hero__details component-details--set-order h-auto {% if section.settings.stack_mobile %}!relative md:!absolute{% endif %}">
           <div class="ra-hero__copy {{ block.settings.text_alignment }}">
+            {% capture eyebrow_styles %}
+              {% if block.settings.color_overrides_enabled %}
+                color: var({{ block.settings.eyebrow_color }});
+              {% endif %}
+            {% endcapture %}
             {% if block.settings.eyebrow_text != blank %}
-              <div class="ra-hero__subtitle">{{ block.settings.eyebrow_text }}</div>
+              <div class="ra-hero__subtitle" style="{{ eyebrow_styles }}">{{ block.settings.eyebrow_text }}</div>
             {% endif %}
 
+            {% capture title_styles %}
+              {% if block.settings.color_overrides_enabled %}
+                color: var({{ block.settings.title_color }});
+              {% endif %}
+            {% endcapture %}
             {% if block.settings.title != blank %}
               <{{ block.settings.title_level }}
                 class="ra-title ra-hero__title {{ block.settings.title_style }}"
+                style="{{ title_styles }}"
               >
                 {{ block.settings.title }}
               </{{ block.settings.title_level }}>
             {% endif %}
 
+            {% capture description_styles %}
+              {% if block.settings.color_overrides_enabled %}
+                color: var({{ block.settings.description_color }});
+              {% endif %}
+            {% endcapture %}
             {% if block.settings.description != blank %}
-              <div class="ra-hero__description rte">
+              <div class="ra-hero__description rte" style="{{ description_styles }}">
                 {{ block.settings.description }}
               </div>
             {% endif %}
@@ -134,16 +150,34 @@
       "name": "Slide",
       "settings": [
         {
+          "type": "checkbox",
+          "id": "color_overrides_enabled",
+          "label": "Use Color Overrides",
+          "default": false
+        },
+        {
           "type": "text",
           "id": "eyebrow_text",
           "label": "Eyebrow Text",
           "default": "Eyebrow Text"
         },
         {
+          "type": "select",
+          "id": "eyebrow_color",
+          "label": "Eyebrow Color",
+          "options": <%- uikit.colorsAll -%>
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "Title",
           "default": "This is a title"
+        },
+        {
+          "type": "select",
+          "id": "title_color",
+          "label": "Title Color",
+          "options": <%- uikit.colorsAll -%>
         },
         {
           "type": "select",
@@ -172,6 +206,12 @@
           "type": "richtext",
           "id": "description",
           "label": "Description"
+        },
+        {
+          "type": "select",
+          "id": "description_color",
+          "label": "Description Color",
+          "options": <%- uikit.colorsAll -%>
         },
         {
           "type": "header",
