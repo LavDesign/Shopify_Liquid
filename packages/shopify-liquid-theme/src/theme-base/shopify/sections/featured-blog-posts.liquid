@@ -1,0 +1,134 @@
+{% if section.settings.article_1 != blank or section.settings.article_2 != blank or section.settings.article_3 != blank %}
+  <div style="background-color: var({{ section.settings.background_color }});">
+    <div class="container py-10 md:py-20">
+      {% if section.settings.title != blank %}
+        <{{ section.settings.section_title_level }} 
+        class="flex items-center justify-center pb-5 md:pb-10 {{ section.settings.title_style }}" 
+        style="color: var({{ section.settings.title_color }});">
+          {{- section.settings.title -}}
+        </{{ section.settings.section_title_level }}>
+      {% endif %}
+  
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
+        {% if section.settings.article_1 != blank %}
+          {% render 'ra-article-tile'
+           , article: section.settings.article_1,
+           aspect_ratio: section.settings.aspect_ratio,
+           show_tags: section.settings.show_tags,
+           show_date: section.settings.show_date,
+           show_excerpt: section.settings.show_excerpt %}
+        {% endif %}
+  
+        {% if section.settings.article_2 != blank %}
+          {% render 'ra-article-tile'
+           , article: section.settings.article_2,
+           aspect_ratio: section.settings.aspect_ratio,
+           show_tags: section.settings.show_tags,
+           show_date: section.settings.show_date,
+           show_excerpt: section.settings.show_excerpt %}
+        {% endif %}
+  
+        {% if section.settings.article_3 != blank %}
+          {% render 'ra-article-tile'
+           , article: section.settings.article_3,
+           aspect_ratio: section.settings.aspect_ratio,
+           show_tags: section.settings.show_tags,
+           show_date: section.settings.show_date,
+           show_excerpt: section.settings.show_excerpt %}
+        {% endif %}
+      </div>
+    </div>  
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Featured Blog Posts",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "background_color",
+        "label": "Background Color",
+        "options": <%- uikit.colorsAll -%>
+      },
+      {
+        "type": "select",
+        "id": "aspect_ratio",
+        "label": "Image Aspect Ratio",
+        "options": [
+          {
+            "value": "square",
+            "label": "Square"
+          }, {
+            "value": "video",
+            "label": "Horizontal"
+          }
+        ],
+        "default": "video"
+      },
+      {
+        "type": "select",
+        "id": "section_title_level",
+        "label": "Section Title Level",
+        "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
+        "options": <%- uikit.headingStyles -%>,
+        "default": "h3"
+      },
+      {
+        "type": "select",
+        "id": "title_style",
+        "label": "Title Style",
+        "info": "Choose the styling of the header",
+        "options": <%- uikit.headingStyles -%>,
+        "default": "h3"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Keep Reading"
+      },
+      {
+        "type": "select",
+        "id": "title_color",
+        "label": "Title Color",
+        "options": <%- uikit.colorsAll -%>
+      },
+      {
+        "type": "article",
+        "id": "article_1",
+        "label": "Article 1"
+      },
+      {
+        "type": "article",
+        "id": "article_2",
+        "label": "Article 2"
+      }, {
+        "type": "article",
+        "id": "article_3",
+        "label": "Article 3"
+      }, {
+        "type": "checkbox",
+        "id": "show_excerpt",
+        "label": "Show Excerpt",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show Tags",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_date",
+        "label": "Show Date",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Blog Posts"
+      }
+    ]
+  }
+{% endschema %}
