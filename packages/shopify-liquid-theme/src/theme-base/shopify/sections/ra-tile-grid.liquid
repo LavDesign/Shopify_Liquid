@@ -34,6 +34,7 @@
          title: block.settings.title,
          description: block.settings.description,
          text_color: section.settings.text_color,
+         overlay_link: block.settings.destination_url,
          width: 800,
          image_height: image_container_height,
          horizontal_align: block.settings.horizontal_alignment,
@@ -150,6 +151,11 @@
             "type": "image_picker",
             "id": "image",
             "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "destination_url",
+            "label": "Destination URL"
           },
           {
             "type": "text",
