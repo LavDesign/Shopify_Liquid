@@ -5,13 +5,7 @@ const svgstore = require("gulp-svgstore");
 const svgmin = require("gulp-svgmin");
 const inject = require("gulp-inject");
 const debug = require("gulp-debug");
-
-const paths = {
-  themeBase: path.resolve(__dirname, "./src/theme-base"),
-  themeOverride: path.resolve(__dirname, "./src/theme-override"),
-  store: path.resolve(__dirname, "./src/theme-base/icons/icon-store.liquid"),
-  dest: path.resolve(__dirname, "./dist/snippets"),
-};
+const { themePaths } = require("./webpack-utils");
 
 /**
  * Resolve a single list of uniquie icon files for a list of configs
@@ -57,10 +51,10 @@ function buildIcons() {
   };
   const iconFiles = resolveIcons([
     {
-      context: path.join(paths.themeBase, "/icons"),
+      context: path.join(themePaths.themeBase, "/icons"),
     },
     {
-      context: path.join(paths.themeOverride, "/icons"),
+      context: path.join(themePaths.themeOverride, "/icons"),
     },
   ]);
 
@@ -70,10 +64,10 @@ function buildIcons() {
     .pipe(svgmin(svgminOpts))
     .pipe(svgstore(storeOpts));
   // Inject svg into icon store
-  const store = src([paths.store])
+  const store = src([themePaths.store])
     .pipe(debug({ title: "Icon store:" }))
     .pipe(inject(icons, injectOpts))
-    .pipe(dest(paths.dest));
+    .pipe(dest(themePaths.dest));
 
   return store;
 }
@@ -83,8 +77,8 @@ function buildIcons() {
  * and run icon:build task.
  */
 function iconsWatch() {
-  watch(`${paths.icons}/${paths.patterns.svg}`, buildIcons);
-  watch(paths.store, buildIcons);
+  watch(`${themePaths.icons}/${themePaths.patterns.svg}`, buildIcons);
+  watch(themePaths.store, buildIcons);
 }
 
 /**
