@@ -117,7 +117,7 @@ autoplay: true
     {%- capture video_params -%}
       &autoplay={%- if autoplay -%}1{%- else -%}0{%- endif -%}
       &controls={%- if controls -%}1{%- else -%}0{%- endif -%}
-      &mute={%- if controls -%}1{%- else -%}0{%- endif -%}
+      &mute={%- if muted -%}1{%- else -%}0{%- endif -%}
       &loop={%- if loop -%}1{%- else -%}0{%- endif -%}
       &modestbranding=1
     {%- endcapture -%}

@@ -85,7 +85,3 @@ h6,
     font-size: var(--display-desktop-size);
   }
 }
-
-.rte a {
-  text-decoration: underline;
-}

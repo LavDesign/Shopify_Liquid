@@ -74,6 +74,7 @@ const colorsUtil = [
   { label: "Green", value: "#537857" },
   { label: "Yellow", value: "#FCD162" },
   { label: "White", value: "#FFFFFF" },
+  { label: "Black", value: "#000000" },
 ];
 
 /*
@@ -116,21 +117,22 @@ const colorsAll = [
   { label: "Grey 300", value: "--color-grey-300" },
   { label: "Grey 200", value: "--color-grey-200" },
   { label: "Grey 100", value: "--color-grey-100" },
-  { label: "Util-red", value: "--color-util-red" },
-  { label: "Util-green", value: "--color-util-green" },
-  { label: "Util-yellow", value: "--color-util-yellow" },
-  { label: "Util-White", value: "--color-util-white" },
+  { label: "util-red", value: "--color-util-red" },
+  { label: "util-green", value: "--color-util-green" },
+  { label: "util-yellow", value: "--color-util-yellow" },
+  { label: "util-white", value: "--color-util-white" },
+  { label: "util-black", value: "--color-util-black" },
 ];
 
 const colorsSchemaPicker = [
   { label: "Primary", value: "--color-primary-900" },
   { label: "Secondary", value: "--color-secondary-900" },
   { label: "Tertiary", value: "--color-tertiary-900" },
-  { label: "Black", value: "--color-grey-900" },
   { label: "Util - Red", value: "--color-util-red" },
   { label: "Util - Green", value: "--color-util-green" },
   { label: "Util - Yellow", value: "--color-util-yellow" },
   { label: "Util - White", value: "--color-util-white" },
+  { label: "Util - Black", value: "--color-util-black" },
 ];
 
 /*

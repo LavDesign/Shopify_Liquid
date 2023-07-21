@@ -5,7 +5,7 @@
 #       This includes [Theme Access Passwords](https://shopify.dev/docs/themes/tools/cli#authentication)!
 
 [environments.prod]
-store = "fab-development.myshopify.com"
+store = "bedrock-liquid.myshopify.com"
 path = "./dist"
 
 [environments.dev]

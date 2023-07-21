@@ -5,6 +5,7 @@
   image_src:     String - (Optional) img src that will be used
   alt:
   width:         Int - (Optional) Image width
+  image_height:  Int - (Optional) Image component height
   index:         Int - (Optional) index of tile if in a carousel
   height:        Int - (Optional) Image height
   aspect_ratio:  String - (Optional) determines the sizing of the image [square, tall, wide, respect-media, fill-space]
@@ -71,6 +72,12 @@
   {% endif %}
 {% endcapture %}
 
+{% capture color_style %}
+  {% if text_color != blank %}
+    color: var({{ text_color }});
+  {% endif %}
+{% endcapture %}
+
 {% capture image_style %}
   {% case aspect_ratio %}
     {% when 'square' %}
@@ -84,12 +91,22 @@
   {% endcase %}
 {% endcapture %}
 
+{% capture height_classes %}
+  {% if image_height == 450 %}
+    h-[300px] md:h-[450px] overflow-y-hidden
+  {% endif %}
+  {% if image_height == 300 %}
+    h-[300px] overflow-y-hidden
+  {% endif %}
+{% endcapture %}
+
+
 {% if width == blank %}
   {% assign width = 400 %}
 {% endif %}
 
 <article class="{{ classes }}" data-aos="fade-up" data-aos-delay="{{ 50 | times: index }}">
-  <div class="ra-content-tile__media component-media">
+<div class="ra-content-tile__media component-media {{ height_classes }}">
     {% if video != blank %}
       <div class="ra-video ra-content-tile__video ra-video--use-aspect-ratio">
         <video
@@ -141,7 +158,7 @@
     {% endif %}
   </a>
   <div class="ra-content-tile__details component-details">
-    <div class="ra-content-tile__copy {{ verticalClasses }} {{ horizontalClasses }} min-w-full overflow-hidden">
+    <div class="ra-content-tile__copy {{ vertical_classes }} {{ horizontal_classes }} min-w-full overflow-hidden px-2" style="{{ color_style }}">
       {% if subtitle %}
         <div class="ra-content-tile__subtitle">
           {{- subtitle -}}

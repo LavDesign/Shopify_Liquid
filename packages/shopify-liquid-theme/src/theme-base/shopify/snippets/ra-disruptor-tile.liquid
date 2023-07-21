@@ -20,7 +20,8 @@
 %}
 {% assign new_index = index | minus: 1 %}
 <div
-  data-aos="fade-up" data-aos-delay="{{ '50' | times: new_index }}"
+  data-aos="fade-up"
+  data-aos-delay="{{ '50' | times: new_index }}"
   class="ra-disruptor-tile flex p-6 relative overflow-hidden {{ disruptor_classes }}"
   style="color: {{ disruptor.text_color }}"
 >
@@ -41,7 +42,7 @@
       {% endif %}
     </div>
   {% endif %}
-  <div class="ra-disruptor-tile__content flex justify-end flex-col items-baseline gap-2">
+  <div class="ra-disruptor-tile__content flex justify-end flex-col items-baseline gap-2 w-full">
     {% if disruptor.title %}
       <h4>{{ disruptor.title }}</h4>
     {% endif %}
@@ -49,7 +50,10 @@
       <div>{{ disruptor.body_text | metafield_tag }}</div>
     {% endif %}
     {% if disruptor.cta_label and disruptor.cta_url and disruptor.cta_style %}
-      <a class="ra-button ra-button--{{ disruptor.cta_style }} ra-button--md mt-2" href="{{ disruptor.cta_url }}">
+      <a
+        class="ra-button ra-button--{{ disruptor.cta_style }} ra-button--md mt-2 w-full"
+        href="{{ disruptor.cta_url }}"
+      >
         {{ disruptor.cta_label }}
       </a>
     {% endif %}
