@@ -1,4 +1,4 @@
-import { itemList, featuredVariantImage } from "./utilities";
+import { itemList, featuredVariantImage } from "./utilities.js";
 
 export function dataViewItem(product, variant) {
   // eslint-disable-next-line no-undef

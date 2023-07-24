@@ -67,8 +67,8 @@
 
 <script setup>
 import { computed, reactive, watch, ref, onMounted } from "vue";
-import { useCartStore } from "../../stores/cart";
-import { useProductPageStore } from "../../stores/productPage";
+import { useCartStore } from "../../stores/cart.js";
+import { useProductPageStore } from "../../stores/productPage.js";
 import { getSizedImageFromUrl } from "../../filters/image.js";
 import { CartSwatchPicker, CartOptionPicker } from "./";
 

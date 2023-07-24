@@ -1,5 +1,6 @@
 {% liquid
   assign title_level = section.settings.title_level
+  assign use_override = section.settings.use_color_overrides
 
   assign cta_1_text = section.settings.cta_1_text
   assign cta_1_url = section.settings.cta_1_url
@@ -113,26 +114,47 @@
         --media-height: 0.625;
     {%- endcase -%}
   }
+
+  #shopify-section-{{- section.id }} .ra-split-section__description ul li {
+    list-style: inside disc;
+  }
+
+  #shopify-section-{{- section.id }} .ra-split-section__description ol li {
+    list-style: inside decimal;
+  }
+
 {% endstyle %}
 
 {% capture text_content %}
   <div class="ra-split-section__copy set--v-align-{{ section.settings.vertical_align }}-sm set--v-align-{{ section.settings.vertical_align_md }}-md set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
+    {% capture eyebrow_style %}
+      color: var({{- section.settings.eyebrow_color -}});
+    {% endcapture %}
     {% if section.settings.eyebrow_text != blank %}
-      <div class="ra-split-section__subtitle" data-aos="fade-up">
+      <div class="ra-split-section__subtitle" data-aos="fade-up" {% if use_override %}style="{{ eyebrow_style }}"{% endif %}>
         {{- section.settings.eyebrow_text -}}
       </div>
     {% endif %}
+    {% capture title_style %}
+      color: var({{- section.settings.title_color -}});
+    {% endcapture %}
     {% if section.settings.title != blank %}
       <{{ title_level }}
         class="ra-title ra-split-section__title {{ section.settings.title_style }}"
+        {% if use_override %}
+        style="{{ title_style }}"
+        {% endif %}
         data-aos="fade-up"
         data-aos-delay="50"
       >
         <div>{{- section.settings.title -}}</div>
       </{{ title_level }}>
     {% endif %}
+    {% capture description_style %}
+      color: var({{- section.settings.description_color -}});
+    {% endcapture %}
     {% if section.settings.description != blank %}
-      <div class="ra-split-section__description {{ section.settings.description_copy_size }} rte" data-aos="fade-up" data-aos-delay="100">
+      <div class="ra-split-section__description {{ section.settings.description_copy_size }} rte" data-aos="fade-up" data-aos-delay="100" {% if use_override %}style="{{ description_style }}"{% endif %}>
         {{- section.settings.description -}}
       </div>
     {% endif %}
@@ -161,8 +183,38 @@
   </div>
 {% endcapture %}
 
-{% capture image_content %}
-  {% if section.settings.image != blank %}
+{% capture media_content %}
+  {% if section.settings.internal_video != blank %}
+    <div class="ra-split-section__media">
+      <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
+        {% render 'ra-video',
+          video: section.settings.internal_video,
+          lazyload: true,
+          controls: true,
+          autoplay: false,
+          loop: false,
+          width: width,
+          class: "ra-image__media w-full",
+          video_class: "h-full object-cover"
+        %}
+      </div>
+    </div>
+  {% elsif section.settings.external_video != blank %}
+    <div class="ra-split-section__media">
+      <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
+        {% render 'ra-video',
+          video_url: section.settings.external_video,
+          lazyload: true,
+          controls: false,
+          autoplay: false,
+          loop: false,
+          width: width,
+          class: "ra-image__media w-full",
+          video_class: "h-full object-cover"
+        %}
+      </div>
+    </div>
+  {% elsif section.settings.image != blank %}
     <div class="ra-split-section__media">
       <div class="ra-image ra-split-section__image ra-image--use-aspect-ratio">
         {% render 'ra-image', image: section.settings.image, width: width, height: height, classes: "ra-image__media w-full", lazyload: true %}
@@ -183,7 +235,7 @@
         {% endif %}
       >
         {% if details_location == 'after' %}
-          {{ image_content }}
+          {{ media_content }}
         {% else %}
           {{ text_content }}
         {% endif %}
@@ -199,7 +251,7 @@
         {% if details_location == 'after' %}
           {{ text_content }}
         {% else %}
-          {{ image_content }}
+          {{ media_content }}
         {% endif %}
       </div>
     </div>
@@ -215,10 +267,22 @@
       "content": "Section Content"
     },
     {
+      "type": "checkbox",
+      "id": "use_color_overrides",
+      "label": "Use Color Overrides",
+      "default": false
+    },
+    {
       "type": "text",
       "id": "eyebrow_text",
       "label": "Eyebrow Text",
       "default": "Eyebrow Text"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_color",
+      "label": "Eyebrow Color",
+      "options": <%- uikit.colorsAll -%>
     },
     {
       "type": "text",
@@ -227,9 +291,21 @@
       "default": "Title"
     },
     {
+      "type": "select",
+      "id": "title_color",
+      "label": "Title Color",
+      "options": <%- uikit.colorsAll -%>
+    },
+    {
       "type": "richtext",
       "id": "description",
       "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "description_color",
+      "label": "Description Color",
+      "options": <%- uikit.colorsAll -%>
     },
     {
       "type": "select",
@@ -274,6 +350,25 @@
     {
       "type": "header",
       "content": "Section Media"
+    },
+    {
+      "type": "paragraph",
+      "content": "This section will look for a video file, then an external video, and then an uploaded image"
+    },
+    {
+      "type": "video",
+      "id": "internal_video",
+      "label": "A Shopify-hosted video"
+    },
+    {
+      "type": "video_url",
+      "id": "external_video",
+      "label": "An external video",
+      "info": "Accepts Youtube or Vimeo",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
     },
     {
       "type": "image_picker",
@@ -341,11 +436,11 @@
       "options": [
         {
           "value": "before",
-          "label": "Text left, Imagery right"
+          "label": "Text left, Media right"
         },
         {
           "value": "after",
-          "label": "Imagery left, Text right"
+          "label": "Media left, Text right"
         },
         {
           "value": "overlay",
@@ -362,11 +457,11 @@
       "options": [
         {
           "value": "after",
-          "label": "Image Top, Text Bottom"
+          "label": "Media Top, Text Bottom"
         },
         {
           "value": "before",
-          "label": "Text Top, Imagery Bottom"
+          "label": "Text Top, Media Bottom"
         },
         {
           "value": "overlay",
@@ -555,7 +650,7 @@
       "label": "Text Color (mobile)",
       "info": "Set the text color for mobile screen sizes",
       "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-grey-900"
+      "default": "--color-util-black"
     },
     {
       "type": "select",
@@ -563,7 +658,7 @@
       "label": "Text Color (desktop)",
       "info": "Set the text color for larger screen sizes (if different from mobile)",
       "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-grey-900"
+      "default": "--color-util-black"
     }
   ],
   "presets": [

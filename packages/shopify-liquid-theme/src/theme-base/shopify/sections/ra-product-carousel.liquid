@@ -58,6 +58,14 @@
     --heading-text-align: left;
   }
 
+  .product-carousel--{{ section.id }} .ra-heading__description ul li {
+    list-style: inside disc;
+  }
+
+  .product-carousel--{{ section.id }} .ra-heading__description ol li {
+    list-style: inside decimal;
+  }
+
   @media only screen and (min-width: 768px) {
     .product-carousel--{{ section.id }} {
       padding: {{ section.settings.desktop_padding }}rem 2rem;
@@ -105,6 +113,7 @@
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
         class="swiper--{{ section.id }} mt-16 product-recommendations w-full"
+        data-section="{{ section.id }}"
         {% if section.settings.use_recommendations_api %}
           data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent={{ section.settings.recommendations_intent }}"
         {% endif %}

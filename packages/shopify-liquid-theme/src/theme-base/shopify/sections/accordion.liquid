@@ -3,8 +3,21 @@
     background-color: var({{- section.settings.bg_color -}});
     color: var({{- section.settings.text_color -}});
   }
+
+  #shopify-section-{{- section.id }} .ra-accordion-item__content ul li {
+    list-style: inside disc;
+  }
+
+  #shopify-section-{{- section.id }} .ra-accordion-item__content ol li {
+    list-style: inside decimal;
+  }
+
 {%- endstyle -%}
 <div class="container">
+  <{{ section.settings.section_title_level }} class="{{ section.settings.title_style }}">
+    {{- section.settings.section_title -}}
+  </{{ section.settings.section_title_level }}>
+
   <ra-accordion class="ra-accordion" data-multi-open="false">
     {%- for block in section.blocks -%}
       {% capture accordion_title %}
@@ -23,8 +36,21 @@
   "settings": [
     {
       "type": "select",
+      "id": "section_title_level",
+      "label": "Section Title Level",
+      "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
+      "options": <%- uikit.headingStyles -%>,
+      "default": "h3"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title"
+    },
+    {
+      "type": "select",
       "id": "title_level",
-      "label": "Title Level",
+      "label": "Accordion Title Level",
       "info": "Choose the semantic H-Tag for this title (Note - please do not update)",
       "options": <%- uikit.headingStyles -%>,
       "default": "h5"

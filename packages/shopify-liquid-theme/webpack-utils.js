@@ -74,4 +74,14 @@ const getRelativePath = (from, to, { offset = 0 }) => {
   return rel;
 };
 
-module.exports = { resolveEntries, getRelativePath };
+const themePaths = {
+  themeBase: path.resolve(__dirname, "./src/theme-base"),
+  themeOverride: path.resolve(
+    __dirname,
+    `./src/${process.env.THEME_OVERRIDE_DIR}`
+  ),
+  store: path.resolve(__dirname, "./src/theme-base/icons/icon-store.liquid"),
+  dest: path.resolve(__dirname, "./dist/snippets"),
+};
+
+module.exports = { resolveEntries, getRelativePath, themePaths };

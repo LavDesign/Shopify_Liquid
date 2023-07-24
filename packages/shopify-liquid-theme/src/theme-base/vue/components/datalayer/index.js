@@ -1,6 +1,6 @@
-import { dataViewItem } from "./dataViewItem";
-import { dataAddToCart } from "./dataAddToCart";
-import { dataViewCart } from "./dataViewCart";
-import { dataRemoveFromCart } from "./dataRemoveFromCart";
+import { dataViewItem } from "./dataViewItem.js";
+import { dataAddToCart } from "./dataAddToCart.js";
+import { dataViewCart } from "./dataViewCart.js";
+import { dataRemoveFromCart } from "./dataRemoveFromCart.js";
 
 export { dataViewItem, dataAddToCart, dataViewCart, dataRemoveFromCart };

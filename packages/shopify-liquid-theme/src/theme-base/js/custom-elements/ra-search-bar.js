@@ -1,5 +1,5 @@
-import { debounce } from "../utils/helpers";
-import { refreshReviewWidgets } from "../utils/vendors";
+import { debounce } from "../utils/helpers.js";
+import { refreshReviewWidgets } from "../utils/vendors.js";
 import { getToken } from "@bva/ui-shared/helpers";
 import axios from "axios";
 export default class RaSearchBar extends HTMLElement {

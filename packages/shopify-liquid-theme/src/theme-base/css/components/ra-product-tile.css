@@ -1,0 +1,83 @@
+.ra-product-tile__options--expanded {
+  @apply flex-wrap gap-2 flex-row
+}
+
+.ra-product-tile__options::-webkit-scrollbar {
+  @apply hidden
+}
+
+.ra-product-tile__option {
+  &.active {
+    @apply border-red
+  }
+}
+
+.ra-product-tile__media {
+  &:hover {
+    --product-tile-image-opacity: 1;
+    --product-tile-image-even-opacity: 1;
+    --product-tile-wishlist-opacity: 1;
+    --product-tile-atc-opacity: 1;
+    --product-tile-z-index: var(--z-index-base);
+  }
+}
+
+.ra-product-tile {
+
+  .ra-choice {
+    @apply h-[30px] transition-opacity duration-200;
+  }
+
+  .ra-choice__container {
+    @apply w-[30px] h-[30px] rounded-full;
+    border: none !important;
+    img {
+      @apply w-full h-full rounded-full overflow-hidden;
+    }
+
+    &.active {
+      @apply p-[3px];
+      border: 1px solid #4D4C4B !important;
+    }
+  }
+}
+
+.product-tile__arrow--left,
+.product-tile__arrow--right,
+.product-tile__view-more {
+  @apply absolute top-1/2 -translate-y-1/2 z-50
+}
+
+.product-tile__arrow--left,
+.product-tile__arrow--right {
+  @apply h-full w-6 bg-white
+}
+
+.product-tile__arrow--left span,
+.product-tile__arrow--right span {
+  @apply h-3 w-3 bg-no-repeat bg-center	bg-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2
+}
+
+.product-tile__arrow--left {
+  @apply left-0;
+}
+
+.product-tile__arrow--left span {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M27.3337 12.3331L7.05032 12.333L16.367 3.01638L14.0003 0.666384L0.66699 13.9997L14.0003 27.333L16.3503 24.983L7.05032 15.6664L27.3337 15.6664L27.3337 12.3331Z' fill='currentColor'/%3E%3C/svg%3E");
+}
+
+.product-tile__arrow--right {
+  @apply right-0;
+}
+
+.product-tile__arrow--right span {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0L6.59 1.41L12.17 7H0V9H12.17L6.59 14.59L8 16L16 8L8 0Z' fill='currentColor'/%3E%3C/svg%3E");
+}
+
+.product-tile__view-less {
+  @apply text-base underline cursor-pointer bottom-0 text-right;
+}
+
+.product-tile__view-more {
+  @apply right-0 h-full bg-white items-center pl-2 text-base underline cursor-pointer
+}

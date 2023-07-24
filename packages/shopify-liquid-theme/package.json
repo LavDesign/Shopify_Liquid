@@ -38,9 +38,10 @@
     "help": "cat package-scripts-help.txt"
   },
   "config": {
-    "prod-store-url": "fab-development.myshopify.com"
+    "prod-store-url": "bedrock-liquid.myshopify.com"
   },
   "dependencies": {
+    "@bva/theme-resolver": "^1.0.1",
     "@bva/ui-shared": "^1.4.22",
     "@bva/ui-vue": "^1.4.14",
     "aos": "^2.3.4",

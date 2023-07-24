@@ -43,9 +43,9 @@
 
 <script setup>
 import { computed, ref, reactive, onMounted, watch } from "vue";
-import { useCartStore } from "../stores/cart";
+import { useCartStore } from "../stores/cart.js";
 import { useProductPageStore } from "../stores/productPage";
-import { updateURL } from "../../js/utils/search-params";
+import { updateURL } from "../../js/utils/search-params.js";
 import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";

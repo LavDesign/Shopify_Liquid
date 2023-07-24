@@ -1,8 +1,15 @@
 {
   "sections": {
     "ui-kit": {
-      "type": "page-ui-kit"
+      "type": "page-ui-kit",
+      "settings": {
+        "featured_product": "multivariant-product",
+        "featured_product_2": "1-variant-product",
+        "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/12b95f6661a94dcbbd8b680ddc0b4131.mp4"
+      }
     }
   },
-  "order": ["ui-kit"]
+  "order": [
+    "ui-kit"
+  ]
 }

@@ -29,7 +29,7 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { computed } from "vue";
-import { useCartStore } from "../stores/cart";
+import { useCartStore } from "../stores/cart.js";
 import { CartProducts, CartSidebar, EmptyCart } from "./CartComponents";
 
 const cartStore = useCartStore();

@@ -1,0 +1,34 @@
+.ra-preheader {
+  swiper-slide {
+    display: none;
+
+    &:first-child {
+      display: block;
+    }
+  }
+
+  .swiper-initialized {
+    swiper-slide {
+      display: block;
+    }
+  }
+
+  .ra-preheader__slider {
+    &.ra-preheader__slider--left swiper-container,
+    &.ra-preheader__slider--left .swiper {
+      @media breakpoint(md) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .ra-preheader__text {
+    width: 100%;
+
+    &,
+    * {
+      text-align: center;
+      color: var(--preheader-text-color);
+    }
+  }
+}
