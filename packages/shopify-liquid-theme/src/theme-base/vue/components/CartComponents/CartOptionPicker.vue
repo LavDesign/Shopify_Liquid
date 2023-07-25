@@ -3,8 +3,9 @@
     v-bind="$attrs"
     class="cart-tile__option-picker"
     variant="dropdown"
+    label="select an optionsss"
+    labelSelected="select an option"
     size="lg"
-    :label="false"
   />
 </template>
 

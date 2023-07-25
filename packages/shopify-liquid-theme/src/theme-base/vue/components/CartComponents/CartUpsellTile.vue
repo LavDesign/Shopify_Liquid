@@ -1,8 +1,11 @@
 <template>
-  <div class="flex w-full flex-col p-4 border border-grey-500">
+  <div class="flex w-full flex-col p-4 border border-grey-500 upsell-tile">
     <div class="w-full flex flex-row gap-4 font-primary">
       <a :href="product_link" class="!block w-full max-w-[112px]">
-        <img v-bind="product_image" class="w-full aspect-square object-cover" />
+        <img
+          v-bind="product_image"
+          class="w-full h-full aspect-square object-cover"
+        />
       </a>
       <div class="flex flex-col gap-1 justify-between flex-1">
         <div class="flex flex-row justify-between gap-2">
@@ -31,7 +34,11 @@
               :key="`swatch_${optionKey}`"
               label=""
               :options="options"
-              :selected="selectedOptions[optionKey]"
+              :selected="
+                selectedOptions[optionKey]
+                  ? selectedOptions[optionKey]
+                  : options[0].value
+              "
               @change:option="
                 (selected, option) =>
                   handleOptionSelect(optionKey, selected, option)
@@ -43,9 +50,14 @@
               label=""
               :key="`${optionKey}`"
               :options="options"
-              :selected="selectedOptions[optionKey]"
+              :selected="
+                selectedOptions[optionKey]
+                  ? selectedOptions[optionKey]
+                  : options[0].value
+              "
               variant="dropdown"
               :itemsPerRow="itemsPerRow"
+              class="-mb-1"
               @change:option="
                 (selected, option) =>
                   handleOptionSelect(optionKey, selected, option)
@@ -82,12 +94,9 @@ const props = defineProps({
 
 const product_image = computed(() => {
   const image = {};
-  if (
-    variantSelected.value &&
-    currentVariant.value.images?.default?.sizes?.sm
-  ) {
-    image.src = currentVariant.value.images.default?.sizes.sm;
-    image.alt = currentVariant.value.images.default?.alt;
+  if (variantSelected.value && currentVariant.value.image?.default?.sizes?.sm) {
+    image.src = currentVariant.value.image.default?.sizes.sm;
+    image.alt = currentVariant.value.image.default?.alt;
   } else {
     image.src = small_product_image.value;
     image.alt = props.product.title;
@@ -134,8 +143,9 @@ const optionsWithValues = reactive(props.product.options_with_values);
 const selectedOptions = reactive({});
 
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
-  if (!optionsSelected.value.includes(optionKey))
-    optionsSelected.value.push(optionKey);
+  if (!optionsSelected.value.includes(optionKey)) {
+    // optionsSelected.value.push(optionKey);
+  }
   selectedOptions[optionKey] = selectedOption.value;
 };
 
@@ -170,14 +180,25 @@ const formattedOptions = computed(() => {
 
   props.product.options.forEach((option, optionIndex) => {
     formattedOptions[option] = [];
+    let optionIsAvailable = null;
 
     optionsWithValues[option].forEach((value) => {
-      const optionIsAvailable = optionHasInStockVariant(value, optionIndex);
-      formattedOptions[option].push({
-        label: value,
-        value,
-        disabled: !optionIsAvailable,
-      });
+      if (option === "Color") {
+        optionIsAvailable = optionHasInStockVariant(value.value, optionIndex);
+        formattedOptions[option].push({
+          label: value.value,
+          color: value.value.toLowerCase(),
+          value: value.value,
+          disabled: !optionIsAvailable,
+        });
+      } else {
+        optionIsAvailable = optionHasInStockVariant(value, optionIndex);
+        formattedOptions[option].push({
+          label: value,
+          value,
+          disabled: !optionIsAvailable,
+        });
+      }
     });
   });
 
@@ -238,5 +259,18 @@ watch(currentVariant, (variant) => {
 
 onMounted(() => {
   variantSelected.value = !hasComplexVariants.value;
+  for (let i = 0; i < props.product.options.length; i++) {
+    let productOption = props.product.options[i];
+    console.log(productOption);
+    if (props.product.options_with_values[productOption][0].value) {
+      selectedOptions[productOption] =
+        props.product.options_with_values[productOption][0].value;
+      optionsSelected.value.push(selectedOptions[productOption]);
+    } else {
+      selectedOptions[productOption] =
+        props.product.options_with_values[productOption][0];
+      optionsSelected.value.push(selectedOptions[productOption]);
+    }
+  }
 });
 </script>

@@ -7,21 +7,27 @@
     "social_pinterest_link": "",
     "social_youtube_link": "",
     "social_tiktok_link": "",
+    "util_link_1_label": "Link 1 FAQ",
+    "util_link_1_url": "shopify:\/\/pages\/faqs",
+    "util_link_2_label": "Link 2 Product",
+    "util_link_2_url": "shopify:\/\/products\/1-variant-product",
     "review_platform": "bazaarvoice",
-    "yotpo_app_key": "9REoSVXq9la0CNQAMliDqKX4nM0CgzfIkdQqORTl",
-    "stamped_api_key": "pubkey-xaPlon8rJ33O3Y6asSnh7VqEw3psAH",
+    "yotpo_app_key": "vC1r1VmmvTIJKaAPDoIdb5lOp687fsMSymIAH1Nj",
+    "stamped_api_key": "05846366-0560-46ff-8fb3-828bc92b62c0",
     "bazaarvoice_staging_api": "cacXRm016MhHC7WQEyW2gkDlgZyLP9jztXq3vF9NLBDns",
     "bazaarvoice_production_api": "cajEln9nqYjktvh9nAq1bb4nLRk444tHLrmoi5pdDNKFE",
     "bazaarvoice_client": "partner-thestable",
     "bazaarvoice_id": "main_site",
+    "bazaarvoice_env": "production",
+    "enable_internationalization": false,
     "cart_message_1": "<p><em><strong>SPECIAL MESSAGE HERE<\/strong><\/em><\/p>",
     "free_gift_enabled": true,
-    "free_gift_threshold": "50",
+    "free_gift_threshold": "6000",
     "gift_message_enabled": true,
     "upsell_enabled": true,
-    "upsell_product": "garden-party",
-    "empty_cart_header": "Your cart is empty, you might like these..",
-    "empty_cart_link_list": "empty-cart-links",
+    "upsell_product": "multivariant-product",
+    "empty_cart_header": "Lost? Start Here",
+    "empty_cart_link_list": "bedrock-nav",
     "colors_solid_button_labels": "#ffffff",
     "colors_accent_1": "#121212",
     "gradient_accent_1": "",
@@ -119,8 +125,6 @@
       "header": {
         "type": "header",
         "settings": {
-          "link_color": "--color-util-yellow",
-          "link_hover_color": "--color-util-yellow",
           "logo": "{{ shop.brand.logo }}",
           "menu": "main-menu"
         }
@@ -128,14 +132,22 @@
       "footer": {
         "type": "footer",
         "blocks": {
+          "12717e09-5962-4433-8c42-27225474ca7b": {
+            "type": "form",
+            "settings": {
+              "form_title": "<p>Please sign up for our newsletter to<\/p><p> <\/p><p>receive updates & discounts<\/p>",
+              "klaviyo_list_id": "12345"
+            }
+          },
           "93bc07cc-d6cb-4df3-b9eb-7e7ceb6903fe": {
             "type": "menu",
             "settings": {
-              "menu": "footer"
+              "menu": "bedrock-footer"
             }
           }
         },
         "block_order": [
+          "12717e09-5962-4433-8c42-27225474ca7b",
           "93bc07cc-d6cb-4df3-b9eb-7e7ceb6903fe"
         ],
         "settings": {
@@ -143,7 +155,7 @@
           "link_color": "--color-util-white",
           "link_hover_color": "--color-secondary-500",
           "show_social_icon": true,
-          "util_menu": "",
+          "util_menu": "footer-util",
           "copyright_text": "All rights reserved."
         }
       },
@@ -153,6 +165,26 @@
           "logo": "{{ shop.brand.logo }}",
           "logo_max_width": 100,
           "color_scheme": "background-1"
+        }
+      },
+      "ra-countries": {
+        "type": "ra-countries",
+        "blocks": {
+          "c04c752c-9840-4251-8dbc-c9a506451920": {
+            "type": "country",
+            "settings": {
+              "title": "",
+              "country_code": "",
+              "language_code": ""
+            }
+          }
+        },
+        "block_order": [
+          "c04c752c-9840-4251-8dbc-c9a506451920"
+        ],
+        "settings": {
+          "default_country_code": "",
+          "default_currency_code": ""
         }
       }
     },
