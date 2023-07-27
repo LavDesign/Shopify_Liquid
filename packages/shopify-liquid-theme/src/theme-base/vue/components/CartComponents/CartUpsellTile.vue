@@ -126,6 +126,8 @@ const product_link = computed(() => {
 
 const hasVariants = computed(() => props.product?.variants?.length > 1);
 
+const swatchOptions = window.global_settings.settings.swatch_options.split(",");
+
 const displayCta = computed(() => {
   return hasVariants.value
     ? optionsSelected.value.length === variantOptions.value
@@ -133,7 +135,7 @@ const displayCta = computed(() => {
 });
 const variantSelected = ref(false);
 
-const swatchOptions = ["Color"];
+// const swatchOptions = ["Color"];
 
 const itemsPerRow = "3";
 
@@ -183,7 +185,7 @@ const formattedOptions = computed(() => {
     let optionIsAvailable = null;
 
     optionsWithValues[option].forEach((value) => {
-      if (option === "Color") {
+      if (swatchOptions.includes(option)) {
         optionIsAvailable = optionHasInStockVariant(value.value, optionIndex);
         formattedOptions[option].push({
           label: value.value,
@@ -242,10 +244,7 @@ const productStore = useProductPageStore();
 const isAddingToCart = ref(false);
 const addToCart = async () => {
   isAddingToCart.value = true;
-  await cartStore.addItem({
-    id: currentVariant.value.id,
-    quantity: 1,
-  });
+  await cartStore.addItem({ id: currentVariant.value.id, quantity: 1 });
   isAddingToCart.value = false;
 };
 
@@ -261,7 +260,6 @@ onMounted(() => {
   variantSelected.value = !hasComplexVariants.value;
   for (let i = 0; i < props.product.options.length; i++) {
     let productOption = props.product.options[i];
-    console.log(productOption);
     if (props.product.options_with_values[productOption][0].value) {
       selectedOptions[productOption] =
         props.product.options_with_values[productOption][0].value;

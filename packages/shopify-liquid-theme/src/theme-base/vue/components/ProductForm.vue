@@ -59,7 +59,8 @@ const cartStore = useCartStore();
 
 // ToDo: Add these values as a prop to pull from customizer
 const optionsAsDropdowns = [];
-const optionsAsSwatches = ["Color"];
+const optionsAsSwatches =
+  window.global_settings.settings.swatch_options.split(",");
 const optionsAsSmall = ["Size"];
 const optionsAsHorizontal = ["Material"];
 
@@ -221,7 +222,8 @@ const addToCart = async () => {
       quantity: qty.value,
       // properties: null
     })
-    .then(() => dataAddToCart(props.product, currentVariant, qty));
+    .then(() => dataAddToCart(props.product, currentVariant, qty))
+    .then(() => window.dispatchEvent(new Event("toggleCart")));
   isAddingToCart.value = false;
 };
 
