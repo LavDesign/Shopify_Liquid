@@ -170,8 +170,8 @@
         "cta_2_text": "Secondary",
         "cta_2_url": "",
         "cta_2_style": "secondary",
-        "bg_color": "--color-util-white",
-        "bg_color_md": "--color-util-white",
+        "bg_color": "--color-util-green",
+        "bg_color_md": "--color-util-green",
         "text_color_mobile": "--color-grey-900",
         "text_color_desktop": "--color-grey-900"
       }
