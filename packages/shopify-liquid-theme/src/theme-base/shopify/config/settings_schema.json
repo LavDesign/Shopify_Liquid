@@ -712,6 +712,18 @@
     ]
   },
   {
+    "name": "Product Data",
+    "settings": [
+      {
+        "type": "text",
+        "id": "swatch_options",
+        "label": "Swatch Options",
+        "info": "Please choose which options (ex. Color, Hue, Shade, etc.) you would like to have show as swatches",
+        "default": "Color,Shade"
+      }
+    ]
+  },
+  {
     "name": "Product Reviews",
     "settings": [
       {

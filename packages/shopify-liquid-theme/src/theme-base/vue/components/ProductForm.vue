@@ -50,6 +50,7 @@ import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
 import { dataViewItem, dataAddToCart } from "./datalayer/";
+import { cartToggle } from "../../js/utils/cart-actions.js";
 
 const props = defineProps({
   product: Object,
@@ -59,7 +60,8 @@ const cartStore = useCartStore();
 
 // ToDo: Add these values as a prop to pull from customizer
 const optionsAsDropdowns = [];
-const optionsAsSwatches = ["Color"];
+const optionsAsSwatches =
+  window.global_settings.settings.swatch_options.split(",");
 const optionsAsSmall = ["Size"];
 const optionsAsHorizontal = ["Material"];
 
@@ -221,7 +223,8 @@ const addToCart = async () => {
       quantity: qty.value,
       // properties: null
     })
-    .then(() => dataAddToCart(props.product, currentVariant, qty));
+    .then(() => dataAddToCart(props.product, currentVariant, qty))
+    .then(() => cartToggle());
   isAddingToCart.value = false;
 };
 

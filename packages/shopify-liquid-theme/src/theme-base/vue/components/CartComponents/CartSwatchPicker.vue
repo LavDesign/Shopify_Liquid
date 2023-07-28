@@ -4,9 +4,9 @@
     class="cart-tile__option-picker"
     size="xs"
     label=""
-    shape="square"
+    shape="rounded"
     :fillSpace="false"
-    variant="scrollable"
+    variant="grid"
   />
 </template>
 

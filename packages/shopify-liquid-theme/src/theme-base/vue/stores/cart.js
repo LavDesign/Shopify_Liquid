@@ -53,7 +53,6 @@ export const useCartStore = defineStore("cart", () => {
           // TODO: Update cart store with response OR just replace this entire thing with an action
           resolve(response.data);
           cart.value = response.data;
-          window.dispatchEvent(new Event("toggleCart"));
         })
         .catch((err) => {
           console.log(err);
