@@ -258,15 +258,16 @@ watch(currentVariant, (variant) => {
 
 onMounted(() => {
   variantSelected.value = !hasComplexVariants.value;
-  for (let i = 0; i < props.product.options.length; i++) {
-    let productOption = props.product.options[i];
-    if (props.product.options_with_values[productOption][0].value) {
+  const options = props.product.options;
+  const optionsWithValues = props.product.options_with_values;
+  for (let i = 0; i < options.length; i++) {
+    let productOption = options[i];
+    if (optionsWithValues[productOption][0].value) {
       selectedOptions[productOption] =
-        props.product.options_with_values[productOption][0].value;
+        optionsWithValues[productOption][0].value;
       optionsSelected.value.push(selectedOptions[productOption]);
     } else {
-      selectedOptions[productOption] =
-        props.product.options_with_values[productOption][0];
+      selectedOptions[productOption] = optionsWithValues[productOption][0];
       optionsSelected.value.push(selectedOptions[productOption]);
     }
   }

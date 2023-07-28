@@ -50,6 +50,7 @@ import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
 import { dataViewItem, dataAddToCart } from "./datalayer/";
+import { cartToggle } from "../../js/utils/cart-actions.js";
 
 const props = defineProps({
   product: Object,
@@ -223,7 +224,7 @@ const addToCart = async () => {
       // properties: null
     })
     .then(() => dataAddToCart(props.product, currentVariant, qty))
-    .then(() => window.dispatchEvent(new Event("toggleCart")));
+    .then(() => cartToggle());
   isAddingToCart.value = false;
 };
 
