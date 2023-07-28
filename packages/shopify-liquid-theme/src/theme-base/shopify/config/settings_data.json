@@ -167,6 +167,15 @@
           "color_scheme": "background-1"
         }
       },
+<<<<<<< HEAD
+=======
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+          "color_scheme": "background-1"
+        }
+      },
+>>>>>>> 4d4fe0b478333c54db462f2e9c61a407b4bc7200
       "ra-countries": {
         "type": "ra-countries",
         "blocks": {
@@ -311,6 +320,12 @@
           "settings": {
             "logo": "{{ shop.brand.logo }}",
             "logo_max_width": 100,
+            "color_scheme": "background-1"
+          }
+        },
+        "main-password-footer": {
+          "type": "main-password-footer",
+          "settings": {
             "color_scheme": "background-1"
           }
         }
