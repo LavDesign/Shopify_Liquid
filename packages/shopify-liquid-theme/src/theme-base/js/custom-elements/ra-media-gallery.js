@@ -89,11 +89,17 @@ export default class RaMediaGallery extends HTMLElement {
     });
   }
 
-  triggerModal() {
+  triggerModal(event) {
     this.lightBoxGallery.showModal();
     document.body.classList.add("fixed", "w-full");
 
-    const slideIndex = this.primarySwiper.swiper.realIndex;
-    this.lightBoxSwiper.swiper.slideToLoop(slideIndex, 0);
+    if (this.primarySwiper) {
+      const slideIndex = this.primarySwiper.swiper.realIndex;
+      this.lightBoxSwiper.swiper.slideToLoop(slideIndex, 0);
+    } else {
+      let galleryIndex = parseInt(event.srcElement.dataset.slideIndex);
+      const slideIndex = galleryIndex;
+      this.lightBoxSwiper.swiper.slideToLoop(slideIndex, 0);
+    }
   }
 }

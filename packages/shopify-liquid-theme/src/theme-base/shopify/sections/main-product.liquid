@@ -12,7 +12,11 @@
       {% render 'ra-breadcrumbs', classes: 'my-10 hidden md:block', divider: 'slash' %}
       <div class="flex product pt-3 flex-col md:flex-row">
         <div class="md:w-1/2 pl-0">
-          {% render 'ra-product-media-gallery', product: product %}
+          {% if section.settings.gallery_type == 'scrolling' %}
+            {% render 'ra-product-media-gallery-scrolling', product: product %}
+          {% else %}
+            {% render 'ra-product-media-gallery', product: product %}
+          {% endif %}
         </div>
         <div class="md:w-1/2 md:pl-10 lg:pl-20 z-10">
           <div class="sticky top-12">
@@ -73,6 +77,23 @@
       "type": "page",
       "id": "size_guide_page",
       "label": "Size Guide Page"
+    },
+    {
+      "type": "select",
+      "id": "gallery_type",
+      "label": "Image Gallery Type",
+      "info": "Select the image gallery type",
+      "options": [
+        {
+          "value": "gallery",
+          "label": "Gallery + Thumbnails"
+        },
+        {
+          "value": "scrolling",
+          "label": "Scrolling"
+        }
+      ],
+      "default": "scrolling"
     }
   ],
   "blocks": [
