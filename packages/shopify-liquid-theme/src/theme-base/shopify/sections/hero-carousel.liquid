@@ -44,7 +44,7 @@
     {% if section.settings.autoplay %}
       autoplay-delay="{{ section.settings.delay | times: 1000 }}"
     {% endif %}
-    effect="{{ section.settings.effect | json }}"
+    effect="{{ section.settings.effect }}"
     navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
     navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
     pagination-el=".swiper-pagination-{{ section.id }}"
