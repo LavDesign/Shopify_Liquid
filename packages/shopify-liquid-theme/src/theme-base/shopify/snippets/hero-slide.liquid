@@ -58,7 +58,7 @@
       %}
     </div>
   {% elsif block.settings[image_handle] != blank %}
-    {% assign image_class = 'ra-image__media ra-image__media--mobile ' %}
+    {% assign image_class = 'ra-image__media ra-image__media--mobile h-full' %}
     {% assign responsive_class = 'hidden md:block' %}
     {% if view == 'mobile' %}
       {% assign responsive_class = 'md:hidden' %}
