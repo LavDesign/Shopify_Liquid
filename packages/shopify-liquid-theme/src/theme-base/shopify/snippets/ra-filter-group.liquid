@@ -85,8 +85,10 @@
     </div>
   </div>
 {% else %}
-  <ul class="list-none">
+  <ul class="list-none" data-filter="{{ filter.label | handleize }}">
+    {% assign max_visible_options = 5 %}
     {%- for value in filter.values -%}
+      {% assign show_more_class = 'filter-show' %}
       {% assign checked = false %}
       {% assign disabled = true %}
       {% assign count = value.count %}
@@ -96,7 +98,10 @@
       {% if count > 0 %}
         {% assign disabled = false %}
       {% endif %}
-      <li class="mb-3 ml-[2px]">
+      {% if forloop.index > max_visible_options %}
+        {% assign show_more_class = 'filter-hide' %}
+      {% endif %}
+      <li class="mb-3 ml-[2px] {{ show_more_class }}">
         {%- render 'ra-checkbox',
           name: value.param_name,
           class: 'ra-filter-input',
@@ -110,4 +115,24 @@
       </li>
     {%- endfor -%}
   </ul>
+  {% if filter.values.size > max_visible_options %}
+    <div class="cursor-pointer" data-filter-label="{{ filter.label | handleize }}" onclick="showMoreFilterToggle('{{ filter.label | handleize }}')">show more</div>
+  {% endif %}
 {% endif %}
+
+<script>
+  function showMoreFilterToggle(filterHandle) {
+    const filtersToToggle = document.querySelectorAll(`[data-filter='${filterHandle}'] .filter-hide`);
+    filtersToToggle.forEach((filter) => {
+      if (filter.classList.contains('active')) {
+        filter.classList.remove('active');
+        document.querySelector(`[data-filter-label='${filterHandle}']`).innerText = "show more";
+      } else {
+        filter.classList.add('active');
+        document.querySelector(`[data-filter-label='${filterHandle}']`).innerText = "show less";
+        document.querySelector(`.${filterHandle} .ra-accordion-item__content`).style.height = "auto";
+      }
+    });
+  };
+
+</script>

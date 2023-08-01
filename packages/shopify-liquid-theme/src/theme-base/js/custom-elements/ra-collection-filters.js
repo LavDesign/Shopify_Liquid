@@ -61,6 +61,10 @@ export default class RaCollectionFilters extends HTMLElement {
     updateURL("");
   }
 
+  static toggleFilters(filterHandle) {
+    console.log(filterHandle);
+  }
+
   static getSearchParamString() {
     const filterForm = document.getElementById("CollectionFilters");
     const sortForm = document.querySelector("[name='sortBy']");

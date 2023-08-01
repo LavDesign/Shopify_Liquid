@@ -44,6 +44,7 @@
         {% assign display_as_buttons = false %}
         {% assign display_as_swatches = false %}
         {% assign filter_label = filter.label | downcase | strip %}
+        {% assign filter_label_handleized = filter.label | handleize %}
 
         {% if button_filters contains filter_label %}
           {% assign display_as_buttons = true %}
@@ -57,7 +58,7 @@
           {% render 'ra-filter-group', filter: filter, display_as_buttons: display_as_buttons, display_as_swatches: display_as_swatches %}
         {% endcapture %}
 
-        {% render 'ra-accordion-item', title: filter.label, content: filter_content, show_icon: true, is_open: true %}
+        {% render 'ra-accordion-item', title: filter.label, content: filter_content, show_icon: true, is_open: true, class: filter_label_handleized %}
       {%- endfor -%}
     </ra-accordion>
   </form>
