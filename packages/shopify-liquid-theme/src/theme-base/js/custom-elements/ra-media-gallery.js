@@ -10,7 +10,9 @@ export default class RaMediaGallery extends HTMLElement {
     this.primarySwiper = this.querySelector(
       ".ra-gallery-carousel__main swiper-container"
     );
-
+    this.thumbSwiper = this.querySelector(
+      ".ra-gallery-carousel__thumbnails swiper-container"
+    );
     this.lightBoxSwiper = this.querySelector(
       ".ra-gallery-carousel__lightbox swiper-container"
     );
@@ -96,6 +98,7 @@ export default class RaMediaGallery extends HTMLElement {
     if (this.primarySwiper) {
       const slideIndex = this.primarySwiper.swiper.realIndex;
       this.lightBoxSwiper.swiper.slideToLoop(slideIndex, 0);
+      this.thumbSwiper.swiper.slideToLoop(slideIndex, 0);
     } else {
       let galleryIndex = parseInt(event.srcElement.dataset.slideIndex);
       const slideIndex = galleryIndex;

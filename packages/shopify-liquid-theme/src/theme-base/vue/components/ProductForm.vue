@@ -234,6 +234,10 @@ const updateVariantURL = () => {
   searchParamString && updateURL(searchParamString);
 };
 
+const thumbnailSwiperInstance = document.querySelector(
+  ".product-media-gallery__thumbnails"
+)?.swiper;
+
 const primarySwiperInstance = document.querySelector(
   ".product-media-gallery__primary"
 )?.swiper;
@@ -329,6 +333,7 @@ const updateGallery = (update = false) => {
         document.querySelector(".thumbnail-temp-holder").append(image);
       } else {
         image.setAttribute("data-slide-index", thumbnailCounter);
+        image.setAttribute("data-swiper-slide-index", thumbnailCounter);
         document
           .querySelector(".ra-gallery-carousel__thumbnails swiper-container")
           .append(image);
@@ -336,6 +341,7 @@ const updateGallery = (update = false) => {
       }
     });
     primarySwiperInstance.update();
+    thumbnailSwiperInstance.update();
   } else {
     const galleryImages = document.querySelectorAll(
       ".scrolling .ra-gallery-carousel__main [data-options]"
