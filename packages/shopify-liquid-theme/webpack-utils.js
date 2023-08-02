@@ -91,7 +91,7 @@ const resolveEntries = (entryConfigs = [], { logLevel = LOG_LEVEL_SILENT }) => {
       }
     }
   }
-  if (logLevel == "info" || logLevel == LOG_LEVEL_VERBOSE) {
+  if (logLevel == LOG_LEVEL_INFO || logLevel == LOG_LEVEL_VERBOSE) {
     console.log(chalk.bold(`[INFO]: Resolved entries:`));
     for (const key in entry) {
       console.log(` → ${key}: ${entry[key].replace(__dirname, ".")}`);
