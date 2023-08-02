@@ -116,23 +116,6 @@
     {%- endfor -%}
   </ul>
   {% if filter.values.size > max_visible_options %}
-    <div class="cursor-pointer" data-filter-label="{{ filter.label | handleize }}" onclick="showMoreFilterToggle('{{ filter.label | handleize }}')">show more</div>
+    <div class="cursor-pointer" data-toggle-filter="{{ filter.label | handleize }}" data-filter-label="{{ filter.label | handleize }}">show more</div>
   {% endif %}
 {% endif %}
-
-<script>
-  function showMoreFilterToggle(filterHandle) {
-    const filtersToToggle = document.querySelectorAll(`[data-filter='${filterHandle}'] .filter-hide`);
-    filtersToToggle.forEach((filter) => {
-      if (filter.classList.contains('active')) {
-        filter.classList.remove('active');
-        document.querySelector(`[data-filter-label='${filterHandle}']`).innerText = "show more";
-      } else {
-        filter.classList.add('active');
-        document.querySelector(`[data-filter-label='${filterHandle}']`).innerText = "show less";
-        document.querySelector(`.${filterHandle} .ra-accordion-item__content`).style.height = "auto";
-      }
-    });
-  };
-
-</script>
