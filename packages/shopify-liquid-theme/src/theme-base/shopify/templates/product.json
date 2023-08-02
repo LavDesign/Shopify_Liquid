@@ -2,21 +2,10 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "blocks": {},
-      "block_order": [],
       "settings": {
-        "enable_sticky_info": true,
-        "media_size": "large",
-        "constrain_to_viewport": false,
-        "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "mobile_thumbnails": "hide",
-        "hide_variants": true,
-        "enable_video_looping": false,
-        "padding_top": 36,
-        "padding_bottom": 12
+        "enable_size_guide": false,
+        "size_guide_page": "",
+        "gallery_type": "gallery"
       }
     },
     "88707756-d043-44e5-9069-70162abef566": {
@@ -25,33 +14,25 @@
         "140413fd-c5a4-440f-ad22-1c4d08a942ac": {
           "type": "product-slide",
           "settings": {
-            "product": "fresh-picked",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "fresh-picked"
           }
         },
         "090c0c1b-a1b4-46cc-ac9e-ec6a117ae9ca": {
           "type": "product-slide",
           "settings": {
-            "product": "garden-party",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "garden-party"
           }
         },
         "278d2660-3aa6-424c-949f-1ee8b22c74de": {
           "type": "product-slide",
           "settings": {
-            "product": "skinny-dip",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "skinny-dip"
           }
         },
         "4e03ea38-9ad0-4dc7-aa9d-78a04fbf50d5": {
           "type": "product-slide",
           "settings": {
-            "product": "yard-games",
-            "cta_label": "Add To Cart",
-            "cta_style": "tertiary"
+            "product": "yard-games"
           }
         }
       },
@@ -68,6 +49,12 @@
         "title_style": "h4",
         "bg_color": "--color-util-white",
         "text_color": "--color-grey-900",
+        "cta_label": "",
+        "cta_style": "tertiary",
+        "selected_collection": "",
+        "use_recommendations_api": true,
+        "recommendations_intent": "related",
+        "recommendations_product": "",
         "show_navigation": true,
         "show_pagination": false,
         "carousel_nav_location": "top-right",
@@ -145,13 +132,20 @@
         "dcf8a71c-6a85-4100-bba0-b8d918f5f660": {
           "type": "slide",
           "settings": {
+            "color_overrides_enabled": false,
             "eyebrow_text": "Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
             "title": "This is a title",
+            "title_color": "--color-primary-900",
             "title_level": "h2",
             "title_style": "h3",
             "text_alignment": "set--v-align-top set--h-align-left",
             "description": "",
-            "desktop_bg_image": "shopify:\/\/shop_images\/New_Project_1_232686b6-f259-4241-8abd-726dd62ac638.jpg",
+            "description_color": "--color-primary-900",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
             "text_color_desktop": "--color-grey-900",
             "text_color_mobile": "--color-primary-900",
             "bg_color": "--color-primary-900",
@@ -180,17 +174,24 @@
       }
     },
     "product-reviews": {
-      "type": "product-reviews"
+      "type": "product-reviews",
+      "settings": {
+      }
     },
     "aa015eb1-9983-4fff-8f45-a198ca8bebab": {
       "type": "split-section",
       "settings": {
+        "use_color_overrides": false,
         "eyebrow_text": "Eyebrow Text",
+        "eyebrow_color": "--color-primary-900",
         "title": "Title",
+        "title_color": "--color-primary-900",
         "description": "<p>desription here<\/p>",
+        "description_color": "--color-primary-900",
         "description_copy_size": "text-base",
         "title_level": "h2",
         "title_style": "h3",
+        "external_video": "",
         "image": "shopify:\/\/shop_images\/resized_fundays_hero_desktop.jpg",
         "aspect_ratio": "wide",
         "section_split": "50-50",
