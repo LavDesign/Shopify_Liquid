@@ -122,14 +122,12 @@ export default class RaCollectionFilters extends HTMLElement {
     const toggleFilterBtns = document.querySelectorAll("[data-toggle-filter]");
 
     toggleFilterBtns.forEach((btn) => {
-      console.log("adding show more listeners");
       let filter = btn.getAttribute("data-toggle-filter");
       btn.addEventListener("click", () => this.showMoreFilterToggle(filter));
     });
   }
 
   static showMoreFilterToggle(filterHandle) {
-    console.log(filterHandle);
     const filtersToToggle = document.querySelectorAll(
       `[data-filter='${filterHandle}'] .filter-hide`
     );
