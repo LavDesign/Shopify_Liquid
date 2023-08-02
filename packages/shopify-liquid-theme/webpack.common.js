@@ -56,7 +56,7 @@ module.exports = {
       },
     ],
     {
-      logLevel: isDevelopment ? "verbose" : "silent",
+      logLevel: isDevelopment ? "info" : "silent",
     }
   ),
   output: {
