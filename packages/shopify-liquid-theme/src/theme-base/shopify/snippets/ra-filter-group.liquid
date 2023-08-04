@@ -116,6 +116,6 @@
     {%- endfor -%}
   </ul>
   {% if filter.values.size > max_visible_options %}
-    <div class="cursor-pointer" data-toggle-filter="{{ filter.label | handleize }}" data-filter-label="{{ filter.label | handleize }}">show more</div>
+    <div class="cursor-pointer underline" data-toggle-filter="{{ filter.label | handleize }}" data-filter-label="{{ filter.label | handleize }}">show more</div>
   {% endif %}
 {% endif %}
