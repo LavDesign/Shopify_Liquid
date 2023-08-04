@@ -292,7 +292,7 @@ const updateGallery = (update = false) => {
       for (let i = 0; i < selectedOptions.length; i++) {
         for (let j = 0; j < imageOptions.length; j++) {
           if (
-            imageOptions[j].toLowerCase() === selectedOptions[i].toLowerCase()
+            imageOptions[j].toLowerCase() === selectedOptions[i]?.toLowerCase()
           ) {
             foundMatch = true;
           }
@@ -323,7 +323,7 @@ const updateGallery = (update = false) => {
       for (let i = 0; i < selectedOptions.length; i++) {
         for (let j = 0; j < imageOptions.length; j++) {
           if (
-            imageOptions[j].toLowerCase() === selectedOptions[i].toLowerCase()
+            imageOptions[j].toLowerCase() === selectedOptions[i]?.toLowerCase()
           ) {
             foundMatch = true;
           }
@@ -345,6 +345,7 @@ const updateGallery = (update = false) => {
     });
     primarySwiperInstance.update();
     thumbnailSwiperInstance.update();
+    lightboxSwiperInstance.update();
   } else {
     const galleryImages = document.querySelectorAll(
       ".scrolling .ra-gallery-carousel__main [data-options]"
@@ -420,7 +421,7 @@ const updateGallery = (update = false) => {
     for (let i = 0; i < selectedOptions.length; i++) {
       for (let j = 0; j < imageOptions.length; j++) {
         if (
-          imageOptions[j].toLowerCase() === selectedOptions[i].toLowerCase()
+          imageOptions[j].toLowerCase() === selectedOptions[i]?.toLowerCase()
         ) {
           foundMatch = true;
         }

@@ -19,7 +19,7 @@
           {% endif %}
         </div>
         <div class="md:w-1/2 md:pl-10 lg:pl-20 z-10">
-          <div class="sticky top-12">
+          <div class="sticky top-24">
             {% render 'ra-product-main', product_data: product_data, size_guide_content: size_guide_content %}
             <div class="product-main__special-messaging">
               {% assign special_messaging_blocks = section.blocks | where: 'type', 'special_messaging' -%}
