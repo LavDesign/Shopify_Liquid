@@ -342,6 +342,7 @@ const updateGallery = (update = false) => {
     });
     primarySwiperInstance.update();
     thumbnailSwiperInstance.update();
+    lightboxSwiperInstance.update();
   } else {
     const galleryImages = document.querySelectorAll(
       ".scrolling .ra-gallery-carousel__main [data-options]"

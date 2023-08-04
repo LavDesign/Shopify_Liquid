@@ -21,6 +21,13 @@ export default class RaMediaGallery extends HTMLElement {
 
     this.loadVideoTriggers = this.querySelectorAll("[data-action-load-video]");
     this.setupEventListeners();
+
+    const scopedThis = this;
+    this.primarySwiper?.addEventListener("update", () => {
+      window.setTimeout(function () {
+        scopedThis.primarySwiper.swiper.slideToLoop(2, 200);
+      }, 300);
+    });
   }
 
   pauseGalleryVideos() {
@@ -37,6 +44,7 @@ export default class RaMediaGallery extends HTMLElement {
   }
 
   setupEventListeners() {
+    const scopedThis = this;
     if (this.lightBoxTriggers.length) {
       this.lightBoxTriggers.forEach((trigger) =>
         trigger.addEventListener("click", (e) => this.triggerModal(e))
@@ -110,7 +118,6 @@ export default class RaMediaGallery extends HTMLElement {
       });
     });
 
-    let scopedThis = this;
     this.thumbSwiper.querySelectorAll("swiper-slide").forEach((thumb) => {
       thumb.addEventListener("click", function () {
         let thumbIndex = parseInt(thumb.getAttribute("data-slide-index"));
@@ -122,6 +129,7 @@ export default class RaMediaGallery extends HTMLElement {
   triggerModal(event) {
     this.lightBoxGallery.showModal();
     document.body.classList.add("fixed", "w-full");
+    this.lightBoxSwiper.swiper.init();
 
     if (this.primarySwiper) {
       const slideIndex = this.primarySwiper.swiper.realIndex;
