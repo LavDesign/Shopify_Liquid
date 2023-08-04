@@ -137,6 +137,7 @@
               {% case media.media_type %}
                 {% when 'image' %}
                   {% if media.media_type == 'image' %}
+                    {% assign alt_text = media.alt | split: '|#|' | last %}
                     <div
                       data-lightbox-trigger
                       class="cursor-pointer"
@@ -150,7 +151,7 @@
                           loading: 'lazy',
                           width: 800,
                           widths: '600, 800, 1200',
-                          alt: media.alt
+                          alt: alt_text
                         | escape
                       }}
                     </div>
