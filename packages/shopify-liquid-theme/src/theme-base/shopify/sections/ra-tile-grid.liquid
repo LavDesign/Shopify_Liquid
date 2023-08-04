@@ -46,7 +46,7 @@
 {% endcapture %}
 
 <div class="w-full" style="{{ block_style }}">
-  <div class="ra-grid flex flex-wrap md:flex-nowrap max-w-screen-2xl mx-auto w-full" style="gap: {{ grid_gap }}px;">
+<div class="ra-grid flex flex-wrap max-w-screen-2xl mx-auto w-full {% if section.settings.desktop_blocks == "auto" %}md:flex-nowrap{% endif %}" style="gap: {{ grid_gap }}px;">
     {% for block in section.blocks %}
       <div class="ra-grid-item {{ block_width_classes }}" data-aos="fade-up" data-aos-delay="{{ 100 | times: forloop.index }}">
         {% render 'ra-content-tile'

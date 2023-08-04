@@ -96,7 +96,7 @@
     h-[300px] md:h-[450px] overflow-y-hidden
   {% endif %}
   {% if image_height == 300 %}
-    h-[300px] overflow-y-hidden
+    h-[300px] overflow-x-hidden
   {% endif %}
 {% endcapture %}
 
@@ -121,7 +121,7 @@
         </video>
       </div>
     {% elsif image != blank %}
-      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio" style="{{ image_style }}">
+      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio h-full" style="{{ image_style }}">
         {% assign alt = alt | default: image.alt %}
         {{
           image
