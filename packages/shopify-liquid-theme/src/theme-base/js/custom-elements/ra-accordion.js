@@ -17,7 +17,8 @@ export default class RaAccordion extends HTMLElement {
         );
         accordionContent.style.height = `auto`;
       }
-      btn.addEventListener("click", () => this.toggleAccordion(btn));
+      const accordion_btn = btn.querySelector(".ra-accordion-item__header");
+      accordion_btn.addEventListener("click", () => this.toggleAccordion(btn));
     });
   }
 

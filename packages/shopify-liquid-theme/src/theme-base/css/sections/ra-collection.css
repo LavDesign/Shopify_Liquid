@@ -74,3 +74,12 @@
     }
   }
 }
+
+.collection__filters {
+  .filter-hide {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}
