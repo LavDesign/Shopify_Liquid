@@ -27,6 +27,7 @@
                 <li class="hidden list-none md:flex flex-col">
                   <a
                     class="text-sm uppercase mb-3"
+                    id="footer-nav-level1-{{ link.title | handleize }}"
                     href="{{ link.url }}"
                     title="{{ link.title }}"
                     aria-label="{{ link.title }}"
@@ -39,6 +40,7 @@
                         <li class="list-none flex">
                           <a
                             class="text-sm py-2"
+                            id="footer-nav-level2-{{ child.title | handleize }}"
                             href="{{ child.url }}"
                             title="{{ child.title }}"
                             aria-label="{{ child.title }}"

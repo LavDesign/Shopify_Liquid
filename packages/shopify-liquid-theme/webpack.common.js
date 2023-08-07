@@ -38,23 +38,25 @@ module.exports = {
   stats: "minimal",
   /**
    * Theme Override System Touchpoint
-   *   - Handles resolving entry points in `from:` configured below
-   *   - Items with a lower index in the list have higher priority
-   *   - Path specificed in `to:` is relative to output.path
+   *   - Resolves webpack entrypoints across theme override directories
+   *   - Notes
+   *     - Entries found later in the list (i.e. at higher indicies)
+   *       win over entries found earlier in the list (i.e. at lower indicies).
+   *     - See also, the JSDOC in webpack-utils.js > resolveEntries function.
    */
   entry: resolveEntries(
     [
       {
-        from: path.join(themePaths.themeOverride, "/entries"),
+        from: path.join(themePaths.themeBase, "/entries"),
         to: "assets",
       },
       {
-        from: path.join(themePaths.themeBase, "/entries"),
+        from: path.join(themePaths.themeOverride, "/entries"),
         to: "assets",
       },
     ],
     {
-      debug: isDevelopment,
+      logLevel: isDevelopment ? "info" : "silent",
     }
   ),
   output: {

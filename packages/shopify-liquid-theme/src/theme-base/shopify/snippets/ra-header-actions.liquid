@@ -3,6 +3,7 @@
     <li class="header__action-item flex justify-center items-center h-full mr-4 last:mr-0">
       <button
         class="header__action-link"
+        id="header-action-search"
         data-action-toggle-search
         title="search"
         aria-label="search"
@@ -15,6 +16,7 @@
     <li class="header__action-item hidden md:flex justify-center items-center h-full mr-4 last:mr-0">
       <a
         class="header__action-link"
+        id="header-action-account"
         href="{%- render 'locale-root' -%}/account"
         title="account"
         aria-label="account"
@@ -27,6 +29,7 @@
     <li class="header__action-item hidden md:flex justify-center items-center h-full mr-4 last:mr-0">
       <a
         class="header__action-link"
+        id="header-action-wishlist"
         href="#"
         title="wishlist"
         aria-label="wishlist"
@@ -39,6 +42,7 @@
     <ra-cart-toggle>
       <a
         class="header__action-link"
+        id="header-action-cart"
         href="{%- render 'locale-root' -%}/cart"
         title="cart"
         aria-label="cart"

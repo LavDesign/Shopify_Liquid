@@ -223,9 +223,9 @@
   {% endif %}
 {% endcapture %}
 
-<div class="max-w-screen-2xl mx-auto">
-  <article class="ra-split-section set--details-{{ section.settings.details_location }}-sm {% if details_location == "overlay" %}set--details-{{ details_location }}{% else %}mx:px-7 md:py-9{% endif %} set--aspect-ratio-{{ section.settings.aspect_ratio }}">
-    <div class="ra-split-section__layout-container component-layout ra-row ra-no-gap !items-stretch">
+<div class="w-full">
+  <article class="w-full ra-split-section set--details-{{ section.settings.details_location }}-sm {% if details_location == "overlay" %}set--details-{{ details_location }}{% else %}mx:px-7 md:py-9{% endif %} set--aspect-ratio-{{ section.settings.aspect_ratio }}">
+    <div class="max-w-screen-2xl mx-auto ra-split-section__layout-container component-layout ra-row ra-no-gap !items-stretch">
       <div
         class="ra-col ra-left-split {{ left_col_classes }}"
         {% if details_location == 'overlay' %}

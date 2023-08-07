@@ -118,6 +118,35 @@ export default class RaCollectionFilters extends HTMLElement {
     removeFilterBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => this.onRemoveBtnClick(e));
     });
+
+    const toggleFilterBtns = document.querySelectorAll("[data-toggle-filter]");
+
+    toggleFilterBtns.forEach((btn) => {
+      let filter = btn.getAttribute("data-toggle-filter");
+      btn.addEventListener("click", () => this.showMoreFilterToggle(filter));
+    });
+  }
+
+  static showMoreFilterToggle(filterHandle) {
+    const filtersToToggle = document.querySelectorAll(
+      `[data-filter='${filterHandle}'] .filter-hide`
+    );
+    filtersToToggle.forEach((filter) => {
+      if (filter.classList.contains("active")) {
+        filter.classList.remove("active");
+        document.querySelector(
+          `[data-filter-label='${filterHandle}']`
+        ).innerText = "show more";
+      } else {
+        filter.classList.add("active");
+        document.querySelector(
+          `[data-filter-label='${filterHandle}']`
+        ).innerText = "show less";
+        document.querySelector(
+          `.${filterHandle} .ra-accordion-item__content`
+        ).style.height = "auto";
+      }
+    });
   }
 
   static closeMobileFilters() {

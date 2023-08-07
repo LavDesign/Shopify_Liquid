@@ -18,6 +18,9 @@
     assign video_embed_handle = 'background_video_embed_' | append: view
     assign video_file_handle = 'background_video_file_' | append: view
     assign image_handle = 'bg_image_' | append: view
+    if block.settings.bg_image_mobile == blank
+      assign image_handle = 'bg_image_desktop'
+    endif
     assign image_width = 2000
     if view == 'mobile'
       assign image_width = 800
@@ -55,7 +58,7 @@
       %}
     </div>
   {% elsif block.settings[image_handle] != blank %}
-    {% assign image_class = 'ra-image__media ra-image__media--mobile ' %}
+    {% assign image_class = 'ra-image__media ra-image__media--mobile h-full ' %}
     {% assign responsive_class = 'hidden md:block' %}
     {% if view == 'mobile' %}
       {% assign responsive_class = 'md:hidden' %}

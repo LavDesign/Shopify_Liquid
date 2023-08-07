@@ -50,6 +50,7 @@ import { RaAddToCart } from "@bva/ui-vue";
 import SwatchPicker from "./SwatchPicker.vue";
 import OptionPicker from "./OptionPicker.vue";
 import { dataViewItem, dataAddToCart } from "./datalayer/";
+import { cartToggle } from "../../js/utils/cart-actions.js";
 
 const props = defineProps({
   product: Object,
@@ -59,7 +60,8 @@ const cartStore = useCartStore();
 
 // ToDo: Add these values as a prop to pull from customizer
 const optionsAsDropdowns = [];
-const optionsAsSwatches = ["Color"];
+const optionsAsSwatches =
+  window.global_settings.settings.swatch_options.split(",");
 const optionsAsSmall = ["Size"];
 const optionsAsHorizontal = ["Material"];
 
@@ -113,6 +115,7 @@ props.product?.options?.forEach((option, i) => {
 const handleOptionSelect = (optionKey, selected, selectedOption) => {
   selectedOptions[optionKey] = selectedOption.value;
   dataViewItem(props.product, currentVariant);
+  updateGallery(true);
 };
 
 const optionHasInStockVariant = (optionValue, optionKeyIndex) => {
@@ -221,7 +224,8 @@ const addToCart = async () => {
       quantity: qty.value,
       // properties: null
     })
-    .then(() => dataAddToCart(props.product, currentVariant, qty));
+    .then(() => dataAddToCart(props.product, currentVariant, qty))
+    .then(() => cartToggle());
   isAddingToCart.value = false;
 };
 
@@ -233,9 +237,16 @@ const updateVariantURL = () => {
   searchParamString && updateURL(searchParamString);
 };
 
+const thumbnailSwiperInstance = document.querySelector(
+  ".product-media-gallery__thumbnails"
+)?.swiper;
+
 const primarySwiperInstance = document.querySelector(
   ".product-media-gallery__primary"
 )?.swiper;
+
+const lightboxSwiperInstance =
+  document.querySelector(".swiper--lightbox")?.swiper;
 
 const slideToCurrentVariantImage = () => {
   const currentVariantSlide = primarySwiperInstance?.slides.find(
@@ -245,6 +256,192 @@ const slideToCurrentVariantImage = () => {
   );
   const index = currentVariantSlide?.getAttribute("data-slide-index");
   index && primarySwiperInstance.slideTo(index);
+};
+
+const updateGallery = (update = false) => {
+  const selectedOptions = currentVariant.value.options;
+  if (primarySwiperInstance) {
+    const galleryImages = document.querySelectorAll(
+      ".ra-gallery-carousel__main [data-options]"
+    );
+    const thumbnailImages = document.querySelectorAll(
+      ".ra-gallery-carousel__thumbnails [data-options]"
+    );
+
+    galleryImages.forEach((image) => {
+      document.querySelector(".gallery-temp-holder").append(image);
+    });
+
+    thumbnailImages.forEach((image) => {
+      document.querySelector(".thumbnail-temp-holder").append(image);
+    });
+    const galleryHolderImages = document.querySelectorAll(
+      ".gallery-temp-holder [data-options]"
+    );
+    const thumbnailHolderImages = document.querySelectorAll(
+      ".thumbnail-temp-holder [data-options]"
+    );
+
+    let galleryCounter = 1;
+    galleryHolderImages.forEach((image) => {
+      let imageOptions = image
+        .getAttribute("data-options")
+        .replaceAll(" ", "")
+        .split(",");
+      let foundMatch = false;
+      for (let i = 0; i < selectedOptions.length; i++) {
+        for (let j = 0; j < imageOptions.length; j++) {
+          if (
+            imageOptions[j].toLowerCase() === selectedOptions[i]?.toLowerCase()
+          ) {
+            foundMatch = true;
+          }
+        }
+      }
+      if (!image.getAttribute("data-alt").includes("|#|")) {
+        foundMatch = true;
+      }
+      if (!foundMatch) {
+        document.querySelector(".gallery-temp-holder").append(image);
+      } else {
+        image.setAttribute("data-slide-index", galleryCounter);
+        image.setAttribute("data-swiper-slide-index", galleryCounter);
+        document
+          .querySelector(".ra-gallery-carousel__main swiper-container")
+          .append(image);
+        galleryCounter++;
+      }
+    });
+
+    let thumbnailCounter = 1;
+    thumbnailHolderImages.forEach((image) => {
+      let imageOptions = image
+        .getAttribute("data-options")
+        .replaceAll(" ", "")
+        .split(",");
+      let foundMatch = false;
+      for (let i = 0; i < selectedOptions.length; i++) {
+        for (let j = 0; j < imageOptions.length; j++) {
+          if (
+            imageOptions[j].toLowerCase() === selectedOptions[i]?.toLowerCase()
+          ) {
+            foundMatch = true;
+          }
+        }
+      }
+      if (!image.getAttribute("data-alt").includes("|#|")) {
+        foundMatch = true;
+      }
+      if (!foundMatch) {
+        document.querySelector(".thumbnail-temp-holder").append(image);
+      } else {
+        image.setAttribute("data-slide-index", thumbnailCounter);
+        image.setAttribute("data-swiper-slide-index", thumbnailCounter);
+        document
+          .querySelector(".ra-gallery-carousel__thumbnails swiper-container")
+          .append(image);
+        thumbnailCounter++;
+      }
+    });
+    primarySwiperInstance.update();
+    thumbnailSwiperInstance.update();
+    lightboxSwiperInstance.update();
+  } else {
+    const galleryImages = document.querySelectorAll(
+      ".scrolling .ra-gallery-carousel__main [data-options]"
+    );
+    galleryImages.forEach((image) => {
+      document.querySelector(".gallery-temp-holder").prepend(image);
+    });
+    const galleryHolderImages = document.querySelectorAll(
+      ".gallery-temp-holder [data-options]"
+    );
+
+    galleryHolderImages.forEach((image) => {
+      let imageOptions = image
+        .getAttribute("data-options")
+        .replaceAll(" ", "")
+        .split(",");
+      let foundMatch = false;
+      for (let i = 0; i < selectedOptions.length; i++) {
+        for (let j = 0; j < imageOptions.length; j++) {
+          if (
+            imageOptions[j].toLowerCase() === selectedOptions[i].toLowerCase()
+          ) {
+            foundMatch = true;
+          }
+        }
+      }
+      if (!image.getAttribute("data-alt").includes("|#|")) {
+        foundMatch = true;
+      }
+      if (!foundMatch) {
+        if (update) {
+          document.querySelector(".gallery-temp-holder").append(image);
+        } else {
+          document.querySelector(".gallery-temp-holder").prepend(image);
+        }
+      } else {
+        if (update) {
+          document
+            .querySelector(
+              ".scrolling .ra-gallery-carousel__main .product-media-gallery__primary"
+            )
+            .append(image);
+        } else {
+          document
+            .querySelector(
+              ".scrolling .ra-gallery-carousel__main .product-media-gallery__primary"
+            )
+            .prepend(image);
+        }
+      }
+    });
+  }
+
+  const lightboxImages = document.querySelectorAll(
+    ".ra-gallery-carousel__lightbox [data-options]"
+  );
+
+  lightboxImages.forEach((image) => {
+    document.querySelector(".lightbox-temp-holder").append(image);
+  });
+
+  const lightboxHolderImages = document.querySelectorAll(
+    ".lightbox-temp-holder [data-options]"
+  );
+
+  let lightboxCounter = 1;
+  lightboxHolderImages.forEach((image) => {
+    let imageOptions = image
+      .getAttribute("data-options")
+      .replaceAll(" ", "")
+      .split(",");
+    let foundMatch = false;
+    for (let i = 0; i < selectedOptions.length; i++) {
+      for (let j = 0; j < imageOptions.length; j++) {
+        if (
+          imageOptions[j].toLowerCase() === selectedOptions[i]?.toLowerCase()
+        ) {
+          foundMatch = true;
+        }
+      }
+    }
+    if (!image.getAttribute("data-alt").includes("|#|")) {
+      foundMatch = true;
+    }
+    if (!foundMatch) {
+      document.querySelector(".lightbox-temp-holder").append(image);
+    } else {
+      image.setAttribute("data-slide-index", lightboxCounter);
+      image.setAttribute("data-swiper-slide-index", lightboxCounter);
+      document
+        .querySelector(".ra-gallery-carousel__lightbox swiper-container")
+        .append(image);
+      lightboxCounter++;
+    }
+  });
+  lightboxSwiperInstance.update();
 };
 
 const updateBadgeText = () => {
@@ -306,5 +503,6 @@ onMounted(() => {
   );
   slideToCurrentVariantImage();
   updateBadgeText();
+  updateGallery();
 });
 </script>

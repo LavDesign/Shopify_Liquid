@@ -43,109 +43,57 @@
         "cc05d441-9561-459c-8871-d12e5f68dbfc": {
           "type": "featured_content",
           "settings": {
-            "menu_item": "shop",
-            "promo_alignment": "left",
-            "image": "shopify:\/\/shop_images\/ProductImage_44.png",
-            "title": "Featured productt",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
-          }
-        },
-        "38945a3d-8f82-4105-87ae-b071dc1ca6b2": {
-          "type": "featured_content",
-          "settings": {
-            "menu_item": "blog",
-            "promo_alignment": "left",
-            "image": "shopify:\/\/shop_images\/ProductImage_44.png",
-            "title": "Featured product",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
-          }
-        },
-        "81436111-8366-43d1-8f07-eeb8f14db9d2": {
-          "type": "featured_content",
-          "settings": {
-            "menu_item": "blog",
-            "promo_alignment": "left",
-            "image": "shopify:\/\/shop_images\/ProductImage_40.png",
-            "title": "Featured product",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
-          }
-        },
-        "3175a89e-35e0-4a98-a991-32eb1aad2137": {
-          "type": "featured_content",
-          "settings": {
-            "menu_item": "blog",
-            "promo_alignment": "left",
-            "image": "shopify:\/\/shop_images\/ProductImage_18.png",
-            "title": "Featured product",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
-          }
-        },
-        "2c9f4ecc-d618-4106-a448-8c9c3e015640": {
-          "type": "featured_content",
-          "settings": {
-            "menu_item": "blog",
-            "promo_alignment": "left",
-            "image": "shopify:\/\/shop_images\/ProductImage_35.png",
-            "title": "Featured product",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
-          }
-        },
-        "2f88088d-8b3a-42f7-a0e3-98128271dd69": {
-          "type": "featured_content",
-          "settings": {
-            "menu_item": "Bedrock UI",
+            "menu_item": "Shop",
             "promo_alignment": "right",
-            "image": "shopify:\/\/shop_images\/Group64.png",
-            "title": "Bedrock UI",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
+            "image": "shopify:\/\/shop_images\/Large.png",
+            "title": "Featured Title",
+            "link_label": "Link Goes Here",
+            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_style": "tertiary"
           }
         },
-        "42043f59-1f97-4de4-89a0-d83e8fa483fa": {
+        "81cfecf8-d498-476d-9b01-64aa4fb5d0b4": {
           "type": "featured_content",
           "settings": {
-            "menu_item": "Blog",
+            "menu_item": "Shop",
             "promo_alignment": "right",
-            "image": "shopify:\/\/shop_images\/Group62.png",
-            "title": "Test Right Blog",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
+            "image": "shopify:\/\/shop_images\/Large.png",
+            "title": "Featured Title",
+            "link_label": "Link Goes Here",
+            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_style": "tertiary"
           }
         },
-        "fcf3efbe-8fec-47c1-822e-5bcd194c85a3": {
+        "a836d0d2-0544-4bba-b56b-50a714e194b2": {
           "type": "featured_content",
           "settings": {
-            "menu_item": "Test",
+            "menu_item": "Shop",
             "promo_alignment": "right",
-            "image": "shopify:\/\/shop_images\/Group60.png",
-            "title": "Test Link",
-            "link_label": "Learn more",
-            "link_url": "",
-            "link_style": "primary"
+            "image": "shopify:\/\/shop_images\/Large.png",
+            "title": "Featured Title",
+            "link_label": "Link Goes Here",
+            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_style": "tertiary"
+          }
+        },
+        "f80dea19-4b19-427a-9d52-cf22968e2ef6": {
+          "type": "featured_content",
+          "settings": {
+            "menu_item": "Baseline",
+            "promo_alignment": "left",
+            "image": "shopify:\/\/shop_images\/Large.png",
+            "title": "Featured Title",
+            "link_label": "Link Goes Here",
+            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_style": "tertiary"
           }
         }
       },
       "block_order": [
         "cc05d441-9561-459c-8871-d12e5f68dbfc",
-        "38945a3d-8f82-4105-87ae-b071dc1ca6b2",
-        "81436111-8366-43d1-8f07-eeb8f14db9d2",
-        "3175a89e-35e0-4a98-a991-32eb1aad2137",
-        "2c9f4ecc-d618-4106-a448-8c9c3e015640",
-        "2f88088d-8b3a-42f7-a0e3-98128271dd69",
-        "42043f59-1f97-4de4-89a0-d83e8fa483fa",
-        "fcf3efbe-8fec-47c1-822e-5bcd194c85a3"
+        "81cfecf8-d498-476d-9b01-64aa4fb5d0b4",
+        "a836d0d2-0544-4bba-b56b-50a714e194b2",
+        "f80dea19-4b19-427a-9d52-cf22968e2ef6"
       ],
       "settings": {
         "bg_color": "--color-primary-900",
@@ -153,7 +101,7 @@
         "link_hover_color": "--color-util-yellow",
         "logo_size_desktop": 140,
         "logo_size_mobile": 100,
-        "menu": "main-menu",
+        "menu": "bedrock-nav",
         "aspect_ratio": "portrait",
         "show_search": true,
         "search_icon": "search",
