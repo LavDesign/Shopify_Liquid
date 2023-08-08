@@ -19,6 +19,7 @@
           type="number"
           class="ra-input__control ra-input__control--text"
           :value="quantity"
+          min="0"
           @input="quantitySet($event)"
         />
       </div>
@@ -68,6 +69,9 @@ watch(
 
 const quantityDecrement = () => {
   quantity.value -= 1;
+  if (quantity.value < 0) {
+    quantity.value = 0;
+  }
 };
 
 const quantityIncrement = () => {
