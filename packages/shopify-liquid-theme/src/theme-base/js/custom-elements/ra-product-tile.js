@@ -308,7 +308,6 @@ export default class RaProductTile extends HTMLElement {
     if (this.currentVariant?.id) {
       productUrl += `?variant=${this.currentVariant.id}`;
     }
-    console.log(productUrl);
     this.productUrl.setAttribute("href", productUrl);
   }
 
