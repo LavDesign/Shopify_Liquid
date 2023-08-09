@@ -241,7 +241,7 @@
         {% endif %}
       </div>
       <div
-        class="ra-col ra-right-split {{ right_col_classes }}"
+        class="ra-col ra-right-split {{ right_col_classes }} {% if details_location_mobile == 'overlay' %}!bg-transparent{% endif %}"
         {% if details_location == 'overlay' %}
           data-col-size="-size" data-col-auto="-md"
         {% else %}
