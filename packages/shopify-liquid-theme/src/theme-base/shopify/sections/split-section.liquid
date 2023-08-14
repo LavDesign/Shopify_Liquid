@@ -29,23 +29,23 @@
 
   capture left_col_classes
     if details_location == 'after'
-      echo 'component-media '
+      echo 'component-media lg:pl-10 '
     else
-      echo 'component-details ra-split-section__details z-10 p-5 md:p-10 '
+      echo 'component-details ra-split-section__details z-10 p-5 lg:!p-10 '
       if details_location_mobile == 'after'
-        echo '-order-1 md:order-none'
+        echo '-order-1 lg:order-none'
       endif
     endif
   endcapture
 
   capture right_col_classes
     if details_location == 'after'
-      echo 'component-details ra-split-section__details z-10 p-5 md:p-10 '
+      echo 'component-details ra-split-section__details z-10 p-5 lg:!p-10 '
       if details_location_mobile == 'after'
-        echo '-order-1 md:order-none'
+        echo '-order-1 lg:order-none'
       endif
     else
-      echo 'component-media '
+      echo 'component-media lg:!pr-10 '
     endif
   endcapture
 
@@ -114,6 +114,47 @@
         --media-height: 0.625;
     {%- endcase -%}
   }
+
+  @media (min-width: 767px) and (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .ra-left-split {
+      --col-size: 100%;
+      {% if details_location != "overlay" %}
+        --col-size-md: 100%;
+      {% endif %}
+    }
+    #shopify-section-{{ section.id }} .ra-right-split {
+      --col-size: 100%;
+      {% if details_location != "overlay" %}
+        --col-size-md: 100%;
+      {% endif %}
+    }
+    #shopify-section-{{ section.id }} .ra-col {
+      flex-basis: 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+    #shopify-section-{{ section.id }} .set--details-before .component-details, 
+    #shopify-section-{{ section.id }} .set--details-before .component-details--set-order,
+    #shopify-section-{{ section.id }} .set--details-before-sm .component-details,
+    #shopify-section-{{ section.id }} .set--details-before-sm .component-details--set-order {
+      order: 0;
+    }
+    #shopify-section-{{ section.id }} .set--details-before .component-media,
+    #shopify-section-{{ section.id }} .set--details-before-sm .component-media {
+      order: 1;
+    }
+    #shopify-section-{{ section.id }} .set--details-after .component-details,
+    #shopify-section-{{ section.id }} .set--details-after .component-details--set-order,
+    #shopify-section-{{ section.id }} .set--details-after-sm .component-details,
+    #shopify-section-{{ section.id }} .set--details-after-sm .component-details--set-order {
+      order: 1;
+    }
+    
+    #shopify-section-{{ section.id }} .set--details-after .component-media,
+    #shopify-section-{{ section.id }} .set--details-after-sm .component-media {
+      order: 0;
+    }
+  }  
 
   #shopify-section-{{- section.id }} .ra-split-section__description ul li {
     list-style: inside disc;
