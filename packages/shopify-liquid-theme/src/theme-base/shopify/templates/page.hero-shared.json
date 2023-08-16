@@ -1,0 +1,857 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "page": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "48a56717-9310-47fb-9393-de9ed40acf9f": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "e82f298a-d66e-4c22-a234-aaef73a5dadd": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Alignment Options</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "e82f298a-d66e-4c22-a234-aaef73a5dadd"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "2d3dcdc5-eaa5-4d07-9838-6619be410c34": {
+      "type": "hero-carousel",
+      "blocks": {
+        "c6e6a67d-7082-436f-a09c-2a4083225e72": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-right",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "197ed6bb-025c-4604-ba7a-a9bbfa5e473e": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-center",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "bbe40ad6-bf91-4e07-9f87-d744266bfccb": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-left",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "a1d03dc8-fc2f-421c-a903-c751eb09e2c6": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-right",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group-1.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "51434e82-0094-4635-b7eb-88a83f50ae4e": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group-1.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "ce610115-1ae3-4f87-ab71-5faa8131386c": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-left",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group-1.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "35bf79f6-6635-4fe1-949f-15e04a62cabf": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-bottom set--h-align-right",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_c8620604-476e-40d6-b5e1-19edd3df5e47.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "27248093-24fc-427b-9675-5fbd231500d9": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-bottom set--h-align-center",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_c8620604-476e-40d6-b5e1-19edd3df5e47.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        },
+        "89b4adbc-55fd-4406-9c39-9e8c62250d9d": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Hero Title",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-bottom set--h-align-left",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_c8620604-476e-40d6-b5e1-19edd3df5e47.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "c6e6a67d-7082-436f-a09c-2a4083225e72",
+        "197ed6bb-025c-4604-ba7a-a9bbfa5e473e",
+        "bbe40ad6-bf91-4e07-9f87-d744266bfccb",
+        "a1d03dc8-fc2f-421c-a903-c751eb09e2c6",
+        "51434e82-0094-4635-b7eb-88a83f50ae4e",
+        "ce610115-1ae3-4f87-ab71-5faa8131386c",
+        "35bf79f6-6635-4fe1-949f-15e04a62cabf",
+        "27248093-24fc-427b-9675-5fbd231500d9",
+        "89b4adbc-55fd-4406-9c39-9e8c62250d9d"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": true,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
+    "291a599f-80cb-4a50-aee3-918ea2ba90da": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "a0501842-9fc6-44be-a940-bc900cefb0df": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Color Options</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "a0501842-9fc6-44be-a940-bc900cefb0df"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "84467b91-329b-4312-b5ef-840d93d64d00": {
+      "type": "hero-carousel",
+      "blocks": {
+        "77c10b63-71de-43af-a145-5f258dd664e7": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "color_overrides_enabled": true,
+            "eyebrow_text": "Eyebrow text color can be updated",
+            "eyebrow_color": "--color-util-black",
+            "title": "Title text color can be updated",
+            "title_color": "--color-secondary-900",
+            "title_level": "h5",
+            "title_style": "h4",
+            "text_alignment": "set--v-align-top set--h-align-center",
+            "description": "<ul><li>Text color (for desktop and for mobile) based on brand colors</li><li>CTA styling (choose from primary, secondary, tertiary)</li><li>Background color behind hero image</li><li>Color of Arrows and pagination if multi slide</li></ul>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "bg_image_mobile": "shopify://shop_images/Large.png",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-util-yellow",
+            "cta_1_label": "Tertiary CTA",
+            "cta_1_url": "shopify://pages/hero-carousel",
+            "cta_1_style": "tertiary",
+            "cta_2_label": "Primary CTA",
+            "cta_2_url": "shopify://pages/hero-carousel",
+            "cta_2_style": "primary"
+          }
+        },
+        "c706b261-7baf-4a16-886f-95f3a6846fe2": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": true,
+            "eyebrow_text": "Eyebrow text color can be updated",
+            "eyebrow_color": "--color-secondary-900",
+            "title": "Title text color can be updated",
+            "title_color": "--color-util-black",
+            "title_level": "h5",
+            "title_style": "h4",
+            "text_alignment": "set--v-align-top set--h-align-center",
+            "description": "<ul><li>Text color (for desktop and for mobile) based on brand colors</li><li>CTA styling (choose from primary, secondary, tertiary)</li><li>Background color behind hero image</li><li>Color of Arrows and pagination if multi slide</li></ul>",
+            "description_color": "--color-secondary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "bg_image_mobile": "shopify://shop_images/Large.png",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-util-red",
+            "cta_1_label": "Primary CTA",
+            "cta_1_url": "shopify://pages/hero-carousel",
+            "cta_1_style": "primary",
+            "cta_2_label": "Secondary CTA",
+            "cta_2_url": "shopify://pages/hero-carousel",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "77c10b63-71de-43af-a145-5f258dd664e7",
+        "c706b261-7baf-4a16-886f-95f3a6846fe2"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": true,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-util-yellow",
+        "pagination_color": "--color-util-yellow",
+        "effect": "slide"
+      }
+    },
+    "69f54372-df17-4ef2-ac5c-e804bf76bb11": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "1c68a893-bbfe-4f48-9fc0-3a398549d21f": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Sizing Options</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "1c68a893-bbfe-4f48-9fc0-3a398549d21f"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "01b36e05-3317-4511-b2c9-3993ae085a1d": {
+      "type": "hero-carousel",
+      "blocks": {
+        "de85816c-34d7-4a4b-8581-31ae9ee0d487": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Large Hero",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_9.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "de85816c-34d7-4a4b-8581-31ae9ee0d487"
+      ],
+      "settings": {
+        "height": "tall",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
+    "5e1f5446-ffa8-4501-98e9-688ba6dd20e2": {
+      "type": "hero-carousel",
+      "blocks": {
+        "64eee791-eb03-4f90-a958-b921dedeb354": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Medium Hero",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "64eee791-eb03-4f90-a958-b921dedeb354"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
+    "775e4272-2946-48df-86fb-58449d2ebd47": {
+      "type": "hero-carousel",
+      "blocks": {
+        "cdf910f8-927d-4559-a173-2ca3e719722e": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Small Hero",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "cdf910f8-927d-4559-a173-2ca3e719722e"
+      ],
+      "settings": {
+        "height": "short",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
+    "97559b16-181d-4e2d-b0c2-88b3ba0332c2": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "7661c991-1046-45d7-b28b-6c8edd17820b": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Video Option: Upload MP4 </p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "7661c991-1046-45d7-b28b-6c8edd17820b"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "1b358d88-5906-449f-9119-f6e1412c35b7": {
+      "type": "hero-carousel",
+      "blocks": {
+        "7ed9d88f-f0f2-4a8c-9f6f-b1432e86ef66": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "",
+            "eyebrow_color": "--color-primary-900",
+            "title": "",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-left",
+            "description": "",
+            "description_color": "--color-primary-900",
+            "background_video_file_desktop": "shopify://files/videos/Pexels Videos 1409899.mp4",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-util-white",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "7ed9d88f-f0f2-4a8c-9f6f-b1432e86ef66"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
+    "8f199387-08a5-4809-bdc8-a5e8a4f12f8b": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "f6ee781a-ca37-4001-8d8d-09b66ea54d5f": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Video Option: Youtube Link (coming soon)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "f6ee781a-ca37-4001-8d8d-09b66ea54d5f"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "c4960430-2e65-4537-933b-6e9de1fb71b8": {
+      "type": "hero-carousel",
+      "blocks": {
+        "d1e4be63-fb3d-43a3-8ad4-8cdf152f5082": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "",
+            "eyebrow_color": "--color-primary-900",
+            "title": "",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-left",
+            "description": "",
+            "description_color": "--color-primary-900",
+            "background_video_embed_desktop": "https://www.youtube.com/watch?v=DoFPrb9nXFk",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-util-white",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "d1e4be63-fb3d-43a3-8ad4-8cdf152f5082"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
+    "b21a500f-22df-46c9-a022-f23d2de60265": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "37bdcc79-b83e-491e-a827-f3517deeaf54": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Video Option: Vimeo Link (coming soon)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "37bdcc79-b83e-491e-a827-f3517deeaf54"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "db32254b-75d8-4ce8-9aa7-11e89d3bcc0b": {
+      "type": "hero-carousel",
+      "blocks": {
+        "5b85cac3-0ac5-4c0a-a31b-d9a37a147a86": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "",
+            "eyebrow_color": "--color-primary-900",
+            "title": "",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-left",
+            "description": "",
+            "description_color": "--color-primary-900",
+            "background_video_embed_desktop": "https://vimeo.com/347385794",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-util-white",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "5b85cac3-0ac5-4c0a-a31b-d9a37a147a86"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "48a56717-9310-47fb-9393-de9ed40acf9f",
+    "2d3dcdc5-eaa5-4d07-9838-6619be410c34",
+    "291a599f-80cb-4a50-aee3-918ea2ba90da",
+    "84467b91-329b-4312-b5ef-840d93d64d00",
+    "69f54372-df17-4ef2-ac5c-e804bf76bb11",
+    "01b36e05-3317-4511-b2c9-3993ae085a1d",
+    "5e1f5446-ffa8-4501-98e9-688ba6dd20e2",
+    "775e4272-2946-48df-86fb-58449d2ebd47",
+    "97559b16-181d-4e2d-b0c2-88b3ba0332c2",
+    "1b358d88-5906-449f-9119-f6e1412c35b7",
+    "8f199387-08a5-4809-bdc8-a5e8a4f12f8b",
+    "c4960430-2e65-4537-933b-6e9de1fb71b8",
+    "b21a500f-22df-46c9-a022-f23d2de60265",
+    "db32254b-75d8-4ce8-9aa7-11e89d3bcc0b"
+  ]
+}

@@ -1,0 +1,952 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "page": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "f9661593-dfe8-44ee-866d-118c5dc3b2de": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "dae85c52-ccff-491d-a7e5-33a6273be1ff": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>The Rich Text Section allows for admin users to add blocks that support: title copy, subtitle copy, body copy and block quote. These can be rearranged however you need and the copy within them can be adjusted. This page breaks down the general configurations as well as a few examples of how this could be applied on site.</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        }
+      },
+      "block_order": [
+        "dae85c52-ccff-491d-a7e5-33a6273be1ff"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "b5864362-44bf-4673-ba6a-32adcc315014": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "64b81153-0061-4663-9770-9804cc68e59c": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Block Options</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "64b81153-0061-4663-9770-9804cc68e59c"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "94615d76-9698-47c8-95ce-528c557bd6ef": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "e6b9ef22-255c-4628-bd91-1a6f45d9d601": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "subtitle_color": "--color-primary-900"
+          }
+        },
+        "e229ebba-fe73-438e-b0f1-7e8895545802": {
+          "type": "title",
+          "settings": {
+            "title": "Title: Rich Text Section",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "8c208c12-2ef1-4b40-9dff-84c6a21fe584": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "05b401f4-0f9e-4990-85ae-97ea889db107": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "b1c48ed4-2a3a-45b3-a6bf-be6cfc3608cc": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "c65b64a3-ce27-4c57-89ba-498511755bbf": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        },
+        "c662bea0-3827-408d-b176-2a419b70bc24": {
+          "type": "block_quote",
+          "settings": {
+            "enable_quotes": true,
+            "quote_color": "--color-primary-900",
+            "block_quote": "Placeholder block quote text"
+          }
+        }
+      },
+      "block_order": [
+        "e6b9ef22-255c-4628-bd91-1a6f45d9d601",
+        "e229ebba-fe73-438e-b0f1-7e8895545802",
+        "8c208c12-2ef1-4b40-9dff-84c6a21fe584",
+        "05b401f4-0f9e-4990-85ae-97ea889db107",
+        "b1c48ed4-2a3a-45b3-a6bf-be6cfc3608cc",
+        "c65b64a3-ce27-4c57-89ba-498511755bbf",
+        "c662bea0-3827-408d-b176-2a419b70bc24"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "96d55124-8c3e-4e44-9077-f3cae680a40d": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "11ceff5f-39db-4d95-a48d-ee7ca2c9a68a": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Alignment Options</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "11ceff5f-39db-4d95-a48d-ee7ca2c9a68a"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "fedf7b38-c7f4-4a42-9cb0-79c220bf268d": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "6b5fbe11-aa4d-444a-8203-4bb726231465": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "subtitle_color": "--color-primary-900"
+          }
+        },
+        "01dfa662-4dab-4ea1-aeb4-7df321b0cf08": {
+          "type": "title",
+          "settings": {
+            "title": "Title: Rich Text Section",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "9ade0a1f-6145-4894-aa33-294fc0c7c24d": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "6124e40c-1806-4626-8412-343ffff2917d": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "15de3322-bdaf-4aca-b1dc-6b529d5496ff": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "cf80652b-42c1-4b49-abfd-56e44f0e87ec": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        },
+        "30ab2d6b-f8f9-4631-8f1b-830421e3a235": {
+          "type": "block_quote",
+          "settings": {
+            "enable_quotes": true,
+            "quote_color": "--color-primary-900",
+            "block_quote": "Placeholder block quote text"
+          }
+        }
+      },
+      "block_order": [
+        "6b5fbe11-aa4d-444a-8203-4bb726231465",
+        "01dfa662-4dab-4ea1-aeb4-7df321b0cf08",
+        "9ade0a1f-6145-4894-aa33-294fc0c7c24d",
+        "6124e40c-1806-4626-8412-343ffff2917d",
+        "15de3322-bdaf-4aca-b1dc-6b529d5496ff",
+        "cf80652b-42c1-4b49-abfd-56e44f0e87ec",
+        "30ab2d6b-f8f9-4631-8f1b-830421e3a235"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left"
+      }
+    },
+    "90a2d3a6-d253-4c06-a0e3-f1626f73537d": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "0c45022f-4a83-4875-9e95-5a2b1b9461d3": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "subtitle_color": "--color-primary-900"
+          }
+        },
+        "28f7c131-9b49-4b51-bf70-b8ec6af92496": {
+          "type": "title",
+          "settings": {
+            "title": "Title: Rich Text Section",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "81fd34e9-d53b-405d-bc05-985046fdd263": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "cca082f4-67d4-4220-ba60-0fb3c4ed246d": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "9136e2d6-57b6-4e36-ac31-b589301a3c4e": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "d6a85bd9-4925-4391-81a3-d91715437be8": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        },
+        "9a3b7075-96ff-485c-b5b0-ab3212a8f6ee": {
+          "type": "block_quote",
+          "settings": {
+            "enable_quotes": true,
+            "quote_color": "--color-primary-900",
+            "block_quote": "Placeholder block quote text"
+          }
+        }
+      },
+      "block_order": [
+        "0c45022f-4a83-4875-9e95-5a2b1b9461d3",
+        "28f7c131-9b49-4b51-bf70-b8ec6af92496",
+        "81fd34e9-d53b-405d-bc05-985046fdd263",
+        "cca082f4-67d4-4220-ba60-0fb3c4ed246d",
+        "9136e2d6-57b6-4e36-ac31-b589301a3c4e",
+        "d6a85bd9-4925-4391-81a3-d91715437be8",
+        "9a3b7075-96ff-485c-b5b0-ab3212a8f6ee"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "80e110a2-84b7-4a0d-acac-97c763dc8e5e": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "a4f3afb4-b8bc-41b2-8ce4-06af33020fae": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "subtitle_color": "--color-primary-900"
+          }
+        },
+        "9519ba21-1750-4486-8043-5563d93680bd": {
+          "type": "title",
+          "settings": {
+            "title": "Title: Rich Text Section",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "53a4b944-1d0a-408d-b8d8-654cb5882093": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "ac7073b3-d7ab-4df6-90c4-406fabfe8682": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "b0e0e379-9530-47b1-9599-d83f53336681": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "0f792058-89f8-43fc-ad71-4cdcc782ee24": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        },
+        "4c40d4e0-3655-4dfd-ba66-a9c3f9e3bf74": {
+          "type": "block_quote",
+          "settings": {
+            "enable_quotes": true,
+            "quote_color": "--color-primary-900",
+            "block_quote": "Placeholder block quote text"
+          }
+        }
+      },
+      "block_order": [
+        "a4f3afb4-b8bc-41b2-8ce4-06af33020fae",
+        "9519ba21-1750-4486-8043-5563d93680bd",
+        "53a4b944-1d0a-408d-b8d8-654cb5882093",
+        "ac7073b3-d7ab-4df6-90c4-406fabfe8682",
+        "b0e0e379-9530-47b1-9599-d83f53336681",
+        "0f792058-89f8-43fc-ad71-4cdcc782ee24",
+        "4c40d4e0-3655-4dfd-ba66-a9c3f9e3bf74"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "right",
+        "horizontal_align_md": "right"
+      }
+    },
+    "2fc0208b-df26-48fa-b80a-580969233378": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "beb27bee-3d94-477f-83b8-8289194ed635": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Color Configurations</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "beb27bee-3d94-477f-83b8-8289194ed635"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "19aebb12-9948-496c-b6bf-ec8fca3c6368": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "9b7359d8-1ee0-48c9-b1f0-05fcba5ca1a7": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Eyebrow text color can be updated",
+            "subtitle_color": "--color-util-red"
+          }
+        },
+        "eeee3148-212c-496e-9a6c-06be63514cf5": {
+          "type": "title",
+          "settings": {
+            "title": "Title text color can be updated",
+            "title_color": "--color-tertiary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "2f92ead7-afd0-4b04-8961-e7e5ecc00fa3": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Text color (for desktop and mobile together) based on brand colors</p><p>CTA styling (choosing from primary, secondary, tertiary)</p><p>Background color for desktop and mobile</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "20a0d6f5-38e2-4987-8185-d71f79113be0": {
+          "type": "block_quote",
+          "settings": {
+            "enable_quotes": true,
+            "quote_color": "--color-primary-900",
+            "block_quote": "Block quote text color can be updated and override icons can be uploaded to match selected color"
+          }
+        },
+        "fb95c260-35db-4615-9020-bc3ecfcea64c": {
+          "type": "ctas",
+          "settings": {
+            "cta_1_text": "CTA Styling",
+            "cta_1_url": "shopify://pages/text-only-section",
+            "cta_1_style": "primary",
+            "cta_2_text": "CTA Styling",
+            "cta_2_url": "shopify://pages/text-only-section",
+            "cta_2_style": "tertiary"
+          }
+        }
+      },
+      "block_order": [
+        "9b7359d8-1ee0-48c9-b1f0-05fcba5ca1a7",
+        "eeee3148-212c-496e-9a6c-06be63514cf5",
+        "2f92ead7-afd0-4b04-8961-e7e5ecc00fa3",
+        "20a0d6f5-38e2-4987-8185-d71f79113be0",
+        "fb95c260-35db-4615-9020-bc3ecfcea64c"
+      ],
+      "settings": {
+        "bg_color": "--color-secondary-900",
+        "bg_color_md": "--color-secondary-900",
+        "text_color_mobile": "--color-primary-900",
+        "text_color_desktop": "--color-primary-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left"
+      }
+    },
+    "e622de35-eddc-4e9f-b862-96fd533d5374": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "fbe5f24a-5f80-45ae-ad04-381b337a0f19": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Spacing Options</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "fbe5f24a-5f80-45ae-ad04-381b337a0f19"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "acf7294b-a22a-4550-a472-d1fa8e939711": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "a7328816-6554-43dc-ad6e-a33984bab62f": {
+          "type": "title",
+          "settings": {
+            "title": "Large Spacing",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "2e080086-38e3-4719-984f-9b0decc26c53": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "2dad22d0-797e-4187-9d62-6c77abc59573": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "201d8f0a-45dd-4d22-aa57-e8c5667ac457": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "7896d8e5-7263-4ace-91dc-8784c3821622": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        }
+      },
+      "block_order": [
+        "a7328816-6554-43dc-ad6e-a33984bab62f",
+        "2e080086-38e3-4719-984f-9b0decc26c53",
+        "2dad22d0-797e-4187-9d62-6c77abc59573",
+        "201d8f0a-45dd-4d22-aa57-e8c5667ac457",
+        "7896d8e5-7263-4ace-91dc-8784c3821622"
+      ],
+      "settings": {
+        "bg_color": "--color-primary-900",
+        "bg_color_md": "--color-primary-900",
+        "text_color_mobile": "--color-util-white",
+        "text_color_desktop": "--color-util-white",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "large",
+        "max_width": "full",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left"
+      }
+    },
+    "5504cfc4-b9d7-4f02-b5a0-d4a699479388": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "3c06af21-f6f3-4e04-b080-00b8e07fed9b": {
+          "type": "title",
+          "settings": {
+            "title": "Medium Spacing",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "5cd2a702-af23-4df6-958d-8fec6d69c267": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "9fe8bed4-103f-4857-8ef4-75f8181ac504": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "2504c7dc-638f-4428-9229-4925368a6d51": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "756b0f49-6047-4d9a-b95d-d9c98bf17e77": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        }
+      },
+      "block_order": [
+        "3c06af21-f6f3-4e04-b080-00b8e07fed9b",
+        "5cd2a702-af23-4df6-958d-8fec6d69c267",
+        "9fe8bed4-103f-4857-8ef4-75f8181ac504",
+        "2504c7dc-638f-4428-9229-4925368a6d51",
+        "756b0f49-6047-4d9a-b95d-d9c98bf17e77"
+      ],
+      "settings": {
+        "bg_color": "--color-tertiary-900",
+        "bg_color_md": "--color-tertiary-900",
+        "text_color_mobile": "--color-util-white",
+        "text_color_desktop": "--color-util-white",
+        "spacing_top": "medium",
+        "spacing_bottom": "medium",
+        "spacing_edge": "large",
+        "max_width": "full",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left"
+      }
+    },
+    "91e860e3-d83c-41fb-850f-50c0ab15af60": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "38d4e748-3ba6-41bb-b6ee-e4a972ebb735": {
+          "type": "title",
+          "settings": {
+            "title": "Small Spacing",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "82d182a6-6bb2-44ea-8752-9e2c1a615cd7": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "74ea0654-eb6e-49ab-9e1a-71cf83a41c6a": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "a484ddb7-a5da-4745-ad60-e04fa0d23c0d": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "479ed39d-32bc-423c-8af3-a1646255b05b": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        }
+      },
+      "block_order": [
+        "38d4e748-3ba6-41bb-b6ee-e4a972ebb735",
+        "82d182a6-6bb2-44ea-8752-9e2c1a615cd7",
+        "74ea0654-eb6e-49ab-9e1a-71cf83a41c6a",
+        "a484ddb7-a5da-4745-ad60-e04fa0d23c0d",
+        "479ed39d-32bc-423c-8af3-a1646255b05b"
+      ],
+      "settings": {
+        "bg_color": "--color-secondary-900",
+        "bg_color_md": "--color-secondary-900",
+        "text_color_mobile": "--color-util-white",
+        "text_color_desktop": "--color-util-white",
+        "spacing_top": "small",
+        "spacing_bottom": "small",
+        "spacing_edge": "large",
+        "max_width": "full",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left"
+      }
+    },
+    "13314754-43ce-412b-bbec-d90ca1e6fa03": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "10c28c30-4d1f-43be-9fa2-cf7a06302161": {
+          "type": "title",
+          "settings": {
+            "title": "No Spacing",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "30a7ba3e-aa82-4ead-9ca7-e0fdaf3e9d3d": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "3a6d74da-22e7-49fe-9cd1-8152b2c6ec4a": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "db2e0fb3-0314-4c6e-a4b0-73f2c8cd50a5": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "4392f7bf-1554-46d0-bf2c-4609f4b77014": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder body copy option (this is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        }
+      },
+      "block_order": [
+        "10c28c30-4d1f-43be-9fa2-cf7a06302161",
+        "30a7ba3e-aa82-4ead-9ca7-e0fdaf3e9d3d",
+        "3a6d74da-22e7-49fe-9cd1-8152b2c6ec4a",
+        "db2e0fb3-0314-4c6e-a4b0-73f2c8cd50a5",
+        "4392f7bf-1554-46d0-bf2c-4609f4b77014"
+      ],
+      "settings": {
+        "bg_color": "--color-primary-900",
+        "bg_color_md": "--color-primary-900",
+        "text_color_mobile": "--color-util-white",
+        "text_color_desktop": "--color-util-white",
+        "spacing_top": "none",
+        "spacing_bottom": "none",
+        "spacing_edge": "large",
+        "max_width": "full",
+        "horizontal_align": "left",
+        "horizontal_align_md": "left"
+      }
+    },
+    "cd015555-2237-4f25-b998-c2ae8e243f77": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "75830bba-0df4-42d0-9be3-122db061bbad": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Examples</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "75830bba-0df4-42d0-9be3-122db061bbad"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "b99f3f47-17be-4118-bcd3-d1bf7f0899a2": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "3dc63f44-0b96-490e-b5b3-858da5a23e6d": {
+          "type": "block_quote",
+          "settings": {
+            "enable_quotes": true,
+            "quote_color": "--color-primary-900",
+            "block_quote": "This is an example of a block quote which could be used for testimonials or featuring customer reviews"
+          }
+        },
+        "ccba2b51-013b-400c-8229-ccdfc065ca0d": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>- Author</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        }
+      },
+      "block_order": [
+        "3dc63f44-0b96-490e-b5b3-858da5a23e6d",
+        "ccba2b51-013b-400c-8229-ccdfc065ca0d"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "0b56f99f-f8cf-4e07-ae80-97f29f366609": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "9f0b03de-59ce-4965-bd31-8a523d510d50": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<h1>You could also use this section for a <strong>bold </strong>brand statement</h1>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "9f0b03de-59ce-4965-bd31-8a523d510d50"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "7fb80d13-4823-41c1-8770-3d86895e2228": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "3f19da99-2ec2-4df1-bf0d-43e850fbc29e": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>A special message could be added to a page to inform users of a sale or shipping delays</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "3f19da99-2ec2-4df1-bf0d-43e850fbc29e"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f9661593-dfe8-44ee-866d-118c5dc3b2de",
+    "b5864362-44bf-4673-ba6a-32adcc315014",
+    "94615d76-9698-47c8-95ce-528c557bd6ef",
+    "96d55124-8c3e-4e44-9077-f3cae680a40d",
+    "fedf7b38-c7f4-4a42-9cb0-79c220bf268d",
+    "90a2d3a6-d253-4c06-a0e3-f1626f73537d",
+    "80e110a2-84b7-4a0d-acac-97c763dc8e5e",
+    "2fc0208b-df26-48fa-b80a-580969233378",
+    "19aebb12-9948-496c-b6bf-ec8fca3c6368",
+    "e622de35-eddc-4e9f-b862-96fd533d5374",
+    "acf7294b-a22a-4550-a472-d1fa8e939711",
+    "5504cfc4-b9d7-4f02-b5a0-d4a699479388",
+    "91e860e3-d83c-41fb-850f-50c0ab15af60",
+    "13314754-43ce-412b-bbec-d90ca1e6fa03",
+    "cd015555-2237-4f25-b998-c2ae8e243f77",
+    "b99f3f47-17be-4118-bcd3-d1bf7f0899a2",
+    "0b56f99f-f8cf-4e07-ae80-97f29f366609",
+    "7fb80d13-4823-41c1-8770-3d86895e2228"
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "page": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "43b73f08-e6fa-4f06-84e7-73654cf379b5": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "e2810274-7e20-44fe-9168-76aa77c6bae3": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Section Configuration Options include and content additions/editing for section title, accordion title, accordion content</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "e2810274-7e20-44fe-9168-76aa77c6bae3"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "bd3a8e42-1e4c-420c-ae1c-92740a4cdfdd": {
+      "type": "accordion",
+      "blocks": {
+        "822734be-93cd-4f41-b793-7b66d1ec29b9": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1 (click to expand)",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "a960ec2c-3f9d-4b82-8fe1-88fcbc2d1408": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "7218da81-0dbe-4d24-abf2-8ad43b2ed1b7": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "977692f4-d540-4dda-a91b-bfefbebe7c1b": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "822734be-93cd-4f41-b793-7b66d1ec29b9",
+        "a960ec2c-3f9d-4b82-8fe1-88fcbc2d1408",
+        "7218da81-0dbe-4d24-abf2-8ad43b2ed1b7",
+        "977692f4-d540-4dda-a91b-bfefbebe7c1b"
+      ],
+      "settings": {
+        "section_title_level": "h1",
+        "section_title": "Accordion title",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "dbc12e57-7a97-4743-b2b8-6feda741e85c": {
+      "type": "accordion",
+      "blocks": {
+        "5593a8d8-ef5b-434e-8b84-de9ea42e3028": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1 (click to expand)",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "fbfe6d3c-9e01-44b1-a4a9-bfc6649aa034": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "06a0f948-e72e-4896-b120-57ce0864d79b": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "b0485218-43c3-444d-b8c6-fbadc706589d": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "5593a8d8-ef5b-434e-8b84-de9ea42e3028",
+        "fbfe6d3c-9e01-44b1-a4a9-bfc6649aa034",
+        "06a0f948-e72e-4896-b120-57ce0864d79b",
+        "b0485218-43c3-444d-b8c6-fbadc706589d"
+      ],
+      "settings": {
+        "section_title_level": "h2",
+        "section_title": "Accordion title",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "66f85505-d1f4-4abe-914b-440b94a8ccb3": {
+      "type": "accordion",
+      "blocks": {
+        "caab41b3-31f8-4b54-b42b-31c27dbfac03": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1 (click to expand)",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "5f1e505b-3cd4-4e64-8338-99deb2d3b54b": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "a348e7c4-9672-4d75-88cc-a74b2ecbf48f": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "f2274643-0b30-4638-9673-61b61a50458b": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "caab41b3-31f8-4b54-b42b-31c27dbfac03",
+        "5f1e505b-3cd4-4e64-8338-99deb2d3b54b",
+        "a348e7c4-9672-4d75-88cc-a74b2ecbf48f",
+        "f2274643-0b30-4638-9673-61b61a50458b"
+      ],
+      "settings": {
+        "section_title_level": "h3",
+        "section_title": "Accordion title",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "8686c11f-a32b-4cc4-91d8-826c5e1204cc": {
+      "type": "accordion",
+      "blocks": {
+        "9ddcd26f-a58e-4b45-9d83-5d81e733935c": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1 (click to expand)",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "4300b817-5860-4dae-8da3-b6d330c1d98a": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "3fc76fae-3efb-47b1-8583-e748deff5c1f": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "1a6bf314-b29e-44da-8fbf-e9a9e3a2f2d4": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "9ddcd26f-a58e-4b45-9d83-5d81e733935c",
+        "4300b817-5860-4dae-8da3-b6d330c1d98a",
+        "3fc76fae-3efb-47b1-8583-e748deff5c1f",
+        "1a6bf314-b29e-44da-8fbf-e9a9e3a2f2d4"
+      ],
+      "settings": {
+        "section_title_level": "h4",
+        "section_title": "Accordion title",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "be271b04-9a40-45fb-8873-e4aa87d44082": {
+      "type": "accordion",
+      "blocks": {
+        "5bf57ab4-d3b4-402f-983c-869ffe0f6328": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1 (click to expand)",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "063f90c5-9031-4fb2-b8fd-e0e31b6a0753": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "c6e4a9ca-6e63-4da5-8930-3a94e47274ad": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "b12fb072-aff6-4fc0-b7c8-f52a7417737d": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "5bf57ab4-d3b4-402f-983c-869ffe0f6328",
+        "063f90c5-9031-4fb2-b8fd-e0e31b6a0753",
+        "c6e4a9ca-6e63-4da5-8930-3a94e47274ad",
+        "b12fb072-aff6-4fc0-b7c8-f52a7417737d"
+      ],
+      "settings": {
+        "section_title_level": "h5",
+        "section_title": "Accordion title",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "96eb93c4-79b6-4ad5-aa7c-5f5b56e79fe0": {
+      "type": "accordion",
+      "blocks": {
+        "269ff78e-2241-4835-9287-3fcf3365a47e": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1 (click to expand)",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "71d53b1e-9f75-4bec-ae12-4b4a4a6e9693": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "354e51ed-28a2-478a-832a-41182e6f7374": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "9a2d6ded-6f29-406a-a7c1-8a6215037af9": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "269ff78e-2241-4835-9287-3fcf3365a47e",
+        "71d53b1e-9f75-4bec-ae12-4b4a4a6e9693",
+        "354e51ed-28a2-478a-832a-41182e6f7374",
+        "9a2d6ded-6f29-406a-a7c1-8a6215037af9"
+      ],
+      "settings": {
+        "section_title_level": "h6",
+        "section_title": "Accordion title",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "eaeffc77-1f9a-4a6e-b463-be85aa79a28c": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "625e37e1-c099-4c93-8314-dabd1d21ee36": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Color Configurations: background color of section and text/icon color</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "625e37e1-c099-4c93-8314-dabd1d21ee36"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "c034197b-f5bf-44a6-876c-5b466c70c603": {
+      "type": "accordion",
+      "blocks": {
+        "edbeebd4-e6b6-49ee-b4e0-bfcc87dfdcbf": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "f4d6f69b-8e4f-42d8-b8c4-a20bc8d28987": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "30350fea-e0b6-4e97-8df6-00794142e166": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        },
+        "d51d1c60-0d90-483c-83da-ef3d14e2dbe6": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "edbeebd4-e6b6-49ee-b4e0-bfcc87dfdcbf",
+        "f4d6f69b-8e4f-42d8-b8c4-a20bc8d28987",
+        "30350fea-e0b6-4e97-8df6-00794142e166",
+        "d51d1c60-0d90-483c-83da-ef3d14e2dbe6"
+      ],
+      "settings": {
+        "section_title_level": "h3",
+        "section_title": "Accordion Section Title",
+        "title_level": "h5",
+        "bg_color": "--color-primary-900",
+        "text_color": "--color-util-yellow"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "43b73f08-e6fa-4f06-84e7-73654cf379b5",
+    "bd3a8e42-1e4c-420c-ae1c-92740a4cdfdd",
+    "dbc12e57-7a97-4743-b2b8-6feda741e85c",
+    "66f85505-d1f4-4abe-914b-440b94a8ccb3",
+    "8686c11f-a32b-4cc4-91d8-826c5e1204cc",
+    "be271b04-9a40-45fb-8873-e4aa87d44082",
+    "96eb93c4-79b6-4ad5-aa7c-5f5b56e79fe0",
+    "eaeffc77-1f9a-4a6e-b463-be85aa79a28c",
+    "c034197b-f5bf-44a6-876c-5b466c70c603"
+  ]
+}
