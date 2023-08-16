@@ -219,7 +219,19 @@
         <div class="ra-carousel__pagination flex justify-center gap-1 mt-4"></div>
       {% endif %}
     </div>
-
+    
+    {% assign rounded_mobile_slides = section.settings.mobile_slides_view | round %}
+    {% capture mobile_width_classes %}
+      {% if rounded_mobile_slides == 1 %}
+        w-full mb-4
+      {% endif  %}
+      {% if rounded_mobile_slides == 2 %}
+        w-1/2 mb-4
+      {% endif  %}
+      {% if rounded_mobile_slides == 3 %}
+        w-1/3 mb-4
+      {% endif  %}
+    {% endcapture %}
     <div 
       data-section-mobile="{{ section.id }}"
       data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent={{ section.settings.recommendations_intent }}" 
@@ -233,7 +245,7 @@
               atc_style: section.settings.cta_style,
               font_color: text_color,
               index: forloop.index,
-              class: 'w-1/2 mb-4'
+              class: mobile_width_classes
             %}
           {% endfor %}
         {% endif %}
@@ -247,7 +259,7 @@
               atc_style: section.settings.cta_style,
               font_color: text_color,
               index: forloop.index,
-              class: 'w-1/2 mb-4'
+              class: mobile_width_classes
             %}
           {% endfor %}
         {% else  %}
@@ -267,7 +279,7 @@
               atc_style: section.settings.cta_style,
               font_color: text_color,
               index: forloop.index,
-              class: 'w-1/2 mb-4'
+              class: mobile_width_classes
             %}
           {% endfor %}
         {% endif  %}
