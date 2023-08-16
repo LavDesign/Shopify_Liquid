@@ -94,7 +94,7 @@
 <ra-product-tile
   data-product="{{ product_json | escape | strip }}"
   data-current-variant="{{ current_variant.id }}"
-  class="ra-product-tile"
+  class="ra-product-tile {{ class }}"
   {% unless disable_animation %}
     data-aos="fade-up"
     data-aos-duration="500"
