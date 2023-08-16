@@ -11,64 +11,6 @@
         "padding_bottom": 36
       }
     },
-    "5e784af3-e066-45ad-8446-66e21dd54246": {
-      "type": "ra-product-carousel",
-      "settings": {
-        "title": "",
-        "description": "",
-        "title_level": "h2",
-        "title_style": "h3",
-        "bg_color": "--color-util-white",
-        "text_color": "--color-primary-900",
-        "cta_label": "",
-        "cta_style": "tertiary",
-        "selected_collection": "",
-        "use_recommendations_api": true,
-        "recommendations_intent": "related",
-        "recommendations_product": "example-t-shirt",
-        "show_navigation": true,
-        "show_pagination": false,
-        "carousel_nav_location": "top-right",
-        "mobile_slides_view": "1.5",
-        "tablet_slides_view": "3",
-        "desktop_slides_view": "4",
-        "scroll_interaction": "snap",
-        "mobile_padding_vertical": 1,
-        "mobile_padding_horizontal": 2,
-        "desktop_padding": 3,
-        "mobile_margin": 2,
-        "desktop_margin": 4
-      }
-    },
-    "6f84fb09-217b-4f7b-896d-b2d6fa4b64ec": {
-      "type": "ra-product-carousel",
-      "settings": {
-        "title": "",
-        "description": "",
-        "title_level": "h2",
-        "title_style": "h3",
-        "bg_color": "--color-util-white",
-        "text_color": "--color-primary-900",
-        "cta_label": "",
-        "cta_style": "tertiary",
-        "selected_collection": "",
-        "use_recommendations_api": true,
-        "recommendations_intent": "related",
-        "recommendations_product": "bedside-table",
-        "show_navigation": true,
-        "show_pagination": false,
-        "carousel_nav_location": "top-right",
-        "mobile_slides_view": "1.5",
-        "tablet_slides_view": "3",
-        "desktop_slides_view": "4",
-        "scroll_interaction": "snap",
-        "mobile_padding_vertical": 1,
-        "mobile_padding_horizontal": 2,
-        "desktop_padding": 3,
-        "mobile_margin": 2,
-        "desktop_margin": 4
-      }
-    },
     "02f122bc-a7c3-4586-a46a-daffc62b3233": {
       "type": "ra-product-carousel",
       "settings": {
@@ -83,7 +25,7 @@
         "selected_collection": "baseline-collection",
         "use_recommendations_api": false,
         "recommendations_intent": "related",
-        "recommendations_product": "example-t-shirt",
+        "recommendations_product": "",
         "show_navigation": true,
         "show_pagination": false,
         "carousel_nav_location": "top-right",
@@ -243,36 +185,6 @@
         "desktop_margin": 4
       }
     },
-    "ef12bae9-1127-4f79-80b8-3ea0376ed9a2": {
-      "type": "ra-product-carousel",
-      "disabled": true,
-      "settings": {
-        "title": "Arrows Center",
-        "description": "",
-        "title_level": "h2",
-        "title_style": "h3",
-        "bg_color": "--color-util-white",
-        "text_color": "--color-grey-900",
-        "cta_label": "",
-        "cta_style": "tertiary",
-        "selected_collection": "",
-        "use_recommendations_api": true,
-        "recommendations_intent": "related",
-        "recommendations_product": "example-t-shirt",
-        "show_navigation": false,
-        "show_pagination": true,
-        "carousel_nav_location": "auto",
-        "mobile_slides_view": "1",
-        "tablet_slides_view": "3",
-        "desktop_slides_view": "4",
-        "scroll_interaction": "snap",
-        "mobile_padding_vertical": 1,
-        "mobile_padding_horizontal": 2,
-        "desktop_padding": 3,
-        "mobile_margin": 2,
-        "desktop_margin": 4
-      }
-    },
     "8e1a539b-813c-4a76-ad11-e53a044e4122": {
       "type": "ra-product-carousel",
       "settings": {
@@ -301,19 +213,46 @@
         "mobile_margin": 2,
         "desktop_margin": 4
       }
+    },
+    "ef12bae9-1127-4f79-80b8-3ea0376ed9a2": {
+      "type": "ra-product-carousel",
+      "settings": {
+        "title": "Arrows Center",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "cta_label": "",
+        "cta_style": "tertiary",
+        "selected_collection": "baseline-collection",
+        "use_recommendations_api": false,
+        "recommendations_intent": "related",
+        "recommendations_product": "",
+        "show_navigation": false,
+        "show_pagination": true,
+        "carousel_nav_location": "auto",
+        "mobile_slides_view": "1",
+        "tablet_slides_view": "3",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
     }
   },
   "order": [
     "main",
-    "5e784af3-e066-45ad-8446-66e21dd54246",
-    "6f84fb09-217b-4f7b-896d-b2d6fa4b64ec",
     "02f122bc-a7c3-4586-a46a-daffc62b3233",
     "f0170210-c65f-4471-bd9b-432adad9de4d",
     "64027a08-d534-439c-9976-af9c887c4807",
     "979ac637-a034-4815-b099-1c1b15edc9e5",
     "2a6e2da4-ab7f-4bea-a804-a312ff133e9c",
     "13c63495-d749-43b1-8999-ed412f6ab878",
-    "ef12bae9-1127-4f79-80b8-3ea0376ed9a2",
-    "8e1a539b-813c-4a76-ad11-e53a044e4122"
+    "8e1a539b-813c-4a76-ad11-e53a044e4122",
+    "ef12bae9-1127-4f79-80b8-3ea0376ed9a2"
   ]
 }

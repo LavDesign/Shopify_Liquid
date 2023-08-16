@@ -1,0 +1,336 @@
+{
+  "sections": {
+    "57ad31d1-7071-443d-ac40-7d39d7fd22ed": {
+      "type": "hero-carousel",
+      "blocks": {
+        "a64cb8fd-fe9f-44c5-b74e-87cb66611708": {
+          "type": "slide",
+          "settings": {
+            "eyebrow_text": "",
+            "title": "FAQ Page",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-primary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "a64cb8fd-fe9f-44c5-b74e-87cb66611708"
+      ],
+      "settings": {
+        "height": "main",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "page": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "dd737b7b-6e99-454f-94b4-aed9db0ad1ef": {
+      "type": "ra-rich-text",
+      "disabled": true,
+      "blocks": {
+        "8fa3321a-fa3f-4ca1-9eb3-a370e15cc429": {
+          "type": "title",
+          "settings": {
+            "title": "FAQS",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "8fa3321a-fa3f-4ca1-9eb3-a370e15cc429"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "1550b569-7be5-4116-af26-41e72e77b485": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "538be0de-0e96-4318-9ee8-cc86aca96f95": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<h4>Placeholder: Section 1</h4>",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "538be0de-0e96-4318-9ee8-cc86aca96f95"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "4f47f96d-58cd-4407-8187-2048f3d0b0e4": {
+      "type": "accordion",
+      "blocks": {
+        "6940719e-1b20-4a98-9fab-833ae33d4656": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "3d54609d-9d2b-4a5c-b877-fd0ad2593c8e": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "3b92e38d-5da9-4a8d-a376-075dd1931b66": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "7f4d2d1b-2c29-4fc3-a1a0-fa01927da86c": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "d80c5f11-305d-464f-b18c-8329b0b0f66b": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 5",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        }
+      },
+      "block_order": [
+        "6940719e-1b20-4a98-9fab-833ae33d4656",
+        "3d54609d-9d2b-4a5c-b877-fd0ad2593c8e",
+        "3b92e38d-5da9-4a8d-a376-075dd1931b66",
+        "7f4d2d1b-2c29-4fc3-a1a0-fa01927da86c",
+        "d80c5f11-305d-464f-b18c-8329b0b0f66b"
+      ],
+      "settings": {
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "94b93d1b-c084-4e4a-bced-bbec8648b387": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "2ebd84e7-8bd5-44fc-83b7-6d675928c014": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<h4>Placeholder: Section 2</h4>",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "2ebd84e7-8bd5-44fc-83b7-6d675928c014"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "b91ffaf2-1a5b-40e1-9495-494c5ac04f85": {
+      "type": "accordion",
+      "blocks": {
+        "f1ec612b-43d2-4dd2-afc8-bab4ddc2452a": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "3f01bba1-9872-404a-9e6e-c36871b190bc": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "d7a5f8c1-3245-4446-98dc-399c905ade8f": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "422b66a4-bea0-4ebe-b9fb-3f6b72fb58b5": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "7287fe1f-5a06-4586-95ff-d66fb76f12c5": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 5",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1ec612b-43d2-4dd2-afc8-bab4ddc2452a",
+        "3f01bba1-9872-404a-9e6e-c36871b190bc",
+        "d7a5f8c1-3245-4446-98dc-399c905ade8f",
+        "422b66a4-bea0-4ebe-b9fb-3f6b72fb58b5",
+        "7287fe1f-5a06-4586-95ff-d66fb76f12c5"
+      ],
+      "settings": {
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "ba3b402b-0579-471c-8bbf-72a427bdb8c9": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "dbbfb3b9-c463-48fc-a07c-421b33137f93": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<h4>Placeholder: Section 3</h4>",
+            "description_copy_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "dbbfb3b9-c463-48fc-a07c-421b33137f93"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "a343ca63-0da0-468e-9284-ddfcb45b5c21": {
+      "type": "accordion",
+      "blocks": {
+        "149f7771-79b6-4726-bb02-92ae5c6c76f6": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "26d7b42c-cd0f-4b5f-bf42-f36d20a58468": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "28d6827a-5b40-444e-b984-3a383d43187f": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "644e9fa3-0124-4da3-a0c0-cc9612f7e24c": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        },
+        "7d749c61-878f-440c-8bc4-bed263981c4a": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 5",
+            "item_content": "<p>Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description Placeholder Expanded Description </p>"
+          }
+        }
+      },
+      "block_order": [
+        "149f7771-79b6-4726-bb02-92ae5c6c76f6",
+        "26d7b42c-cd0f-4b5f-bf42-f36d20a58468",
+        "28d6827a-5b40-444e-b984-3a383d43187f",
+        "644e9fa3-0124-4da3-a0c0-cc9612f7e24c",
+        "7d749c61-878f-440c-8bc4-bed263981c4a"
+      ],
+      "settings": {
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    }
+  },
+  "order": [
+    "57ad31d1-7071-443d-ac40-7d39d7fd22ed",
+    "main",
+    "dd737b7b-6e99-454f-94b4-aed9db0ad1ef",
+    "1550b569-7be5-4116-af26-41e72e77b485",
+    "4f47f96d-58cd-4407-8187-2048f3d0b0e4",
+    "94b93d1b-c084-4e4a-bced-bbec8648b387",
+    "b91ffaf2-1a5b-40e1-9495-494c5ac04f85",
+    "ba3b402b-0579-471c-8bbf-72a427bdb8c9",
+    "a343ca63-0da0-468e-9284-ddfcb45b5c21"
+  ]
+}

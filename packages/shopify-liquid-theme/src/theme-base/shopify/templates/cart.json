@@ -1,8 +1,73 @@
 {
   "sections": {
     "cart-items": {
-      "type": "main-cart-items"
+      "type": "main-cart-items",
+      "settings": {}
+    },
+    "0383f627-c6d2-471b-85ca-c8676b543cab": {
+      "type": "ra-product-carousel",
+      "blocks": {
+        "72cc5420-34b1-4d57-9130-6acfd08003bd": {
+          "type": "product-slide",
+          "settings": {
+            "product": "yard-games"
+          }
+        },
+        "f74b96d7-f1a0-4192-b583-548728c9e767": {
+          "type": "product-slide",
+          "settings": {
+            "product": "fresh-picked"
+          }
+        },
+        "4d8ac568-ae65-422c-a7fd-4f07011f5e96": {
+          "type": "product-slide",
+          "settings": {
+            "product": "garden-party"
+          }
+        },
+        "399e1c46-f8a8-49ff-837a-8b64dd257ca7": {
+          "type": "product-slide",
+          "settings": {
+            "product": "skinny-dip"
+          }
+        }
+      },
+      "block_order": [
+        "72cc5420-34b1-4d57-9130-6acfd08003bd",
+        "f74b96d7-f1a0-4192-b583-548728c9e767",
+        "4d8ac568-ae65-422c-a7fd-4f07011f5e96",
+        "399e1c46-f8a8-49ff-837a-8b64dd257ca7"
+      ],
+      "settings": {
+        "title": "Check out our favorites",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-primary-900",
+        "cta_label": "",
+        "cta_style": "tertiary",
+        "selected_collection": "baseline-collection",
+        "use_recommendations_api": false,
+        "recommendations_intent": "related",
+        "recommendations_product": "",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "3",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
     }
   },
-  "order": ["cart-items"]
+  "order": [
+    "cart-items",
+    "0383f627-c6d2-471b-85ca-c8676b543cab"
+  ]
 }
