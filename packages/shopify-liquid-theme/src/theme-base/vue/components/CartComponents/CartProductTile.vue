@@ -114,7 +114,12 @@ const updateQuantity = (qty) => {
     quantity: qty,
   };
   if (qty < props.product.quantity) dataRemoveFromCart(props.product);
-  cartStore.updateItem(productObj);
+  cartStore.updateItem(productObj).then((cart) => {
+    const event = new CustomEvent("cartUpdated", {
+      detail: { item_count: cart.item_count },
+    });
+    window.dispatchEvent(event);
+  })
 };
 
 const isSubscriptionProduct = false;

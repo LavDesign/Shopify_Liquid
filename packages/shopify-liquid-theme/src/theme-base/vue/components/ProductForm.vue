@@ -224,7 +224,14 @@ const addToCart = async () => {
       quantity: qty.value,
       // properties: null
     })
-    .then(() => dataAddToCart(props.product, currentVariant, qty))
+    .then((data) => {
+      const { item_count } = data;
+      const event = new CustomEvent("cartUpdated", {
+        detail: { item_count: item_count },
+      });
+      window.dispatchEvent(event);
+      dataAddToCart(props.product, currentVariant, qty);
+    })
     .then(() => cartToggle());
   isAddingToCart.value = false;
 };
