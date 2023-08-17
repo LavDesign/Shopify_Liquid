@@ -221,21 +221,21 @@
     </div>
     
     {% assign rounded_mobile_slides = section.settings.mobile_slides_view | round %}
-    {% capture mobile_width_classes %}
+    {% capture mobile_width_styles %}
       {% if rounded_mobile_slides == 1 %}
-        w-full mb-4
+        width:100%; margin-bottom: 16px;
       {% endif  %}
       {% if rounded_mobile_slides == 2 %}
-        w-1/2 mb-4
+        width: calc(50% - 4px); margin-bottom: 16px;
       {% endif  %}
       {% if rounded_mobile_slides == 3 %}
-        w-1/3 mb-4
+        width: calc(33% - 4px); margin-bottom: 16px;
       {% endif  %}
     {% endcapture %}
     <div 
       data-section-mobile="{{ section.id }}"
       data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent={{ section.settings.recommendations_intent }}" 
-      class="product-recommendations-mobile {% if section.settings.stack_on_mobile %}flex flex-wrap md:hidden{% else %}hidden{% endif %}">
+      class="product-recommendations-mobile {% if section.settings.stack_on_mobile %}flex flex-wrap justify-between md:hidden{% else %}hidden{% endif %}">
       {% if section.settings.use_recommendations_api %}
         {%- if recommendations.performed? and recommendations.products_count > 0 -%}
           {%- for recommended_product in recommendations.products -%}
@@ -245,7 +245,7 @@
               atc_style: section.settings.cta_style,
               font_color: text_color,
               index: forloop.index,
-              class: mobile_width_classes
+              style: mobile_width_styles
             %}
           {% endfor %}
         {% endif %}
@@ -259,7 +259,7 @@
               atc_style: section.settings.cta_style,
               font_color: text_color,
               index: forloop.index,
-              class: mobile_width_classes
+              style: mobile_width_styles
             %}
           {% endfor %}
         {% else  %}
@@ -279,7 +279,7 @@
               atc_style: section.settings.cta_style,
               font_color: text_color,
               index: forloop.index,
-              class: mobile_width_classes
+              style: mobile_width_styles
             %}
           {% endfor %}
         {% endif  %}
