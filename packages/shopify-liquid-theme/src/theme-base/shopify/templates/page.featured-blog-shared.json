@@ -1,0 +1,172 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "page": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "f2830d9c-75b8-4d9f-91a6-c5bea1934ea6": {
+      "type": "accordion",
+      "disabled": true,
+      "blocks": {
+        "b4cc67e3-45f6-413b-a276-4445d32e146a": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1",
+            "item_content": "<p>Placeholder accordion expanded copy. Placeholder accordion expanded copy. Placeholder accordion expanded copy.Placeholder accordion expanded copy</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b4cc67e3-45f6-413b-a276-4445d32e146a"
+      ],
+      "settings": {
+        "section_title_level": "h3",
+        "section_title": "",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-util-red"
+      }
+    },
+    "ee2b87fb-355b-4859-937d-62866272b04c": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "ed282aec-0b62-4d31-ad6d-bdecdf5d12d9": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Section configurations: </p><p>Section title copy and styling, selection of 3 blog posts to feature</p><p>Per article: ability to hide and show: badges, dates, and excerpts</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "ed282aec-0b62-4d31-ad6d-bdecdf5d12d9"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-util-black",
+        "text_color_desktop": "--color-util-black",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "a733555d-f36c-402a-ab80-09844d802040": {
+      "type": "featured-blog-posts",
+      "settings": {
+        "background_color": "--color-util-white",
+        "aspect_ratio": "video",
+        "section_title_level": "h3",
+        "title_style": "h3",
+        "title": "Keep Reading",
+        "title_color": "--color-primary-900",
+        "article_1": "blog/blog-post-3-title",
+        "article_2": "blog/blog-post-5-title",
+        "article_3": "blog/blog-post-7-title",
+        "show_excerpt": true,
+        "show_tags": true,
+        "show_date": true
+      }
+    },
+    "18d31e90-0b75-455a-8c78-dd853751fb21": {
+      "type": "featured-blog-posts",
+      "settings": {
+        "background_color": "--color-util-white",
+        "aspect_ratio": "video",
+        "section_title_level": "h3",
+        "title_style": "h3",
+        "title": "Keep Reading",
+        "title_color": "--color-primary-900",
+        "article_1": "blog/blog-post-3-title",
+        "article_2": "blog/blog-post-5-title",
+        "article_3": "blog/blog-post-7-title",
+        "show_excerpt": false,
+        "show_tags": false,
+        "show_date": false
+      }
+    },
+    "2e3cb1af-460b-48e0-a5a7-4f166fa4f743": {
+      "type": "featured-blog-posts",
+      "settings": {
+        "background_color": "--color-util-white",
+        "aspect_ratio": "video",
+        "section_title_level": "h3",
+        "title_style": "h1",
+        "title": "Title style and copy can be configured",
+        "title_color": "--color-primary-900",
+        "article_1": "blog/blog-post-3-title",
+        "article_2": "blog/blog-post-5-title",
+        "article_3": "blog/blog-post-7-title",
+        "show_excerpt": true,
+        "show_tags": true,
+        "show_date": true
+      }
+    },
+    "6f124032-8478-4c76-9a91-ec47c7b00155": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "77849512-eb20-4dea-8ab0-4b1c2ce384d7": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Color Configurations</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "77849512-eb20-4dea-8ab0-4b1c2ce384d7"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-util-black",
+        "text_color_desktop": "--color-util-black",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
+      }
+    },
+    "61144c7e-524c-4bd4-982e-abf9bcd27312": {
+      "type": "featured-blog-posts",
+      "settings": {
+        "background_color": "--color-primary-900",
+        "aspect_ratio": "video",
+        "section_title_level": "h3",
+        "title_style": "h3",
+        "title": "Keep Reading",
+        "title_color": "--color-secondary-900",
+        "article_1": "blog/blog-post-3-title",
+        "article_2": "blog/blog-post-5-title",
+        "article_3": "blog/blog-post-7-title",
+        "show_excerpt": true,
+        "show_tags": false,
+        "show_date": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f2830d9c-75b8-4d9f-91a6-c5bea1934ea6",
+    "ee2b87fb-355b-4859-937d-62866272b04c",
+    "a733555d-f36c-402a-ab80-09844d802040",
+    "18d31e90-0b75-455a-8c78-dd853751fb21",
+    "2e3cb1af-460b-48e0-a5a7-4f166fa4f743",
+    "6f124032-8478-4c76-9a91-ec47c7b00155",
+    "61144c7e-524c-4bd4-982e-abf9bcd27312"
+  ]
+}

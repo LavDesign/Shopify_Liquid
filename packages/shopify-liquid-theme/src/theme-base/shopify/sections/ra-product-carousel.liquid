@@ -109,7 +109,7 @@
       {% endif %}
     </div>
 
-    <div class="ra-carousel {% if show_navigation %}ra-carousel--has-nav{% endif %}">
+    <div class="ra-carousel {% if show_navigation %}ra-carousel--has-nav{% endif %} {% if section.settings.stack_on_mobile %}hidden md:block{% endif %}">
       <!-- prettier-ignore-attribute (data-init-params) -->
       <swiper-container
         class="swiper--{{ section.id }} mt-16 product-recommendations w-full"
@@ -218,6 +218,73 @@
       {% if show_pagination %}
         <div class="ra-carousel__pagination flex justify-center gap-1 mt-4"></div>
       {% endif %}
+    </div>
+    
+    {% assign rounded_mobile_slides = section.settings.mobile_slides_view | round %}
+    {% capture mobile_width_styles %}
+      {% if rounded_mobile_slides == 1 %}
+        width:100%; margin-bottom: 16px;
+      {% endif  %}
+      {% if rounded_mobile_slides == 2 %}
+        width: calc(50% - 4px); margin-bottom: 16px;
+      {% endif  %}
+      {% if rounded_mobile_slides == 3 %}
+        width: calc(33% - 4px); margin-bottom: 16px;
+      {% endif  %}
+    {% endcapture %}
+    <div 
+      data-section-mobile="{{ section.id }}"
+      data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ recommendation_product_id }}&limit=8&intent={{ section.settings.recommendations_intent }}" 
+      class="product-recommendations-mobile {% if section.settings.stack_on_mobile %}flex flex-wrap justify-between md:hidden{% else %}hidden{% endif %}">
+      {% if section.settings.use_recommendations_api %}
+        {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+          {%- for recommended_product in recommendations.products -%}
+            {% render 'ra-product-tile',
+              product: recommended_product,
+              atc_label: section.settings.cta_label,
+              atc_style: section.settings.cta_style,
+              font_color: text_color,
+              index: forloop.index,
+              style: mobile_width_styles
+            %}
+          {% endfor %}
+        {% endif %}
+      {% else %}
+        <!-- prettier-ignore-end -->
+        {% if section.settings.selected_collection != blank %}
+          {%- for collection_product in selected_collection.products -%}
+            {% render 'ra-product-tile',
+              product: collection_product,
+              atc_label: section.settings.cta_label,
+              atc_style: section.settings.cta_style,
+              font_color: text_color,
+              index: forloop.index,
+              style: mobile_width_styles
+            %}
+          {% endfor %}
+        {% else  %}
+          {% for block in section.blocks %}
+            {% liquid
+              assign _product = block.settings.product
+              assign cta_label = block.settings.cta_label
+              assign cta_style = block.settings.cta_style
+            %}
+          {% endfor %}
+
+          {%- for block in section.blocks -%}
+            {% assign src = block.settings.slide_img | image_url: width: 400 %}
+            {% render 'ra-product-tile',
+              product: block.settings.product,
+              atc_label: section.settings.cta_label,
+              atc_style: section.settings.cta_style,
+              font_color: text_color,
+              index: forloop.index,
+              style: mobile_width_styles
+            %}
+          {% endfor %}
+        {% endif  %}
+      {% endif %}
+
     </div>
   </div>
 </section>
@@ -365,6 +432,12 @@
       "type": "checkbox",
       "id": "show_pagination",
       "label": "Show Pagination",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_on_mobile",
+      "label": "Stack On Mobile",
       "default": false
     },
     {

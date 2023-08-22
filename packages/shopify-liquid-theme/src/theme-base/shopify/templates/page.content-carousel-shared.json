@@ -1,0 +1,2228 @@
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+        "page": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ab41d16e-6b31-4b34-bcd1-7c1800a9ea12": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "ff0cdcc4-3fe6-4d8a-befa-3a24ac6e2907": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "501e858a-8e76-45d6-b37d-1d27a95b013d": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "a62c7c3d-a1f6-45ac-bdeb-7b43dc00097c": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "81dcf34e-3118-42fd-b2f8-08a00dc6992e": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "34c10c88-1a39-4a80-8b12-7949d8d58906": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "85a87fbe-62de-4646-ab32-c3b771738efd": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "5d02d2b3-b085-469e-ae03-28cde257109f": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "7a375c4a-8920-4b71-a46b-b5bda5424bc2": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "41af3c24-ab28-412d-ae09-2f95c2d9371b": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "533e33b9-8a6e-4188-92b4-7187c1e29b02": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "b83d6e9b-cd4c-4b51-8962-a28a13af2efa": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "68609e29-e7af-460a-af38-e22b8315e435": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "ff0cdcc4-3fe6-4d8a-befa-3a24ac6e2907",
+        "501e858a-8e76-45d6-b37d-1d27a95b013d",
+        "a62c7c3d-a1f6-45ac-bdeb-7b43dc00097c",
+        "81dcf34e-3118-42fd-b2f8-08a00dc6992e",
+        "34c10c88-1a39-4a80-8b12-7949d8d58906",
+        "85a87fbe-62de-4646-ab32-c3b771738efd",
+        "5d02d2b3-b085-469e-ae03-28cde257109f",
+        "7a375c4a-8920-4b71-a46b-b5bda5424bc2",
+        "41af3c24-ab28-412d-ae09-2f95c2d9371b",
+        "533e33b9-8a6e-4188-92b4-7187c1e29b02",
+        "b83d6e9b-cd4c-4b51-8962-a28a13af2efa",
+        "68609e29-e7af-460a-af38-e22b8315e435"
+      ],
+      "settings": {
+        "title": "Content Carousel Title",
+        "description": "<p>Click through to see all content tile / CTA combo options</p>",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "square",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "2.5",
+        "desktop_slides_view": "3.5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "0354cac9-aa03-4d0f-9adf-09920abc28ea": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "bb4341ec-93d1-4df6-9a9f-3a421b62a6d4": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "a319718f-187d-40e0-af4e-fc47cd20d31c": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "e7497362-08ff-43d2-a42b-6d335a20a140": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "8891fd80-6174-4546-8a9b-bf60924133e0": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "d055ccfd-4be1-4cc7-ba29-241ddb43520a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "0ca46062-66be-4652-b390-cae3920098eb": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "243e4ff4-fdd9-431d-9607-b02097aa0ddd": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "0bcebc6a-49ef-4763-830c-fa940679bddb": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "d3c6481e-52fc-401a-875b-9010eda192f0": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "bade9bf5-d9ff-4526-9ba6-a8db04888619": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "0d7eda40-f86a-4dd0-9ec8-1b0c6a031b4a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "604fc94c-52cb-4fa4-b657-655c02d14a4e": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "bb4341ec-93d1-4df6-9a9f-3a421b62a6d4",
+        "a319718f-187d-40e0-af4e-fc47cd20d31c",
+        "e7497362-08ff-43d2-a42b-6d335a20a140",
+        "8891fd80-6174-4546-8a9b-bf60924133e0",
+        "d055ccfd-4be1-4cc7-ba29-241ddb43520a",
+        "0ca46062-66be-4652-b390-cae3920098eb",
+        "243e4ff4-fdd9-431d-9607-b02097aa0ddd",
+        "0bcebc6a-49ef-4763-830c-fa940679bddb",
+        "d3c6481e-52fc-401a-875b-9010eda192f0",
+        "bade9bf5-d9ff-4526-9ba6-a8db04888619",
+        "0d7eda40-f86a-4dd0-9ec8-1b0c6a031b4a",
+        "604fc94c-52cb-4fa4-b657-655c02d14a4e"
+      ],
+      "settings": {
+        "title": "Color Options",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-secondary-900",
+        "text_color": "--color-util-red",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "square",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "2.5",
+        "desktop_slides_view": "3.5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "0c78c071-905e-404c-aca3-b346d347ce13": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "ca196f7d-8039-40e2-924a-d717c34424b8": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "06542d12-87a6-4758-a072-65a06375cf7a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "7916a3dc-dfdf-4a22-883f-728d420c5e85": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "55afab03-913d-41e4-9a86-54881e9ca329": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "836ce0a6-37c8-49f4-b83a-7e068ff7d50a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "d3009310-7f5f-4787-bc38-5d3d3950a755": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "644e863c-8c6d-4e20-972c-3bfb3a56a464": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "ea82bf88-c450-4bfc-bfde-4cc94119e05a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "6e3b53b1-53ef-4ad1-9d8a-65df50b162c7": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "7fd3b5d5-9b54-4887-836f-c53552f85ee4": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "0b7c1a6f-fa36-4eaa-b2f3-1a22aa83f746": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "cbebaec6-5377-430f-a4b9-951f68978103": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "ca196f7d-8039-40e2-924a-d717c34424b8",
+        "06542d12-87a6-4758-a072-65a06375cf7a",
+        "7916a3dc-dfdf-4a22-883f-728d420c5e85",
+        "55afab03-913d-41e4-9a86-54881e9ca329",
+        "836ce0a6-37c8-49f4-b83a-7e068ff7d50a",
+        "d3009310-7f5f-4787-bc38-5d3d3950a755",
+        "644e863c-8c6d-4e20-972c-3bfb3a56a464",
+        "ea82bf88-c450-4bfc-bfde-4cc94119e05a",
+        "6e3b53b1-53ef-4ad1-9d8a-65df50b162c7",
+        "7fd3b5d5-9b54-4887-836f-c53552f85ee4",
+        "0b7c1a6f-fa36-4eaa-b2f3-1a22aa83f746",
+        "cbebaec6-5377-430f-a4b9-951f68978103"
+      ],
+      "settings": {
+        "title": "Aspect Ratio: Square",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "square",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "2.5",
+        "desktop_slides_view": "3.5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "06ef5620-f1fa-4f16-91da-1729c70a0474": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "e007f668-f533-44e9-b474-e5679f2cabdf": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "dfbe2898-5c05-4f26-b917-78c452414ac1": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "069ba61e-ab56-444e-b11b-6202394103df": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "629b8578-2fd5-4791-a1bd-f8dd35816a7f": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "690ac2de-5598-4d08-b12e-4344e096ab79": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "84e832a9-c3f9-4444-9320-b4c40ddfd410": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "67be24ac-44c8-4c3a-b0e4-d82159f18fad": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "101c62ce-4e86-4a11-88bb-40c8b55f85eb": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "54d2ae7a-7641-4d85-9e04-8ae77cc46ade": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "e2d307bd-c898-4278-84c0-7c69a9965721": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "3aa7378d-e2d2-4cc8-81a3-c85ce993e998": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "64f64948-60a2-4b11-818a-c2aa04babf54": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "e007f668-f533-44e9-b474-e5679f2cabdf",
+        "dfbe2898-5c05-4f26-b917-78c452414ac1",
+        "069ba61e-ab56-444e-b11b-6202394103df",
+        "629b8578-2fd5-4791-a1bd-f8dd35816a7f",
+        "690ac2de-5598-4d08-b12e-4344e096ab79",
+        "84e832a9-c3f9-4444-9320-b4c40ddfd410",
+        "67be24ac-44c8-4c3a-b0e4-d82159f18fad",
+        "101c62ce-4e86-4a11-88bb-40c8b55f85eb",
+        "54d2ae7a-7641-4d85-9e04-8ae77cc46ade",
+        "e2d307bd-c898-4278-84c0-7c69a9965721",
+        "3aa7378d-e2d2-4cc8-81a3-c85ce993e998",
+        "64f64948-60a2-4b11-818a-c2aa04babf54"
+      ],
+      "settings": {
+        "title": "Aspect Ratio: Tall",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "tall",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "2.5",
+        "desktop_slides_view": "3.5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "d40a014e-c884-4565-a1e4-2b3a2379e57c": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "25f9536b-85d8-4ad5-8dec-71f791637223": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "9eef856f-211e-4296-a91b-c8cc712ba447": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "8482fbe3-ab15-4a26-984c-4ab717e546b7": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "13a1d285-4be4-4d07-8009-642a721791ed": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "f2d3cdc9-7ce4-4d4a-b8cc-f005c7d4b4f2": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "4e031ae0-1b48-4d72-aac7-734b8c7af7f3": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "d1d5fb22-669d-479f-96dc-9e485eb4b13d": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "5050a95e-f62b-482d-950f-779f04c40856": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "71bc0ca0-575d-426c-9e4d-4223bf1eea09": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "bc34ff08-4183-45de-a3cb-e3dc4a4d3648": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "4ce596db-2d1f-4070-b6d2-6573ba86f70b": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "fd2aa03a-d471-4be1-bf91-b35cc3a8fc8f": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "25f9536b-85d8-4ad5-8dec-71f791637223",
+        "9eef856f-211e-4296-a91b-c8cc712ba447",
+        "8482fbe3-ab15-4a26-984c-4ab717e546b7",
+        "13a1d285-4be4-4d07-8009-642a721791ed",
+        "f2d3cdc9-7ce4-4d4a-b8cc-f005c7d4b4f2",
+        "4e031ae0-1b48-4d72-aac7-734b8c7af7f3",
+        "d1d5fb22-669d-479f-96dc-9e485eb4b13d",
+        "5050a95e-f62b-482d-950f-779f04c40856",
+        "71bc0ca0-575d-426c-9e4d-4223bf1eea09",
+        "bc34ff08-4183-45de-a3cb-e3dc4a4d3648",
+        "4ce596db-2d1f-4070-b6d2-6573ba86f70b",
+        "fd2aa03a-d471-4be1-bf91-b35cc3a8fc8f"
+      ],
+      "settings": {
+        "title": "Aspect Ratio: Wide",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "wide",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "2.5",
+        "desktop_slides_view": "3.5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "aa141fd7-313e-43fe-96ab-adeadeb16e50": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "ccc7bb44-d88e-4fa3-87dc-02ddb216c108": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "1499515b-a140-4718-b018-de0f76ea18f5": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "8f25a2ef-1f85-4cff-a7ca-546bfacbd107": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "465c4781-02de-4055-9c6f-3e6675a2408c": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "4c4f0eba-e87b-414e-857e-611af7e09433": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "1220bf1c-ad3c-4356-a35d-4aaa7e1ea4e6": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "075b0e42-96d9-447e-b649-0cdac545b98a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "2e87be5d-be9d-49f7-8ebf-14ae42f97eee": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "614e9b0d-fff8-494c-9aba-e140cac55191": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "62e32722-9f5e-4aca-be52-7ad4c105f40c": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "6a9166eb-80c9-4eb1-b808-434836a3b329": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "4d66b29b-65c6-4e8b-9f1b-0c34fdbdb755": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "ccc7bb44-d88e-4fa3-87dc-02ddb216c108",
+        "1499515b-a140-4718-b018-de0f76ea18f5",
+        "8f25a2ef-1f85-4cff-a7ca-546bfacbd107",
+        "465c4781-02de-4055-9c6f-3e6675a2408c",
+        "4c4f0eba-e87b-414e-857e-611af7e09433",
+        "1220bf1c-ad3c-4356-a35d-4aaa7e1ea4e6",
+        "075b0e42-96d9-447e-b649-0cdac545b98a",
+        "2e87be5d-be9d-49f7-8ebf-14ae42f97eee",
+        "614e9b0d-fff8-494c-9aba-e140cac55191",
+        "62e32722-9f5e-4aca-be52-7ad4c105f40c",
+        "6a9166eb-80c9-4eb1-b808-434836a3b329",
+        "4d66b29b-65c6-4e8b-9f1b-0c34fdbdb755"
+      ],
+      "settings": {
+        "title": "15% of last tile showing",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "tall",
+        "mobile_slides_view": "1.15",
+        "tablet_slides_view": "2.15",
+        "desktop_slides_view": "3.15",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "bd9fdbcd-7399-4c0f-b693-f23e9d907a5e": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "3cf45234-c470-4221-acf7-270cf2a19c0c": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "c377cea7-f1bf-43d6-8bda-c1eefd0e45d9": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "122b1585-9904-4247-9048-48d746bd8fc2": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "2eff19d8-eeec-427c-b844-164caf4ec108": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "4da22196-6731-4b70-a599-94af207edd73": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "bc3bdf09-5245-4ee8-beab-bc2f8fd9c6d6": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "9ee355c3-c210-4638-814b-ff857e88388a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "60671d15-42cc-4bad-8e68-74c94f98d5de": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "2ab2de90-f5bc-4d7f-bee6-f00a306fb0e0": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "cbdbedf5-4cba-4269-936f-3162a91a253f": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "edd23e88-631c-4070-9180-c48f2028b7eb": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "1c5fe6e0-20f5-4a27-8501-8c9e12ecf5b3": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "3cf45234-c470-4221-acf7-270cf2a19c0c",
+        "c377cea7-f1bf-43d6-8bda-c1eefd0e45d9",
+        "122b1585-9904-4247-9048-48d746bd8fc2",
+        "2eff19d8-eeec-427c-b844-164caf4ec108",
+        "4da22196-6731-4b70-a599-94af207edd73",
+        "bc3bdf09-5245-4ee8-beab-bc2f8fd9c6d6",
+        "9ee355c3-c210-4638-814b-ff857e88388a",
+        "60671d15-42cc-4bad-8e68-74c94f98d5de",
+        "2ab2de90-f5bc-4d7f-bee6-f00a306fb0e0",
+        "cbdbedf5-4cba-4269-936f-3162a91a253f",
+        "edd23e88-631c-4070-9180-c48f2028b7eb",
+        "1c5fe6e0-20f5-4a27-8501-8c9e12ecf5b3"
+      ],
+      "settings": {
+        "title": "50% of last tile showing",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "tall",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "2.5",
+        "desktop_slides_view": "3.5",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "03ab30dc-2eca-4cc8-a8f6-3737ecfb7e39": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "e0cf9450-900d-455e-9f21-f4e4cb324cc5": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "326fd9cd-bd20-4e2d-94fa-ccfcc6204c1a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "f0d92ab3-fffd-4fd2-bd28-6e04a2c5e01a": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "6e337944-e692-425c-b75b-caeedc759155": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "65f4e9e8-ba37-4eef-b969-fc41c348cd59": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "69356419-e938-4241-a2cb-317e1a6fc940": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "dde2274c-938c-4e8d-8336-d410146854f5": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "5fcddf23-fa2a-4bec-96ef-adeac9ed1e66": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "2101157f-ce89-481b-a55d-3f3b41520975": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "8a59bae8-9815-4daa-ae7e-a9ed71ae70f4": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "f7b44a9b-cd85-4ffa-a1f9-59b7ef033ab6": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "1a2566cf-6884-4c3d-a7cf-9924762b38f9": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "e0cf9450-900d-455e-9f21-f4e4cb324cc5",
+        "326fd9cd-bd20-4e2d-94fa-ccfcc6204c1a",
+        "f0d92ab3-fffd-4fd2-bd28-6e04a2c5e01a",
+        "6e337944-e692-425c-b75b-caeedc759155",
+        "65f4e9e8-ba37-4eef-b969-fc41c348cd59",
+        "69356419-e938-4241-a2cb-317e1a6fc940",
+        "dde2274c-938c-4e8d-8336-d410146854f5",
+        "5fcddf23-fa2a-4bec-96ef-adeac9ed1e66",
+        "2101157f-ce89-481b-a55d-3f3b41520975",
+        "8a59bae8-9815-4daa-ae7e-a9ed71ae70f4",
+        "f7b44a9b-cd85-4ffa-a1f9-59b7ef033ab6",
+        "1a2566cf-6884-4c3d-a7cf-9924762b38f9"
+      ],
+      "settings": {
+        "title": "100% of last tile showing",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "tall",
+        "mobile_slides_view": "1",
+        "tablet_slides_view": "2",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "6930d38d-6bd8-4cbf-961b-82faef1809a2": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "1a39fadf-4369-44b6-89d2-5adcf30e3251": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "006591a9-5369-45a9-a986-e755cd89c52f": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "46e70d18-ee40-4f43-a0a6-334ec89d7377": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "916f967c-58c7-4215-8e72-9ff83b4d0706": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "e2ddb5aa-d110-4607-a05d-f07c3d95a034": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "9e233cdd-f480-45c3-98b5-76ae79898cbf": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "58548d8e-6bfd-4b26-b902-447e6d56fa52": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "c3b6dd94-9696-43dd-a9e7-82c118b760fc": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "fcd29156-6c36-47dd-a9b1-c9da0ea1fae8": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "01c46c4b-3e63-4488-8334-84ac020693b3": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "04f01257-72ed-4eba-8a71-02e4f892e79d": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "2651747c-3b43-4f9a-878e-5388d40afa60": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "1a39fadf-4369-44b6-89d2-5adcf30e3251",
+        "006591a9-5369-45a9-a986-e755cd89c52f",
+        "46e70d18-ee40-4f43-a0a6-334ec89d7377",
+        "916f967c-58c7-4215-8e72-9ff83b4d0706",
+        "e2ddb5aa-d110-4607-a05d-f07c3d95a034",
+        "9e233cdd-f480-45c3-98b5-76ae79898cbf",
+        "58548d8e-6bfd-4b26-b902-447e6d56fa52",
+        "c3b6dd94-9696-43dd-a9e7-82c118b760fc",
+        "fcd29156-6c36-47dd-a9b1-c9da0ea1fae8",
+        "01c46c4b-3e63-4488-8334-84ac020693b3",
+        "04f01257-72ed-4eba-8a71-02e4f892e79d",
+        "2651747c-3b43-4f9a-878e-5388d40afa60"
+      ],
+      "settings": {
+        "title": "Arrows Top",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "tall",
+        "mobile_slides_view": "1",
+        "tablet_slides_view": "2",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "9710594b-a1e6-49a8-82f2-ced965ecacc5": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "aa74c068-c07b-49bc-a91d-d74e10d0a55b": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "5153d63d-bbf7-4278-81b3-a69bba2721a1": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "b240a3c1-b27e-4e85-b305-caf2b85eec64": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "43691a21-9693-4ba0-896d-b4e29c375845": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "31553c88-cfae-4be1-af36-6b577f67786b": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "8cf568e7-752c-411d-ba12-08a7684e7730": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "45a62594-9f11-48c0-a481-32fffdbfa9c7": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "f8ca6c9e-5214-4752-bc97-0c9a2a521ab9": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": ""
+          }
+        },
+        "9e2a6ba1-9135-47e3-8e9b-9ff3cb93d12f": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "afb8ec30-2c99-4d93-b221-cbeb416aaf77": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "a165a472-5695-4e3b-9b3e-af1fec2aa1b6": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        },
+        "e76bdc1d-e0e3-4932-ab11-f594c0c11266": {
+          "type": "content-slide",
+          "settings": {
+            "slide_img": "shopify://shop_images/kurt-cotoaga-cqbLg3lZEpk-unsplash_1.png",
+            "slide_description": "<p>Content Tile Description</p>",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA 1",
+            "slide_cta_1_url": "shopify://pages/ui-kit",
+            "slide_cta_2_title": "Optional CTA 2",
+            "slide_cta_2_url": "shopify://pages/ui-kit"
+          }
+        }
+      },
+      "block_order": [
+        "aa74c068-c07b-49bc-a91d-d74e10d0a55b",
+        "5153d63d-bbf7-4278-81b3-a69bba2721a1",
+        "b240a3c1-b27e-4e85-b305-caf2b85eec64",
+        "43691a21-9693-4ba0-896d-b4e29c375845",
+        "31553c88-cfae-4be1-af36-6b577f67786b",
+        "8cf568e7-752c-411d-ba12-08a7684e7730",
+        "45a62594-9f11-48c0-a481-32fffdbfa9c7",
+        "f8ca6c9e-5214-4752-bc97-0c9a2a521ab9",
+        "9e2a6ba1-9135-47e3-8e9b-9ff3cb93d12f",
+        "afb8ec30-2c99-4d93-b221-cbeb416aaf77",
+        "a165a472-5695-4e3b-9b3e-af1fec2aa1b6",
+        "e76bdc1d-e0e3-4932-ab11-f594c0c11266"
+      ],
+      "settings": {
+        "title": "Arrows Center",
+        "description": "",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "auto",
+        "aspect_ratio": "tall",
+        "mobile_slides_view": "1",
+        "tablet_slides_view": "2",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ab41d16e-6b31-4b34-bcd1-7c1800a9ea12",
+    "0354cac9-aa03-4d0f-9adf-09920abc28ea",
+    "0c78c071-905e-404c-aca3-b346d347ce13",
+    "06ef5620-f1fa-4f16-91da-1729c70a0474",
+    "d40a014e-c884-4565-a1e4-2b3a2379e57c",
+    "aa141fd7-313e-43fe-96ab-adeadeb16e50",
+    "bd9fdbcd-7399-4c0f-b693-f23e9d907a5e",
+    "03ab30dc-2eca-4cc8-a8f6-3737ecfb7e39",
+    "6930d38d-6bd8-4cbf-961b-82faef1809a2",
+    "9710594b-a1e6-49a8-82f2-ced965ecacc5"
+  ]
+}
