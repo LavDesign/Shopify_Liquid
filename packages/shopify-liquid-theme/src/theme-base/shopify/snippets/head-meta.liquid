@@ -18,6 +18,20 @@
   <meta name="description" content="{{ page_description | escape }}">
 {% endif %}
 
+{% assign found_nofollow = false %}
+{% if settings.nofollow_list != blank %}
+  {% assign nofollow_array = settings.nofollow_list | split: ',' %}
+  {% for nofollow_link in nofollow_array %}
+    {% if request.path == nofollow_link %}
+      {% assign found_nofollow = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if found_nofollow %}
+  <meta name="robots" content="noindex, nofollow">
+{% else %}
+  <meta name="robots" content="index, follow">
 {% if template == 'index' %}
   {% comment %}
     ------------ Organization Schema ------------
