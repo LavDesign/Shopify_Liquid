@@ -8,19 +8,19 @@
         "preheader-0": {
           "type": "message",
           "settings": {
-            "text": "<p>Welcome to our store.<\/p>"
+            "text": "<p>Welcome to our store.</p>"
           }
         },
         "preheader-1": {
           "type": "message",
           "settings": {
-            "text": "<p>Welcome to our store.<\/p>"
+            "text": "<p>Welcome to our store.</p>"
           }
         },
         "preheader-2": {
           "type": "message",
           "settings": {
-            "text": "<p>Welcome to our store.<\/p>"
+            "text": "<p>Welcome to our store.</p>"
           }
         }
       },
@@ -45,10 +45,10 @@
           "settings": {
             "menu_item": "Shop",
             "promo_alignment": "right",
-            "image": "shopify:\/\/shop_images\/Large.png",
+            "image": "shopify://shop_images/Large.png",
             "title": "Featured Title",
             "link_label": "Link Goes Here",
-            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_url": "shopify://pages/ui-kit",
             "link_style": "tertiary"
           }
         },
@@ -57,10 +57,10 @@
           "settings": {
             "menu_item": "Shop",
             "promo_alignment": "right",
-            "image": "shopify:\/\/shop_images\/Large.png",
+            "image": "shopify://shop_images/Large.png",
             "title": "Featured Title",
             "link_label": "Link Goes Here",
-            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_url": "shopify://pages/ui-kit",
             "link_style": "tertiary"
           }
         },
@@ -69,10 +69,10 @@
           "settings": {
             "menu_item": "Shop",
             "promo_alignment": "right",
-            "image": "shopify:\/\/shop_images\/Large.png",
+            "image": "shopify://shop_images/Large.png",
             "title": "Featured Title",
             "link_label": "Link Goes Here",
-            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_url": "shopify://pages/ui-kit",
             "link_style": "tertiary"
           }
         },
@@ -81,10 +81,10 @@
           "settings": {
             "menu_item": "Baseline",
             "promo_alignment": "left",
-            "image": "shopify:\/\/shop_images\/Large.png",
+            "image": "shopify://shop_images/Large.png",
             "title": "Featured Title",
             "link_label": "Link Goes Here",
-            "link_url": "shopify:\/\/pages\/ui-kit",
+            "link_url": "shopify://pages/ui-kit",
             "link_style": "tertiary"
           }
         }

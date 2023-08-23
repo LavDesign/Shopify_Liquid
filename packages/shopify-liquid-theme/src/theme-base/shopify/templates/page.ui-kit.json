@@ -3,9 +3,12 @@
     "ui-kit": {
       "type": "page-ui-kit",
       "settings": {
-        "featured_product": "multivariant-product",
-        "featured_product_2": "1-variant-product",
-        "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/12b95f6661a94dcbbd8b680ddc0b4131.mp4"
+        "content_tile_image_1": "shopify://shop_images/Large.png",
+        "content_tile_image_2": "shopify://shop_images/Large.png",
+        "content_tile_image_3": "shopify://shop_images/Large.png",
+        "featured_product": "1-variant-product",
+        "featured_product_2": "multivariant-product",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/1f8c802d6214458fafeef8cd8c78ebc1.mp4"
       }
     }
   },

@@ -137,7 +137,14 @@
               {% case media.media_type %}
                 {% when 'image' %}
                   {% if media.media_type == 'image' %}
-                    {% assign alt_text = media.alt | split: '|#|' | last %}
+                    {% if media.alt contains '|#|' %}
+                      {% assign alt_text = media.alt | split: '|#|' | last %}
+                    {% elsif media.alt != blank and media.alt != product.title %}
+                      {% assign alt_text = media.alt %}
+                    {% else %}
+                      {% assign alt_text = product.vendor | append: ' - ' | append: product.title | append: ' - ' | append: product.selected_or_first_available_variant.title %}
+                    {% endif %}
+
                     <div
                       data-lightbox-trigger
                       class="cursor-pointer"

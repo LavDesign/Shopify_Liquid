@@ -121,7 +121,7 @@
         </video>
       </div>
     {% elsif image != blank %}
-      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio h-full" style="{{ image_style }}">
+      <div class="ra-image ra-content-tile__image ra-image--use-aspect-ratio h-full w-full" style="{{ image_style }}">
         {% assign alt = alt | default: image.alt %}
         {{
           image

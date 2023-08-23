@@ -29,6 +29,7 @@ export const useCartStore = defineStore("cart", () => {
     return new Promise((resolve, reject) => {
       axios
         .post("/cart/change.js", { id, quantity, properties })
+        .then(() => axios.get("/cart.js"))
         .then((response) => {
           resolve(response.data);
           cart.value = response.data;
@@ -82,5 +83,12 @@ export const useCartStore = defineStore("cart", () => {
     load();
   });
 
-  return { load, cart, addItem, loading, updateItem, updateNote };
+  return {
+    load,
+    cart,
+    addItem,
+    loading,
+    updateItem,
+    updateNote,
+  };
 });

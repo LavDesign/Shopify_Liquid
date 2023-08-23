@@ -23,6 +23,11 @@ export default class RaHeader extends HTMLElement {
   connectedCallback() {
     this.init();
     window.addEventListener("scroll", this.handleWindowScroll.bind(this));
+    window.addEventListener("cartUpdated", this.updateCartBadge.bind(this));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("cartUpdated", this.updateCartBadge.bind(this));
   }
 
   init() {
@@ -32,6 +37,17 @@ export default class RaHeader extends HTMLElement {
     this.handleMobileNav();
     this.handleMobileDrawer();
     this.handleMobileDropdowns();
+  }
+
+  updateCartBadge(e) {
+    const { item_count } = e.detail;
+    const cart_badge = document.querySelector("[data-cart-badge]");
+    if (item_count === 0) {
+      cart_badge.classList.add("hidden");
+    } else {
+      cart_badge.querySelector("span").textContent = item_count;
+      cart_badge.classList.remove("hidden");
+    }
   }
 
   preventEmptyLinks() {

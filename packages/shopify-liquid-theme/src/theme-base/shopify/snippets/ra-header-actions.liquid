@@ -38,7 +38,7 @@
       </a>
     </li>
   {% endif %}
-  <li class="header__action-item flex justify-center items-center h-full mr-4 last:mr-0">
+  <li class="header__action-item flex justify-center items-center h-full mr-4 last:mr-0 relative">
     <ra-cart-toggle>
       <a
         class="header__action-link"
@@ -49,6 +49,14 @@
         data-toggle-cart
       >
         {% render 'ra-icon', icon: 'cart', width: '24px', height: '24px' %}
+          <div
+            class="bg-secondary-800 w-5 h-5 rounded-full absolute flex text-center justify-center items-center -top-[9px] -right-2{% if cart.item_count == 0 %} hidden{% endif %}"
+            data-cart-badge
+          >
+            <span class="text-white leading-none text-sm font-medium">
+              {{ cart.item_count }}
+            </span>
+          </div>
       </a>
     </ra-cart-toggle>
   </li>
