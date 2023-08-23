@@ -1249,7 +1249,7 @@ export default defineComponent({
         this.totalQuestions = this.questionData?.TotalResults;
         this.questionFirstTime = false;
 
-        for (let i = 0; i < this.questionData.Results.length; i++) {
+        for (let i = 0; i < this.questionData.Results?.length; i++) {
           let impressionData = {
             contentId: this.questionData.Results[i].Id,
             productId: this.id,

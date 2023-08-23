@@ -18,7 +18,8 @@
         <input
           type="number"
           class="ra-input__control ra-input__control--text"
-          :value="quantity"
+          :value="props.quantity"
+          min="1"
           @input="quantitySet($event)"
         />
       </div>
@@ -67,11 +68,14 @@ watch(
 );
 
 const quantityDecrement = () => {
-  quantity.value -= 1;
+  quantity.value = props.quantity - 1;
+  if (quantity.value < 1) {
+    quantity.value = 0;
+  }
 };
 
 const quantityIncrement = () => {
-  quantity.value += 1;
+  quantity.value = props.quantity + 1;
 };
 
 const quantitySet = (e) => {

@@ -724,6 +724,17 @@
     ]
   },
   {
+    "name": "SEO",
+    "settings": [
+      {
+        "type": "text",
+        "id": "nofollow_list",
+        "label": "Nofollow URLs",
+        "info": "please enter a comma separated listed of the relative pages of any URLs that should be set to nofollow"
+      }
+    ]
+  },
+  {
     "name": "Product Reviews",
     "settings": [
       {

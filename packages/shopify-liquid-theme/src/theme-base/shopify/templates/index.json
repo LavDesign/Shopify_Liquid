@@ -1,43 +1,22 @@
 {
   "sections": {
-    "70470917-0d14-4248-a6ea-ab488472117a": {
+    "f4f761e9-60aa-4c89-ac1f-c638c27a90c0": {
       "type": "hero-carousel",
       "blocks": {
-        "9cc19ed1-ae39-4a1b-8996-235afbe1d4e2": {
+        "91c7e694-d0a4-4ef2-95bf-fb6857bf9e3f": {
           "type": "slide",
           "settings": {
-            "eyebrow_text": "drink up",
-            "title": "Life Happens on FUNDAYS",
-            "title_level": "h1",
-            "title_style": "h1",
-            "text_alignment": "set--v-align-middle set--h-align-center",
-            "description": "<ul><li>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/li><li>sdfsdf<\/li><li>sdfsdf<\/li><li>sdfsdf<\/li><\/ul>",
-            "bg_image_desktop": "shopify:\/\/shop_images\/ProductImage_32.png",
-            "background_video_embed_desktop": "",
-            "video_aspect_ratio_desktop": "embed--16x9",
-            "background_video_embed_mobile": "",
-            "video_aspect_ratio_mobile": "embed--16x9",
-            "text_color_desktop": "--color-util-white",
-            "text_color_mobile": "--color-grey-900",
-            "bg_color": "--color-util-white",
-            "cta_1_label": "Shop Seltzers",
-            "cta_1_url": "shopify:\/\/collections\/example-collection-1",
-            "cta_1_style": "primary",
-            "cta_2_label": "Shop Merch",
-            "cta_2_url": "shopify:\/\/products\/fundays-shirt",
-            "cta_2_style": "secondary"
-          }
-        },
-        "b8e8ef5e-ad07-43b9-86ed-182d3032dd8a": {
-          "type": "slide",
-          "settings": {
-            "eyebrow_text": "SUMMER 2023",
-            "title": "LIFE HAPPENS ON FUNDAYS!",
-            "title_level": "h1",
-            "title_style": "h1",
-            "text_alignment": "set--v-align-middle set--h-align-center",
-            "description": "<p>Flavor-forward hard seltzers made for days at the beach, evenings on the couch, and every good time in between. All that and just 100 calories<\/p>",
-            "bg_image_desktop": "shopify:\/\/shop_images\/ProductImage_30.png",
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Title: Slide 1",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-top set--h-align-left",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_7.png",
             "background_video_embed_desktop": "",
             "video_aspect_ratio_desktop": "embed--16x9",
             "background_video_embed_mobile": "",
@@ -45,29 +24,161 @@
             "text_color_desktop": "--color-grey-900",
             "text_color_mobile": "--color-grey-900",
             "bg_color": "--color-util-white",
-            "cta_1_label": "Learn More",
-            "cta_1_url": "\/",
+            "cta_1_label": "CTA 1",
+            "cta_1_url": "shopify://pages/hero-carousel",
             "cta_1_style": "primary",
-            "cta_2_label": "Learn More",
-            "cta_2_url": "\/",
+            "cta_2_label": "CTA 2",
+            "cta_2_url": "shopify://pages/hero-carousel",
             "cta_2_style": "secondary"
+          }
+        },
+        "ecbf567e-cde9-4339-a2ec-7fa02049dba9": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Title: Slide 2",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group_8.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-grey-900",
+            "text_color_mobile": "--color-grey-900",
+            "bg_color": "--color-util-white",
+            "cta_1_label": "CTA 1",
+            "cta_1_url": "shopify://pages/hero-carousel",
+            "cta_1_style": "tertiary",
+            "cta_2_label": "CTA 2",
+            "cta_2_url": "shopify://pages/hero-carousel",
+            "cta_2_style": "tertiary"
+          }
+        },
+        "4a11704b-db21-46b1-a799-ecd72345687f": {
+          "type": "slide",
+          "settings": {
+            "color_overrides_enabled": false,
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "eyebrow_color": "--color-primary-900",
+            "title": "Title: Slide 3",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-right",
+            "description": "<p>Placeholder description copy goes here. It can be formatted through rich text editor to <strong>bold </strong><em>italic</em> <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a> and more!</p>",
+            "description_color": "--color-primary-900",
+            "bg_image_desktop": "shopify://shop_images/Mask_group-1.png",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-grey-900",
+            "text_color_mobile": "--color-grey-900",
+            "bg_color": "--color-util-white",
+            "cta_1_label": "CTA 1",
+            "cta_1_url": "shopify://pages/hero-carousel",
+            "cta_1_style": "secondary",
+            "cta_2_label": "CTA 2",
+            "cta_2_url": "shopify://pages/hero-carousel",
+            "cta_2_style": "primary"
           }
         }
       },
       "block_order": [
-        "9cc19ed1-ae39-4a1b-8996-235afbe1d4e2",
-        "b8e8ef5e-ad07-43b9-86ed-182d3032dd8a"
+        "91c7e694-d0a4-4ef2-95bf-fb6857bf9e3f",
+        "ecbf567e-cde9-4339-a2ec-7fa02049dba9",
+        "4a11704b-db21-46b1-a799-ecd72345687f"
       ],
       "settings": {
         "height": "main",
         "stack_mobile": true,
         "autoplay": true,
         "delay": 5,
-        "show_arrows": false,
+        "show_arrows": true,
         "show_pagination": true,
-        "arrow_color": "--color-util-white",
-        "pagination_color": "--color-util-white",
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
         "effect": "slide"
+      }
+    },
+    "c229216c-e645-4226-80c7-067d1cf106f6": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "40925445-70c9-4ab0-8623-07d4867ea9cd": {
+          "type": "subtitle",
+          "settings": {
+            "eyebrow_text": "Placeholder Eyebrow Text",
+            "subtitle_color": "--color-primary-900"
+          }
+        },
+        "20211462-3335-47c0-aa50-958b374a4fac": {
+          "type": "title",
+          "settings": {
+            "title": "Title: RichText Section",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3"
+          }
+        },
+        "8c539db0-68a5-4778-a519-d07b731601e6": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder description copy option (This is the Large formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-lg"
+          }
+        },
+        "dff7bb53-d373-44d2-abfb-9e1177e490e3": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder description copy option (This is the base formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-base"
+          }
+        },
+        "580500c9-2720-450f-a6b2-a1786629c0e0": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder description copy option (This is the small formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        },
+        "64168680-7665-4190-b7ec-46a771cf75d1": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>Placeholder description copy option (This is the tiny formatting option)</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-xs"
+          }
+        }
+      },
+      "block_order": [
+        "40925445-70c9-4ab0-8623-07d4867ea9cd",
+        "20211462-3335-47c0-aa50-958b374a4fac",
+        "8c539db0-68a5-4778-a519-d07b731601e6",
+        "dff7bb53-d373-44d2-abfb-9e1177e490e3",
+        "580500c9-2720-450f-a6b2-a1786629c0e0",
+        "64168680-7665-4190-b7ec-46a771cf75d1"
+      ],
+      "settings": {
+        "bg_color": "--color-util-white",
+        "bg_color_md": "--color-util-white",
+        "text_color_mobile": "--color-grey-900",
+        "text_color_desktop": "--color-grey-900",
+        "spacing_top": "large",
+        "spacing_bottom": "large",
+        "spacing_edge": "regular",
+        "max_width": "medium",
+        "horizontal_align": "center",
+        "horizontal_align_md": "center"
       }
     },
     "367c09ed-72b9-40bd-9098-182341a241cb": {
@@ -76,59 +187,52 @@
         "807f8350-a421-480f-9c09-9727e236ec26": {
           "type": "product-slide",
           "settings": {
-            "product": "variety-pack"
-          }
-        },
-        "46271188-6aab-4cb9-96cb-6856404db476": {
-          "type": "product-slide",
-          "settings": {
-            "product": "fundays-shirt"
+            "product": "1-variant-product"
           }
         },
         "a5ebaf48-af82-420f-b1bc-dc6887bf14ae": {
           "type": "product-slide",
           "settings": {
-            "product": "garden-party"
+            "product": "copy-of-1-variant-product-b"
           }
         },
         "0a7d201e-7033-429c-b8cd-96fd86af4e99": {
           "type": "product-slide",
           "settings": {
-            "product": "yard-games"
+            "product": "teal-shirt-1-variant"
           }
         },
         "bce10c40-63a2-4896-9a00-10d29d7de55d": {
           "type": "product-slide",
           "settings": {
-            "product": "skinny-dip"
+            "product": "multivariant-product"
           }
         },
         "99b25146-73f5-43e0-8818-e51f2d928615": {
           "type": "product-slide",
           "settings": {
-            "product": "fresh-picked"
+            "product": "1-variant-product"
           }
         }
       },
       "block_order": [
         "807f8350-a421-480f-9c09-9727e236ec26",
-        "46271188-6aab-4cb9-96cb-6856404db476",
         "a5ebaf48-af82-420f-b1bc-dc6887bf14ae",
         "0a7d201e-7033-429c-b8cd-96fd86af4e99",
         "bce10c40-63a2-4896-9a00-10d29d7de55d",
         "99b25146-73f5-43e0-8818-e51f2d928615"
       ],
       "settings": {
-        "title": "Featured Flavors",
-        "description": "<p>Body copy will go here. Body copy can be formatted with rich text editor to have <strong>BOLD TEXT <\/strong><em>ITALIC TEXT<\/em> or <a href=\"https:\/\/google.com\" target=\"_blank\" title=\"https:\/\/google.com\">linked text<\/a>.<\/p>",
+        "title": "Title: Product Carousel",
+        "description": "<p>Placeholder description copy can go here. It can be formatted through rich text editor to <strong>bold</strong>, <em>italic</em>, or <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>",
         "title_level": "h1",
         "title_style": "h3",
-        "bg_color": "--color-util-yellow",
+        "bg_color": "--color-util-white",
         "text_color": "--color-grey-900",
         "cta_label": "",
         "cta_style": "tertiary",
         "selected_collection": "",
-        "use_recommendations_api": true,
+        "use_recommendations_api": false,
         "recommendations_intent": "related",
         "recommendations_product": "",
         "show_navigation": true,
@@ -148,15 +252,19 @@
     "6e1c958e-0014-470f-8542-267a33e1b7c2": {
       "type": "split-section",
       "settings": {
-        "eyebrow_text": "Yum!",
-        "title": "Wear Your Funday Best",
-        "description": "<p>Vivamus vehicula odio non elit egestas, id eleifend nisl mattis. Nullam mattis augue sit amet tortor imperdiet hendrerit. Integer dictum dui sit amet mauris vestibulum sollicitudin. Nulla quis rhoncus eros, id consequat tortor.<\/p>",
+        "use_color_overrides": false,
+        "eyebrow_text": "Placeholder Eybrow Text",
+        "eyebrow_color": "--color-primary-900",
+        "title": "Title: Split Section",
+        "title_color": "--color-primary-900",
+        "description": "<p>Placeholder description copy can go here. It can be formatted through rich text editor to <strong>bold</strong>, <em>italic</em>, or <a href=\"https://google.com\" target=\"_blank\" title=\"https://google.com\">linked text</a>. Placeholder description copy can go here. </p>",
+        "description_color": "--color-primary-900",
         "description_copy_size": "text-base",
         "title_level": "h3",
         "title_style": "h4",
-        "external_video": "https:\/\/vimeo.com\/85667443",
-        "image": "shopify:\/\/shop_images\/Hero_Image_-_Mobile.png",
-        "aspect_ratio": "square",
+        "external_video": "",
+        "image": "shopify://shop_images/Image_5_1.png",
+        "aspect_ratio": "respect-media",
         "section_split": "50-50",
         "details_location_md": "after",
         "details_location": "after",
@@ -164,136 +272,9 @@
         "horizontal_align": "left",
         "vertical_align_md": "middle",
         "vertical_align": "top",
-        "cta_1_text": "Look At Our Style!",
-        "cta_1_url": "\/",
+        "cta_1_text": "CTA 1",
+        "cta_1_url": "/",
         "cta_1_style": "secondary",
-        "cta_2_text": "Secondary",
-        "cta_2_url": "",
-        "cta_2_style": "secondary",
-        "bg_color": "--color-util-green",
-        "bg_color_md": "--color-util-green",
-        "text_color_mobile": "--color-grey-900",
-        "text_color_desktop": "--color-grey-900"
-      }
-    },
-    "650a81ef-e9bf-473c-9ec2-107491e86ca3": {
-      "type": "ra-content-carousel",
-      "blocks": {
-        "efdad21c-7663-44e8-97e6-050789d74356": {
-          "type": "content-slide",
-          "settings": {
-            "title": "FRESHLY PICKED",
-            "slide_img": "shopify:\/\/shop_images\/Group_4.png",
-            "slide_description": "<p>raspberry + lemon + blackberry<\/p>",
-            "slide_image_width": "",
-            "slide_image_height": "500",
-            "details_location": "overlay",
-            "slide_url": "\/",
-            "slide_cta_1_title": "Read More",
-            "slide_cta_1_url": "",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        },
-        "d414a43c-257e-451b-a916-6d21fa37f5c2": {
-          "type": "content-slide",
-          "settings": {
-            "title": "YARD GAMES",
-            "slide_img": "shopify:\/\/shop_images\/Group_3.png",
-            "slide_description": "<p>lemon + lime + pomello<\/p>",
-            "slide_image_width": "",
-            "slide_image_height": "",
-            "details_location": "overlay",
-            "slide_url": "shopify:\/\/blogs\/blog\/blog-post-2-title",
-            "slide_cta_1_title": "Read More",
-            "slide_cta_1_url": "",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        },
-        "2e76cdb1-b63e-4f2a-8913-018a8c050fae": {
-          "type": "content-slide",
-          "settings": {
-            "title": "GARDEN PARTY",
-            "slide_img": "shopify:\/\/shop_images\/Group_6.png",
-            "slide_description": "<p>honeysuckle + orange + blackberry<\/p>",
-            "slide_image_width": "",
-            "slide_image_height": "",
-            "details_location": "overlay",
-            "slide_url": "shopify:\/\/blogs\/blog\/blog-post-3-title",
-            "slide_cta_1_title": "Read more",
-            "slide_cta_1_url": "",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        },
-        "2bc277f7-36c8-4112-bf31-d50e153fcced": {
-          "type": "content-slide",
-          "settings": {
-            "title": "SKINNY DIP",
-            "slide_img": "shopify:\/\/shop_images\/Group_5.png",
-            "slide_description": "<p>passion fruit + guava + dragon fruit<\/p>",
-            "slide_image_width": "",
-            "slide_image_height": "",
-            "details_location": "overlay",
-            "slide_url": "\/",
-            "slide_cta_1_title": "",
-            "slide_cta_1_url": "",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "efdad21c-7663-44e8-97e6-050789d74356",
-        "d414a43c-257e-451b-a916-6d21fa37f5c2",
-        "2e76cdb1-b63e-4f2a-8913-018a8c050fae",
-        "2bc277f7-36c8-4112-bf31-d50e153fcced"
-      ],
-      "settings": {
-        "title": "",
-        "description": "",
-        "title_level": "h1",
-        "title_style": "h3",
-        "bg_color": "--color-util-white",
-        "text_color": "--color-grey-900",
-        "show_navigation": false,
-        "show_pagination": false,
-        "carousel_nav_location": "auto",
-        "aspect_ratio": "square",
-        "mobile_slides_view": "2.5",
-        "tablet_slides_view": "3.75",
-        "desktop_slides_view": "4",
-        "scroll_interaction": "snap",
-        "mobile_padding_vertical": 1.5,
-        "mobile_padding_horizontal": 2.5,
-        "desktop_padding": 2,
-        "mobile_margin": 1,
-        "desktop_margin": 1
-      }
-    },
-    "708c2130-3496-4631-8512-4e9eda09a31e": {
-      "type": "split-section",
-      "settings": {
-        "eyebrow_text": "",
-        "title": "our mixtape is 🔥🔥🔥",
-        "description": "<p>Can’t decide? Don’t. Our Mixtape variety pack gives you the best of everything, all in one box. So whether you’re filling the cooler, mixing friend groups, or just looking for something different, Mixtape has a hard seltzer for everyone.<\/p>",
-        "description_copy_size": "text-base",
-        "title_level": "h2",
-        "title_style": "h3",
-        "external_video": "",
-        "image": "shopify:\/\/shop_images\/can_box.f23feb4289f60fd0ac0489b5c24ae294.jpg",
-        "aspect_ratio": "square",
-        "section_split": "50-50",
-        "details_location_md": "before",
-        "details_location": "after",
-        "horizontal_align_md": "left",
-        "horizontal_align": "left",
-        "vertical_align_md": "middle",
-        "vertical_align": "top",
-        "cta_1_text": "Check It Out",
-        "cta_1_url": "\/",
-        "cta_1_style": "primary",
         "cta_2_text": "Secondary",
         "cta_2_url": "",
         "cta_2_style": "secondary",
@@ -303,111 +284,15 @@
         "text_color_desktop": "--color-grey-900"
       }
     },
-    "650a81ef-e9bf-473c-9ec2-107491e86ca4": {
-      "type": "ra-content-carousel",
-      "blocks": {
-        "efdad21c-7663-44e8-97e6-050789d74356": {
-          "type": "content-slide",
-          "settings": {
-            "title": "",
-            "slide_img": "shopify:\/\/shop_images\/mobile_hero.jpg",
-            "slide_description": "<p>Slot 1 description copy<\/p>",
-            "slide_image_width": "400",
-            "slide_image_height": "300",
-            "details_location": "before",
-            "slide_url": "\/",
-            "slide_cta_1_title": "Read More",
-            "slide_cta_1_url": "shopify:\/\/blogs\/blog\/blog-post-1-title",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        },
-        "d414a43c-257e-451b-a916-6d21fa37f5c2": {
-          "type": "content-slide",
-          "settings": {
-            "title": "",
-            "slide_img": "shopify:\/\/shop_images\/resized_fundays1.jpg",
-            "slide_description": "<p>Slot 2  description copy<\/p>",
-            "slide_image_width": "400",
-            "slide_image_height": "300",
-            "details_location": "after",
-            "slide_url": "\/",
-            "slide_cta_1_title": "Read More",
-            "slide_cta_1_url": "shopify:\/\/blogs\/blog\/blog-post-2-title",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        },
-        "2e76cdb1-b63e-4f2a-8913-018a8c050fae": {
-          "type": "content-slide",
-          "settings": {
-            "title": "",
-            "slide_img": "shopify:\/\/shop_images\/resized_fundays2.jpg",
-            "slide_description": "<p>Slot 3 description copy<\/p>",
-            "slide_image_width": "400",
-            "slide_image_height": "300",
-            "details_location": "after",
-            "slide_url": "\/",
-            "slide_cta_1_title": "Read more",
-            "slide_cta_1_url": "shopify:\/\/blogs\/blog\/blog-post-3-title",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        },
-        "33d7ccaf-688e-4a2e-8cc6-bb90701d35e9": {
-          "type": "content-slide",
-          "settings": {
-            "title": "",
-            "slide_img": "shopify:\/\/shop_images\/New_Project_2.jpg",
-            "slide_description": "<p>Test<\/p>",
-            "slide_image_width": "400",
-            "slide_image_height": "300",
-            "details_location": "overlay",
-            "slide_url": "\/",
-            "slide_cta_1_title": "te",
-            "slide_cta_1_url": "shopify:\/\/blogs\/blog",
-            "slide_cta_2_title": "",
-            "slide_cta_2_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "efdad21c-7663-44e8-97e6-050789d74356",
-        "d414a43c-257e-451b-a916-6d21fa37f5c2",
-        "2e76cdb1-b63e-4f2a-8913-018a8c050fae",
-        "33d7ccaf-688e-4a2e-8cc6-bb90701d35e9"
-      ],
-      "settings": {
-        "title": "On the Blog",
-        "description": "",
-        "title_level": "h1",
-        "title_style": "h3",
-        "bg_color": "--color-util-white",
-        "text_color": "--color-primary-900",
-        "show_navigation": false,
-        "show_pagination": false,
-        "carousel_nav_location": "auto",
-        "aspect_ratio": "wide",
-        "mobile_slides_view": "2.5",
-        "tablet_slides_view": "3.75",
-        "desktop_slides_view": "3",
-        "scroll_interaction": "free",
-        "mobile_padding_vertical": 1.5,
-        "mobile_padding_horizontal": 2.5,
-        "desktop_padding": 2,
-        "mobile_margin": 6,
-        "desktop_margin": 2
-      }
-    },
     "1250bbd6-bd0c-4547-af5d-0c6719093920": {
       "type": "shop-the-look",
       "blocks": {
         "e20a5e48-643e-4c12-a9a5-8bb1f681a118": {
           "type": "look",
           "settings": {
-            "product": "yard-games",
-            "horizontal_position": 45,
-            "vertical_position": 25,
+            "product": "1-variant-product",
+            "horizontal_position": 10,
+            "vertical_position": 39,
             "horizontal_position_mobile": 40,
             "vertical_position_mobile": 26
           }
@@ -415,9 +300,9 @@
         "9052c940-f678-4672-b1c0-7ff76521fc42": {
           "type": "look",
           "settings": {
-            "product": "fresh-picked",
-            "horizontal_position": 75,
-            "vertical_position": 24,
+            "product": "copy-of-1-variant-product-b",
+            "horizontal_position": 37,
+            "vertical_position": 53,
             "horizontal_position_mobile": 69,
             "vertical_position_mobile": 22
           }
@@ -425,8 +310,8 @@
         "852fdbed-0772-4d0f-910b-f9d8314dde8b": {
           "type": "look",
           "settings": {
-            "product": "variety-pack",
-            "horizontal_position": 59,
+            "product": "teal-shirt-1-variant",
+            "horizontal_position": 82,
             "vertical_position": 69,
             "horizontal_position_mobile": 57,
             "vertical_position_mobile": 67
@@ -439,13 +324,13 @@
         "852fdbed-0772-4d0f-910b-f9d8314dde8b"
       ],
       "settings": {
-        "layout": "fifty-fifty",
-        "desktop_bg_image": "shopify:\/\/shop_images\/resized_fundays8.jpg",
-        "mobile_bg_image": "shopify:\/\/shop_images\/resized_fundays8.jpg",
-        "title": "Let's Be Taste Buds",
+        "layout": "full-screen",
+        "desktop_bg_image": "shopify://shop_images/Mask_group_8.png",
+        "mobile_bg_image": "shopify://shop_images/Mask_group_2x_8eabd00b-4473-4340-a399-7cf97a9056f4.png",
+        "title": "Title: Spatial Tagging Full Bleed",
         "title_level": "h2",
         "title_style": "h3",
-        "description": "",
+        "description": "<p>Placeholder description copy can go here. It can be formatted through rich text editor to <strong>bold</strong>,<em>italic</em>, or <a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>.</p>",
         "cta_label": "Learn More",
         "cta_url": "",
         "cta_style": "primary",
@@ -456,50 +341,189 @@
         "look_text_color": "--color-grey-900"
       }
     },
-    "2c1f4310-6d3c-400d-945e-9a3321666ffd": {
-      "type": "ra-rich-text",
+    "ca8cb729-8882-4b7c-a896-6f5405d28da2": {
+      "type": "shop-the-look",
       "blocks": {
-        "0c0f9fb8-0ee6-4c6e-9495-86c7619d7d4a": {
-          "type": "title",
+        "830b7e8f-a885-4025-ba5f-0306e179c4b0": {
+          "type": "look",
           "settings": {
-            "title": "Title",
-            "title_level": "h2",
-            "title_style": "h3"
+            "product": "1-variant-product",
+            "horizontal_position": 20,
+            "vertical_position": 50,
+            "horizontal_position_mobile": 40,
+            "vertical_position_mobile": 26
           }
         },
-        "efa49804-c200-49e0-a3b5-ff678140b188": {
-          "type": "subtitle",
+        "83b99270-df1e-4843-beef-f3a91f2d8a70": {
+          "type": "look",
           "settings": {
-            "eyebrow_text": "Eyebrow Text"
+            "product": "copy-of-1-variant-product-b",
+            "horizontal_position": 52,
+            "vertical_position": 56,
+            "horizontal_position_mobile": 69,
+            "vertical_position_mobile": 22
           }
         },
-        "e33f4f8b-20c2-4e04-9ef7-84241e24cf9c": {
-          "type": "body_copy",
+        "a225b5b1-63d1-4077-8823-9583fe901903": {
+          "type": "look",
           "settings": {
-            "description": "",
-            "description_copy_size": "text-lg"
-          }
-        },
-        "54733556-d6da-46ef-b71d-f11a54ddb5d6": {
-          "type": "block_quote",
-          "settings": {
-            "enable_quotes": true,
-            "block_quote": "Block quote text"
+            "product": "teal-shirt-1-variant",
+            "horizontal_position": 71,
+            "vertical_position": 38,
+            "horizontal_position_mobile": 57,
+            "vertical_position_mobile": 67
           }
         }
       },
       "block_order": [
-        "0c0f9fb8-0ee6-4c6e-9495-86c7619d7d4a",
-        "efa49804-c200-49e0-a3b5-ff678140b188",
-        "e33f4f8b-20c2-4e04-9ef7-84241e24cf9c",
-        "54733556-d6da-46ef-b71d-f11a54ddb5d6"
+        "830b7e8f-a885-4025-ba5f-0306e179c4b0",
+        "83b99270-df1e-4843-beef-f3a91f2d8a70",
+        "a225b5b1-63d1-4077-8823-9583fe901903"
+      ],
+      "settings": {
+        "layout": "fifty-fifty",
+        "desktop_bg_image": "shopify://shop_images/Mask_group_2x_9c1c7dbf-960a-42c3-b5d0-4f2adef81f4d.png",
+        "mobile_bg_image": "shopify://shop_images/Mask_group_2x_8eabd00b-4473-4340-a399-7cf97a9056f4.png",
+        "title": "Title: Spatial Tagging",
+        "title_level": "h3",
+        "title_style": "h4",
+        "description": "<p>Placeholder description copy can go here.</p>",
+        "cta_label": "Learn More",
+        "cta_url": "",
+        "cta_style": "primary",
+        "text_color": "--color-grey-900",
+        "bg_color": "--color-util-white",
+        "look_dot_color": "--color-util-white",
+        "look_bg_color": "--color-util-white",
+        "look_text_color": "--color-grey-900"
+      }
+    },
+    "fe2cd32b-f3ba-48a7-8bbc-419f5486e327": {
+      "type": "ra-content-carousel",
+      "blocks": {
+        "b047183e-f1c3-43d2-9480-c794934c29d9": {
+          "type": "content-slide",
+          "settings": {
+            "title": "Title: Content Tile",
+            "slide_img": "shopify://shop_images/Mask_group_2x_8eabd00b-4473-4340-a399-7cf97a9056f4.png",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA",
+            "slide_cta_1_url": "/",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "4c380775-2a94-4281-848e-350be23d31f7": {
+          "type": "content-slide",
+          "settings": {
+            "title": "Title: Content Tile",
+            "slide_img": "shopify://shop_images/Mask_group_2x_8eabd00b-4473-4340-a399-7cf97a9056f4.png",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA",
+            "slide_cta_1_url": "/",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "bd5d2eca-8d23-472b-927e-c34028b29783": {
+          "type": "content-slide",
+          "settings": {
+            "title": "Title: Content Tile",
+            "slide_img": "shopify://shop_images/Mask_group_2x_8eabd00b-4473-4340-a399-7cf97a9056f4.png",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA",
+            "slide_cta_1_url": "/",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        },
+        "81cd35a3-1331-4036-b836-e407516702e1": {
+          "type": "content-slide",
+          "settings": {
+            "title": "Title: Content Tile",
+            "slide_img": "shopify://shop_images/Mask_group_2x_8eabd00b-4473-4340-a399-7cf97a9056f4.png",
+            "slide_description": "",
+            "slide_image_width": "400",
+            "slide_image_height": "300",
+            "details_location": "after",
+            "slide_url": "/",
+            "slide_cta_1_title": "Optional CTA",
+            "slide_cta_1_url": "/",
+            "slide_cta_2_title": "",
+            "slide_cta_2_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "b047183e-f1c3-43d2-9480-c794934c29d9",
+        "4c380775-2a94-4281-848e-350be23d31f7",
+        "bd5d2eca-8d23-472b-927e-c34028b29783",
+        "81cd35a3-1331-4036-b836-e407516702e1"
+      ],
+      "settings": {
+        "title": "Title: Content Carousel",
+        "description": "<p>Placeholder description copy can go here. It can be formatted through rich text editor to <strong>bold</strong>,<em>italic</em>, or<a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>. </p>",
+        "title_level": "h2",
+        "title_style": "h3",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900",
+        "show_navigation": true,
+        "show_pagination": false,
+        "carousel_nav_location": "top-right",
+        "aspect_ratio": "tall",
+        "mobile_slides_view": "1.5",
+        "tablet_slides_view": "3",
+        "desktop_slides_view": "4",
+        "scroll_interaction": "snap",
+        "mobile_padding_vertical": 1,
+        "mobile_padding_horizontal": 2,
+        "desktop_padding": 3,
+        "mobile_margin": 2,
+        "desktop_margin": 4
+      }
+    },
+    "5cd23b96-6a8d-4c55-bb5d-1d398139e493": {
+      "type": "ra-rich-text",
+      "blocks": {
+        "459bd5a8-474d-4265-abcf-a320620af1e9": {
+          "type": "block_quote",
+          "settings": {
+            "enable_quotes": true,
+            "quote_color": "--color-primary-900",
+            "block_quote": "Placeholder block quote copy can go here as a way to feature client quotes. Placeholder block quote copy can go here as a way to feature client quotes"
+          }
+        },
+        "8928d306-056b-4ec2-b147-aeb46a3ae4b9": {
+          "type": "body_copy",
+          "settings": {
+            "description": "<p>- Placeholder Copy</p>",
+            "body_color": "--color-primary-900",
+            "description_copy_size": "text-sm"
+          }
+        }
+      },
+      "block_order": [
+        "459bd5a8-474d-4265-abcf-a320620af1e9",
+        "8928d306-056b-4ec2-b147-aeb46a3ae4b9"
       ],
       "settings": {
         "bg_color": "--color-util-white",
         "bg_color_md": "--color-util-white",
         "text_color_mobile": "--color-grey-900",
         "text_color_desktop": "--color-grey-900",
-        "spacing_top": "large",
+        "spacing_top": "small",
         "spacing_bottom": "large",
         "spacing_edge": "regular",
         "max_width": "medium",
@@ -507,53 +531,128 @@
         "horizontal_align_md": "center"
       }
     },
-    "fd785461-1f1e-49aa-a926-63886fa70a53": {
-      "type": "ra-tile-grid",
+    "7eb912db-8b7a-41f1-97b7-c8b1722bd7df": {
+      "type": "hero-carousel",
       "blocks": {
-        "b9873d31-cf6e-4e00-8821-c8fec30a9885": {
-          "type": "grid-column",
+        "de338cef-ccaf-4188-9756-e8f3f90545de": {
+          "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/close-up-showing-detail-of-cream-sweater.jpg",
-            "eyebrow_text": "eyebrow 1",
-            "title": "title 1",
-            "description": "<p>description 1 here<\/p>",
-            "horizontal_alignment": "left",
-            "vertical_alignment": "bottom"
-          }
-        },
-        "ebe93683-aea1-45b6-a9b0-77fed9f385ea": {
-          "type": "grid-column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/slick-summer-men-s-fashion.jpg",
-            "eyebrow_text": "eyebrow 2",
-            "title": "title 2",
-            "description": "<p>description 2 here<\/p>",
-            "horizontal_alignment": "left",
-            "vertical_alignment": "bottom"
+            "color_overrides_enabled": false,
+            "eyebrow_text": "",
+            "eyebrow_color": "--color-primary-900",
+            "title": "",
+            "title_color": "--color-primary-900",
+            "title_level": "h2",
+            "title_style": "h3",
+            "text_alignment": "set--v-align-middle set--h-align-center",
+            "description": "",
+            "description_color": "--color-primary-900",
+            "background_video_file_desktop": "shopify://files/videos/Pexels Videos 1409899.mp4",
+            "background_video_embed_desktop": "",
+            "video_aspect_ratio_desktop": "embed--16x9",
+            "background_video_embed_mobile": "",
+            "video_aspect_ratio_mobile": "embed--16x9",
+            "text_color_desktop": "--color-primary-900",
+            "text_color_mobile": "--color-primary-900",
+            "bg_color": "--color-tertiary-900",
+            "cta_1_label": "Learn More",
+            "cta_1_url": "",
+            "cta_1_style": "primary",
+            "cta_2_label": "Learn More",
+            "cta_2_url": "",
+            "cta_2_style": "secondary"
           }
         }
       },
       "block_order": [
-        "b9873d31-cf6e-4e00-8821-c8fec30a9885",
-        "ebe93683-aea1-45b6-a9b0-77fed9f385ea"
+        "de338cef-ccaf-4188-9756-e8f3f90545de"
       ],
       "settings": {
-        "image_height": "large",
-        "mobile_layout": "overlay",
-        "desktop_layout": "overlay",
-        "grid_gap": 16,
-        "padding_top": 24,
-        "padding_bottom": 0,
-        "bg_color": "#ffffff"
+        "height": "main",
+        "stack_mobile": false,
+        "autoplay": true,
+        "delay": 5,
+        "show_arrows": true,
+        "show_pagination": true,
+        "arrow_color": "--color-primary-900",
+        "pagination_color": "--color-primary-900",
+        "effect": "slide"
       }
     },
-    "167e6414-e442-487d-95b4-a2cf2fbc35e6": {
+    "7c9f84af-a938-49e1-b685-cdf875ae44f9": {
+      "type": "accordion",
+      "blocks": {
+        "9b0051f6-3f3a-4baa-a324-cede6662ab5a": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 1",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>, <em>italic</em>, or <a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>. </p>"
+          }
+        },
+        "f06bcd6c-7abc-4d18-8390-7c179ea08e91": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 2",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>, <em>italic</em>, or <a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>. </p>"
+          }
+        },
+        "4db68ba0-b970-4d3d-99c4-776e1bab7fc0": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 3",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>, <em>italic</em>, or <a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>. </p>"
+          }
+        },
+        "152a5805-ce04-4857-a0a8-fd2fa29c2b8d": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 4",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>, <em>italic</em>, or <a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>. </p>"
+          }
+        },
+        "c4c3cd6b-8f7e-4672-935c-c84540291f60": {
+          "type": "accordion-item",
+          "settings": {
+            "item_title": "Item 5",
+            "item_content": "<p>Placeholder description copy can go here for accordion. It can be formatted through rich text editor to<strong>bold</strong>, <em>italic</em>, or <a href=\"https://google.com/\" target=\"_blank\" title=\"https://google.com\">linked text</a>. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "9b0051f6-3f3a-4baa-a324-cede6662ab5a",
+        "f06bcd6c-7abc-4d18-8390-7c179ea08e91",
+        "4db68ba0-b970-4d3d-99c4-776e1bab7fc0",
+        "152a5805-ce04-4857-a0a8-fd2fa29c2b8d",
+        "c4c3cd6b-8f7e-4672-935c-c84540291f60"
+      ],
+      "settings": {
+        "section_title_level": "h3",
+        "section_title": "Title: Accordion Section",
+        "title_level": "h5",
+        "bg_color": "--color-util-white",
+        "text_color": "--color-grey-900"
+      }
+    },
+    "7704aed0-b736-45e1-9f5f-ebf345a7454a": {
       "type": "ra-tile-grid",
       "blocks": {
-        "7695780f-49e7-4fb3-b62c-740c930b0e03": {
+        "09124eb5-3d84-46bd-a2c2-a47dff0c4ed3": {
           "type": "grid-column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/condominium-interior-livingroom_925x_578321ab-06eb-47f6-8e4a-254068034583.jpg",
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
+            "eyebrow_text": "",
+            "title": "TEST WITH NAME",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        },
+        "6b488293-a5f7-4d80-8c8f-7c256f1ed43e": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
             "eyebrow_text": "",
             "title": "",
             "description": "",
@@ -561,10 +660,11 @@
             "vertical_alignment": "middle"
           }
         },
-        "b7bb2b70-0380-4bd6-a33a-9b363d2b076a": {
+        "96cf64c0-e868-4f89-80ef-ac16f51ba192": {
           "type": "grid-column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/bedroom-bed-with-brown-throw-pillows_925x_2a72b11f-cf2c-4056-97bf-a7ee5cb38462.jpg",
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
             "eyebrow_text": "",
             "title": "",
             "description": "",
@@ -572,10 +672,11 @@
             "vertical_alignment": "middle"
           }
         },
-        "5eb5559c-22aa-4950-8e22-a600ec14e0a7": {
+        "8aec777c-f4a5-4621-a86b-eb8d02633af3": {
           "type": "grid-column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/potted-seeds_925x_c7132b5c-1f46-4a38-a283-d2e01b62d6bb.jpg",
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
             "eyebrow_text": "",
             "title": "",
             "description": "",
@@ -585,31 +686,104 @@
         }
       },
       "block_order": [
-        "7695780f-49e7-4fb3-b62c-740c930b0e03",
-        "b7bb2b70-0380-4bd6-a33a-9b363d2b076a",
-        "5eb5559c-22aa-4950-8e22-a600ec14e0a7"
+        "09124eb5-3d84-46bd-a2c2-a47dff0c4ed3",
+        "6b488293-a5f7-4d80-8c8f-7c256f1ed43e",
+        "96cf64c0-e868-4f89-80ef-ac16f51ba192",
+        "8aec777c-f4a5-4621-a86b-eb8d02633af3"
       ],
       "settings": {
         "image_height": "small",
         "mobile_layout": "overlay",
         "desktop_layout": "overlay",
-        "grid_gap": 16,
-        "padding_top": 16,
-        "padding_bottom": 12,
-        "bg_color": ""
+        "grid_gap": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "text_color": "--color-primary-900",
+        "bg_color": "--color-primary-900"
+      }
+    },
+    "e2cd51fd-99cc-4c5a-b44d-808abc2023a4": {
+      "type": "ra-tile-grid",
+      "blocks": {
+        "5c8fa78b-47bb-492e-8257-79d2e1d20d35": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
+            "eyebrow_text": "",
+            "title": "",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        },
+        "dd3e8e8a-d1c6-4abe-b0d2-2e76b463b24f": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
+            "eyebrow_text": "",
+            "title": "",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        },
+        "23622829-55f1-4e6e-b3c3-6f24c4d69315": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
+            "eyebrow_text": "",
+            "title": "",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        },
+        "1310fc39-9d98-47b2-b560-7f5b434914ea": {
+          "type": "grid-column",
+          "settings": {
+            "image": "shopify://shop_images/beige_1.png",
+            "destination_url": "",
+            "eyebrow_text": "",
+            "title": "",
+            "description": "",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "5c8fa78b-47bb-492e-8257-79d2e1d20d35",
+        "dd3e8e8a-d1c6-4abe-b0d2-2e76b463b24f",
+        "23622829-55f1-4e6e-b3c3-6f24c4d69315",
+        "1310fc39-9d98-47b2-b560-7f5b434914ea"
+      ],
+      "settings": {
+        "image_height": "small",
+        "mobile_layout": "overlay",
+        "desktop_layout": "overlay",
+        "grid_gap": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "text_color": "--color-primary-900",
+        "bg_color": "--color-primary-900"
       }
     }
   },
   "order": [
-    "70470917-0d14-4248-a6ea-ab488472117a",
+    "f4f761e9-60aa-4c89-ac1f-c638c27a90c0",
+    "c229216c-e645-4226-80c7-067d1cf106f6",
     "367c09ed-72b9-40bd-9098-182341a241cb",
     "6e1c958e-0014-470f-8542-267a33e1b7c2",
-    "650a81ef-e9bf-473c-9ec2-107491e86ca3",
-    "708c2130-3496-4631-8512-4e9eda09a31e",
-    "650a81ef-e9bf-473c-9ec2-107491e86ca4",
     "1250bbd6-bd0c-4547-af5d-0c6719093920",
-    "2c1f4310-6d3c-400d-945e-9a3321666ffd",
-    "fd785461-1f1e-49aa-a926-63886fa70a53",
-    "167e6414-e442-487d-95b4-a2cf2fbc35e6"
+    "ca8cb729-8882-4b7c-a896-6f5405d28da2",
+    "fe2cd32b-f3ba-48a7-8bbc-419f5486e327",
+    "5cd23b96-6a8d-4c55-bb5d-1d398139e493",
+    "7eb912db-8b7a-41f1-97b7-c8b1722bd7df",
+    "7c9f84af-a938-49e1-b685-cdf875ae44f9",
+    "7704aed0-b736-45e1-9f5f-ebf345a7454a",
+    "e2cd51fd-99cc-4c5a-b44d-808abc2023a4"
   ]
 }

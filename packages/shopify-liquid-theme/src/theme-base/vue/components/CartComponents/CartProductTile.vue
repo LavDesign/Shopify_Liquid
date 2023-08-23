@@ -27,7 +27,7 @@
         <QuantityAdjuster
           class="mt-1"
           @quantity-updated="updateQuantity"
-          :quantity="product.quantity"
+          :quantity="qty"
         />
       </div>
       <div class="flex flex-col justify-between items-end">
@@ -90,6 +90,9 @@ const props = defineProps({
     type: Object,
     default: () => {},
   },
+  qty: {
+    type: Number,
+  },
 });
 
 const cartStore = useCartStore();
@@ -107,12 +110,16 @@ const small_image = computed(() =>
 
 const updateQuantity = (qty) => {
   const productObj = {
-    id: props.product.id.toString(),
-    quantity: qty.toString(),
-    properties: props.product.properties,
+    id: props.product.key.toString(),
+    quantity: qty,
   };
   if (qty < props.product.quantity) dataRemoveFromCart(props.product);
-  cartStore.updateItem(productObj);
+  cartStore.updateItem(productObj).then((cart) => {
+    const event = new CustomEvent("cartUpdated", {
+      detail: { item_count: cart.item_count },
+    });
+    window.dispatchEvent(event);
+  })
 };
 
 const isSubscriptionProduct = false;
