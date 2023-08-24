@@ -255,14 +255,18 @@ const primarySwiperInstance = document.querySelector(
 const lightboxSwiperInstance =
   document.querySelector(".swiper--lightbox")?.swiper;
 
-const slideToCurrentVariantImage = () => {
+const slideToCurrentVariantImage = (indexChange) => {
   const currentVariantSlide = primarySwiperInstance?.slides.find(
     (slide) =>
       parseInt(slide.getAttribute("data-media-id")) ===
       currentVariant.value.media.id
   );
-  const index = currentVariantSlide?.getAttribute("data-slide-index");
-  index && primarySwiperInstance.slideTo(index);
+  const index =
+    parseInt(currentVariantSlide?.getAttribute("data-slide-index")) +
+    indexChange;
+  window.setTimeout(function () {
+    index && primarySwiperInstance.slideTo(index);
+  }, 400);
 };
 
 const updateGallery = (update = false) => {
@@ -500,7 +504,7 @@ const productStore = useProductPageStore();
 watch(currentVariant, (variant) => {
   productStore.setCurrentVariant(variant);
   updateVariantURL();
-  slideToCurrentVariantImage();
+  slideToCurrentVariantImage(-1);
   updateBadgeText();
 });
 
@@ -508,7 +512,7 @@ onMounted(() => {
   productStore.setCurrentVariant(
     currentVariant.value || props.product.first_available_variant
   );
-  slideToCurrentVariantImage();
+  slideToCurrentVariantImage(0);
   updateBadgeText();
   updateGallery();
 });
