@@ -502,18 +502,25 @@ const productBadge = document.querySelector("[data-pdp-badge]");
 const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
+  const indexChange = -1;
   productStore.setCurrentVariant(variant);
   updateVariantURL();
-  slideToCurrentVariantImage(-1);
+  slideToCurrentVariantImage(indexChange);
   updateBadgeText();
 });
 
 onMounted(() => {
+  const indexChange = 0;
   productStore.setCurrentVariant(
     currentVariant.value || props.product.first_available_variant
   );
-  slideToCurrentVariantImage(0);
+  slideToCurrentVariantImage(indexChange);
   updateBadgeText();
   updateGallery();
+
+  const disabledSwatches = document.querySelectorAll(".ra-swatch--disabled");
+  disabledSwatches.forEach((swatch) => {
+    swatch.removeAttribute("disabled");
+  });
 });
 </script>
