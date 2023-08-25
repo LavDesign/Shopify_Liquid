@@ -255,14 +255,18 @@ const primarySwiperInstance = document.querySelector(
 const lightboxSwiperInstance =
   document.querySelector(".swiper--lightbox")?.swiper;
 
-const slideToCurrentVariantImage = () => {
+const slideToCurrentVariantImage = (indexChange) => {
   const currentVariantSlide = primarySwiperInstance?.slides.find(
     (slide) =>
       parseInt(slide.getAttribute("data-media-id")) ===
       currentVariant.value.media.id
   );
-  const index = currentVariantSlide?.getAttribute("data-slide-index");
-  index && primarySwiperInstance.slideTo(index);
+  const index =
+    parseInt(currentVariantSlide?.getAttribute("data-slide-index")) +
+    indexChange;
+  window.setTimeout(function () {
+    index && primarySwiperInstance.slideTo(index);
+  }, 400);
 };
 
 const updateGallery = (update = false) => {
@@ -498,18 +502,25 @@ const productBadge = document.querySelector("[data-pdp-badge]");
 const productStore = useProductPageStore();
 
 watch(currentVariant, (variant) => {
+  const indexChange = -1;
   productStore.setCurrentVariant(variant);
   updateVariantURL();
-  slideToCurrentVariantImage();
+  slideToCurrentVariantImage(indexChange);
   updateBadgeText();
 });
 
 onMounted(() => {
+  const indexChange = 0;
   productStore.setCurrentVariant(
     currentVariant.value || props.product.first_available_variant
   );
-  slideToCurrentVariantImage();
+  slideToCurrentVariantImage(indexChange);
   updateBadgeText();
   updateGallery();
+
+  const disabledSwatches = document.querySelectorAll(".ra-swatch--disabled");
+  disabledSwatches.forEach((swatch) => {
+    swatch.removeAttribute("disabled");
+  });
 });
 </script>
