@@ -323,7 +323,7 @@
       "type": "select",
       "id": "eyebrow_color",
       "label": "Eyebrow Color",
-      "options": <%- uikit.colorsAll -%>
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "text",
@@ -335,7 +335,7 @@
       "type": "select",
       "id": "title_color",
       "label": "Title Color",
-      "options": <%- uikit.colorsAll -%>
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "richtext",
@@ -346,7 +346,7 @@
       "type": "select",
       "id": "description_color",
       "label": "Description Color",
-      "options": <%- uikit.colorsAll -%>
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
@@ -674,32 +674,28 @@
       "id": "bg_color",
       "label": "Mobile Background Color",
       "info": "Set the background color for mobile screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "bg_color_md",
       "label": "Desktop Background Color",
       "info": "Set the background color for larger screen sizes (if different from mobile)",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "text_color_mobile",
       "label": "Text Color (mobile)",
       "info": "Set the text color for mobile screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-black"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "text_color_desktop",
       "label": "Text Color (desktop)",
       "info": "Set the text color for larger screen sizes (if different from mobile)",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-black"
+      "options": <%- uikit.colorsCustomizer -%>
     }
   ],
   "presets": [
