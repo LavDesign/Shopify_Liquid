@@ -66,14 +66,14 @@
 %}
 
 {% style %}
-  #shopify-section-{{ section.id }} .ra-split-section {
+  [data-section-id='{{ section.id }}'] .ra-split-section {
     --component-bg-color: var({{- section.settings.bg_color -}});
     --component-bg-color-md: var({{- section.settings.bg_color_md -}});
     --component-fg-color: var({{- section.settings.text_color_mobile -}});
     --component-fg-color-md: var({{- section.settings.text_color_desktop -}});
   }
 
-  #shopify-section-{{ section.id }} .ra-left-split {
+  [data-section-id='{{ section.id }}'] .ra-left-split {
     --col-size: 100%;
     {%- case section_split -%}
       {%- when '50-50' -%}
@@ -85,7 +85,7 @@
     {%- endcase -%}
   }
 
-  #shopify-section-{{ section.id }} .ra-right-split {
+  [data-section-id='{{ section.id }}'] .ra-right-split {
     --col-size: 100%;
     {% if details_location == "overlay" %}
       --col-size-md: 100%;
@@ -101,7 +101,7 @@
     {% endif %}
   }
 
-  #shopify-section-{{- section.id }} .ra-split-section__image {
+  [data-section-id='{{ section.id }}'] .ra-split-section__image {
     {%- case aspect_ratio -%}
       {%- when 'square' -%}
         --media-width:1;
@@ -116,51 +116,51 @@
   }
 
   @media (min-width: 767px) and (max-width: 1024px) {
-    #shopify-section-{{ section.id }} .ra-left-split {
+    [data-section-id='{{ section.id }}'] .ra-left-split {
       --col-size: 100%;
       {% if details_location != "overlay" %}
         --col-size-md: 100%;
       {% endif %}
     }
-    #shopify-section-{{ section.id }} .ra-right-split {
+    [data-section-id='{{ section.id }}'] .ra-right-split {
       --col-size: 100%;
       {% if details_location != "overlay" %}
         --col-size-md: 100%;
       {% endif %}
     }
-    #shopify-section-{{ section.id }} .ra-col {
+    [data-section-id='{{ section.id }}'] .ra-col {
       flex-basis: 100%;
       flex-shrink: 0;
       flex-grow: 0;
     }
-    #shopify-section-{{ section.id }} .set--details-before .component-details, 
-    #shopify-section-{{ section.id }} .set--details-before .component-details--set-order,
-    #shopify-section-{{ section.id }} .set--details-before-sm .component-details,
-    #shopify-section-{{ section.id }} .set--details-before-sm .component-details--set-order {
+    [data-section-id='{{ section.id }}'] .set--details-before .component-details, 
+    [data-section-id='{{ section.id }}'] .set--details-before .component-details--set-order,
+    [data-section-id='{{ section.id }}'] .set--details-before-sm .component-details,
+    [data-section-id='{{ section.id }}'] .set--details-before-sm .component-details--set-order {
       order: 0;
     }
-    #shopify-section-{{ section.id }} .set--details-before .component-media,
-    #shopify-section-{{ section.id }} .set--details-before-sm .component-media {
+    [data-section-id='{{ section.id }}'] .set--details-before .component-media,
+    [data-section-id='{{ section.id }}'] .set--details-before-sm .component-media {
       order: 1;
     }
-    #shopify-section-{{ section.id }} .set--details-after .component-details,
-    #shopify-section-{{ section.id }} .set--details-after .component-details--set-order,
-    #shopify-section-{{ section.id }} .set--details-after-sm .component-details,
-    #shopify-section-{{ section.id }} .set--details-after-sm .component-details--set-order {
+    [data-section-id='{{ section.id }}'] .set--details-after .component-details,
+    [data-section-id='{{ section.id }}'] .set--details-after .component-details--set-order,
+    [data-section-id='{{ section.id }}'] .set--details-after-sm .component-details,
+    [data-section-id='{{ section.id }}'] .set--details-after-sm .component-details--set-order {
       order: 1;
     }
     
-    #shopify-section-{{ section.id }} .set--details-after .component-media,
-    #shopify-section-{{ section.id }} .set--details-after-sm .component-media {
+    [data-section-id='{{ section.id }}'] .set--details-after .component-media,
+    [data-section-id='{{ section.id }}'] .set--details-after-sm .component-media {
       order: 0;
     }
   }  
 
-  #shopify-section-{{- section.id }} .ra-split-section__description ul li {
+  [data-section-id='{{ section.id }}'] .ra-split-section__description ul li {
     list-style: inside disc;
   }
 
-  #shopify-section-{{- section.id }} .ra-split-section__description ol li {
+  [data-section-id='{{ section.id }}'] .ra-split-section__description ol li {
     list-style: inside decimal;
   }
 
@@ -264,7 +264,7 @@
   {% endif %}
 {% endcapture %}
 
-<div class="w-full">
+<div class="w-full" data-section-id="{{ section.id }}">
   <article class="w-full ra-split-section set--details-{{ section.settings.details_location }}-sm {% if details_location == "overlay" %}set--details-{{ details_location }}{% else %}mx:px-7 md:py-9{% endif %} set--aspect-ratio-{{ section.settings.aspect_ratio }}">
     <div class="max-w-screen-2xl mx-auto ra-split-section__layout-container component-layout ra-row ra-no-gap !items-stretch">
       <div

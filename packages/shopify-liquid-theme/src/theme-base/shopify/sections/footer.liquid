@@ -1,12 +1,12 @@
 {%- style -%}
-  #shopify-section-{{ section.id }} {
+  [data-section-id='{{ section.id }}'] {
     --background-color: var({{ section.settings.bg_color }});
     --link-color: var({{ section.settings.link_color }});
     --link-hover-color: var({{ section.settings.link_hover_color }});
   }
 {%- endstyle -%}
 
-<footer class="footer">
+<footer class="footer" data-section-id="{{ section.id }}">
   <div class="container">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-10">
       {% for block in section.blocks %}
