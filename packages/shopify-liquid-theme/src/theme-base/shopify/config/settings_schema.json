@@ -263,42 +263,42 @@
         "type": "select",
         "id": "input_text_color",
         "label": "Text",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-grey-900"
       },
       {
         "type": "select",
         "id": "input_placeholder_color",
         "label": "Placeholder",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-grey-500"
       },
       {
         "type": "select",
         "id": "input_border_color_default",
         "label": "Border (default)",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-grey-300"
       },
       {
         "type": "select",
         "id": "input_border_color_hover",
         "label": "Border (hover)",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-grey-900"
       },
       {
         "type": "select",
         "id": "input_outline_color",
         "label": "Outline",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-util-red"
       },
       {
         "type": "select",
         "id": "input_error_color",
         "label": "Error",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-util-red",
         "info": "Error color - when input failed validations."
       },
@@ -314,14 +314,14 @@
         "type": "select",
         "id": "input_disabled_border",
         "label": "Border (disabled)",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-grey-200"
       },
       {
         "type": "select",
         "id": "input_disabled_background",
         "label": "Background (disabled)",
-        "options": <%- uikit.colorsAll -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-grey-100"
       }
     ]
@@ -683,7 +683,7 @@
         "type": "select",
         "id": "predictive_text_color",
         "label": "Text Color",
-        "options": <%- uikit.colorsSchemaPicker -%>,
+        "options": <%- uikit.colorsCustomizer -%>,
         "default": "--color-util-black"
       },
       {

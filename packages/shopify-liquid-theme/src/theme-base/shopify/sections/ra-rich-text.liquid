@@ -136,7 +136,7 @@
           "type": "select",
           "id": "title_color",
           "label": "Title Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "select",
@@ -170,7 +170,7 @@
           "type": "select",
           "id": "subtitle_color",
           "label": "Subtitle Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         }
       ]
     },
@@ -187,7 +187,7 @@
           "type": "select",
           "id": "body_color",
           "label": "Body Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "select",
@@ -239,7 +239,7 @@
           "type": "select",
           "id": "quote_color",
           "label": "Quote Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "text",
@@ -336,16 +336,14 @@
       "id": "bg_color",
       "label": "Mobile Background Color",
       "info": "Set the background color for mobile screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "bg_color_md",
       "label": "Desktop Background Color",
       "info": "Set the background color for larger screen sizes (if different from mobile)",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "header",
