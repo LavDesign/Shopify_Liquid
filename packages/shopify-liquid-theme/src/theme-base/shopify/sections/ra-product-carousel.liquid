@@ -46,38 +46,38 @@
 {% endcapture %}
 
 {% style %}
-  .product-carousel--{{ section.id }} {
+  [data-section-id='{{ section.id }}'] {
     --component-bg-color: var({{ section.settings.bg_color }});
     --component-fg-color: var({{ section.settings.text_color }});
     padding: {{ section.settings.mobile_padding_vertical }}rem {{ section.settings.mobile_padding_horizontal }}rem;
     margin: {{ section.settings.mobile_margin }}rem 0;
   }
 
-  .product-carousel--{{ section.id }} .ra-heading {
+  [data-section-id='{{ section.id }}'] .ra-heading {
     --heading-margin:var(--spacing-lg);
     --heading-text-align: left;
   }
 
-  .product-carousel--{{ section.id }} .ra-heading__description ul li {
+  [data-section-id='{{ section.id }}'] .ra-heading__description ul li {
     list-style: inside disc;
   }
 
-  .product-carousel--{{ section.id }} .ra-heading__description ol li {
+  [data-section-id='{{ section.id }}'] .ra-heading__description ol li {
     list-style: inside decimal;
   }
 
   @media only screen and (min-width: 768px) {
-    .product-carousel--{{ section.id }} {
+    [data-section-id='{{ section.id }}'] {
       padding: {{ section.settings.desktop_padding }}rem 2rem;
       margin: {{ section.settings.desktop_margin }}rem 0;
     }
 
-    .product-carousel--{{ section.id }} .ra-carousel__nav--top-right {
+    [data-section-id='{{ section.id }}'] .ra-carousel__nav--top-right {
       --carousel-controls-bottom: calc(100% + 1rem);
     }
 
     {% if section.blocks.size <= tablet_slides_count %}
-    .product-carousel--{{ section.id }} .ra-carousel__nav {
+    [data-section-id='{{ section.id }}'] .ra-carousel__nav {
       display: none;
     }
     {% endif %}
@@ -85,14 +85,14 @@
 
   {% if section.blocks.size <= desktop_slides_count %}
   @media only screen and (min-width: 1024px) {
-    .product-carousel--{{ section.id }} .ra-carousel__nav {
+    [data-section-id='{{ section.id }}'] .ra-carousel__nav {
       display: none;
     }
   }
   {% endif %}
 {% endstyle %}
 
-<section class="ra-carousel-outer product-carousel product-carousel--{{ section.id }} p-4">
+<section class="ra-carousel-outer product-carousel p-4" data-section-id="{{ section.id }}">
   <div class="ra-carousel-wrapper">
     <div class="ra-heading ra-carousel__details">
       {% if section.settings.title != blank %}
@@ -120,13 +120,13 @@
         init="false"
         space-between="15"
         {% if show_navigation %}
-          navigation-next-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
-          navigation-prev-el=".product-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+          navigation-next-el="[data-section-id='{{ section.id }}'] .ra-carousel__nav-cta--next"
+          navigation-prev-el="[data-section-id='{{ section.id }}'] .ra-carousel__nav-cta--prev"
         {% endif %}
         {% if show_pagination %}
           pagination="true"
           pagination-clickable="true"
-          pagination-el=".product-carousel--{{ section.id }} .ra-carousel__pagination"
+          pagination-el="[data-section-id='{{ section.id }}'] .ra-carousel__pagination"
         {% endif %}
         speed="300"
         draggable="true"

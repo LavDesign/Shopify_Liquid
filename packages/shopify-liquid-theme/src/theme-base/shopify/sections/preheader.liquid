@@ -1,10 +1,10 @@
 {% style %}
-  #shopify-section-{{ section.id }} .ra-preheader {
+  [data-section-id='{{ section.id }}'].ra-preheader {
     background-color: var({{ section.settings.bg_color }});
     color: var({{ section.settings.text_color }});
   }
 
-  #shopify-section-{{ section.id }} .ra-preheader__text {
+  [data-section-id='{{ section.id }}'] .ra-preheader__text {
     color: var({{ section.settings.text_color }});
   }
 {% endstyle %}
@@ -14,7 +14,7 @@
 {%- endcapture -%}
 
 {% if section.blocks.size > 0 %}
-  <div class="ra-preheader top-0 left-0 w-full z-50 px-6 fixed">
+  <div class="ra-preheader top-0 left-0 w-full z-50 px-6 fixed" data-section-id="{{ section.id }}">
     <div class="ra-preheader__wrapper relative">
       <div class="ra-preheader__slider ra-preheader__slider--{{ section.settings.alignment }} flex items-center justify-center">
         <div class="swiper-wrapper max-w-[400px] mx-0">
@@ -23,8 +23,8 @@
             autoplay-delay="{{ section.settings.delay | times: 1000 }}"
             slides-per-view="1"
             space-between="0"
-            navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
-            navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
+            navigation-next-el="[data-section-id='{{ section.id }}'] .swiper-button-next"
+            navigation-prev-el="[data-section-id='{{ section.id }}'] .swiper-button-prev"
           >
             {% for block in section.blocks %}
               <swiper-slide class="px-2 py-4 h-full">

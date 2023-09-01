@@ -1,5 +1,5 @@
 {% style %}
-  #shopify-section-{{ section.id }} {
+  [data-section-id='{{ section.id }}'] {
     --section-divider-bg-color: var({{ section.settings.bg_color }});
     --section-divider-color: var({{ section.settings.divider_color }});
     --section-divider-desktop-padding-top: {{ section.settings.desktop_padding_top | append: "px" }};
@@ -7,10 +7,27 @@
     --section-divider-mobile-padding-top: {{ section.settings.mobile_padding_top | append: "px" }};
     --section-divider-mobile-padding-bottom: {{ section.settings.mobile_padding_bottom | append: "px" }};
   }
+
+  [data-section-id='{{ section.id }}'].container {
+    background-color: var(--section-divider-bg-color);
+    padding-top: var(--section-divider-desktop-padding-top);
+    padding-bottom: var(--section-divider-desktop-padding-bottom);
+  }
+
+  @media (max-width: 768px) {
+    [data-section-id='{{ section.id }}'].container {
+      padding-top: var(--section-divider-mobile-padding-top);
+      padding-bottom: var(--section-divider-mobile-padding-bottom);
+    }
+  }  
+
+  [data-section-id='{{ section.id }}'] .divider {
+    background-color: var(--section-divider-color);
+  }
 {% endstyle %}
 
 <section>
-  <div class="container">
+  <div class="container" data-section-id="{{ section.id }}">
     <div class="divider"></div>
   </div>
 </section>
