@@ -1,5 +1,5 @@
 {% style %}
-  #shopify-section-{{- section.id -}} {
+  [data-section-id='{{ section.id }}'] {
   --component-bg-color: var({{- section.settings.bg_color -}});
   --component-bg-color-md: var({{- section.settings.bg_color_md -}});
   --component-fg-color: var({{- section.settings.text_color_mobile -}});
@@ -7,7 +7,10 @@
   }
 {% endstyle %}
 
-<article class="ra-text-only-banner set--spacing-top-{{ section.settings.spacing_top }} set--spacing-bottom-{{ section.settings.spacing_bottom }} gutter--{{ section.settings.spacing_edge }}">
+<article 
+  class="ra-text-only-banner set--spacing-top-{{ section.settings.spacing_top }} set--spacing-bottom-{{ section.settings.spacing_bottom }} gutter--{{ section.settings.spacing_edge }}" 
+  data-section-id="{{ section.id }}"
+>
   <div class="ra-text-only-banner__details max-width--{{ section.settings.max_width }}">
     <div class="ra-text-only-banner__copy set--h-align-{{ section.settings.horizontal_align }}-sm set--h-align-{{ section.settings.horizontal_align_md }}-md">
 
@@ -133,7 +136,7 @@
           "type": "select",
           "id": "title_color",
           "label": "Title Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "select",
@@ -167,7 +170,7 @@
           "type": "select",
           "id": "subtitle_color",
           "label": "Subtitle Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         }
       ]
     },
@@ -184,7 +187,7 @@
           "type": "select",
           "id": "body_color",
           "label": "Body Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "select",
@@ -236,7 +239,7 @@
           "type": "select",
           "id": "quote_color",
           "label": "Quote Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "text",
@@ -333,32 +336,14 @@
       "id": "bg_color",
       "label": "Mobile Background Color",
       "info": "Set the background color for mobile screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "bg_color_md",
       "label": "Desktop Background Color",
       "info": "Set the background color for larger screen sizes (if different from mobile)",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
-    },
-    {
-      "type": "select",
-      "id": "text_color_mobile",
-      "label": "Text Color (mobile)",
-      "info": "Set the text color for mobile screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-black"
-    },
-    {
-      "type": "select",
-      "id": "text_color_desktop",
-      "label": "Text Color (desktop)",
-      "info": "Set the text color for larger screen sizes (if different from mobile)",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-black"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "header",

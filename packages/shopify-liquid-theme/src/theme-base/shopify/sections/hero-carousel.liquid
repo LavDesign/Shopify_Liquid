@@ -19,13 +19,13 @@
     {%- assign desktop_styles = desktop_styles | append: desktop_block_styles -%}
   {%- endfor -%}
 
-  #shopify-section-{{ section.id }} {
+  [data-section-id='{{ section.id }}'] {
     --swiper-pagination-color: var({{- section.settings.pagination_color -}})
   }
 
   {{- mobile_styles -}}
   @media (min-width: 768px) {
-    #shopify-section-{{- section.id }} .ra-hero__details {
+    [data-section-id='{{ section.id }}'] .ra-hero__details {
       {%- if block.settings.text_color_desktop != blank -%}
       color: var({{- block.settings.text_color_desktop | default: "inherit" -}});
       {%- endif -%}
@@ -38,15 +38,15 @@
   var({{ section.settings.arrow_color }})
 {% endcapture %}
 
-<div class="relative" data-aos="fade">
+<div class="relative" data-aos="fade" data-section-id="{{ section.id }}">
   <swiper-container
     class="ra-hero overflow-hidden set--aspect-ratio-{{ section.settings.height }} {% if section.settings.stack_mobile %}set--details-after-sm set--details-overlay-md{% else %}set--details-overlay{% endif %}"
     {% if section.settings.autoplay %}
       autoplay-delay="{{ section.settings.delay | times: 1000 }}"
     {% endif %}
     effect="{{ section.settings.effect }}"
-    navigation-prev-el="#shopify-section-{{ section.id }} .swiper-button-prev"
-    navigation-next-el="#shopify-section-{{ section.id }} .swiper-button-next"
+    navigation-prev-el="[data-section-id='{{ section.id }}'] .swiper-button-prev"
+    navigation-next-el="[data-section-id='{{ section.id }}'] .swiper-button-next"
     pagination-el=".swiper-pagination-{{ section.id }}"
     pagination-clickable="true"
     slides-per-view="1"
@@ -165,7 +165,7 @@
           "type": "select",
           "id": "eyebrow_color",
           "label": "Eyebrow Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "text",
@@ -177,7 +177,7 @@
           "type": "select",
           "id": "title_color",
           "label": "Title Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "select",
@@ -211,7 +211,7 @@
           "type": "select",
           "id": "description_color",
           "label": "Description Color",
-          "options": <%- uikit.colorsAll -%>
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "header",
@@ -323,23 +323,20 @@
           "type": "select",
           "id": "text_color_desktop",
           "label": "Text Color (desktop)",
-          "options": <%- uikit.colorsSchemaPicker -%>,
-          "default": "--color-primary-900"
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "select",
           "id": "text_color_mobile",
           "label": "Text Color (mobile)",
-          "options": <%- uikit.colorsSchemaPicker -%>,
-          "default": "--color-primary-900"
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "select",
           "id": "bg_color",
           "label": "Background Color",
           "info": "Set the background color for all screen sizes",
-          "options": <%- uikit.colorsSchemaPicker -%>,
-          "default": "--color-primary-900"
+          "options": <%- uikit.colorsCustomizer -%>
         },
         {
           "type": "header",
@@ -449,15 +446,13 @@
       "type": "select",
       "id": "arrow_color",
       "label": "Arrow Color",
-      "options": <%- uikit.colorsAll -%>,
-      "default": "--color-primary-900"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "pagination_color",
       "label": "Pagination Color",
-      "options": <%- uikit.colorsAll -%>,
-      "default": "--color-primary-900"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",

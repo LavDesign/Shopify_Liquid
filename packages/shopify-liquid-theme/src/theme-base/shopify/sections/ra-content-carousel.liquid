@@ -32,34 +32,34 @@
 {% endcapture %}
 
 {% style %}
-  .content-carousel--{{ section.id }} {
+  [data-section-id='{{ section.id }}'] {
     --component-bg-color: var({{ section.settings.bg_color }});
     --component-fg-color: var({{ section.settings.text_color }});
     padding: {{ section.settings.mobile_padding_vertical }}rem {{ section.settings.mobile_padding_horizontal }}rem;
     margin: {{ section.settings.mobile_margin }}rem 0;
   }
 
-  .content-carousel--{{ section.id }} .ra-heading {
+  [data-section-id='{{ section.id }}'] .ra-heading {
     --heading-margin:var(--spacing-lg);
     --heading-text-align: left;
   }
 
-  .content-carousel--{{ section.id }} .ra-heading__description ul li {
+  [data-section-id='{{ section.id }}'] .ra-heading__description ul li {
     list-style: inside disc;
   }
 
-  .content-carousel--{{ section.id }} .ra-heading__description ol li {
+  [data-section-id='{{ section.id }}'] .ra-heading__description ol li {
     list-style: inside decimal;
   }
 
   @media only screen and (min-width: 768px) {
-    .content-carousel--{{ section.id }} {
+    [data-section-id='{{ section.id }}'] {
       padding: {{ section.settings.desktop_padding }}rem 2rem;
       margin: {{ section.settings.desktop_margin }}rem 0;
     }
 
     {% if section.blocks.size <= tablet_slides_count %}
-    .content-carousel--{{ section.id }} .ra-carousel__nav {
+    [data-section-id='{{ section.id }}'] .ra-carousel__nav {
       display: none;
     }
     {% endif %}
@@ -67,14 +67,14 @@
 
   {% if section.blocks.size <= desktop_slides_count %}
   @media only screen and (min-width: 1024px) {
-    .content-carousel--{{ section.id }} .ra-carousel__nav {
+    [data-section-id='{{ section.id }}'] .ra-carousel__nav {
       display: none;
     }
   }
   {% endif %}
 {% endstyle %}
 
-<section class="ra-carousel-outer content-carousel content-carousel--{{ section.id }} p-4">
+<section class="ra-carousel-outer content-carousel p-4" data-section-id="{{ section.id }}">
   <div class="ra-heading ra-carousel__details">
     {% if section.settings.title != blank %}
       <{{ title_level }} class="ra-title ra-heading__title {{ section.settings.title_style }}">
@@ -95,13 +95,13 @@
       init="false"
       space-between="16"
       {% if show_navigation %}
-      navigation-next-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--next"
-      navigation-prev-el=".content-carousel--{{ section.id }} .ra-carousel__nav-cta--prev"
+      navigation-next-el="[data-section-id='{{ section.id }}'] .ra-carousel__nav-cta--next"
+      navigation-prev-el="[data-section-id='{{ section.id }}'] .ra-carousel__nav-cta--prev"
       {% endif %}
       {% if show_pagination %}
       pagination="true"
       pagination-clickable="true"
-      pagination-el=".content-carousel--{{ section.id }} .ra-carousel__pagination"
+      pagination-el="[data-section-id='{{ section.id }}'] .ra-carousel__pagination"
       {% endif %}
       speed="300"
       draggable="true"
@@ -202,16 +202,14 @@
       "id": "bg_color",
       "label": "Background Color",
       "info": "Set the background color for all screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "text_color",
       "label": "Text Color",
       "info": "Set the text color for all screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-primary-900"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "header",

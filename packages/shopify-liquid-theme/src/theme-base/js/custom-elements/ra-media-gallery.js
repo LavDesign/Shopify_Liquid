@@ -25,8 +25,8 @@ export default class RaMediaGallery extends HTMLElement {
     const scopedThis = this;
     this.primarySwiper?.addEventListener("update", () => {
       window.setTimeout(function () {
-        scopedThis.primarySwiper.swiper.slideToLoop(2, 200);
-      }, 300);
+        scopedThis.primarySwiper.swiper.slideToLoop(1, 100);
+      }, 100);
     });
   }
 

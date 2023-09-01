@@ -1,19 +1,19 @@
 {%- style -%}
-  #shopify-section-{{ section.id }} {
+  [data-section-id='{{ section.id }}'] {
     background-color: var({{- section.settings.bg_color -}});
     color: var({{- section.settings.text_color -}});
   }
 
-  #shopify-section-{{- section.id }} .ra-accordion-item__content ul li {
+  [data-section-id='{{ section.id }}'] .ra-accordion-item__content ul li {
     list-style: inside disc;
   }
 
-  #shopify-section-{{- section.id }} .ra-accordion-item__content ol li {
+  [data-section-id='{{ section.id }}'] .ra-accordion-item__content ol li {
     list-style: inside decimal;
   }
 
 {%- endstyle -%}
-<div class="container">
+<div class="container" data-section-id="{{ section.id }}">
   <{{ section.settings.section_title_level }} class="{{ section.settings.title_style }}">
     {{- section.settings.section_title -}}
   </{{ section.settings.section_title_level }}>
@@ -60,15 +60,13 @@
       "id": "bg_color",
       "label": "Background Color",
       "info": "Set the background color for all screen sizes",
-      "options": <%- uikit.colorsSchemaPicker -%>,
-      "default": "--color-util-white"
+      "options": <%- uikit.colorsCustomizer -%>
     },
     {
       "type": "select",
       "id": "text_color",
       "label": "Text Color",
-      "options": <%- uikit.colorsAll -%>,
-      "default": "--color-util-red"
+      "options": <%- uikit.colorsCustomizer -%>
     }
   ],
   "blocks": [
