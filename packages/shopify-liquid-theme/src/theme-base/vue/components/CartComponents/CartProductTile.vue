@@ -119,7 +119,7 @@ const updateQuantity = (qty) => {
       detail: { item_count: cart.item_count },
     });
     window.dispatchEvent(event);
-  })
+  });
 };
 
 const isSubscriptionProduct = false;

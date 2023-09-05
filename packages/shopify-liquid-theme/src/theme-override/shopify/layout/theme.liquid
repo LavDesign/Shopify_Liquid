@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    {%- render 'head-meta' -%}
+    {%- render 'gtm-datalayer', action_step: 'init' -%}
+    {%- render 'script-tags' -%}
+    {%- render 'vendor-scripts' -%}
+    {%- render 'ra-language' -%}
+    {%- render 'ra-global-settings' -%}
+
+    {% if settings.enable_internationalization %}
+      {%- section 'ra-countries' -%}
+    {% endif %}
+
+    {%- comment -%}
+    Fonts
+    {%- endcomment -%}
+
+    {% comment %}theme-check-disable RemoteAsset{% endcomment %}
+    <link rel="stylesheet" href="https://use.typekit.net/uuq0jfz.css">
+
+    {%- comment -%}
+    Palomino & Bedrock UI
+    {%- endcomment -%}
+
+    {{ 'main.css' | asset_url | stylesheet_tag }}
+    {%- render 'css-variables' -%}
+    {%- render 'icon-store' -%}
+    {%- comment -%}
+    END - Palomino
+    {%- endcomment -%}
+    {{ content_for_header }}
+  </head>
+
+  <body>
+    {% render 'gtm-datalayer', action_step: 'body-init' %}
+
+    {% if template.name == 'cart' %}
+      {% render 'gtm-datalayer', action_step: 'view-cart' %}
+    {% elsif template.name == 'product' %}
+      {% render 'gtm-datalayer', action_step: 'view-item' %}
+    {% endif %}
+
+    {% sections 'header-group' %}
+
+    <main
+      role="main"
+      tabindex="-1"
+      class="pb-20">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    {% render 'ra-login-modal' %}
+
+    {% comment %}theme-check-disable ParserBlockingScriptTag{% endcomment %}
+    {{ 'main.js' | asset_url | script_tag }}
+
+    {% unless template.name == 'cart' %}
+      {% capture cart_settings %}
+        {%- render 'cart-settings' -%}{% endcapture %}
+      {% capture empty_cart_settings %}
+        {%- render 'empty-cart-settings' -%}{% endcapture %}
+      <div data-vue-root="CartInline">
+        <cart-inline :settings="{{- cart_settings | escape | strip -}}" :empty-cart-settings="{{- empty_cart_settings | escape | strip -}}" />
+      </div>
+    {% endunless %}
+  </body>
+</html>

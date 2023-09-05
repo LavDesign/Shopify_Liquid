@@ -9,5 +9,5 @@ store = "bedrock-liquid.myshopify.com"
 path = "./dist"
 
 [environments.dev]
-store = ""
+store = "beadrock-test-lav.myshopify.com"
 path = "./dist"
